@@ -33,6 +33,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [
+      {
+        url: "/digitalpoint-favicon.png",
+        type: "image/png",
+        sizes: "512x512",
+      },
+    ],
+    shortcut: ["/digitalpoint-favicon.png"],
+    apple: [
+      {
+        url: "/digitalpoint-favicon.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
+  },
   openGraph: {
     title: "DigitalPoint LLC | Digital Growth & Remote Workforce Solutions",
     description: siteConfig.description,

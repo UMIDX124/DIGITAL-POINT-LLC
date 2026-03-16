@@ -27,15 +27,15 @@ function isLinkProps(props: CTAButtonProps): props is LinkProps {
 
 const variants = {
   primary:
-    "border border-transparent bg-[linear-gradient(135deg,#3E1E68_0%,#5D2F77_48%,#E45A92_100%)] text-white shadow-[0_18px_50px_rgba(62,30,104,0.28)] hover:shadow-[0_24px_60px_rgba(62,30,104,0.22)]",
+    "border border-white/10 bg-[linear-gradient(135deg,#37185F_0%,#522A88_46%,#E45A92_100%)] text-white shadow-[0_20px_54px_rgba(62,30,104,0.3)] hover:shadow-[0_28px_74px_rgba(62,30,104,0.26)]",
   secondary:
-    "border border-brand-primary/12 bg-white/84 text-brand-primary shadow-[0_18px_50px_rgba(62,30,104,0.08)] hover:border-brand-primary/18 hover:bg-white",
+    "border border-brand-primary/14 bg-white/88 text-brand-primary shadow-[0_18px_50px_rgba(62,30,104,0.08)] hover:border-brand-primary/20 hover:bg-white",
   ghost:
-    "border border-white/18 bg-white/8 text-white shadow-none backdrop-blur-sm hover:border-white/26 hover:bg-white/12",
+    "border border-white/20 bg-white/10 text-white shadow-[0_12px_34px_rgba(15,8,28,0.08)] backdrop-blur-md hover:border-white/30 hover:bg-white/14",
 } as const;
 
 const baseClassName =
-  "group relative inline-flex min-h-14 items-center justify-center overflow-hidden rounded-full px-6 py-4 text-base font-medium leading-none tracking-[-0.02em] transition duration-300 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+  "group relative inline-flex min-h-14 items-center justify-center overflow-hidden rounded-full px-6 py-4 text-[15px] font-semibold leading-none tracking-[-0.018em] transition duration-300 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 export function CTAButton(props: CTAButtonProps) {
   const shine = (

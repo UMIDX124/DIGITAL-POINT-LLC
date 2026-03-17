@@ -104,7 +104,7 @@ export function StrategyCallForm() {
 
       form.reset();
       setSubmitState("success");
-      setSubmitMessage("Request sent successfully. We received your audit request and will review it shortly.");
+      setSubmitMessage("Thanks! Your request was received. We'll review your details and follow up shortly.");
       trackEvent("lead_form_submit_success", {
         section: "final_cta",
         form_type: "free_growth_audit",
@@ -257,7 +257,11 @@ export function StrategyCallForm() {
 
       <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <CTAButton type="submit" className="min-w-[220px]" disabled={submitState === "submitting"}>
-          {submitState === "submitting" ? "Sending Audit Request..." : "Request Free Growth Audit"}
+          {submitState === "submitting"
+            ? "Sending Audit Request..."
+            : submitState === "success"
+              ? "Request Received"
+              : "Request Free Growth Audit"}
         </CTAButton>
         <a
           href={siteConfig.bookingEmailHref}

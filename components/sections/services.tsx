@@ -26,12 +26,13 @@ export function Services() {
                 eyebrow={`Capability 0${index + 1}`}
                 title={service.title}
                 description={service.description}
-                className="transition duration-300 hover:-translate-y-2 hover:border-brand-primary/18 hover:shadow-[0_28px_72px_rgba(62,30,104,0.14)]"
+                className="relative overflow-hidden transition duration-300 hover:-translate-y-2 hover:border-brand-primary/18 hover:shadow-[0_28px_72px_rgba(62,30,104,0.14)]"
               >
+                <div className="mb-6 h-px w-full bg-[linear-gradient(90deg,rgba(62,30,104,0.18),rgba(228,90,146,0.18),transparent)]" />
                 <ul className="space-y-4">
                   {service.bullets.map((bullet) => (
-                    <li key={bullet} className="flex items-start gap-3 text-base leading-[1.7] text-ink/78">
-                      <span className="mt-2 h-2 w-2 rounded-full bg-[linear-gradient(135deg,#3E1E68_0%,#E45A92_100%)]" />
+                    <li key={bullet} className="flex items-start gap-3.5 text-[15px] leading-[1.8] text-ink/78">
+                      <span className="mt-[11px] h-1.5 w-1.5 rounded-full bg-[linear-gradient(135deg,#3E1E68_0%,#E45A92_100%)]" />
                       <span>{bullet}</span>
                     </li>
                   ))}

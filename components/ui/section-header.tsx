@@ -25,12 +25,20 @@ export function SectionHeader({
   const isLight = tone === "light";
 
   return (
-    <Reveal className={cn(isCentered ? "mx-auto max-w-[760px] text-center" : "max-w-[760px]", className)}>
-      <Kicker tone={isLight ? "light" : "default"}>{eyebrow}</Kicker>
+    <Reveal className={cn(isCentered ? "mx-auto max-w-[780px] text-center" : "max-w-[760px]", className)}>
+      <Kicker
+        tone={isLight ? "light" : "default"}
+        className={cn(
+          "px-4 py-2 text-[11px] font-semibold tracking-[0.22em]",
+          isLight ? "border-white/16 bg-white/8 text-white/72" : "border-brand-primary/10 bg-white/66 text-brand-primary/70",
+        )}
+      >
+        {eyebrow}
+      </Kicker>
       <h2
         id={id}
         className={cn(
-          "mt-6 text-[32px] font-semibold leading-[1.2] md:text-[36px] lg:text-[40px]",
+          "mt-7 text-[33px] font-semibold leading-[1.14] tracking-[-0.045em] md:text-[37px] lg:text-[42px]",
           isLight ? "text-white" : "text-ink",
         )}
       >
@@ -38,9 +46,9 @@ export function SectionHeader({
       </h2>
       <p
         className={cn(
-          "mt-6 text-base leading-[1.7]",
-          isCentered ? "mx-auto max-w-[720px]" : "max-w-[720px]",
-          isLight ? "text-white/72" : "text-muted",
+          "mt-5 text-[16px] leading-[1.8] md:text-[17px]",
+          isCentered ? "mx-auto max-w-[680px]" : "max-w-[680px]",
+          isLight ? "text-white/70" : "text-muted/95",
         )}
       >
         {description}

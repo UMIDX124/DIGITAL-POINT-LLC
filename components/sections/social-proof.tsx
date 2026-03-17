@@ -27,27 +27,28 @@ export function SocialProof() {
           <CardGrid columns="four">
             {stats.map((stat, index) => (
               <Reveal key={stat.label} delay={index * 0.06}>
-                <Card className="h-full border-white/10 bg-white/8 p-8 text-white backdrop-blur-md">
+                <Card className="h-full rounded-[22px] border-white/10 bg-white/8 p-8 text-white backdrop-blur-md">
+                  <div className="mb-6 h-px w-16 bg-[linear-gradient(90deg,rgba(132,219,255,0.95),rgba(228,90,146,0.88))]" />
                   <AnimatedCounter
                     value={stat.value}
                     suffix={stat.suffix}
-                    className="text-[40px] font-semibold leading-[1.2] tracking-[-0.04em] text-white"
+                    className="text-[38px] font-semibold leading-[1.08] tracking-[-0.05em] text-white md:text-[40px]"
                   />
-                  <h3 className="mt-4 text-base font-medium leading-[1.7] text-white">{stat.label}</h3>
-                  <p className="mt-3 text-[14px] leading-[1.7] text-white/64">{stat.description}</p>
+                  <h3 className="mt-4 text-[15px] font-semibold uppercase tracking-[0.08em] text-white/88">{stat.label}</h3>
+                  <p className="mt-4 text-[14px] leading-[1.75] text-white/64">{stat.description}</p>
                 </Card>
               </Reveal>
             ))}
           </CardGrid>
 
           <Reveal delay={0.2}>
-            <div className="mt-12 border-t border-white/10 pt-8">
-              <p className="text-[14px] font-medium uppercase tracking-[0.22em] text-white/55">Scaling teams across</p>
-              <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-14 border-t border-white/10 pt-9">
+              <p className="text-[13px] font-semibold uppercase tracking-[0.22em] text-white/52">Scaling teams across</p>
+              <div className="mt-6 flex flex-wrap gap-3.5">
                 {industries.map((industry) => (
                   <span
                     key={industry}
-                    className="rounded-full border border-white/12 bg-white/8 px-4 py-2 text-[14px] font-medium text-white/78"
+                    className="rounded-full border border-white/12 bg-white/8 px-4 py-2 text-[13px] font-medium text-white/76"
                   >
                     {industry}
                   </span>

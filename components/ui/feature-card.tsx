@@ -25,26 +25,38 @@ export function FeatureCard({
   const isDark = tone === "dark";
 
   return (
-    <Card className={cn("flex h-full flex-col p-8", isDark ? "border-white/10 bg-white/8 text-white" : "", className)}>
+    <Card
+      className={cn(
+        "flex h-full flex-col rounded-[20px] p-8 md:p-9",
+        isDark ? "border-white/10 bg-white/8 text-white" : "border-white/70 bg-white/84",
+        className,
+      )}
+    >
       {headerSlot ? <div className="flex items-start justify-between gap-4">{headerSlot}</div> : null}
       {eyebrow ? (
         <p
           className={cn(
             headerSlot ? "mt-6" : "",
-            "text-sm font-medium uppercase tracking-[0.18em]",
+            "text-[11px] font-semibold uppercase tracking-[0.18em]",
             isDark ? "text-white/56" : "text-brand-primary/62",
           )}
         >
           {eyebrow}
         </p>
       ) : null}
-      <h3 className={cn(eyebrow || headerSlot ? "mt-5" : "", "text-2xl font-semibold leading-[1.2]", isDark ? "text-white" : "text-ink")}>
+      <h3
+        className={cn(
+          eyebrow || headerSlot ? "mt-5" : "",
+          "text-[22px] font-semibold leading-[1.24] tracking-[-0.035em] md:text-[24px]",
+          isDark ? "text-white" : "text-ink",
+        )}
+      >
         {title}
       </h3>
       {description ? (
-        <p className={cn("mt-4 text-base leading-[1.7]", isDark ? "text-white/68" : "text-muted")}>{description}</p>
+        <p className={cn("mt-4 text-[15px] leading-[1.8]", isDark ? "text-white/68" : "text-muted/95")}>{description}</p>
       ) : null}
-      {children ? <div className="mt-6 flex flex-1 flex-col">{children}</div> : null}
+      {children ? <div className="mt-7 flex flex-1 flex-col">{children}</div> : null}
     </Card>
   );
 }

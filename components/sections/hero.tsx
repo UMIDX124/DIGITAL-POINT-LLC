@@ -19,7 +19,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-x-0 top-0 h-[880px] bg-[radial-gradient(circle_at_16%_22%,rgba(84,185,255,0.15),transparent_22%),radial-gradient(circle_at_84%_18%,rgba(228,90,146,0.16),transparent_28%),radial-gradient(circle_at_50%_2%,rgba(115,78,255,0.11),transparent_24%)]"
       />
       <SectionContainer>
-        <div className="hero-stage relative isolate min-h-[90svh] overflow-hidden rounded-[30px] border border-white/12 px-5 py-8 shadow-[0_48px_160px_rgba(19,8,38,0.32)] sm:px-6 sm:py-10 md:rounded-[38px] md:px-10 md:py-12 lg:rounded-[42px] lg:px-14 lg:py-16 xl:px-16 xl:py-[4.5rem]">
+        <div className="hero-stage relative isolate min-h-[90svh] overflow-hidden rounded-[30px] border border-white/12 px-5 py-8 shadow-[0_48px_160px_rgba(19,8,38,0.32)] sm:px-6 sm:py-10 md:rounded-[38px] md:px-10 md:py-12 lg:px-12 lg:py-14 xl:rounded-[42px] xl:px-16 xl:py-[4.5rem]">
           <div className="hero-stage__video" aria-hidden="true" />
           <div className="hero-stage__aura" aria-hidden="true" />
           <div className="hero-stage__vignette" aria-hidden="true" />
@@ -27,7 +27,7 @@ export function Hero() {
           <AmbientOrbs variant="hero" className="opacity-95" />
 
           <div className="relative z-10 flex min-h-full flex-col">
-            <div className="mx-auto grid w-full max-w-[1180px] flex-1 gap-14 lg:min-h-[36rem] lg:grid-cols-[minmax(0,1.04fr)_minmax(340px,0.96fr)] lg:items-center lg:justify-between lg:gap-12 xl:min-h-[39rem] xl:grid-cols-[minmax(0,650px)_minmax(380px,1fr)] xl:gap-20">
+            <div className="mx-auto grid w-full max-w-[1200px] flex-1 gap-12 lg:min-h-[36rem] lg:grid-cols-[minmax(0,1.02fr)_minmax(360px,0.98fr)] lg:items-center lg:justify-between lg:gap-10 xl:min-h-[39rem] xl:grid-cols-[minmax(0,620px)_minmax(420px,1fr)] xl:gap-16">
               <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
                 <Reveal delay={0.03}>
                   <Kicker
@@ -38,18 +38,18 @@ export function Hero() {
                   </Kicker>
                 </Reveal>
 
-                <Reveal delay={0.12} className="mt-8 max-w-[650px] xl:mt-10 xl:max-w-[660px]">
+                <Reveal delay={0.12} className="mt-7 max-w-[620px] xl:mt-9 xl:max-w-[620px]">
                   <h1
                     id="hero-heading"
-                    className="text-[31px] font-semibold leading-[1.04] tracking-[-0.052em] text-white sm:text-[35px] md:text-[42px] lg:text-[45px] xl:text-[52px]"
+                    className="text-[31px] font-semibold leading-[1.06] tracking-[-0.048em] text-white sm:text-[35px] md:text-[41px] lg:text-[44px] xl:text-[49px]"
                   >
                     Build a <span className="hero-text-glow">clearer revenue system</span> with stronger marketing,
                     better reporting, and execution your team can actually sustain.
                   </h1>
                 </Reveal>
 
-                <Reveal delay={0.22} className="mt-7 max-w-[35rem] xl:mt-8 xl:max-w-[610px]">
-                  <p className="text-[15px] leading-[1.78] text-white/72 sm:text-[16px] md:text-[17px] xl:text-[18px]">
+                <Reveal delay={0.22} className="mt-7 max-w-[36rem] xl:mt-8 xl:max-w-[36rem]">
+                  <p className="text-[15px] leading-[1.82] text-white/72 sm:text-[16px] md:text-[17px] xl:text-[17px]">
                     DigitalPoint helps B2B companies improve growth systems, marketing automation, revenue operations,
                     and execution support so pipeline is easier to see, manage, and scale.
                   </p>
@@ -77,7 +77,7 @@ export function Hero() {
                   </div>
                 </Reveal>
 
-                <Reveal delay={0.36} className="mt-8 max-w-[34rem]">
+                <Reveal delay={0.36} className="mt-8 max-w-[36rem]">
                   <div className="grid gap-3 sm:grid-cols-3">
                     {[
                       "Founder-led review",
@@ -86,7 +86,7 @@ export function Hero() {
                     ].map((item) => (
                       <div
                         key={item}
-                        className="rounded-[18px] border border-white/10 bg-white/5 px-4 py-3 text-[12px] font-medium uppercase tracking-[0.14em] text-white/62"
+                        className="rounded-[18px] border border-white/10 bg-white/7 px-4 py-3 text-[11px] font-medium uppercase tracking-[0.15em] text-white/64"
                       >
                         {item}
                       </div>
@@ -95,7 +95,7 @@ export function Hero() {
                 </Reveal>
               </div>
 
-              <div aria-hidden="true" className="relative mx-auto w-full max-w-[460px] lg:justify-self-end xl:max-w-[580px]">
+              <div aria-hidden="true" className="relative mx-auto w-full max-w-[450px] lg:justify-self-end xl:max-w-[540px]">
                 <Reveal delay={0.4}>
                   <HeroVisual />
                 </Reveal>

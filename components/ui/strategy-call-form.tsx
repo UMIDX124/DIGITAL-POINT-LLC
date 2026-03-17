@@ -8,6 +8,12 @@ import { siteConfig } from "@/lib/content";
 
 type SubmitState = "idle" | "submitting" | "success" | "error";
 
+type StatusContent = {
+  title: string;
+  body: string;
+  support?: string;
+};
+
 const serviceOptions = [
   "Growth Systems",
   "Revenue Marketing",
@@ -17,9 +23,11 @@ const serviceOptions = [
 
 export function StrategyCallForm() {
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
-  const [submitMessage, setSubmitMessage] = useState(
-    "Submit the form and request your free growth audit without leaving the page."
-  );
+  const [statusContent, setStatusContent] = useState<StatusContent>({
+    title: "Request your free growth audit.",
+    body: "Submit the form and request your free growth audit without leaving the page.",
+    support: "You will stay on the same page and see confirmation here once everything is sent.",
+  });
   const [currentUrl, setCurrentUrl] = useState(siteConfig.siteUrl);
   const hasTrackedStart = useRef(false);
   const [attribution, setAttribution] = useState({
@@ -85,7 +93,11 @@ export function StrategyCallForm() {
     );
 
     setSubmitState("submitting");
-    setSubmitMessage("Sending your free growth audit request...");
+    setStatusContent({
+      title: "Sending your request...",
+      body: "We are securely sending your details now.",
+      support: "This usually takes just a moment.",
+    });
 
     try {
       const response = await fetch(siteConfig.formSubmitAction, {
@@ -104,7 +116,11 @@ export function StrategyCallForm() {
 
       form.reset();
       setSubmitState("success");
-      setSubmitMessage("Thanks! Your request was received. We'll review your details and follow up shortly.");
+      setStatusContent({
+        title: "Thanks — your request was received.",
+        body: "We will review your details and follow up with practical next steps shortly.",
+        support: "This is a no-pressure review. If there is a fit, we will show you where to focus first.",
+      });
       trackEvent("lead_form_submit_success", {
         section: "final_cta",
         form_type: "free_growth_audit",
@@ -112,7 +128,11 @@ export function StrategyCallForm() {
       });
     } catch {
       setSubmitState("error");
-      setSubmitMessage("We could not send the request right now. Please try again, or use the direct email option below.");
+      setStatusContent({
+        title: "We could not send your request.",
+        body: "Please try again in a moment, or use the direct email option below.",
+        support: "Your details are not lost unless the request is successfully submitted.",
+      });
     }
   };
 
@@ -277,15 +297,20 @@ export function StrategyCallForm() {
 
       <div
         aria-live="polite"
-        className={`mt-4 rounded-2xl border px-4 py-3 text-[14px] leading-[1.7] ${
+        aria-atomic="true"
+        className={`mt-4 rounded-2xl border px-4 py-4 text-[14px] leading-[1.7] ${
           submitState === "success"
-            ? "border-emerald-400/20 bg-emerald-400/10 text-emerald-100"
+            ? "border-emerald-400/22 bg-emerald-400/10 text-emerald-50"
             : submitState === "error"
               ? "border-rose-300/20 bg-rose-300/10 text-rose-100"
-              : "border-white/10 bg-white/6 text-white/54"
+              : submitState === "submitting"
+                ? "border-white/14 bg-white/8 text-white/76"
+                : "border-white/10 bg-white/6 text-white/56"
         }`}
       >
-        {submitMessage}
+        <p className="font-medium text-inherit">{statusContent.title}</p>
+        <p className="mt-1 text-inherit/90">{statusContent.body}</p>
+        {statusContent.support ? <p className="mt-2 text-[13px] text-inherit/75">{statusContent.support}</p> : null}
       </div>
     </form>
   );

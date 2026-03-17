@@ -13,18 +13,27 @@ export function Founder() {
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center">
           <Reveal>
             <Card className="rounded-[28px] p-8 md:p-10">
-              <Kicker className="px-4 py-2 text-[11px] font-semibold tracking-[0.22em]">{founderProfile.eyebrow}</Kicker>
-              <div
-                aria-hidden="true"
-                className="mt-4 h-px w-20 bg-[linear-gradient(90deg,rgba(62,30,104,0.28),rgba(228,90,146,0.18),transparent)]"
-              />
-              <h2
-                id="founder-heading"
-                className="mt-6 max-w-[15ch] text-[35px] font-semibold leading-[1.1] tracking-[-0.052em] text-ink md:text-[40px] lg:text-[46px]"
-              >
-                {founderProfile.title}
-              </h2>
-              <p className="mt-6 max-w-[54ch] text-[16px] leading-[1.82] text-muted">{founderProfile.description}</p>
+              <div className="relative pl-6 md:pl-8">
+                <div
+                  aria-hidden="true"
+                  className="absolute left-0 top-1 h-[calc(100%-0.5rem)] w-px bg-[linear-gradient(180deg,rgba(62,30,104,0.14),rgba(228,90,146,0.42),rgba(62,30,104,0.06))]"
+                />
+                <div aria-hidden="true" className="pointer-events-none absolute -left-4 top-0 h-24 w-24 rounded-full bg-brand-secondary/8 blur-3xl" />
+                <Kicker className="relative px-4 py-2 text-[11px] font-semibold tracking-[0.24em]">{founderProfile.eyebrow}</Kicker>
+                <div
+                  aria-hidden="true"
+                  className="relative mt-4 h-[2px] w-24 bg-[linear-gradient(90deg,rgba(62,30,104,0.65),rgba(228,90,146,0.42),transparent)]"
+                />
+                <h2
+                  id="founder-heading"
+                  className="relative mt-6 max-w-[18ch] text-[38px] font-semibold leading-[1.06] tracking-[-0.055em] text-ink md:text-[46px] lg:text-[52px]"
+                >
+                  {founderProfile.title}
+                </h2>
+                <p className="relative mt-6 max-w-[52ch] text-[15px] leading-[1.86] text-muted md:text-[16px]">
+                  {founderProfile.description}
+                </p>
+              </div>
               <div className="mt-7 rounded-[22px] border border-brand-primary/10 bg-brand-primary/[0.03] px-5 py-5">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-primary/54">Why this matters</p>
                 <div className="mt-4 space-y-3">

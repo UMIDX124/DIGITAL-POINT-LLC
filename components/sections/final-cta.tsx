@@ -19,22 +19,29 @@ export function FinalCta() {
         <div className="section-frame overflow-hidden border-white/10 bg-white/6 px-8 py-8 backdrop-blur-md md:px-10 md:py-10 lg:px-12 lg:py-14">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,430px)] lg:items-start lg:gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,450px)]">
             <Reveal>
-              <Kicker tone="light" className="border-white/16 bg-white/8 px-4 py-2 text-[11px] font-semibold tracking-[0.22em] text-white/76">
-                Free growth audit
-              </Kicker>
-              <div
-                aria-hidden="true"
-                className="mt-4 h-px w-20 bg-[linear-gradient(90deg,rgba(255,255,255,0.45),rgba(255,255,255,0.16),transparent)]"
-              />
-              <h2
-                id="strategy-call-heading"
-                className="mt-6 max-w-[14ch] text-[35px] font-semibold leading-[1.1] tracking-[-0.052em] text-white md:text-[40px] lg:max-w-[15ch] lg:text-[46px]"
-              >
-                If growth feels harder to manage than it should, request a direct audit of the gaps slowing it down.
-              </h2>
-              <p className="mt-6 max-w-[34rem] text-[16px] leading-[1.82] text-white/72 md:text-[17px]">
-                We will review where revenue gets stuck, where execution slows down, and what to fix first across systems, marketing, or delivery.
-              </p>
+              <div className="relative pl-6 md:pl-8">
+                <div
+                  aria-hidden="true"
+                  className="absolute left-0 top-1 h-[calc(100%-0.5rem)] w-px bg-[linear-gradient(180deg,rgba(255,255,255,0.16),rgba(255,255,255,0.56),rgba(255,255,255,0.08))]"
+                />
+                <div aria-hidden="true" className="pointer-events-none absolute -left-4 top-0 h-24 w-24 rounded-full bg-white/8 blur-3xl" />
+                <Kicker tone="light" className="relative border-white/16 bg-white/10 px-4 py-2 text-[11px] font-semibold tracking-[0.24em] text-white/78">
+                  Free growth audit
+                </Kicker>
+                <div
+                  aria-hidden="true"
+                  className="relative mt-4 h-[2px] w-24 bg-[linear-gradient(90deg,rgba(255,255,255,0.8),rgba(255,255,255,0.3),transparent)]"
+                />
+                <h2
+                  id="strategy-call-heading"
+                  className="relative mt-6 max-w-[17ch] text-[38px] font-semibold leading-[1.06] tracking-[-0.055em] text-white md:text-[46px] lg:text-[52px]"
+                >
+                  If growth feels harder to manage than it should, request a direct audit of the gaps slowing it down.
+                </h2>
+                <p className="relative mt-6 max-w-[33rem] text-[15px] leading-[1.86] text-white/68 md:text-[17px]">
+                  We will review where revenue gets stuck, where execution slows down, and what to fix first across systems, marketing, or delivery.
+                </p>
+              </div>
 
               <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
                 <Button

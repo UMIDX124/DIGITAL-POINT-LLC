@@ -42,7 +42,7 @@ export function Navbar() {
         <div className={cn("transition-[padding] duration-300", isScrolled ? "pt-3" : "pt-6 lg:pt-7")}>
           <div
             className={cn(
-              "rounded-full border px-5 py-[1.125rem] transition duration-300 sm:px-7 lg:px-9 lg:py-5",
+              "rounded-full border px-4 py-4 transition duration-300 sm:px-6 sm:py-[1.125rem] lg:px-9 lg:py-5",
               isScrolled
                 ? "border-white/80 bg-white/84 shadow-[0_24px_72px_rgba(62,30,104,0.16)] backdrop-blur-xl"
                 : "border-white/60 bg-white/70 shadow-[0_22px_62px_rgba(62,30,104,0.12)] backdrop-blur-xl",
@@ -53,7 +53,7 @@ export function Navbar() {
                 <BrandLogo
                   priority
                   variant="wordmark"
-                  className="w-[184px] sm:w-[226px] lg:w-[270px]"
+                  className="w-[198px] sm:w-[236px] lg:w-[270px]"
                   imageClassName="drop-shadow-[0_18px_34px_rgba(62,30,104,0.14)]"
                 />
               </a>

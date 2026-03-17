@@ -48,7 +48,7 @@ function MobileVisual() {
     <div className="relative xl:hidden">
       <div className="absolute inset-x-[8%] top-3 h-32 rounded-full bg-[radial-gradient(circle,rgba(84,185,255,0.18),transparent_66%)] blur-3xl" />
 
-      <div className="hero-dashboard relative overflow-hidden rounded-[30px] border border-white/14 bg-[linear-gradient(180deg,rgba(22,16,37,0.9),rgba(31,20,51,0.82))] p-5 shadow-[0_30px_100px_rgba(12,6,24,0.32)] backdrop-blur-2xl">
+      <div className="hero-dashboard relative overflow-hidden rounded-[26px] border border-white/14 bg-[linear-gradient(180deg,rgba(22,16,37,0.9),rgba(31,20,51,0.82))] p-4 shadow-[0_30px_100px_rgba(12,6,24,0.32)] backdrop-blur-2xl sm:rounded-[30px] sm:p-5">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_34%),linear-gradient(160deg,rgba(76,42,132,0.32),transparent_52%)]" />
         <div className="absolute inset-0 grid-accent opacity-15" />
 
@@ -56,7 +56,7 @@ function MobileVisual() {
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50">Growth cockpit</p>
-              <p className="mt-2 text-[26px] font-semibold leading-[1.15] tracking-[-0.045em] text-white">
+              <p className="mt-2 text-[24px] font-semibold leading-[1.14] tracking-[-0.045em] text-white sm:text-[26px]">
                 One system. Better execution.
               </p>
             </div>

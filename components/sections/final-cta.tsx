@@ -42,7 +42,7 @@ export function FinalCta() {
                 </Button>
               </div>
 
-              <div className="mt-10 grid gap-4 sm:grid-cols-3">
+              <div className="mt-10 grid gap-4 md:grid-cols-3">
                 {[
                   ["Focused intake", "Clear goals, blockers, and priorities in one discussion."],
                   ["Fast next step", "You leave with an obvious path instead of vague follow-up."],

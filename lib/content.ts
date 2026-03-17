@@ -7,6 +7,7 @@ export const siteConfig = {
   primaryCtaHref: "#strategy-call-form",
   bookingEmailHref: "mailto:digitalpointllc1122@gmail.com?subject=Strategy%20Call%20Request",
   email: "digitalpointllc1122@gmail.com",
+  formApiPath: "/api/free-growth-audit",
   formSubmitAction: "https://formsubmit.co/ajax/digitalpointllc1122@gmail.com",
 };
 

@@ -100,11 +100,8 @@ export function StrategyCallForm() {
     });
 
     try {
-      const response = await fetch(siteConfig.formSubmitAction, {
+      const response = await fetch(siteConfig.formApiPath, {
         method: "POST",
-        headers: {
-          Accept: "application/json",
-        },
         body: formData,
       });
 
@@ -126,11 +123,16 @@ export function StrategyCallForm() {
         form_type: "free_growth_audit",
         primary_focus_area: String(formData.get("service") ?? ""),
       });
-    } catch {
+    } catch (error) {
+      const message =
+        error instanceof Error && error.message
+          ? error.message
+          : "We could not send your request right now. Please try again, or use the direct email option below.";
+
       setSubmitState("error");
       setStatusContent({
         title: "We could not send your request.",
-        body: "Please try again in a moment, or use the direct email option below.",
+        body: message,
         support: "Your details are not lost unless the request is successfully submitted.",
       });
     }

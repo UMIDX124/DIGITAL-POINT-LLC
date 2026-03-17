@@ -98,18 +98,18 @@ function DesktopPanel({
 }) {
   return (
     <div
-      className={`rounded-[28px] border border-white/12 bg-[linear-gradient(180deg,rgba(23,17,37,0.94),rgba(29,20,49,0.88))] p-5 shadow-[0_22px_56px_rgba(10,6,22,0.16)] backdrop-blur-lg ${className}`}
+      className={`rounded-[28px] border border-white/12 bg-[linear-gradient(180deg,rgba(23,17,37,0.96),rgba(29,20,49,0.9))] p-5 shadow-[0_20px_48px_rgba(10,6,22,0.14)] backdrop-blur-lg ${className}`}
     >
-      <h3 className="text-[22px] font-semibold leading-[1.16] tracking-[-0.04em] text-white">{title}</h3>
-      <p className="mt-2 max-w-[21rem] text-[14px] leading-[1.7] text-white/64">{subtitle}</p>
-      <div className="mt-5 space-y-3">
+      <h3 className="max-w-[12ch] text-[19px] font-semibold leading-[1.08] tracking-[-0.038em] text-white">{title}</h3>
+      <p className="mt-2 max-w-[18rem] text-[12px] leading-[1.55] text-white/62">{subtitle}</p>
+      <div className="mt-4 space-y-2.5">
         {rows.map(([label, value]) => (
           <div
             key={label}
-            className="flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/7 px-4 py-3"
+            className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-[20px] border border-white/10 bg-white/7 px-4 py-3"
           >
-            <span className="text-[13px] text-white/66">{label}</span>
-            <span className="shrink-0 text-[13px] font-semibold text-white">{value}</span>
+            <span className="text-[11px] leading-[1.45] text-white/66">{label}</span>
+            <span className="shrink-0 text-[11px] font-semibold leading-none text-white">{value}</span>
           </div>
         ))}
       </div>
@@ -167,15 +167,15 @@ export function HeroVisual() {
       <MobileVisual />
 
       <div aria-hidden="true" className="relative hidden h-[500px] xl:block xl:h-[540px]" style={{ perspective: 1500 }}>
-        <div className="hero-backplate absolute left-[14%] top-[12%] h-[72%] w-[72%] rounded-[38px]" />
+        <div className="hero-backplate absolute left-[15%] top-[12%] h-[72%] w-[70%] rounded-[38px]" />
 
         <m.div
-          className="absolute left-1/2 top-[7%] w-[70%] -translate-x-1/2"
+          className="absolute left-1/2 top-[8%] w-[68%] -translate-x-1/2"
           style={lowMotion ? undefined : { x: panelOneX, y: panelOneOffsetY, willChange: "transform" }}
           animate={lowMotion ? undefined : { y: [0, -3, 0] }}
           transition={{ duration: 9.2, repeat: Number.POSITIVE_INFINITY, ease: MOTION_EASE }}
         >
-          <div className="overflow-hidden rounded-[32px] border border-white/14 bg-[linear-gradient(180deg,rgba(22,16,37,0.95),rgba(29,19,49,0.9))] p-5 shadow-[0_22px_56px_rgba(10,6,22,0.14)] backdrop-blur-lg">
+          <div className="overflow-hidden rounded-[32px] border border-white/14 bg-[linear-gradient(180deg,rgba(22,16,37,0.96),rgba(29,19,49,0.92))] p-5 shadow-[0_22px_56px_rgba(10,6,22,0.14)] backdrop-blur-lg">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_34%),linear-gradient(150deg,rgba(76,42,132,0.16),transparent_52%)]" />
             <div className="absolute inset-0 grid-accent opacity-12" />
             <div className="absolute inset-x-[18%] top-6 h-10 rounded-full bg-[radial-gradient(circle,rgba(84,185,255,0.14),transparent_70%)] blur-2xl" />
@@ -183,14 +183,14 @@ export function HeroVisual() {
             <div className="relative">
               <div className="flex items-start justify-between gap-5">
                 <div>
-                  <h3 className="text-[26px] font-semibold leading-[1.08] tracking-[-0.045em] text-white">
+                  <h3 className="text-[24px] font-semibold leading-[1.04] tracking-[-0.042em] text-white">
                     Revenue Dashboard
                   </h3>
-                  <p className="mt-2 max-w-[22rem] text-[14px] leading-[1.7] text-white/64">
+                  <p className="mt-2 max-w-[18rem] text-[12px] leading-[1.55] text-white/62">
                     Pipeline visibility, forecasting, reporting
                   </p>
                 </div>
-                <div className="rounded-full border border-emerald-400/18 bg-emerald-400/10 px-3 py-1 text-[11px] font-medium text-emerald-200">
+                <div className="rounded-full border border-emerald-400/18 bg-emerald-400/10 px-3 py-1 text-[10px] font-medium text-emerald-200">
                   Live
                 </div>
               </div>
@@ -219,7 +219,7 @@ export function HeroVisual() {
                 {revenueRows.map(([label, value]) => (
                   <div key={label} className="rounded-[20px] border border-white/10 bg-white/8 px-4 py-3.5">
                     <p className="text-[11px] uppercase tracking-[0.18em] text-white/46">{label}</p>
-                    <p className="mt-2 text-[15px] font-semibold text-white">{value}</p>
+                    <p className="mt-2 text-[14px] font-semibold text-white">{value}</p>
                   </div>
                 ))}
               </div>
@@ -228,7 +228,7 @@ export function HeroVisual() {
         </m.div>
 
         <m.div
-          className="absolute bottom-[8%] left-[5%] w-[43%]"
+          className="absolute bottom-[8%] left-[4%] w-[45%]"
           style={lowMotion ? undefined : { x: panelTwoX, y: panelTwoOffsetY, willChange: "transform" }}
           animate={lowMotion ? undefined : { y: [0, 4, 0] }}
           transition={{ duration: 8.8, repeat: Number.POSITIVE_INFINITY, ease: MOTION_EASE }}
@@ -237,12 +237,12 @@ export function HeroVisual() {
             title="Marketing Automation"
             subtitle="Campaign workflows, lead routing, CRM sync"
             rows={automationRows}
-            className="min-h-[258px]"
+            className="min-h-[246px]"
           />
         </m.div>
 
         <m.div
-          className="absolute bottom-[8%] right-[5%] w-[43%]"
+          className="absolute bottom-[8%] right-[4%] w-[45%]"
           style={lowMotion ? undefined : { x: panelThreeX, y: panelThreeOffsetY, willChange: "transform" }}
           animate={lowMotion ? undefined : { y: [0, 4, 0] }}
           transition={{ duration: 9, repeat: Number.POSITIVE_INFINITY, ease: MOTION_EASE }}
@@ -251,7 +251,7 @@ export function HeroVisual() {
             title="Execution Layer"
             subtitle="Remote team execution and operational support"
             rows={executionRows}
-            className="min-h-[258px]"
+            className="min-h-[246px]"
           />
         </m.div>
       </div>

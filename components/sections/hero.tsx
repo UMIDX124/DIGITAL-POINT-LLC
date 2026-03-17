@@ -27,8 +27,8 @@ export function Hero() {
           <AmbientOrbs variant="hero" className="opacity-95" />
 
           <div className="relative z-10 flex min-h-full flex-col">
-            <div className="mx-auto grid w-full max-w-[1160px] flex-1 gap-12 lg:min-h-[35rem] lg:grid-cols-[minmax(0,560px)_minmax(360px,1fr)] lg:items-center lg:justify-between lg:gap-8 xl:min-h-[38rem] xl:grid-cols-[minmax(0,575px)_minmax(390px,1fr)] xl:gap-12">
-              <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+            <div className="mx-auto flex w-full max-w-[1080px] flex-1 flex-col items-center gap-12 lg:min-h-[35rem] xl:min-h-[38rem]">
+              <div className="flex w-full max-w-[760px] flex-col items-center text-center">
                 <Reveal delay={0.03}>
                   <Kicker
                     tone="light"
@@ -95,7 +95,7 @@ export function Hero() {
                 </Reveal>
               </div>
 
-              <div aria-hidden="true" className="relative mx-auto w-full max-w-[410px] lg:justify-self-end xl:max-w-[465px]">
+              <div aria-hidden="true" className="relative mx-auto w-full max-w-[410px] md:max-w-[460px] xl:max-w-[500px]">
                 <Reveal delay={0.4}>
                   <HeroVisual />
                 </Reveal>

@@ -15,6 +15,10 @@ function isSuccess(value: UpstreamResponse["success"]) {
   return value === true || value === "true" || value === "success";
 }
 
+function stripHtml(input: string) {
+  return input.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+}
+
 export async function POST(request: Request) {
   try {
     const incomingFormData = await request.formData();
@@ -68,6 +72,7 @@ export async function POST(request: Request) {
     if (!upstreamResponse.ok || !isSuccess(parsed?.success)) {
       const upstreamMessage = parsed?.message || rawBody || "Form submission failed";
       const normalizedMessage = upstreamMessage.toLowerCase();
+      const cleanedMessage = stripHtml(upstreamMessage);
 
       if (normalizedMessage.includes("activation") || normalizedBody.includes("activation")) {
         return NextResponse.json(
@@ -90,10 +95,29 @@ export async function POST(request: Request) {
         );
       }
 
+      if (
+        normalizedBody.includes("<!doctype html") ||
+        normalizedBody.includes("<html") ||
+        normalizedBody.includes("just a moment") ||
+        normalizedBody.includes("cloudflare")
+      ) {
+        return NextResponse.json(
+          {
+            success: false,
+            message:
+              "The form service is temporarily blocking the request. Please try again in a minute, or use the direct email option below.",
+          },
+          { status: 502 }
+        );
+      }
+
       return NextResponse.json(
         {
           success: false,
-          message: upstreamMessage,
+          message:
+            cleanedMessage && cleanedMessage.length < 220
+              ? cleanedMessage
+              : "We could not deliver the request right now. Please try again in a moment, or use the direct email option below.",
         },
         { status: 502 }
       );

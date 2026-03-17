@@ -36,21 +36,27 @@ function MobilePanel({
   rows: readonly (readonly [string, string])[];
 }) {
   return (
-    <div className="rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(27,20,44,0.92),rgba(31,22,51,0.84))] p-4 shadow-[0_20px_48px_rgba(10,6,22,0.18)]">
+    <m.div
+      className="rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,rgba(27,20,44,0.92),rgba(31,22,51,0.84))] p-4 shadow-[0_20px_48px_rgba(10,6,22,0.18)]"
+      animate={{ y: [0, -3, 0], boxShadow: ["0 20px 48px rgba(10,6,22,0.18)", "0 24px 54px rgba(10,6,22,0.22)", "0 20px 48px rgba(10,6,22,0.18)"] }}
+      transition={{ duration: 7.5, repeat: Number.POSITIVE_INFINITY, ease: MOTION_EASE }}
+    >
       <p className="text-[20px] font-semibold leading-[1.14] tracking-[-0.04em] text-white">{title}</p>
       <p className="mt-2 text-[14px] leading-[1.7] text-white/64">{subtitle}</p>
       <div className="mt-4 space-y-3">
-        {rows.map(([label, value]) => (
-          <div
+        {rows.map(([label, value], index) => (
+          <m.div
             key={label}
             className="flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/7 px-3 py-3"
+            animate={{ y: [0, -1.5, 0], opacity: [0.92, 1, 0.94] }}
+            transition={{ duration: 5.8, delay: index * 0.16, repeat: Number.POSITIVE_INFINITY, ease: MOTION_EASE }}
           >
             <span className="text-sm text-white/68">{label}</span>
             <span className="text-sm font-semibold text-white">{value}</span>
-          </div>
+          </m.div>
         ))}
       </div>
-    </div>
+    </m.div>
   );
 }
 
@@ -97,23 +103,27 @@ function DesktopPanel({
   className?: string;
 }) {
   return (
-    <div
+    <m.div
       className={`rounded-[28px] border border-white/12 bg-[linear-gradient(180deg,rgba(23,17,37,0.96),rgba(29,20,49,0.9))] p-5 shadow-[0_20px_48px_rgba(10,6,22,0.14)] backdrop-blur-lg ${className}`}
+      animate={{ boxShadow: ["0 20px 48px rgba(10,6,22,0.14)", "0 24px 58px rgba(10,6,22,0.18)", "0 20px 48px rgba(10,6,22,0.14)"] }}
+      transition={{ duration: 7.2, repeat: Number.POSITIVE_INFINITY, ease: MOTION_EASE }}
     >
       <h3 className="max-w-[12ch] text-[19px] font-semibold leading-[1.08] tracking-[-0.038em] text-white">{title}</h3>
       <p className="mt-2 max-w-[18rem] text-[12px] leading-[1.55] text-white/62">{subtitle}</p>
       <div className="mt-4 space-y-2.5">
-        {rows.map(([label, value]) => (
-          <div
+        {rows.map(([label, value], index) => (
+          <m.div
             key={label}
             className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-[20px] border border-white/10 bg-white/7 px-4 py-3"
+            animate={{ y: [0, -1.5, 0], opacity: [0.9, 1, 0.92], borderColor: ["rgba(255,255,255,0.10)", "rgba(255,255,255,0.16)", "rgba(255,255,255,0.10)"] }}
+            transition={{ duration: 5.6, delay: index * 0.18, repeat: Number.POSITIVE_INFINITY, ease: MOTION_EASE }}
           >
             <span className="text-[11px] leading-[1.45] text-white/66">{label}</span>
             <span className="shrink-0 text-[11px] font-semibold leading-none text-white">{value}</span>
-          </div>
+          </m.div>
         ))}
       </div>
-    </div>
+    </m.div>
   );
 }
 

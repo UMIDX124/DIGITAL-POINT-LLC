@@ -57,6 +57,7 @@ export async function POST(request: Request) {
 
     const rawBody = await upstreamResponse.text();
     let parsed: UpstreamResponse | null = null;
+    const normalizedBody = rawBody.toLowerCase();
 
     try {
       parsed = JSON.parse(rawBody) as UpstreamResponse;
@@ -65,16 +66,27 @@ export async function POST(request: Request) {
     }
 
     if (!upstreamResponse.ok || !isSuccess(parsed?.success)) {
-      const upstreamMessage = parsed?.message || "Form submission failed";
+      const upstreamMessage = parsed?.message || rawBody || "Form submission failed";
+      const normalizedMessage = upstreamMessage.toLowerCase();
 
-      if (upstreamMessage.toLowerCase().includes("activation")) {
+      if (normalizedMessage.includes("activation") || normalizedBody.includes("activation")) {
         return NextResponse.json(
           {
             success: false,
             message:
-              "The inbox connection needs one-time activation on the current live domain. Please activate the latest FormSubmit email once, then submissions will work normally.",
+              "FormSubmit still needs one-time activation for the current live domain. Please open the latest activation email from FormSubmit and click the activation link once.",
           },
           { status: 503 }
+        );
+      }
+
+      if (normalizedMessage.includes("make sure you open this page through a web server") || normalizedBody.includes("make sure you open this page through a web server")) {
+        return NextResponse.json(
+          {
+            success: false,
+            message: "The upstream form service rejected this request unexpectedly. Please try again in a moment.",
+          },
+          { status: 502 }
         );
       }
 

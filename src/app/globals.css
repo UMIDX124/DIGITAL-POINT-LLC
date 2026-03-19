@@ -1,0 +1,517 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================
+   DIGITAL POINT LLC — COSMIC DESIGN SYSTEM
+   Premium Space-Inspired Theme
+   ============================================ */
+
+@theme inline {
+  /* Background Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  /* Brand Colors - Cosmic Purple/Violet */
+  --color-plum: var(--plum);
+  --color-plum-light: var(--plum-light);
+  --color-plum-dark: var(--plum-dark);
+  --color-signal: var(--signal);
+  --color-signal-glow: var(--signal-glow);
+  --color-violet: var(--violet);
+  --color-violet-muted: var(--violet-muted);
+  --color-cosmic-pink: var(--cosmic-pink);
+  --color-cosmic-magenta: var(--cosmic-magenta);
+  
+  /* Surface Colors */
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-glass: var(--surface-glass);
+  --color-surface-glass-strong: var(--surface-glass-strong);
+  
+  /* Text Colors */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  
+  /* Border Colors */
+  --color-border-subtle: var(--border-subtle);
+  --color-border-glass: var(--border-glass);
+  --color-border-active: var(--border-active);
+  
+  /* Component Colors */
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  
+  /* Chart Colors */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  
+  /* Radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  
+  /* Typography */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
+  --font-mono: var(--font-ibm-plex-mono);
+}
+
+/* ============================================
+   CSS VARIABLES — COSMIC DARK THEME
+   ============================================ */
+
+:root {
+  /* Base Radius */
+  --radius: 0.75rem;
+  
+  /* Background — Deep cosmic violet-black */
+  --background: #0d0815;
+  
+  /* Foreground — Soft white */
+  --foreground: #f4f0f9;
+  
+  /* Brand Colors — Cosmic Purple/Violet Palette */
+  --plum: #9d4edd;
+  --plum-light: #c77dff;
+  --plum-dark: #7b2cbf;
+  --signal: #ff6b9d;
+  --signal-glow: rgba(255, 107, 157, 0.4);
+  --violet: #8b5cf6;
+  --violet-muted: #a78bfa;
+  --cosmic-pink: #e0aaff;
+  --cosmic-magenta: #c026d3;
+  
+  /* Surface Colors */
+  --surface: #13091e;
+  --surface-elevated: #1a0f2e;
+  --surface-glass: rgba(157, 78, 221, 0.08);
+  --surface-glass-strong: rgba(157, 78, 221, 0.12);
+  
+  /* Text Colors */
+  --text-primary: #f4f0f9;
+  --text-secondary: #b794c7;
+  --text-muted: #7c5a8a;
+  
+  /* Border Colors */
+  --border-subtle: rgba(157, 78, 221, 0.15);
+  --border-glass: rgba(199, 125, 255, 0.2);
+  --border-active: rgba(199, 125, 255, 0.4);
+  
+  /* Component Colors */
+  --card: var(--surface-elevated);
+  --card-foreground: var(--text-primary);
+  --popover: var(--surface-elevated);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--plum);
+  --primary-foreground: #ffffff;
+  --secondary: var(--surface-glass-strong);
+  --secondary-foreground: var(--text-primary);
+  --muted: rgba(157, 78, 221, 0.1);
+  --muted-foreground: var(--text-secondary);
+  --accent: var(--surface-glass-strong);
+  --accent-foreground: var(--text-primary);
+  --destructive: #dc2626;
+  --ring: var(--plum-light);
+  --input: var(--border-glass);
+  --border: var(--border-subtle);
+  
+  /* Chart Colors */
+  --chart-1: #9d4edd;
+  --chart-2: #c77dff;
+  --chart-3: #06b6d4;
+  --chart-4: #10b981;
+  --chart-5: #ff6b9d;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-space-grotesk), system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  
+  code, pre, .font-mono {
+    font-family: var(--font-ibm-plex-mono), ui-monospace, monospace;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+@layer utilities {
+  /* Cosmic Glass Surface */
+  .glass {
+    background: rgba(26, 15, 46, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(157, 78, 221, 0.2);
+  }
+  
+  .glass-strong {
+    background: rgba(26, 15, 46, 0.8);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(199, 125, 255, 0.25);
+  }
+  
+  /* Signal Point Glow */
+  .signal-glow {
+    box-shadow: 0 0 20px var(--signal-glow);
+  }
+  
+  .signal-pulse {
+    animation: signal-pulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes signal-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
+  }
+  
+  /* Text Gradient */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-plum {
+    background: linear-gradient(135deg, #e0aaff 0%, #c77dff 50%, #ff6b9d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Cosmic Background */
+  .cosmic-bg {
+    background: linear-gradient(180deg, #0d0815 0%, #1a0a2e 50%, #2d1b4e 100%);
+  }
+  
+  /* Stars Background */
+  .stars-bg {
+    background-image: radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.3), transparent),
+                      radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.2), transparent),
+                      radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.4), transparent),
+                      radial-gradient(2px 2px at 130px 80px, rgba(255,255,255,0.2), transparent),
+                      radial-gradient(1px 1px at 160px 120px, rgba(255,255,255,0.3), transparent);
+    background-size: 200px 200px;
+  }
+  
+  /* Noise Texture Overlay */
+  .noise-overlay {
+    position: relative;
+  }
+  
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  /* Subtle Grid Background */
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(157, 78, 221, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(157, 78, 221, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  
+  /* Radial Gradient Background */
+  .radial-glow {
+    background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(157, 78, 221, 0.2), transparent);
+  }
+  
+  /* Cosmic Glow */
+  .cosmic-glow {
+    background: radial-gradient(ellipse 100% 100% at 50% 0%, rgba(157, 78, 221, 0.15) 0%, transparent 60%);
+  }
+  
+  /* Section Spacing */
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+  
+  /* Container */
+  .container-narrow {
+    @apply mx-auto max-w-5xl px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-wide {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Focus Ring */
+  .focus-ring {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+  
+  /* Hide Scrollbar */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Custom Scrollbar */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-glass) transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--border-glass);
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--border-active);
+  }
+}
+
+/* ============================================
+   COMPONENT OVERRIDES
+   ============================================ */
+
+/* Button enhancements */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, var(--plum-light), var(--cosmic-magenta));
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  filter: blur(12px);
+}
+
+.btn-glow:hover::before {
+  opacity: 0.5;
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(157, 78, 221, 0.2);
+  border-color: var(--border-active);
+}
+
+/* Link underline animation */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--plum-light);
+  transition: width 0.3s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Tabular numbers for metrics */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(157, 78, 221, 0.4);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-up {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from { 
+    opacity: 0; 
+    transform: scale(0.95);
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-in-right {
+  from { 
+    opacity: 0; 
+    transform: translateX(20px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes dash {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease forwards;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.4s ease forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.5s ease forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* Stagger children animations */
+.stagger-children > * {
+  opacity: 0;
+  animation: fade-up 0.6s ease forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 100ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 200ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 300ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 400ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 500ms; }
+.stagger-children > *:nth-child(7) { animation-delay: 600ms; }
+.stagger-children > *:nth-child(8) { animation-delay: 700ms; }
+
+/* Animated gradient background */
+@keyframes gradient {
+  0% { background-position: 50% 0%; }
+  50% { background-position: 50% 100%; }
+  100% { background-position: 50% 0%; }
+}
+
+.animate-gradient {
+  animation: gradient 15s ease infinite;
+}
+
+/* Accessibility: respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

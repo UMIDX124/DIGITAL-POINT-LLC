@@ -13,6 +13,9 @@ const navigation = [
   { name: 'Remote Workforce', href: '/remote-workforce' },
   { name: 'Systems & Reporting', href: '/systems-reporting' },
   { name: 'Results', href: '/results' },
+  { name: 'About', href: '/about' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 export function Navigation() {

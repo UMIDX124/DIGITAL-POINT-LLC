@@ -9,6 +9,9 @@ export const pageNames: Record<string, string> = {
   '/systems-reporting': 'Systems & Reporting',
   '/results': 'Results',
   '/free-growth-audit': 'Free Growth Audit',
+  '/about': 'About',
+  '/contact': 'Contact',
+  '/blog': 'Blog',
 };
 
 type EventName =

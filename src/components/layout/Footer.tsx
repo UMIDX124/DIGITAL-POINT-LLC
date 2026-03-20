@@ -8,7 +8,10 @@ const footerLinks = {
     { name: 'Systems & Reporting', href: '/systems-reporting' },
   ],
   company: [
+    { name: 'About', href: '/about' },
     { name: 'Results', href: '/results' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Contact', href: '/contact' },
     { name: 'Free Growth Audit', href: '/free-growth-audit' },
   ],
 };

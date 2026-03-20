@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { TrendingUp, Settings, Users, ArrowRight } from 'lucide-react';
 import { Section, Container, SectionHeader, FadeUp, GlassCard, SignalPoint } from '@/components/ui-dp/AnimatedElements';
-import { useNavigation } from '@/app/page';
+import Link from 'next/link';
 
 const pillars = [
   {
@@ -11,26 +11,25 @@ const pillars = [
     title: 'Performance Marketing',
     description: 'We run your paid acquisition. Meta, Google, YouTube. But only after tracking is in place—so we know what actually works.',
     features: ['Media buying', 'Creative testing', 'CAC & ROAS tracking', 'Landing pages'],
-    link: 'performance-marketing' as const,
+    link: '/performance-marketing',
   },
   {
     icon: Settings,
     title: 'Systems & Reporting',
     description: 'Attribution. Dashboards. CRM structure. The invisible infrastructure that lets you make decisions with confidence.',
     features: ['Attribution setup', 'Custom dashboards', 'CRM integration', 'Automation'],
-    link: 'systems-reporting' as const,
+    link: '/systems-reporting',
   },
   {
     icon: Users,
     title: 'Remote Workforce',
     description: 'Trained specialists who execute without constant oversight. Media buyers, analysts, creatives—all managed for you.',
     features: ['Role-specific talent', 'Pod structure', 'QA built-in', 'Weekly reporting'],
-    link: 'remote-workforce' as const,
+    link: '/remote-workforce',
   },
 ];
 
 export function PillarsSection() {
-  const { navigateTo } = useNavigation();
 
   return (
     <Section className="relative overflow-hidden">
@@ -48,9 +47,9 @@ export function PillarsSection() {
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {pillars.map((pillar, index) => (
             <FadeUp key={pillar.title} delay={index * 0.1}>
-              <button
-                onClick={() => navigateTo(pillar.link)}
-                className="w-full text-left"
+              <Link
+                href={pillar.link}
+                className="block w-full text-left"
               >
                 <GlassCard className="p-8 h-full group cursor-pointer">
                   {/* Icon */}
@@ -97,7 +96,7 @@ export function PillarsSection() {
                     <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </GlassCard>
-              </button>
+              </Link>
             </FadeUp>
           ))}
         </div>

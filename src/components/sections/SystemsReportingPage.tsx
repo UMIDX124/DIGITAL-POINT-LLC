@@ -11,7 +11,7 @@ import {
   Section, Container, SectionHeader, FadeUp, GlassCard, 
   StaggerContainer, StaggerItem, SignalPoint 
 } from '@/components/ui-dp/AnimatedElements';
-import { useNavigation } from '@/app/page';
+import Link from 'next/link';
 
 const systemTypes = [
   {
@@ -87,7 +87,6 @@ const breakPoints = [
 
 export function SystemsReportingPage() {
   const [activeTab, setActiveTab] = useState(workflowTabs[0]);
-  const { navigateTo } = useNavigation();
 
   return (
     <>
@@ -119,20 +118,22 @@ export function SystemsReportingPage() {
 
           <FadeUp delay={0.3}>
             <div className="flex flex-wrap gap-4 mt-8">
-              <Button
-                onClick={() => navigateTo('free-growth-audit')}
-                className="bg-plum hover:bg-plum-light text-white font-semibold px-6 group"
-              >
-                Get Audit
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                onClick={() => navigateTo('results')}
-                variant="outline"
-                className="border-border-glass hover:border-plum-light hover:text-text-primary bg-transparent"
-              >
-                See Results
-              </Button>
+              <Link href="/free-growth-audit">
+                <Button
+                  className="bg-plum hover:bg-plum-light text-white font-semibold px-6 group"
+                >
+                  Get Audit
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+              <Link href="/results">
+                <Button
+                  variant="outline"
+                  className="border-border-glass hover:border-plum-light hover:text-text-primary bg-transparent"
+                >
+                  See Results
+                </Button>
+              </Link>
             </div>
           </FadeUp>
         </Container>
@@ -266,13 +267,14 @@ export function SystemsReportingPage() {
               <p className="text-text-secondary mb-6 max-w-lg mx-auto">
                 Let's audit your current setup and identify the gaps costing you visibility and decisions.
               </p>
-              <Button
-                onClick={() => navigateTo('free-growth-audit')}
-                className="bg-plum hover:bg-plum-light text-white font-semibold px-8 py-6 group"
-              >
-                Request Free Growth Audit
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link href="/free-growth-audit">
+                <Button
+                  className="bg-plum hover:bg-plum-light text-white font-semibold px-8 py-6 group"
+                >
+                  Request Free Growth Audit
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </GlassCard>
           </FadeUp>
         </Container>

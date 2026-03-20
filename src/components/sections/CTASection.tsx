@@ -3,41 +3,15 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Mail, Linkedin } from 'lucide-react';
 import { Section, Container, FadeUp } from '@/components/ui-dp/AnimatedElements';
-import { useNavigation } from '@/app/page';
-
-// Pre-computed star positions to avoid hydration mismatch
-const ctaStars = Array.from({ length: 50 }, (_, i) => ({
-  top: ((i * 19 + 11) % 100),
-  left: ((i * 29 + 7) % 100),
-  duration: 3 + (i % 4),
-  delay: (i % 6) * 0.5,
-}));
+import Link from 'next/link';
 
 export function CTASection() {
-  const { navigateTo } = useNavigation();
 
   return (
     <Section className="relative overflow-hidden">
       {/* Cosmic gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#1a0a2e] via-[#2d1b4e] to-[#1a0a2e]" />
-      
-      {/* Stars */}
-      <div className="absolute inset-0 opacity-40">
-        {ctaStars.map((star, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0.2, 0.8, 0.2] }}
-            transition={{ duration: star.duration, repeat: Infinity, delay: star.delay }}
-            className="absolute w-1 h-1 bg-white rounded-full"
-            style={{
-              top: `${star.top}%`,
-              left: `${star.left}%`,
-            }}
-          />
-        ))}
-      </div>
-      
+
       {/* Glow */}
       <motion.div 
         animate={{
@@ -91,21 +65,22 @@ export function CTASection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <motion.button
-                onClick={() => navigateTo('free-growth-audit')}
-                className="px-8 py-4 text-lg font-semibold text-white rounded-xl overflow-hidden group"
-                style={{
-                  background: 'linear-gradient(135deg, #7b2cbf 0%, #9d4edd 50%, #c77dff 100%)',
-                  boxShadow: '0 4px 20px rgba(123, 44, 191, 0.4)',
-                }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className="flex items-center justify-center gap-2">
-                  Get Your Growth Audit
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </motion.button>
+              <Link href="/free-growth-audit">
+                <motion.span
+                  className="inline-flex px-8 py-4 text-lg font-semibold text-white rounded-xl overflow-hidden group"
+                  style={{
+                    background: 'linear-gradient(135deg, #7b2cbf 0%, #9d4edd 50%, #c77dff 100%)',
+                    boxShadow: '0 4px 20px rgba(123, 44, 191, 0.4)',
+                  }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span className="flex items-center justify-center gap-2">
+                    Get Your Growth Audit
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </motion.span>
+              </Link>
             </div>
 
             {/* What you get */}

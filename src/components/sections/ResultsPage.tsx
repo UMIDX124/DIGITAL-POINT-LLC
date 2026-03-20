@@ -11,7 +11,7 @@ import {
   Section, Container, SectionHeader, FadeUp, GlassCard, 
   StaggerContainer, StaggerItem, SignalPoint 
 } from '@/components/ui-dp/AnimatedElements';
-import { useNavigation } from '@/app/page';
+import Link from 'next/link';
 
 const caseStudies = [
   {
@@ -135,7 +135,6 @@ const filters = ['All', 'Performance Marketing', 'Systems & Reporting', 'Remote 
 export function ResultsPage() {
   const [activeFilter, setActiveFilter] = useState('All');
   const [selectedCase, setSelectedCase] = useState<typeof caseStudies[0] | null>(null);
-  const { navigateTo } = useNavigation();
 
   const filteredCases = activeFilter === 'All'
     ? caseStudies
@@ -355,13 +354,14 @@ export function ResultsPage() {
               <p className="text-text-secondary mb-6 max-w-lg mx-auto">
                 Every business is different. Let's discuss your specific situation.
               </p>
-              <Button
-                onClick={() => navigateTo('free-growth-audit')}
-                className="bg-plum hover:bg-plum-light text-white font-semibold px-8 py-6 group"
-              >
-                Request Free Growth Audit
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link href="/free-growth-audit">
+                <Button
+                  className="bg-plum hover:bg-plum-light text-white font-semibold px-8 py-6 group"
+                >
+                  Request Free Growth Audit
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </GlassCard>
           </FadeUp>
         </Container>

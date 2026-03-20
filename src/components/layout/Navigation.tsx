@@ -4,21 +4,21 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useNavigation } from '@/app/page';
-import type { PageRoute } from '@/types/navigation';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-const navigation: { name: string; href: PageRoute }[] = [
-  { name: 'Home', href: 'home' },
-  { name: 'Performance Marketing', href: 'performance-marketing' },
-  { name: 'Remote Workforce', href: 'remote-workforce' },
-  { name: 'Systems & Reporting', href: 'systems-reporting' },
-  { name: 'Results', href: 'results' },
+const navigation = [
+  { name: 'Home', href: '/' },
+  { name: 'Performance Marketing', href: '/performance-marketing' },
+  { name: 'Remote Workforce', href: '/remote-workforce' },
+  { name: 'Systems & Reporting', href: '/systems-reporting' },
+  { name: 'Results', href: '/results' },
 ];
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { currentPage, navigateTo } = useNavigation() || { currentPage: 'home', navigateTo: () => {} };
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +27,16 @@ export function Navigation() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname.startsWith(href);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[100] px-4 py-3 md:px-6 md:py-4">
@@ -51,15 +61,15 @@ export function Navigation() {
         }}
       >
         {/* Glass reflection highlight */}
-        <div 
+        <div
           className="absolute inset-0 rounded-2xl pointer-events-none overflow-hidden"
           style={{
             background: 'linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 50%)',
           }}
         />
-        
+
         {/* Inner glow */}
-        <div 
+        <div
           className="absolute inset-0 rounded-2xl pointer-events-none"
           style={{
             boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.1)',
@@ -69,8 +79,8 @@ export function Navigation() {
         <nav className="relative px-4 md:px-6">
           <div className="flex items-center justify-between h-14 md:h-16">
             {/* Logo */}
-            <button
-              onClick={() => navigateTo('home')}
+            <Link
+              href="/"
               className="flex items-center gap-3 group relative z-10"
             >
               <div className="relative w-10 h-10 md:w-11 md:h-11 rounded-xl overflow-hidden"
@@ -99,7 +109,7 @@ export function Navigation() {
                   <circle cx="38" cy="24" r="4" className="fill-[#ff6b6b]" />
                 </svg>
                 {/* Animated signal */}
-                <motion.div 
+                <motion.div
                   className="absolute -right-0.5 -top-0.5 w-2.5 h-2.5 rounded-full bg-[#ff6b6b]"
                   animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
@@ -112,12 +122,12 @@ export function Navigation() {
                 </span>
                 <span className="text-white/40 text-xs block -mt-0.5">LLC</span>
               </div>
-            </button>
+            </Link>
 
             {/* Desktop Navigation - Liquid Glass Pills */}
             <div className="hidden lg:flex items-center relative z-10">
               {/* Nav container with subtle glass effect */}
-              <div 
+              <div
                 className="flex items-center p-1 rounded-xl"
                 style={{
                   background: 'rgba(255,255,255,0.05)',
@@ -125,18 +135,18 @@ export function Navigation() {
                 }}
               >
                 {navigation.map((item) => (
-                  <button
+                  <Link
                     key={item.name}
-                    onClick={() => navigateTo(item.href)}
+                    href={item.href}
                     className={cn(
                       'relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg whitespace-nowrap',
-                      currentPage === item.href
+                      isActive(item.href)
                         ? 'text-white'
                         : 'text-white/50 hover:text-white/80'
                     )}
                   >
                     {/* Active background */}
-                    {currentPage === item.href && (
+                    {isActive(item.href) && (
                       <motion.div
                         layoutId="activeNav"
                         className="absolute inset-0 rounded-lg"
@@ -148,34 +158,35 @@ export function Navigation() {
                       />
                     )}
                     <span className="relative z-10">{item.name}</span>
-                  </button>
+                  </Link>
                 ))}
               </div>
             </div>
 
             {/* CTA Button - Liquid Glass Style */}
             <div className="hidden lg:block relative z-10 ml-2">
-              <motion.button
-                onClick={() => navigateTo('free-growth-audit')}
-                className="relative px-5 py-2.5 text-sm font-semibold text-white rounded-xl overflow-hidden group whitespace-nowrap"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(139,92,246,0.9) 0%, rgba(124,58,237,1) 100%)',
-                  boxShadow: '0 4px 16px rgba(139,92,246,0.4), inset 0 1px 1px rgba(255,255,255,0.2)',
-                }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {/* Shine effect */}
-                <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              <Link href="/free-growth-audit">
+                <motion.span
+                  className="relative px-5 py-2.5 text-sm font-semibold text-white rounded-xl overflow-hidden group whitespace-nowrap inline-block"
                   style={{
-                    background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%)',
-                    transform: 'translateX(-100%)',
-                    animation: 'shine 1.5s infinite',
+                    background: 'linear-gradient(135deg, rgba(139,92,246,0.9) 0%, rgba(124,58,237,1) 100%)',
+                    boxShadow: '0 4px 16px rgba(139,92,246,0.4), inset 0 1px 1px rgba(255,255,255,0.2)',
                   }}
-                />
-                <span className="relative z-10">Free Growth Audit</span>
-              </motion.button>
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {/* Shine effect */}
+                  <span
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{
+                      background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%)',
+                      transform: 'translateX(-100%)',
+                      animation: 'shine 1.5s infinite',
+                    }}
+                  />
+                  <span className="relative z-10">Free Growth Audit</span>
+                </motion.span>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -216,7 +227,7 @@ export function Navigation() {
             }}
           >
             {/* Glass highlight */}
-            <div 
+            <div
               className="absolute inset-0 pointer-events-none"
               style={{
                 background: 'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 30%)',
@@ -225,54 +236,51 @@ export function Navigation() {
 
             <div className="relative p-4 space-y-1">
               {navigation.map((item, index) => (
-                <motion.button
+                <motion.div
                   key={item.name}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  onClick={() => {
-                    navigateTo(item.href);
-                    setIsOpen(false);
-                  }}
-                  className={cn(
-                    'w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300',
-                    currentPage === item.href
-                      ? 'text-white'
-                      : 'text-white/50 hover:text-white/80'
-                  )}
-                  style={
-                    currentPage === item.href
-                      ? {
-                          background: 'linear-gradient(135deg, rgba(139,92,246,0.3) 0%, rgba(124,58,237,0.2) 100%)',
-                          boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.1)',
-                        }
-                      : {
-                          background: 'transparent',
-                        }
-                  }
                 >
-                  {item.name}
-                </motion.button>
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      'block w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300',
+                      isActive(item.href)
+                        ? 'text-white'
+                        : 'text-white/50 hover:text-white/80'
+                    )}
+                    style={
+                      isActive(item.href)
+                        ? {
+                            background: 'linear-gradient(135deg, rgba(139,92,246,0.3) 0%, rgba(124,58,237,0.2) 100%)',
+                            boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.1)',
+                          }
+                        : {
+                            background: 'transparent',
+                          }
+                    }
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
               ))}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25 }}
                 className="pt-3"
               >
-                <button
-                  onClick={() => {
-                    navigateTo('free-growth-audit');
-                    setIsOpen(false);
-                  }}
-                  className="w-full py-3 rounded-xl text-sm font-semibold text-white"
+                <Link
+                  href="/free-growth-audit"
+                  className="block w-full py-3 rounded-xl text-sm font-semibold text-white text-center"
                   style={{
                     background: 'linear-gradient(135deg, rgba(139,92,246,0.9) 0%, rgba(124,58,237,1) 100%)',
                     boxShadow: '0 4px 16px rgba(139,92,246,0.4)',
                   }}
                 >
                   Free Growth Audit
-                </button>
+                </Link>
               </motion.div>
             </div>
           </motion.div>

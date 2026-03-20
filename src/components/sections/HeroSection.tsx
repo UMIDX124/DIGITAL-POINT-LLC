@@ -2,46 +2,10 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { useNavigation } from '@/app/page';
+import Link from 'next/link';
 import { useRef } from 'react';
 
-// Fixed viewport width for animations (works across all screen sizes)
-const VIEWPORT_WIDTH = 2000;
-
-// Pre-computed deterministic values to avoid hydration mismatch
-const starData = Array.from({ length: 120 }, (_, i) => ({
-  width: 0.5 + (i % 3) * 0.8,
-  height: 0.5 + (i % 3) * 0.8,
-  top: ((i * 17 + 7) % 80),
-  left: ((i * 23 + 13) % 100),
-  delay: (i % 5) * 0.3,
-  duration: 2 + (i % 3),
-  hasGlow: i % 3 === 0,
-}));
-
-const meteorData = Array.from({ length: 6 }, (_, i) => ({
-  top: 5 + (i * 8) + (i % 3) * 3,
-  delay: i * 5 + (i % 3) * 2,
-}));
-
-const dustData = Array.from({ length: 40 }, (_, i) => ({
-  top: ((i * 23 + 11) % 100),
-  delay: (i % 10) * 3,
-  duration: 30 + (i % 10) * 4,
-  r: 160 + (i % 6) * 15,
-  g: 100 + (i % 8) * 12,
-  b: 180 + (i % 5) * 19,
-}));
-
-const risingData = Array.from({ length: 20 }, (_, i) => ({
-  left: ((i * 17 + 13) % 100),
-  delay: (i % 10) * 1.5,
-  duration: 15 + (i % 5) * 2,
-  xDrift: ((i % 5) - 2) * 25,
-}));
-
 export function HeroSection() {
-  const { navigateTo } = useNavigation();
   const ref = useRef(null);
   
   const { scrollYProgress } = useScroll({
@@ -51,7 +15,6 @@ export function HeroSection() {
   
   // Parallax transforms
   const yPlanets = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const yStars = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const yAstronaut = useTransform(scrollYProgress, [0, 1], [0, 50]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
@@ -218,129 +181,6 @@ export function HeroSection() {
           }}
         />
       </motion.div>
-
-      {/* Animated stars field with parallax */}
-      <motion.div 
-        style={{ y: yStars }}
-        className="absolute inset-0 z-[1] pointer-events-none"
-      >
-        {starData.map((star, i) => (
-          <motion.div
-            key={i}
-            animate={{
-              opacity: [0.1, 0.6 + (i % 4) * 0.1, 0.1],
-              scale: [0.8, 1.3, 0.8],
-            }}
-            transition={{
-              duration: star.duration,
-              repeat: Infinity,
-              delay: star.delay,
-            }}
-            className="absolute rounded-full bg-white"
-            style={{
-              width: star.width + 'px',
-              height: star.height + 'px',
-              top: star.top + '%',
-              left: star.left + '%',
-              boxShadow: star.hasGlow ? '0 0 6px rgba(255,255,255,0.6)' : 'none',
-            }}
-          />
-        ))}
-      </motion.div>
-
-      {/* Shooting stars / meteors */}
-      <div className="absolute inset-0 z-[1] pointer-events-none">
-      {meteorData.map((meteor, i) => (
-        <motion.div
-          key={`meteor-${i}`}
-          initial={{ 
-            x: -200, 
-            y: -50, 
-            opacity: 0,
-            rotate: -35,
-          }}
-          animate={{ 
-            x: VIEWPORT_WIDTH + 400, 
-            y: 400,
-            opacity: [0, 1, 1, 0],
-          }}
-          transition={{
-            duration: 1.5 + (i % 2) * 0.5,
-            repeat: Infinity,
-            delay: meteor.delay,
-            ease: 'linear',
-          }}
-          className="absolute"
-          style={{
-            top: meteor.top + '%',
-            left: 0,
-          }}
-        >
-          <div
-            className="rounded-full"
-            style={{
-              background: 'linear-gradient(90deg, rgba(255,255,255,0.9) 0%, rgba(199,125,255,0.6) 30%, transparent 100%)',
-              width: '120px',
-              height: '2px',
-            }}
-          />
-        </motion.div>
-      ))}
-      </div>
-
-      {/* Floating cosmic dust with drift */}
-      <div className="absolute inset-0 overflow-hidden z-[1] pointer-events-none">
-        {dustData.map((dust, i) => (
-          <motion.div
-            key={`dust-${i}`}
-            initial={{ x: -50, opacity: 0 }}
-            animate={{
-              x: VIEWPORT_WIDTH + 100,
-              y: [0, (i % 3 - 1) * 100, 0],
-              opacity: [0, 0.5, 0.5, 0],
-            }}
-            transition={{
-              duration: dust.duration,
-              repeat: Infinity,
-              delay: dust.delay,
-              ease: 'linear',
-            }}
-            className="absolute w-1 h-1 rounded-full"
-            style={{
-              background: `rgba(${dust.r}, ${dust.g}, ${dust.b}, 0.6)`,
-              top: dust.top + '%',
-              filter: 'blur(1px)',
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Rising particles */}
-      <div className="absolute inset-0 overflow-hidden z-[1] pointer-events-none">
-        {risingData.map((particle, i) => (
-          <motion.div
-            key={`rise-${i}`}
-            initial={{ y: 100, opacity: 0 }}
-            animate={{
-              y: -500,
-              opacity: [0, 0.4, 0.4, 0],
-              x: [0, particle.xDrift, 0],
-            }}
-            transition={{
-              duration: particle.duration,
-              repeat: Infinity,
-              delay: particle.delay,
-              ease: 'linear',
-            }}
-            className="absolute w-0.5 h-0.5 rounded-full bg-[#c77dff]"
-            style={{
-              left: particle.left + '%',
-              bottom: 0,
-              filter: 'blur(0.5px)',
-            }}
-          />
-        ))}
-      </div>
 
       {/* Terrain gradient */}
       <motion.div 
@@ -627,30 +467,31 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="flex flex-col sm:flex-row gap-4 mt-10"
             >
-              <motion.button
-                onClick={() => navigateTo('free-growth-audit')}
-                className="relative px-8 py-4 text-lg font-semibold text-white rounded-xl overflow-hidden group"
-                style={{
-                  background: 'linear-gradient(135deg, #7b2cbf 0%, #9d4edd 50%, #c77dff 100%)',
-                  boxShadow: '0 4px 20px rgba(123,44,191,0.4)',
-                }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className="relative z-10 flex items-center justify-center gap-2">
-                  Find What&apos;s Broken
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </motion.button>
-              <button
-                onClick={() => navigateTo('results')}
-                className="px-8 py-4 text-lg font-medium text-white/80 rounded-xl transition-all duration-300 hover:text-white hover:bg-white/5"
+              <Link href="/free-growth-audit">
+                <motion.span
+                  className="relative inline-flex px-8 py-4 text-lg font-semibold text-white rounded-xl overflow-hidden group"
+                  style={{
+                    background: 'linear-gradient(135deg, #7b2cbf 0%, #9d4edd 50%, #c77dff 100%)',
+                    boxShadow: '0 4px 20px rgba(123,44,191,0.4)',
+                  }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    Find What&apos;s Broken
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </motion.span>
+              </Link>
+              <Link
+                href="/results"
+                className="px-8 py-4 text-lg font-medium text-white/80 rounded-xl transition-all duration-300 hover:text-white hover:bg-white/5 inline-block"
                 style={{
                   border: '1px solid rgba(255,255,255,0.2)',
                 }}
               >
                 See Case Studies
-              </button>
+              </Link>
             </motion.div>
 
             {/* Trust Indicators */}

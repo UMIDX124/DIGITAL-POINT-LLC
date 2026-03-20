@@ -1,6 +1,16 @@
 // Analytics helper for tracking events
 // Can be connected to GA4, Mixpanel, or any analytics provider
 
+// Page names for analytics (previously in navigation.ts)
+export const pageNames: Record<string, string> = {
+  '/': 'Home',
+  '/performance-marketing': 'Performance Marketing',
+  '/remote-workforce': 'Remote Workforce',
+  '/systems-reporting': 'Systems & Reporting',
+  '/results': 'Results',
+  '/free-growth-audit': 'Free Growth Audit',
+};
+
 type EventName =
   | 'page_view'
   | 'cta_click'
@@ -12,7 +22,8 @@ type EventName =
   | 'audit_form_error'
   | 'navigation_click'
   | 'outbound_click'
-  | 'scroll_milestone';
+  | 'scroll_milestone'
+  | 'form_step';
 
 interface EventData {
   [key: string]: string | number | boolean | undefined;

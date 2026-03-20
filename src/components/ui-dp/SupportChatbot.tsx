@@ -393,7 +393,7 @@ export default function SupportChatbot() {
       {/* ── Floating Robot Button ── */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full flex items-center justify-center cursor-pointer shadow-lg shadow-plum/30 border border-border-glass"
+        className="fixed bottom-6 right-6 z-[60] w-16 h-16 rounded-full flex items-center justify-center cursor-pointer shadow-lg shadow-plum/30 border border-border-glass pb-[env(safe-area-inset-bottom)]"
         style={{
           background: "linear-gradient(135deg, #1a0f2e 0%, #2d1b4e 100%)",
         }}
@@ -461,7 +461,7 @@ export default function SupportChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-            className="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-2rem)] h-[560px] max-h-[calc(100vh-8rem)] rounded-2xl overflow-hidden flex flex-col shadow-2xl shadow-plum/20"
+            className="fixed bottom-24 right-6 z-[60] w-[380px] max-w-[calc(100vw-2rem)] h-[560px] max-h-[calc(100vh-8rem)] rounded-2xl overflow-hidden flex flex-col shadow-2xl shadow-plum/20"
             style={{
               background: "rgba(13, 8, 21, 0.95)",
               backdropFilter: "blur(24px)",

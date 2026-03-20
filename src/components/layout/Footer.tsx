@@ -1,26 +1,23 @@
-'use client';
-
 import { Linkedin, Mail, ArrowUpRight } from 'lucide-react';
-import { useNavigation } from '@/app/page';
+import Link from 'next/link';
 
 const footerLinks = {
   services: [
-    { name: 'Performance Marketing', page: 'performance-marketing' as const },
-    { name: 'Remote Workforce', page: 'remote-workforce' as const },
-    { name: 'Systems & Reporting', page: 'systems-reporting' as const },
+    { name: 'Performance Marketing', href: '/performance-marketing' },
+    { name: 'Remote Workforce', href: '/remote-workforce' },
+    { name: 'Systems & Reporting', href: '/systems-reporting' },
   ],
   company: [
-    { name: 'Results', page: 'results' as const },
-    { name: 'Free Growth Audit', page: 'free-growth-audit' as const },
+    { name: 'Results', href: '/results' },
+    { name: 'Free Growth Audit', href: '/free-growth-audit' },
   ],
 };
 
 export function Footer() {
-  const { navigateTo } = useNavigation();
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer 
+    <footer
       className="relative mt-auto"
       style={{
         background: 'linear-gradient(180deg, #0d0815 0%, #080510 100%)',
@@ -28,23 +25,23 @@ export function Footer() {
       }}
     >
       {/* Subtle glow */}
-      <div 
+      <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background: 'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(157, 78, 221, 0.05) 0%, transparent 60%)',
         }}
       />
-      
+
       <div className="container-wide relative z-10">
         {/* Main Footer Content */}
         <div className="py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <button
-              onClick={() => navigateTo('home')}
+            <Link
+              href="/"
               className="flex items-center gap-3 mb-6"
             >
-              <div 
+              <div
                 className="relative w-10 h-10 rounded-xl overflow-hidden"
                 style={{
                   background: 'linear-gradient(135deg, rgba(157, 78, 221, 0.8) 0%, rgba(123, 44, 191, 0.9) 100%)',
@@ -76,7 +73,7 @@ export function Footer() {
                 </span>
                 <span className="text-[#9080a0] text-xs block -mt-1">LLC</span>
               </div>
-            </button>
+            </Link>
             <p className="text-[#b794c7] text-sm leading-relaxed max-w-xs">
               Performance marketing and remote execution for businesses that need acquisition, systems, and workforce to scale together.
             </p>
@@ -106,7 +103,7 @@ export function Footer() {
 
           {/* Services Column */}
           <div>
-            <h4 
+            <h4
               className="font-display font-semibold mb-4"
               style={{
                 background: 'linear-gradient(90deg, #ffffff, #c77dff)',
@@ -119,13 +116,13 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
-                  <button
-                    onClick={() => navigateTo(link.page)}
+                  <Link
+                    href={link.href}
                     className="text-[#b794c7] hover:text-white text-sm transition-colors inline-flex items-center gap-1 group"
                   >
                     {link.name}
                     <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all text-[#c77dff]" />
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -133,7 +130,7 @@ export function Footer() {
 
           {/* Company Column */}
           <div>
-            <h4 
+            <h4
               className="font-display font-semibold mb-4"
               style={{
                 background: 'linear-gradient(90deg, #ffffff, #c77dff)',
@@ -146,13 +143,13 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <button
-                    onClick={() => navigateTo(link.page)}
+                  <Link
+                    href={link.href}
                     className="text-[#b794c7] hover:text-white text-sm transition-colors inline-flex items-center gap-1 group"
                   >
                     {link.name}
                     <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all text-[#c77dff]" />
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -160,7 +157,7 @@ export function Footer() {
 
           {/* Contact Column */}
           <div>
-            <h4 
+            <h4
               className="font-display font-semibold mb-4"
               style={{
                 background: 'linear-gradient(90deg, #ffffff, #c77dff)',
@@ -192,26 +189,26 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div 
+        <div
           className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4"
           style={{ borderTop: '1px solid rgba(157, 78, 221, 0.1)' }}
         >
           <p className="text-[#7c5a8a] text-xs">
-            © {currentYear} Digital Point LLC. All rights reserved.
+            &copy; {currentYear} Digital Point LLC. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <button
-              onClick={() => navigateTo('home')}
+            <Link
+              href="/"
               className="text-[#7c5a8a] text-xs hover:text-[#b794c7] transition-colors"
             >
               Home
-            </button>
-            <button
-              onClick={() => navigateTo('free-growth-audit')}
+            </Link>
+            <Link
+              href="/free-growth-audit"
               className="text-[#7c5a8a] text-xs hover:text-[#b794c7] transition-colors"
             >
               Contact
-            </button>
+            </Link>
           </div>
         </div>
       </div>

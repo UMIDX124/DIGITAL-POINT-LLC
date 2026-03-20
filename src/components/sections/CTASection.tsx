@@ -100,11 +100,11 @@ export function CTASection() {
             {/* Contact info */}
             <div className="flex items-center justify-center gap-6">
               <a 
-                href="mailto:hello@digitalpointllc.com"
+                href="mailto:info@digitalpointllc.com"
                 className="flex items-center gap-2 text-[#c77dff] hover:text-[#e0aaff] transition-colors text-sm"
               >
                 <Mail className="w-4 h-4" />
-                hello@digitalpointllc.com
+                info@digitalpointllc.com
               </a>
               <a 
                 href="https://linkedin.com/company/digitalpointllc"

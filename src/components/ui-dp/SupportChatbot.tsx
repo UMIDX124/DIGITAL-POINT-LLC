@@ -2,15 +2,11 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useChat, type UIMessage } from "@ai-sdk/react";
+import { DefaultChatTransport } from "ai";
+import { matchFAQ } from "@/lib/ai-chatbot/faq";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
-interface Message {
-  id: string;
-  role: "bot" | "user";
-  text: string;
-  timestamp: Date;
-}
-
 interface TicketForm {
   name: string;
   email: string;
@@ -19,111 +15,29 @@ interface TicketForm {
   priority: "normal" | "high";
 }
 
-// ─── FAQ Knowledge Base ──────────────────────────────────────────────────────
-const FAQ_RESPONSES: { keywords: string[]; answer: string }[] = [
-  {
-    keywords: ["service", "services", "what do you do", "offer", "help with"],
-    answer:
-      "Digital Point LLC offers three core services:\n\n1. **Performance Marketing** — Paid acquisition across Meta, Google, LinkedIn & more. We optimize CAC, ROAS, and scale ad spend profitably.\n\n2. **Remote Workforce** — Managed remote teams for marketing ops, creative production, analytics, and execution support.\n\n3. **Systems & Reporting** — CRM optimization, marketing automation, attribution dashboards, and RevOps infrastructure.\n\nWould you like to know more about any of these?",
-  },
-  {
-    keywords: ["pricing", "cost", "how much", "price", "rate", "budget", "affordable", "expensive"],
-    answer:
-      "Our pricing is customized based on scope, channels, and team size. We work with businesses of all sizes — from founder-led startups to growth-stage companies.\n\nThe best way to get a tailored quote is to book a **free growth audit** where we assess your current setup and recommend a plan.\n\nWould you like me to help you get started with an audit?",
-  },
-  {
-    keywords: ["audit", "free audit", "growth audit", "assessment", "consultation"],
-    answer:
-      "Our **Free Growth Audit** is a no-obligation review of your current marketing setup. We look at:\n\n- Ad account structure & spend efficiency\n- Attribution & tracking gaps\n- Funnel conversion rates\n- Quick wins for revenue growth\n\nYou can request one directly on our website — just scroll down to the audit section or I can help you create a support ticket to get started!",
-  },
-  {
-    keywords: ["founder", "who founded", "ceo", "owner", "faizan", "leadership", "team lead"],
-    answer:
-      "Digital Point LLC was founded by **M Faizan Rafiq**, a performance marketing specialist with 8+ years of experience in the digital marketing space. He leads a team of specialists across paid acquisition, creative strategy, analytics, and remote operations.\n\nThe company partners with US-based businesses while delivering from a global team.",
-  },
-  {
-    keywords: ["contact", "reach", "email", "phone", "get in touch", "talk to someone"],
-    answer:
-      "You can reach Digital Point LLC through:\n\n- **Email:** hello@digitalpointllc.com\n- **Website:** digitalpointllc.com\n- **LinkedIn:** linkedin.com/company/digitalpointllc\n\nOr I can create a support ticket for you right now if you have a specific question or need!",
-  },
-  {
-    keywords: ["location", "where", "based", "office", "country", "pakistan", "us", "united states"],
-    answer:
-      "Digital Point LLC operates with a **US-based business entity** and delivers through a global remote team. Our founder is based in Pakistan, and we have team members across multiple time zones to ensure seamless coverage for our clients.\n\nWe serve clients primarily in the US, UK, and globally.",
-  },
-  {
-    keywords: ["process", "how do you work", "workflow", "onboarding", "get started", "start"],
-    answer:
-      "Our process is straightforward:\n\n1. **Discovery Call** — We learn about your business, goals, and current setup\n2. **Free Growth Audit** — We analyze your marketing stack and identify opportunities\n3. **Strategy & Proposal** — Custom plan tailored to your needs\n4. **Onboarding** — We set up tracking, dashboards, and campaign structures\n5. **Execution & Optimization** — Ongoing management with weekly reporting\n\nReady to start? Book a free audit!",
-  },
-  {
-    keywords: ["remote workforce", "remote team", "outsource", "virtual team", "staff", "hire"],
-    answer:
-      "Our **Remote Workforce** service provides fully managed team members for:\n\n- Marketing operations & campaign management\n- Creative production (design, video, copy)\n- Data analytics & reporting\n- Customer support & admin tasks\n\nAll team members are vetted, trained, and managed by Digital Point. You get dedicated resources without the overhead of traditional hiring.",
-  },
-  {
-    keywords: ["performance marketing", "paid ads", "advertising", "meta ads", "google ads", "ppc", "paid media"],
-    answer:
-      "Our **Performance Marketing** service covers:\n\n- **Meta Ads** (Facebook & Instagram)\n- **Google Ads** (Search, Display, YouTube, Shopping)\n- **LinkedIn Ads** for B2B\n- **TikTok Ads** for emerging audiences\n\nWe focus on measurable outcomes — ROAS, CAC, and revenue growth. Our team manages everything from strategy to creative to daily optimization.",
-  },
-  {
-    keywords: ["systems", "reporting", "dashboard", "crm", "automation", "revops", "analytics", "tracking"],
-    answer:
-      "Our **Systems & Reporting** service includes:\n\n- CRM setup & optimization (HubSpot, Salesforce, etc.)\n- Marketing automation workflows\n- Attribution & tracking implementation\n- Custom reporting dashboards\n- RevOps infrastructure\n\nWe build the systems that give you clarity on what is working and what is not.",
-  },
-  {
-    keywords: ["results", "case study", "roi", "success", "clients", "portfolio", "testimonial"],
-    answer:
-      "We have helped clients achieve significant results, including improved ROAS, reduced CAC, and scaled revenue growth. Our track record spans 8+ years with businesses across e-commerce, SaaS, and professional services.\n\nCheck out the Results section on our website for detailed metrics and client stories!",
-  },
-  {
-    keywords: ["hello", "hi", "hey", "good morning", "good afternoon", "good evening", "sup", "what's up"],
-    answer:
-      "Hey there! Welcome to Digital Point LLC. I am your AI assistant and I am here to help you learn about our services, answer questions, or connect you with our team.\n\nWhat can I help you with today?",
-  },
-  {
-    keywords: ["thank", "thanks", "appreciate", "awesome", "great", "perfect"],
-    answer:
-      "You are welcome! If you have any other questions, feel free to ask. I am always here to help.\n\nIf you need to speak with a human, I can create a support ticket for you anytime!",
-  },
-  {
-    keywords: ["ticket", "support ticket", "escalate", "human", "real person", "agent", "speak to someone"],
-    answer:
-      "I can create a support ticket for you right away! Just click the **\"Create Ticket\"** button below the chat, fill in the details, and our team will get back to you promptly.\n\n- **Normal priority** tickets go to our support team\n- **High priority** tickets go directly to our founder\n\nWould you like to create a ticket now?",
-  },
-];
+// ─── Constants ──────────────────────────────────────────────────────────────
+const GREETING_TEXT = "Hey! I'm **Cosmo**, Digital Point's AI assistant. I can help you learn about our services, pricing, process, and more.\n\nAsk me anything or create a support ticket if you need human help!";
 
-const GREETING_MESSAGE: Message = {
+const GREETING_MESSAGE: UIMessage = {
   id: "greeting",
-  role: "bot",
-  text: "Hey! I am **Cosmo**, Digital Point's AI assistant. I can help you learn about our services, pricing, process, and more.\n\nAsk me anything or create a support ticket if you need human help!",
-  timestamp: new Date(),
+  role: "assistant",
+  parts: [{ type: "text", text: GREETING_TEXT }],
 };
 
-const FALLBACK_RESPONSE =
-  "I am not sure I have the answer to that one! But no worries — I can create a **support ticket** for you so our team can follow up personally.\n\nJust click the **\"Create Ticket\"** button below, or try asking about our services, pricing, process, or team!";
+const QUICK_ACTIONS = [
+  "What services do you offer?",
+  "How does pricing work?",
+  "Tell me about the team",
+  "Book a free audit",
+  "Create a ticket",
+];
 
-// ─── Helper: Match FAQ ───────────────────────────────────────────────────────
-function matchFAQ(input: string): string {
-  const lower = input.toLowerCase().trim();
-
-  let bestMatch: (typeof FAQ_RESPONSES)[number] | null = null;
-  let bestScore = 0;
-
-  for (const faq of FAQ_RESPONSES) {
-    let score = 0;
-    for (const keyword of faq.keywords) {
-      if (lower.includes(keyword)) {
-        score += keyword.split(" ").length; // multi-word keywords score higher
-      }
-    }
-    if (score > bestScore) {
-      bestScore = score;
-      bestMatch = faq;
-    }
-  }
-
-  return bestMatch && bestScore > 0 ? bestMatch.answer : FALLBACK_RESPONSE;
+// ─── Helper: extract text from UIMessage parts ─────────────────────────────
+function getMessageText(msg: UIMessage): string {
+  return msg.parts
+    .filter((p): p is { type: "text"; text: string } => p.type === "text")
+    .map((p) => p.text)
+    .join("");
 }
 
 // ─── Simple Markdown Renderer ────────────────────────────────────────────────
@@ -187,14 +101,9 @@ function RobotIcon({ className = "" }: { className?: string }) {
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      {/* Antenna */}
       <circle cx="32" cy="8" r="3" fill="#c77dff" />
       <rect x="30.5" y="10" width="3" height="8" rx="1.5" fill="#9d4edd" />
-
-      {/* Head */}
       <rect x="14" y="18" width="36" height="24" rx="8" fill="#1a0f2e" stroke="#9d4edd" strokeWidth="2" />
-
-      {/* Eyes */}
       <circle cx="24" cy="30" r="4" fill="#c77dff">
         <animate attributeName="r" values="4;3.5;4" dur="3s" repeatCount="indefinite" />
       </circle>
@@ -203,20 +112,12 @@ function RobotIcon({ className = "" }: { className?: string }) {
       </circle>
       <circle cx="24" cy="29" r="1.5" fill="#fff" />
       <circle cx="40" cy="29" r="1.5" fill="#fff" />
-
-      {/* Smile */}
       <path d="M25 36 Q32 40 39 36" stroke="#ff6b9d" strokeWidth="2" strokeLinecap="round" fill="none" />
-
-      {/* Ears / side bolts */}
       <circle cx="12" cy="30" r="3" fill="#9d4edd" />
       <circle cx="52" cy="30" r="3" fill="#9d4edd" />
-
-      {/* Body */}
       <rect x="20" y="44" width="24" height="14" rx="4" fill="#1a0f2e" stroke="#9d4edd" strokeWidth="2" />
       <rect x="26" y="48" width="12" height="3" rx="1.5" fill="#c77dff" opacity="0.6" />
       <rect x="28" y="53" width="8" height="2" rx="1" fill="#ff6b9d" opacity="0.5" />
-
-      {/* Rocket flame for floating effect */}
       <path d="M28 58 L32 64 L36 58" fill="#ff6b9d" opacity="0.7">
         <animate attributeName="opacity" values="0.7;0.3;0.7" dur="0.6s" repeatCount="indefinite" />
       </path>
@@ -248,21 +149,9 @@ function TypingIndicator() {
   );
 }
 
-// ─── Quick Action Chips ──────────────────────────────────────────────────────
-const QUICK_ACTIONS = [
-  "What services do you offer?",
-  "How does pricing work?",
-  "Tell me about the team",
-  "Book a free audit",
-  "Create a ticket",
-];
-
 // ─── Main Component ──────────────────────────────────────────────────────────
 export default function SupportChatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([GREETING_MESSAGE]);
-  const [input, setInput] = useState("");
-  const [isTyping, setIsTyping] = useState(false);
   const [showTicketForm, setShowTicketForm] = useState(false);
   const [ticketSubmitting, setTicketSubmitting] = useState(false);
   const [ticketSuccess, setTicketSuccess] = useState(false);
@@ -274,8 +163,42 @@ export default function SupportChatbot() {
     message: "",
     priority: "normal",
   });
+  const [aiEnabled, setAiEnabled] = useState(true);
+  const [fallbackMessages, setFallbackMessages] = useState<UIMessage[]>([GREETING_MESSAGE]);
+  const [inputValue, setInputValue] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Session ID — persisted in sessionStorage
+  const [sessionId] = useState(() => {
+    if (typeof window === "undefined") return "ssr";
+    const existing = sessionStorage.getItem("dp-chat-session");
+    if (existing) return existing;
+    const id = crypto.randomUUID();
+    sessionStorage.setItem("dp-chat-session", id);
+    return id;
+  });
+
+  // AI chat hook — v6 API: body goes on transport, messages for initial state
+  const {
+    messages: aiMessages,
+    status,
+    sendMessage: sendAiMessage,
+  } = useChat({
+    transport: new DefaultChatTransport({
+      api: "/api/chat",
+      body: { sessionId },
+    }),
+    messages: [GREETING_MESSAGE],
+    onError: () => {
+      setAiEnabled(false);
+    },
+  });
+
+  const isStreaming = status === "streaming" || status === "submitted";
+
+  // Choose message source based on mode
+  const messages = aiEnabled ? aiMessages : fallbackMessages;
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -283,7 +206,7 @@ export default function SupportChatbot() {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages, isTyping, scrollToBottom]);
+  }, [messages, isStreaming, scrollToBottom]);
 
   useEffect(() => {
     if (isOpen && !showTicketForm) {
@@ -291,63 +214,77 @@ export default function SupportChatbot() {
     }
   }, [isOpen, showTicketForm]);
 
-  const sendMessage = useCallback(
+  // ─── Send Message ──────────────────────────────────────────────────────
+  const handleSendMessage = useCallback(
     (text: string) => {
       if (!text.trim()) return;
 
-      const userMsg: Message = {
-        id: `user-${Date.now()}`,
-        role: "user",
-        text: text.trim(),
-        timestamp: new Date(),
-      };
+      const trimmed = text.trim();
 
-      setMessages((prev) => [...prev, userMsg]);
-      setInput("");
-      setIsTyping(true);
-
-      // Check if user wants to create a ticket
-      const lower = text.toLowerCase();
+      // Ticket request detection
+      const lower = trimmed.toLowerCase();
       if (
         lower.includes("create a ticket") ||
         lower.includes("create ticket") ||
         lower.includes("open ticket") ||
         lower.includes("make a ticket")
       ) {
-        setTimeout(() => {
-          setIsTyping(false);
-          const botMsg: Message = {
-            id: `bot-${Date.now()}`,
-            role: "bot",
-            text: "Sure! I will open the ticket form for you right now.",
-            timestamp: new Date(),
-          };
-          setMessages((prev) => [...prev, botMsg]);
-          setTimeout(() => setShowTicketForm(true), 500);
-        }, 800);
+        if (aiEnabled) {
+          // Still send to AI but also open form
+          sendAiMessage({ text: trimmed });
+        } else {
+          setFallbackMessages((prev) => [
+            ...prev,
+            {
+              id: `user-${Date.now()}`,
+              role: "user",
+              parts: [{ type: "text", text: trimmed }],
+    
+            },
+            {
+              id: `bot-${Date.now()}`,
+              role: "assistant",
+              parts: [{ type: "text", text: "Sure! I'll open the ticket form for you right now." }],
+    
+            },
+          ]);
+        }
+        setTimeout(() => setShowTicketForm(true), 500);
         return;
       }
 
-      // Simulate typing delay
-      const delay = 600 + Math.random() * 800;
-      setTimeout(() => {
-        setIsTyping(false);
-        const response = matchFAQ(text);
-        const botMsg: Message = {
-          id: `bot-${Date.now()}`,
-          role: "bot",
-          text: response,
-          timestamp: new Date(),
+      if (aiEnabled) {
+        sendAiMessage({ text: trimmed });
+      } else {
+        // FAQ fallback mode
+        const userMsg: UIMessage = {
+          id: `user-${Date.now()}`,
+          role: "user",
+          parts: [{ type: "text", text: trimmed }],
+
         };
-        setMessages((prev) => [...prev, botMsg]);
-      }, delay);
+        setFallbackMessages((prev) => [...prev, userMsg]);
+
+        // Simulate typing delay
+        setTimeout(() => {
+          const response = matchFAQ(trimmed);
+          const botMsg: UIMessage = {
+            id: `bot-${Date.now()}`,
+            role: "assistant",
+            parts: [{ type: "text", text: response }],
+  
+          };
+          setFallbackMessages((prev) => [...prev, botMsg]);
+        }, 600 + Math.random() * 800);
+      }
     },
-    []
+    [aiEnabled, sendAiMessage]
   );
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    sendMessage(input);
+    handleSendMessage(inputValue);
+    setInputValue("");
   };
 
   const handleTicketSubmit = async (e: React.FormEvent) => {
@@ -370,13 +307,18 @@ export default function SupportChatbot() {
         setTimeout(() => {
           setShowTicketForm(false);
           setTicketSuccess(false);
-          const botMsg: Message = {
+          const botMsg: UIMessage = {
             id: `bot-${Date.now()}`,
-            role: "bot",
-            text: "Your ticket has been submitted successfully! Our team will get back to you soon. Is there anything else I can help you with?",
-            timestamp: new Date(),
+            role: "assistant",
+            parts: [{ type: "text", text: "Your ticket has been submitted successfully! Our team will get back to you soon. Is there anything else I can help you with?" }],
+  
           };
-          setMessages((prev) => [...prev, botMsg]);
+          if (aiEnabled) {
+            // AI mode — the ticket success is shown but we don't push to AI messages
+            // Just let the user continue chatting
+          } else {
+            setFallbackMessages((prev) => [...prev, botMsg]);
+          }
         }, 2000);
       } else {
         setTicketError(data.message || "Something went wrong. Please try again.");
@@ -388,12 +330,20 @@ export default function SupportChatbot() {
     }
   };
 
+  const handleCurrentInputChange = (e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value);
+
+  const handleCurrentSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleSendMessage(inputValue);
+    setInputValue("");
+  };
+
   return (
     <>
       {/* ── Floating Robot Button ── */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-[60] w-16 h-16 rounded-full flex items-center justify-center cursor-pointer shadow-lg shadow-plum/30 border border-border-glass pb-[env(safe-area-inset-bottom)]"
+        className="fixed bottom-20 md:bottom-6 right-6 z-[60] w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center cursor-pointer shadow-lg shadow-plum/30 border border-border-glass"
         style={{
           background: "linear-gradient(135deg, #1a0f2e 0%, #2d1b4e 100%)",
         }}
@@ -403,9 +353,7 @@ export default function SupportChatbot() {
         transition={
           isOpen
             ? { duration: 0.2 }
-            : {
-                y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-              }
+            : { y: { duration: 3, repeat: Infinity, ease: "easeInOut" } }
         }
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
@@ -461,7 +409,7 @@ export default function SupportChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-            className="fixed bottom-24 right-6 z-[60] w-[380px] max-w-[calc(100vw-2rem)] h-[560px] max-h-[calc(100vh-8rem)] rounded-2xl overflow-hidden flex flex-col shadow-2xl shadow-plum/20"
+            className="fixed bottom-36 md:bottom-24 right-4 md:right-6 z-[60] w-[380px] max-w-[calc(100vw-2rem)] h-[500px] md:h-[560px] max-h-[calc(100vh-10rem)] rounded-2xl overflow-hidden flex flex-col shadow-2xl shadow-plum/20"
             style={{
               background: "rgba(13, 8, 21, 0.95)",
               backdropFilter: "blur(24px)",
@@ -483,10 +431,10 @@ export default function SupportChatbot() {
               </div>
               <div className="flex-1">
                 <h3 className="text-sm font-semibold text-text-primary font-display">
-                  Cosmo — Support Bot
+                  Cosmo — AI Assistant
                 </h3>
                 <p className="text-xs text-text-muted">
-                  Digital Point LLC
+                  {isStreaming ? "Typing..." : "Digital Point LLC"}
                 </p>
               </div>
               <button
@@ -663,37 +611,42 @@ export default function SupportChatbot() {
                   exit={{ opacity: 0 }}
                   className="flex-1 overflow-y-auto custom-scrollbar p-4 flex flex-col gap-3"
                 >
-                  {messages.map((msg) => (
-                    <motion.div
-                      key={msg.id}
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-                    >
-                      <div
-                        className={`max-w-[85%] px-4 py-3 text-sm leading-relaxed ${
-                          msg.role === "user"
-                            ? "rounded-2xl rounded-br-md text-white"
-                            : "rounded-2xl rounded-bl-md text-text-primary"
-                        }`}
-                        style={
-                          msg.role === "user"
-                            ? {
-                                background: "linear-gradient(135deg, #9d4edd 0%, #7b2cbf 100%)",
-                              }
-                            : {
-                                background: "rgba(26, 15, 46, 0.8)",
-                                border: "1px solid rgba(157, 78, 221, 0.15)",
-                              }
-                        }
-                      >
-                        {renderMarkdown(msg.text)}
-                      </div>
-                    </motion.div>
-                  ))}
+                  {messages.map((msg) => {
+                    const text = getMessageText(msg);
+                    if (!text) return null;
 
-                  {isTyping && (
+                    return (
+                      <motion.div
+                        key={msg.id}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                      >
+                        <div
+                          className={`max-w-[85%] px-4 py-3 text-sm leading-relaxed ${
+                            msg.role === "user"
+                              ? "rounded-2xl rounded-br-md text-white"
+                              : "rounded-2xl rounded-bl-md text-text-primary"
+                          }`}
+                          style={
+                            msg.role === "user"
+                              ? {
+                                  background: "linear-gradient(135deg, #9d4edd 0%, #7b2cbf 100%)",
+                                }
+                              : {
+                                  background: "rgba(26, 15, 46, 0.8)",
+                                  border: "1px solid rgba(157, 78, 221, 0.15)",
+                                }
+                          }
+                        >
+                          {renderMarkdown(text)}
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+
+                  {isStreaming && (
                     <motion.div
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -711,8 +664,8 @@ export default function SupportChatbot() {
                     </motion.div>
                   )}
 
-                  {/* Quick actions (show after greeting if only 1 message) */}
-                  {messages.length === 1 && !isTyping && (
+                  {/* Quick actions after greeting */}
+                  {messages.length === 1 && !isStreaming && (
                     <motion.div
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -722,7 +675,7 @@ export default function SupportChatbot() {
                       {QUICK_ACTIONS.map((action) => (
                         <button
                           key={action}
-                          onClick={() => sendMessage(action)}
+                          onClick={() => handleSendMessage(action)}
                           className="text-xs px-3 py-1.5 rounded-full border border-border-glass text-text-secondary hover:text-plum-light hover:border-plum/50 transition-all bg-surface-glass"
                         >
                           {action}
@@ -736,7 +689,7 @@ export default function SupportChatbot() {
               )}
             </AnimatePresence>
 
-            {/* ── Input Bar (only in chat mode) ── */}
+            {/* ── Input Bar ── */}
             {!showTicketForm && (
               <div
                 className="shrink-0 px-4 py-3 flex items-center gap-2"
@@ -758,22 +711,22 @@ export default function SupportChatbot() {
                     <line x1="9" y1="15" x2="15" y2="15" />
                   </svg>
                 </button>
-                <form onSubmit={handleSubmit} className="flex-1 flex items-center gap-2">
+                <form onSubmit={handleCurrentSubmit} className="flex-1 flex items-center gap-2">
                   <input
                     ref={inputRef}
                     type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
+                    value={inputValue}
+                    onChange={handleCurrentInputChange}
                     placeholder="Ask me anything..."
                     maxLength={500}
                     className="flex-1 px-3 py-2 rounded-lg text-sm bg-surface-elevated border border-border-subtle text-text-primary placeholder:text-text-muted focus:outline-none focus:border-plum-light transition-colors"
                   />
                   <button
                     type="submit"
-                    disabled={!input.trim() || isTyping}
+                    disabled={!inputValue?.trim() || isStreaming}
                     className="shrink-0 p-2 rounded-lg transition-all disabled:opacity-30"
                     style={{
-                      background: input.trim()
+                      background: inputValue?.trim()
                         ? "linear-gradient(135deg, #9d4edd 0%, #7b2cbf 100%)"
                         : "transparent",
                     }}

@@ -107,7 +107,7 @@ export function HeroSection() {
             rotate: [0, 5, 0],
           }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-[15%] right-[5%] w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full"
+          className="absolute top-[8%] -right-[15%] w-36 h-36 md:w-64 md:h-64 lg:w-80 lg:h-80 md:right-[5%] md:top-[15%] rounded-full"
           style={{
             background: 'radial-gradient(circle at 30% 30%, #9d4edd 0%, #7b2cbf 40%, #5a189a 70%, #3c096c 100%)',
             boxShadow: '0 0 100px rgba(157,78,221,0.6), 0 0 150px rgba(123,44,191,0.4), inset -20px -20px 60px rgba(60,9,108,0.8)',
@@ -132,7 +132,7 @@ export function HeroSection() {
             y: [0, -10, 0, -5, 0],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-[25%] right-[25%] w-20 h-20 md:w-28 md:h-28 rounded-full"
+          className="absolute top-[12%] right-[15%] w-12 h-12 md:w-28 md:h-28 md:top-[25%] md:right-[25%] rounded-full"
           style={{
             background: 'radial-gradient(circle at 35% 35%, #e0aaff 0%, #c77dff 50%, #9d4edd 100%)',
             boxShadow: '0 0 50px rgba(224,170,255,0.5), inset -8px -8px 20px rgba(157,78,221,0.6)',
@@ -146,7 +146,7 @@ export function HeroSection() {
             scale: [0.9, 1.1, 0.9],
           }}
           transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-[32%] right-[40%] w-10 h-10 md:w-14 md:h-14 rounded-full"
+          className="absolute top-[5%] right-[35%] w-6 h-6 md:w-14 md:h-14 md:top-[32%] md:right-[40%] rounded-full"
           style={{
             background: 'radial-gradient(circle at 40% 40%, #f4d3ff 0%, #e0aaff 60%, #c77dff 100%)',
             boxShadow: '0 0 25px rgba(244,211,255,0.6)',
@@ -212,7 +212,7 @@ export function HeroSection() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5, delay: 1 }}
-        className="absolute bottom-[25%] left-1/2 -translate-x-1/2 md:left-[12%] md:translate-x-0"
+        className="absolute bottom-[25%] left-1/2 -translate-x-1/2 md:left-[12%] md:translate-x-0 hidden md:block"
       >
         <motion.div
           animate={{ 

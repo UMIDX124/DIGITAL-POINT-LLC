@@ -70,3 +70,34 @@ model SupportTicket {
   @@index([status])
   @@index([createdAt])
 }
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  sessionId String
+  role      String   // "user" | "assistant"
+  content   String
+  intent    String?
+  createdAt DateTime @default(now())
+
+  @@index([sessionId])
+  @@index([createdAt])
+}
+
+model ChatLead {
+  id                  String   @id @default(cuid())
+  sessionId           String   @unique
+  name                String?
+  email               String?
+  company             String?
+  phone               String?
+  interest            String?
+  qualityScore        Int      @default(0)
+  status              String   @default("new")
+  conversationSummary String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+}

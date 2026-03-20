@@ -414,11 +414,11 @@ export function AuditPage() {
 
                       <div className="flex items-center justify-center gap-4 text-sm">
                         <a
-                          href="mailto:hello@digitalpointllc.com"
+                          href="mailto:info@digitalpointllc.com"
                           className="flex items-center gap-2 text-[#c77dff] hover:text-[#e0aaff] transition-colors"
                         >
                           <Mail className="w-4 h-4" />
-                          hello@digitalpointllc.com
+                          info@digitalpointllc.com
                         </a>
                       </div>
                     </motion.div>
@@ -471,11 +471,11 @@ export function AuditPage() {
                   Every audit is reviewed by a founder.
                 </p>
                 <a
-                  href="mailto:hello@digitalpointllc.com"
+                  href="mailto:info@digitalpointllc.com"
                   className="flex items-center gap-2 text-[#c77dff] hover:text-[#e0aaff] transition-colors text-sm"
                 >
                   <Mail className="w-4 h-4" />
-                  hello@digitalpointllc.com
+                  info@digitalpointllc.com
                 </a>
               </GlassCard>
             </FadeUp>

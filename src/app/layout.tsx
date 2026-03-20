@@ -135,7 +135,7 @@ export default function RootLayout({
               ],
               contactPoint: {
                 "@type": "ContactPoint",
-                email: "hello@digitalpointllc.com",
+                email: "info@digitalpointllc.com",
                 contactType: "customer service",
               },
               address: {

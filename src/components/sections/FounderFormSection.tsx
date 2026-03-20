@@ -374,11 +374,11 @@ function FounderContactForm() {
 
       <div className="flex items-center justify-center gap-4 pt-2">
         <a
-          href="mailto:hello@digitalpointllc.com"
+          href="mailto:info@digitalpointllc.com"
           className="flex items-center gap-1.5 text-[#c77dff] hover:text-[#e0aaff] transition-colors text-xs"
         >
           <Mail className="w-3.5 h-3.5" />
-          hello@digitalpointllc.com
+          info@digitalpointllc.com
         </a>
         <a
           href="https://linkedin.com/company/digitalpointllc"

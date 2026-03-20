@@ -169,11 +169,11 @@ export function Footer() {
             </h4>
             <div className="space-y-4">
               <a
-                href="mailto:hello@digitalpointllc.com"
+                href="mailto:info@digitalpointllc.com"
                 className="flex items-center gap-3 text-[#b794c7] hover:text-white text-sm transition-colors group"
               >
                 <Mail className="w-4 h-4 text-[#c77dff] group-hover:text-[#e0aaff] transition-colors" />
-                hello@digitalpointllc.com
+                info@digitalpointllc.com
               </a>
               <a
                 href="https://linkedin.com/company/digitalpointllc"

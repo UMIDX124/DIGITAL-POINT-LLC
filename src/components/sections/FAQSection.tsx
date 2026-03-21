@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { Section, Container, SectionHeader, FadeUp, GlassCard } from '@/components/ui-dp/AnimatedElements';
+import { FAQSchema } from '@/components/seo/FAQSchema';
 
 const faqs = [
   {
@@ -81,9 +82,10 @@ export function FAQSection() {
 
   return (
     <Section className="relative overflow-hidden">
+      <FAQSchema faqs={faqs} />
       {/* Cosmic background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#13091e] via-[#0d0815] to-[#0a0510]" />
-      
+
       <Container className="relative z-10">
         <SectionHeader
           eyebrow="FAQ"

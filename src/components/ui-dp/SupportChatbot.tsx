@@ -341,32 +341,41 @@ export default function SupportChatbot() {
   return (
     <>
       {/* ── Floating Robot Button ── */}
-      <motion.button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-[4.5rem] md:bottom-6 right-4 md:right-6 z-[60] w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center cursor-pointer shadow-lg shadow-plum/30 border border-border-glass"
-        style={{
-          background: "linear-gradient(135deg, #1a0f2e 0%, #2d1b4e 100%)",
-        }}
-        animate={{
-          y: isOpen ? 0 : [0, -8, 0],
-        }}
-        transition={
-          isOpen
-            ? { duration: 0.2 }
-            : { y: { duration: 3, repeat: Infinity, ease: "easeInOut" } }
-        }
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        aria-label={isOpen ? "Close support chat" : "Open support chat"}
-      >
-        <AnimatePresence mode="wait">
+      <div className="fixed bottom-[4.5rem] md:bottom-6 right-4 md:right-6 z-[60] flex flex-col items-end gap-2">
+        {/* Tooltip bubble — shows on first visit */}
+        {!isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 8, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ delay: 1.5, duration: 0.4 }}
+            className="relative px-4 py-2.5 rounded-xl text-xs font-medium text-white max-w-[180px] text-center"
+            style={{
+              background: 'linear-gradient(135deg, #9d4edd 0%, #7b2cbf 100%)',
+              boxShadow: '0 4px 20px rgba(157, 78, 221, 0.4)',
+            }}
+          >
+            <span className="flex items-center gap-1.5">
+              <span className="text-sm">✨</span>
+              Ask Cosmo — our AI!
+            </span>
+            {/* Arrow pointing down */}
+            <div
+              className="absolute -bottom-1.5 right-6 w-3 h-3 rotate-45"
+              style={{ background: '#7b2cbf' }}
+            />
+          </motion.div>
+        )}
+
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="relative w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center cursor-pointer shadow-lg shadow-plum/30 border border-border-glass transition-transform duration-200 hover:scale-110 active:scale-95"
+          style={{
+            background: "linear-gradient(135deg, #1a0f2e 0%, #2d1b4e 100%)",
+          }}
+          aria-label={isOpen ? "Close support chat" : "Open support chat"}
+        >
           {isOpen ? (
-            <motion.svg
-              key="close"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
+            <svg
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -377,29 +386,19 @@ export default function SupportChatbot() {
             >
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
-            </motion.svg>
+            </svg>
           ) : (
-            <motion.div
-              key="robot"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <RobotIcon className="w-10 h-10" />
-            </motion.div>
+            <RobotIcon className="w-10 h-10" />
           )}
-        </AnimatePresence>
 
-        {/* Glow ring */}
-        {!isOpen && (
-          <motion.div
-            className="absolute inset-0 rounded-full border-2 border-plum-light"
-            animate={{ scale: [1, 1.3, 1], opacity: [0.6, 0, 0.6] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
-          />
-        )}
-      </motion.button>
+          {/* Glow ring — CSS animation instead of Framer Motion for better INP */}
+          {!isOpen && (
+            <span
+              className="absolute inset-0 rounded-full border-2 border-plum-light animate-ping-slow pointer-events-none"
+            />
+          )}
+        </button>
+      </div>
 
       {/* ── Chat Window ── */}
       <AnimatePresence>
@@ -409,7 +408,7 @@ export default function SupportChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-            className="fixed bottom-[8.5rem] md:bottom-24 right-4 md:right-6 z-[60] w-[380px] max-w-[calc(100vw-2rem)] h-[460px] md:h-[560px] max-h-[calc(100vh-10rem)] rounded-2xl overflow-hidden flex flex-col shadow-2xl shadow-plum/20"
+            className="fixed bottom-[9rem] md:bottom-28 right-4 md:right-6 z-[60] w-[380px] max-w-[calc(100vw-2rem)] h-[460px] md:h-[560px] max-h-[calc(100vh-10rem)] rounded-2xl overflow-hidden flex flex-col shadow-2xl shadow-plum/20"
             style={{
               background: "rgba(13, 8, 21, 0.95)",
               backdropFilter: "blur(24px)",

@@ -15,7 +15,6 @@ export function HeroSection() {
   
   // Parallax transforms
   const yPlanets = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const yAstronaut = useTransform(scrollYProgress, [0, 1], [0, 50]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
@@ -206,58 +205,7 @@ export function HeroSection() {
         }}
       />
 
-      {/* Astronaut figure with parallax */}
-      <motion.div 
-        style={{ y: yAstronaut }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.5, delay: 1 }}
-        className="absolute bottom-[25%] left-1/2 -translate-x-1/2 md:left-[12%] md:translate-x-0 hidden md:block"
-      >
-        <motion.div
-          animate={{ 
-            y: [0, -8, 0],
-            rotate: [-2, 2, -2],
-          }}
-          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <svg width="40" height="60" viewBox="0 0 40 60" className="drop-shadow-lg">
-            <ellipse cx="20" cy="12" rx="10" ry="11" fill="url(#helmetGradientHero)" />
-            <ellipse cx="20" cy="12" rx="7" ry="8" fill="url(#visorGradientHero)" opacity="0.9" />
-            <ellipse cx="20" cy="35" rx="12" ry="18" fill="url(#suitGradientHero)" />
-            <ellipse cx="14" cy="52" rx="5" ry="8" fill="url(#suitGradientHero)" />
-            <ellipse cx="26" cy="52" rx="5" ry="8" fill="url(#suitGradientHero)" />
-            <ellipse cx="6" cy="35" rx="4" ry="10" fill="url(#suitGradientHero)" />
-            <ellipse cx="34" cy="35" rx="4" ry="10" fill="url(#suitGradientHero)" />
-            <defs>
-              <linearGradient id="helmetGradientHero" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#e0e0e0" />
-                <stop offset="50%" stopColor="#a0a0a0" />
-                <stop offset="100%" stopColor="#707070" />
-              </linearGradient>
-              <radialGradient id="visorGradientHero" cx="40%" cy="40%">
-                <stop offset="0%" stopColor="#c77dff" />
-                <stop offset="50%" stopColor="#7b2cbf" />
-                <stop offset="100%" stopColor="#3c096c" />
-              </radialGradient>
-              <linearGradient id="suitGradientHero" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#c0c0c0" />
-                <stop offset="50%" stopColor="#909090" />
-                <stop offset="100%" stopColor="#606060" />
-              </linearGradient>
-            </defs>
-          </svg>
-          <motion.div 
-            className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-12 h-3 rounded-full"
-            animate={{ opacity: [0.2, 0.5, 0.2] }}
-            transition={{ duration: 3, repeat: Infinity }}
-            style={{
-              background: 'radial-gradient(ellipse, rgba(157,78,221,0.4) 0%, transparent 70%)',
-              filter: 'blur(4px)',
-            }}
-          />
-        </motion.div>
-      </motion.div>
+      {/* Hero logo removed — was causing performance issues with 2.8MB image + multiple blur animations */}
 
       {/* Floating Dashboard Cards - Right Side */}
       <div className="absolute right-[5%] lg:right-[8%] top-1/2 -translate-y-1/2 z-[5] hidden lg:flex flex-col gap-6">

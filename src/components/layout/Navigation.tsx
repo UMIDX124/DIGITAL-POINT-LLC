@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -86,37 +87,15 @@ export function Navigation() {
               href="/"
               className="flex items-center gap-3 group relative z-10"
             >
-              <div className="relative w-10 h-10 md:w-11 md:h-11 rounded-xl overflow-hidden"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(139,92,246,0.8) 0%, rgba(124,58,237,0.9) 100%)',
-                  boxShadow: '0 4px 12px rgba(139,92,246,0.3), inset 0 1px 1px rgba(255,255,255,0.2)',
-                }}
-              >
-                {/* DP Monogram */}
-                <svg viewBox="0 0 48 48" className="w-full h-full p-2">
-                  <path
-                    d="M8 8h16a16 16 0 0 1 0 32H8V8z"
-                    fill="currentColor"
-                    className="text-white/90"
-                  />
-                  <path
-                    d="M20 8h8a8 8 0 0 1 0 16h-8V8z"
-                    fill="currentColor"
-                    className="text-white"
-                  />
-                  <path
-                    d="M20 20h8a8 8 0 0 1 0 16h-8V20z"
-                    fill="currentColor"
-                    className="text-white"
-                  />
-                  <circle cx="38" cy="24" r="4" className="fill-[#ff6b6b]" />
-                </svg>
-                {/* Animated signal */}
-                <motion.div
-                  className="absolute -right-0.5 -top-0.5 w-2.5 h-2.5 rounded-full bg-[#ff6b6b]"
-                  animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  style={{ boxShadow: '0 0 8px #ff6b6b' }}
+              <div className="relative w-10 h-10 md:w-11 md:h-11 flex items-center justify-center">
+                <Image
+                  src="/dp-logo.png"
+                  alt="Digital Point LLC"
+                  width={48}
+                  height={30}
+                  priority
+                  className="drop-shadow-[0_0_10px_rgba(139,92,246,0.6)]"
+                  style={{ width: '48px', height: 'auto' }}
                 />
               </div>
               <div className="hidden sm:block">

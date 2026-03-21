@@ -1,4 +1,5 @@
 import { Linkedin, Mail, ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const footerLinks = {
@@ -44,31 +45,15 @@ export function Footer() {
               href="/"
               className="flex items-center gap-3 mb-6"
             >
-              <div
-                className="relative w-10 h-10 rounded-xl overflow-hidden"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(157, 78, 221, 0.8) 0%, rgba(123, 44, 191, 0.9) 100%)',
-                  boxShadow: '0 4px 12px rgba(157, 78, 221, 0.3)',
-                }}
-              >
-                <svg viewBox="0 0 48 48" className="w-full h-full p-2">
-                  <path
-                    d="M8 8h16a16 16 0 0 1 0 32H8V8z"
-                    fill="currentColor"
-                    className="text-white/90"
-                  />
-                  <path
-                    d="M20 8h8a8 8 0 0 1 0 16h-8V8z"
-                    fill="currentColor"
-                    className="text-white"
-                  />
-                  <path
-                    d="M20 20h8a8 8 0 0 1 0 16h-8V20z"
-                    fill="currentColor"
-                    className="text-white"
-                  />
-                  <circle cx="38" cy="24" r="4" className="fill-[#ff6b9d]" />
-                </svg>
+              <div className="relative w-10 h-10 flex items-center justify-center">
+                <Image
+                  src="/dp-logo.png"
+                  alt="Digital Point LLC"
+                  width={44}
+                  height={28}
+                  className="drop-shadow-[0_0_10px_rgba(139,92,246,0.5)]"
+                  style={{ width: '44px', height: 'auto' }}
+                />
               </div>
               <div>
                 <span className="font-display font-semibold text-lg text-white">

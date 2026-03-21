@@ -87,18 +87,18 @@ export function Navigation() {
               href="/"
               className="flex items-center gap-2 group relative z-10"
             >
-              <div className="relative" style={{ marginTop: '-44px', marginBottom: '-40px' }}>
+              <div className="relative" style={{ marginTop: '-16px', marginBottom: '-14px' }}>
                 <Image
                   src="/Dp-logo1.png"
                   alt="Digital Point LLC"
-                  width={120}
-                  height={120}
+                  width={64}
+                  height={64}
                   priority
-                  className="relative z-10 transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1"
+                  className="relative z-10 transition-transform duration-300 group-hover:scale-105 group-hover:-translate-y-0.5"
                   style={{
-                    width: '110px',
+                    width: '52px',
                     height: 'auto',
-                    filter: 'drop-shadow(0 6px 12px rgba(0,0,0,0.6)) drop-shadow(0 12px 24px rgba(139,92,246,0.35))',
+                    filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5)) drop-shadow(0 6px 16px rgba(139,92,246,0.3))',
                   }}
                 />
               </div>

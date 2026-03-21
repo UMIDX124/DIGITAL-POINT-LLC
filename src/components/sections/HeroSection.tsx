@@ -3,16 +3,24 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 export function HeroSection() {
   const ref = useRef(null);
-  
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"]
   });
-  
+
   // Parallax transforms
   const yPlanets = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
@@ -25,112 +33,114 @@ export function HeroSection() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      {/* Animated base gradient with color shift */}
+      {/* Base gradient — static on mobile, animated on desktop */}
       <div className="absolute inset-0">
-        <motion.div 
-          className="absolute inset-0"
-          animate={{
-            background: [
-              'linear-gradient(180deg, #0d0815 0%, #1a0a2e 25%, #2d1b4e 50%, #4a1942 75%, #2d1b4e 100%)',
-              'linear-gradient(180deg, #0a0510 0%, #1d0f33 25%, #3d1a5e 50%, #5a1a4a 75%, #2d1b4e 100%)',
-              'linear-gradient(180deg, #0d0815 0%, #1a0a2e 25%, #2d1b4e 50%, #4a1942 75%, #2d1b4e 100%)',
-            ]
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
-        />
+        {isMobile ? (
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(180deg, #0d0815 0%, #1a0a2e 25%, #2d1b4e 50%, #4a1942 75%, #2d1b4e 100%)',
+            }}
+          />
+        ) : (
+          <motion.div
+            className="absolute inset-0"
+            animate={{
+              background: [
+                'linear-gradient(180deg, #0d0815 0%, #1a0a2e 25%, #2d1b4e 50%, #4a1942 75%, #2d1b4e 100%)',
+                'linear-gradient(180deg, #0a0510 0%, #1d0f33 25%, #3d1a5e 50%, #5a1a4a 75%, #2d1b4e 100%)',
+                'linear-gradient(180deg, #0d0815 0%, #1a0a2e 25%, #2d1b4e 50%, #4a1942 75%, #2d1b4e 100%)',
+              ]
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        )}
       </div>
 
-      {/* Animated nebula layers with movement */}
-      <motion.div
-        animate={{
-          opacity: [0.3, 0.6, 0.3],
-          scale: [1, 1.15, 1],
-          x: [0, 20, 0],
-          y: [0, -10, 0],
-        }}
-        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute inset-0"
-        style={{
-          background: 'radial-gradient(ellipse 80% 50% at 20% 30%, rgba(157,78,221,0.25) 0%, transparent 50%)',
-        }}
-      />
-      <motion.div
-        animate={{
-          opacity: [0.2, 0.5, 0.2],
-          scale: [1, 1.25, 1],
-          x: [0, -30, 0],
-          y: [0, 15, 0],
-        }}
-        transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
-        className="absolute inset-0"
-        style={{
-          background: 'radial-gradient(ellipse 60% 40% at 80% 60%, rgba(123,44,191,0.2) 0%, transparent 50%)',
-        }}
-      />
-      
-      {/* Third nebula layer */}
-      <motion.div
-        animate={{
-          opacity: [0.1, 0.3, 0.1],
-          scale: [1, 1.3, 1],
-        }}
-        transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut', delay: 5 }}
-        className="absolute inset-0"
-        style={{
-          background: 'radial-gradient(ellipse 100% 80% at 50% 80%, rgba(255,107,157,0.1) 0%, transparent 50%)',
-        }}
-      />
+      {/* Nebula layers — static on mobile, animated on desktop */}
+      {isMobile ? (
+        <>
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'radial-gradient(ellipse 80% 50% at 20% 30%, rgba(157,78,221,0.2) 0%, transparent 50%)',
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'radial-gradient(ellipse 60% 40% at 80% 60%, rgba(123,44,191,0.15) 0%, transparent 50%)',
+            }}
+          />
+        </>
+      ) : (
+        <>
+          <motion.div
+            animate={{
+              opacity: [0.3, 0.6, 0.3],
+              scale: [1, 1.15, 1],
+              x: [0, 20, 0],
+              y: [0, -10, 0],
+            }}
+            transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute inset-0"
+            style={{
+              background: 'radial-gradient(ellipse 80% 50% at 20% 30%, rgba(157,78,221,0.25) 0%, transparent 50%)',
+            }}
+          />
+          <motion.div
+            animate={{
+              opacity: [0.2, 0.5, 0.2],
+              scale: [1, 1.25, 1],
+              x: [0, -30, 0],
+              y: [0, 15, 0],
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
+            className="absolute inset-0"
+            style={{
+              background: 'radial-gradient(ellipse 60% 40% at 80% 60%, rgba(123,44,191,0.2) 0%, transparent 50%)',
+            }}
+          />
+          <motion.div
+            animate={{
+              opacity: [0.1, 0.3, 0.1],
+              scale: [1, 1.3, 1],
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut', delay: 5 }}
+            className="absolute inset-0"
+            style={{
+              background: 'radial-gradient(ellipse 100% 80% at 50% 80%, rgba(255,107,157,0.1) 0%, transparent 50%)',
+            }}
+          />
+          <motion.div
+            animate={{
+              opacity: [0.1, 0.25, 0.1],
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute inset-0"
+            style={{
+              background: 'radial-gradient(ellipse 100% 60% at 50% 0%, rgba(199,125,255,0.15) 0%, transparent 50%)',
+            }}
+          />
+        </>
+      )}
 
-      {/* Animated cosmic glow */}
+      {/* Planets — static on mobile, animated on desktop */}
       <motion.div
-        animate={{
-          opacity: [0.1, 0.25, 0.1],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute inset-0"
-        style={{
-          background: 'radial-gradient(ellipse 100% 60% at 50% 0%, rgba(199,125,255,0.15) 0%, transparent 50%)',
-        }}
-      />
-
-      {/* Animated planets with parallax */}
-      <motion.div
-        style={{ y: yPlanets }}
+        style={isMobile ? undefined : { y: yPlanets }}
         className="absolute inset-0 z-[1] pointer-events-none overflow-hidden"
       >
-        {/* Large primary planet with orbit animation */}
-        <motion.div
-          animate={{
-            scale: [1, 1.05, 1],
-            opacity: [0.85, 1, 0.85],
-            rotate: [0, 5, 0],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        {/* Large primary planet */}
+        <div
           className="absolute top-[8%] -right-[15%] w-36 h-36 md:w-64 md:h-64 lg:w-80 lg:h-80 md:right-[5%] md:top-[15%] rounded-full"
           style={{
             background: 'radial-gradient(circle at 30% 30%, #9d4edd 0%, #7b2cbf 40%, #5a189a 70%, #3c096c 100%)',
             boxShadow: '0 0 100px rgba(157,78,221,0.6), 0 0 150px rgba(123,44,191,0.4), inset -20px -20px 60px rgba(60,9,108,0.8)',
           }}
-        >
-          {/* Planet ring */}
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
-            className="absolute inset-0 rounded-full"
-            style={{
-              border: '2px solid rgba(199,125,255,0.2)',
-              transform: 'scale(1.3) rotateX(75deg)',
-            }}
-          />
-        </motion.div>
+        />
 
-        {/* Secondary moon with orbit */}
-        <motion.div
-          animate={{
-            x: [0, 15, 0, -15, 0],
-            y: [0, -10, 0, -5, 0],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+        {/* Secondary moon */}
+        <div
           className="absolute top-[12%] right-[15%] w-12 h-12 md:w-28 md:h-28 md:top-[25%] md:right-[25%] rounded-full"
           style={{
             background: 'radial-gradient(circle at 35% 35%, #e0aaff 0%, #c77dff 50%, #9d4edd 100%)',
@@ -138,13 +148,8 @@ export function HeroSection() {
           }}
         />
 
-        {/* Small distant moons */}
-        <motion.div
-          animate={{
-            opacity: [0.4, 0.9, 0.4],
-            scale: [0.9, 1.1, 0.9],
-          }}
-          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+        {/* Small distant moon */}
+        <div
           className="absolute top-[5%] right-[35%] w-6 h-6 md:w-14 md:h-14 md:top-[32%] md:right-[40%] rounded-full"
           style={{
             background: 'radial-gradient(circle at 40% 40%, #f4d3ff 0%, #e0aaff 60%, #c77dff 100%)',
@@ -153,41 +158,29 @@ export function HeroSection() {
         />
 
         {/* Red planet */}
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.8, 0.3],
-          }}
-          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+        <div
           className="absolute top-[12%] left-[12%] w-5 h-5 md:w-8 md:h-8 rounded-full"
           style={{
             background: 'radial-gradient(circle, #ff6b9d 0%, #c9184a 100%)',
             boxShadow: '0 0 20px rgba(255,107,157,0.7)',
+            opacity: 0.6,
           }}
         />
 
         {/* Blue planet */}
-        <motion.div
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+        <div
           className="absolute bottom-[30%] left-[8%] w-6 h-6 md:w-10 md:h-10 rounded-full"
           style={{
             background: 'radial-gradient(circle at 30% 30%, #a0c4ff 0%, #7b2cbf 100%)',
             boxShadow: '0 0 25px rgba(160,196,255,0.5)',
+            opacity: 0.5,
           }}
         />
       </motion.div>
 
       {/* Terrain gradient */}
-      <motion.div 
+      <div
         className="absolute bottom-0 left-0 right-0 h-1/3"
-        animate={{
-          opacity: [0.7, 1, 0.7],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         style={{
           background: 'linear-gradient(to top, #0d0815 0%, transparent 100%)',
         }}

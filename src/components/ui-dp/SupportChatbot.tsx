@@ -341,26 +341,31 @@ export default function SupportChatbot() {
   return (
     <>
       {/* ── Floating Robot Button ── */}
-      <div className="fixed bottom-[4.5rem] md:bottom-6 right-4 md:right-6 z-[60] flex flex-col items-end gap-2">
-        {/* Tooltip bubble — shows on first visit */}
+      <div className="fixed bottom-[4.5rem] md:bottom-6 right-4 md:right-6 z-[60] flex flex-col items-end gap-3">
+        {/* Tooltip bubble — persistent beacon for new visitors */}
         {!isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 8, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ delay: 1.5, duration: 0.4 }}
-            className="relative px-4 py-2.5 rounded-xl text-xs font-medium text-white max-w-[180px] text-center"
+            initial={{ opacity: 0, y: 10, scale: 0.9 }}
+            animate={{ opacity: 1, y: [0, -4, 0], scale: 1 }}
+            transition={{
+              opacity: { delay: 1, duration: 0.4 },
+              y: { delay: 1.5, duration: 2, repeat: Infinity, ease: 'easeInOut' },
+              scale: { delay: 1, duration: 0.4 },
+            }}
+            className="relative px-4 py-2.5 rounded-xl text-xs font-semibold text-white max-w-[200px] text-center cursor-pointer"
+            onClick={() => setIsOpen(true)}
             style={{
               background: 'linear-gradient(135deg, #9d4edd 0%, #7b2cbf 100%)',
-              boxShadow: '0 4px 20px rgba(157, 78, 221, 0.4)',
+              boxShadow: '0 4px 24px rgba(157, 78, 221, 0.5), 0 0 40px rgba(157, 78, 221, 0.2)',
             }}
           >
             <span className="flex items-center gap-1.5">
-              <span className="text-sm">✨</span>
-              Ask Cosmo — our AI!
+              <span className="text-sm">🤖</span>
+              Need help? Ask Cosmo!
             </span>
             {/* Arrow pointing down */}
             <div
-              className="absolute -bottom-1.5 right-6 w-3 h-3 rotate-45"
+              className="absolute -bottom-1.5 right-7 w-3 h-3 rotate-45"
               style={{ background: '#7b2cbf' }}
             />
           </motion.div>
@@ -368,9 +373,10 @@ export default function SupportChatbot() {
 
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center cursor-pointer shadow-lg shadow-plum/30 border border-border-glass transition-transform duration-200 hover:scale-110 active:scale-95"
+          className="relative w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center cursor-pointer border border-border-glass transition-transform duration-200 hover:scale-110 active:scale-95"
           style={{
             background: "linear-gradient(135deg, #1a0f2e 0%, #2d1b4e 100%)",
+            boxShadow: '0 0 20px rgba(157,78,221,0.5), 0 4px 16px rgba(0,0,0,0.3)',
           }}
           aria-label={isOpen ? "Close support chat" : "Open support chat"}
         >
@@ -391,11 +397,25 @@ export default function SupportChatbot() {
             <RobotIcon className="w-10 h-10" />
           )}
 
-          {/* Glow ring — CSS animation instead of Framer Motion for better INP */}
+          {/* Outer glow ring — CSS animation for better INP */}
           {!isOpen && (
-            <span
-              className="absolute inset-0 rounded-full border-2 border-plum-light animate-ping-slow pointer-events-none"
-            />
+            <>
+              <span className="absolute inset-0 rounded-full border-2 border-plum-light animate-ping-slow pointer-events-none" />
+              <span
+                className="absolute -inset-1 rounded-full pointer-events-none"
+                style={{
+                  background: 'radial-gradient(circle, rgba(157,78,221,0.3) 0%, transparent 70%)',
+                  animation: 'pulse-glow 2s ease-in-out infinite',
+                }}
+              />
+            </>
+          )}
+
+          {/* Notification dot */}
+          {!isOpen && (
+            <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-green-400 border-2 border-[#1a0f2e] flex items-center justify-center">
+              <span className="w-1.5 h-1.5 rounded-full bg-white" />
+            </span>
           )}
         </button>
       </div>

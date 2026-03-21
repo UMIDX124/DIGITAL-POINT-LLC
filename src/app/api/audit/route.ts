@@ -75,43 +75,54 @@ export async function POST(request: NextRequest) {
     const company = sanitize(body.company);
     const bottleneck = sanitize(body.bottleneck);
 
-    const submission = await db.auditSubmission.create({
-      data: {
-        name,
-        email,
-        company,
-        website: sanitize(body.website),
-        businessType: sanitize(body.businessType),
-        adSpend: sanitize(body.adSpend),
-        teamSize: sanitize(body.teamSize),
-        bottleneck,
-        services: body.services?.map((s: string) => sanitize(s)).filter(Boolean).join(',') || null,
-        notes: sanitize(body.notes) || '',
-        utmSource: sanitize(body.utmSource),
-        utmMedium: sanitize(body.utmMedium),
-        utmCampaign: sanitize(body.utmCampaign),
-      },
-    });
+    // Try to save to database (may fail on serverless with SQLite)
+    let submissionId = 'no-db';
+    try {
+      const submission = await db.auditSubmission.create({
+        data: {
+          name,
+          email,
+          company,
+          website: sanitize(body.website),
+          businessType: sanitize(body.businessType),
+          adSpend: sanitize(body.adSpend),
+          teamSize: sanitize(body.teamSize),
+          bottleneck,
+          services: body.services?.map((s: string) => sanitize(s)).filter(Boolean).join(',') || null,
+          notes: sanitize(body.notes) || '',
+          utmSource: sanitize(body.utmSource),
+          utmMedium: sanitize(body.utmMedium),
+          utmCampaign: sanitize(body.utmCampaign),
+        },
+      });
+      submissionId = submission.id;
+    } catch {
+      // Database unavailable (e.g. SQLite on serverless) — continue with email
+    }
 
-    // Send email with escaped user input
-    await sendEmail({
-      to: 'info@digitalpointllc.com',
-      subject: `New Free Growth Audit Request — ${escapeHtml(name)}`,
-      replyTo: email,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0d0815; color: #f4f0f9; padding: 32px; border-radius: 12px;">
-          <h2 style="color: #c77dff; margin-top: 0;">New Audit Request</h2>
-          <table style="width: 100%; border-collapse: collapse;">
-            <tr><td style="padding: 8px 0; color: #b794c7;">Name</td><td style="padding: 8px 0; color: #f4f0f9;">${escapeHtml(name)}</td></tr>
-            <tr><td style="padding: 8px 0; color: #b794c7;">Email</td><td style="padding: 8px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #c77dff;">${escapeHtml(email)}</a></td></tr>
-            ${company ? `<tr><td style="padding: 8px 0; color: #b794c7;">Company</td><td style="padding: 8px 0; color: #f4f0f9;">${escapeHtml(company)}</td></tr>` : ''}
-            <tr><td style="padding: 8px 0; color: #b794c7;">Biggest Challenge</td><td style="padding: 8px 0; color: #f4f0f9;">${escapeHtml(bottleneck || '')}</td></tr>
-          </table>
-          <hr style="border: none; border-top: 1px solid rgba(157,78,221,0.3); margin: 16px 0;" />
-          <p style="color: #b794c7; font-size: 12px; margin-bottom: 0;">Submission ID: ${submission.id}</p>
-        </div>
-      `,
-    });
+    // Send email with escaped user input (best-effort)
+    try {
+      await sendEmail({
+        to: 'info@digitalpointllc.com',
+        subject: `New Free Growth Audit Request — ${escapeHtml(name)}`,
+        replyTo: email,
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0d0815; color: #f4f0f9; padding: 32px; border-radius: 12px;">
+            <h2 style="color: #c77dff; margin-top: 0;">New Audit Request</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr><td style="padding: 8px 0; color: #b794c7;">Name</td><td style="padding: 8px 0; color: #f4f0f9;">${escapeHtml(name)}</td></tr>
+              <tr><td style="padding: 8px 0; color: #b794c7;">Email</td><td style="padding: 8px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #c77dff;">${escapeHtml(email)}</a></td></tr>
+              ${company ? `<tr><td style="padding: 8px 0; color: #b794c7;">Company</td><td style="padding: 8px 0; color: #f4f0f9;">${escapeHtml(company)}</td></tr>` : ''}
+              <tr><td style="padding: 8px 0; color: #b794c7;">Biggest Challenge</td><td style="padding: 8px 0; color: #f4f0f9;">${escapeHtml(bottleneck || '')}</td></tr>
+            </table>
+            <hr style="border: none; border-top: 1px solid rgba(157,78,221,0.3); margin: 16px 0;" />
+            <p style="color: #b794c7; font-size: 12px; margin-bottom: 0;">Submission ID: ${submissionId}</p>
+          </div>
+        `,
+      });
+    } catch {
+      // Email service unavailable — still return success to user
+    }
 
     return NextResponse.json({
       success: true,

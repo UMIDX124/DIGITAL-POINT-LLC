@@ -82,30 +82,40 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const submission = await db.founderSubmission.create({
-      data: { name, email, message, utmSource, utmMedium, utmCampaign },
-    });
+    let submissionId = 'no-db';
+    try {
+      const submission = await db.founderSubmission.create({
+        data: { name, email, message, utmSource, utmMedium, utmCampaign },
+      });
+      submissionId = submission.id;
+    } catch {
+      // Database unavailable (e.g. SQLite on serverless) — continue with email
+    }
 
-    await sendEmail({
-      to: 'ADMIN@DIGITALPOINTLLC.COM',
-      subject: `Founder Contact — ${escapeHtml(name)}`,
-      replyTo: email,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0d0815; color: #f4f0f9; padding: 32px; border-radius: 12px;">
-          <h2 style="color: #ff6b9d; margin-top: 0;">New Founder Contact</h2>
-          <table style="width: 100%; border-collapse: collapse;">
-            <tr><td style="padding: 8px 0; color: #b794c7;">Name</td><td style="padding: 8px 0; color: #f4f0f9;">${escapeHtml(name)}</td></tr>
-            <tr><td style="padding: 8px 0; color: #b794c7;">Email</td><td style="padding: 8px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #c77dff;">${escapeHtml(email)}</a></td></tr>
-          </table>
-          <div style="margin-top: 16px; padding: 16px; background: rgba(26,15,46,0.8); border-radius: 8px; border: 1px solid rgba(157,78,221,0.2);">
-            <p style="color: #b794c7; font-size: 12px; margin-top: 0;">Message</p>
-            <p style="color: #f4f0f9; margin-bottom: 0; white-space: pre-wrap;">${escapeHtml(message)}</p>
+    try {
+      await sendEmail({
+        to: 'ADMIN@DIGITALPOINTLLC.COM',
+        subject: `Founder Contact — ${escapeHtml(name)}`,
+        replyTo: email,
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0d0815; color: #f4f0f9; padding: 32px; border-radius: 12px;">
+            <h2 style="color: #ff6b9d; margin-top: 0;">New Founder Contact</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr><td style="padding: 8px 0; color: #b794c7;">Name</td><td style="padding: 8px 0; color: #f4f0f9;">${escapeHtml(name)}</td></tr>
+              <tr><td style="padding: 8px 0; color: #b794c7;">Email</td><td style="padding: 8px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #c77dff;">${escapeHtml(email)}</a></td></tr>
+            </table>
+            <div style="margin-top: 16px; padding: 16px; background: rgba(26,15,46,0.8); border-radius: 8px; border: 1px solid rgba(157,78,221,0.2);">
+              <p style="color: #b794c7; font-size: 12px; margin-top: 0;">Message</p>
+              <p style="color: #f4f0f9; margin-bottom: 0; white-space: pre-wrap;">${escapeHtml(message)}</p>
+            </div>
+            <hr style="border: none; border-top: 1px solid rgba(157,78,221,0.3); margin: 16px 0;" />
+            <p style="color: #b794c7; font-size: 12px; margin-bottom: 0;">Submission ID: ${submissionId}</p>
           </div>
-          <hr style="border: none; border-top: 1px solid rgba(157,78,221,0.3); margin: 16px 0;" />
-          <p style="color: #b794c7; font-size: 12px; margin-bottom: 0;">Submission ID: ${submission.id}</p>
-        </div>
-      `,
-    });
+        `,
+      });
+    } catch {
+      // Email service unavailable — still return success to user
+    }
 
     return NextResponse.json({
       success: true,

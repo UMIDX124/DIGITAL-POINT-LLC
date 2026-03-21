@@ -64,9 +64,11 @@ export const metadata: Metadata = {
   publisher: "Digital Point LLC",
   icons: {
     icon: [
-      { url: "/favicon.jpeg", type: "image/jpeg" },
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.png", sizes: "48x48", type: "image/png" },
     ],
-    apple: "/favicon.jpeg",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     title: "Digital Point LLC | Performance Marketing & Remote Workforce Solutions",

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import SupportChatbot from '@/components/ui-dp/SupportChatbot';
 
 export default function ConversionLayout({
@@ -14,20 +15,18 @@ export default function ConversionLayout({
       {/* Minimal header — logo + back link */}
       <header className="relative z-10 px-6 py-5 flex items-center justify-between max-w-7xl mx-auto w-full">
         <Link href="/" className="flex items-center gap-3 group">
-          <div
-            className="relative w-10 h-10 rounded-xl overflow-hidden"
+          <Image
+            src="/Dp-logo1.png"
+            alt="Digital Point LLC"
+            width={44}
+            height={44}
+            priority
             style={{
-              background: 'linear-gradient(135deg, rgba(139,92,246,0.8) 0%, rgba(124,58,237,0.9) 100%)',
-              boxShadow: '0 4px 12px rgba(139,92,246,0.3)',
+              width: '40px',
+              height: '40px',
+              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5)) drop-shadow(0 8px 16px rgba(139,92,246,0.3))',
             }}
-          >
-            <svg viewBox="0 0 48 48" className="w-full h-full p-2">
-              <path d="M8 8h16a16 16 0 0 1 0 32H8V8z" fill="currentColor" className="text-white/90" />
-              <path d="M20 8h8a8 8 0 0 1 0 16h-8V8z" fill="currentColor" className="text-white" />
-              <path d="M20 20h8a8 8 0 0 1 0 16h-8V20z" fill="currentColor" className="text-white" />
-              <circle cx="38" cy="24" r="4" className="fill-[#ff6b6b]" />
-            </svg>
-          </div>
+          />
           <span className="font-display font-semibold text-base text-white/90 hidden sm:block">
             Digital Point <span className="text-white/40 text-xs">LLC</span>
           </span>

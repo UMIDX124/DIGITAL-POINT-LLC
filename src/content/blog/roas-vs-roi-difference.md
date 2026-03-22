@@ -1,7 +1,7 @@
 ---
 title: "ROAS vs ROI: What's the Difference and Which Should You Track?"
 excerpt: "Understand the critical differences between ROAS and ROI, when to use each metric, and how to avoid the common mistakes that lead to misleading performance reporting."
-category: "ROAS Optimization"
+category: "CAC ROAS Optimization"
 tags: ["ROAS", "ROI", "marketing metrics", "performance measurement", "ad spend"]
 date: "2026-03-16"
 author: "Digital Point LLC"

@@ -1,7 +1,7 @@
 ---
 title: "The Complete Guide to Customer Acquisition Cost Optimization"
 excerpt: "Learn how to calculate, benchmark, and systematically reduce your customer acquisition cost across every paid channel with proven frameworks used by high-growth brands."
-category: "CAC Optimization"
+category: "CAC ROAS Optimization"
 tags: ["CAC", "customer acquisition cost", "cost optimization", "paid media", "growth marketing"]
 date: "2026-03-20"
 author: "Digital Point LLC"

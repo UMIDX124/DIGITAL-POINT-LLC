@@ -1,7 +1,7 @@
 ---
 title: "Customer Acquisition Cost by Industry: 2026 Benchmarks"
 excerpt: "Comprehensive CAC benchmarks for 2026 across 15+ industries, with channel-specific data and strategies to beat your industry average."
-category: "CAC Optimization"
+category: "CAC ROAS Optimization"
 tags: ["CAC benchmarks", "customer acquisition cost", "industry benchmarks", "marketing metrics", "2026 benchmarks"]
 date: "2026-03-19"
 author: "Digital Point LLC"

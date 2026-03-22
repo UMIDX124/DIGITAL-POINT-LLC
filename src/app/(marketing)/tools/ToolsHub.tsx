@@ -35,22 +35,20 @@ const tools = [
     tags: ['Budget', 'Profitability'],
   },
   {
-    slug: 'marketing-attribution-model',
+    slug: 'attribution-model-visualizer',
     title: 'Attribution Model Visualizer',
-    description: 'Compare first-touch, last-touch, linear, and time-decay attribution models side by side.',
+    description: 'Compare first-click, last-click, linear, time-decay, and position-based attribution models side by side.',
     icon: PieChart,
     color: '#7dd3fc',
     tags: ['Attribution', 'Analytics'],
-    comingSoon: true,
   },
   {
-    slug: 'marketing-dashboard-cost-calculator',
+    slug: 'dashboard-cost-calculator',
     title: 'Dashboard Cost Calculator',
     description: 'Estimate the cost of building vs. buying a marketing analytics dashboard for your team.',
     icon: BarChart3,
     color: '#fbbf24',
     tags: ['Reporting', 'Systems'],
-    comingSoon: true,
   },
 ];
 
@@ -85,40 +83,29 @@ export function ToolsHub() {
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {tools.map((tool) => {
               const Icon = tool.icon;
-              const content = (
-                <GlassCard className="p-6 h-full flex flex-col group cursor-pointer relative">
-                  {tool.comingSoon && (
-                    <span className="absolute top-4 right-4 px-2 py-0.5 rounded-full text-[10px] font-medium bg-[rgba(157,78,221,0.2)] text-[#c77dff] border border-[rgba(199,125,255,0.3)]">
-                      Coming Soon
-                    </span>
-                  )}
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-                    style={{ background: `${tool.color}15`, border: `1px solid ${tool.color}25` }}
-                  >
-                    <Icon className="w-6 h-6" style={{ color: tool.color }} />
-                  </div>
-                  <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#e0aaff] transition-colors mb-2">
-                    {tool.title}
-                  </h3>
-                  <p className="text-[#9080a0] text-sm leading-relaxed flex-1 mb-4">{tool.description}</p>
-                  <div className="flex gap-2">
-                    {tool.tags.map((tag) => (
-                      <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] text-[#7c5a8a] bg-[rgba(157,78,221,0.1)]">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </GlassCard>
-              );
-
               return (
                 <StaggerItem key={tool.slug}>
-                  {tool.comingSoon ? (
-                    <div className="opacity-60">{content}</div>
-                  ) : (
-                    <Link href={`/tools/${tool.slug}`}>{content}</Link>
-                  )}
+                  <Link href={`/tools/${tool.slug}`}>
+                    <GlassCard className="p-6 h-full flex flex-col group cursor-pointer relative">
+                      <div
+                        className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+                        style={{ background: `${tool.color}15`, border: `1px solid ${tool.color}25` }}
+                      >
+                        <Icon className="w-6 h-6" style={{ color: tool.color }} />
+                      </div>
+                      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#e0aaff] transition-colors mb-2">
+                        {tool.title}
+                      </h3>
+                      <p className="text-[#9080a0] text-sm leading-relaxed flex-1 mb-4">{tool.description}</p>
+                      <div className="flex gap-2">
+                        {tool.tags.map((tag) => (
+                          <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] text-[#7c5a8a] bg-[rgba(157,78,221,0.1)]">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </GlassCard>
+                  </Link>
                 </StaggerItem>
               );
             })}

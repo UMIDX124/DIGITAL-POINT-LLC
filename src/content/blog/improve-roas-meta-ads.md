@@ -1,7 +1,7 @@
 ---
 title: "How to Improve ROAS on Meta Ads in 2026"
 excerpt: "Proven strategies to improve your Meta Ads ROAS in 2026, including creative frameworks, audience tactics, campaign structures, and measurement approaches that work in the post-iOS world."
-category: "ROAS Optimization"
+category: "CAC ROAS Optimization"
 tags: ["Meta Ads", "Facebook Ads", "ROAS", "social advertising", "Instagram Ads"]
 date: "2026-03-17"
 author: "Digital Point LLC"

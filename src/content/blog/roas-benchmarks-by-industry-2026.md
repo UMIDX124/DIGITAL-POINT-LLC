@@ -1,7 +1,7 @@
 ---
 title: "ROAS Benchmarks by Industry for 2026"
 excerpt: "Comprehensive ROAS benchmarks for 2026 across 12+ industries and all major ad platforms, with data on what top performers achieve and how to get there."
-category: "ROAS Optimization"
+category: "CAC ROAS Optimization"
 tags: ["ROAS benchmarks", "return on ad spend", "industry benchmarks", "paid media", "2026 benchmarks"]
 date: "2026-03-19"
 author: "Digital Point LLC"

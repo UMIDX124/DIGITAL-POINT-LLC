@@ -192,6 +192,18 @@ export function Footer() {
               Home
             </Link>
             <Link
+              href="/privacy-policy"
+              className="text-[#7c5a8a] text-xs hover:text-[#b794c7] transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms-of-service"
+              className="text-[#7c5a8a] text-xs hover:text-[#b794c7] transition-colors"
+            >
+              Terms of Service
+            </Link>
+            <Link
               href="/free-growth-audit"
               className="text-[#7c5a8a] text-xs hover:text-[#b794c7] transition-colors"
             >

@@ -53,14 +53,14 @@ export function Navigation() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[100] px-4 py-3 md:px-6 md:py-4">
-      {/* Apple Liquid Glass Navigation */}
+    <header className="fixed top-0 left-0 right-0 z-[100]">
+      {/* Full-width Glass Navigation */}
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
         className={cn(
-          'relative mx-auto max-w-7xl rounded-2xl transition-all duration-500',
+          'relative w-full transition-all duration-500',
           scrolled
             ? 'shadow-[0_8px_32px_rgba(0,0,0,0.12)]'
             : 'shadow-[0_4px_24px_rgba(0,0,0,0.06)]'
@@ -71,12 +71,12 @@ export function Navigation() {
             : 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 100%)',
           backdropFilter: 'blur(24px) saturate(180%)',
           WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-          border: '1px solid rgba(255,255,255,0.15)',
+          borderBottom: '1px solid rgba(255,255,255,0.1)',
         }}
       >
         {/* Glass reflection highlight */}
         <div
-          className="absolute inset-0 rounded-2xl pointer-events-none overflow-hidden"
+          className="absolute inset-0 pointer-events-none overflow-hidden"
           style={{
             background: 'linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 50%)',
           }}
@@ -84,13 +84,13 @@ export function Navigation() {
 
         {/* Inner glow */}
         <div
-          className="absolute inset-0 rounded-2xl pointer-events-none"
+          className="absolute inset-0 pointer-events-none"
           style={{
             boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.1)',
           }}
         />
 
-        <nav className="relative px-4 md:px-6">
+        <nav className="relative px-4 md:px-8 mx-auto max-w-7xl">
           <div className="flex items-center justify-between h-14 md:h-16">
             {/* Logo — Cosmo mascot sitting on the navbar */}
             <Link

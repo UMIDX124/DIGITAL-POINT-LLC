@@ -9,7 +9,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const navigation = [
-  { name: 'Services', href: '/performance-marketing' },
+  { name: 'Home', href: '/' },
+  { name: 'Performance Marketing', href: '/performance-marketing' },
+  { name: 'Remote Workforce', href: '/remote-workforce' },
+  { name: 'Systems & Reporting', href: '/systems-reporting' },
   { name: 'Case Studies', href: '/case-studies' },
   { name: 'Results', href: '/results' },
   { name: 'Blog', href: '/blog' },
@@ -130,9 +133,8 @@ export function Navigation() {
               </div>
             </Link>
 
-            {/* Desktop Navigation - Liquid Glass Pills */}
-            <div className="hidden lg:flex items-center relative z-10">
-              {/* Nav container with subtle glass effect */}
+            {/* Desktop Navigation */}
+            <div className="hidden xl:flex items-center relative z-10">
               <div
                 className="flex items-center p-1 rounded-xl"
                 style={{
@@ -145,7 +147,7 @@ export function Navigation() {
                     key={item.name}
                     href={item.href}
                     className={cn(
-                      'relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg whitespace-nowrap',
+                      'relative px-3 py-1.5 text-[13px] font-medium transition-all duration-300 rounded-lg whitespace-nowrap',
                       isActive(item.href)
                         ? 'text-white'
                         : 'text-white/50 hover:text-white/80'
@@ -170,7 +172,7 @@ export function Navigation() {
             </div>
 
             {/* CTA Button - Liquid Glass Style */}
-            <div className="hidden lg:block relative z-10 ml-2">
+            <div className="hidden xl:block relative z-10 ml-2">
               <Link href="/free-growth-audit">
                 <motion.span
                   className="relative px-5 py-2.5 text-sm font-semibold text-white rounded-xl overflow-hidden group whitespace-nowrap inline-block"
@@ -197,7 +199,7 @@ export function Navigation() {
 
             {/* Mobile Menu Button */}
             <motion.button
-              className="lg:hidden p-2 rounded-lg text-white/60 hover:text-white transition-colors relative z-10"
+              className="xl:hidden p-2 rounded-lg text-white/60 hover:text-white transition-colors relative z-10"
               style={{
                 background: 'rgba(255,255,255,0.05)',
                 border: '1px solid rgba(255,255,255,0.1)',
@@ -223,7 +225,7 @@ export function Navigation() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="lg:hidden absolute top-full left-4 right-4 mt-2 mx-auto max-w-7xl rounded-2xl overflow-hidden"
+            className="xl:hidden absolute top-full left-4 right-4 mt-2 mx-auto max-w-7xl rounded-2xl overflow-hidden"
             style={{
               background: 'linear-gradient(135deg, rgba(30,30,40,0.95) 0%, rgba(20,20,30,0.98) 100%)',
               backdropFilter: 'blur(24px) saturate(180%)',

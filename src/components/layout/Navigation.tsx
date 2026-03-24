@@ -98,7 +98,7 @@ export function Navigation() {
             {/* Logo — Cosmo mascot sitting on the navbar */}
             <Link
               href="/"
-              className="flex items-center gap-2 group relative z-10 mr-auto"
+              className="flex items-center gap-2 group relative z-10 shrink-0"
             >
               <div className="relative" style={{ marginTop: '-24px', marginBottom: '-22px' }}>
                 {/* White glow behind logo */}
@@ -134,7 +134,7 @@ export function Navigation() {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden xl:flex items-center relative z-10">
+            <div className="hidden xl:flex items-center justify-center flex-1 relative z-10">
               <div
                 className="flex items-center p-1 rounded-xl"
                 style={{

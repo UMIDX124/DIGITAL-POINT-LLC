@@ -17,19 +17,19 @@ const FAQ_RESPONSES: { keywords: string[]; answer: string }[] = [
       'Our **Free Growth Audit** is a no-obligation review of your current marketing setup. We look at:\n\n- Ad account structure & spend efficiency\n- Attribution & tracking gaps\n- Funnel conversion rates\n- Quick wins for revenue growth\n\nYou can request one directly on our website — just visit the **Free Growth Audit** page or I can help you create a support ticket to get started!',
   },
   {
-    keywords: ['founder', 'who founded', 'ceo', 'owner', 'faizan', 'leadership', 'team lead'],
+    keywords: ['founder', 'who founded', 'ceo', 'owner', 'faizan', 'anwaar', 'tayyab', 'leadership', 'team lead', 'co-founder'],
     answer:
-      'Digital Point LLC was founded by **M Faizan Rafiq**, a performance marketing specialist with 8+ years of experience in the digital marketing space. He leads a team of specialists across paid acquisition, creative strategy, analytics, and remote operations.\n\nThe company partners with US-based businesses while delivering from a global team.',
+      'Digital Point LLC was co-founded by **M. Faizan Rafiq** (Founder) and **Anwaar Tayyab** (Co-Founder).\n\n**Faizan** is a performance marketing specialist with 8+ years of experience — he leads paid acquisition, creative strategy, analytics, and remote operations.\n\n**Anwaar** drives strategy, operations, and business development — scaling the agency and ensuring client success.\n\nTogether, they partner with US-based businesses while delivering from a global team.',
   },
   {
     keywords: ['contact', 'reach', 'email', 'phone', 'get in touch', 'talk to someone'],
     answer:
-      'You can reach Digital Point LLC through:\n\n- **Email:** info@digitalpointllc.com\n- **Founder:** admin@digitalpointllc.com\n- **Website:** digitalpointllc.com\n\nOr I can create a support ticket for you right now if you have a specific question or need!',
+      'You can reach Digital Point LLC through:\n\n- **Email:** info@digitalpointllc.com\n- **Co-Founders:** admin@digitalpointllc.com\n- **Website:** digitalpointllc.com\n\nOr I can create a support ticket for you right now if you have a specific question or need!',
   },
   {
     keywords: ['location', 'where', 'based', 'office', 'country', 'pakistan', 'us', 'united states'],
     answer:
-      'Digital Point LLC operates with a **US-based business entity** and delivers through a global remote team. Our founder is based in Pakistan, and we have team members across multiple time zones to ensure seamless coverage for our clients.\n\nWe serve clients primarily in the US, UK, and globally.',
+      'Digital Point LLC operates with a **US-based business entity** and delivers through a global remote team. Our co-founders are based in Pakistan, and we have team members across multiple time zones to ensure seamless coverage for our clients.\n\nWe serve clients primarily in the US, UK, and globally.',
   },
   {
     keywords: ['process', 'how do you work', 'workflow', 'onboarding', 'get started', 'start'],
@@ -69,7 +69,7 @@ const FAQ_RESPONSES: { keywords: string[]; answer: string }[] = [
   {
     keywords: ['ticket', 'support ticket', 'escalate', 'human', 'real person', 'agent', 'speak to someone'],
     answer:
-      'I can create a support ticket for you right away! Just click the **ticket icon** (📄) next to the message input, fill in the details, and our team will get back to you promptly.\n\n- **Normal priority** tickets go to our support team\n- **High priority** tickets go directly to our founder\n\nWould you like to create a ticket now?',
+      'I can create a support ticket for you right away! Just click the **ticket icon** (📄) next to the message input, fill in the details, and our team will get back to you promptly.\n\n- **Normal priority** tickets go to our support team\n- **High priority** tickets go directly to our co-founders\n\nWould you like to create a ticket now?',
   },
 ];
 

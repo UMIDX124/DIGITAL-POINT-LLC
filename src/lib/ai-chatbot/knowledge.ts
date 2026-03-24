@@ -5,7 +5,7 @@ export const COMPANY_KNOWLEDGE = `
 # Digital Point LLC — Company Knowledge Base
 
 ## Company Overview
-Digital Point LLC is a performance marketing and digital operations company founded by M Faizan Rafiq. The company has 8+ years of experience in the digital marketing space. It operates with a US-based business entity and delivers through a global remote team. The founder is based in Pakistan, with team members across multiple time zones.
+Digital Point LLC is a performance marketing and digital operations company co-founded by M. Faizan Rafiq and Anwaar Tayyab. The company has 8+ years of experience in the digital marketing space. It operates with a US-based business entity and delivers through a global remote team. The co-founders are based in Pakistan, with team members across multiple time zones.
 
 ## Core Services
 
@@ -53,11 +53,13 @@ Available at: /free-growth-audit
 
 ## Contact Information
 - General inquiries: info@digitalpointllc.com
-- Founder / high-priority: admin@digitalpointllc.com
+- Co-Founders / high-priority: admin@digitalpointllc.com
 - Website: digitalpointllc.com
 
-## Founder
-M Faizan Rafiq — Performance marketing specialist with 8+ years of experience. Leads a team of specialists across paid acquisition, creative strategy, analytics, and remote operations. Partners with US-based businesses while delivering from a global team.
+## Co-Founders
+M. Faizan Rafiq (Founder) — Performance marketing specialist with 8+ years of experience. Leads a team of specialists across paid acquisition, creative strategy, analytics, and remote operations. Partners with US-based businesses while delivering from a global team.
+
+Anwaar Tayyab (Co-Founder) — Strategy and operations lead with deep expertise in business development, remote team management, and scaling digital agencies. Drives operational excellence and client success across the organization.
 
 ## Results
 Track record spans 8+ years with businesses across e-commerce, SaaS, and professional services. Proven improvements in ROAS, CAC reduction, and revenue growth.

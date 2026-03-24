@@ -29,8 +29,9 @@ export function AuthorBox() {
             Written by
           </p>
           <h3 className="font-display text-lg font-semibold text-white">
-            Digital Point LLC
+            M. Faizan Rafiq & Anwaar Tayyab
           </h3>
+          <p className="text-[#c77dff] text-xs mb-1">Co-Founders, Digital Point LLC</p>
           <p className="text-[#b794c7] text-sm leading-relaxed mt-2">
             The Digital Point team specializes in performance marketing,
             attribution, and revenue operations for growth-stage businesses.

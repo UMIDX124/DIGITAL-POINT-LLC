@@ -58,11 +58,11 @@ export function FounderSection() {
                       WebkitTextFillColor: 'transparent',
                     }}
                   >
-                    Founder-Led
+                    Co-Founder Led
                   </div>
-                  
+
                   <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
-                    Every engagement starts with a founder review.
+                    Every engagement starts with a co-founder review.
                   </h2>
                   
                   <p className="text-[#b794c7] leading-relaxed mb-6">

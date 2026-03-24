@@ -9,14 +9,23 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const navigation = [
+  { name: 'Services', href: '/performance-marketing' },
+  { name: 'Case Studies', href: '/case-studies' },
+  { name: 'Results', href: '/results' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
+];
+
+const mobileNavigation = [
   { name: 'Home', href: '/' },
   { name: 'Performance Marketing', href: '/performance-marketing' },
   { name: 'Remote Workforce', href: '/remote-workforce' },
   { name: 'Systems & Reporting', href: '/systems-reporting' },
-  { name: 'Results', href: '/results' },
   { name: 'Case Studies', href: '/case-studies' },
-  { name: 'About', href: '/about' },
+  { name: 'Results', href: '/results' },
   { name: 'Blog', href: '/blog' },
+  { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
 ];
 
@@ -227,7 +236,7 @@ export function Navigation() {
             />
 
             <div className="relative p-4 space-y-1">
-              {navigation.map((item, index) => (
+              {mobileNavigation.map((item, index) => (
                 <motion.div
                   key={item.name}
                   initial={{ opacity: 0, x: -10 }}

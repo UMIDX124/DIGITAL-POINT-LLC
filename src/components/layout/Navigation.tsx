@@ -97,23 +97,28 @@ export function Navigation() {
               href="/"
               className="flex items-center gap-2 group relative z-10"
             >
-              <div className="relative" style={{ marginTop: '-20px', marginBottom: '-18px' }}>
+              <div className="relative" style={{ marginTop: '-24px', marginBottom: '-22px' }}>
+                {/* White glow behind logo */}
+                <div
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full"
+                  style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 40%, transparent 70%)' }}
+                />
                 {/* Shadow on the navbar surface */}
                 <div
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-2 rounded-full blur-sm"
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-10 h-2 rounded-full blur-sm"
                   style={{ background: 'rgba(0,0,0,0.4)' }}
                 />
                 <Image
                   src="/Dp-logo1.png"
                   alt="Digital Point LLC"
-                  width={44}
-                  height={44}
+                  width={56}
+                  height={56}
                   priority
                   className="relative z-10 transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1"
                   style={{
-                    width: '40px',
+                    width: '52px',
                     height: 'auto',
-                    filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.6)) drop-shadow(0 2px 10px rgba(139,92,246,0.4))',
+                    filter: 'drop-shadow(0 0 12px rgba(255,255,255,0.35)) drop-shadow(0 4px 8px rgba(0,0,0,0.6)) drop-shadow(0 2px 12px rgba(139,92,246,0.5))',
                   }}
                 />
               </div>

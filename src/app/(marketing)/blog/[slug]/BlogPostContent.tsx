@@ -3,11 +3,37 @@
 import Link from 'next/link';
 import { ArrowLeft, Clock, Calendar, Tag } from 'lucide-react';
 import { Section, Container, FadeUp } from '@/components/ui-dp/AnimatedElements';
-import { GrowthAuditCTA } from '@/components/seo/GrowthAuditCTA';
+
 import { InternalLinks } from '@/components/seo/InternalLinks';
 import { NewsletterOptIn } from '@/components/seo/NewsletterOptIn';
+import { InContentCTA } from '@/components/blog/InContentCTA';
+import { LeadMagnetBanner } from '@/components/blog/LeadMagnetBanner';
+import { AuthorBox } from '@/components/blog/AuthorBox';
 import type { BlogPost } from '@/lib/blog';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
+
+function splitHtmlAtMiddle(html: string): [string, string] {
+  // Find all closing </p> tag positions
+  const closingTags: number[] = [];
+  const regex = /<\/p>/gi;
+  let match: RegExpExecArray | null;
+  while ((match = regex.exec(html)) !== null) {
+    closingTags.push(match.index + match[0].length);
+  }
+  if (closingTags.length < 2) return [html, ''];
+  // Pick the </p> closest to the midpoint
+  const mid = html.length / 2;
+  let bestIdx = closingTags[0];
+  let bestDist = Math.abs(bestIdx - mid);
+  for (const pos of closingTags) {
+    const dist = Math.abs(pos - mid);
+    if (dist < bestDist) {
+      bestDist = dist;
+      bestIdx = pos;
+    }
+  }
+  return [html.slice(0, bestIdx), html.slice(bestIdx)];
+}
 
 interface BlogPostContentProps {
   post: BlogPost;
@@ -18,6 +44,18 @@ interface BlogPostContentProps {
 }
 
 export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts }: BlogPostContentProps) {
+  const [firstHalf, secondHalf] = splitHtmlAtMiddle(htmlContent);
+
+  const proseClasses = `prose prose-invert prose-purple max-w-none
+                  [&_h2]:font-display [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-white [&_h2]:mt-10 [&_h2]:mb-4
+                  [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-white [&_h3]:mt-8 [&_h3]:mb-3
+                  [&_p]:text-[#b794c7] [&_p]:leading-relaxed [&_p]:mb-4
+                  [&_strong]:text-white
+                  [&_ul]:my-4 [&_li]:text-[#b794c7] [&_li]:mb-1
+                  [&_code]:text-[#e0aaff]
+                  [&_a]:text-[#c77dff] [&_a]:hover:text-[#e0aaff]
+                  [&_hr]:border-[rgba(157,78,221,0.15)] [&_hr]:my-8`;
+
   return (
     <>
       {/* Hero */}
@@ -53,6 +91,12 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
                 <Clock className="w-3 h-3" />
                 {post.readTime}
               </span>
+              {post.lastModified && post.lastModified !== post.date && (
+                <span className="flex items-center gap-1 text-[#7c5a8a] text-xs">
+                  <Calendar className="w-3 h-3" />
+                  Updated: {new Date(post.lastModified).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                </span>
+              )}
             </div>
 
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mt-4 max-w-4xl">
@@ -69,18 +113,21 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-10 max-w-5xl mx-auto">
             {/* Main content */}
             <FadeUp>
-              <article
-                className="prose prose-invert prose-purple max-w-none
-                  [&_h2]:font-display [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-white [&_h2]:mt-10 [&_h2]:mb-4
-                  [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-white [&_h3]:mt-8 [&_h3]:mb-3
-                  [&_p]:text-[#b794c7] [&_p]:leading-relaxed [&_p]:mb-4
-                  [&_strong]:text-white
-                  [&_ul]:my-4 [&_li]:text-[#b794c7] [&_li]:mb-1
-                  [&_code]:text-[#e0aaff]
-                  [&_a]:text-[#c77dff] [&_a]:hover:text-[#e0aaff]
-                  [&_hr]:border-[rgba(157,78,221,0.15)] [&_hr]:my-8"
-                dangerouslySetInnerHTML={{ __html: htmlContent }}
-              />
+              <article>
+                <div
+                  className={proseClasses}
+                  dangerouslySetInnerHTML={{ __html: firstHalf }}
+                />
+
+                {secondHalf && <InContentCTA category={post.category} />}
+
+                {secondHalf && (
+                  <div
+                    className={proseClasses}
+                    dangerouslySetInnerHTML={{ __html: secondHalf }}
+                  />
+                )}
+              </article>
 
               {/* FAQ Section if present */}
               {post.faqs && post.faqs.length > 0 && (
@@ -102,10 +149,11 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
                 <InternalLinks content={post.content} excludeSlug={post.slug} />
               </div>
 
-              {/* CTA */}
-              <div className="mt-10">
-                <GrowthAuditCTA variant="banner" />
-              </div>
+              {/* Lead magnet banner */}
+              <LeadMagnetBanner />
+
+              {/* Author E-E-A-T box */}
+              <AuthorBox />
 
               {/* Related posts */}
               {relatedPosts.length > 0 && (

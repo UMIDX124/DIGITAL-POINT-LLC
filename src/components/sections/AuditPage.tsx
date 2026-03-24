@@ -317,7 +317,7 @@ export function AuditPage() {
                         Where should we send your audit?
                       </h2>
                       <p className="text-[#b794c7] text-sm mb-6">
-                        A founder will personally review your setup.
+                        A co-founder will personally review your setup.
                       </p>
 
                       <form onSubmit={handleSubmit} className="space-y-5">
@@ -409,7 +409,7 @@ export function AuditPage() {
                       </h2>
 
                       <p className="text-[#b794c7] mb-6 max-w-sm mx-auto">
-                        Thank you, {formData.name.split(' ')[0]}! A founder will review your submission and reach out within 24-48 hours.
+                        Thank you, {formData.name.split(' ')[0]}! A co-founder will review your submission and reach out within 24-48 hours.
                       </p>
 
                       <div className="flex items-center justify-center gap-4 text-sm">
@@ -464,11 +464,11 @@ export function AuditPage() {
                 <div className="flex items-center gap-3 mb-2">
                   <User className="w-5 h-5 text-[#c77dff]" />
                   <h3 className="font-display font-semibold text-white">
-                    Founder-Led
+                    Co-Founder Led
                   </h3>
                 </div>
                 <p className="text-[#b794c7] text-sm mb-4">
-                  Every audit is reviewed by a founder.
+                  Every audit is reviewed by a co-founder.
                 </p>
                 <a
                   href="mailto:info@digitalpointllc.com"

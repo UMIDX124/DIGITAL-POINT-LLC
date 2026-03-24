@@ -19,10 +19,10 @@ const contactMethods = [
   },
   {
     icon: Mail,
-    title: 'Founder Direct',
+    title: 'Co-Founders Direct',
     value: 'admin@digitalpointllc.com',
     href: 'mailto:admin@digitalpointllc.com',
-    description: 'For executive-level conversations and strategic partnerships.',
+    description: 'Reach M. Faizan Rafiq & Anwaar Tayyab for strategic partnerships.',
   },
   {
     icon: Linkedin,

@@ -101,7 +101,7 @@ export function AboutPage() {
           <SectionHeader
             eyebrow="Our Story"
             title="From one marketer to a full-service growth engine"
-            description="Digital Point started when our founder saw the same pattern everywhere — businesses spending on ads but unable to see what was working. We set out to fix that."
+            description="Digital Point started when our co-founders, M. Faizan Rafiq and Anwaar Tayyab, saw the same pattern everywhere — businesses spending on ads but unable to see what was working. We set out to fix that."
           />
 
           <div className="relative max-w-3xl mx-auto">

@@ -306,7 +306,7 @@ function FounderContactForm() {
           <CheckCircle className="w-7 h-7 text-green-400" />
         </motion.div>
         <h3 className="font-display text-xl font-bold text-white mb-2">Message Sent!</h3>
-        <p className="text-[#b794c7] text-sm">A founder will get back to you within 24 hours.</p>
+        <p className="text-[#b794c7] text-sm">A co-founder will get back to you within 24 hours.</p>
       </div>
     );
   }
@@ -464,7 +464,7 @@ export function FounderFormSection() {
                   {[
                     { icon: Sparkles, text: 'Free. No pitch.' },
                     { icon: Clock, text: '24–48hr response' },
-                    { icon: Shield, text: 'Founder-reviewed' },
+                    { icon: Shield, text: 'Co-Founder reviewed' },
                   ].map(({ icon: Icon, text }) => (
                     <span
                       key={text}
@@ -521,7 +521,7 @@ export function FounderFormSection() {
                     <MessageSquare className="w-5 h-5 text-[#ff6b9d]" />
                   </div>
                   <div>
-                    <h3 className="font-display text-lg font-bold text-white">Talk to M Faizan Rafiq</h3>
+                    <h3 className="font-display text-lg font-bold text-white">Talk to Our Co-Founders</h3>
                   </div>
                 </div>
                 <p className="text-[#b794c7] text-sm mb-5">

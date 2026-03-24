@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     "revenue systems",
     "RevOps support",
     "outsourced marketing operations",
-    "founder-led growth audit",
+    "co-founder-led growth audit",
     "CAC optimization",
     "ROAS improvement",
     "lead generation agency",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     "Meta ads agency",
     "Google ads agency",
   ],
-  authors: [{ name: "Digital Point LLC" }],
+  authors: [{ name: "M. Faizan Rafiq" }, { name: "Anwaar Tayyab" }],
   creator: "Digital Point LLC",
   publisher: "Digital Point LLC",
   icons: {
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Digital Point LLC | Performance Marketing & Remote Workforce Solutions",
     description:
-      "Scale revenue with performance marketing, remote execution, and systems that actually hold. Founder-led growth audits available.",
+      "Scale revenue with performance marketing, remote execution, and systems that actually hold. Co-founder-led growth audits available.",
     url: "https://digitalpointllc.com",
     siteName: "Digital Point LLC",
     type: "website",
@@ -148,7 +148,19 @@ export default function RootLayout({
                 "@type": "PostalAddress",
                 addressCountry: "US",
               },
-              foundingDate: "2023",
+              foundingDate: "2017",
+              founder: [
+                {
+                  "@type": "Person",
+                  name: "M. Faizan Rafiq",
+                  jobTitle: "Founder",
+                },
+                {
+                  "@type": "Person",
+                  name: "Anwaar Tayyab",
+                  jobTitle: "Co-Founder",
+                },
+              ],
             }),
           }}
         />

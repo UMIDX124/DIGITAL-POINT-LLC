@@ -1,13 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Globe, Users, Target, TrendingUp, Shield, Clock, Award } from 'lucide-react';
+import { ArrowRight, Globe, Users, Target, TrendingUp, Shield, Clock } from 'lucide-react';
 import {
   Section, Container, SectionHeader, FadeUp, GlassCard,
   StaggerContainer, StaggerItem, SignalPoint, MetricDisplay
 } from '@/components/ui-dp/AnimatedElements';
 import Link from 'next/link';
-import { GooglePartnerBadge } from '@/components/GooglePartnerBadge';
 
 const milestones = [
   { year: '2017', title: 'Founded', description: 'Digital Point LLC established with a focus on performance marketing for growth-stage businesses.' },
@@ -150,33 +149,6 @@ export function AboutPage() {
               </StaggerItem>
             ))}
           </StaggerContainer>
-        </Container>
-      </Section>
-
-      {/* Certifications & Partnerships */}
-      <Section>
-        <Container>
-          <SectionHeader
-            eyebrow="Certifications"
-            title="Industry-recognized partnerships"
-          />
-
-          <FadeUp>
-            <div className="max-w-2xl mx-auto">
-              <GlassCard className="p-8 md:p-10 flex flex-col sm:flex-row items-center gap-6">
-                <GooglePartnerBadge size="lg" />
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <Award className="w-5 h-5 text-[#4285F4]" />
-                    <h3 className="font-display text-lg font-semibold text-white">Google Partner</h3>
-                  </div>
-                  <p className="text-[#b794c7] text-sm leading-relaxed">
-                    Digital Point LLC is a certified Google Partner, meeting Google&apos;s requirements for ad spend management, certification, and performance. This partnership gives our clients access to advanced Google Ads features, dedicated support, and proven expertise in paid search and display advertising.
-                  </p>
-                </div>
-              </GlassCard>
-            </div>
-          </FadeUp>
         </Container>
       </Section>
 

@@ -1,8 +1,6 @@
 import { Linkedin, Mail, ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { GooglePartnerBadge } from '@/components/GooglePartnerBadge';
-
 const footerLinks = {
   services: [
     { name: 'Performance Marketing', href: '/performance-marketing' },
@@ -186,7 +184,6 @@ export function Footer() {
             <p className="text-[#7c5a8a] text-xs">
               &copy; {currentYear} Digital Point LLC. All rights reserved.
             </p>
-            <GooglePartnerBadge size="sm" />
           </div>
           <div className="flex items-center gap-6">
             <Link

@@ -67,21 +67,6 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
             {author.name}
           </h3>
           <p className="text-[#c77dff] text-xs mb-1">{author.title}, Digital Point LLC</p>
-          <span
-            className="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full mt-1"
-            style={{
-              background: 'rgba(66, 133, 244, 0.1)',
-              border: '1px solid rgba(66, 133, 244, 0.25)',
-              color: '#4285F4',
-            }}
-          >
-            <svg width="10" height="10" viewBox="0 0 100 120" fill="none" aria-hidden="true">
-              <path d="M50 4L92 22V56C92 82 72 104 50 112C28 104 8 82 8 56V22L50 4Z" fill="#4285F4" />
-              <path d="M36 58L46 68L66 44" stroke="white" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-            </svg>
-            Google Certified Partner
-          </span>
-
           {/* Expertise tags */}
           <div className="flex flex-wrap gap-2 mt-2">
             {author.expertise.map((tag) => (

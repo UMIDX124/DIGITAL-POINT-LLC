@@ -149,6 +149,17 @@ export default function RootLayout({
                 "@type": "PostalAddress",
                 addressCountry: "US",
               },
+              hasCredential: {
+                "@type": "EducationalOccupationalCredential",
+                name: "Google Partner",
+                credentialCategory: "certification",
+                recognizedBy: {
+                  "@type": "Organization",
+                  name: "Google",
+                  url: "https://www.google.com",
+                },
+                url: "https://www.google.com/partners/about/",
+              },
               foundingDate: "2017",
               founder: [
                 {

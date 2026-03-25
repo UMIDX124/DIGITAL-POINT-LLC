@@ -3,8 +3,8 @@ title: "Meta Ads Strategy: How to Structure Campaigns for Maximum ROAS"
 excerpt: "Learn how to structure Meta ad campaigns for maximum ROAS with proven frameworks for campaign architecture, audience targeting, and budget allocation."
 category: "Paid Ads Benchmarks"
 tags: ["meta ads", "facebook advertising", "ROAS optimization", "campaign structure"]
-date: "2025-11-03"
-author: "Digital Point LLC"
+date: "2026-01-01"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is a good ROAS for Meta ads?"
     answer: "A good ROAS varies by industry, but most e-commerce brands target 3-5x, while lead gen businesses aim for 5-10x. The key is measuring ROAS against your actual profit margins, not just revenue."

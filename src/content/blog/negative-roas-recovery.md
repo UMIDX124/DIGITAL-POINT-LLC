@@ -3,8 +3,8 @@ title: "Negative ROAS? How to Turn Around Unprofitable Ad Campaigns"
 excerpt: "A step-by-step recovery plan for ad campaigns that are losing money, with diagnostic frameworks and proven turnaround strategies across Google and Meta Ads."
 category: "CAC ROAS Optimization"
 tags: ["ROAS recovery", "unprofitable ads", "ad campaign optimization", "loss recovery", "paid media"]
-date: "2025-01-23"
-author: "Digital Point LLC"
+date: "2026-01-10"
+author: "Anwaar Tayyab"
 faqs:
   - question: "Should I pause unprofitable campaigns immediately?"
     answer: "Not always. First, verify your tracking is accurate — many 'unprofitable' campaigns are actually converting but the conversions aren't being tracked properly. Second, check the attribution window — some campaigns need a longer lookback period to capture delayed conversions. Third, evaluate the campaign's role in your funnel — a prospecting campaign may look unprofitable on last-click but is driving revenue that shows up in your retargeting and brand campaigns. If after these checks the campaign is genuinely unprofitable, pause it or restructure it rather than letting it continue to bleed money."

@@ -3,8 +3,8 @@ title: "Dynamic Creative Optimization (DCO) Guide"
 excerpt: "Master Dynamic Creative Optimization to deliver personalized ads at scale. Learn DCO strategy, setup, and best practices for higher ROAS in 2026."
 category: "CAC ROAS Optimization"
 tags: ["dynamic creative optimization", "DCO", "personalized ads", "ad creative", "programmatic advertising"]
-date: "2025-01-06"
-author: "Digital Point LLC"
+date: "2025-10-20"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What is Dynamic Creative Optimization (DCO)?"
     answer: "DCO is an advertising technology that automatically assembles personalized ad creatives in real-time by combining different elements (headlines, images, CTAs, descriptions) based on user data, context, and performance signals. It serves the most relevant ad version to each user."

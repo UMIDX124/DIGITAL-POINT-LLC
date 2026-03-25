@@ -3,8 +3,8 @@ title: "Conversion Tracking Setup: Complete Technical Guide"
 excerpt: "Step-by-step guide to setting up conversion tracking across Google Ads, Meta, GA4, and your CRM. Fix tracking gaps that cost you 20-40% in lost attribution."
 category: "Marketing Analytics"
 tags: ["conversion tracking", "tracking setup", "Google Ads tracking", "Meta pixel", "server-side tracking"]
-date: "2024-10-28"
-author: "Digital Point LLC"
+date: "2025-09-26"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What is conversion tracking and why does it matter?"
     answer: "Conversion tracking is the process of measuring specific actions users take after interacting with your ads or website—purchases, form submissions, phone calls, app installs. Without it, you can't measure ROAS, optimize campaigns, or make data-driven budget decisions. Broken tracking is the #1 cause of poor marketing performance."

@@ -3,8 +3,8 @@ title: "The Complete Guide to Marketing Attribution in 2026"
 excerpt: "Master marketing attribution with this comprehensive guide covering models, tools, implementation, and optimization strategies for modern marketers."
 category: "Marketing Attribution"
 tags: ["marketing attribution", "attribution models", "multi-touch attribution", "performance marketing"]
-date: "2025-01-01"
-author: "Digital Point LLC"
+date: "2025-09-17"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What is marketing attribution and why does it matter?"
     answer: "Marketing attribution is the process of identifying which marketing touchpoints contribute to conversions. It matters because it helps you understand which channels and campaigns drive revenue, enabling smarter budget allocation and higher ROAS."

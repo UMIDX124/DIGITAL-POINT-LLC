@@ -3,8 +3,8 @@ title: "How to Scale Facebook Ads Without Killing Performance"
 excerpt: "Master the art of scaling Facebook ads profitably with proven strategies for horizontal and vertical scaling, budget management, and creative refresh."
 category: "Paid Ads Benchmarks"
 tags: ["facebook ads", "scaling ads", "ad budget", "campaign optimization"]
-date: "2025-11-24"
-author: "Digital Point LLC"
+date: "2026-02-27"
+author: "Anwaar Tayyab"
 faqs:
   - question: "How fast can I scale Facebook ads?"
     answer: "The safe scaling rate is 20-25% budget increases every 3-4 days. Faster scaling (50-100% increases) often triggers learning phase resets and temporary CPA spikes. For rapid scaling, horizontal methods like duplicating winning ad sets are safer than vertical budget increases."

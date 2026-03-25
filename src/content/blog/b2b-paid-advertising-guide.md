@@ -3,8 +3,8 @@ title: "B2B Paid Advertising Guide: Channels, Tactics, and Benchmarks"
 excerpt: "B2B paid advertising requires different strategies than B2C. Learn which channels work, what benchmarks to expect, and how to build a B2B paid media strategy that generates pipeline."
 category: "Paid Ads Benchmarks"
 tags: ["B2B advertising", "B2B marketing", "LinkedIn Ads", "lead generation", "demand generation"]
-date: "2025-08-28"
-author: "Digital Point LLC"
+date: "2025-08-24"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What is the best paid advertising channel for B2B?"
     answer: "It depends on your deal size and sales cycle. For most B2B companies, Google Search is the highest-intent channel (capturing active demand), LinkedIn provides the best professional targeting (reaching specific titles and companies), and Meta offers the lowest CPMs for awareness and retargeting. The optimal mix for most B2B companies spending $20K+/month is: 40-50% Google Search, 20-30% LinkedIn, 15-20% Meta retargeting, and 10-15% display/content."

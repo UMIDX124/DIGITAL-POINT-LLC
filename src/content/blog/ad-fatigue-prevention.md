@@ -3,8 +3,8 @@ title: "Ad Fatigue: How to Detect, Prevent, and Fix It"
 excerpt: "Learn to identify ad fatigue before it destroys your campaign performance, with detection frameworks, prevention strategies, and recovery playbooks for every major ad platform."
 category: "Paid Ads Benchmarks"
 tags: ["ad fatigue", "creative refresh", "ad performance", "campaign optimization", "creative strategy"]
-date: "2025-10-28"
-author: "Digital Point LLC"
+date: "2025-08-08"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is ad fatigue and why does it happen?"
     answer: "Ad fatigue occurs when your target audience sees the same ad too many times, causing engagement to decline and costs to increase. It happens because ad platforms show your ads to the most responsive segments of your audience first. Over time, those segments become saturated, and the platform serves ads to less responsive users or shows the same users your ad repeatedly. The result is declining CTR, increasing CPC and CPM, and decreasing ROAS. Ad fatigue is an inevitable consequence of running any campaign long enough — the key is managing it proactively."

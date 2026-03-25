@@ -3,8 +3,8 @@ title: "Seasonal Marketing Strategy: Planning Paid Campaigns Around Peak Periods
 excerpt: "Learn how to plan, budget, and execute paid advertising campaigns around seasonal peaks to maximize revenue during your most important selling periods."
 category: "Paid Ads Benchmarks"
 tags: ["seasonal marketing", "holiday advertising", "campaign planning", "budget planning", "Q4 marketing"]
-date: "2025-12-05"
-author: "Digital Point LLC"
+date: "2026-03-01"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "How far in advance should I plan seasonal campaigns?"
     answer: "Start planning major seasonal campaigns 8-12 weeks before the peak period and launch campaigns 4-6 weeks before peak. For Q4/holiday campaigns, begin planning in August, launch awareness campaigns in September, and ramp spending in October. For smaller seasonal events (Back to School, Valentine's Day), 4-6 weeks of planning is sufficient. The earlier you start, the more time you have to build audiences, test creative, and optimize before the expensive peak period."

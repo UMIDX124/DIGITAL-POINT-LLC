@@ -57,7 +57,7 @@ Available at: /free-growth-audit
 - Website: digitalpointllc.com
 
 ## Co-Founders
-M. Faizan Rafiq (Founder) — Performance marketing specialist with 8+ years of experience. Leads a team of specialists across paid acquisition, creative strategy, analytics, and remote operations. Partners with US-based businesses while delivering from a global team.
+M. Faizan Rafiq (Co-Founder) — Performance marketing specialist with 8+ years of experience. Leads a team of specialists across paid acquisition, creative strategy, analytics, and remote operations. Partners with US-based businesses while delivering from a global team.
 
 Anwaar Tayyab (Co-Founder) — Strategy and operations lead with deep expertise in business development, remote team management, and scaling digital agencies. Drives operational excellence and client success across the organization.
 

@@ -3,8 +3,8 @@ title: "The Complete Guide to Customer Acquisition Cost Optimization"
 excerpt: "Learn how to calculate, benchmark, and systematically reduce your customer acquisition cost across every paid channel with proven frameworks used by high-growth brands."
 category: "CAC ROAS Optimization"
 tags: ["CAC", "customer acquisition cost", "cost optimization", "paid media", "growth marketing"]
-date: "2025-05-20"
-author: "Digital Point LLC"
+date: "2025-09-14"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is a good customer acquisition cost?"
     answer: "A good CAC depends on your industry and business model. For SaaS companies, a healthy CAC is typically one-third of your customer lifetime value (LTV). For e-commerce, strong performers keep CAC below 30% of average order value for first purchases. The key metric is your CAC-to-LTV ratio — aim for 3:1 or better, meaning your customers generate at least three times what you spent to acquire them."

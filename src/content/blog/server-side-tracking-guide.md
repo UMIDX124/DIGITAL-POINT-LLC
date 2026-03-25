@@ -3,8 +3,8 @@ title: "Server-Side Tracking: The Complete Implementation Guide"
 excerpt: "Learn how to implement server-side tracking to recover lost conversion data, improve attribution accuracy, and future-proof your marketing measurement."
 category: "Marketing Attribution"
 tags: ["server-side tracking", "CAPI", "conversion tracking", "privacy", "performance marketing"]
-date: "2025-12-01"
-author: "Digital Point LLC"
+date: "2026-03-03"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is server-side tracking?"
     answer: "Server-side tracking sends marketing events (page views, purchases, leads) directly from your server to ad platforms and analytics tools, rather than relying on browser-based pixels. This bypasses ad blockers, browser privacy restrictions, and cookie limitations."

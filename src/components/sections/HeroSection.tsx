@@ -445,7 +445,7 @@ export function HeroSection() {
               {[
                 '8+ Years',
                 'No sales call',
-                'Founder review',
+                'Co-Founder review',
                 'Clear next steps',
               ].map((chip, idx) => (
                 <motion.span

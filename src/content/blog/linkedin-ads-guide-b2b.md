@@ -3,8 +3,8 @@ title: "LinkedIn Ads for B2B: Complete Strategy Guide"
 excerpt: "The definitive guide to LinkedIn advertising for B2B companies, covering targeting strategies, ad formats, campaign structures, benchmarks, and optimization tactics."
 category: "Paid Ads Benchmarks"
 tags: ["LinkedIn Ads", "B2B advertising", "B2B marketing", "LinkedIn strategy", "lead generation"]
-date: "2025-04-18"
-author: "Digital Point LLC"
+date: "2025-12-04"
+author: "Anwaar Tayyab"
 faqs:
   - question: "Are LinkedIn Ads worth the high CPC?"
     answer: "For B2B companies selling products or services with an average contract value above $5,000, LinkedIn Ads are almost always worth the high CPC. The platform's professional targeting capabilities are unmatched — you can reach exact job titles, company sizes, industries, and seniority levels. While the CPC ($6-$15) is 3-5x higher than Meta, the lead quality is significantly better for B2B. When measured on cost per qualified opportunity or cost per customer, LinkedIn often outperforms cheaper platforms. For B2B companies with lower ACVs (under $5,000), LinkedIn can still work but requires careful optimization and more creative strategies to make the economics work."

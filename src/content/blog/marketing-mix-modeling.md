@@ -3,8 +3,8 @@ title: "Marketing Mix Modeling: How to Measure True Channel Impact"
 excerpt: "Understand how Marketing Mix Modeling (MMM) helps you allocate budgets across channels by measuring incremental impact, not just last-click attribution."
 category: "Marketing Analytics"
 tags: ["marketing mix modeling", "MMM", "attribution", "budget allocation", "media planning"]
-date: "2025-06-16"
-author: "Digital Point LLC"
+date: "2025-12-20"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What is the difference between Marketing Mix Modeling and multi-touch attribution?"
     answer: "Marketing Mix Modeling (MMM) uses aggregate historical data and statistical regression to measure the incremental impact of each marketing channel on business outcomes. It works with top-down data and doesn't require user-level tracking. Multi-touch attribution (MTA) tracks individual user journeys across touchpoints to assign credit to specific interactions. MMM is better for strategic budget allocation across channels and is privacy-compliant, while MTA is better for tactical optimization within channels. In 2026, most sophisticated marketing teams use both approaches together for a complete picture."

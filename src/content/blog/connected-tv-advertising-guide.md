@@ -3,8 +3,8 @@ title: "Connected TV (CTV) Advertising: Strategy and Benchmarks for 2026"
 excerpt: "CTV advertising is the fastest-growing channel in digital marketing. Learn the strategy, benchmarks, targeting options, and measurement approaches you need to succeed."
 category: "Paid Ads Benchmarks"
 tags: ["CTV advertising", "connected TV", "OTT advertising", "streaming ads", "video advertising"]
-date: "2026-01-12"
-author: "Digital Point LLC"
+date: "2025-09-19"
+author: "Anwaar Tayyab"
 faqs:
   - question: "How much does CTV advertising cost?"
     answer: "CTV CPMs typically range from $20-$45 for programmatic inventory and $30-$65+ for premium direct buys. The average CPM across all CTV inventory in 2026 is approximately $32. While higher than display or social CPMs, CTV delivers a non-skippable, full-screen experience in a lean-back environment, which drives higher brand recall and conversion rates. For most advertisers, the effective cost per completed view is actually competitive with YouTube and social video."

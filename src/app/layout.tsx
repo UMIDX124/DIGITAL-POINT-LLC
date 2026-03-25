@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import CookieConsent from "@/components/CookieConsent";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -153,7 +154,7 @@ export default function RootLayout({
                 {
                   "@type": "Person",
                   name: "M. Faizan Rafiq",
-                  jobTitle: "Founder",
+                  jobTitle: "Co-Founder",
                 },
                 {
                   "@type": "Person",
@@ -273,6 +274,7 @@ export default function RootLayout({
       >
         {children}
         <Toaster />
+        <CookieConsent />
         <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9780328939631989"
           strategy="afterInteractive"

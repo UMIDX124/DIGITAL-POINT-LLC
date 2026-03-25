@@ -3,8 +3,8 @@ title: "ROAS Benchmarks by Industry for 2026"
 excerpt: "Comprehensive ROAS benchmarks for 2026 across 12+ industries and all major ad platforms, with data on what top performers achieve and how to get there."
 category: "CAC ROAS Optimization"
 tags: ["ROAS benchmarks", "return on ad spend", "industry benchmarks", "paid media", "2026 benchmarks"]
-date: "2025-02-13"
-author: "Digital Point LLC"
+date: "2026-02-17"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is the average ROAS across all industries?"
     answer: "The overall average ROAS across all industries and channels in 2026 is approximately 2.5-3.5x. However, this number varies enormously by industry, channel, and campaign type. Brand search campaigns often achieve 10-20x ROAS, while prospecting campaigns on social may deliver 1.5-3x. E-commerce tends to have higher measurable ROAS because purchases happen online and are easily tracked. B2B companies often see lower apparent ROAS because their conversion events (leads, demos) require additional steps before revenue is generated."

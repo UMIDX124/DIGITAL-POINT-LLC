@@ -3,8 +3,8 @@ title: "Email Marketing Attribution: Complete Guide"
 excerpt: "Learn how to properly attribute revenue to email marketing. Solve over-attribution, set correct windows, and measure email's true impact on conversions."
 category: "Marketing Attribution"
 tags: ["email attribution", "email marketing", "marketing attribution", "email ROI", "email analytics"]
-date: "2025-06-10"
-author: "Digital Point LLC"
+date: "2025-10-24"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "Why does email get too much attribution credit?"
     answer: "Email often gets over-attributed because it touches customers at multiple points in the buying journey. Someone who was already going to purchase may open an email and click through, giving email credit for a conversion it didn't cause. This is especially common with last-click attribution and broad attribution windows."

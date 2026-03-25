@@ -3,8 +3,8 @@ title: "Demand Generation Strategy: Create Pipeline at Scale"
 excerpt: "Build a demand generation strategy that creates qualified pipeline at scale through multi-channel campaigns, content-led acquisition, and systematic nurturing."
 category: "Growth Systems"
 tags: ["demand generation", "pipeline generation", "B2B marketing", "lead generation", "content marketing"]
-date: "2025-03-24"
-author: "Digital Point LLC"
+date: "2025-10-15"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What is the difference between demand generation and lead generation?"
     answer: "Lead generation focuses on capturing contact information from people who are already interested (form fills, gated content, demo requests). Demand generation is broader: it creates the interest in the first place through education, thought leadership, and awareness, then captures and converts that demand into pipeline. Think of it this way: lead gen catches fish, demand gen stocks the pond. A demand gen strategy includes both awareness-building activities (ungated content, social media, podcasts, events) and lead capture activities (gated assets, demos, free tools). The most effective B2B marketing programs invest 40-60% of budget in demand creation (awareness) and 40-60% in demand capture (lead gen), though the exact split depends on your market maturity and brand recognition."

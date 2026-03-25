@@ -3,8 +3,8 @@ title: "Google Ads Benchmarks 2026: CPC, CTR, and Conversion Rates by Industry"
 excerpt: "The most comprehensive Google Ads benchmarks for 2026 — CPC, CTR, conversion rate, and cost per conversion data across 15+ industries for Search, Shopping, Display, and YouTube."
 category: "Paid Ads Benchmarks"
 tags: ["Google Ads benchmarks", "CPC benchmarks", "CTR benchmarks", "conversion rate benchmarks", "2026 benchmarks"]
-date: "2025-02-28"
-author: "Digital Point LLC"
+date: "2025-11-03"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What is a good CTR for Google Ads in 2026?"
     answer: "For Google Search Ads, the overall average CTR is 4-6%, but a good CTR depends on your industry. Legal services average 3-4% while dating and personal services can reach 6-8%. For Display ads, 0.5-1% CTR is considered good. For YouTube, 0.5-1.5% CTR is typical. Focus less on hitting a specific CTR and more on whether your CTR is above your industry average, and whether your clicks are converting. A high CTR with low conversion rate means you're attracting the wrong clicks."

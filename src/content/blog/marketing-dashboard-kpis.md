@@ -3,8 +3,8 @@ title: "Essential Marketing Dashboard KPIs Every CMO Needs"
 excerpt: "Discover the critical marketing dashboard KPIs that CMOs need to track in 2026. Build dashboards that drive decisions, not just display data."
 category: "Marketing Analytics"
 tags: ["marketing KPIs", "marketing dashboard", "CMO metrics", "marketing analytics"]
-date: "2026-01-30"
-author: "Digital Point LLC"
+date: "2025-12-15"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What KPIs should a CMO dashboard include?"
     answer: "A CMO dashboard should include revenue metrics (MRR, pipeline value), efficiency metrics (CAC, ROAS, LTV:CAC ratio), channel performance metrics, and leading indicators like MQL velocity and conversion rates by funnel stage."

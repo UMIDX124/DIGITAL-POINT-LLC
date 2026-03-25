@@ -3,8 +3,8 @@ title: "Brand vs Performance Marketing: Finding the Balance"
 excerpt: "Learn how to balance brand and performance marketing for sustainable growth. Data-driven frameworks for budget allocation between brand building and direct response."
 category: "Growth Systems"
 tags: ["brand marketing", "performance marketing", "marketing strategy", "brand building", "growth marketing"]
-date: "2026-01-14"
-author: "Digital Point LLC"
+date: "2025-08-31"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is the difference between brand and performance marketing?"
     answer: "Brand marketing builds long-term awareness, trust, and emotional connection with your target audience. Performance marketing drives immediate, measurable actions (clicks, leads, purchases). Brand creates demand; performance captures it. Both are essential for sustainable growth."

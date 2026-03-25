@@ -3,8 +3,8 @@ title: "How to Improve ROAS on Meta Ads in 2026"
 excerpt: "Proven strategies to improve your Meta Ads ROAS in 2026, including creative frameworks, audience tactics, campaign structures, and measurement approaches that work in the post-iOS world."
 category: "CAC ROAS Optimization"
 tags: ["Meta Ads", "Facebook Ads", "ROAS", "social advertising", "Instagram Ads"]
-date: "2025-04-29"
-author: "Digital Point LLC"
+date: "2025-11-22"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What is a good ROAS for Meta Ads in 2026?"
     answer: "For e-commerce, a good Meta Ads ROAS is 3-5x blended (prospecting and retargeting combined). Prospecting campaigns alone typically deliver 1.5-3x, while retargeting achieves 5-12x. For lead generation, evaluate ROAS based on pipeline value — a good benchmark is 4-8x. These numbers have shifted since 2024 due to rising CPMs and continued signal loss. The most important thing is knowing your breakeven ROAS and ensuring you're comfortably above it."

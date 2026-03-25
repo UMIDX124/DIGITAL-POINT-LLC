@@ -3,8 +3,8 @@ title: "ROAS Optimization: The Complete Guide to Maximizing Return on Ad Spend"
 excerpt: "Master ROAS optimization with proven strategies across Google Ads, Meta Ads, and every major paid channel. Includes benchmarks, frameworks, and actionable tactics."
 category: "CAC ROAS Optimization"
 tags: ["ROAS", "return on ad spend", "ad optimization", "paid media", "performance marketing"]
-date: "2024-10-07"
-author: "Digital Point LLC"
+date: "2026-02-19"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What is a good ROAS for paid advertising?"
     answer: "A good ROAS depends on your margins. For e-commerce with 60%+ gross margins, a 4:1 ROAS (4x return) is typically profitable. For lower-margin businesses (30-40%), you may need 6:1 or higher. For SaaS and B2B, ROAS is harder to calculate directly but should be evaluated in terms of pipeline value generated relative to spend. The key is to calculate your breakeven ROAS first (1 divided by your gross margin percentage), then target 50-100% above breakeven for healthy profitability."

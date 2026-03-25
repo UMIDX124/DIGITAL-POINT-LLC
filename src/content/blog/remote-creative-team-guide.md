@@ -3,8 +3,8 @@ title: "Building a Remote Creative Team for Ad Production"
 excerpt: "How to build and manage a remote creative team that produces high-performing ad creatives at scale, from hiring designers and video editors to establishing production workflows."
 category: "Remote Workforce"
 tags: ["creative team", "ad creative", "remote hiring", "video production", "design team"]
-date: "2026-03-16"
-author: "Digital Point LLC"
+date: "2026-01-29"
+author: "Anwaar Tayyab"
 faqs:
   - question: "How many creative assets does a performance marketing team need per month?"
     answer: "For active paid media campaigns, you need significantly more creative than most teams produce. A healthy creative testing cadence requires 8-15 new static ad variations and 4-8 new video variations per platform per month. For a team running ads on Meta and Google/YouTube, that means roughly 20-40 static assets and 8-16 video assets per month. This sounds like a lot, but most variations are iterative, not net-new concepts. You might test 3 new concepts per month with 4-5 variations each (different headlines, CTAs, colors, or formats). The key is balancing volume (enough variations to test) with quality (each asset is strategically differentiated and well-produced)."

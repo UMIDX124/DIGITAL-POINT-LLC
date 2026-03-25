@@ -3,8 +3,8 @@ title: "Growth Marketing Framework: Systems for Predictable Revenue"
 excerpt: "Build a growth marketing framework that turns unpredictable campaigns into a systematic, repeatable revenue engine with clear processes and metrics."
 category: "Growth Systems"
 tags: ["growth marketing", "marketing framework", "revenue growth", "marketing systems", "growth strategy"]
-date: "2026-02-27"
-author: "Digital Point LLC"
+date: "2025-11-12"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What is the difference between growth marketing and traditional marketing?"
     answer: "Traditional marketing focuses on awareness and brand building through campaigns with broad reach. Growth marketing focuses on the entire funnel from acquisition through retention and revenue, using data-driven experimentation to find and scale what works. The key differences: growth marketing is metric-driven (every initiative has a measurable outcome), experiment-based (systematic testing rather than big-bet campaigns), full-funnel (optimizes retention and monetization, not just acquisition), and cross-functional (works across product, sales, and customer success). In practice, growth marketing teams spend 60-70% of their effort on measurable, direct-response activities and 30-40% on brand and awareness, whereas traditional marketing inverts this ratio."

@@ -119,7 +119,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: 'Message received! A founder will get back to you within 24 hours.',
+      message: 'Message received! A Co-Founder will get back to you within 24 hours.',
     });
 
   } catch (error) {

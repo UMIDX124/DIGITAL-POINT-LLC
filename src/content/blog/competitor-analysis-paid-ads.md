@@ -3,8 +3,8 @@ title: "Competitor Analysis for Paid Ads: Tools and Techniques"
 excerpt: "Learn how to spy on your competitors' ad strategies, estimate their budgets, reverse-engineer their best-performing creatives, and find gaps you can exploit."
 category: "Paid Ads Benchmarks"
 tags: ["competitor analysis", "ad intelligence", "competitive research", "paid advertising", "market research"]
-date: "2025-09-15"
-author: "Digital Point LLC"
+date: "2025-09-12"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "How can I see what ads my competitors are running?"
     answer: "There are several free and paid tools for competitor ad research. Free options: Meta Ad Library (ads.facebook.com) shows all active Meta ads for any brand; Google Ads Transparency Center shows active Google ads; LinkedIn Ad Library shows sponsored content. Paid tools: SEMrush, SpyFu, and iSpionage show search ad history, keywords, and estimated spend for Google Ads. SimilarWeb provides traffic estimates and ad channel breakdowns. Pathmatics/Sensor Tower shows display and social ad creative libraries."

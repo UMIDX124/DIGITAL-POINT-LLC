@@ -3,8 +3,8 @@ title: "Cross-Channel Attribution: Connecting the Dots Across Platforms"
 excerpt: "Learn how to build a unified view of marketing performance across Google, Meta, TikTok, and other channels — and stop letting platform silos hide the truth about your ROI."
 category: "Marketing Attribution"
 tags: ["cross-channel attribution", "multi-platform tracking", "marketing measurement", "unified reporting", "marketing analytics"]
-date: "2025-05-26"
-author: "Digital Point LLC"
+date: "2025-10-06"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "Why do my ad platforms report more conversions than I actually have?"
     answer: "Because each platform independently claims credit for conversions. If a user clicks a Google ad, then a Meta ad, then converts, both Google and Meta report that conversion. This is called double-counting or over-attribution. Cross-channel attribution solves this by deduplicating conversions and distributing credit fairly across the actual touchpoints in the customer journey."

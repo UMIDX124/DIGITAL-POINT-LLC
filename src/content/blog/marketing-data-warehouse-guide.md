@@ -3,8 +3,8 @@ title: "Building a Marketing Data Warehouse"
 excerpt: "Learn how to build a marketing data warehouse that unifies all your advertising, analytics, and CRM data for better attribution and reporting."
 category: "Marketing Analytics"
 tags: ["data warehouse", "marketing data", "data infrastructure", "marketing analytics", "ETL"]
-date: "2025-02-24"
-author: "Digital Point LLC"
+date: "2025-12-18"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is a marketing data warehouse?"
     answer: "A marketing data warehouse is a centralized database that stores historical data from all your marketing platforms (ad platforms, analytics, CRM, email) in a structured, queryable format. It enables cross-channel analysis, custom attribution, and automated reporting that isn't possible when data lives in separate platforms."

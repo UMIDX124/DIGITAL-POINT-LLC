@@ -3,8 +3,8 @@ title: "Using Social Proof in Your Ad Campaigns"
 excerpt: "Learn how to leverage social proof in paid advertising to increase CTR by 30%+ and reduce CPA. Strategies for reviews, testimonials, and UGC in ads."
 category: "ROAS Optimization"
 tags: ["social proof", "ad creative", "testimonials", "user generated content", "conversion optimization"]
-date: "2024-11-08"
-author: "Digital Point LLC"
+date: "2026-03-08"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is social proof in advertising?"
     answer: "Social proof in advertising means using evidence of other people's positive experiences—reviews, testimonials, user numbers, case studies, expert endorsements, or media mentions—to persuade new prospects. It works because humans are wired to follow the behavior of others, especially when making uncertain decisions."

@@ -3,8 +3,8 @@ title: "Cohort Analysis for Marketing: Track Customer Behavior Over Time"
 excerpt: "Learn how to use cohort analysis to understand customer retention, lifetime value, and campaign performance over time instead of relying on snapshot metrics."
 category: "Marketing Analytics"
 tags: ["cohort analysis", "customer retention", "LTV", "marketing analytics", "data analysis"]
-date: "2026-02-17"
-author: "Digital Point LLC"
+date: "2025-09-10"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is a cohort in marketing analytics?"
     answer: "A cohort is a group of customers who share a common characteristic during a defined time period. The most common cohort type is an acquisition cohort, which groups customers by when they were acquired (e.g., all customers acquired in January 2026). Other cohort types include behavioral cohorts (grouped by actions taken, like customers who purchased a specific product), channel cohorts (grouped by acquisition source like Google Ads vs Meta), and value cohorts (grouped by initial purchase amount). Analyzing these groups over time reveals patterns that aggregate metrics hide, such as whether retention is improving, which channels produce the most valuable customers, and how long it takes to recover customer acquisition costs."

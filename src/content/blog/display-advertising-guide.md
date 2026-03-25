@@ -3,8 +3,8 @@ title: "Display Advertising Guide: Best Practices for Performance Marketers"
 excerpt: "A complete guide to display advertising for performance marketers, covering Google Display Network, programmatic buying, creative best practices, and measurement strategies."
 category: "Paid Ads Benchmarks"
 tags: ["display advertising", "Google Display Network", "programmatic", "banner ads", "retargeting"]
-date: "2025-03-17"
-author: "Digital Point LLC"
+date: "2025-10-17"
+author: "Anwaar Tayyab"
 faqs:
   - question: "Is display advertising still effective in 2026?"
     answer: "Yes, but with important caveats. Display advertising is highly effective for retargeting (generating 3-8x ROAS) and brand awareness campaigns. For prospecting and direct response, display is less effective than search or social advertising because users aren't actively looking for your product. The key is using display for the right objectives — retargeting past visitors, building brand frequency, and supporting your other channels — rather than expecting it to be a primary acquisition driver. Display reach is massive, with the Google Display Network alone reaching 90% of internet users."

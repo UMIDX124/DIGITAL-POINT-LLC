@@ -3,8 +3,8 @@ title: "Predictive Analytics in Marketing: Forecast Revenue and Optimize Spend"
 excerpt: "Use predictive analytics to forecast marketing revenue, identify high-value prospects, and optimize spend allocation before results come in."
 category: "Marketing Analytics"
 tags: ["predictive analytics", "marketing forecasting", "machine learning", "LTV prediction", "budget optimization"]
-date: "2025-12-22"
-author: "Digital Point LLC"
+date: "2026-01-22"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What data do I need to start with predictive analytics for marketing?"
     answer: "At minimum, you need 12 months of historical data including marketing spend by channel (weekly or daily), conversion and revenue data tied to specific campaigns and channels, customer-level data linking acquisition source to downstream revenue, and external variables like seasonality indicators. The more granular your data, the better your predictions. For LTV prediction, you need customer purchase history over at least 6-12 months. For lead scoring, you need data on which leads converted and their associated attributes. Most companies already have this data in their CRM, ad platforms, and analytics tools. The challenge is usually connecting these data sources, not collecting new data."

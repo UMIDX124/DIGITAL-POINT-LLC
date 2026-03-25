@@ -2,7 +2,42 @@
 
 import Link from 'next/link';
 
-export function AuthorBox() {
+interface AuthorInfo {
+  name: string;
+  initials: string;
+  title: string;
+  bio: string;
+  expertise: string[];
+}
+
+const authors: Record<string, AuthorInfo> = {
+  'M. Faizan Rafiq': {
+    name: 'M. Faizan Rafiq',
+    initials: 'MF',
+    title: 'Co-Founder',
+    bio: 'Faizan leads growth strategy and performance marketing at Digital Point. With 8+ years in paid acquisition, he\'s helped brands scale from five-figure to seven-figure monthly ad budgets while keeping ROAS profitable.',
+    expertise: ['Performance Marketing', 'Growth Strategy', 'Paid Acquisition'],
+  },
+  'Anwaar Tayyab': {
+    name: 'Anwaar Tayyab',
+    initials: 'AT',
+    title: 'Co-Founder',
+    bio: 'Anwaar drives analytics, attribution, and revenue operations at Digital Point. He specializes in building the data infrastructure that turns raw ad spend data into clear, actionable insights for growth teams.',
+    expertise: ['Marketing Analytics', 'Attribution', 'Revenue Operations'],
+  },
+};
+
+const defaultAuthor: AuthorInfo = {
+  name: 'Digital Point LLC',
+  initials: 'DP',
+  title: 'Team',
+  bio: 'The Digital Point team specializes in performance marketing, attribution, and revenue operations for growth-stage businesses. We help companies turn ad spend into predictable revenue.',
+  expertise: ['Digital Marketing', 'Growth', 'Analytics'],
+};
+
+export function AuthorBox({ authorName }: { authorName?: string }) {
+  const author = (authorName && authors[authorName]) || defaultAuthor;
+
   return (
     <div
       className="rounded-2xl p-6 md:p-8 mt-12"
@@ -20,7 +55,7 @@ export function AuthorBox() {
           }}
           aria-hidden="true"
         >
-          DP
+          {author.initials}
         </div>
 
         {/* Author info */}
@@ -29,14 +64,29 @@ export function AuthorBox() {
             Written by
           </p>
           <h3 className="font-display text-lg font-semibold text-white">
-            M. Faizan Rafiq & Anwaar Tayyab
+            {author.name}
           </h3>
-          <p className="text-[#c77dff] text-xs mb-1">Co-Founders, Digital Point LLC</p>
-          <p className="text-[#b794c7] text-sm leading-relaxed mt-2">
-            The Digital Point team specializes in performance marketing,
-            attribution, and revenue operations for growth-stage businesses.
-            With 8+ years in paid acquisition and data-driven marketing, we help
-            companies turn ad spend into predictable revenue.
+          <p className="text-[#c77dff] text-xs mb-1">{author.title}, Digital Point LLC</p>
+
+          {/* Expertise tags */}
+          <div className="flex flex-wrap gap-2 mt-2">
+            {author.expertise.map((tag) => (
+              <span
+                key={tag}
+                className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full"
+                style={{
+                  background: 'rgba(199, 125, 255, 0.1)',
+                  border: '1px solid rgba(199, 125, 255, 0.2)',
+                  color: '#c77dff',
+                }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <p className="text-[#b794c7] text-sm leading-relaxed mt-3">
+            {author.bio}
           </p>
 
           {/* Links */}

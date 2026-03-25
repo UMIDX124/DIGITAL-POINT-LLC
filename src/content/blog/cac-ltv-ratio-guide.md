@@ -3,8 +3,8 @@ title: "CAC to LTV Ratio: The Most Important Metric You're Ignoring"
 excerpt: "Learn why the CAC-to-LTV ratio is the single best indicator of marketing efficiency and business health, with benchmarks, calculation methods, and optimization strategies."
 category: "CAC ROAS Optimization"
 tags: ["CAC LTV ratio", "customer lifetime value", "unit economics", "marketing metrics", "growth strategy"]
-date: "2024-12-05"
-author: "Digital Point LLC"
+date: "2025-09-07"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What is a good CAC to LTV ratio?"
     answer: "The widely accepted benchmark is 3:1, meaning a customer generates three times more revenue over their lifetime than it cost to acquire them. However, the ideal ratio depends on your business model and growth stage. Early-stage companies aggressively pursuing market share might accept 2:1. Mature companies optimizing profitability should target 4:1 or higher. Subscription businesses should aim for payback within 12 months and an eventual LTV-to-CAC ratio of 3:1 or better. A ratio below 1:1 means you're losing money on every customer."

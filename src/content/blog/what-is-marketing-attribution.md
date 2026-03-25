@@ -3,8 +3,8 @@ title: "What Is Marketing Attribution? A Beginner's Guide"
 excerpt: "Learn what marketing attribution is, why it matters, and how to implement it to understand which channels drive real revenue for your business."
 category: "Marketing Attribution"
 tags: ["marketing attribution", "attribution basics", "digital marketing", "performance marketing"]
-date: "2025-07-28"
-author: "Digital Point LLC"
+date: "2026-03-17"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is marketing attribution in simple terms?"
     answer: "Marketing attribution is the process of figuring out which marketing activities (ads, emails, social posts, etc.) are responsible for driving sales or conversions. It helps you understand what's working so you can spend your budget more effectively."

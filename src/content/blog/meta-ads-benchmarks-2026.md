@@ -3,8 +3,8 @@ title: "Meta Ads Benchmarks 2026: CPM, CPC, and ROAS by Industry"
 excerpt: "Complete Meta Ads (Facebook and Instagram) benchmarks for 2026 including CPM, CPC, CTR, conversion rate, and ROAS data across 12+ industries."
 category: "Paid Ads Benchmarks"
 tags: ["Meta Ads benchmarks", "Facebook Ads benchmarks", "Instagram Ads", "CPM benchmarks", "2026 benchmarks"]
-date: "2025-12-26"
-author: "Digital Point LLC"
+date: "2025-12-30"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What is the average CPM on Meta Ads in 2026?"
     answer: "The average CPM across all industries on Meta in 2026 is $12-$18 for the US market. This varies significantly by industry, audience, and time of year. Finance and insurance have the highest CPMs ($20-$40), while entertainment and food have the lowest ($6-$12). CPMs increase during competitive periods like Q4 holiday season (often 30-50% higher than average) and decrease in Q1 (10-20% lower). Prospecting campaigns typically have higher CPMs than retargeting because you're reaching new audiences."

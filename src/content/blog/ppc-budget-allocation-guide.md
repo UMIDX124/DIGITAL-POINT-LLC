@@ -3,8 +3,8 @@ title: "PPC Budget Allocation: How to Distribute Ad Spend Across Channels"
 excerpt: "A data-driven framework for allocating your PPC budget across Google, Meta, LinkedIn, TikTok, and other channels to maximize total return on your advertising investment."
 category: "Paid Ads Benchmarks"
 tags: ["PPC budget", "budget allocation", "media mix", "ad spend", "channel strategy"]
-date: "2024-11-12"
-author: "Digital Point LLC"
+date: "2026-01-20"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What percentage of my ad budget should go to Google vs. Meta?"
     answer: "There's no universal split. The right allocation depends on your business model, audience, and goals. As a starting point, e-commerce brands typically allocate 40-50% to Google (Search + Shopping) and 30-40% to Meta. B2B companies often allocate 50-60% to Google Search and 15-25% to LinkedIn. Start with a hypothesis based on these benchmarks, run for 30-60 days, then reallocate based on performance data. The key isn't to set a split and forget it — review and adjust monthly based on each channel's marginal ROAS."

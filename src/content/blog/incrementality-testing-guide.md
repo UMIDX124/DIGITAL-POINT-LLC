@@ -3,8 +3,8 @@ title: "Incrementality Testing: How to Measure True Ad Impact"
 excerpt: "Learn how to run incrementality tests that reveal the true causal impact of your advertising, beyond what attribution models can tell you."
 category: "Marketing Attribution"
 tags: ["incrementality testing", "lift testing", "ad measurement", "marketing experimentation"]
-date: "2026-03-03"
-author: "Digital Point LLC"
+date: "2025-11-24"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is incrementality testing in marketing?"
     answer: "Incrementality testing measures the true causal impact of advertising by comparing a group exposed to ads against a control group that isn't. The difference in conversion rates reveals how many conversions were genuinely caused by the ads versus those that would have happened organically."

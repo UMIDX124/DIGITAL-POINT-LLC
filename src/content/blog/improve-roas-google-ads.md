@@ -3,8 +3,8 @@ title: "How to Improve ROAS on Google Ads: 12 Proven Strategies"
 excerpt: "Twelve specific, actionable strategies to improve your Google Ads ROAS, from quick wins you can implement today to advanced tactics for experienced advertisers."
 category: "CAC ROAS Optimization"
 tags: ["Google Ads", "ROAS", "PPC optimization", "search ads", "shopping ads"]
-date: "2025-09-03"
-author: "Digital Point LLC"
+date: "2025-11-19"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is a good ROAS for Google Ads?"
     answer: "For Google Search non-brand campaigns, a good ROAS is 3-5x for e-commerce and 4-8x pipeline value for B2B. Google Shopping typically delivers 3-7x. Brand campaigns often achieve 10-25x. Your target depends on your margins — calculate your breakeven ROAS (1 divided by gross margin percentage) and aim for 50-100% above that. At Digital Point LLC, we consider anything above 4x blended ROAS on Google Ads to be strong performance for most industries."

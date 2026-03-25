@@ -3,8 +3,8 @@ title: "How to Reduce Your CAC by 30% in 30 Days"
 excerpt: "A day-by-day action plan to slash your customer acquisition cost by 30% or more in just 30 days, with specific tactics for Google Ads, Meta Ads, and your conversion funnel."
 category: "CAC ROAS Optimization"
 tags: ["CAC reduction", "customer acquisition cost", "cost optimization", "paid ads", "conversion optimization"]
-date: "2025-02-03"
-author: "Digital Point LLC"
+date: "2026-01-27"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "Is it realistic to reduce CAC by 30% in 30 days?"
     answer: "Yes, for most companies spending $10k or more per month on ads that have not undergone a systematic optimization in the past 6 months. The majority of ad accounts we audit at Digital Point LLC have 20-35% of budget going to clearly underperforming segments. Eliminating that waste alone can achieve a 15-20% CAC reduction. Combined with conversion rate improvements and targeting refinements, 30% is an achievable target. Companies already running highly optimized accounts may see a 10-15% improvement, which is still significant at scale."

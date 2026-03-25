@@ -3,8 +3,8 @@ title: "Retargeting Strategy: How to Re-Engage Without Wasting Budget"
 excerpt: "Build a retargeting strategy that re-engages warm audiences efficiently with segmentation, frequency caps, and cross-platform tactics that maximize ROI."
 category: "CAC ROAS Optimization"
 tags: ["retargeting", "remarketing", "audience segmentation", "conversion optimization"]
-date: "2025-04-23"
-author: "Digital Point LLC"
+date: "2026-02-12"
+author: "Anwaar Tayyab"
 faqs:
   - question: "How much of my ad budget should go to retargeting?"
     answer: "Most advertisers should allocate 20-35% of their total ad budget to retargeting. Spending less means leaving easy conversions on the table. Spending more indicates your prospecting isn't generating enough new traffic to sustain growth."

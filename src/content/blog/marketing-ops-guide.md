@@ -3,8 +3,8 @@ title: "Marketing Operations Guide: Building Systems That Scale"
 excerpt: "Build marketing operations that support growth: tech stack management, data governance, process automation, and the systems that let marketing teams scale without chaos."
 category: "Growth Systems"
 tags: ["marketing operations", "marketing ops", "tech stack", "data governance", "process automation"]
-date: "2025-05-08"
-author: "Digital Point LLC"
+date: "2025-12-22"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What does a marketing operations team do?"
     answer: "Marketing operations (MOps) is the function that builds and maintains the systems, processes, and data infrastructure that marketing teams need to execute effectively. Core responsibilities include managing the marketing tech stack (CRM, automation, analytics, ad platforms), ensuring data quality and governance, building automated workflows and processes, managing lead routing and scoring, creating reporting and attribution systems, and supporting campaign execution with technical infrastructure. Think of MOps as the engineering team behind marketing: they build the roads and bridges that campaigns travel on. Without strong MOps, marketing teams waste time on manual processes, make decisions with bad data, and struggle to scale beyond a certain point."

@@ -4,7 +4,7 @@ excerpt: "A deep analysis of CPM trends across every major ad platform in 2026, 
 category: "Paid Ads Benchmarks"
 tags: ["CPM trends", "advertising costs", "ad pricing", "media costs", "2026 trends"]
 date: "2025-10-01"
-author: "Digital Point LLC"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "Why are CPMs going up across all platforms?"
     answer: "CPMs are increasing due to several converging factors: more advertisers competing for the same inventory, platforms reducing ad load (fewer ads per session) to improve user experience, privacy changes reducing targeting efficiency which requires more impressions to reach the right people, inflation in the broader economy, and increased demand for digital advertising as traditional media budgets shift online. The 12-18% year-over-year increase we're seeing in 2026 is consistent with the 5-year trend and is expected to continue."

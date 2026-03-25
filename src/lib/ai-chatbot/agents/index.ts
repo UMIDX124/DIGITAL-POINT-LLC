@@ -91,7 +91,7 @@ ${COMPANY_KNOWLEDGE}`,
 Direct the visitor to the appropriate action:
 - For a free growth audit: suggest visiting /free-growth-audit
 - For support issues: offer to create a support ticket (tell them to click the ticket icon in the chat)
-- For urgent/founder contact: provide admin@digitalpointllc.com
+- For urgent/Co-Founder contact: provide admin@digitalpointllc.com
 - For general inquiries: provide info@digitalpointllc.com
 
 Be helpful and specific about next steps.

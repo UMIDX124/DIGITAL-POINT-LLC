@@ -3,8 +3,8 @@ title: "Multi-Touch Attribution Models Explained: Which One Is Right for You?"
 excerpt: "Compare multi-touch attribution models including linear, time-decay, position-based, and data-driven to find the best fit for your business."
 category: "Marketing Attribution"
 tags: ["multi-touch attribution", "attribution models", "marketing analytics", "performance marketing"]
-date: "2025-01-17"
-author: "Digital Point LLC"
+date: "2026-01-06"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is multi-touch attribution?"
     answer: "Multi-touch attribution distributes conversion credit across multiple marketing touchpoints rather than giving all credit to a single interaction. This provides a more complete picture of how different channels work together to drive conversions."

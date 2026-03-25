@@ -3,8 +3,8 @@ title: "Why Your ROAS Is Lying to You (And What to Track Instead)"
 excerpt: "Most businesses rely on platform-reported ROAS, but it rarely tells the full story. Here's what sophisticated advertisers track to understand real performance."
 category: "CAC ROAS Optimization"
 tags: ["roas", "attribution", "paid ads", "meta ads", "google ads", "performance marketing"]
-date: "2026-01-21"
-author: "Digital Point LLC"
+date: "2026-03-20"
+author: "M. Faizan Rafiq"
 featured: true
 faqs:
   - question: "What is ROAS and why is it misleading?"

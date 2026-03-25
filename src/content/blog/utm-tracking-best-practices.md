@@ -3,8 +3,8 @@ title: "UTM Tracking Best Practices for Accurate Attribution"
 excerpt: "Master UTM parameters with naming conventions, templates, and best practices that ensure clean attribution data across all marketing channels."
 category: "Marketing Attribution"
 tags: ["UTM tracking", "UTM parameters", "campaign tracking", "marketing attribution"]
-date: "2025-08-07"
-author: "Digital Point LLC"
+date: "2026-03-13"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What are UTM parameters?"
     answer: "UTM (Urchin Tracking Module) parameters are tags added to URLs that tell analytics tools where traffic came from. The five standard parameters are utm_source, utm_medium, utm_campaign, utm_content, and utm_term."

@@ -3,8 +3,8 @@ title: "Landing Page Optimization for Paid Ads: Increase Conversions by 40%+"
 excerpt: "Optimize your landing pages for paid ads with proven techniques for layout, copy, speed, and trust signals that increase conversions by 40% or more."
 category: "CAC ROAS Optimization"
 tags: ["landing pages", "conversion optimization", "paid ads", "CRO"]
-date: "2025-11-11"
-author: "Digital Point LLC"
+date: "2025-11-29"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is a good conversion rate for a paid ads landing page?"
     answer: "The median landing page conversion rate is 2-5% across industries. Top performers hit 10-15%. B2B lead gen pages average 3-6%, while e-commerce product pages average 2-4%. Your goal should be to consistently beat your industry median."

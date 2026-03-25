@@ -3,8 +3,8 @@ title: "Podcast Advertising Guide: ROI, Rates, and Strategy"
 excerpt: "Podcast advertising delivers some of the highest engagement rates in marketing. Learn the formats, pricing, targeting strategies, and measurement approaches for 2026."
 category: "Paid Ads Benchmarks"
 tags: ["podcast advertising", "audio marketing", "podcast ads", "brand awareness", "performance marketing"]
-date: "2025-09-10"
-author: "Digital Point LLC"
+date: "2026-01-17"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "How much does podcast advertising cost?"
     answer: "Podcast advertising rates are typically measured in CPM (cost per thousand impressions). Average rates in 2026 range from $15-$25 CPM for programmatic/dynamically inserted ads and $25-$50+ CPM for host-read ads. Premium shows with large, engaged audiences can charge $50-$100+ CPM. A typical mid-tier podcast campaign costs $5,000-$25,000 per month. Host-read ads cost more but consistently deliver 2-3x higher recall and conversion rates than pre-produced ads."

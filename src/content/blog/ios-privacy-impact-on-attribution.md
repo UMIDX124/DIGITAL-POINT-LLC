@@ -3,8 +3,8 @@ title: "How iOS Privacy Changes Broke Your Attribution (And How to Fix It)"
 excerpt: "Understand how Apple's ATT, iOS privacy features, and Safari ITP impacted marketing attribution, and learn practical solutions to recover lost data."
 category: "Marketing Attribution"
 tags: ["iOS privacy", "ATT", "Apple tracking", "attribution", "performance marketing"]
-date: "2025-07-18"
-author: "Digital Point LLC"
+date: "2025-11-27"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "How much data did iOS privacy changes remove from marketing attribution?"
     answer: "Most advertisers lost 30-50% of their iOS conversion data after Apple's ATT framework launched. Some industries like gaming and app-based businesses saw even higher losses. The impact varies by your audience's iOS vs. Android split."

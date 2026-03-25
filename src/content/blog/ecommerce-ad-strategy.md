@@ -3,8 +3,8 @@ title: "E-Commerce Advertising Strategy: From Startup to Scale"
 excerpt: "A complete playbook for e-commerce paid advertising at every stage — from your first $1,000 in ad spend to scaling past $200,000/month profitably."
 category: "Paid Ads Benchmarks"
 tags: ["e-commerce advertising", "DTC marketing", "Shopify ads", "e-commerce ROAS", "shopping ads"]
-date: "2025-05-15"
-author: "Digital Point LLC"
+date: "2025-10-22"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is a good ROAS for e-commerce advertising?"
     answer: "A 'good' ROAS depends on your margins. For most e-commerce brands, 3-4x blended ROAS is healthy, meaning you generate $3-$4 in revenue for every $1 spent on ads. Brands with 70%+ gross margins (like digital products or luxury items) can be profitable at 2x ROAS. Brands with 30-40% margins typically need 4-5x ROAS. For channel-specific benchmarks: Google Shopping averages 4-8x, Meta averages 2-4x, and branded search averages 8-15x. Always calculate your break-even ROAS based on your specific margins and overhead."

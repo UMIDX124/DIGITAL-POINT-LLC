@@ -19,7 +19,7 @@ const FAQ_RESPONSES: { keywords: string[]; answer: string }[] = [
   {
     keywords: ['founder', 'who founded', 'ceo', 'owner', 'faizan', 'anwaar', 'tayyab', 'leadership', 'team lead', 'co-founder'],
     answer:
-      'Digital Point LLC was co-founded by **M. Faizan Rafiq** (Founder) and **Anwaar Tayyab** (Co-Founder).\n\n**Faizan** is a performance marketing specialist with 8+ years of experience — he leads paid acquisition, creative strategy, analytics, and remote operations.\n\n**Anwaar** drives strategy, operations, and business development — scaling the agency and ensuring client success.\n\nTogether, they partner with US-based businesses while delivering from a global team.',
+      'Digital Point LLC was co-founded by **M. Faizan Rafiq** (Co-Founder) and **Anwaar Tayyab** (Co-Founder).\n\n**Faizan** is a performance marketing specialist with 8+ years of experience — he leads paid acquisition, creative strategy, analytics, and remote operations.\n\n**Anwaar** drives strategy, operations, and business development — scaling the agency and ensuring client success.\n\nTogether, they partner with US-based businesses while delivering from a global team.',
   },
   {
     keywords: ['contact', 'reach', 'email', 'phone', 'get in touch', 'talk to someone'],

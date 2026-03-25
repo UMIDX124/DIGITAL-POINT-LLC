@@ -3,8 +3,8 @@ title: "Attribution Windows Explained: How to Choose the Right Lookback Period"
 excerpt: "Learn how attribution windows work, why the default settings are costing you money, and how to choose the right lookback period for every channel and campaign type."
 category: "Marketing Attribution"
 tags: ["attribution windows", "lookback period", "marketing attribution", "conversion tracking", "ad platforms"]
-date: "2024-11-04"
-author: "Digital Point LLC"
+date: "2025-08-22"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is an attribution window in marketing?"
     answer: "An attribution window (also called a lookback window) is the period of time after a user interacts with your ad during which a conversion can be credited to that ad. For example, a 7-day click attribution window means if someone clicks your ad and converts within 7 days, that conversion counts toward the ad's performance. After 7 days, the conversion wouldn't be attributed to that click."

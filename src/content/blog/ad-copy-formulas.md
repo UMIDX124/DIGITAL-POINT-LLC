@@ -3,8 +3,8 @@ title: "Ad Copy Formulas That Convert: 15 Templates for Paid Ads"
 excerpt: "Stop writing ad copy from scratch. These 15 proven formulas work across Google, Meta, LinkedIn, and TikTok to drive clicks, conversions, and lower CPAs."
 category: "Paid Ads Benchmarks"
 tags: ["ad copy", "copywriting", "ad creative", "conversion optimization", "paid advertising"]
-date: "2025-12-09"
-author: "Digital Point LLC"
+date: "2025-08-05"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What makes ad copy convert?"
     answer: "High-converting ad copy does four things: it grabs attention with a relevant hook (addressing the reader's specific pain or desire), it communicates a clear value proposition (what they get and why it matters), it builds credibility (social proof, specifics, authority), and it drives action with a clear CTA (telling them exactly what to do next). The best ads feel like they were written for one specific person, not a broad audience."

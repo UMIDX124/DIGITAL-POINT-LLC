@@ -3,8 +3,8 @@ title: "Google Search Ads Optimization: Advanced Bidding and Structure Guide"
 excerpt: "Master Google Search Ads with advanced optimization strategies for bidding, ad structure, keyword management, and Quality Score improvement."
 category: "Paid Ads Benchmarks"
 tags: ["google ads", "search ads", "PPC optimization", "bidding strategy"]
-date: "2025-05-30"
-author: "Digital Point LLC"
+date: "2025-11-10"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is a good Quality Score in Google Ads?"
     answer: "A Quality Score of 7-10 is good, meaning your ads are relevant and well-optimized. Scores of 5-6 are average and indicate room for improvement. Below 5 means you're overpaying for clicks and need to address relevance issues between keywords, ads, and landing pages."

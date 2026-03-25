@@ -3,8 +3,8 @@ title: "Google Performance Max: Complete Guide for Advertisers"
 excerpt: "Master Google Performance Max campaigns with this complete guide covering setup, asset groups, audience signals, and optimization strategies."
 category: "Paid Ads Benchmarks"
 tags: ["google ads", "performance max", "PMax", "campaign optimization"]
-date: "2024-12-27"
-author: "Digital Point LLC"
+date: "2025-11-08"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "Is Performance Max better than standard Google Ads campaigns?"
     answer: "Performance Max works well for advertisers with strong creative assets and conversion data. However, it should complement, not replace, dedicated Search campaigns. Many advertisers see best results running PMax alongside targeted Search campaigns."

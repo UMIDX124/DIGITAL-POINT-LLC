@@ -3,8 +3,8 @@ title: "Ad Creative Testing: A Scientific Framework for Finding Winners"
 excerpt: "Learn a systematic creative testing framework for paid ads with methods for testing hooks, formats, copy, and visuals to find high-performing ad creative."
 category: "CAC ROAS Optimization"
 tags: ["creative testing", "ad creative", "A/B testing", "paid advertising"]
-date: "2026-01-06"
-author: "Digital Point LLC"
+date: "2025-10-03"
+author: "Anwaar Tayyab"
 faqs:
   - question: "How many ad variations should I test at once?"
     answer: "Test 3-5 variations per variable in each round. Testing more dilutes your budget and extends the time needed for statistical significance. Focus on one variable at a time: message, format, hook, or visual."

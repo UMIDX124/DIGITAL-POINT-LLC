@@ -3,8 +3,8 @@ title: "Marketing Budget Planning for 2026"
 excerpt: "Plan your 2026 marketing budget with data-driven frameworks. Learn channel allocation, benchmarks by industry, and how to maximize ROI on every dollar."
 category: "Growth Systems"
 tags: ["marketing budget", "budget planning", "marketing spend", "budget allocation", "marketing ROI"]
-date: "2024-12-10"
-author: "Digital Point LLC"
+date: "2025-12-13"
+author: "Anwaar Tayyab"
 faqs:
   - question: "How much should a company spend on marketing in 2026?"
     answer: "Marketing spend as a percentage of revenue varies by industry and growth stage. B2B companies typically spend 6-12% of revenue on marketing, B2C companies 8-15%, and high-growth startups 20-40%. The Gartner CMO survey shows average marketing budgets at 9.1% of revenue in 2025."

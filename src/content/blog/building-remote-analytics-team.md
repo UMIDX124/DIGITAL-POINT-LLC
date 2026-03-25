@@ -3,8 +3,8 @@ title: "Building a Remote Analytics Team for Performance Marketing"
 excerpt: "How to build a remote analytics team that turns marketing data into actionable insights, from hiring analysts to setting up data infrastructure and reporting."
 category: "Remote Workforce"
 tags: ["analytics team", "remote hiring", "marketing analytics", "data infrastructure", "performance marketing"]
-date: "2025-06-20"
-author: "Digital Point LLC"
+date: "2025-09-03"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What skills should a marketing analyst have?"
     answer: "A strong marketing analyst in 2026 needs three layers of skills. First, technical skills: SQL proficiency, spreadsheet mastery, experience with at least one BI tool (Looker, Tableau, Power BI), Google Analytics 4, and ideally basic Python or R for statistical analysis. Second, marketing domain knowledge: understanding of attribution models, funnel metrics, ad platform reporting, and how marketing campaigns drive revenue. Third, communication skills: the ability to translate data into clear insights and actionable recommendations for non-technical stakeholders. The ideal analyst can pull data independently, build automated dashboards, run statistical analyses, and present findings in a way that drives business decisions."

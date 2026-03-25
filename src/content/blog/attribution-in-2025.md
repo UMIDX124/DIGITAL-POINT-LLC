@@ -3,8 +3,8 @@ title: "Attribution in 2025: A Practical Guide for Marketing Teams"
 excerpt: "With third-party cookies dying and privacy regulations tightening, here's how smart teams are still measuring what works."
 category: "Marketing Attribution"
 tags: ["attribution", "tracking", "privacy", "cookies", "marketing analytics", "first-party data"]
-date: "2025-02-18"
-author: "Digital Point LLC"
+date: "2025-08-19"
+author: "M. Faizan Rafiq"
 featured: true
 faqs:
   - question: "What is marketing attribution?"

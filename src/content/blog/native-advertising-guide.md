@@ -3,8 +3,8 @@ title: "Native Advertising Guide: Performance Marketing Beyond Traditional Ads"
 excerpt: "Native ads blend into editorial content and outperform traditional display by 2-3x on engagement. Learn the platforms, strategies, and benchmarks for native advertising in 2026."
 category: "Paid Ads Benchmarks"
 tags: ["native advertising", "content marketing", "sponsored content", "Taboola", "Outbrain", "performance marketing"]
-date: "2025-08-01"
-author: "Digital Point LLC"
+date: "2026-01-08"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What is native advertising?"
     answer: "Native advertising is paid content that matches the form and function of the platform it appears on. Unlike banner ads that are visually distinct from content, native ads look and feel like editorial content — recommended articles, in-feed posts, search results, or promoted listings. Examples include sponsored articles on news sites, 'recommended for you' widgets on publisher sites, promoted posts on social media, and sponsored search results."

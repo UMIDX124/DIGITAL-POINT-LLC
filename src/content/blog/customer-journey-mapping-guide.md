@@ -3,8 +3,8 @@ title: "How to Map Customer Journeys for Better Attribution"
 excerpt: "Learn how to map customer journeys across every touchpoint to improve marketing attribution accuracy, reduce CAC, and maximize ROAS in 2026."
 category: "Marketing Attribution"
 tags: ["customer journey mapping", "marketing attribution", "touchpoint analysis", "conversion optimization"]
-date: "2026-02-06"
-author: "Digital Point LLC"
+date: "2025-10-10"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What is customer journey mapping in marketing?"
     answer: "Customer journey mapping is the process of visualizing every interaction a prospect has with your brand, from first awareness through purchase and retention. It helps marketers understand which touchpoints drive conversions and where prospects drop off."

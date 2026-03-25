@@ -3,8 +3,8 @@ title: "GA4 Attribution Models: Which One Should You Use?"
 excerpt: "Google Analytics 4 changed its attribution models. Learn which GA4 attribution model is right for your business, how to configure it, and how to interpret the data correctly."
 category: "Marketing Attribution"
 tags: ["GA4", "Google Analytics 4", "attribution models", "data-driven attribution", "marketing analytics"]
-date: "2025-09-19"
-author: "Digital Point LLC"
+date: "2025-10-29"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What attribution model does GA4 use by default?"
     answer: "GA4 uses data-driven attribution (DDA) as its default model for all properties. Unlike Universal Analytics which defaulted to last-click, GA4's data-driven model uses machine learning to analyze all conversion paths and assign credit based on each touchpoint's statistical impact on conversion probability. If your property doesn't have enough data for DDA, GA4 falls back to a cross-channel rules-based model."

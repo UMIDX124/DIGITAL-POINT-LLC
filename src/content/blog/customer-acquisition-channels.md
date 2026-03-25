@@ -3,8 +3,8 @@ title: "Best Customer Acquisition Channels Ranked by CAC"
 excerpt: "Compare customer acquisition channels by cost, conversion rate, and scalability. Find the most efficient channels for your budget and business model."
 category: "CAC ROAS Optimization"
 tags: ["customer acquisition", "CAC", "acquisition channels", "marketing channels", "growth strategy"]
-date: "2025-05-05"
-author: "Digital Point LLC"
+date: "2025-10-08"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is the cheapest customer acquisition channel?"
     answer: "Organic search (SEO) and referral programs typically have the lowest CAC at $10-$50 per customer, but they require significant upfront investment in content and product quality. Among paid channels, Meta Ads and TikTok Ads generally offer the lowest CAC for B2C, while Google Search offers the best cost-per-qualified-lead for B2B."

@@ -3,8 +3,8 @@ title: "Mobile Advertising Strategy for 2026"
 excerpt: "Build a mobile advertising strategy that captures 70%+ of digital traffic. Mobile ad formats, targeting, attribution challenges, and optimization tactics."
 category: "Paid Ads Benchmarks"
 tags: ["mobile advertising", "mobile ads", "mobile marketing", "app advertising", "mobile optimization"]
-date: "2025-02-06"
-author: "Digital Point LLC"
+date: "2026-01-03"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "How much of digital advertising is mobile in 2026?"
     answer: "Mobile accounts for approximately 72% of all digital ad spend in 2026, totaling over $400 billion globally. Mobile represents 68% of Google search traffic, 98% of Meta ad impressions, and nearly 100% of TikTok usage. Any advertising strategy that doesn't prioritize mobile is leaving the majority of its audience unreached."

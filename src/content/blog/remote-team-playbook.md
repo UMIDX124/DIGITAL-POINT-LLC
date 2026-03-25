@@ -3,8 +3,8 @@ title: "The Remote Team Playbook: How We Build High-Output Teams Across Time Zon
 excerpt: "Building a remote workforce isn't about finding cheap labor — it's about creating systems that let distributed teams operate at enterprise speed."
 category: "Remote Workforce"
 tags: ["remote teams", "workforce management", "outsourcing", "team building", "remote workforce"]
-date: "2026-02-12"
-author: "Digital Point LLC"
+date: "2026-02-08"
+author: "Anwaar Tayyab"
 faqs:
   - question: "How long does it take to onboard a remote marketing team?"
     answer: "With proper systems, a remote marketing team can be fully onboarded in 2-3 weeks. Discovery and role matching takes week one, training and system setup takes week two, and supervised execution begins in week three."

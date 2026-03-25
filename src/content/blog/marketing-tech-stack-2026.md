@@ -3,8 +3,8 @@ title: "The Ideal Marketing Tech Stack for 2026"
 excerpt: "Build a modern marketing tech stack that balances power with simplicity. A practical guide to choosing tools for analytics, automation, advertising, and team collaboration."
 category: "Growth Systems"
 tags: ["marketing tech stack", "martech", "marketing tools", "marketing technology", "tool selection"]
-date: "2024-12-23"
-author: "Digital Point LLC"
+date: "2025-12-27"
+author: "Anwaar Tayyab"
 faqs:
   - question: "How much should a company spend on marketing technology?"
     answer: "Marketing technology typically costs 5-10% of total marketing budget for mid-market companies. For a company spending $100k/month on ads with a total marketing budget of $150k/month, expect to spend $7,500-$15,000/month on tools. This includes CRM ($150-$3,000/month), marketing automation ($200-$2,000/month), analytics and BI ($500-$3,000/month), data infrastructure ($200-$1,000/month), and various point solutions ($500-$2,000/month). The most common mistake is overspending on enterprise tools when simpler alternatives would work. A $50/month tool that your team actually uses beats a $5,000/month platform that sits idle. Start lean, validate the need, then upgrade to more sophisticated tools as your requirements grow."

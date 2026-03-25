@@ -3,8 +3,8 @@ title: "Paid Social vs Paid Search: Where to Allocate Budget"
 excerpt: "Compare paid social and paid search advertising across ROAS, CAC, and conversion rates. Learn the optimal budget split for your business in 2026."
 category: "Paid Ads Benchmarks"
 tags: ["paid social", "paid search", "budget allocation", "PPC", "social ads"]
-date: "2025-11-17"
-author: "Digital Point LLC"
+date: "2026-01-13"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "Should I spend more on paid social or paid search?"
     answer: "It depends on your business model. Paid search captures existing demand (high intent, higher CPC), while paid social creates demand (lower intent, lower CPC). Most businesses perform best with 40-60% search and 40-60% social, adjusted based on funnel data."

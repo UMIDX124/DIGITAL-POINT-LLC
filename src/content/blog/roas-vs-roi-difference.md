@@ -3,8 +3,8 @@ title: "ROAS vs ROI: What's the Difference and Which Should You Track?"
 excerpt: "Understand the critical differences between ROAS and ROI, when to use each metric, and how to avoid the common mistakes that lead to misleading performance reporting."
 category: "CAC ROAS Optimization"
 tags: ["ROAS", "ROI", "marketing metrics", "performance measurement", "ad spend"]
-date: "2025-07-22"
-author: "Digital Point LLC"
+date: "2026-02-22"
+author: "Anwaar Tayyab"
 faqs:
   - question: "Can you have a positive ROAS but negative ROI?"
     answer: "Yes, and this is one of the most common and dangerous situations in digital advertising. If your ROAS is 2.5x but your gross margin is 40%, your breakeven ROAS is 2.5x — so you're barely breaking even on product costs alone. Once you factor in operating expenses, shipping, returns, and overhead, you're losing money. A positive ROAS only means you generated more revenue than you spent on ads. A positive ROI means you actually made a profit after all costs. Always know your breakeven ROAS and ensure you're comfortably above it."

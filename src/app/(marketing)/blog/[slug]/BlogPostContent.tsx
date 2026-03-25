@@ -103,6 +103,9 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
               {post.title}
             </h1>
             <p className="text-[#b794c7] text-lg mt-4 max-w-2xl">{post.excerpt}</p>
+            <p className="text-[#9080a0] text-sm mt-3">
+              By <span className="text-[#c77dff]">{post.author}</span>
+            </p>
           </FadeUp>
         </Container>
       </section>
@@ -153,7 +156,7 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
               <LeadMagnetBanner />
 
               {/* Author E-E-A-T box */}
-              <AuthorBox />
+              <AuthorBox authorName={post.author} />
 
               {/* Related posts */}
               {relatedPosts.length > 0 && (

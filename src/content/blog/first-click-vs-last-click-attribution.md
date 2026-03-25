@@ -3,8 +3,8 @@ title: "First-Click vs Last-Click Attribution: Pros, Cons, and When to Use Each"
 excerpt: "Understand the key differences between first-click and last-click attribution, when each makes sense, and why most teams need both."
 category: "Marketing Attribution"
 tags: ["first-click attribution", "last-click attribution", "attribution models", "marketing measurement"]
-date: "2025-01-13"
-author: "Digital Point LLC"
+date: "2025-10-27"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is the difference between first-click and last-click attribution?"
     answer: "First-click attribution gives 100% credit to the first marketing touchpoint a customer encounters, emphasizing discovery channels. Last-click gives 100% credit to the final touchpoint before conversion, emphasizing closing channels."

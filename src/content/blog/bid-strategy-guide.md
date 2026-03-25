@@ -3,8 +3,8 @@ title: "Bid Strategy Guide: Manual vs Automated Bidding Across Platforms"
 excerpt: "Choosing the right bid strategy can make or break your ROAS. Learn when to use manual vs automated bidding, how each platform's algorithm works, and which strategy fits your goals."
 category: "Paid Ads Benchmarks"
 tags: ["bid strategy", "automated bidding", "manual bidding", "Google Ads bidding", "Meta Ads bidding", "campaign optimization"]
-date: "2024-10-01"
-author: "Digital Point LLC"
+date: "2025-08-29"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "Should I use manual or automated bidding?"
     answer: "For most advertisers in 2026, automated bidding outperforms manual bidding — but with important caveats. Automated bidding works best when you have at least 30-50 conversions per month per campaign, clean conversion tracking, and sufficient budget for the algorithm to learn. Manual bidding is better when you're just launching campaigns, have very low conversion volume, need precise control over specific placements, or when your conversion data is unreliable."

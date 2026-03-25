@@ -3,8 +3,8 @@ title: "Marketing Automation Guide: From Lead Capture to Conversion"
 excerpt: "Build marketing automation systems that nurture leads from first touch to closed deal, including email sequences, lead scoring, and workflow design for paid traffic."
 category: "Growth Systems"
 tags: ["marketing automation", "email sequences", "lead nurturing", "workflow automation", "CRM"]
-date: "2024-11-25"
-author: "Digital Point LLC"
+date: "2025-12-11"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What is the best marketing automation platform for performance marketing teams?"
     answer: "The best platform depends on your size and needs. For small teams ($10k-$30k/month ad spend), HubSpot Marketing Hub Starter or ActiveCampaign provide strong automation at reasonable cost ($50-$500/month). For mid-market teams ($30k-$100k/month), HubSpot Professional or Marketo Engage offer advanced lead scoring, attribution, and multi-channel automation ($800-$2,000/month). For enterprise ($100k+/month), Salesforce Marketing Cloud or Marketo Engage provide the most sophisticated capabilities ($2,000-$5,000+/month). The key criterion isn't features but integration depth: your automation platform must integrate cleanly with your CRM, ad platforms, and analytics tools. A simpler platform that's well-integrated outperforms a feature-rich platform that operates in isolation."

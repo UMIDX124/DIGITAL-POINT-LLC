@@ -3,8 +3,8 @@ title: "How to Fix Broken Marketing Attribution (Step-by-Step)"
 excerpt: "Diagnose and fix the most common marketing attribution problems with this practical step-by-step guide for performance marketers."
 category: "Marketing Attribution"
 tags: ["attribution troubleshooting", "tracking issues", "marketing data", "performance marketing"]
-date: "2025-03-31"
-author: "Digital Point LLC"
+date: "2025-11-17"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "How do I know if my marketing attribution is broken?"
     answer: "Key warning signs include platform-reported conversions exceeding actual sales by more than 30%, large discrepancies between GA4 and ad platform data, a high percentage of conversions attributed to 'direct/none,' and your marketing team disagreeing on which channels work."

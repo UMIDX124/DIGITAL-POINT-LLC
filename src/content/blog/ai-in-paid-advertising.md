@@ -3,8 +3,8 @@ title: "How AI is Transforming Paid Advertising"
 excerpt: "Discover how AI is reshaping paid advertising in 2026. From automated bidding to creative generation, learn practical AI strategies that improve ROAS."
 category: "Paid Ads Benchmarks"
 tags: ["AI advertising", "AI marketing", "automated bidding", "AI creative", "machine learning ads"]
-date: "2025-10-13"
-author: "Digital Point LLC"
+date: "2025-08-12"
+author: "Anwaar Tayyab"
 faqs:
   - question: "How is AI being used in paid advertising in 2026?"
     answer: "AI is used across the entire advertising lifecycle: automated bidding and budget optimization, audience targeting and segmentation, creative generation and testing, predictive analytics for campaign planning, fraud detection, and performance forecasting. The most impactful applications are in bidding, creative, and audience optimization."

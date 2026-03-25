@@ -3,8 +3,8 @@ title: "Geo-Targeting in Paid Ads: Strategy Guide"
 excerpt: "Master geo-targeting in Google Ads, Meta Ads, and LinkedIn to reduce wasted spend and improve ROAS. Strategies for local, national, and international campaigns."
 category: "CAC ROAS Optimization"
 tags: ["geo-targeting", "location targeting", "paid ads", "local advertising", "international ads"]
-date: "2025-12-29"
-author: "Digital Point LLC"
+date: "2025-11-01"
+author: "Anwaar Tayyab"
 faqs:
   - question: "What is geo-targeting in digital advertising?"
     answer: "Geo-targeting is the practice of delivering ads to users based on their geographic location—country, state, city, zip code, or radius around a point. It ensures your ads reach people in locations where your business operates or where your target customers live."

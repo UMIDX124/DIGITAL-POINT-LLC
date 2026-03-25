@@ -3,8 +3,8 @@ title: "Marketing Agency vs In-House Team: Cost Analysis"
 excerpt: "Detailed cost comparison of marketing agencies vs in-house teams vs remote workforce models. Find the most cost-effective approach for your marketing needs."
 category: "Remote Workforce"
 tags: ["marketing agency", "in-house marketing", "remote marketing team", "marketing costs", "team building"]
-date: "2026-03-09"
-author: "Digital Point LLC"
+date: "2025-12-08"
+author: "Anwaar Tayyab"
 faqs:
   - question: "Is it cheaper to hire an agency or build an in-house marketing team?"
     answer: "For budgets under $15k/month in marketing spend, agencies are typically more cost-effective because they spread specialized talent across clients. Above $30k/month, in-house teams become competitive. Above $75k/month, in-house or hybrid models almost always win on cost. Remote workforce models offer a middle ground at all budget levels."

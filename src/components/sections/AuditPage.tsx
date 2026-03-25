@@ -456,7 +456,7 @@ export function AuditPage() {
                   </h3>
                 </div>
                 <p className="text-[#b794c7] text-sm">
-                  Founder review within 24-48 hours.
+                  Co-Founder review within 24-48 hours.
                 </p>
               </GlassCard>
 

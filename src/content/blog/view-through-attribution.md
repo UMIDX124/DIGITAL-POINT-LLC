@@ -3,8 +3,8 @@ title: "View-Through Attribution: Should You Count Impressions as Conversions?"
 excerpt: "Understand view-through attribution, when it inflates your numbers, when it captures real value, and how to configure it correctly across ad platforms."
 category: "Marketing Attribution"
 tags: ["view-through attribution", "impression tracking", "display advertising", "marketing measurement", "attribution models"]
-date: "2025-07-01"
-author: "Digital Point LLC"
+date: "2026-03-15"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What is the difference between view-through and click-through attribution?"
     answer: "Click-through attribution credits a conversion to an ad that the user clicked before converting. View-through attribution credits a conversion to an ad the user saw (but didn't click) before converting. For example, if someone sees your display ad, doesn't click it, but visits your website the next day and purchases, view-through attribution would credit that display ad. Click-through wouldn't give it any credit."

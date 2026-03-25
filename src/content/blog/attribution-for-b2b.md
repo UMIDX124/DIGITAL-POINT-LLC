@@ -3,8 +3,8 @@ title: "Marketing Attribution for B2B: Long Sales Cycles and Complex Funnels"
 excerpt: "B2B attribution is harder than B2C. Learn how to track marketing impact across long sales cycles, multiple stakeholders, and complex buying journeys."
 category: "Marketing Attribution"
 tags: ["B2B attribution", "B2B marketing", "sales cycle tracking", "account-based attribution", "marketing measurement"]
-date: "2025-01-27"
-author: "Digital Point LLC"
+date: "2025-08-15"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "Why is marketing attribution harder for B2B than B2C?"
     answer: "B2B attribution faces unique challenges: sales cycles that last weeks to months instead of minutes, buying committees with 6-10 stakeholders rather than a single buyer, offline interactions like trade shows and sales calls that are hard to track, and revenue that's often realized through CRM deals rather than online purchases. Each of these factors makes it harder to draw a direct line between marketing activity and revenue."

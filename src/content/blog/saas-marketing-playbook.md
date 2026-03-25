@@ -3,8 +3,8 @@ title: "SaaS Marketing Playbook: Paid Acquisition Strategies That Scale"
 excerpt: "The complete SaaS paid acquisition guide covering channel strategy, CAC benchmarks, trial optimization, and scaling frameworks for B2B and B2C SaaS companies."
 category: "Growth Systems"
 tags: ["SaaS marketing", "SaaS advertising", "customer acquisition", "growth marketing", "B2B SaaS"]
-date: "2024-10-22"
-author: "Digital Point LLC"
+date: "2026-02-24"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What is a good CAC for SaaS?"
     answer: "A healthy SaaS CAC depends on your LTV. The industry standard is a LTV:CAC ratio of 3:1 or better, meaning your customer lifetime value should be at least 3x your acquisition cost. For benchmarks: SMB SaaS (ACV under $5K) typically targets $200-$800 CAC; mid-market SaaS ($5K-$50K ACV) targets $2,000-$10,000 CAC; enterprise SaaS ($50K+ ACV) targets $10,000-$50,000+ CAC. Also track CAC payback period — how many months until a customer's revenue covers the acquisition cost. Under 12 months is healthy; under 6 months is excellent."

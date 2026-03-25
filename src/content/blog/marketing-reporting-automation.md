@@ -3,8 +3,8 @@ title: "How to Automate Your Marketing Reports"
 excerpt: "Save 10+ hours weekly by automating marketing reports. Learn the tools, workflows, and best practices for marketing reporting automation in 2026."
 category: "Marketing Analytics"
 tags: ["marketing reporting", "report automation", "marketing analytics", "data automation"]
-date: "2024-11-20"
-author: "Digital Point LLC"
+date: "2025-12-25"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "How much time can marketing reporting automation save?"
     answer: "Most marketing teams spend 8-15 hours per week on manual reporting. Automation can reduce this by 70-80%, freeing up 6-12 hours weekly for analysis and strategy. Over a year, that's 300-600 hours saved per team member involved in reporting."

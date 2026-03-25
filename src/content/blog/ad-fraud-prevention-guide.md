@@ -3,8 +3,8 @@ title: "Digital Ad Fraud Prevention: Protect Your Ad Spend"
 excerpt: "Learn how to detect and prevent digital ad fraud that wastes up to 22% of ad budgets. Protect your campaigns from bots, click fraud, and fake traffic."
 category: "Paid Ads Benchmarks"
 tags: ["ad fraud", "click fraud", "bot traffic", "ad fraud prevention", "invalid traffic"]
-date: "2025-12-15"
-author: "Digital Point LLC"
+date: "2025-08-10"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "How much ad spend is wasted on fraud?"
     answer: "Industry estimates suggest 22% of all digital ad spend is lost to fraud, totaling over $84 billion globally in 2025. Display and video ads are most affected (25-35% fraud rates), while search ads see lower rates (8-14%)."

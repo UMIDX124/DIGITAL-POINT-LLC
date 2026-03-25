@@ -3,8 +3,8 @@ title: "Lead Scoring Guide: Prioritize Leads That Actually Convert"
 excerpt: "Build a lead scoring system that separates high-value prospects from tire-kickers, so your sales team focuses on leads most likely to become customers."
 category: "Growth Systems"
 tags: ["lead scoring", "lead qualification", "sales efficiency", "CRM", "marketing automation"]
-date: "2024-10-14"
-author: "Digital Point LLC"
+date: "2025-12-01"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What is the difference between lead scoring and lead grading?"
     answer: "Lead scoring measures behavioral engagement: how a lead interacts with your marketing (website visits, email opens, content downloads, ad clicks). Lead grading measures demographic fit: how well a lead matches your ideal customer profile (company size, industry, job title, budget). The most effective systems use both together. A lead with a high grade (perfect ICP match) but low score (minimal engagement) needs nurturing. A lead with a high score (very engaged) but low grade (poor ICP match) may never convert regardless of engagement. Only leads with both high grade AND high score should be prioritized for immediate sales outreach. This dual-axis approach typically improves sales conversion rates by 25-40% compared to using either dimension alone."

@@ -3,8 +3,8 @@ title: "Marketing Attribution for SaaS Companies"
 excerpt: "Learn how to implement marketing attribution for SaaS companies with long sales cycles, free trials, and multi-stakeholder buying committees."
 category: "Marketing Attribution"
 tags: ["SaaS attribution", "marketing attribution", "B2B SaaS", "SaaS marketing", "attribution models"]
-date: "2025-06-06"
-author: "Digital Point LLC"
+date: "2025-08-17"
+author: "Anwaar Tayyab"
 faqs:
   - question: "Why is attribution harder for SaaS companies?"
     answer: "SaaS attribution is uniquely challenging because of long sales cycles (30-180 days), multiple decision-makers per account, free trial and freemium conversion paths, and the need to attribute not just initial conversion but expansion revenue and churn prevention across the entire customer lifecycle."

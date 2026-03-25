@@ -3,8 +3,8 @@ title: "TikTok Ads Guide 2026: Strategy, Benchmarks, and Best Practices"
 excerpt: "Everything you need to know about advertising on TikTok in 2026, including campaign setup, creative best practices, benchmarks by industry, and scaling strategies."
 category: "Paid Ads Benchmarks"
 tags: ["TikTok Ads", "social advertising", "video ads", "Gen Z marketing", "short-form video"]
-date: "2025-10-22"
-author: "Digital Point LLC"
+date: "2026-03-10"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "Is TikTok advertising worth it for B2B companies?"
     answer: "TikTok is primarily a B2C platform, but B2B companies are finding success in specific scenarios. If your target audience includes younger professionals (25-40), TikTok can be effective for brand awareness and thought leadership. SaaS companies, recruiting firms, and professional development brands have seen positive results. However, for traditional B2B with older decision-makers, LinkedIn and Google typically deliver better direct response results. Test TikTok with 5-10% of your budget to see if it works for your specific audience before committing more."

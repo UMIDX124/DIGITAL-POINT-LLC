@@ -3,8 +3,8 @@ title: "Hiring Remote Media Buyers: What to Look For and Where to Find Them"
 excerpt: "Find and hire elite remote media buyers who can manage six-figure ad budgets profitably. Learn the skills to screen for, where to source candidates, and how to evaluate performance."
 category: "Remote Workforce"
 tags: ["media buyer", "remote hiring", "paid ads", "talent acquisition", "performance marketing"]
-date: "2024-10-17"
-author: "Digital Point LLC"
+date: "2026-02-05"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "What skills should a media buyer have in 2026?"
     answer: "A strong media buyer in 2026 needs platform expertise (deep knowledge of Google Ads and/or Meta Ads), analytical skills (comfortable with data analysis, spreadsheets, and basic SQL), creative judgment (ability to identify winning creative concepts and write effective ad copy), strategic thinking (understanding of full-funnel marketing, not just platform mechanics), and AI tool proficiency (experience using AI for bid management, creative generation, and reporting automation). The ideal candidate has managed budgets similar to yours, has experience in your industry or a related one, and can demonstrate concrete results with specific metrics. Soft skills matter too: strong written communication, proactive problem solving, and comfort with ambiguity are essential for remote media buyers."

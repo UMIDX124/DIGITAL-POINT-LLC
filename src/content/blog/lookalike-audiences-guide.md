@@ -3,8 +3,8 @@ title: "Lookalike Audiences in 2026: What Still Works After Privacy Changes"
 excerpt: "Learn what works for lookalike audiences after iOS privacy changes with updated strategies for Meta, Google, and LinkedIn audience expansion."
 category: "Paid Ads Benchmarks"
 tags: ["lookalike audiences", "audience targeting", "privacy changes", "paid social"]
-date: "2025-11-10"
-author: "Digital Point LLC"
+date: "2025-12-06"
+author: "M. Faizan Rafiq"
 faqs:
   - question: "Do lookalike audiences still work after iOS 14.5?"
     answer: "Yes, but their effectiveness has decreased by roughly 20-30% for many advertisers. The key is using higher-quality seed audiences (customer lists rather than pixel-based), larger seed sizes (1,000+ contacts), and combining lookalikes with other targeting methods."

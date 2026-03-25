@@ -27,7 +27,7 @@ export function ArticleSchema({
   description,
   datePublished,
   dateModified,
-  author = 'Digital Point LLC',
+  author,
   image,
   url,
 }: {
@@ -41,23 +41,28 @@ export function ArticleSchema({
 }) {
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     headline: title,
     description,
     datePublished,
     dateModified: dateModified || datePublished,
-    author: {
-      '@type': 'Organization',
-      name: author,
-      url: 'https://digitalpointllc.com',
-    },
+    author: author
+      ? {
+          '@type': 'Person',
+          name: author,
+        }
+      : {
+          '@type': 'Organization',
+          name: 'Digital Point LLC',
+          url: 'https://www.digitalpointllc.com',
+        },
     publisher: {
       '@type': 'Organization',
       name: 'Digital Point LLC',
-      url: 'https://digitalpointllc.com',
+      url: 'https://www.digitalpointllc.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://digitalpointllc.com/Dp-logo1.png',
+        url: 'https://www.digitalpointllc.com/Dp-logo1.png',
       },
     },
     mainEntityOfPage: {

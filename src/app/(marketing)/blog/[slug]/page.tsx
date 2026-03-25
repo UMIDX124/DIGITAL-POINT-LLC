@@ -73,6 +73,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         description={post.excerpt}
         datePublished={post.date}
         dateModified={post.lastModified}
+        author={post.author}
         url={`${baseUrl}/blog/${slug}`}
         image={post.image}
       />

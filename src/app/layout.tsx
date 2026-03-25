@@ -133,12 +133,12 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Digital Point LLC",
-              url: "https://digitalpointllc.com",
-              logo: "https://digitalpointllc.com/logo.png",
+              url: "https://www.digitalpointllc.com",
+              logo: "https://www.digitalpointllc.com/Dp-logo1.png",
               description:
                 "A performance marketing and remote execution company that helps businesses scale revenue with paid acquisition, systems, reporting clarity, and managed remote workforce support.",
               sameAs: [
-                "https://linkedin.com/company/digitalpointllc",
+                "https://www.linkedin.com/company/digitalpointllc",
               ],
               contactPoint: {
                 "@type": "ContactPoint",

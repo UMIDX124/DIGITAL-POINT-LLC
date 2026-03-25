@@ -10,6 +10,12 @@ export const metadata: Metadata = {
     description:
       'Real problems. Real fixes. Measurable outcomes across performance marketing, systems, and remote workforce.',
     url: 'https://digitalpointllc.com/results',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Results & Case Studies — Digital Point LLC',
+    description: 'Real problems. Real fixes. Measurable outcomes across performance marketing, systems, and remote workforce.',
   },
   alternates: {
     canonical: 'https://digitalpointllc.com/results',

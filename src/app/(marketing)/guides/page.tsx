@@ -11,6 +11,13 @@ export const metadata: Metadata = {
     title: 'Marketing Guides & Playbooks — Digital Point LLC',
     description:
       'In-depth guides on marketing attribution, paid ads optimization, CAC & ROAS, analytics, remote teams, and growth systems.',
+    url: 'https://digitalpointllc.com/guides',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Marketing Guides & Playbooks — Digital Point LLC',
+    description: 'In-depth guides on marketing attribution, paid ads optimization, CAC & ROAS, analytics, remote teams, and growth systems.',
   },
 };
 

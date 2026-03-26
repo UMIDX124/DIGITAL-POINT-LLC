@@ -1,345 +1,523 @@
-# Master Website Builder Prompt
+# MASTER WEBSITE PROMPT — Production Business Website
 
-> Copy everything below this line and paste into a new Claude Code session for your other business project. Replace all `[PLACEHOLDERS]` with your actual business info.
+> Copy this entire prompt into a new Claude Code session for your other business project.
+> Replace all `{{PLACEHOLDER}}` values with your actual business info before pasting.
 
 ---
 
-## BUSINESS INFO (REPLACE THESE)
+## REPLACE THESE VALUES FIRST:
 
 ```
-COMPANY_NAME = [Your Company Name]
-COMPANY_TAGLINE = [Your tagline - e.g. "We Turn Ad Spend Into Revenue"]
-COMPANY_DESCRIPTION = [2-3 sentence description of what you do]
-COMPANY_DOMAIN = [yourdomain.com]
-COMPANY_FOUNDED = [Year]
-COMPANY_LOCATION = [City, State, Country]
-
-FOUNDER_1_NAME = [First founder name]
-FOUNDER_1_TITLE = [Co-Founder / CEO]
-FOUNDER_1_BIO = [2-3 line bio]
-FOUNDER_1_EXPERTISE = [Expertise 1, Expertise 2, Expertise 3]
-
-FOUNDER_2_NAME = [Second founder name]
-FOUNDER_2_TITLE = [Co-Founder / CTO]
-FOUNDER_2_BIO = [2-3 line bio]
-FOUNDER_2_EXPERTISE = [Expertise 1, Expertise 2, Expertise 3]
-
-BRAND_PRIMARY_COLOR = [Your brand color hex - e.g. #9d4edd]
-BRAND_ACCENT_COLOR = [Secondary color - e.g. #ff6b9d]
-BRAND_STYLE = [cosmic-dark / minimal-light / corporate-blue / etc]
-
-SERVICES = [Service 1, Service 2, Service 3, ...]
-INDUSTRIES_SERVED = [Industry 1, Industry 2, ...]
-TARGET_CITIES = [City 1, City 2, ... (for local SEO)]
-
-ADSENSE_ID = [ca-pub-XXXXXXXXXX or "none"]
-GOOGLE_PARTNER = [true/false]
-SMTP_EMAIL = [your-email@domain.com]
+{{COMPANY_NAME}} = Your Company Name (e.g., "Backup Solutions")
+{{COMPANY_TAGLINE}} = One-line tagline (e.g., "Enterprise Backup & Recovery")
+{{FOUNDER_1_NAME}} = First founder name (e.g., "M. Faizan Rafiq")
+{{FOUNDER_1_TITLE}} = Title (e.g., "Founder" or "Co-Founder")
+{{FOUNDER_1_BIO}} = 2-3 line bio
+{{FOUNDER_2_NAME}} = Second founder name (leave blank if none)
+{{FOUNDER_2_TITLE}} = Title
+{{FOUNDER_2_BIO}} = 2-3 line bio
+{{DOMAIN}} = Your domain (e.g., "backupsolutions.com")
+{{COMPANY_EMAIL}} = Contact email
+{{COMPANY_PHONE}} = Phone number
+{{COMPANY_LOCATION}} = "United States" or specific city
+{{COMPANY_YEAR_FOUNDED}} = Year (e.g., "2019")
+{{LINKEDIN_URL}} = Company LinkedIn URL
+{{SERVICES}} = Comma-separated list of services (e.g., "Cloud Backup, Disaster Recovery, Data Migration, Managed IT")
+{{INDUSTRIES}} = Target industries (e.g., "Healthcare, Finance, Legal, SaaS, eCommerce")
+{{CITIES}} = Target cities (e.g., "New York, Los Angeles, Chicago, Houston, Miami")
+{{PRIMARY_COLOR}} = Hex code (e.g., "#9d4edd")
+{{ADSENSE_PUB_ID}} = Google AdSense ID (e.g., "ca-pub-XXXXXXX") or "none"
+{{INCLUDE_CHATBOT}} = "no" (exclude chatbot feature)
 ```
 
 ---
 
-## THE PROMPT
+## THE PROMPT (Copy everything below this line):
 
-Build me a complete, production-ready business website with the following architecture and features. This should be a Silicon Valley corporate-level website that represents my company globally. Deploy-ready on Vercel.
+---
 
-### TECH STACK (EXACT)
-- Next.js 16+ (App Router, Turbopack)
-- React 19
-- TypeScript (strict mode)
-- Tailwind CSS v4
-- Framer Motion for animations
-- Radix UI + shadcn/ui for base components
-- Prisma with SQLite for form submissions
-- Nodemailer for email notifications
-- Recharts for data visualization
-- React Hook Form + Zod for form validation
-- Zustand for state management
-- TanStack React Query for server state
+You are building a production-grade, Silicon Valley corporate-level business website. This is NOT a template — it must look and feel like a $50K+ custom build. Build it step by step, thoroughly, with zero shortcuts.
 
-### DESIGN SYSTEM
-Create a fully custom design system with:
+## Tech Stack (MANDATORY — do not change):
+- **Next.js 16** (App Router, Turbopack, React 19)
+- **TypeScript** (strict mode)
+- **Tailwind CSS 4** (utility-first, dark mode)
+- **Framer Motion** (animations)
+- **shadcn/ui** (component library — New York style)
+- **Prisma** (SQLite for forms/submissions)
+- **Nodemailer** (SMTP email)
+- **Zod** (validation)
+- **React Hook Form** (forms)
+- **Lucide React** (icons)
 
-**Theme**: Dark cosmic theme (deep violet-black backgrounds, glass morphism, glow effects)
-- Background: #0d0815
-- Surface: #13091e
-- Primary: [BRAND_PRIMARY_COLOR]
-- Accent: [BRAND_ACCENT_COLOR]
-- Text primary: #f4f0f9
-- Text secondary: #b794c7
-- Text muted: #7c5a8a
-- Glass effects: backdrop-blur with rgba borders
-- Glow effects: radial gradients, drop shadows
+## Company Info:
+- **Name:** {{COMPANY_NAME}}
+- **Tagline:** {{COMPANY_TAGLINE}}
+- **Founder(s):** {{FOUNDER_1_NAME}} ({{FOUNDER_1_TITLE}}), {{FOUNDER_2_NAME}} ({{FOUNDER_2_TITLE}})
+- **Domain:** {{DOMAIN}}
+- **Email:** {{COMPANY_EMAIL}}
+- **Location:** {{COMPANY_LOCATION}} (USA-based company)
+- **Founded:** {{COMPANY_YEAR_FOUNDED}}
+- **Services:** {{SERVICES}}
+- **Target Industries:** {{INDUSTRIES}}
+- **Target Cities:** {{CITIES}}
 
-**Typography**:
-- Display font: Space Grotesk (Google Fonts, variable weight 300-700)
-- Body font: Inter (400-500)
-- Mono font: IBM Plex Mono (for metrics, code)
+---
 
-**Animations** (Framer Motion):
-- FadeUp on scroll (staggered children)
-- Parallax hero with floating elements
-- Spring physics on interactions
-- Glass card hover effects (elevation + border glow)
-- Button glow effects
-- Animated section dividers
-- Respect prefers-reduced-motion
+## PHASE 1: Project Setup & Design System
 
-**CSS Utilities**:
-- .glass (backdrop-blur-xl, rgba background)
-- .glass-strong (heavier blur)
-- .text-gradient (gradient text)
-- .cosmic-glow (radial glow background)
-- .stars-bg (animated twinkling stars)
-- .grid-bg (subtle grid pattern)
-- .noise-overlay (SVG noise texture)
-- .card-hover (elevation + border on hover)
-- .btn-glow (button glow on hover)
+### 1.1 Initialize Project
+```bash
+npx create-next-app@latest {{project-name}} --typescript --tailwind --app --turbopack --src-dir
+cd {{project-name}}
+npx shadcn@latest init
+npm install framer-motion lucide-react reading-time gray-matter react-hook-form @hookform/resolvers zod prisma @prisma/client nodemailer date-fns uuid clsx tailwind-merge class-variance-authority sonner next-themes recharts
+npx prisma init --datasource-provider sqlite
+```
 
-### PAGES & ROUTES
+### 1.2 Design System — Dark Cosmic Theme
+Create a premium dark theme with these specifications:
+- **Background:** Deep dark (#0d0815 or similar)
+- **Primary accent:** {{PRIMARY_COLOR}} with lighter/darker variants
+- **Signal color:** Contrasting accent for CTAs (e.g., #ff6b9d)
+- **Surface layers:** Multiple dark surface levels for depth
+- **Glass effects:** Glassmorphism with backdrop-blur
+- **Typography:** Space Grotesk (display), Inter (body), IBM Plex Mono (code) via Google Fonts
+- **Border radius:** 0.75rem base with calc-based variants
+- **Animations:** Smooth transitions, hover effects, scroll animations
 
-**Homepage** (`/`) - Sections in this exact order:
-1. HeroSection - Cosmic gradient background, parallax floating planets/orbs, company tagline, 2 CTA buttons (primary + ghost), animated stars
-2. ProofBar - Trust metrics strip (X+ years, X clients, X% avg ROAS, Google Partner badge)
-3. LatestInsights - 6 most recent blog posts in 3-column grid, auto-pulled from blog
-4. FreeResources - 3 resource cards linking to guides
-5. ProcessSection - How-we-work steps (5 steps with icons)
-6. PillarsSection - Core service pillars with benefits
-7. CaseStudiesPreview - 3 featured case studies with key metrics
-8. ProofSection - Client results and testimonials count
-9. TestimonialsSection - Customer testimonials with star ratings
-10. FAQSection - Structured FAQ with Schema markup
-11. CTASection - Final conversion CTA
+Create custom CSS utilities:
+- `.glass` — glassmorphism effect
+- `.glass-strong` — stronger glass effect
+- `.signal-glow` — glowing box shadow
+- `.text-gradient` — text gradient effect
+- `.cosmic-bg` — gradient background
 
-**Service Pages** (one per service):
-- /[service-slug] for each core service
-- Hero, benefits, process, results, FAQ, CTA sections
-- Internal links to related blog posts and guides
+### 1.3 Tailwind Config
+Extend Tailwind with:
+- All custom colors as CSS variables
+- Custom fonts (font-display, font-mono)
+- Custom animations (twinkle, fade, pulse)
+- Dark mode: class-based (hardcoded dark)
 
-**About** (`/about`):
+---
+
+## PHASE 2: Layout & Navigation
+
+### 2.1 Root Layout (`src/app/layout.tsx`)
+- Dark mode HTML (`<html lang="en" className="dark">`)
+- Google Fonts (Space Grotesk, Inter, IBM Plex Mono)
+- Global metadata (title, description, OG tags, Twitter cards)
+- Organization JSON-LD schema (name, logo, founders, address, LinkedIn)
+- Security headers in next.config.ts (X-Frame-Options, CSP, XSS protection)
+- Cookie consent banner component
+- Toast notifications (Sonner)
+- If AdSense: `next/script` with `strategy="afterInteractive"`
+
+### 2.2 Navigation Component
+Create a sticky, glass-effect navigation bar:
+- Logo (mascot/icon) sitting ON the navbar (elevated, with shadow)
+- White glow effect behind logo
+- Company name + "LLC" text next to logo
+- Desktop: Pill-shaped nav container with all links, centered between logo and CTA
+- Active link indicator with animated background (framer-motion layoutId)
+- "Free [Main CTA]" button on right (gradient, glowing)
+- Mobile: Hamburger menu with slide-out drawer
+- Scroll behavior: glass background appears on scroll
+- Full-width layout
+
+Nav links should include: Home, [Service 1], [Service 2], [Service 3], Case Studies, Results, Blog, About, Contact
+
+### 2.3 Footer Component
+- 4-column grid: Services, Company, Resources, Connect
+- Newsletter signup form
+- Social media links
+- Legal links (Privacy Policy, Terms of Service)
+- Copyright with year
+- Built with dark surface background
+
+---
+
+## PHASE 3: Pages (Marketing Layout)
+
+### 3.1 Homepage — Content-First Design
+Section order (this is critical for AdSense approval):
+
+1. **HeroSection** — Bold headline, subtitle, dual CTA buttons, animated background
+2. **ProofBar** — Trust metrics strip (years in business, clients served, key metric, satisfaction rate)
+3. **LatestInsights** — 6 latest blog posts in responsive grid (server component pulling from blog)
+4. **FreeResources** — 3 cards linking to guides with icons, descriptions
+5. **ProcessSection** — How it works (3-4 steps with icons)
+6. **PillarsSection** — Core service pillars (3 cards with detailed descriptions)
+7. **CaseStudiesPreview** — 3 case study cards with key metrics
+8. **ProofSection** — Social proof, statistics, achievements
+9. **TestimonialsSection** — Client testimonials carousel
+10. **FAQSection** — Accordion FAQ with schema markup
+11. **CTASection** — Final conversion section
+
+### 3.2 Service Pages (one per service)
+For each service in {{SERVICES}}, create:
+- Hero with service-specific headline
+- Problem/pain points section
+- Solution overview
+- Process steps
+- Benefits with metrics
+- FAQ section (with FAQSchema)
+- CTA section
+
+### 3.3 About Page
 - Company story with timeline/milestones
-- Co-founder profiles with photos/bios
-- Values section
-- Certifications section (Google Partner if applicable)
-- Team stats (years, clients, results)
+- Founder section with photos/bios
+- Mission and values
+- Key metrics (years, clients, results)
+- Team section
+- CTA to contact
 
-**Contact** (`/contact`):
-- Contact form (name, email, subject, message)
+### 3.4 Contact Page
+- Contact form (React Hook Form + Zod validation)
 - Company info sidebar (email, phone, location)
+- Founder direct contact section
 - Map or location indicator
 
-**Results** (`/results`):
-- Case study cards with before/after metrics
-- ROAS improvements, CAC reductions, revenue growth
-- Visual data presentation
+### 3.5 Results Page
+- Case study highlights with real metrics
+- Before/after comparisons
+- Industry-specific results
+- Client logos or testimonials
+- CTA to get started
 
-**Case Studies** (`/case-studies`):
-- 3+ detailed case studies
-- Structure: Client type, Problem, Strategy, Execution, Results (with numbers)
-- CTA to book consultation
+### 3.6 Case Studies Page & Data
+Create `/case-studies` listing page and `/case-studies/[slug]` dynamic pages:
+- 3+ case studies with: Client type, Problem, Strategy, Execution, Results (with numbers)
+- Store data in `src/lib/case-studies.ts`
+- Generate static params for all slugs
+- Beautiful card layout with metric highlights
 
-**Blog System** (`/blog`, `/blog/[slug]`, `/blog/category/[category]`):
-- 50-100 blog posts in markdown with YAML frontmatter
-- Fields: title, excerpt, category, tags, date, author, faqs, featured
-- 6 categories relevant to your business
-- Auto-generated Table of Contents from H2/H3 headings
-- Author box at end of every post (with bio, expertise tags, Google Partner badge)
-- Related posts section (same category)
-- FAQ section with Schema markup
-- Mid-article CTA (InContentCTA) - contextual based on category
-- End-of-article lead magnet banner (LeadMagnetBanner)
-- Internal linking suggestions (EnhancedInternalLinks)
-- Reading time calculated from word count
-- Category pages with filtering
-- Blog list with search and pagination
-- Blog cards must be fully clickable (wrapped in Link)
-
-**Guides Hub** (`/guides`, `/guides/[slug]`):
-- 6+ comprehensive multi-section guides (2000-3000 words each)
-- Structure: sections with key takeaways, FAQs, related links
-- Topics covering your service expertise areas
-- generateStaticParams for all guides
-
-**Research Hub** (`/research`, `/research/[slug]`):
-- 5+ original research/benchmark report pages
-- Interactive Recharts data visualizations
-- Industry-specific data and insights
-
-**Tools Hub** (`/tools`, `/tools/[slug]`):
-- 5+ interactive calculators relevant to your business
-- React state-managed inputs with real-time calculations
-- Tool Schema markup (SoftwareApplication, free)
-
-**Comparison Pages** (`/compare/[slug]`):
-- 10+ side-by-side comparison pages
-- Pros/cons, comparison tables, recommendations
-- generateStaticParams for all comparisons
-
-**Programmatic SEO** (200+ pages):
-- `/services/[service]/[industry]` - Service x Industry combinations
-- `/services/[service]/near/[city]` - Service x City for local SEO
-- Content generation functions with 3 template variants per page (to avoid doorway page detection)
-- Humanized content: contractions, personality, varied sentence structures
-- Mark these as noindex initially (for AdSense approval), re-enable later
-
-**Legal Pages**:
-- `/privacy-policy` - Full privacy policy (GDPR, cookies, AdSense, COPPA)
-- `/terms-of-service` - Full terms (liability, IP, governing law)
-
-**Lead Capture** (`/free-growth-audit` or `/free-consultation`):
-- Multi-field form: name, email, company, website, business type, budget, team size, pain points, services needed, notes
-- UTM tracking fields
-- Rate limiting (5 per hour per IP)
-- Database storage (Prisma)
-- Admin email notification
-- Branded confirmation response
-
-### LAYOUT COMPONENTS
-
-**Navigation** (sticky, glass effect):
-- Logo on left with white glow effect + floating animation
-- Pill-shaped nav container centered (flex-1 justify-center)
-- Items: Home, [Your Service Pages], Case Studies, Results, Blog, About, Contact
-- Active link indicator with animated background (layoutId)
-- CTA button on right ("Free Growth Audit" or similar)
-- Mobile hamburger menu with AnimatePresence full-screen overlay
-- Scroll-based blur transition
-
-**Footer**:
-- 4-column layout: Brand info, Services, Company, Contact
-- Gradient text headings
-- Social links (LinkedIn, email, etc.)
-- Trust badges (years in business, Google Partner)
-- Legal links (Privacy Policy, Terms of Service)
-- Copyright with dynamic year
-
-### SEO INFRASTRUCTURE (CRITICAL)
-
-**Metadata**:
-- Title template: `%s | [COMPANY_NAME]`
-- Per-page titles, descriptions, keywords
-- Open Graph tags on every page (title, description, url, type, image)
-- Twitter Card tags on every page
-- Canonical URLs per page
-
-**Structured Data (JSON-LD)**:
-- Organization schema (name, url, logo, founders, address, credentials)
-- BlogPosting schema on blog posts (headline, author as Person, datePublished)
-- FAQPage schema on pages with FAQs
-- SoftwareApplication schema on tool pages
-- BreadcrumbList schema per page
-
-**Technical SEO**:
-- Dynamic robots.ts via Next.js metadata API
-- Dynamic sitemap.ts with all 350+ pages and priority levels
-- IndexNow API route for instant Bing/Yandex indexing
-- Breadcrumbs component with Schema markup
-- Internal linking strategy (related posts, contextual links, cross-page links)
-- Canonical URLs explicitly set
-
-### AUTHOR SYSTEM (E-E-A-T)
-
-Create author data with 2 co-founders + team default:
-- Each author: name, initials, title, bio (2-3 lines), expertise tags (3)
-- AuthorBox component shown at bottom of every blog post
-- Author name shown in blog post hero
-- Alternate authors across posts (50/50 split)
-- Google Certified Partner badge on author box (if applicable)
-- Author as Person type in BlogPosting schema
-
-### ADVERTISING (AdSense Ready)
-
-- AdSense script via next/script with strategy="afterInteractive"
-- public/ads.txt with publisher ID
-- Reusable AdUnit component (auto, rectangle, horizontal, vertical formats)
-- InArticleAd and SidebarAd wrapper components
-- Clean spacing around ad placements
-- No misleading UI or accidental click areas
-
-### COOKIE CONSENT
-
-- CookieConsent component (client-side, localStorage)
-- Bottom-fixed banner with Accept/Decline buttons
-- Links to privacy policy
-- Framer Motion slide-up/slide-down animation
-- Only shows when no consent choice exists
-
-### GOOGLE PARTNER BADGE (if applicable)
-
-- Reusable GooglePartnerBadge component (SVG shield)
-- Displayed on: ProofBar, Footer, Author boxes, About page
-- Organization schema hasCredential for Google Partner
-
-### EMAIL SYSTEM
-
-- Nodemailer with SMTP configuration
-- HTML email templates with brand colors
-- Newsletter welcome email (to subscriber)
-- Admin notification emails (for form submissions)
-- High-intent lead alerts
-- HTML escaping for security
-- Retry logic (2 attempts)
-
-### DATABASE
-
-Prisma with SQLite:
-- FormSubmission model (all form fields + UTM tracking + status)
-- NewsletterSubscriber model (email + timestamps)
-- SupportTicket model (name, email, subject, message, priority, status)
-
-### API ROUTES
-
-- POST /api/audit (or /api/consultation) - Main lead form
-- POST /api/newsletter - Newsletter signup
-- POST /api/contact - Contact form
-- POST /api/indexnow - IndexNow instant indexing
-
-### SECURITY
-
-- Security headers in next.config.ts (X-Frame-Options, X-Content-Type-Options, etc.)
-- Rate limiting on all form endpoints
-- HTML escaping on all user input
-- Zod validation on all forms
-- Parameterized database queries (Prisma)
-- Environment variables for all secrets
-
-### CONTENT HUMANIZATION (CRITICAL for AdSense)
-
-ALL content must be humanized to pass AI detection:
-- Use contractions throughout (it's, don't, we've, you're, etc.)
-- Vary sentence structure (short punchy + longer explanatory)
-- Add personality markers ("Here's the thing", "Look,", "Honestly,")
-- No uniform template patterns across pages
-- Different opening patterns per page/section
-- Real numbers and specific examples
-- Conversational tone, not corporate-formal
-- 3 template variants for programmatic SEO pages
-
-### PERFORMANCE
-
-- Server Components by default, Client Components only when needed
-- Static generation (generateStaticParams) for all content pages
-- next/image for all images
-- Google Fonts with display=swap
-- Standalone output mode
-- Sharp for image processing
-
-### DEPLOYMENT
-
-- Vercel-ready (auto-deploy from GitHub main branch)
-- .env.local for local development
-- Environment variables for all secrets
-- No hardcoded API keys
+### 3.7 Legal Pages
+- **/privacy-policy** — GDPR compliant, covers cookies, analytics, AdSense (if applicable), COPPA, data retention, user rights
+- **/terms-of-service** — Service terms, liability limitations, IP rights, US governing law, dispute resolution
 
 ---
 
-## IMPORTANT NOTES
+## PHASE 4: Blog System (Critical for AdSense)
 
-1. DO NOT include an AI chatbot - I don't want that feature
-2. Make ALL blog content humanized with contractions and personality - zero AI detection risk
-3. Blog dates should be spread across 8+ months (not all the same month)
-4. Reading times should vary naturally based on word count
-5. Every blog card must be clickable and navigate to the full post
-6. All internal links must point to valid routes
-7. Test build before deploying - all 350+ pages should generate with zero errors
-8. Before deploying, ask me first for approval
+### 4.1 Blog Infrastructure
+- Blog posts as Markdown files in `src/content/blog/`
+- Frontmatter: title, excerpt, category, tags, date, author, lastModified, featured, faqs
+- `src/lib/blog.ts` — Parse posts, generate TOC from headings, calculate reading time
+- Categories with color coding (create 4-6 relevant categories for your industry)
+- Blog listing page with grid layout, category filters
+- Category pages at `/blog/category/[category]`
+
+### 4.2 Blog Post Template
+Each blog post page must have:
+- Hero: category tag, date, read time, title, excerpt, author name
+- Sidebar: Table of Contents (sticky, scrollspy)
+- Content: Full markdown rendering with prose styling
+- Mid-article CTA: In-content lead capture (contextual to category)
+- FAQ section: If post has FAQs, render with schema markup
+- Internal links: Auto-generated related content links
+- Lead magnet banner: End-of-post conversion CTA
+- Author box: Author name, title, bio, expertise tags, LinkedIn link
+- Related posts: 3 related articles from same category
+
+### 4.3 Blog Content — Write 30+ Articles
+Write 30+ substantial blog posts (1,500-3,000 words each) covering:
+- Industry guides and how-tos
+- Benchmark data and statistics
+- Comparison articles (X vs Y)
+- Best practices and strategies
+- Tool reviews and recommendations
+- Case study breakdowns
+
+**CRITICAL HUMANIZATION RULES (Google AI Detection):**
+- Use contractions EVERYWHERE (it's, don't, won't, can't, we've, you're, that's)
+- Vary sentence length — mix short punchy sentences with longer explanatory ones
+- Add personality phrases: "Here's the thing:", "Honestly,", "Look,", "The truth is"
+- NO uniform template patterns — each post must feel uniquely written
+- NO repetitive phrases across posts (vary your vocabulary)
+- Spread dates across 6-8 months (not all the same date)
+- Alternate authors between founders
+- Include personal anecdotes and opinions
+- Use conversational tone, not academic
+
+### 4.4 Author System
+- Define authors in AuthorBox component with:
+  - Name, initials, title, bio (2-3 lines), expertise tags
+- Alternate posts between authors (50/50 split)
+- Show author in blog hero and author box at end
+- Author expertise tags as small pills
+
+---
+
+## PHASE 5: SEO Infrastructure
+
+### 5.1 Technical SEO
+- **Sitemap** (`src/app/sitemap.ts`) — Dynamic, includes ALL pages with priority levels
+- **Robots** (`src/app/robots.ts`) — Allow all crawlers, reference sitemap
+- **Canonical URLs** — Set on all pages via metadata
+- **OG Tags** — Title, description, url, type, image on every page
+- **Twitter Cards** — summary_large_image on every page
+
+### 5.2 Structured Data (JSON-LD)
+- **Organization** — In root layout
+- **BlogPosting** — On every blog post (author as Person, not Organization)
+- **FAQPage** — On posts with FAQs
+- **BreadcrumbList** — On all inner pages
+
+### 5.3 Internal Linking
+- Create `EnhancedInternalLinks.tsx` server component
+- Auto-suggest related content links on blog posts
+- Cross-link between blog posts, guides, and service pages
+
+### 5.4 Programmatic SEO Pages (Optional but powerful)
+Create dynamic pages for service x industry and service x city combinations:
+- `/services/[service]/[industry]` — e.g., /services/cloud-backup/healthcare
+- `/services/[service]/near/[city]` — e.g., /services/cloud-backup/near/new-york
+- Store data in `src/lib/programmatic-seo.ts`
+- Use 3+ template variants to avoid doorway page detection
+- **IMPORTANT:** Add `robots: { index: false, follow: true }` initially (enable after AdSense approval)
+
+### 5.5 Comparison Pages
+- 5-10 comparison pages at `/compare/[slug]`
+- Store data in `src/lib/comparisons.ts`
+- Include verdict, pros/cons, recommendations
+
+### 5.6 Guide Pages
+- 3-6 comprehensive guides at `/guides/[slug]`
+- Store data in `src/lib/guides.ts`
+- 2,000-3,000 words each, table of contents, FAQ sections
+
+### 5.7 IndexNow Integration
+- API route at `/api/indexnow`
+- Key file at `public/indexnow-key.txt`
+- Submit new URLs to Bing/Yandex for instant indexing
+
+---
+
+## PHASE 6: Conversion & Lead Generation
+
+### 6.1 Free Consultation/Audit Page
+- Dedicated conversion page at `/free-[cta-name]`
+- Minimal layout (no regular nav/footer distraction)
+- Multi-step or single form
+- Sidebar with trust signals, expected outcomes
+- API route to save submissions + send confirmation email
+
+### 6.2 Lead Capture Components
+- **In-content CTA** — Mid-article contextual callout linking to consultation
+- **Lead Magnet Banner** — Full-width gradient banner at end of posts
+- **Sticky CTA Bar** — Fixed bottom bar on scroll
+- **Exit Intent Modal** — Popup on mouse exit (desktop) or scroll-up (mobile)
+
+### 6.3 Newsletter System
+- Newsletter signup component (multiple placement points)
+- API route at `/api/newsletter` — saves subscriber + sends welcome email
+- Branded welcome email with HTML template
+
+### 6.4 Contact & Form APIs
+Create these API routes with Prisma + Nodemailer:
+- `/api/audit` — Main consultation form (rate limited)
+- `/api/newsletter` — Email signup
+- `/api/contact` — General contact form
+- All with: Zod validation, rate limiting, email confirmation, admin notification
+
+---
+
+## PHASE 7: AdSense Preparation (if applicable)
+
+### 7.1 Technical Setup
+- `public/ads.txt` with publisher ID
+- AdSense script via `next/script` in root layout
+- Ad unit wrapper component (`src/components/ads/AdUnit.tsx`)
+
+### 7.2 Ad Placements (Non-intrusive)
+- After blog title (responsive ad)
+- Mid-article (in-article ad)
+- End of article (responsive ad)
+- Sidebar (display ad)
+- Clean spacing, no accidental click areas
+
+### 7.3 Cookie Consent
+- Cookie consent banner component
+- Accept/Decline buttons
+- localStorage persistence
+- Link to privacy policy
+- Framer Motion slide-up animation
+
+---
+
+## PHASE 8: Research & Tools Pages
+
+### 8.1 Research Hub
+- `/research` — Hub page linking to data pages
+- Create 3-5 interactive data/benchmark pages with charts (Recharts)
+- Topics relevant to your industry
+
+### 8.2 Tools Hub
+- `/tools` — Hub page linking to calculators
+- Create 3-5 interactive calculator tools
+- Use React state for calculations, beautiful UI with results
+
+---
+
+## PHASE 9: Database Schema
+
+### Prisma Models:
+```prisma
+model AuditSubmission {
+  id          String   @id @default(uuid())
+  name        String
+  email       String
+  company     String?
+  phone       String?
+  message     String?
+  source      String?
+  utmSource   String?
+  utmMedium   String?
+  utmCampaign String?
+  createdAt   DateTime @default(now())
+}
+
+model ContactSubmission {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+```
+
+---
+
+## PHASE 10: Final Audit Checklist
+
+Before deploying, verify ALL of these:
+
+### Content Quality
+- [ ] 30+ blog posts, each 1,500-3,000 words
+- [ ] All content humanized (contractions, personality, varied structure)
+- [ ] No duplicate or thin pages
+- [ ] Authors displayed on every post
+- [ ] Dates spread across 6+ months
+- [ ] Reading times vary naturally
+
+### Pages Working
+- [ ] Every route loads without 404
+- [ ] All blog cards are clickable (wrapped in Link)
+- [ ] All internal links work
+- [ ] Forms submit successfully
+- [ ] Emails send correctly
+
+### SEO
+- [ ] Sitemap includes all pages
+- [ ] Robots.txt is valid
+- [ ] Every page has meta title + description
+- [ ] OG tags on every page
+- [ ] JSON-LD schemas render correctly
+- [ ] Canonical URLs set
+- [ ] Breadcrumbs on inner pages
+
+### Legal & Compliance
+- [ ] Privacy Policy exists and is comprehensive
+- [ ] Terms of Service exists
+- [ ] Cookie consent banner works
+- [ ] ads.txt is correct (if AdSense)
+
+### Technical
+- [ ] `next build` passes with zero errors
+- [ ] No TypeScript errors
+- [ ] Mobile responsive on all pages
+- [ ] Images optimized (next/image)
+- [ ] Security headers configured
+- [ ] API routes have rate limiting
+
+### E-E-A-T
+- [ ] About page with company history
+- [ ] Named authors with bios and expertise
+- [ ] Case studies with real metrics
+- [ ] Testimonials section
+- [ ] Contact information visible
+
+---
+
+## IMPORTANT NOTES:
+
+1. **Build incrementally** — Don't try to create everything at once. Follow the phases.
+2. **Test after each phase** — Run `next build` to catch errors early.
+3. **Content is king** — Spend the most time on blog content quality. This is what Google evaluates.
+4. **No chatbot** — This prompt excludes the AI chatbot feature intentionally.
+5. **Deploy on Vercel** — Push to GitHub, connect to Vercel for auto-deploy.
+6. **Google Search Console** — Submit sitemap after deploying.
+7. **Wait for indexing** — Don't apply for AdSense until 50+ pages are indexed.
+
+---
+
+## FILE STRUCTURE REFERENCE:
+
+```
+src/
+├── app/
+│   ├── layout.tsx (root layout with fonts, metadata, scripts)
+│   ├── (marketing)/
+│   │   ├── page.tsx (homepage)
+│   │   ├── about/page.tsx
+│   │   ├── contact/page.tsx
+│   │   ├── results/page.tsx
+│   │   ├── case-studies/page.tsx
+│   │   ├── blog/page.tsx
+│   │   ├── blog/[slug]/page.tsx
+│   │   ├── blog/category/[category]/page.tsx
+│   │   ├── guides/page.tsx
+│   │   ├── guides/[slug]/page.tsx
+│   │   ├── compare/[slug]/page.tsx
+│   │   ├── research/page.tsx
+│   │   ├── tools/page.tsx
+│   │   ├── privacy-policy/page.tsx
+│   │   ├── terms-of-service/page.tsx
+│   │   ├── services/[service]/[industry]/page.tsx
+│   │   └── services/[service]/near/[city]/page.tsx
+│   ├── (conversion)/
+│   │   ├── layout.tsx (minimal conversion layout)
+│   │   └── free-[cta]/page.tsx
+│   ├── api/
+│   │   ├── audit/route.ts
+│   │   ├── newsletter/route.ts
+│   │   ├── contact/route.ts
+│   │   └── indexnow/route.ts
+│   ├── sitemap.ts
+│   └── robots.ts
+├── components/
+│   ├── layout/ (Navigation, Footer)
+│   ├── sections/ (all page sections)
+│   ├── blog/ (AuthorBox, InContentCTA, LeadMagnetBanner)
+│   ├── seo/ (Breadcrumbs, FAQSchema, InternalLinks)
+│   ├── ads/ (AdUnit)
+│   ├── ui/ (shadcn components)
+│   └── CookieConsent.tsx
+├── content/
+│   └── blog/ (30+ markdown files)
+├── lib/
+│   ├── blog.ts
+│   ├── case-studies.ts
+│   ├── comparisons.ts
+│   ├── guides.ts
+│   ├── programmatic-seo.ts
+│   ├── email.ts
+│   ├── db.ts
+│   └── utils.ts
+└── public/
+    ├── ads.txt
+    ├── logo.png
+    └── indexnow-key.txt
+```
+
+---
+
+**START BUILDING. Follow phases 1-10 in order. Ask me before deploying.**

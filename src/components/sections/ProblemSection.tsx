@@ -1,8 +1,5 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { AlertTriangle, BarChart3, Users, Clock, Zap, Target } from 'lucide-react';
-import { Section, Container, GlassCard, StaggerContainer, StaggerItem } from '@/components/ui-dp/AnimatedElements';
+import { Section, Container, GlassCard, StaggerContainer, StaggerItem, FadeUp } from '@/components/ui-dp/AnimatedElements';
 
 const problems = [
   {
@@ -49,7 +46,7 @@ export function ProblemSection() {
     <Section className="relative overflow-hidden">
       {/* Cosmic background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0d0815] via-[#13091e] to-[#1a0a2e]" />
-      
+
       {/* Stars */}
       <div className="absolute inset-0 opacity-30">
         {problemStars.map((star, i) => (
@@ -64,59 +61,45 @@ export function ProblemSection() {
           />
         ))}
       </div>
-      
+
       <Container className="relative z-10">
-        {/* Custom Header with Perfect Title */}
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          {/* Eyebrow */}
-          <motion.span 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 text-sm font-medium uppercase tracking-wider"
-            style={{
-              background: 'rgba(255, 107, 107, 0.1)',
-              border: '1px solid rgba(255, 107, 107, 0.2)',
-              color: '#ff6b6b',
-            }}
-          >
-            <AlertTriangle className="w-4 h-4" />
-            The Reality
-          </motion.span>
-          
-          {/* Main Title - Perfect Two Lines */}
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-[1.15] tracking-tight mb-6"
-          >
-            <span className="block">You&apos;re not guessing.</span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#e0aaff] via-[#c77dff] to-[#ff6b9d]">
-              You just don&apos;t have the data.
+        {/* Header — replaced motion.span/h2/p whileInView with single FadeUp */}
+        <FadeUp>
+          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+            {/* Eyebrow */}
+            <span
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 text-sm font-medium uppercase tracking-wider"
+              style={{
+                background: 'rgba(255, 107, 107, 0.1)',
+                border: '1px solid rgba(255, 107, 107, 0.2)',
+                color: '#ff6b6b',
+              }}
+            >
+              <AlertTriangle className="w-4 h-4" />
+              The Reality
             </span>
-          </motion.h2>
-          
-          {/* Description */}
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-[#b794c7] text-lg md:text-xl leading-relaxed"
-          >
-            Most founders are running on instinct because their systems don&apos;t tell them the truth.
-          </motion.p>
-        </div>
+
+            {/* Main Title */}
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-[1.15] tracking-tight mb-6">
+              <span className="block">You&apos;re not guessing.</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#e0aaff] via-[#c77dff] to-[#ff6b9d]">
+                You just don&apos;t have the data.
+              </span>
+            </h2>
+
+            {/* Description */}
+            <p className="text-[#b794c7] text-lg md:text-xl leading-relaxed">
+              Most founders are running on instinct because their systems don&apos;t tell them the truth.
+            </p>
+          </div>
+        </FadeUp>
 
         <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {problems.map((problem) => (
             <StaggerItem key={problem.title}>
               <GlassCard className="p-6 h-full">
                 <div className="flex items-start gap-4">
-                  <div 
+                  <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
                     style={{
                       background: 'rgba(157, 78, 221, 0.15)',

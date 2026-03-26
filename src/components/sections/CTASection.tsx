@@ -1,6 +1,3 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { ArrowRight, Mail, Linkedin } from 'lucide-react';
 import { Section, Container, FadeUp } from '@/components/ui-dp/AnimatedElements';
 import Link from 'next/link';
@@ -12,14 +9,9 @@ export function CTASection() {
       {/* Cosmic gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#1a0a2e] via-[#2d1b4e] to-[#1a0a2e]" />
 
-      {/* Glow */}
-      <motion.div 
-        animate={{
-          opacity: [0.1, 0.25, 0.1],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full blur-3xl"
+      {/* Glow — CSS animation instead of framer-motion infinite */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full blur-3xl animate-glow-pulse"
         style={{
           background: 'radial-gradient(ellipse, rgba(199, 125, 255, 0.4) 0%, transparent 70%)',
         }}
@@ -37,11 +29,7 @@ export function CTASection() {
               }}
             >
               <span className="relative flex h-2 w-2">
-                <motion.span 
-                  className="absolute inline-flex h-full w-full rounded-full bg-[#ff6b9d]"
-                  animate={{ scale: [1, 1.5, 1], opacity: [0.75, 0, 0.75] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                />
+                <span className="absolute inline-flex h-full w-full rounded-full bg-[#ff6b9d] animate-ping" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ff6b9d]"></span>
               </span>
               <span className="text-[#e0aaff] text-sm">Free. No pitch. Just clarity.</span>
@@ -65,21 +53,19 @@ export function CTASection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Link href="/free-growth-audit">
-                <motion.span
-                  className="inline-flex px-8 py-4 text-lg font-semibold text-white rounded-xl overflow-hidden group"
+              <Link href="/free-growth-audit" className="w-full sm:w-auto">
+                <span
+                  className="flex sm:inline-flex w-full sm:w-auto justify-center px-8 py-4 text-lg font-semibold text-white rounded-xl overflow-hidden group transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98]"
                   style={{
                     background: 'linear-gradient(135deg, #7b2cbf 0%, #9d4edd 50%, #c77dff 100%)',
                     boxShadow: '0 4px 20px rgba(123, 44, 191, 0.4)',
                   }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
                 >
                   <span className="flex items-center justify-center gap-2">
                     Get Your Growth Audit
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </span>
-                </motion.span>
+                </span>
               </Link>
             </div>
 
@@ -98,7 +84,7 @@ export function CTASection() {
             </div>
 
             {/* Contact info */}
-            <div className="flex items-center justify-center gap-6">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
               <a 
                 href="mailto:info@digitalpointllc.com"
                 className="flex items-center gap-2 text-[#c77dff] hover:text-[#e0aaff] transition-colors text-sm"

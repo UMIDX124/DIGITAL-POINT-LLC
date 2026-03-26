@@ -1,6 +1,3 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { Section, Container, SectionHeader, FadeUp, GlassCard } from '@/components/ui-dp/AnimatedElements';
 
 const caseStudies = [
@@ -44,14 +41,9 @@ export function ProofSection() {
       {/* Cosmic background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#13091e] via-[#0d0815] to-[#0a0510]" />
       
-      {/* Animated glow */}
-      <motion.div
-        animate={{
-          opacity: [0.05, 0.15, 0.05],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-3xl"
+      {/* Animated glow — CSS animation instead of framer-motion infinite */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-3xl animate-glow-pulse"
         style={{
           background: 'radial-gradient(ellipse, rgba(157, 78, 221, 0.4) 0%, transparent 70%)',
         }}
@@ -65,7 +57,7 @@ export function ProofSection() {
           align="center"
         />
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {caseStudies.map((study, index) => (
             <FadeUp key={study.company} delay={index * 0.1}>
               <GlassCard className="p-6 h-full">

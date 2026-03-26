@@ -47,7 +47,7 @@ export function CaseStudiesPage() {
                 >
                   {/* Header */}
                   <div
-                    className="px-6 md:px-8 py-5 flex items-center justify-between"
+                    className="px-4 sm:px-6 md:px-8 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
                     style={{
                       background:
                         'linear-gradient(135deg, rgba(157, 78, 221, 0.1) 0%, rgba(13, 8, 21, 0.8) 100%)',
@@ -76,7 +76,7 @@ export function CaseStudiesPage() {
                   </div>
 
                   {/* Body */}
-                  <div className="px-6 md:px-8 py-6 space-y-6">
+                  <div className="px-4 sm:px-6 md:px-8 py-6 space-y-6">
                     {/* Problem */}
                     <div>
                       <h3 className="text-xs uppercase tracking-wider text-[#9d4edd] font-semibold mb-2">
@@ -102,11 +102,11 @@ export function CaseStudiesPage() {
                       <h3 className="text-xs uppercase tracking-wider text-[#ff6b9d] font-semibold mb-3">
                         Results
                       </h3>
-                      <div className="grid grid-cols-3 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                         {study.results.map((r) => (
                           <div
                             key={r.label}
-                            className="rounded-xl p-4 text-center"
+                            className="rounded-xl p-3 sm:p-4 text-center"
                             style={{
                               background: 'rgba(157, 78, 221, 0.08)',
                               border: '1px solid rgba(157, 78, 221, 0.12)',
@@ -125,6 +125,24 @@ export function CaseStudiesPage() {
                         ))}
                       </div>
                     </div>
+
+                    {/* Behind the Scenes */}
+                    {study.behindTheScenes && (
+                      <div
+                        className="rounded-xl p-5"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(123, 44, 191, 0.08), rgba(157, 78, 221, 0.05))',
+                          border: '1px solid rgba(199, 125, 255, 0.12)',
+                        }}
+                      >
+                        <h3 className="text-xs uppercase tracking-wider text-[#e0aaff] font-semibold mb-2">
+                          Behind the Scenes
+                        </h3>
+                        <p className="text-[#b794c7] text-sm leading-relaxed italic">
+                          {study.behindTheScenes}
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               </FadeUp>

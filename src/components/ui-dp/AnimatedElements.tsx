@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, ReactNode } from 'react';
+import { useRef, ReactNode, memo } from 'react';
 import { cn } from '@/lib/utils';
 
 interface FadeUpProps {
@@ -22,6 +22,7 @@ export function FadeUp({ children, className, delay = 0, duration = 0.6 }: FadeU
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration, delay, ease: [0.25, 0.4, 0.25, 1] }}
       className={className}
+      style={{ willChange: 'transform, opacity' }}
     >
       {children}
     </motion.div>
@@ -45,6 +46,7 @@ export function FadeIn({ children, className, delay = 0 }: FadeInProps) {
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.5, delay }}
       className={className}
+      style={{ willChange: 'opacity' }}
     >
       {children}
     </motion.div>
@@ -68,6 +70,7 @@ export function ScaleIn({ children, className, delay = 0 }: ScaleInProps) {
       animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.5, delay, ease: [0.25, 0.4, 0.25, 1] }}
       className={className}
+      style={{ willChange: 'transform, opacity' }}
     >
       {children}
     </motion.div>
@@ -120,7 +123,7 @@ interface StaggerItemProps {
 
 export function StaggerItem({ children, className }: StaggerItemProps) {
   return (
-    <motion.div variants={staggerItem} className={className}>
+    <motion.div variants={staggerItem} className={className} style={{ willChange: 'transform, opacity' }}>
       {children}
     </motion.div>
   );
@@ -132,13 +135,14 @@ interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
   hover?: boolean;
 }
 
-export function GlassCard({ children, className, hover = true, ...rest }: GlassCardProps) {
+/** Memoized GlassCard to avoid re-renders in list contexts */
+export const GlassCard = memo(function GlassCard({ children, className, hover = true, ...rest }: GlassCardProps) {
   return (
     <div
       {...rest}
       className={cn(
         'relative rounded-2xl overflow-hidden',
-        hover && 'transition-all duration-300 hover:shadow-xl',
+        hover && 'transition-shadow duration-300 hover:shadow-xl',
         className
       )}
       style={{
@@ -149,7 +153,7 @@ export function GlassCard({ children, className, hover = true, ...rest }: GlassC
       }}
     >
       {/* Inner glow */}
-      <div 
+      <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background: 'linear-gradient(135deg, rgba(199, 125, 255, 0.08) 0%, transparent 50%)',
@@ -158,7 +162,7 @@ export function GlassCard({ children, className, hover = true, ...rest }: GlassC
       <div className="relative z-10">{children}</div>
     </div>
   );
-}
+});
 
 interface MetricDisplayProps {
   value: string;
@@ -168,7 +172,7 @@ interface MetricDisplayProps {
   className?: string;
 }
 
-export function MetricDisplay({ value, label, prefix, suffix, className }: MetricDisplayProps) {
+export const MetricDisplay = memo(function MetricDisplay({ value, label, prefix, suffix, className }: MetricDisplayProps) {
   return (
     <div className={cn('text-center', className)}>
       <div className="font-display text-3xl md:text-4xl font-bold text-white tabular-nums">
@@ -179,7 +183,7 @@ export function MetricDisplay({ value, label, prefix, suffix, className }: Metri
       <p className="text-[#b794c7] text-sm mt-1">{label}</p>
     </div>
   );
-}
+});
 
 interface SignalPointProps {
   className?: string;
@@ -187,7 +191,7 @@ interface SignalPointProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export function SignalPoint({ className, pulse = true, size = 'md' }: SignalPointProps) {
+export const SignalPoint = memo(function SignalPoint({ className, pulse = true, size = 'md' }: SignalPointProps) {
   const sizeClasses = {
     sm: 'w-2 h-2',
     md: 'w-3 h-3',
@@ -207,7 +211,7 @@ export function SignalPoint({ className, pulse = true, size = 'md' }: SignalPoin
       }}
     />
   );
-}
+});
 
 interface SectionProps {
   children: ReactNode;
@@ -261,7 +265,7 @@ export function SectionHeader({ eyebrow, title, description, align = 'center', c
   return (
     <div className={cn('mb-12 md:mb-16', align === 'center' && 'text-center max-w-3xl mx-auto', className)}>
       {eyebrow && (
-        <span 
+        <span
           className="text-sm font-medium uppercase tracking-wider mb-4 block"
           style={{
             background: 'linear-gradient(90deg, #e0aaff, #c77dff)',

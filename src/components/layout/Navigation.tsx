@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useCallback, memo } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
@@ -32,16 +32,51 @@ const mobileNavigation = [
   { name: 'Contact', href: '/contact' },
 ];
 
+/** Memoized nav link to prevent re-renders when sibling state changes */
+const NavLink = memo(function NavLink({ item, active }: { item: { name: string; href: string }; active: boolean }) {
+  return (
+    <Link
+      href={item.href}
+      className={cn(
+        'relative px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 rounded-lg whitespace-nowrap',
+        active
+          ? 'text-white'
+          : 'text-white/50 hover:text-white/80'
+      )}
+    >
+      {/* Active background — CSS-only instead of layoutId animation */}
+      {active && (
+        <span
+          className="absolute inset-0 rounded-lg"
+          style={{
+            background: 'linear-gradient(135deg, rgba(139,92,246,0.4) 0%, rgba(124,58,237,0.3) 100%)',
+            boxShadow: '0 2px 8px rgba(139,92,246,0.2), inset 0 1px 1px rgba(255,255,255,0.1)',
+          }}
+        />
+      )}
+      <span className="relative z-10">{item.name}</span>
+    </Link>
+  );
+});
+
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  // Throttled scroll handler to reduce main-thread work
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -50,18 +85,19 @@ export function Navigation() {
     setIsOpen(false);
   }, [pathname]);
 
-  const isActive = (href: string) => {
+  const isActive = useCallback((href: string) => {
     if (href === '/') return pathname === '/';
     return pathname.startsWith(href);
-  };
+  }, [pathname]);
+
+  const toggleMenu = useCallback(() => {
+    setIsOpen(prev => !prev);
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[100]">
-      {/* Full-width Glass Navigation */}
-      <motion.div
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+      {/* Full-width Glass Navigation — CSS transition instead of motion.div */}
+      <div
         className={cn(
           'relative w-full transition-all duration-500',
           scrolled
@@ -75,6 +111,7 @@ export function Navigation() {
           backdropFilter: 'blur(24px) saturate(180%)',
           WebkitBackdropFilter: 'blur(24px) saturate(180%)',
           borderBottom: '1px solid rgba(255,255,255,0.1)',
+          willChange: 'box-shadow',
         }}
       >
         {/* Glass reflection highlight */}
@@ -95,7 +132,7 @@ export function Navigation() {
 
         <nav className="relative px-5 sm:px-6 md:pl-[12%] md:pr-8 lg:pl-[14%]">
           <div className="flex items-center justify-between gap-6 h-14 md:h-16">
-            {/* Logo — Cosmo mascot sitting on the navbar */}
+            {/* Logo */}
             <Link
               href="/"
               className="flex items-center gap-2 group relative z-10 shrink-0"
@@ -143,45 +180,20 @@ export function Navigation() {
                 }}
               >
                 {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={cn(
-                      'relative px-3 py-1.5 text-[13px] font-medium transition-all duration-300 rounded-lg whitespace-nowrap',
-                      isActive(item.href)
-                        ? 'text-white'
-                        : 'text-white/50 hover:text-white/80'
-                    )}
-                  >
-                    {/* Active background */}
-                    {isActive(item.href) && (
-                      <motion.div
-                        layoutId="activeNav"
-                        className="absolute inset-0 rounded-lg"
-                        style={{
-                          background: 'linear-gradient(135deg, rgba(139,92,246,0.4) 0%, rgba(124,58,237,0.3) 100%)',
-                          boxShadow: '0 2px 8px rgba(139,92,246,0.2), inset 0 1px 1px rgba(255,255,255,0.1)',
-                        }}
-                        transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                      />
-                    )}
-                    <span className="relative z-10">{item.name}</span>
-                  </Link>
+                  <NavLink key={item.name} item={item} active={isActive(item.href)} />
                 ))}
               </div>
             </div>
 
-            {/* CTA Button - Liquid Glass Style */}
+            {/* CTA Button — plain CSS hover instead of whileHover/whileTap */}
             <div className="hidden xl:block relative z-10 ml-2">
               <Link href="/free-growth-audit">
-                <motion.span
-                  className="relative px-5 py-2.5 text-sm font-semibold text-white rounded-xl overflow-hidden group whitespace-nowrap inline-block"
+                <span
+                  className="relative px-5 py-2.5 text-sm font-semibold text-white rounded-xl overflow-hidden group whitespace-nowrap inline-block transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98]"
                   style={{
                     background: 'linear-gradient(135deg, rgba(139,92,246,0.9) 0%, rgba(124,58,237,1) 100%)',
                     boxShadow: '0 4px 16px rgba(139,92,246,0.4), inset 0 1px 1px rgba(255,255,255,0.2)',
                   }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
                 >
                   {/* Shine effect */}
                   <span
@@ -193,39 +205,34 @@ export function Navigation() {
                     }}
                   />
                   <span className="relative z-10">Free Growth Audit</span>
-                </motion.span>
+                </span>
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
-            <motion.button
-              className="xl:hidden p-2 rounded-lg text-white/60 hover:text-white transition-colors relative z-10"
+            {/* Mobile Menu Button — plain button instead of motion.button */}
+            <button
+              className="xl:hidden min-w-[44px] min-h-[44px] p-2.5 rounded-lg text-white/60 hover:text-white transition-colors relative z-10 active:scale-95 flex items-center justify-center"
               style={{
                 background: 'rgba(255,255,255,0.05)',
                 border: '1px solid rgba(255,255,255,0.1)',
               }}
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={toggleMenu}
               aria-label="Toggle menu"
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
-              whileTap={{ scale: 0.95 }}
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </motion.button>
+            </button>
           </div>
         </nav>
-      </motion.div>
+      </div>
 
-      {/* Mobile Menu - Liquid Glass */}
+      {/* Mobile Menu - CSS transitions instead of per-item framer-motion animations */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <div
             id="mobile-menu"
-            initial={{ opacity: 0, y: -10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.95 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="xl:hidden absolute top-full left-4 right-4 mt-2 mx-auto max-w-7xl rounded-2xl overflow-hidden"
+            className="xl:hidden absolute top-full left-4 right-4 mt-2 mx-auto max-w-7xl rounded-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-300"
             style={{
               background: 'linear-gradient(135deg, rgba(30,30,40,0.95) 0%, rgba(20,20,30,0.98) 100%)',
               backdropFilter: 'blur(24px) saturate(180%)',
@@ -243,42 +250,31 @@ export function Navigation() {
             />
 
             <div className="relative p-4 space-y-1">
-              {mobileNavigation.map((item, index) => (
-                <motion.div
+              {mobileNavigation.map((item) => (
+                <Link
                   key={item.name}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
+                  href={item.href}
+                  className={cn(
+                    'block w-full text-left px-4 py-3 min-h-[44px] rounded-xl text-sm font-medium transition-colors duration-200',
+                    isActive(item.href)
+                      ? 'text-white'
+                      : 'text-white/50 hover:text-white/80'
+                  )}
+                  style={
+                    isActive(item.href)
+                      ? {
+                          background: 'linear-gradient(135deg, rgba(139,92,246,0.3) 0%, rgba(124,58,237,0.2) 100%)',
+                          boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.1)',
+                        }
+                      : {
+                          background: 'transparent',
+                        }
+                  }
                 >
-                  <Link
-                    href={item.href}
-                    className={cn(
-                      'block w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300',
-                      isActive(item.href)
-                        ? 'text-white'
-                        : 'text-white/50 hover:text-white/80'
-                    )}
-                    style={
-                      isActive(item.href)
-                        ? {
-                            background: 'linear-gradient(135deg, rgba(139,92,246,0.3) 0%, rgba(124,58,237,0.2) 100%)',
-                            boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.1)',
-                          }
-                        : {
-                            background: 'transparent',
-                          }
-                    }
-                  >
-                    {item.name}
-                  </Link>
-                </motion.div>
+                  {item.name}
+                </Link>
               ))}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.25 }}
-                className="pt-3"
-              >
+              <div className="pt-3">
                 <Link
                   href="/free-growth-audit"
                   className="block w-full py-3 rounded-xl text-sm font-semibold text-white text-center"
@@ -289,9 +285,9 @@ export function Navigation() {
                 >
                   Free Growth Audit
                 </Link>
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
 

@@ -253,8 +253,8 @@ export function ROASCalculator({ faqs }: Props) {
 
                 <div>
                   <h2 className="font-display text-2xl font-bold text-white mb-4">ROAS Benchmarks by Industry</h2>
-                  <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(157, 78, 221, 0.15)' }}>
-                    <table className="w-full text-sm">
+                  <div className="rounded-xl overflow-hidden overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0" style={{ border: '1px solid rgba(157, 78, 221, 0.15)' }}>
+                    <table className="w-full text-sm min-w-[400px]">
                       <thead>
                         <tr style={{ background: 'rgba(157, 78, 221, 0.1)' }}>
                           <th className="text-left px-4 py-3 text-[#c77dff] font-medium">Industry</th>

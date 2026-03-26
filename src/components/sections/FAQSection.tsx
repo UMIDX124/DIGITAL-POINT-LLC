@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useCallback, memo } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { Section, Container, SectionHeader, FadeUp, GlassCard } from '@/components/ui-dp/AnimatedElements';
 import { FAQSchema } from '@/components/seo/FAQSchema';
@@ -33,10 +32,11 @@ const faqs = [
   },
 ];
 
-function FAQItem({ question, answer, isOpen, onToggle }: { 
-  question: string; 
-  answer: string; 
-  isOpen: boolean; 
+/** Memoized FAQ item — CSS grid transition instead of framer-motion AnimatePresence */
+const FAQItem = memo(function FAQItem({ question, answer, isOpen, onToggle }: {
+  question: string;
+  answer: string;
+  isOpen: boolean;
   onToggle: () => void;
 }) {
   return (
@@ -49,36 +49,35 @@ function FAQItem({ question, answer, isOpen, onToggle }: {
         className="w-full py-5 flex items-center justify-between text-left"
       >
         <span className="font-display font-medium text-white pr-4">{question}</span>
-        <motion.div
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.2 }}
-          className="flex-shrink-0"
+        <span
+          className="flex-shrink-0 transition-transform duration-200"
+          style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
         >
           <ChevronDown className="w-5 h-5 text-[#c77dff]" />
-        </motion.div>
+        </span>
       </button>
-      
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="overflow-hidden"
-          >
-            <p className="pb-5 text-[#b794c7] text-sm leading-relaxed">
-              {answer}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
+      {/* CSS grid transition for expand/collapse — no framer-motion needed */}
+      <div
+        className="grid transition-[grid-template-rows] duration-200 ease-out"
+        style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
+      >
+        <div className="overflow-hidden">
+          <p className="pb-5 text-[#b794c7] text-sm leading-relaxed">
+            {answer}
+          </p>
+        </div>
+      </div>
     </div>
   );
-}
+});
 
 export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const handleToggle = useCallback((index: number) => {
+    setOpenIndex(prev => prev === index ? null : index);
+  }, []);
 
   return (
     <Section className="relative overflow-hidden">
@@ -102,7 +101,7 @@ export function FAQSection() {
                 question={faq.question}
                 answer={faq.answer}
                 isOpen={openIndex === index}
-                onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+                onToggle={() => handleToggle(index)}
               />
             ))}
           </GlassCard>

@@ -1,7 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Clock, Calendar, Tag } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar, Tag, ChevronDown } from 'lucide-react';
 import { Section, Container, FadeUp } from '@/components/ui-dp/AnimatedElements';
 
 import { InternalLinks } from '@/components/seo/InternalLinks';
@@ -33,6 +34,42 @@ function splitHtmlAtMiddle(html: string): [string, string] {
     }
   }
   return [html.slice(0, bestIdx), html.slice(bestIdx)];
+}
+
+function CollapsibleTOC({ toc }: { toc: { id: string; text: string; level: number }[] }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div
+      className="rounded-xl p-5"
+      style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(157, 78, 221, 0.15)' }}
+    >
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center justify-between w-full lg:pointer-events-none"
+      >
+        <h4 className="text-white font-medium text-sm">Contents</h4>
+        <ChevronDown
+          className={`w-4 h-4 text-[#9080a0] lg:hidden transition-transform duration-200 ${
+            isOpen ? 'rotate-180' : ''
+          }`}
+        />
+      </button>
+      <nav className={`space-y-2 mt-3 ${isOpen ? 'block' : 'hidden lg:block'}`}>
+        {toc.map((item) => (
+          <a
+            key={item.id}
+            href={`#${item.id}`}
+            className={`block text-xs text-[#9080a0] hover:text-[#c77dff] transition-colors py-0.5 ${
+              item.level === 3 ? 'pl-4' : ''
+            }`}
+          >
+            {item.text}
+          </a>
+        ))}
+      </nav>
+    </div>
+  );
 }
 
 interface BlogPostContentProps {
@@ -162,7 +199,7 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
               {relatedPosts.length > 0 && (
                 <div className="mt-12">
                   <h3 className="font-display text-lg font-semibold text-white mb-4">Related Articles</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {relatedPosts.map((rp) => (
                       <Link
                         key={rp.slug}
@@ -183,27 +220,9 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
 
             {/* Sidebar */}
             <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
-              {/* Table of Contents */}
+              {/* Table of Contents - collapsible on mobile */}
               {toc.length > 0 && (
-                <div
-                  className="rounded-xl p-5"
-                  style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(157, 78, 221, 0.15)' }}
-                >
-                  <h4 className="text-white font-medium text-sm mb-3">Contents</h4>
-                  <nav className="space-y-2">
-                    {toc.map((item) => (
-                      <a
-                        key={item.id}
-                        href={`#${item.id}`}
-                        className={`block text-xs text-[#9080a0] hover:text-[#c77dff] transition-colors ${
-                          item.level === 3 ? 'pl-4' : ''
-                        }`}
-                      >
-                        {item.text}
-                      </a>
-                    ))}
-                  </nav>
-                </div>
+                <CollapsibleTOC toc={toc} />
               )}
 
               {/* Newsletter */}

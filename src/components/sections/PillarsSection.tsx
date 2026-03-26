@@ -1,6 +1,3 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { TrendingUp, Settings, Users, ArrowRight } from 'lucide-react';
 import { Section, Container, SectionHeader, FadeUp, GlassCard, SignalPoint } from '@/components/ui-dp/AnimatedElements';
 import Link from 'next/link';
@@ -44,7 +41,7 @@ export function PillarsSection() {
           align="center"
         />
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {pillars.map((pillar, index) => (
             <FadeUp key={pillar.title} delay={index * 0.1}>
               <Link

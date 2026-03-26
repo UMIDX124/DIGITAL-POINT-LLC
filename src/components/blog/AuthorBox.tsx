@@ -15,14 +15,14 @@ const authors: Record<string, AuthorInfo> = {
     name: 'M. Faizan Rafiq',
     initials: 'MF',
     title: 'Co-Founder',
-    bio: 'Faizan leads growth strategy and performance marketing at Digital Point. With 8+ years in paid acquisition, he\'s helped brands scale from five-figure to seven-figure monthly ad budgets while keeping ROAS profitable.',
+    bio: 'Faizan has spent 8+ years in the trenches of paid acquisition, scaling brands from five-figure to seven-figure monthly ad budgets. When he\'s not optimizing ad campaigns or arguing about attribution windows, he\'s probably testing yet another landing page variation "just to see." His team has learned that "quick experiment" means at least three hours of A/B testing.',
     expertise: ['Performance Marketing', 'Growth Strategy', 'Paid Acquisition'],
   },
   'Anwaar Tayyab': {
     name: 'Anwaar Tayyab',
     initials: 'AT',
     title: 'Co-Founder',
-    bio: 'Anwaar drives analytics, attribution, and revenue operations at Digital Point. He specializes in building the data infrastructure that turns raw ad spend data into clear, actionable insights for growth teams.',
+    bio: 'Anwaar is the person who will rebuild your entire reporting dashboard because one metric was slightly misleading. He turns messy ad spend data into clear, honest insights that growth teams actually use. Outside of data work, he\'s an avid problem-solver who treats every broken funnel like a puzzle that personally offends him.',
     expertise: ['Marketing Analytics', 'Attribution', 'Revenue Operations'],
   },
 };
@@ -31,7 +31,7 @@ const defaultAuthor: AuthorInfo = {
   name: 'Digital Point LLC',
   initials: 'DP',
   title: 'Team',
-  bio: 'The Digital Point team specializes in performance marketing, attribution, and revenue operations for growth-stage businesses. We help companies turn ad spend into predictable revenue.',
+  bio: 'We\'re a small, opinionated team that believes marketing should be measurable, honest, and actually drive revenue. We write from experience — the wins, the failures, and the "we probably should have tested that first" moments.',
   expertise: ['Digital Marketing', 'Growth', 'Analytics'],
 };
 

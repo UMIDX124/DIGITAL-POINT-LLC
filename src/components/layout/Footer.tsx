@@ -62,7 +62,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-[#b794c7] text-sm leading-relaxed max-w-xs">
-              Performance marketing and remote execution for businesses that need acquisition, systems, and workforce to scale together.
+              Built by two guys who got tired of watching good businesses waste money on bad data. We treat every client&apos;s budget like it&apos;s our own — because we remember when it was.
             </p>
             <div className="flex items-center gap-3 mt-4">
               <span
@@ -175,6 +175,17 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Personal mission */}
+        <div
+          className="py-6 text-center"
+          style={{ borderTop: '1px solid rgba(157, 78, 221, 0.08)' }}
+        >
+          <p className="text-[#9080a0] text-sm italic max-w-xl mx-auto">
+            &ldquo;Every dollar you spend on marketing should be accountable. If we can&apos;t prove it&apos;s working, we&apos;ll be the first to tell you.&rdquo;
+            <span className="not-italic text-[#c77dff] ml-1">&mdash; Faizan &amp; Anwaar</span>
+          </p>
+        </div>
+
         {/* Bottom Bar */}
         <div
           className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4"
@@ -185,7 +196,7 @@ export function Footer() {
               &copy; {currentYear} Digital Point LLC. All rights reserved.
             </p>
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-6 gap-y-2">
             <Link
               href="/"
               className="text-[#7c5a8a] text-xs hover:text-[#b794c7] transition-colors"

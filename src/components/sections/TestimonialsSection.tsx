@@ -1,6 +1,3 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
 import { Section, Container, SectionHeader, FadeUp, GlassCard } from '@/components/ui-dp/AnimatedElements';
 
@@ -48,7 +45,7 @@ export function TestimonialsSection() {
           align="center"
         />
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {testimonials.map((testimonial, index) => (
             <FadeUp key={testimonial.author} delay={index * 0.1}>
               <GlassCard className="p-6 h-full flex flex-col">

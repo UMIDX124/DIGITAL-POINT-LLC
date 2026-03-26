@@ -9,11 +9,11 @@ import {
 import Link from 'next/link';
 
 const milestones = [
-  { year: '2017', title: 'Founded', description: 'Digital Point LLC established with a focus on performance marketing for growth-stage businesses.' },
-  { year: '2019', title: 'Remote Ops Launched', description: 'Expanded into remote workforce solutions, building dedicated global teams for US clients.' },
-  { year: '2021', title: '$25M+ Under Management', description: 'Crossed $25M in managed ad spend with a growing roster of high-LTV clients.' },
-  { year: '2023', title: 'Systems Division', description: 'Added reporting and systems consulting to help clients build operational clarity.' },
-  { year: '2025', title: 'AI-Powered Platform', description: 'Integrated AI assistants and multi-agent systems into client workflows.' },
+  { year: '2017', title: 'Two Friends, One Laptop', description: 'Faizan and Anwaar started Digital Point from a tiny home office. First client came from a cold LinkedIn message that almost went to spam.' },
+  { year: '2019', title: 'Going Global', description: 'Realized the best talent doesn\'t always live in your zip code. Built our first remote team and never looked back.' },
+  { year: '2021', title: '$25M+ Under Management', description: 'Crossed $25M in managed ad spend. Celebrated with pizza, not champagne. We\'re still those guys.' },
+  { year: '2023', title: 'Systems Division', description: 'Clients kept asking "can you fix our reporting too?" So we did. Turns out, clarity is addictive.' },
+  { year: '2025', title: 'AI-Powered Platform', description: 'Started building AI into our workflows because we\'re obsessed with doing more with less. Our clients\' budgets deserve it.' },
 ];
 
 const values = [
@@ -69,7 +69,7 @@ export function AboutPage() {
               , not reports about growth.
             </h1>
             <p className="text-[#b794c7] text-lg md:text-xl max-w-2xl leading-relaxed">
-              We help companies connect ad spend to revenue, build remote teams that actually ship, and create systems that give founders back their weekends.
+              We&apos;ve been in your shoes — staring at dashboards that don&apos;t add up, wondering which campaigns actually drive revenue. We built Digital Point to fix that, for ourselves first, then for everyone else.
             </p>
           </FadeUp>
         </Container>
@@ -100,9 +100,45 @@ export function AboutPage() {
         <Container>
           <SectionHeader
             eyebrow="Our Story"
-            title="From one marketer to a full-service growth engine"
-            description="Digital Point started when our co-founders, M. Faizan Rafiq and Anwaar Tayyab, saw the same pattern everywhere — businesses spending on ads but unable to see what was working. We set out to fix that."
+            title="Two guys who got tired of watching businesses waste money"
+            description=""
           />
+
+          {/* Personal founder story */}
+          <div className="max-w-3xl mx-auto mb-16">
+            <div
+              className="rounded-2xl p-8 md:p-10"
+              style={{
+                background: 'rgba(26, 15, 46, 0.5)',
+                border: '1px solid rgba(157, 78, 221, 0.15)',
+              }}
+            >
+              <p className="text-[#b794c7] text-base leading-relaxed mb-4">
+                Here&apos;s the honest version: back in 2017, Faizan was managing ad accounts and kept seeing the same thing — businesses pouring money into campaigns with no idea what was actually driving revenue. Anwaar, on the other hand, was deep in the data side, building dashboards that nobody used because they answered the wrong questions.
+              </p>
+              <p className="text-[#b794c7] text-base leading-relaxed mb-4">
+                We met, argued about attribution models over too much coffee, and realized we were solving two halves of the same problem. Faizan knew how to make ads perform. Anwaar knew how to prove it. Together, we figured — why not just do both?
+              </p>
+              <p className="text-[#b794c7] text-base leading-relaxed mb-4">
+                Digital Point started in a spare room with one client who took a chance on us. Eight years later, we&apos;ve managed over $50M in ad spend, built remote teams across continents, and helped businesses go from &ldquo;we think our ads work&rdquo; to &ldquo;we know exactly what&apos;s driving revenue.&rdquo;
+              </p>
+              <p className="text-white text-base leading-relaxed font-medium">
+                We&apos;re still those two guys who argue about attribution over coffee. We just have a bigger team now — and better coffee.
+              </p>
+              <div className="flex flex-wrap gap-6 mt-6 pt-6" style={{ borderTop: '1px solid rgba(157, 78, 221, 0.15)' }}>
+                <div>
+                  <p className="text-white font-display font-semibold">M. Faizan Rafiq</p>
+                  <p className="text-[#c77dff] text-sm">Co-Founder &middot; The Ads Guy</p>
+                  <p className="text-[#9080a0] text-xs mt-1">Secretly competitive about ROAS the way some people are about fantasy football.</p>
+                </div>
+                <div>
+                  <p className="text-white font-display font-semibold">Anwaar Tayyab</p>
+                  <p className="text-[#c77dff] text-sm">Co-Founder &middot; The Data Guy</p>
+                  <p className="text-[#9080a0] text-xs mt-1">Will redesign your entire dashboard if one chart is slightly misleading. You&apos;ve been warned.</p>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div className="relative max-w-3xl mx-auto">
             {/* Timeline line */}

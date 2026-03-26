@@ -1,6 +1,3 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { Search, Eye, Rocket } from 'lucide-react';
 import { Section, Container, SectionHeader, FadeUp, GlassCard } from '@/components/ui-dp/AnimatedElements';
 
@@ -34,14 +31,9 @@ export function ProcessSection() {
       {/* Cosmic gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#1a0a2e] via-[#13091e] to-[#0d0815]" />
       
-      {/* Animated glow */}
-      <motion.div
-        animate={{
-          opacity: [0.1, 0.2, 0.1],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full blur-3xl"
+      {/* Animated glow — CSS animation instead of framer-motion infinite */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full blur-3xl animate-glow-pulse"
         style={{
           background: 'radial-gradient(ellipse, rgba(157, 78, 221, 0.3) 0%, transparent 70%)',
         }}
@@ -55,7 +47,7 @@ export function ProcessSection() {
           align="center"
         />
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
           {steps.map((step, index) => (
             <FadeUp key={step.number} delay={index * 0.15}>
               <div className="relative h-full">

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -16,8 +15,15 @@ export function StickyCTABar() {
   useEffect(() => {
     if (isAuditPage) return;
 
+    let ticking = false;
     const handleScroll = () => {
-      setVisible(window.scrollY > 300);
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => {
+          setVisible(window.scrollY > 300);
+          ticking = false;
+        });
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -27,14 +33,10 @@ export function StickyCTABar() {
   if (isAuditPage) return null;
 
   return (
-    <AnimatePresence>
+    <>
       {visible && (
-        <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
-          transition={{ duration: 0.3, ease: 'easeOut' }}
-          className="fixed bottom-0 left-0 right-0 z-[55] md:hidden"
+        <div
+          className="fixed bottom-0 left-0 right-0 z-[55] md:hidden animate-in slide-in-from-bottom duration-300"
           style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
         >
           <div
@@ -59,8 +61,8 @@ export function StickyCTABar() {
               </div>
             </Link>
           </div>
-        </motion.div>
+        </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

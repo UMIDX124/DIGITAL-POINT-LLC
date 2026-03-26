@@ -336,7 +336,7 @@ export default function PrivacyPolicyPage() {
                   If you have any questions or concerns about this Privacy
                   Policy or our data practices, please contact us at:
                 </p>
-                <div className="mt-4 p-6 rounded-xl border border-white/10 bg-white/[0.02]">
+                <div className="mt-4 p-4 sm:p-6 rounded-xl border border-white/10 bg-white/[0.02] break-words">
                   <p className="font-medium text-white">Digital Point LLC</p>
                   <p className="mt-1">
                     Email:{' '}

@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { memo } from 'react';
 import { ArrowRight, Clock, Tag } from 'lucide-react';
 import {
   Section, Container, FadeUp, GlassCard,
@@ -66,6 +66,50 @@ const categoryColors: Record<string, string> = {
   'AI & Automation': '#a3e635',
 };
 
+/** Memoized blog card to prevent re-renders in list */
+const BlogCard = memo(function BlogCard({ article }: { article: typeof articles[number] }) {
+  return (
+    <GlassCard className="p-6 h-full flex flex-col group cursor-pointer">
+      {/* Category tag */}
+      <div className="flex items-center gap-2 mb-4">
+        <span
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium"
+          style={{
+            background: `${categoryColors[article.category] || '#c77dff'}15`,
+            border: `1px solid ${categoryColors[article.category] || '#c77dff'}30`,
+            color: categoryColors[article.category] || '#c77dff',
+          }}
+        >
+          <Tag className="w-3 h-3" />
+          {article.category}
+        </span>
+      </div>
+
+      {/* Title */}
+      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#e0aaff] transition-colors mb-3 leading-snug">
+        {article.title}
+      </h3>
+
+      {/* Excerpt */}
+      <p className="text-[#9080a0] text-sm leading-relaxed flex-1 mb-4">
+        {article.excerpt}
+      </p>
+
+      {/* Meta */}
+      <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(157, 78, 221, 0.1)' }}>
+        <div className="flex items-center gap-3 text-[#7c5a8a] text-xs">
+          <span>{article.date}</span>
+          <span className="flex items-center gap-1">
+            <Clock className="w-3 h-3" />
+            {article.readTime}
+          </span>
+        </div>
+        <ArrowRight className="w-4 h-4 text-[#c77dff] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+      </div>
+    </GlassCard>
+  );
+});
+
 export function BlogPage() {
   return (
     <>
@@ -97,51 +141,14 @@ export function BlogPage() {
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {articles.map((article) => (
               <StaggerItem key={article.slug}>
-                <GlassCard className="p-6 h-full flex flex-col group cursor-pointer">
-                  {/* Category tag */}
-                  <div className="flex items-center gap-2 mb-4">
-                    <span
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium"
-                      style={{
-                        background: `${categoryColors[article.category] || '#c77dff'}15`,
-                        border: `1px solid ${categoryColors[article.category] || '#c77dff'}30`,
-                        color: categoryColors[article.category] || '#c77dff',
-                      }}
-                    >
-                      <Tag className="w-3 h-3" />
-                      {article.category}
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#e0aaff] transition-colors mb-3 leading-snug">
-                    {article.title}
-                  </h3>
-
-                  {/* Excerpt */}
-                  <p className="text-[#9080a0] text-sm leading-relaxed flex-1 mb-4">
-                    {article.excerpt}
-                  </p>
-
-                  {/* Meta */}
-                  <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(157, 78, 221, 0.1)' }}>
-                    <div className="flex items-center gap-3 text-[#7c5a8a] text-xs">
-                      <span>{article.date}</span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
-                        {article.readTime}
-                      </span>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-[#c77dff] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  </div>
-                </GlassCard>
+                <BlogCard article={article} />
               </StaggerItem>
             ))}
           </StaggerContainer>
         </Container>
       </Section>
 
-      {/* Newsletter CTA */}
+      {/* Newsletter CTA — CSS hover instead of whileHover/whileTap */}
       <Section>
         <Container>
           <FadeUp>
@@ -159,18 +166,16 @@ export function BlogPage() {
                 No spam. Just real frameworks and case studies we use with our clients. Unsubscribe anytime.
               </p>
               <Link href="/free-growth-audit">
-                <motion.span
-                  className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-xl"
+                <span
+                  className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-xl transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98]"
                   style={{
                     background: 'linear-gradient(135deg, #7b2cbf 0%, #9d4edd 100%)',
                     boxShadow: '0 4px 16px rgba(123, 44, 191, 0.3)',
                   }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
                 >
                   Start with a Free Audit Instead
                   <ArrowRight className="w-4 h-4" />
-                </motion.span>
+                </span>
               </Link>
             </div>
           </FadeUp>

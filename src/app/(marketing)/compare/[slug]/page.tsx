@@ -67,8 +67,8 @@ export default async function ComparisonPage({ params }: PageProps) {
           <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8">
             Side-by-Side Comparison
           </h2>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
+          <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+            <table className="w-full border-collapse min-w-[500px]">
               <thead>
                 <tr>
                   <th

@@ -15,21 +15,21 @@ const contactMethods = [
     title: 'General Inquiries',
     value: 'info@digitalpointllc.com',
     href: 'mailto:info@digitalpointllc.com',
-    description: 'For questions about services, pricing, and partnerships.',
+    description: 'Questions, ideas, or just want to say hi? We\'re all ears.',
   },
   {
     icon: Mail,
-    title: 'Co-Founders Direct',
+    title: 'Talk to the Founders',
     value: 'admin@digitalpointllc.com',
     href: 'mailto:admin@digitalpointllc.com',
-    description: 'Reach M. Faizan Rafiq & Anwaar Tayyab for strategic partnerships.',
+    description: 'Faizan and Anwaar\'s inbox. For the big conversations.',
   },
   {
     icon: Linkedin,
     title: 'LinkedIn',
     value: 'Digital Point LLC',
     href: 'https://linkedin.com/company/digitalpointllc',
-    description: 'Follow us for insights, case studies, and industry updates.',
+    description: 'Where we share what we\'re learning, building, and occasionally arguing about.',
   },
 ];
 
@@ -75,13 +75,13 @@ export function ContactPage() {
               Get In Touch
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Let&apos;s talk about{' '}
+              We actually{' '}
               <span className="bg-gradient-to-r from-[#e0aaff] via-[#c77dff] to-[#ff6b9d] bg-clip-text text-transparent">
-                your growth
+                read every message
               </span>
             </h1>
             <p className="text-[#b794c7] text-lg md:text-xl max-w-2xl leading-relaxed">
-              Whether you need a growth audit, want to explore partnership, or have a specific question — we&apos;re here.
+              No chatbots, no ticket queues, no &ldquo;someone from our team will reach out.&rdquo; When you write to us, Faizan or Anwaar will personally read it and reply — usually within a few hours, always within a day.
             </p>
           </FadeUp>
         </Container>
@@ -157,13 +157,13 @@ export function ContactPage() {
                       >
                         <CheckCircle className="w-16 h-16 text-[#c77dff] mx-auto mb-4" />
                       </motion.div>
-                      <h3 className="font-display text-2xl font-bold text-white mb-2">Message sent!</h3>
-                      <p className="text-[#b794c7]">We&apos;ll get back to you within 24 hours.</p>
+                      <h3 className="font-display text-2xl font-bold text-white mb-2">Got it! We&apos;re on it.</h3>
+                      <p className="text-[#b794c7]">One of us (the founders, not a bot) will reply within 24 hours. Usually much sooner.</p>
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-5">
-                      <h3 className="font-display text-xl font-semibold text-white mb-2">Send us a message</h3>
-                      <p className="text-[#9080a0] text-sm mb-6">Fill out the form below and we&apos;ll respond within one business day.</p>
+                      <h3 className="font-display text-xl font-semibold text-white mb-2">Drop us a line</h3>
+                      <p className="text-[#9080a0] text-sm mb-6">No form letters, no auto-replies. A real human (probably Faizan, let&apos;s be honest) will get back to you within 24 hours.</p>
 
                       <div>
                         <label htmlFor="contact-name" className="block text-sm text-[#b794c7] mb-1.5">Name</label>

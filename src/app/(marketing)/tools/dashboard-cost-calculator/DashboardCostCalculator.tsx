@@ -126,7 +126,7 @@ export function DashboardCostCalculator({ faqs }: Props) {
               </div>
 
               {/* Configuration */}
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div>
                   <label className="block text-sm text-[#b794c7] mb-1.5">Number of Users</label>
                   <input
@@ -160,7 +160,7 @@ export function DashboardCostCalculator({ faqs }: Props) {
               </div>
 
               {/* Infrastructure toggles */}
-              <div className="grid md:grid-cols-3 gap-4 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                 {[
                   { label: 'Data Warehouse', desc: 'BigQuery / Snowflake', value: needsWarehouse, set: setNeedsWarehouse },
                   { label: 'ETL Pipeline', desc: 'Fivetran / Airbyte', value: needsETL, set: setNeedsETL },

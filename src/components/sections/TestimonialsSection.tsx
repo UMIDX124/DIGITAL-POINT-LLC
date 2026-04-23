@@ -1,105 +1,122 @@
-import { Quote } from 'lucide-react';
-import { Section, Container, SectionHeader, FadeUp, GlassCard } from '@/components/ui-dp/AnimatedElements';
+import { copy } from '@/lib/copy';
 
-const testimonials = [
-  {
-    quote: "They built the tracking we'd been avoiding for two years. Now I actually know where to spend.",
-    author: 'Sarah Chen',
-    title: 'CEO, B2B SaaS',
-    metric: '+127% MRR',
-    metricLabel: 'Revenue growth in 6 months',
-    initials: 'SC',
-    color: '#F59E0B',
-  },
-  {
-    quote: "Got execution capacity without the hiring headaches. They own outcomes, not just tasks.",
-    author: 'Marcus Thompson',
-    title: 'Founder, E-commerce',
-    metric: '3.1x ROAS',
-    metricLabel: 'Return on ad spend',
-    initials: 'MT',
-    color: '#F59E0B',
-  },
-  {
-    quote: "We went from 'no idea where leads come from' to full attribution in 3 weeks.",
-    author: 'Jennifer Walsh',
-    title: 'CMO, Agency',
-    metric: '-41% CAC',
-    metricLabel: 'Customer acquisition cost reduction',
-    initials: 'JW',
-    color: '#FBBF24',
-  },
-];
-
+/**
+ * Phase 2 testimonials. Asymmetric layout — one featured card spans a wide
+ * column, two standard cards stack on the right. No framer-motion, no glass,
+ * no stock photos. Avatars are hand-drawn SVG amber-ring initials.
+ */
 export function TestimonialsSection() {
+  const { eyebrow, headline, items } = copy.testimonials;
+  const featured = items.find((t) => t.featured) ?? items[0];
+  const rest = items.filter((t) => t !== featured);
+
   return (
-    <Section className="relative overflow-hidden">
-      {/* Cosmic background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0510] via-[#141416] to-[#141416]" />
+    <section
+      className="relative section-main"
+      style={{ background: 'var(--bg)', borderBottom: '1px solid var(--border)' }}
+      id="testimonials"
+    >
+      <div className="container-wide">
+        <header className="max-w-2xl mb-[var(--space-8)]">
+          <p className="eyebrow mb-5" data-reveal>{eyebrow}</p>
+          <h2 className="t-h2 font-display text-[color:var(--ivory)]" data-reveal>
+            {headline}
+          </h2>
+        </header>
 
-      <Container className="relative z-10">
-        <SectionHeader
-          eyebrow="Client Results"
-          title="What clarity looks like."
-          description="Founders who stopped guessing and started knowing."
-          align="center"
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {testimonials.map((testimonial, index) => (
-            <FadeUp key={testimonial.author} delay={index * 0.1}>
-              <GlassCard className="p-6 h-full flex flex-col">
-                {/* Result badge */}
-                <div
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full self-start mb-5"
-                  style={{
-                    background: 'rgba(217,119,6, 0.1)',
-                    border: '1px solid rgba(245,158,11, 0.15)',
-                  }}
-                >
-                  <span
-                    className="text-sm font-bold"
-                    style={{
-                      background: 'linear-gradient(90deg, #F59E0B, #F59E0B)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                    }}
-                  >
-                    {testimonial.metric}
-                  </span>
-                  <span className="text-[#71717A] text-xs">{testimonial.metricLabel}</span>
-                </div>
-
-                <Quote className="w-8 h-8 text-[#F59E0B] opacity-50 mb-4" />
-
-                <p className="text-white/90 text-sm leading-relaxed mb-6 flex-grow">
-                  &ldquo;{testimonial.quote}&rdquo;
-                </p>
-
-                <div
-                  className="pt-4 border-t flex items-center gap-3"
-                  style={{ borderColor: 'rgba(217,119,6, 0.2)' }}
-                >
-                  {/* Avatar */}
-                  <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 text-sm font-bold text-white"
-                    style={{
-                      background: `linear-gradient(135deg, ${testimonial.color}40, ${testimonial.color}20)`,
-                      border: `1px solid ${testimonial.color}40`,
-                    }}
-                  >
-                    {testimonial.initials}
-                  </div>
-                  <div>
-                    <div className="font-medium text-white text-sm">{testimonial.author}</div>
-                    <div className="text-[#71717A] text-xs">{testimonial.title}</div>
-                  </div>
-                </div>
-              </GlassCard>
-            </FadeUp>
-          ))}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5" data-testimonials>
+          {/* Featured — 7 cols */}
+          <div className="lg:col-span-7">
+            <TestimonialCard item={featured} size="featured" />
+          </div>
+          {/* Two stacked — 5 cols */}
+          <div className="lg:col-span-5 grid grid-cols-1 gap-5">
+            {rest.map((t) => (
+              <TestimonialCard key={t.author} item={t} size="standard" />
+            ))}
+          </div>
         </div>
-      </Container>
-    </Section>
+      </div>
+    </section>
+  );
+}
+
+type Testimonial = typeof copy.testimonials.items[number];
+
+function TestimonialCard({ item, size }: { item: Testimonial; size: 'featured' | 'standard' }) {
+  const isFeatured = size === 'featured';
+  return (
+    <figure
+      className={
+        'card-flat p-[var(--space-5)] md:p-[var(--space-6)] h-full flex flex-col ' +
+        (isFeatured ? 'justify-between min-h-[420px]' : 'justify-between')
+      }
+      data-testimonial-card
+    >
+      <div>
+        <MetricTag metric={item.metric} label={item.metricLabel} />
+        <blockquote
+          className={
+            (isFeatured ? 't-h4' : 't-h6') +
+            ' font-display leading-snug text-[color:var(--ivory)] mt-[var(--space-5)] max-w-[36ch]'
+          }
+        >
+          &ldquo;{item.quote}&rdquo;
+        </blockquote>
+      </div>
+      <figcaption className="mt-[var(--space-6)] pt-[var(--space-4)] border-t border-[color:var(--border)] flex items-center gap-3">
+        <InitialAvatar initials={item.initials} size={isFeatured ? 'lg' : 'md'} />
+        <div>
+          <div className="font-display text-[color:var(--ivory)] text-[15px]">{item.author}</div>
+          <div className="text-[color:var(--muted)] text-[12px]">{item.role}</div>
+        </div>
+      </figcaption>
+    </figure>
+  );
+}
+
+function MetricTag({ metric, label }: { metric: string; label: string }) {
+  return (
+    <div className="inline-flex items-baseline gap-2">
+      <span className="font-mono text-[color:var(--amber)] text-[13px] tracking-[0.08em]">
+        {metric}
+      </span>
+      <span className="eyebrow" style={{ color: 'var(--muted)' }}>
+        {label}
+      </span>
+    </div>
+  );
+}
+
+/**
+ * Hand-coded amber-ring initial avatar. No photo, no lucide user icon.
+ * Concentric thin amber ring + serif initials inside, single color, scales
+ * with `size` prop.
+ */
+function InitialAvatar({ initials, size }: { initials: string; size: 'md' | 'lg' }) {
+  const dim = size === 'lg' ? 44 : 36;
+  const fontSize = size === 'lg' ? 14 : 12;
+  return (
+    <svg width={dim} height={dim} viewBox={`0 0 ${dim} ${dim}`} aria-hidden="true">
+      <circle
+        cx={dim / 2}
+        cy={dim / 2}
+        r={dim / 2 - 1}
+        fill="var(--bg)"
+        stroke="var(--amber)"
+        strokeWidth="1"
+      />
+      <text
+        x={dim / 2}
+        y={dim / 2 + fontSize / 3}
+        fontSize={fontSize}
+        fontFamily="var(--font-instrument-serif)"
+        fill="var(--ivory)"
+        textAnchor="middle"
+        style={{ letterSpacing: '0.04em' }}
+      >
+        {initials}
+      </text>
+    </svg>
   );
 }

@@ -118,6 +118,107 @@ export function ScrollMotion() {
           },
         );
       });
+
+      // Services list — stagger lines in
+      const serviceItems = gsap.utils.toArray<HTMLElement>('[data-service-item]');
+      if (serviceItems.length) {
+        gsap.fromTo(
+          serviceItems,
+          { y: 24, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.6,
+            ease: 'power2.out',
+            stagger: 0.08,
+            scrollTrigger: {
+              trigger: '[data-services-list]',
+              start: 'top 80%',
+              once: true,
+            },
+          },
+        );
+      }
+
+      // Recent Work cards — stagger + y-lift
+      const workCards = gsap.utils.toArray<HTMLElement>('[data-work-card]');
+      if (workCards.length) {
+        gsap.fromTo(
+          workCards,
+          { y: 36, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            ease: 'power2.out',
+            stagger: 0.14,
+            scrollTrigger: {
+              trigger: '[data-work-grid]',
+              start: 'top 80%',
+              once: true,
+            },
+          },
+        );
+      }
+
+      // Testimonial cards — stagger
+      const testimonialCards = gsap.utils.toArray<HTMLElement>('[data-testimonial-card]');
+      if (testimonialCards.length) {
+        gsap.fromTo(
+          testimonialCards,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            ease: 'power2.out',
+            stagger: 0.12,
+            scrollTrigger: {
+              trigger: '[data-testimonials]',
+              start: 'top 80%',
+              once: true,
+            },
+          },
+        );
+      }
+
+      // Workflow SVG — draw connector paths + pop nodes
+      const workflowPaths = gsap.utils.toArray<SVGPathElement>('[data-workflow-path]');
+      const workflowNodes = gsap.utils.toArray<SVGGElement>('[data-workflow-node]');
+      const workflowLabels = gsap.utils.toArray<HTMLElement>('[data-workflow-label]');
+      if (workflowPaths.length || workflowNodes.length) {
+        workflowPaths.forEach((p) => {
+          const len = p.getTotalLength();
+          p.style.strokeDasharray = `${len}`;
+          p.style.strokeDashoffset = `${len}`;
+        });
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: '[data-workflow]',
+              start: 'top 75%',
+              once: true,
+            },
+          })
+          .to(workflowPaths, {
+            strokeDashoffset: 0,
+            duration: 0.9,
+            stagger: 0.15,
+            ease: 'power2.inOut',
+          })
+          .fromTo(
+            workflowNodes,
+            { opacity: 0, scale: 0.85, transformOrigin: 'center center' },
+            { opacity: 1, scale: 1, duration: 0.5, stagger: 0.15, ease: 'back.out(2)' },
+            '<0.2',
+          )
+          .fromTo(
+            workflowLabels,
+            { y: 16, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: 'power2.out' },
+            '-=0.4',
+          );
+      }
     });
 
     return () => {

@@ -22,7 +22,154 @@ export const copy = {
     subhead:
       "We deploy trained operators and AI workflows that run your marketing, your back-office, and your reporting — so you don't hire a full department to scale one. One team. Three practices. Measurable outcomes.",
     ctaPrimary: { label: 'Book a free audit', href: '/free-growth-audit' },
-    ctaSecondary: { label: 'See what we run', href: '#pillars' },
+    ctaSecondary: { label: 'See what we run', href: '#services' },
+  },
+
+  /* ------------------------------------------------------------------
+   * Phase 2: massive editorial service list displayed as huge serif type.
+   * Each item carries an optional anchor so hover can route to the relevant
+   * sub-page. Order matters — it is read top-to-bottom like a contents page.
+   * ------------------------------------------------------------------ */
+  servicesList: {
+    eyebrow: 'WHAT WE OPERATE',
+    headline: 'Five practices under one operating system.',
+    items: [
+      { label: 'Performance Marketing', href: '/performance-marketing' },
+      { label: 'Remote Workforce', href: '/remote-workforce' },
+      { label: 'Automation', href: '/automation' },
+      { label: 'Systems & Reporting', href: '/systems-reporting' },
+      { label: 'Post-Launch Monitoring', href: '/automation#monitoring' },
+    ] as const,
+  },
+
+  /* ------------------------------------------------------------------
+   * Phase 2: illustrative logo strip. Wordmarks are invented company-type
+   * placeholders, NOT real client logos. Label must make the illustrative
+   * nature explicit per the integrity rule.
+   * ------------------------------------------------------------------ */
+  logoStrip: {
+    label: 'ILLUSTRATIVE — representative client types we serve',
+    marks: [
+      'NORTH & CO.',
+      'LOOM·LEDGER',
+      'MERIDIAN',
+      'KESTREL OPS',
+      'SEROTONIN',
+    ] as const,
+  },
+
+  /* ------------------------------------------------------------------
+   * Phase 2: Recent Work grid. Three anonymized cases. Each card owns a
+   * hand-coded SVG dashboard mockup (chart / funnel / comparison) rendered
+   * inline — no raster images, no fake screenshots. Content is anonymized
+   * to industry + outcome only.
+   * ------------------------------------------------------------------ */
+  recentWork: {
+    eyebrow: 'RECENT WORK',
+    headline: 'Operated engagements, anonymized.',
+    body: 'Representative results from pods we run today. Client identifiers removed at the clients\' request.',
+    cases: [
+      {
+        id: 'ecom',
+        industry: 'E-COMMERCE · PAID ACQUISITION',
+        title: '6.8x blended ROAS across 14 markets',
+        context:
+          'Rebuilt creative testing, consolidated attribution, re-scoped the media mix. Spend rose from $180K to $640K a month without CAC drift.',
+        metric: '6.8x',
+        metricLabel: 'Blended ROAS',
+        href: '/case-studies',
+        viz: 'line-ascending' as const,
+      },
+      {
+        id: 'saas',
+        industry: 'B2B SAAS · LEAD OPERATIONS',
+        title: '+89% qualified pipeline in 90 days',
+        context:
+          'Consolidated lead sources, built routing + enrichment, deployed an adaptive follow-up sequence. Sales stopped chasing bad leads.',
+        metric: '+89%',
+        metricLabel: 'Qualified pipeline',
+        href: '/case-studies',
+        viz: 'funnel-stages' as const,
+      },
+      {
+        id: 'leadgen',
+        industry: 'LEAD GEN · AGENCY DESK',
+        title: '5.3x CPL reduction in two markets',
+        context:
+          'Killed 60% of underperforming campaigns, rebuilt landing pages against real search intent, tuned creative cadence. CPL fell from $84 to $16.',
+        metric: '5.3x',
+        metricLabel: 'CPL reduction',
+        href: '/case-studies',
+        viz: 'bar-before-after' as const,
+      },
+    ] as const,
+  },
+
+  /* ------------------------------------------------------------------
+   * Phase 2: pull quote — centered editorial breath between work + workflow.
+   * Italic serif display, amber accent mark.
+   * ------------------------------------------------------------------ */
+  pullQuote: {
+    text: 'Every dollar you spend on marketing should be accountable.',
+    attribution: 'Faizan Rafiq, Co-founder',
+  },
+
+  /* ------------------------------------------------------------------
+   * Phase 2: workflow SVG — four-step lead lifecycle rendered as a minimal
+   * path-animated diagram. Paths draw-in on scroll via ScrollMotion.
+   * ------------------------------------------------------------------ */
+  workflow: {
+    eyebrow: 'HOW IT RUNS',
+    headline: 'Lead in, report out — instrumented end to end.',
+    body: 'Every inbound signal enters the same pipeline. Scoring + routing run in seconds; a human operator signs off on the report that lands in your inbox.',
+    steps: [
+      { n: '01', label: 'Lead', detail: 'Captured from every source, enriched, deduplicated.' },
+      { n: '02', label: 'Scored', detail: 'Fit + intent model, operator-tuned thresholds.' },
+      { n: '03', label: 'Routed', detail: 'Assigned to the right pod or sales rep in real time.' },
+      { n: '04', label: 'Reported', detail: 'Weekly narrative, monthly roll-up, always source-of-truth.' },
+    ] as const,
+  },
+
+  /* ------------------------------------------------------------------
+   * Phase 2: testimonials — same names as legacy (Sarah / Marcus / Jennifer)
+   * but new layout + no stock photos. Amber initial avatars, varied card
+   * sizes (one featured + two standard).
+   * ------------------------------------------------------------------ */
+  testimonials: {
+    eyebrow: 'OPERATORS WE RUN FOR',
+    headline: 'What clarity looks like.',
+    items: [
+      {
+        featured: true,
+        quote:
+          'They built the tracking we had been avoiding for two years. Now I actually know where to spend, and the meeting where we justify the number is fifteen minutes long.',
+        author: 'Sarah Chen',
+        role: 'CEO, B2B SaaS',
+        metric: '+127%',
+        metricLabel: 'MRR in 6 months',
+        initials: 'SC',
+      },
+      {
+        featured: false,
+        quote:
+          'Got execution capacity without the hiring headaches. They own outcomes, not just tasks.',
+        author: 'Marcus Thompson',
+        role: 'Founder, E-commerce',
+        metric: '3.1x',
+        metricLabel: 'ROAS',
+        initials: 'MT',
+      },
+      {
+        featured: false,
+        quote:
+          'We went from no idea where leads come from to full attribution in three weeks.',
+        author: 'Jennifer Walsh',
+        role: 'CMO, Agency',
+        metric: '-41%',
+        metricLabel: 'CAC',
+        initials: 'JW',
+      },
+    ] as const,
   },
 
   trustStrip: [
@@ -170,10 +317,10 @@ export const copy = {
 
   finalCta: {
     eyebrow: "LET'S WORK",
-    headline: 'Book a 30-minute audit. Get a written plan.',
+    headline: "Let's find what's draining your budget.",
     body:
-      "Free. A co-founder reviews your setup personally. If we can't help, we'll tell you — and usually point you to someone who can.",
-    ctaPrimary: { label: 'Book a free audit', href: '/free-growth-audit' },
+      "A co-founder reviews your setup personally. Free. Written plan within 5 business days. If we can't help, we'll tell you — and usually point you to someone who can.",
+    ctaPrimary: { label: 'Book a 30-min audit', href: '/free-growth-audit' },
     ctaSecondary: { label: 'See case studies', href: '/case-studies' },
   },
 

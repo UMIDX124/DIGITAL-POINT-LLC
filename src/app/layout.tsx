@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Instrument_Serif, Inter, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import CookieConsent from "@/components/CookieConsent";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400"],
+  style: ["normal", "italic"],
 });
 
 const inter = Inter({
@@ -18,8 +19,8 @@ const inter = Inter({
   display: "swap",
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
-  variable: "--font-ibm-plex-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500"],
@@ -28,38 +29,30 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://digitalpointllc.com"),
   title: {
-    default: "Digital Point LLC | Performance Marketing & Remote Workforce Solutions",
+    default: "Digital Point LLC | Remote Operators + AI Workflows Since 2017",
     template: "%s | Digital Point LLC",
   },
   description:
-    "Digital Point helps businesses scale revenue with performance marketing, remote execution, and systems that actually hold. Paid acquisition, reporting clarity, and managed workforce support for founder-led and growth-stage businesses.",
+    "We deploy trained remote operators and AI workflows that run your marketing, back-office, and reporting — so you don't hire a full department to scale one practice. One team. Three practices. Measurable outcomes.",
   keywords: [
-    "performance marketing agency",
-    "paid acquisition agency",
-    "digital marketing powerhouse",
-    "remote workforce company",
+    "remote workforce agency",
     "remote marketing team",
-    "remote execution support",
+    "AI automation agency",
     "marketing automation",
-    "reporting dashboards",
-    "revenue systems",
-    "RevOps support",
+    "back-office automation",
+    "reporting automation",
+    "performance marketing agency",
+    "paid acquisition",
+    "operated marketing team",
+    "managed service",
     "outsourced marketing operations",
-    "co-founder-led growth audit",
-    "CAC optimization",
-    "ROAS improvement",
-    "lead generation agency",
-    "marketing attribution",
-    "CRM optimization",
-    "marketing operations",
-    "remote team management",
-    "performance marketing services",
-    "digital marketing agency",
+    "lead operations",
     "B2B marketing agency",
-    "growth marketing agency",
-    "paid media agency",
     "Meta ads agency",
     "Google ads agency",
+    "n8n workflows",
+    "Groq AI",
+    "pod-based marketing team",
   ],
   authors: [{ name: "M. Faizan Rafiq" }, { name: "Anwaar Tayyab" }],
   creator: "Digital Point LLC",
@@ -74,9 +67,9 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Digital Point LLC | Performance Marketing & Remote Workforce Solutions",
+    title: "Digital Point LLC | Remote Operators + AI Workflows",
     description:
-      "Scale revenue with performance marketing, remote execution, and systems that actually hold. Co-founder-led growth audits available.",
+      "Pod-based operators and AI workflows that run marketing, back-office, and reporting. One team. Three practices.",
     url: "https://digitalpointllc.com",
     siteName: "Digital Point LLC",
     type: "website",
@@ -86,15 +79,15 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Digital Point LLC - Performance Marketing & Remote Workforce",
+        alt: "Digital Point LLC — Remote Operators + AI Workflows",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Digital Point LLC | Performance Marketing & Remote Workforce",
+    title: "Digital Point LLC | Remote Operators + AI Workflows",
     description:
-      "Scale revenue with performance marketing, remote execution, and systems that actually hold.",
+      "Pod-based operators and AI workflows that run marketing, back-office, and reporting.",
     images: ["/og-image.png"],
     creator: "@digitalpointllc",
   },
@@ -136,7 +129,7 @@ export default function RootLayout({
               url: "https://www.digitalpointllc.com",
               logo: "https://www.digitalpointllc.com/Dp-logo1.png",
               description:
-                "A performance marketing and remote execution company that helps businesses scale revenue with paid acquisition, systems, reporting clarity, and managed remote workforce support.",
+                "An operated team of remote specialists and AI workflows that run marketing, back-office, and reporting for growth-stage businesses.",
               sameAs: [
                 "https://www.linkedin.com/company/digitalpointllc",
               ],
@@ -151,21 +144,13 @@ export default function RootLayout({
               },
               foundingDate: "2017",
               founder: [
-                {
-                  "@type": "Person",
-                  name: "M. Faizan Rafiq",
-                  jobTitle: "Co-Founder",
-                },
-                {
-                  "@type": "Person",
-                  name: "Anwaar Tayyab",
-                  jobTitle: "Co-Founder",
-                },
+                { "@type": "Person", name: "M. Faizan Rafiq", jobTitle: "Co-Founder" },
+                { "@type": "Person", name: "Anwaar Tayyab", jobTitle: "Co-Founder" },
               ],
             }),
           }}
         />
-        
+
         {/* Professional Service Schema */}
         <script
           type="application/ld+json"
@@ -175,26 +160,22 @@ export default function RootLayout({
               "@type": "ProfessionalService",
               name: "Digital Point LLC",
               description:
-                "Performance marketing, RevOps, and remote workforce solutions for scaling businesses.",
+                "Remote operators, AI workflows, and performance marketing — operated as a single service.",
               url: "https://digitalpointllc.com",
               serviceType: [
-                "Performance Marketing",
-                "Remote Workforce Management",
-                "Revenue Operations",
+                "Remote Workforce",
                 "Marketing Automation",
-                "Paid Acquisition",
-                "Marketing Attribution",
-                "CRM Optimization",
+                "AI Workflows",
+                "Performance Marketing",
+                "Reporting and Analytics",
+                "Lead Operations",
               ],
-              areaServed: {
-                "@type": "Place",
-                name: "Worldwide",
-              },
+              areaServed: { "@type": "Place", name: "Worldwide" },
               priceRange: "$$",
             }),
           }}
         />
-        
+
         {/* WebSite Schema */}
         <script
           type="application/ld+json"
@@ -207,9 +188,7 @@ export default function RootLayout({
             }),
           }}
         />
-        
-        {/* FAQPage Schema - Will be added dynamically on FAQ section */}
-        
+
         {/* BreadcrumbList Schema */}
         <script
           type="application/ld+json"
@@ -218,68 +197,37 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Home",
-                  item: "https://digitalpointllc.com",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: "Performance Marketing",
-                  item: "https://digitalpointllc.com/performance-marketing",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 3,
-                  name: "Remote Workforce",
-                  item: "https://digitalpointllc.com/remote-workforce",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 4,
-                  name: "Systems & Reporting",
-                  item: "https://digitalpointllc.com/systems-reporting",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 5,
-                  name: "Results",
-                  item: "https://digitalpointllc.com/results",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 6,
-                  name: "Free Growth Audit",
-                  item: "https://digitalpointllc.com/free-growth-audit",
-                },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://digitalpointllc.com" },
+                { "@type": "ListItem", position: 2, name: "Remote Workforce", item: "https://digitalpointllc.com/remote-workforce" },
+                { "@type": "ListItem", position: 3, name: "Automation", item: "https://digitalpointllc.com/automation" },
+                { "@type": "ListItem", position: 4, name: "Performance Marketing", item: "https://digitalpointllc.com/performance-marketing" },
+                { "@type": "ListItem", position: 5, name: "Results", item: "https://digitalpointllc.com/results" },
+                { "@type": "ListItem", position: 6, name: "Free Growth Audit", item: "https://digitalpointllc.com/free-growth-audit" },
               ],
             }),
           }}
         />
-        
-        {/* Preconnect to external resources */}
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
-        {/* Google AdSense — loaded via next/script to avoid hydration mismatch */}
-
-        {/* Theme color for mobile browsers */}
-        <meta name="theme-color" content="#0a0a0c" />
-        <meta name="msapplication-TileColor" content="#0a0a0c" />
+        <meta name="theme-color" content="#0A0A0B" />
+        <meta name="msapplication-TileColor" content="#0A0A0B" />
       </head>
       <body
-        className={`${spaceGrotesk.variable} ${inter.variable} ${ibmPlexMono.variable} antialiased bg-background text-foreground font-sans`}
+        className={`${instrumentSerif.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
+        style={{ background: "#0A0A0B", color: "#F5F1E8" }}
       >
         {children}
         <Toaster />
         <CookieConsent />
-        <Script
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9780328939631989"
-          strategy="afterInteractive"
-          crossOrigin="anonymous"
-        />
+        {process.env.NEXT_PUBLIC_ADSENSE_ID ? (
+          <Script
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`}
+            strategy="afterInteractive"
+            crossOrigin="anonymous"
+          />
+        ) : null}
       </body>
     </html>
   );

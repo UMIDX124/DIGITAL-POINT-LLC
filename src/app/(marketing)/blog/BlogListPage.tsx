@@ -87,13 +87,13 @@ const fallbackArticles = [
 ];
 
 const categoryColors: Record<string, string> = {
-  'Marketing Attribution': '#c77dff',
-  'Paid Ads Benchmarks': '#ff6b9d',
+  'Marketing Attribution': '#F59E0B',
+  'Paid Ads Benchmarks': '#F59E0B',
   'CAC ROAS Optimization': '#a3e635',
   'Marketing Analytics': '#7dd3fc',
   'Remote Workforce': '#fbbf24',
   'Growth Systems': '#f472b6',
-  'Performance Marketing': '#c77dff',
+  'Performance Marketing': '#F59E0B',
   'AI & Automation': '#a3e635',
   'Systems & Reporting': '#7dd3fc',
 };
@@ -114,11 +114,11 @@ export function BlogListPage({ posts, categories, categoryMeta }: Props) {
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
               Insights from the{' '}
-              <span className="bg-gradient-to-r from-[#e0aaff] via-[#c77dff] to-[#ff6b9d] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#FBBF24] via-[#F59E0B] to-[#F59E0B] bg-clip-text text-transparent">
                 growth trenches
               </span>
             </h1>
-            <p className="text-[#b794c7] text-lg md:text-xl max-w-2xl leading-relaxed">
+            <p className="text-[#D6D0C2] text-lg md:text-xl max-w-2xl leading-relaxed">
               Frameworks, case studies, and hard-won lessons from managing $50M+ in ad spend and building remote teams across the globe.
             </p>
           </FadeUp>
@@ -165,28 +165,28 @@ export function BlogListPage({ posts, categories, categoryMeta }: Props) {
                       <span
                         className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium"
                         style={{
-                          background: `${categoryColors[article.category] || '#c77dff'}15`,
-                          border: `1px solid ${categoryColors[article.category] || '#c77dff'}30`,
-                          color: categoryColors[article.category] || '#c77dff',
+                          background: `${categoryColors[article.category] || '#F59E0B'}15`,
+                          border: `1px solid ${categoryColors[article.category] || '#F59E0B'}30`,
+                          color: categoryColors[article.category] || '#F59E0B',
                         }}
                       >
                         <Tag className="w-3 h-3" />
                         {article.category}
                       </span>
                     </div>
-                    <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#e0aaff] transition-colors mb-3 leading-snug">
+                    <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#FBBF24] transition-colors mb-3 leading-snug">
                       {article.title}
                     </h3>
-                    <p className="text-[#9080a0] text-sm leading-relaxed flex-1 mb-4">{article.excerpt}</p>
-                    <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(157, 78, 221, 0.1)' }}>
-                      <div className="flex items-center gap-3 text-[#7c5a8a] text-xs">
+                    <p className="text-[#71717A] text-sm leading-relaxed flex-1 mb-4">{article.excerpt}</p>
+                    <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(217,119,6, 0.1)' }}>
+                      <div className="flex items-center gap-3 text-[#71717A] text-xs">
                         <span>{new Date(article.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
                         <span className="flex items-center gap-1">
                           <Clock className="w-3 h-3" />
                           {article.readTime}
                         </span>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-[#c77dff] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                      <ArrowRight className="w-4 h-4 text-[#F59E0B] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                     </div>
                   </GlassCard>
                 </Link>

@@ -22,7 +22,7 @@ export function CaseStudiesPage() {
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mt-6 max-w-4xl">
               Client Results That Speak for Themselves
             </h1>
-            <p className="text-[#b794c7] text-lg mt-4 max-w-2xl">
+            <p className="text-[#D6D0C2] text-lg mt-4 max-w-2xl">
               Real strategies. Measurable outcomes. See how we help growth-stage
               businesses turn ad spend into predictable revenue.
             </p>
@@ -40,7 +40,7 @@ export function CaseStudiesPage() {
                   className="rounded-2xl overflow-hidden"
                   style={{
                     background: 'rgba(13, 8, 21, 0.6)',
-                    border: '1px solid rgba(157, 78, 221, 0.2)',
+                    border: '1px solid rgba(217,119,6, 0.2)',
                   }}
                   whileHover={{ scale: 1.005 }}
                   transition={{ duration: 0.2 }}
@@ -50,12 +50,12 @@ export function CaseStudiesPage() {
                     className="px-4 sm:px-6 md:px-8 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
                     style={{
                       background:
-                        'linear-gradient(135deg, rgba(157, 78, 221, 0.1) 0%, rgba(13, 8, 21, 0.8) 100%)',
-                      borderBottom: '1px solid rgba(157, 78, 221, 0.15)',
+                        'linear-gradient(135deg, rgba(217,119,6, 0.1) 0%, rgba(13, 8, 21, 0.8) 100%)',
+                      borderBottom: '1px solid rgba(217,119,6, 0.15)',
                     }}
                   >
                     <div>
-                      <p className="text-[#7c5a8a] text-xs uppercase tracking-wider mb-1">
+                      <p className="text-[#71717A] text-xs uppercase tracking-wider mb-1">
                         {study.industry}
                       </p>
                       <h2 className="font-display text-xl font-bold text-white">
@@ -65,11 +65,11 @@ export function CaseStudiesPage() {
                     <div className="text-right">
                       <p
                         className="font-display text-2xl font-bold"
-                        style={{ color: '#ff6b9d' }}
+                        style={{ color: '#F59E0B' }}
                       >
                         {study.highlightMetric}
                       </p>
-                      <p className="text-[#7c5a8a] text-xs">
+                      <p className="text-[#71717A] text-xs">
                         {study.highlightLabel}
                       </p>
                     </div>
@@ -79,27 +79,27 @@ export function CaseStudiesPage() {
                   <div className="px-4 sm:px-6 md:px-8 py-6 space-y-6">
                     {/* Problem */}
                     <div>
-                      <h3 className="text-xs uppercase tracking-wider text-[#9d4edd] font-semibold mb-2">
+                      <h3 className="text-xs uppercase tracking-wider text-[#D97706] font-semibold mb-2">
                         The Problem
                       </h3>
-                      <p className="text-[#b794c7] text-sm leading-relaxed">
+                      <p className="text-[#D6D0C2] text-sm leading-relaxed">
                         {study.problem}
                       </p>
                     </div>
 
                     {/* Strategy */}
                     <div>
-                      <h3 className="text-xs uppercase tracking-wider text-[#c77dff] font-semibold mb-2">
+                      <h3 className="text-xs uppercase tracking-wider text-[#F59E0B] font-semibold mb-2">
                         Our Strategy
                       </h3>
-                      <p className="text-[#b794c7] text-sm leading-relaxed">
+                      <p className="text-[#D6D0C2] text-sm leading-relaxed">
                         {study.strategy}
                       </p>
                     </div>
 
                     {/* Results */}
                     <div>
-                      <h3 className="text-xs uppercase tracking-wider text-[#ff6b9d] font-semibold mb-3">
+                      <h3 className="text-xs uppercase tracking-wider text-[#F59E0B] font-semibold mb-3">
                         Results
                       </h3>
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
@@ -108,17 +108,17 @@ export function CaseStudiesPage() {
                             key={r.label}
                             className="rounded-xl p-3 sm:p-4 text-center"
                             style={{
-                              background: 'rgba(157, 78, 221, 0.08)',
-                              border: '1px solid rgba(157, 78, 221, 0.12)',
+                              background: 'rgba(217,119,6, 0.08)',
+                              border: '1px solid rgba(217,119,6, 0.12)',
                             }}
                           >
                             <p
                               className="font-display text-lg font-bold"
-                              style={{ color: '#ff6b9d' }}
+                              style={{ color: '#F59E0B' }}
                             >
                               {r.value}
                             </p>
-                            <p className="text-[#7c5a8a] text-xs mt-1">
+                            <p className="text-[#71717A] text-xs mt-1">
                               {r.label}
                             </p>
                           </div>
@@ -131,14 +131,14 @@ export function CaseStudiesPage() {
                       <div
                         className="rounded-xl p-5"
                         style={{
-                          background: 'linear-gradient(135deg, rgba(123, 44, 191, 0.08), rgba(157, 78, 221, 0.05))',
-                          border: '1px solid rgba(199, 125, 255, 0.12)',
+                          background: 'linear-gradient(135deg, rgba(180,83,9, 0.08), rgba(217,119,6, 0.05))',
+                          border: '1px solid rgba(245,158,11, 0.12)',
                         }}
                       >
-                        <h3 className="text-xs uppercase tracking-wider text-[#e0aaff] font-semibold mb-2">
+                        <h3 className="text-xs uppercase tracking-wider text-[#FBBF24] font-semibold mb-2">
                           Behind the Scenes
                         </h3>
-                        <p className="text-[#b794c7] text-sm leading-relaxed italic">
+                        <p className="text-[#D6D0C2] text-sm leading-relaxed italic">
                           {study.behindTheScenes}
                         </p>
                       </div>
@@ -152,14 +152,14 @@ export function CaseStudiesPage() {
           {/* CTA */}
           <FadeUp delay={0.3}>
             <div className="text-center mt-16">
-              <p className="text-[#b794c7] text-lg mb-6">
+              <p className="text-[#D6D0C2] text-lg mb-6">
                 Ready to become the next success story?
               </p>
               <Link
                 href="/free-growth-audit"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-white transition-all hover:scale-105"
                 style={{
-                  background: 'linear-gradient(135deg, #9d4edd 0%, #c77dff 100%)',
+                  background: 'linear-gradient(135deg, #D97706 0%, #F59E0B 100%)',
                 }}
               >
                 Get Your Free Growth Audit

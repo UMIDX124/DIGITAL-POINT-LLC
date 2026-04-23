@@ -24,8 +24,8 @@ export function BlogCategoryContent({ categoryName, meta, posts }: Props) {
             <h1 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight mt-6">
               {categoryName}
             </h1>
-            <p className="text-[#b794c7] text-lg mt-4 max-w-2xl">{meta.description}</p>
-            <p className="text-[#7c5a8a] text-sm mt-2">{posts.length} article{posts.length !== 1 ? 's' : ''}</p>
+            <p className="text-[#D6D0C2] text-lg mt-4 max-w-2xl">{meta.description}</p>
+            <p className="text-[#71717A] text-sm mt-2">{posts.length} article{posts.length !== 1 ? 's' : ''}</p>
           </FadeUp>
         </Container>
       </section>
@@ -35,8 +35,8 @@ export function BlogCategoryContent({ categoryName, meta, posts }: Props) {
           {posts.length === 0 ? (
             <FadeUp>
               <div className="text-center py-16">
-                <p className="text-[#9080a0] text-lg">No articles in this category yet.</p>
-                <Link href="/blog" className="inline-flex items-center gap-2 text-[#c77dff] hover:text-[#e0aaff] mt-4 text-sm">
+                <p className="text-[#71717A] text-lg">No articles in this category yet.</p>
+                <Link href="/blog" className="inline-flex items-center gap-2 text-[#F59E0B] hover:text-[#FBBF24] mt-4 text-sm">
                   <ArrowLeft className="w-4 h-4" /> Back to blog
                 </Link>
               </div>
@@ -56,16 +56,16 @@ export function BlogCategoryContent({ categoryName, meta, posts }: Props) {
                           {categoryName}
                         </span>
                       </div>
-                      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#e0aaff] transition-colors mb-3 leading-snug">
+                      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#FBBF24] transition-colors mb-3 leading-snug">
                         {post.title}
                       </h3>
-                      <p className="text-[#9080a0] text-sm leading-relaxed flex-1 mb-4">{post.excerpt}</p>
-                      <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(157, 78, 221, 0.1)' }}>
-                        <div className="flex items-center gap-3 text-[#7c5a8a] text-xs">
+                      <p className="text-[#71717A] text-sm leading-relaxed flex-1 mb-4">{post.excerpt}</p>
+                      <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(217,119,6, 0.1)' }}>
+                        <div className="flex items-center gap-3 text-[#71717A] text-xs">
                           <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
                           <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{post.readTime}</span>
                         </div>
-                        <ArrowRight className="w-4 h-4 text-[#c77dff] opacity-0 group-hover:opacity-100 transition-all" />
+                        <ArrowRight className="w-4 h-4 text-[#F59E0B] opacity-0 group-hover:opacity-100 transition-all" />
                       </div>
                     </GlassCard>
                   </Link>

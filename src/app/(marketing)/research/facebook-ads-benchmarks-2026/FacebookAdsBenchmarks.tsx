@@ -33,14 +33,14 @@ const yearOverYear = [
 
 const keyStats = [
   { value: '$1.72', label: 'Avg CPC', color: '#7dd3fc' },
-  { value: '$12.47', label: 'Avg CPM', color: '#c77dff' },
+  { value: '$12.47', label: 'Avg CPM', color: '#F59E0B' },
   { value: '1.49%', label: 'Avg CTR', color: '#a3e635' },
-  { value: '2.87x', label: 'Avg ROAS', color: '#ff6b9d' },
+  { value: '2.87x', label: 'Avg ROAS', color: '#F59E0B' },
 ];
 
 const glassStyle = {
   background: 'rgba(13, 8, 21, 0.5)',
-  border: '1px solid rgba(157, 78, 221, 0.15)',
+  border: '1px solid rgba(217,119,6, 0.15)',
 };
 
 export function FacebookAdsBenchmarks({ faqs }: Props) {
@@ -54,11 +54,11 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
             { label: 'Facebook Ads Benchmarks 2026', href: '/research/facebook-ads-benchmarks-2026' },
           ]} />
           <div className="mt-8">
-            <span className="text-[#9080a0] text-sm">March 2026 &middot; 12 min read</span>
+            <span className="text-[#71717A] text-sm">March 2026 &middot; 12 min read</span>
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 leading-tight">
               Facebook Ads Benchmarks 2026
             </h1>
-            <p className="text-[#b794c7] text-lg mt-4 leading-relaxed max-w-2xl">
+            <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed max-w-2xl">
               CPC, CPM, CTR, and ROAS benchmarks across 12 industries. Based on analysis of $48M+ in tracked Meta ad spend from Q4 2025 through Q1 2026.
             </p>
           </div>
@@ -75,7 +75,7 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
                   <div className="font-display text-2xl md:text-3xl font-bold" style={{ color: stat.color }}>
                     {stat.value}
                   </div>
-                  <p className="text-[#9080a0] text-sm mt-1">{stat.label}</p>
+                  <p className="text-[#71717A] text-sm mt-1">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -92,29 +92,29 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(157,78,221,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#9080a0] font-medium">Industry</th>
+                    <tr className="border-b border-[rgba(217,119,6,0.15)]">
+                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Industry</th>
                       <th className="text-right py-3 px-4 text-[#7dd3fc] font-medium">CPC</th>
-                      <th className="text-right py-3 px-4 text-[#c77dff] font-medium">CPM</th>
+                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">CPM</th>
                       <th className="text-right py-3 px-4 text-[#a3e635] font-medium">CTR</th>
-                      <th className="text-right py-3 px-4 text-[#ff6b9d] font-medium">ROAS</th>
+                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">ROAS</th>
                     </tr>
                   </thead>
                   <tbody>
                     {industryBenchmarks.map((row, i) => (
-                      <tr key={row.industry} className={i < industryBenchmarks.length - 1 ? 'border-b border-[rgba(157,78,221,0.08)]' : ''}>
+                      <tr key={row.industry} className={i < industryBenchmarks.length - 1 ? 'border-b border-[rgba(217,119,6,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.industry}</td>
-                        <td className="py-3 px-4 text-right text-[#b794c7]">{row.cpc}</td>
-                        <td className="py-3 px-4 text-right text-[#b794c7]">{row.cpm}</td>
-                        <td className="py-3 px-4 text-right text-[#b794c7]">{row.ctr}</td>
-                        <td className="py-3 px-4 text-right text-[#b794c7]">{row.roas}</td>
+                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.cpc}</td>
+                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.cpm}</td>
+                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.ctr}</td>
+                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.roas}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             </div>
-            <p className="text-[#9080a0] text-xs mt-3">Data based on analysis of $48M+ in Meta Ads spend across 340+ accounts, Q4 2025 - Q1 2026.</p>
+            <p className="text-[#71717A] text-xs mt-3">Data based on analysis of $48M+ in Meta Ads spend across 340+ accounts, Q4 2025 - Q1 2026.</p>
           </FadeUp>
         </Container>
       </Section>
@@ -128,22 +128,22 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(157,78,221,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#9080a0] font-medium">Metric</th>
-                      <th className="text-right py-3 px-4 text-[#9080a0] font-medium">2024</th>
-                      <th className="text-right py-3 px-4 text-[#9080a0] font-medium">2025</th>
-                      <th className="text-right py-3 px-4 text-[#c77dff] font-medium">2026</th>
-                      <th className="text-right py-3 px-4 text-[#9080a0] font-medium">YoY</th>
+                    <tr className="border-b border-[rgba(217,119,6,0.15)]">
+                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Metric</th>
+                      <th className="text-right py-3 px-4 text-[#71717A] font-medium">2024</th>
+                      <th className="text-right py-3 px-4 text-[#71717A] font-medium">2025</th>
+                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">2026</th>
+                      <th className="text-right py-3 px-4 text-[#71717A] font-medium">YoY</th>
                     </tr>
                   </thead>
                   <tbody>
                     {yearOverYear.map((row, i) => (
-                      <tr key={row.metric} className={i < yearOverYear.length - 1 ? 'border-b border-[rgba(157,78,221,0.08)]' : ''}>
+                      <tr key={row.metric} className={i < yearOverYear.length - 1 ? 'border-b border-[rgba(217,119,6,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.metric}</td>
-                        <td className="py-3 px-4 text-right text-[#9080a0]">{row.value2024}</td>
-                        <td className="py-3 px-4 text-right text-[#9080a0]">{row.value2025}</td>
+                        <td className="py-3 px-4 text-right text-[#71717A]">{row.value2024}</td>
+                        <td className="py-3 px-4 text-right text-[#71717A]">{row.value2025}</td>
                         <td className="py-3 px-4 text-right text-white font-medium">{row.value2026}</td>
-                        <td className="py-3 px-4 text-right" style={{ color: row.change.startsWith('+') ? '#ff6b9d' : '#a3e635' }}>
+                        <td className="py-3 px-4 text-right" style={{ color: row.change.startsWith('+') ? '#F59E0B' : '#a3e635' }}>
                           {row.change}
                         </td>
                       </tr>
@@ -170,7 +170,7 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
               ].map((finding) => (
                 <div key={finding.title} className="rounded-xl p-5" style={glassStyle}>
                   <h3 className="font-display text-base font-semibold text-white mb-2">{finding.title}</h3>
-                  <p className="text-[#b794c7] text-sm leading-relaxed">{finding.text}</p>
+                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{finding.text}</p>
                 </div>
               ))}
             </div>
@@ -187,7 +187,7 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
               {faqs.map((faq) => (
                 <div key={faq.question} className="rounded-xl p-5" style={glassStyle}>
                   <h3 className="font-display text-base font-semibold text-white mb-2">{faq.question}</h3>
-                  <p className="text-[#b794c7] text-sm leading-relaxed">{faq.answer}</p>
+                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{faq.answer}</p>
                 </div>
               ))}
             </div>

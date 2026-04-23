@@ -9,14 +9,14 @@ const serviceLinks = [
     title: 'Performance Marketing',
     description: 'Paid ads, ROAS optimization, and attribution tracking.',
     icon: BarChart3,
-    color: '#c77dff',
+    color: '#F59E0B',
   },
   {
     slug: 'remote-workforce',
     title: 'Remote Workforce',
     description: 'Dedicated remote teams that integrate with yours.',
     icon: Users,
-    color: '#ff6b9d',
+    color: '#F59E0B',
   },
   {
     slug: 'systems-reporting',
@@ -93,17 +93,17 @@ export function InternalLinks({
               className="group rounded-xl p-4 transition-all hover:scale-[1.01]"
               style={{
                 background: 'rgba(13, 8, 21, 0.5)',
-                border: '1px solid rgba(157, 78, 221, 0.15)',
+                border: '1px solid rgba(217,119,6, 0.15)',
               }}
             >
               <div className="flex items-center gap-2 mb-2">
                 <Icon className="w-4 h-4" style={{ color: service.color }} />
-                <span className="text-white text-sm font-medium group-hover:text-[#e0aaff] transition-colors">
+                <span className="text-white text-sm font-medium group-hover:text-[#FBBF24] transition-colors">
                   {service.title}
                 </span>
-                <ArrowRight className="w-3 h-3 text-[#7c5a8a] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ArrowRight className="w-3 h-3 text-[#71717A] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-              <p className="text-[#7c5a8a] text-xs">{service.description}</p>
+              <p className="text-[#71717A] text-xs">{service.description}</p>
             </Link>
           );
         })}

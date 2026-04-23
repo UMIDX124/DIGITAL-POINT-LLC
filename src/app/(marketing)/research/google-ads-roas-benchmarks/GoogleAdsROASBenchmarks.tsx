@@ -35,14 +35,14 @@ const campaignTypeBenchmarks = [
 
 const keyStats = [
   { value: '4.2x', label: 'Avg Search ROAS', color: '#a3e635' },
-  { value: '3.1x', label: 'Avg PMax ROAS', color: '#c77dff' },
+  { value: '3.1x', label: 'Avg PMax ROAS', color: '#F59E0B' },
   { value: '5.6x', label: 'Avg Shopping ROAS', color: '#fbbf24' },
   { value: '$62M', label: 'Ad Spend Analyzed', color: '#7dd3fc' },
 ];
 
 const glassStyle = {
   background: 'rgba(13, 8, 21, 0.5)',
-  border: '1px solid rgba(157, 78, 221, 0.15)',
+  border: '1px solid rgba(217,119,6, 0.15)',
 };
 
 export function GoogleAdsROASBenchmarks({ faqs }: Props) {
@@ -56,11 +56,11 @@ export function GoogleAdsROASBenchmarks({ faqs }: Props) {
             { label: 'Google Ads ROAS Benchmarks', href: '/research/google-ads-roas-benchmarks' },
           ]} />
           <div className="mt-8">
-            <span className="text-[#9080a0] text-sm">February 2026 &middot; 14 min read</span>
+            <span className="text-[#71717A] text-sm">February 2026 &middot; 14 min read</span>
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 leading-tight">
               Google Ads ROAS Benchmarks by Industry
             </h1>
-            <p className="text-[#b794c7] text-lg mt-4 leading-relaxed max-w-2xl">
+            <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed max-w-2xl">
               ROAS benchmarks for Search, Display, YouTube, Shopping, Performance Max, and Demand Gen campaigns across 12 industries. Sourced from $62M in analyzed Google Ads spend.
             </p>
           </div>
@@ -77,7 +77,7 @@ export function GoogleAdsROASBenchmarks({ faqs }: Props) {
                   <div className="font-display text-2xl md:text-3xl font-bold" style={{ color: stat.color }}>
                     {stat.value}
                   </div>
-                  <p className="text-[#9080a0] text-sm mt-1">{stat.label}</p>
+                  <p className="text-[#71717A] text-sm mt-1">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -94,22 +94,22 @@ export function GoogleAdsROASBenchmarks({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(157,78,221,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#9080a0] font-medium">Campaign Type</th>
+                    <tr className="border-b border-[rgba(217,119,6,0.15)]">
+                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Campaign Type</th>
                       <th className="text-right py-3 px-4 text-[#a3e635] font-medium">Avg ROAS</th>
                       <th className="text-right py-3 px-4 text-[#7dd3fc] font-medium">Avg CPC</th>
-                      <th className="text-right py-3 px-4 text-[#c77dff] font-medium">Conv Rate</th>
-                      <th className="text-left py-3 px-4 text-[#9080a0] font-medium">Best For</th>
+                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">Conv Rate</th>
+                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Best For</th>
                     </tr>
                   </thead>
                   <tbody>
                     {campaignTypeBenchmarks.map((row, i) => (
-                      <tr key={row.type} className={i < campaignTypeBenchmarks.length - 1 ? 'border-b border-[rgba(157,78,221,0.08)]' : ''}>
+                      <tr key={row.type} className={i < campaignTypeBenchmarks.length - 1 ? 'border-b border-[rgba(217,119,6,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.type}</td>
-                        <td className="py-3 px-4 text-right text-[#b794c7]">{row.avgRoas}</td>
-                        <td className="py-3 px-4 text-right text-[#b794c7]">{row.avgCpc}</td>
-                        <td className="py-3 px-4 text-right text-[#b794c7]">{row.avgConvRate}</td>
-                        <td className="py-3 px-4 text-[#9080a0] text-xs">{row.bestFor}</td>
+                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.avgRoas}</td>
+                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.avgCpc}</td>
+                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.avgConvRate}</td>
+                        <td className="py-3 px-4 text-[#71717A] text-xs">{row.bestFor}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -129,27 +129,27 @@ export function GoogleAdsROASBenchmarks({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(157,78,221,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#9080a0] font-medium">Industry</th>
+                    <tr className="border-b border-[rgba(217,119,6,0.15)]">
+                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Industry</th>
                       <th className="text-right py-3 px-4 text-[#a3e635] font-medium">Search ROAS</th>
                       <th className="text-right py-3 px-4 text-[#7dd3fc] font-medium">Avg CPC</th>
-                      <th className="text-right py-3 px-4 text-[#c77dff] font-medium">Conv Rate</th>
+                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">Conv Rate</th>
                     </tr>
                   </thead>
                   <tbody>
                     {searchBenchmarks.map((row, i) => (
-                      <tr key={row.industry} className={i < searchBenchmarks.length - 1 ? 'border-b border-[rgba(157,78,221,0.08)]' : ''}>
+                      <tr key={row.industry} className={i < searchBenchmarks.length - 1 ? 'border-b border-[rgba(217,119,6,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.industry}</td>
-                        <td className="py-3 px-4 text-right text-[#b794c7]">{row.roas}</td>
-                        <td className="py-3 px-4 text-right text-[#b794c7]">{row.cpc}</td>
-                        <td className="py-3 px-4 text-right text-[#b794c7]">{row.convRate}</td>
+                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.roas}</td>
+                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.cpc}</td>
+                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.convRate}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             </div>
-            <p className="text-[#9080a0] text-xs mt-3">Data based on analysis of $62M in Google Ads spend across 420+ accounts, 2025-2026.</p>
+            <p className="text-[#71717A] text-xs mt-3">Data based on analysis of $62M in Google Ads spend across 420+ accounts, 2025-2026.</p>
           </FadeUp>
         </Container>
       </Section>
@@ -168,7 +168,7 @@ export function GoogleAdsROASBenchmarks({ faqs }: Props) {
               ].map((finding) => (
                 <div key={finding.title} className="rounded-xl p-5" style={glassStyle}>
                   <h3 className="font-display text-base font-semibold text-white mb-2">{finding.title}</h3>
-                  <p className="text-[#b794c7] text-sm leading-relaxed">{finding.text}</p>
+                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{finding.text}</p>
                 </div>
               ))}
             </div>
@@ -185,7 +185,7 @@ export function GoogleAdsROASBenchmarks({ faqs }: Props) {
               {faqs.map((faq) => (
                 <div key={faq.question} className="rounded-xl p-5" style={glassStyle}>
                   <h3 className="font-display text-base font-semibold text-white mb-2">{faq.question}</h3>
-                  <p className="text-[#b794c7] text-sm leading-relaxed">{faq.answer}</p>
+                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{faq.answer}</p>
                 </div>
               ))}
             </div>

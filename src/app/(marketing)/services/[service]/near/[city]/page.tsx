@@ -72,7 +72,7 @@ export default async function ServiceCityPage({ params }: PageProps) {
             {content.service.name} in {content.city.name}
           </h1>
 
-          <div className="space-y-6 text-[#b794c7] text-lg leading-relaxed">
+          <div className="space-y-6 text-[#D6D0C2] text-lg leading-relaxed">
             <p>{content.intro}</p>
             <p>{content.localContext}</p>
             <p>{content.approach}</p>
@@ -90,11 +90,11 @@ export default async function ServiceCityPage({ params }: PageProps) {
             {content.service.benefits.map((benefit, index) => (
               <li
                 key={index}
-                className="flex items-start gap-3 text-[#b794c7] text-base leading-relaxed"
+                className="flex items-start gap-3 text-[#D6D0C2] text-base leading-relaxed"
               >
                 <span
                   className="mt-2 w-2 h-2 rounded-full shrink-0"
-                  style={{ background: '#c77dff' }}
+                  style={{ background: '#F59E0B' }}
                 />
                 {benefit}
               </li>
@@ -108,7 +108,7 @@ export default async function ServiceCityPage({ params }: PageProps) {
           <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8">
             Serving {content.city.name}, {content.city.state} and Beyond
           </h2>
-          <div className="space-y-6 text-[#b794c7] text-base leading-relaxed">
+          <div className="space-y-6 text-[#D6D0C2] text-base leading-relaxed">
             <p>
               As a remote-first performance marketing agency, we work with businesses in {content.city.name} and
               across the United States. Our team delivers the same level of strategic depth and hands-on

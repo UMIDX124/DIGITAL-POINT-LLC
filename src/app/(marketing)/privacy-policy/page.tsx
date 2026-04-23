@@ -32,11 +32,11 @@ export default function PrivacyPolicyPage() {
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Privacy Policy
             </h1>
-            <p className="text-[#9080a0] text-sm mb-12">
+            <p className="text-[#71717A] text-sm mb-12">
               Last updated: March 23, 2026
             </p>
 
-            <div className="space-y-10 text-[#b794c7] leading-relaxed">
+            <div className="space-y-10 text-[#D6D0C2] leading-relaxed">
               <p>
                 Digital Point LLC (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) operates the website
                 digitalpointllc.com (the &quot;Site&quot;). This Privacy Policy explains how we
@@ -100,7 +100,7 @@ export default function PrivacyPolicyPage() {
                     href="https://www.google.com/settings/ads"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white underline underline-offset-2 hover:text-[#b794c7] transition-colors"
+                    className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
                   >
                     Google Ads Settings
                   </a>{' '}
@@ -109,7 +109,7 @@ export default function PrivacyPolicyPage() {
                     href="https://optout.networkadvertising.org/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white underline underline-offset-2 hover:text-[#b794c7] transition-colors"
+                    className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
                   >
                     Network Advertising Initiative opt-out page
                   </a>
@@ -163,7 +163,7 @@ export default function PrivacyPolicyPage() {
                       href="https://policies.google.com/privacy"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white underline underline-offset-2 hover:text-[#b794c7] transition-colors"
+                      className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
                     >
                       Google&apos;s Privacy Policy
                     </a>
@@ -177,7 +177,7 @@ export default function PrivacyPolicyPage() {
                       href="https://policies.google.com/technologies/ads"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white underline underline-offset-2 hover:text-[#b794c7] transition-colors"
+                      className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
                     >
                       Google&apos;s Advertising Policies
                     </a>
@@ -192,7 +192,7 @@ export default function PrivacyPolicyPage() {
                       href="https://vercel.com/legal/privacy-policy"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white underline underline-offset-2 hover:text-[#b794c7] transition-colors"
+                      className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
                     >
                       Vercel&apos;s Privacy Policy
                     </a>
@@ -268,7 +268,7 @@ export default function PrivacyPolicyPage() {
                       href="https://www.google.com/settings/ads"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white underline underline-offset-2 hover:text-[#b794c7] transition-colors"
+                      className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
                     >
                       Google Ads Settings
                     </a>{' '}
@@ -304,7 +304,7 @@ export default function PrivacyPolicyPage() {
                   information, please contact us at{' '}
                   <a
                     href="mailto:info@digitalpointllc.com"
-                    className="text-white underline underline-offset-2 hover:text-[#b794c7] transition-colors"
+                    className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
                   >
                     info@digitalpointllc.com
                   </a>
@@ -342,7 +342,7 @@ export default function PrivacyPolicyPage() {
                     Email:{' '}
                     <a
                       href="mailto:info@digitalpointllc.com"
-                      className="text-white underline underline-offset-2 hover:text-[#b794c7] transition-colors"
+                      className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
                     >
                       info@digitalpointllc.com
                     </a>
@@ -351,7 +351,7 @@ export default function PrivacyPolicyPage() {
                     Website:{' '}
                     <a
                       href="https://digitalpointllc.com"
-                      className="text-white underline underline-offset-2 hover:text-[#b794c7] transition-colors"
+                      className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
                     >
                       digitalpointllc.com
                     </a>

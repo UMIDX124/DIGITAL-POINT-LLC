@@ -9,7 +9,7 @@ export default function Error({
   return (
     <div
       className="min-h-screen flex items-center justify-center px-4"
-      style={{ background: 'linear-gradient(180deg, #0d0815 0%, #1a0a2e 50%, #0d0815 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #0A0A0B 0%, #141416 50%, #0A0A0B 100%)' }}
     >
       <div className="text-center max-w-md">
         <div
@@ -24,14 +24,14 @@ export default function Error({
         <h2 className="font-display text-2xl font-bold text-white mb-4">
           Something went wrong
         </h2>
-        <p className="text-[#b794c7] mb-8">
+        <p className="text-[#D6D0C2] mb-8">
           An unexpected error occurred. Please try again.
         </p>
         <button
           onClick={reset}
           className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all hover:scale-105 cursor-pointer"
           style={{
-            background: 'linear-gradient(135deg, #7b2cbf 0%, #9d4edd 50%, #c77dff 100%)',
+            background: 'linear-gradient(135deg, #B45309 0%, #D97706 50%, #F59E0B 100%)',
           }}
         >
           Try Again

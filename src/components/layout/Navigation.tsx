@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useCallback, memo } from 'react';
-import { AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
@@ -9,52 +8,25 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Performance Marketing', href: '/performance-marketing' },
-  { name: 'Remote Workforce', href: '/remote-workforce' },
-  { name: 'Systems & Reporting', href: '/systems-reporting' },
+  { name: 'Workforce', href: '/remote-workforce' },
+  { name: 'Automation', href: '/automation' },
+  { name: 'Marketing', href: '/performance-marketing' },
   { name: 'Case Studies', href: '/case-studies' },
   { name: 'Results', href: '/results' },
   { name: 'Blog', href: '/blog' },
   { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
 ];
 
-const mobileNavigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Performance Marketing', href: '/performance-marketing' },
-  { name: 'Remote Workforce', href: '/remote-workforce' },
-  { name: 'Systems & Reporting', href: '/systems-reporting' },
-  { name: 'Case Studies', href: '/case-studies' },
-  { name: 'Results', href: '/results' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
-];
-
-/** Memoized nav link to prevent re-renders when sibling state changes */
 const NavLink = memo(function NavLink({ item, active }: { item: { name: string; href: string }; active: boolean }) {
   return (
     <Link
       href={item.href}
       className={cn(
-        'relative px-3 py-1.5 text-[13px] font-medium transition-colors duration-200 rounded-lg whitespace-nowrap',
-        active
-          ? 'text-white'
-          : 'text-white/50 hover:text-white/80'
+        'px-3 py-2 text-[13px] font-medium transition-colors duration-200 whitespace-nowrap',
+        active ? 'text-[color:var(--amber)]' : 'text-[color:var(--ivory-dim)] hover:text-[color:var(--ivory)]'
       )}
     >
-      {/* Active background — CSS-only instead of layoutId animation */}
-      {active && (
-        <span
-          className="absolute inset-0 rounded-lg"
-          style={{
-            background: 'linear-gradient(135deg, rgba(139,92,246,0.4) 0%, rgba(124,58,237,0.3) 100%)',
-            boxShadow: '0 2px 8px rgba(139,92,246,0.2), inset 0 1px 1px rgba(255,255,255,0.1)',
-          }}
-        />
-      )}
-      <span className="relative z-10">{item.name}</span>
+      {item.name}
     </Link>
   );
 });
@@ -64,7 +36,6 @@ export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  // Throttled scroll handler to reduce main-thread work
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
@@ -80,142 +51,63 @@ export function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
+  useEffect(() => { setIsOpen(false); }, [pathname]);
 
   const isActive = useCallback((href: string) => {
     if (href === '/') return pathname === '/';
     return pathname.startsWith(href);
   }, [pathname]);
 
-  const toggleMenu = useCallback(() => {
-    setIsOpen(prev => !prev);
-  }, []);
+  const toggleMenu = useCallback(() => setIsOpen(prev => !prev), []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[100]">
-      {/* Full-width Glass Navigation — CSS transition instead of motion.div */}
       <div
         className={cn(
-          'relative w-full transition-all duration-500',
-          scrolled
-            ? 'shadow-[0_8px_32px_rgba(0,0,0,0.12)]'
-            : 'shadow-[0_4px_24px_rgba(0,0,0,0.06)]'
+          'relative w-full transition-colors duration-300',
+          scrolled ? 'backdrop-blur-md' : ''
         )}
         style={{
-          background: scrolled
-            ? 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%)'
-            : 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 100%)',
-          backdropFilter: 'blur(24px) saturate(180%)',
-          WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-          borderBottom: '1px solid rgba(255,255,255,0.1)',
-          willChange: 'box-shadow',
+          background: scrolled ? 'rgba(10, 10, 11, 0.85)' : 'rgba(10, 10, 11, 0.55)',
+          borderBottom: `1px solid ${scrolled ? '#27272A' : 'transparent'}`,
         }}
       >
-        {/* Glass reflection highlight */}
-        <div
-          className="absolute inset-0 pointer-events-none overflow-hidden"
-          style={{
-            background: 'linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 50%)',
-          }}
-        />
-
-        {/* Inner glow */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.1)',
-          }}
-        />
-
-        <nav className="relative px-5 sm:px-6 md:pl-[12%] md:pr-8 lg:pl-[14%]">
-          <div className="flex items-center justify-between gap-6 h-14 md:h-16">
-            {/* Logo */}
-            <Link
-              href="/"
-              className="flex items-center gap-2 group relative z-10 shrink-0"
-            >
-              <div className="relative" style={{ marginTop: '-24px', marginBottom: '-22px' }}>
-                {/* White glow behind logo */}
-                <div
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full"
-                  style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 40%, transparent 70%)' }}
-                />
-                {/* Shadow on the navbar surface */}
-                <div
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-10 h-2 rounded-full blur-sm"
-                  style={{ background: 'rgba(0,0,0,0.4)' }}
-                />
-                <Image
-                  src="/Dp-logo1.png"
-                  alt="Digital Point LLC"
-                  width={56}
-                  height={56}
-                  priority
-                  className="relative z-10 transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1"
-                  style={{
-                    width: '52px',
-                    height: 'auto',
-                    filter: 'drop-shadow(0 0 12px rgba(255,255,255,0.35)) drop-shadow(0 4px 8px rgba(0,0,0,0.6)) drop-shadow(0 2px 12px rgba(139,92,246,0.5))',
-                  }}
-                />
-              </div>
-              <div className="hidden sm:block">
-                <span className="font-display font-semibold text-base tracking-tight text-white/90">
-                  Digital Point
-                </span>
-                <span className="text-white/40 text-xs block -mt-0.5">LLC</span>
+        <nav className="relative container-wide">
+          <div className="flex items-center justify-between gap-6 h-16">
+            <Link href="/" className="flex items-center gap-3 shrink-0 group">
+              <Image
+                src="/Dp-logo1.png"
+                alt="Digital Point LLC"
+                width={40}
+                height={40}
+                priority
+                style={{ width: '36px', height: 'auto' }}
+                className="transition-opacity duration-200 group-hover:opacity-90"
+              />
+              <div className="hidden sm:flex flex-col leading-none">
+                <span className="font-display text-[17px] text-[color:var(--ivory)]">Digital Point</span>
+                <span className="text-[color:var(--muted)] text-[10px] tracking-[0.2em] uppercase mt-0.5">LLC · Since 2017</span>
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden xl:flex items-center justify-center flex-1 relative z-10">
-              <div
-                className="flex items-center p-1 rounded-xl"
-                style={{
-                  background: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                }}
-              >
-                {navigation.map((item) => (
-                  <NavLink key={item.name} item={item} active={isActive(item.href)} />
-                ))}
-              </div>
+            <div className="hidden lg:flex items-center gap-1 flex-1 justify-center">
+              {navigation.map((item) => (
+                <NavLink key={item.name} item={item} active={isActive(item.href)} />
+              ))}
             </div>
 
-            {/* CTA Button — plain CSS hover instead of whileHover/whileTap */}
-            <div className="hidden xl:block relative z-10 ml-2">
-              <Link href="/free-growth-audit">
-                <span
-                  className="relative px-5 py-2.5 text-sm font-semibold text-white rounded-xl overflow-hidden group whitespace-nowrap inline-block transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98]"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(139,92,246,0.9) 0%, rgba(124,58,237,1) 100%)',
-                    boxShadow: '0 4px 16px rgba(139,92,246,0.4), inset 0 1px 1px rgba(255,255,255,0.2)',
-                  }}
-                >
-                  {/* Shine effect */}
-                  <span
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{
-                      background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%)',
-                      transform: 'translateX(-100%)',
-                      animation: 'shine 1.5s infinite',
-                    }}
-                  />
-                  <span className="relative z-10">Free Growth Audit</span>
-                </span>
+            <div className="hidden lg:block">
+              <Link
+                href="/free-growth-audit"
+                className="px-4 py-2 text-[13px] font-medium text-[#0A0A0B] rounded-md whitespace-nowrap inline-block transition-colors duration-150"
+                style={{ background: 'var(--amber-bright)' }}
+              >
+                Book a free audit
               </Link>
             </div>
 
-            {/* Mobile Menu Button — plain button instead of motion.button */}
             <button
-              className="xl:hidden min-w-[44px] min-h-[44px] p-2.5 rounded-lg text-white/60 hover:text-white transition-colors relative z-10 active:scale-95 flex items-center justify-center"
-              style={{
-                background: 'rgba(255,255,255,0.05)',
-                border: '1px solid rgba(255,255,255,0.1)',
-              }}
+              className="lg:hidden min-w-[44px] min-h-[44px] p-2.5 rounded-md text-[color:var(--ivory-dim)] hover:text-[color:var(--ivory)] transition-colors flex items-center justify-center border-hairline"
               onClick={toggleMenu}
               aria-label="Toggle menu"
               aria-expanded={isOpen}
@@ -227,77 +119,39 @@ export function Navigation() {
         </nav>
       </div>
 
-      {/* Mobile Menu - CSS transitions instead of per-item framer-motion animations */}
-      <AnimatePresence>
-        {isOpen && (
-          <div
-            id="mobile-menu"
-            className="xl:hidden absolute top-full left-4 right-4 mt-2 mx-auto max-w-7xl rounded-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-300"
-            style={{
-              background: 'linear-gradient(135deg, rgba(30,30,40,0.95) 0%, rgba(20,20,30,0.98) 100%)',
-              backdropFilter: 'blur(24px) saturate(180%)',
-              WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
-            }}
-          >
-            {/* Glass highlight */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: 'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 30%)',
-              }}
-            />
-
-            <div className="relative p-4 space-y-1">
-              {mobileNavigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={cn(
-                    'block w-full text-left px-4 py-3 min-h-[44px] rounded-xl text-sm font-medium transition-colors duration-200',
-                    isActive(item.href)
-                      ? 'text-white'
-                      : 'text-white/50 hover:text-white/80'
-                  )}
-                  style={
-                    isActive(item.href)
-                      ? {
-                          background: 'linear-gradient(135deg, rgba(139,92,246,0.3) 0%, rgba(124,58,237,0.2) 100%)',
-                          boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.1)',
-                        }
-                      : {
-                          background: 'transparent',
-                        }
-                  }
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="pt-3">
-                <Link
-                  href="/free-growth-audit"
-                  className="block w-full py-3 rounded-xl text-sm font-semibold text-white text-center"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(139,92,246,0.9) 0%, rgba(124,58,237,1) 100%)',
-                    boxShadow: '0 4px 16px rgba(139,92,246,0.4)',
-                  }}
-                >
-                  Free Growth Audit
-                </Link>
-              </div>
+      {isOpen && (
+        <div
+          id="mobile-menu"
+          className="lg:hidden absolute top-full left-4 right-4 mt-2 rounded-lg overflow-hidden animate-fade-in"
+          style={{ background: '#141416', border: '1px solid #27272A' }}
+        >
+          <div className="p-3 flex flex-col">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={cn(
+                  'px-4 py-3 min-h-[44px] text-sm font-medium transition-colors',
+                  isActive(item.href)
+                    ? 'text-[color:var(--amber)]'
+                    : 'text-[color:var(--ivory-dim)] hover:text-[color:var(--ivory)]'
+                )}
+              >
+                {item.name}
+              </Link>
+            ))}
+            <div className="mt-2 pt-3 border-t" style={{ borderColor: '#27272A' }}>
+              <Link
+                href="/free-growth-audit"
+                className="block w-full py-3 rounded-md text-sm font-medium text-[#0A0A0B] text-center"
+                style={{ background: 'var(--amber-bright)' }}
+              >
+                Book a free audit
+              </Link>
             </div>
           </div>
-        )}
-      </AnimatePresence>
-
-      {/* CSS for shine animation */}
-      <style jsx global>{`
-        @keyframes shine {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-      `}</style>
+        </div>
+      )}
     </header>
   );
 }

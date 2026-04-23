@@ -15,9 +15,9 @@ export const metadata: Metadata = {
 const sectionHeadingClass =
   'font-display text-2xl md:text-3xl font-bold text-white mt-12 mb-4';
 
-const bodyTextClass = 'text-[#b794c7] leading-relaxed mb-4';
+const bodyTextClass = 'text-[#D6D0C2] leading-relaxed mb-4';
 
-const secondaryTextClass = 'text-[#9080a0] leading-relaxed mb-4';
+const secondaryTextClass = 'text-[#71717A] leading-relaxed mb-4';
 
 export default function TermsOfServicePage() {
   return (
@@ -65,7 +65,7 @@ export default function TermsOfServicePage() {
               website and direct engagements, we offer the following services
               and resources:
             </p>
-            <ul className="list-disc list-inside text-[#b794c7] leading-relaxed mb-4 space-y-2 pl-2">
+            <ul className="list-disc list-inside text-[#D6D0C2] leading-relaxed mb-4 space-y-2 pl-2">
               <li>
                 <span className="text-white font-medium">
                   Performance Marketing
@@ -129,7 +129,7 @@ export default function TermsOfServicePage() {
             </p>
             <p className="text-white font-medium mb-2">Prohibited Conduct</p>
             <p className={bodyTextClass}>You agree not to:</p>
-            <ul className="list-disc list-inside text-[#b794c7] leading-relaxed mb-4 space-y-2 pl-2">
+            <ul className="list-disc list-inside text-[#D6D0C2] leading-relaxed mb-4 space-y-2 pl-2">
               <li>
                 Use the website in any way that violates applicable local,
                 state, national, or international law or regulation.
@@ -300,7 +300,7 @@ export default function TermsOfServicePage() {
                 Email:{' '}
                 <a
                   href="mailto:info@digitalpointllc.com"
-                  className="text-[#c77dff] hover:text-[#e0aaff] transition-colors underline"
+                  className="text-[#F59E0B] hover:text-[#FBBF24] transition-colors underline"
                 >
                   info@digitalpointllc.com
                 </a>
@@ -309,7 +309,7 @@ export default function TermsOfServicePage() {
                 Website:{' '}
                 <a
                   href="https://digitalpointllc.com"
-                  className="text-[#c77dff] hover:text-[#e0aaff] transition-colors underline"
+                  className="text-[#F59E0B] hover:text-[#FBBF24] transition-colors underline"
                 >
                   digitalpointllc.com
                 </a>

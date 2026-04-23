@@ -1,18 +1,19 @@
-import { Linkedin, Mail, ArrowUpRight } from 'lucide-react';
+import { Linkedin, Mail } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+
 const footerLinks = {
   services: [
-    { name: 'Performance Marketing', href: '/performance-marketing' },
     { name: 'Remote Workforce', href: '/remote-workforce' },
-    { name: 'Systems & Reporting', href: '/systems-reporting' },
+    { name: 'Automation', href: '/automation' },
+    { name: 'Performance Marketing', href: '/performance-marketing' },
   ],
   company: [
     { name: 'About', href: '/about' },
     { name: 'Results', href: '/results' },
+    { name: 'Case Studies', href: '/case-studies' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
-    { name: 'Free Growth Audit', href: '/free-growth-audit' },
   ],
 };
 
@@ -20,207 +21,89 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer
-      className="relative mt-auto"
-      style={{
-        background: 'linear-gradient(180deg, #0d0815 0%, #080510 100%)',
-        borderTop: '1px solid rgba(157, 78, 221, 0.1)',
-      }}
-    >
-      {/* Subtle glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(157, 78, 221, 0.05) 0%, transparent 60%)',
-        }}
-      />
-
-      <div className="container-wide relative z-10">
-        {/* Main Footer Content */}
-        <div className="py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand Column */}
+    <footer className="relative mt-auto" style={{ background: '#0A0A0B', borderTop: '1px solid var(--amber)' }}>
+      <div className="container-wide">
+        <div className="py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="lg:col-span-1">
-            <Link
-              href="/"
-              className="flex items-center gap-3 mb-6"
-            >
-              <div className="relative w-10 h-10 flex items-center justify-center">
-                <Image
-                  src="/Dp-logo1.png"
-                  alt="Digital Point LLC"
-                  width={40}
-                  height={40}
-                  className="drop-shadow-[0_0_10px_rgba(139,92,246,0.5)]"
-                  style={{ width: '40px', height: 'auto' }}
-                />
-              </div>
-              <div>
-                <span className="font-display font-semibold text-lg text-white">
-                  Digital Point
-                </span>
-                <span className="text-[#9080a0] text-xs block -mt-1">LLC</span>
+            <Link href="/" className="flex items-center gap-3 mb-6">
+              <Image
+                src="/Dp-logo1.png"
+                alt="Digital Point LLC"
+                width={40}
+                height={40}
+                style={{ width: '40px', height: 'auto' }}
+              />
+              <div className="flex flex-col leading-none">
+                <span className="font-display text-lg text-[color:var(--ivory)]">Digital Point</span>
+                <span className="text-[color:var(--muted)] text-[10px] tracking-[0.2em] uppercase mt-1">LLC · Since 2017</span>
               </div>
             </Link>
-            <p className="text-[#b794c7] text-sm leading-relaxed max-w-xs">
-              Built by two guys who got tired of watching good businesses waste money on bad data. We treat every client&apos;s budget like it&apos;s our own — because we remember when it was.
+            <p className="text-[color:var(--ivory-dim)] text-sm leading-relaxed max-w-xs">
+              Pod-based operators and AI workflows that run marketing, back-office, and reporting. One team. Three practices. You pay for outcomes, not headcount.
             </p>
-            <div className="flex items-center gap-3 mt-4">
-              <span
-                className="inline-flex items-center px-3 py-1 rounded-full text-xs"
-                style={{
-                  background: 'rgba(157, 78, 221, 0.1)',
-                  border: '1px solid rgba(199, 125, 255, 0.15)',
-                  color: '#c77dff',
-                }}
-              >
-                8+ Years in Market
-              </span>
-              <span
-                className="inline-flex items-center px-3 py-1 rounded-full text-xs"
-                style={{
-                  background: 'rgba(157, 78, 221, 0.1)',
-                  border: '1px solid rgba(199, 125, 255, 0.15)',
-                  color: '#c77dff',
-                }}
-              >
-                Global Delivery
-              </span>
-            </div>
           </div>
 
-          {/* Services Column */}
           <div>
-            <h4
-              className="font-display font-semibold mb-4"
-              style={{
-                background: 'linear-gradient(90deg, #ffffff, #c77dff)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
-            >
-              Services
-            </h4>
+            <h4 className="eyebrow mb-5">Practices</h4>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-[#b794c7] hover:text-white text-sm transition-colors inline-flex items-center gap-1 group"
-                  >
+                  <Link href={link.href} className="text-[color:var(--ivory-dim)] hover:text-[color:var(--amber)] text-sm transition-colors">
                     {link.name}
-                    <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all text-[#c77dff]" />
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Company Column */}
           <div>
-            <h4
-              className="font-display font-semibold mb-4"
-              style={{
-                background: 'linear-gradient(90deg, #ffffff, #c77dff)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
-            >
-              Company
-            </h4>
+            <h4 className="eyebrow mb-5">Company</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-[#b794c7] hover:text-white text-sm transition-colors inline-flex items-center gap-1 group"
-                  >
+                  <Link href={link.href} className="text-[color:var(--ivory-dim)] hover:text-[color:var(--amber)] text-sm transition-colors">
                     {link.name}
-                    <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all text-[#c77dff]" />
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Column */}
           <div>
-            <h4
-              className="font-display font-semibold mb-4"
-              style={{
-                background: 'linear-gradient(90deg, #ffffff, #c77dff)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
-            >
-              Connect
-            </h4>
+            <h4 className="eyebrow mb-5">Connect</h4>
             <div className="space-y-4">
-              <a
-                href="mailto:info@digitalpointllc.com"
-                className="flex items-center gap-3 text-[#b794c7] hover:text-white text-sm transition-colors group"
-              >
-                <Mail className="w-4 h-4 text-[#c77dff] group-hover:text-[#e0aaff] transition-colors" />
+              <a href="mailto:info@digitalpointllc.com" className="flex items-center gap-3 text-[color:var(--ivory-dim)] hover:text-[color:var(--amber)] text-sm transition-colors">
+                <Mail className="w-4 h-4" />
                 info@digitalpointllc.com
               </a>
               <a
                 href="https://linkedin.com/company/digitalpointllc"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-[#b794c7] hover:text-white text-sm transition-colors group"
+                className="flex items-center gap-3 text-[color:var(--ivory-dim)] hover:text-[color:var(--amber)] text-sm transition-colors"
               >
-                <Linkedin className="w-4 h-4 text-[#c77dff] group-hover:text-[#e0aaff] transition-colors" />
+                <Linkedin className="w-4 h-4" />
                 LinkedIn
               </a>
+              <Link
+                href="/free-growth-audit"
+                className="inline-block mt-2 px-4 py-2 text-[13px] font-medium text-[#0A0A0B] rounded-md"
+                style={{ background: 'var(--amber-bright)' }}
+              >
+                Book a free audit
+              </Link>
             </div>
           </div>
         </div>
 
-        {/* Personal mission */}
-        <div
-          className="py-6 text-center"
-          style={{ borderTop: '1px solid rgba(157, 78, 221, 0.08)' }}
-        >
-          <p className="text-[#9080a0] text-sm italic max-w-xl mx-auto">
-            &ldquo;Every dollar you spend on marketing should be accountable. If we can&apos;t prove it&apos;s working, we&apos;ll be the first to tell you.&rdquo;
-            <span className="not-italic text-[#c77dff] ml-1">&mdash; Faizan &amp; Anwaar</span>
+        <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4" style={{ borderTop: '1px solid #27272A' }}>
+          <p className="text-[color:var(--muted)] text-xs">
+            &copy; {currentYear} Digital Point LLC. All rights reserved.
           </p>
-        </div>
-
-        {/* Bottom Bar */}
-        <div
-          className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4"
-          style={{ borderTop: '1px solid rgba(157, 78, 221, 0.1)' }}
-        >
-          <div className="flex items-center gap-4">
-            <p className="text-[#7c5a8a] text-xs">
-              &copy; {currentYear} Digital Point LLC. All rights reserved.
-            </p>
-          </div>
           <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-6 gap-y-2">
-            <Link
-              href="/"
-              className="text-[#7c5a8a] text-xs hover:text-[#b794c7] transition-colors"
-            >
-              Home
-            </Link>
-            <Link
-              href="/privacy-policy"
-              className="text-[#7c5a8a] text-xs hover:text-[#b794c7] transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms-of-service"
-              className="text-[#7c5a8a] text-xs hover:text-[#b794c7] transition-colors"
-            >
-              Terms of Service
-            </Link>
-            <Link
-              href="/contact"
-              className="text-[#7c5a8a] text-xs hover:text-[#b794c7] transition-colors"
-            >
-              Contact
-            </Link>
+            <Link href="/privacy-policy" className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors">Privacy</Link>
+            <Link href="/terms-of-service" className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors">Terms</Link>
+            <Link href="/contact" className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors">Contact</Link>
           </div>
         </div>
       </div>

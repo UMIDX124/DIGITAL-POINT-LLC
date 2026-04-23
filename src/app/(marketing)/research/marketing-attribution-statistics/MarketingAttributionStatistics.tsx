@@ -41,15 +41,15 @@ const trackingAccuracy = [
 ];
 
 const keyStats = [
-  { value: '61%', label: 'Trackable Conversions', color: '#ff6b9d' },
+  { value: '61%', label: 'Trackable Conversions', color: '#F59E0B' },
   { value: '41%', label: 'Still Use Last-Click', color: '#fbbf24' },
   { value: '52%', label: 'Hybrid Model Adoption', color: '#a3e635' },
-  { value: '20-40%', label: 'Platform Over-Reporting', color: '#c77dff' },
+  { value: '20-40%', label: 'Platform Over-Reporting', color: '#F59E0B' },
 ];
 
 const glassStyle = {
   background: 'rgba(13, 8, 21, 0.5)',
-  border: '1px solid rgba(157, 78, 221, 0.15)',
+  border: '1px solid rgba(217,119,6, 0.15)',
 };
 
 export function MarketingAttributionStatistics({ faqs }: Props) {
@@ -63,11 +63,11 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
             { label: 'Marketing Attribution Statistics', href: '/research/marketing-attribution-statistics' },
           ]} />
           <div className="mt-8">
-            <span className="text-[#9080a0] text-sm">March 2026 &middot; 11 min read</span>
+            <span className="text-[#71717A] text-sm">March 2026 &middot; 11 min read</span>
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 leading-tight">
               Marketing Attribution Statistics 2026
             </h1>
-            <p className="text-[#b794c7] text-lg mt-4 leading-relaxed max-w-2xl">
+            <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed max-w-2xl">
               47 data points on attribution model adoption, tracking accuracy, privacy impact, and the state of marketing measurement in 2026. How much of your funnel can you actually see?
             </p>
           </div>
@@ -84,7 +84,7 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
                   <div className="font-display text-2xl md:text-3xl font-bold" style={{ color: stat.color }}>
                     {stat.value}
                   </div>
-                  <p className="text-[#9080a0] text-sm mt-1">{stat.label}</p>
+                  <p className="text-[#71717A] text-sm mt-1">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -101,29 +101,29 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(157,78,221,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#9080a0] font-medium">Model</th>
-                      <th className="text-right py-3 px-4 text-[#c77dff] font-medium">Adoption</th>
+                    <tr className="border-b border-[rgba(217,119,6,0.15)]">
+                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Model</th>
+                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">Adoption</th>
                       <th className="text-right py-3 px-4 text-[#a3e635] font-medium">YoY Change</th>
                       <th className="text-right py-3 px-4 text-[#fbbf24] font-medium">Est. Accuracy</th>
                     </tr>
                   </thead>
                   <tbody>
                     {modelAdoption.map((row, i) => (
-                      <tr key={row.model} className={i < modelAdoption.length - 1 ? 'border-b border-[rgba(157,78,221,0.08)]' : ''}>
+                      <tr key={row.model} className={i < modelAdoption.length - 1 ? 'border-b border-[rgba(217,119,6,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.model}</td>
-                        <td className="py-3 px-4 text-right text-[#b794c7]">{row.adoption}</td>
-                        <td className="py-3 px-4 text-right" style={{ color: row.trend.startsWith('+') ? '#a3e635' : '#ff6b9d' }}>
+                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.adoption}</td>
+                        <td className="py-3 px-4 text-right" style={{ color: row.trend.startsWith('+') ? '#a3e635' : '#F59E0B' }}>
                           {row.trend}
                         </td>
-                        <td className="py-3 px-4 text-right text-[#b794c7]">{row.accuracy}</td>
+                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.accuracy}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             </div>
-            <p className="text-[#9080a0] text-xs mt-3">Adoption rates exceed 100% because many organizations use multiple models simultaneously. Hybrid approaches are counted separately.</p>
+            <p className="text-[#71717A] text-xs mt-3">Adoption rates exceed 100% because many organizations use multiple models simultaneously. Hybrid approaches are counted separately.</p>
           </FadeUp>
         </Container>
       </Section>
@@ -137,18 +137,18 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(157,78,221,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#9080a0] font-medium">Privacy Change</th>
-                      <th className="text-right py-3 px-4 text-[#ff6b9d] font-medium">Key Stat</th>
-                      <th className="text-left py-3 px-4 text-[#9080a0] font-medium">Impact</th>
+                    <tr className="border-b border-[rgba(217,119,6,0.15)]">
+                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Privacy Change</th>
+                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">Key Stat</th>
+                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Impact</th>
                     </tr>
                   </thead>
                   <tbody>
                     {privacyImpact.map((row, i) => (
-                      <tr key={row.change} className={i < privacyImpact.length - 1 ? 'border-b border-[rgba(157,78,221,0.08)]' : ''}>
+                      <tr key={row.change} className={i < privacyImpact.length - 1 ? 'border-b border-[rgba(217,119,6,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.change}</td>
-                        <td className="py-3 px-4 text-right font-semibold" style={{ color: '#ff6b9d' }}>{row.stat}</td>
-                        <td className="py-3 px-4 text-[#b794c7] text-xs">{row.impact}</td>
+                        <td className="py-3 px-4 text-right font-semibold" style={{ color: '#F59E0B' }}>{row.stat}</td>
+                        <td className="py-3 px-4 text-[#D6D0C2] text-xs">{row.impact}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -168,27 +168,27 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(157,78,221,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#9080a0] font-medium">Platform</th>
-                      <th className="text-right py-3 px-4 text-[#c77dff] font-medium">Reported</th>
+                    <tr className="border-b border-[rgba(217,119,6,0.15)]">
+                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Platform</th>
+                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">Reported</th>
                       <th className="text-right py-3 px-4 text-[#a3e635] font-medium">Est. Actual</th>
-                      <th className="text-right py-3 px-4 text-[#ff6b9d] font-medium">Gap</th>
+                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">Gap</th>
                     </tr>
                   </thead>
                   <tbody>
                     {trackingAccuracy.map((row, i) => (
-                      <tr key={row.platform} className={i < trackingAccuracy.length - 1 ? 'border-b border-[rgba(157,78,221,0.08)]' : ''}>
+                      <tr key={row.platform} className={i < trackingAccuracy.length - 1 ? 'border-b border-[rgba(217,119,6,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.platform}</td>
-                        <td className="py-3 px-4 text-right text-[#b794c7]">{row.reported}</td>
-                        <td className="py-3 px-4 text-right text-[#b794c7]">{row.actual}</td>
-                        <td className="py-3 px-4 text-right text-[#ff6b9d]">{row.gap}</td>
+                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.reported}</td>
+                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.actual}</td>
+                        <td className="py-3 px-4 text-right text-[#F59E0B]">{row.gap}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             </div>
-            <p className="text-[#9080a0] text-xs mt-3">Accuracy estimates based on comparison of platform-reported data against server-side conversion data and incrementality tests.</p>
+            <p className="text-[#71717A] text-xs mt-3">Accuracy estimates based on comparison of platform-reported data against server-side conversion data and incrementality tests.</p>
           </FadeUp>
         </Container>
       </Section>
@@ -207,7 +207,7 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
               ].map((finding) => (
                 <div key={finding.title} className="rounded-xl p-5" style={glassStyle}>
                   <h3 className="font-display text-base font-semibold text-white mb-2">{finding.title}</h3>
-                  <p className="text-[#b794c7] text-sm leading-relaxed">{finding.text}</p>
+                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{finding.text}</p>
                 </div>
               ))}
             </div>
@@ -224,7 +224,7 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
               {faqs.map((faq) => (
                 <div key={faq.question} className="rounded-xl p-5" style={glassStyle}>
                   <h3 className="font-display text-base font-semibold text-white mb-2">{faq.question}</h3>
-                  <p className="text-[#b794c7] text-sm leading-relaxed">{faq.answer}</p>
+                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{faq.answer}</p>
                 </div>
               ))}
             </div>

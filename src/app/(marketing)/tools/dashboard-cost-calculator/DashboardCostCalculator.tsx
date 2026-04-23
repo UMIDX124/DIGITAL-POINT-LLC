@@ -88,14 +88,14 @@ export function DashboardCostCalculator({ faqs }: Props) {
 
           <FadeUp>
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm mb-6" style={{ background: 'rgba(157,78,221,0.15)', border: '1px solid rgba(157,78,221,0.3)' }}>
-                <LayoutDashboard className="w-4 h-4 text-[#c77dff]" />
-                <span className="text-[#c77dff]">Free Dashboard Tool</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm mb-6" style={{ background: 'rgba(217,119,6,0.15)', border: '1px solid rgba(217,119,6,0.3)' }}>
+                <LayoutDashboard className="w-4 h-4 text-[#F59E0B]" />
+                <span className="text-[#F59E0B]">Free Dashboard Tool</span>
               </div>
               <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                Marketing Dashboard <span className="text-[#c77dff]">Cost Calculator</span>
+                Marketing Dashboard <span className="text-[#F59E0B]">Cost Calculator</span>
               </h1>
-              <p className="text-lg text-[#b794c7] max-w-2xl mx-auto">
+              <p className="text-lg text-[#D6D0C2] max-w-2xl mx-auto">
                 Estimate the true cost of building or buying a marketing dashboard. Compare tools, infrastructure, and team costs for your specific needs.
               </p>
             </div>
@@ -113,9 +113,9 @@ export function DashboardCostCalculator({ faqs }: Props) {
                       onClick={() => toggleSource(source)}
                       className="px-3 py-2 rounded-xl text-sm transition-all"
                       style={{
-                        background: selectedSources.includes(source) ? 'linear-gradient(135deg, #7b2cbf, #9d4edd)' : 'rgba(13, 8, 21, 0.6)',
-                        border: `1px solid ${selectedSources.includes(source) ? 'rgba(157,78,221,0.6)' : 'rgba(157,78,221,0.2)'}`,
-                        color: selectedSources.includes(source) ? 'white' : '#b794c7',
+                        background: selectedSources.includes(source) ? 'linear-gradient(135deg, #B45309, #D97706)' : 'rgba(13, 8, 21, 0.6)',
+                        border: `1px solid ${selectedSources.includes(source) ? 'rgba(217,119,6,0.6)' : 'rgba(217,119,6,0.2)'}`,
+                        color: selectedSources.includes(source) ? 'white' : '#D6D0C2',
                       }}
                     >
                       {selectedSources.includes(source) && <CheckCircle className="w-3 h-3 inline mr-1" />}
@@ -128,18 +128,18 @@ export function DashboardCostCalculator({ faqs }: Props) {
               {/* Configuration */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div>
-                  <label className="block text-sm text-[#b794c7] mb-1.5">Number of Users</label>
+                  <label className="block text-sm text-[#D6D0C2] mb-1.5">Number of Users</label>
                   <input
                     type="number"
                     value={users}
                     onChange={(e) => setUsers(e.target.value)}
                     min="1"
-                    className="w-full px-4 py-2.5 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#c77dff]/50"
-                    style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(157, 78, 221, 0.2)' }}
+                    className="w-full px-4 py-2.5 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#F59E0B]/50"
+                    style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(217,119,6, 0.2)' }}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm text-[#b794c7] mb-1.5">Dashboard Complexity</label>
+                  <label className="block text-sm text-[#D6D0C2] mb-1.5">Dashboard Complexity</label>
                   <div className="flex gap-2">
                     {(['basic', 'standard', 'advanced'] as const).map(c => (
                       <button
@@ -147,9 +147,9 @@ export function DashboardCostCalculator({ faqs }: Props) {
                         onClick={() => setComplexity(c)}
                         className="flex-1 px-3 py-2.5 rounded-xl text-sm capitalize transition-all"
                         style={{
-                          background: complexity === c ? 'linear-gradient(135deg, #7b2cbf, #9d4edd)' : 'rgba(13, 8, 21, 0.6)',
-                          border: `1px solid ${complexity === c ? 'rgba(157,78,221,0.6)' : 'rgba(157,78,221,0.2)'}`,
-                          color: complexity === c ? 'white' : '#b794c7',
+                          background: complexity === c ? 'linear-gradient(135deg, #B45309, #D97706)' : 'rgba(13, 8, 21, 0.6)',
+                          border: `1px solid ${complexity === c ? 'rgba(217,119,6,0.6)' : 'rgba(217,119,6,0.2)'}`,
+                          color: complexity === c ? 'white' : '#D6D0C2',
                         }}
                       >
                         {c}
@@ -171,17 +171,17 @@ export function DashboardCostCalculator({ faqs }: Props) {
                     onClick={() => item.set(!item.value)}
                     className="p-4 rounded-xl text-left transition-all"
                     style={{
-                      background: item.value ? 'rgba(157, 78, 221, 0.15)' : 'rgba(13, 8, 21, 0.4)',
-                      border: `1px solid ${item.value ? 'rgba(157,78,221,0.4)' : 'rgba(157,78,221,0.1)'}`,
+                      background: item.value ? 'rgba(217,119,6, 0.15)' : 'rgba(13, 8, 21, 0.4)',
+                      border: `1px solid ${item.value ? 'rgba(217,119,6,0.4)' : 'rgba(217,119,6,0.1)'}`,
                     }}
                   >
                     <div className="flex items-center gap-2 mb-1">
-                      <div className={`w-4 h-4 rounded border ${item.value ? 'bg-[#9d4edd] border-[#9d4edd]' : 'border-[#7c5a8a]'} flex items-center justify-center`}>
+                      <div className={`w-4 h-4 rounded border ${item.value ? 'bg-[#D97706] border-[#D97706]' : 'border-[#71717A]'} flex items-center justify-center`}>
                         {item.value && <CheckCircle className="w-3 h-3 text-white" />}
                       </div>
                       <span className="text-white text-sm font-medium">{item.label}</span>
                     </div>
-                    <p className="text-xs text-[#7c5a8a] ml-6">{item.desc}</p>
+                    <p className="text-xs text-[#71717A] ml-6">{item.desc}</p>
                   </button>
                 ))}
               </div>
@@ -192,10 +192,10 @@ export function DashboardCostCalculator({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[#2a1a3a]">
-                      <th className="text-left py-3 px-3 text-[#b794c7]">Solution</th>
-                      <th className="text-right py-3 px-3 text-[#b794c7]">Setup Cost</th>
-                      <th className="text-right py-3 px-3 text-[#b794c7]">Monthly Cost</th>
-                      <th className="text-right py-3 px-3 text-[#b794c7]">Year 1 Total</th>
+                      <th className="text-left py-3 px-3 text-[#D6D0C2]">Solution</th>
+                      <th className="text-right py-3 px-3 text-[#D6D0C2]">Setup Cost</th>
+                      <th className="text-right py-3 px-3 text-[#D6D0C2]">Monthly Cost</th>
+                      <th className="text-right py-3 px-3 text-[#D6D0C2]">Year 1 Total</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -214,10 +214,10 @@ export function DashboardCostCalculator({ faqs }: Props) {
                         <tr key={tool.name} className="border-b border-[#1a0f2a]">
                           <td className="py-3 px-3">
                             <span className="text-white">{tool.name}</span>
-                            <span className="text-xs text-[#7c5a8a] ml-2">{tool.tier}</span>
+                            <span className="text-xs text-[#71717A] ml-2">{tool.tier}</span>
                           </td>
-                          <td className="text-right py-3 px-3 text-[#b794c7]">${setupCost.toLocaleString()}</td>
-                          <td className="text-right py-3 px-3 text-[#b794c7]">${totalMonthly.toLocaleString()}/mo</td>
+                          <td className="text-right py-3 px-3 text-[#D6D0C2]">${setupCost.toLocaleString()}</td>
+                          <td className="text-right py-3 px-3 text-[#D6D0C2]">${totalMonthly.toLocaleString()}/mo</td>
                           <td className="text-right py-3 px-3 text-white font-medium">${yearTotal.toLocaleString()}</td>
                         </tr>
                       );
@@ -226,17 +226,17 @@ export function DashboardCostCalculator({ faqs }: Props) {
                 </table>
               </div>
 
-              <p className="text-xs text-[#7c5a8a] mb-6">
+              <p className="text-xs text-[#71717A] mb-6">
                 * Monthly costs include selected infrastructure (warehouse: ${warehouseCost}/mo, ETL: ${etlCost}/mo{needsAnalyst ? `, analyst: $${analystCost}/mo` : ''})
               </p>
 
               {/* Actions */}
               <div className="flex flex-wrap gap-3">
-                <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-[#b794c7] hover:text-white transition-colors" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(157, 78, 221, 0.2)' }}>
+                <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-[#D6D0C2] hover:text-white transition-colors" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(217,119,6, 0.2)' }}>
                   <Share2 className="w-4 h-4" />
                   {copied ? 'Link Copied!' : 'Share Results'}
                 </button>
-                <button onClick={() => setShowEmail(true)} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-[#b794c7] hover:text-white transition-colors" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(157, 78, 221, 0.2)' }}>
+                <button onClick={() => setShowEmail(true)} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-[#D6D0C2] hover:text-white transition-colors" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(217,119,6, 0.2)' }}>
                   <Mail className="w-4 h-4" />
                   Get Detailed Report
                 </button>
@@ -249,10 +249,10 @@ export function DashboardCostCalculator({ faqs }: Props) {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"
-                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[#7c5a8a] focus:outline-none focus:ring-2 focus:ring-[#c77dff]/50"
-                    style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(157, 78, 221, 0.2)' }}
+                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#F59E0B]/50"
+                    style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(217,119,6, 0.2)' }}
                   />
-                  <button onClick={handleEmailCapture} className="px-4 py-2.5 rounded-xl text-white text-sm font-medium" style={{ background: 'linear-gradient(135deg, #7b2cbf, #9d4edd)' }}>
+                  <button onClick={handleEmailCapture} className="px-4 py-2.5 rounded-xl text-white text-sm font-medium" style={{ background: 'linear-gradient(135deg, #B45309, #D97706)' }}>
                     Send
                   </button>
                 </div>
@@ -264,7 +264,7 @@ export function DashboardCostCalculator({ faqs }: Props) {
           <FadeUp delay={0.2}>
             <GlassCard className="p-6 md:p-8 mb-8">
               <h2 className="text-2xl font-bold text-white mb-4">The True Cost of Marketing Dashboards</h2>
-              <div className="space-y-4 text-[#b794c7]">
+              <div className="space-y-4 text-[#D6D0C2]">
                 <p>Marketing dashboards are essential for companies spending $10k+ per month on ads. But the sticker price of dashboard tools rarely tells the full story. Hidden costs in data infrastructure, ETL pipelines, and analyst time often double or triple the total investment.</p>
                 <h3 className="text-lg font-semibold text-white">Build vs Buy: Key Considerations</h3>
                 <p><strong className="text-white">Buy</strong> when you have fewer than 5 data sources, need standard KPIs, and your team can manage template dashboards. <strong className="text-white">Build custom</strong> when you need cross-platform attribution, custom metrics, real-time alerting, or automated reporting workflows.</p>
@@ -286,13 +286,13 @@ export function DashboardCostCalculator({ faqs }: Props) {
               <h2 className="text-2xl font-bold text-white mb-6">Frequently Asked Questions</h2>
               <div className="space-y-3">
                 {faqs.map((faq, i) => (
-                  <div key={i} className="rounded-xl overflow-hidden" style={{ background: 'rgba(13, 8, 21, 0.4)', border: '1px solid rgba(157, 78, 221, 0.1)' }}>
+                  <div key={i} className="rounded-xl overflow-hidden" style={{ background: 'rgba(13, 8, 21, 0.4)', border: '1px solid rgba(217,119,6, 0.1)' }}>
                     <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full text-left px-5 py-4 flex justify-between items-center">
                       <span className="text-white font-medium text-sm">{faq.question}</span>
-                      <span className="text-[#c77dff] text-lg">{openFaq === i ? '−' : '+'}</span>
+                      <span className="text-[#F59E0B] text-lg">{openFaq === i ? '−' : '+'}</span>
                     </button>
                     {openFaq === i && (
-                      <div className="px-5 pb-4 text-sm text-[#b794c7]">{faq.answer}</div>
+                      <div className="px-5 pb-4 text-sm text-[#D6D0C2]">{faq.answer}</div>
                     )}
                   </div>
                 ))}

@@ -72,7 +72,7 @@ export default async function ServiceIndustryPage({ params }: PageProps) {
             {content.service.name} for {content.industry.name}
           </h1>
 
-          <div className="space-y-6 text-[#b794c7] text-lg leading-relaxed">
+          <div className="space-y-6 text-[#D6D0C2] text-lg leading-relaxed">
             <p>{content.intro}</p>
             <p>{content.whyItMatters}</p>
             <p>{content.approach}</p>
@@ -90,11 +90,11 @@ export default async function ServiceIndustryPage({ params }: PageProps) {
             {content.benefits.map((benefit, index) => (
               <li
                 key={index}
-                className="flex items-start gap-3 text-[#b794c7] text-base leading-relaxed"
+                className="flex items-start gap-3 text-[#D6D0C2] text-base leading-relaxed"
               >
                 <span
                   className="mt-2 w-2 h-2 rounded-full shrink-0"
-                  style={{ background: '#c77dff' }}
+                  style={{ background: '#F59E0B' }}
                 />
                 {benefit}
               </li>
@@ -117,12 +117,12 @@ export default async function ServiceIndustryPage({ params }: PageProps) {
                 <span
                   className="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold text-white"
                   style={{
-                    background: 'linear-gradient(135deg, #7b2cbf 0%, #9d4edd 100%)',
+                    background: 'linear-gradient(135deg, #B45309 0%, #D97706 100%)',
                   }}
                 >
                   {index + 1}
                 </span>
-                <p className="text-[#b794c7] text-base leading-relaxed pt-1">
+                <p className="text-[#D6D0C2] text-base leading-relaxed pt-1">
                   {step}
                 </p>
               </div>

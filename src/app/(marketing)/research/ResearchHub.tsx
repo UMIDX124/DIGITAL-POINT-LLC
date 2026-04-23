@@ -42,7 +42,7 @@ const reports = [
     title: 'Marketing Attribution Statistics 2026',
     description: 'Attribution model adoption rates, tracking accuracy post-iOS 17, and the real impact of privacy changes on marketing measurement.',
     icon: Eye,
-    color: '#c77dff',
+    color: '#F59E0B',
     date: 'March 2026',
     readTime: '11 min read',
     stat: '47 Data Points',
@@ -52,7 +52,7 @@ const reports = [
     title: 'Remote Workforce Cost Analysis',
     description: 'Comprehensive cost comparison of US in-house teams vs. managed remote teams across marketing, engineering, and operations roles.',
     icon: Users,
-    color: '#ff6b9d',
+    color: '#F59E0B',
     date: 'February 2026',
     readTime: '13 min read',
     stat: '8 Role Categories',
@@ -97,14 +97,14 @@ export function ResearchHub() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-1.5">
-                            <span className="text-[#9080a0] text-xs">{report.date}</span>
-                            <span className="text-[#9080a0] text-xs">-</span>
-                            <span className="text-[#9080a0] text-xs">{report.readTime}</span>
+                            <span className="text-[#71717A] text-xs">{report.date}</span>
+                            <span className="text-[#71717A] text-xs">-</span>
+                            <span className="text-[#71717A] text-xs">{report.readTime}</span>
                           </div>
-                          <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#e0aaff] transition-colors mb-2">
+                          <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#FBBF24] transition-colors mb-2">
                             {report.title}
                           </h3>
-                          <p className="text-[#b794c7] text-sm leading-relaxed mb-3">
+                          <p className="text-[#D6D0C2] text-sm leading-relaxed mb-3">
                             {report.description}
                           </p>
                           <div className="flex items-center justify-between">
@@ -114,7 +114,7 @@ export function ResearchHub() {
                             >
                               {report.stat}
                             </span>
-                            <span className="flex items-center gap-1 text-[#c77dff] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span className="flex items-center gap-1 text-[#F59E0B] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                               Read Report <ArrowRight className="w-3.5 h-3.5" />
                             </span>
                           </div>

@@ -133,14 +133,14 @@ export function AttributionVisualizer({ faqs }: Props) {
 
           <FadeUp>
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm mb-6" style={{ background: 'rgba(157,78,221,0.15)', border: '1px solid rgba(157,78,221,0.3)' }}>
-                <BarChart3 className="w-4 h-4 text-[#c77dff]" />
-                <span className="text-[#c77dff]">Free Attribution Tool</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm mb-6" style={{ background: 'rgba(217,119,6,0.15)', border: '1px solid rgba(217,119,6,0.3)' }}>
+                <BarChart3 className="w-4 h-4 text-[#F59E0B]" />
+                <span className="text-[#F59E0B]">Free Attribution Tool</span>
               </div>
               <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                Marketing Attribution Model <span className="text-[#c77dff]">Visualizer</span>
+                Marketing Attribution Model <span className="text-[#F59E0B]">Visualizer</span>
               </h1>
-              <p className="text-lg text-[#b794c7] max-w-2xl mx-auto">
+              <p className="text-lg text-[#D6D0C2] max-w-2xl mx-auto">
                 See how different attribution models distribute conversion credit across your marketing touchpoints. Compare first-click, last-click, linear, time-decay, and position-based models.
               </p>
             </div>
@@ -154,14 +154,14 @@ export function AttributionVisualizer({ faqs }: Props) {
                 <div className="space-y-3 mb-4">
                   {touchpoints.map((tp, i) => (
                     <div key={i} className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white" style={{ background: 'linear-gradient(135deg, #7b2cbf, #9d4edd)' }}>
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white" style={{ background: 'linear-gradient(135deg, #B45309, #D97706)' }}>
                         {i + 1}
                       </div>
-                      <div className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(157, 78, 221, 0.2)' }}>
-                        {tp.name} <span className="text-[#7c5a8a]">({tp.channel})</span>
+                      <div className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(217,119,6, 0.2)' }}>
+                        {tp.name} <span className="text-[#71717A]">({tp.channel})</span>
                       </div>
                       {touchpoints.length > 2 && (
-                        <button onClick={() => handleRemoveTouchpoint(i)} className="text-[#7c5a8a] hover:text-[#ff6b9d] transition-colors text-lg">×</button>
+                        <button onClick={() => handleRemoveTouchpoint(i)} className="text-[#71717A] hover:text-[#F59E0B] transition-colors text-lg">×</button>
                       )}
                     </div>
                   ))}
@@ -173,10 +173,10 @@ export function AttributionVisualizer({ faqs }: Props) {
                     onChange={(e) => setNewTouchpoint(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleAddTouchpoint()}
                     placeholder="Add touchpoint (e.g., YouTube Ad)"
-                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[#7c5a8a] focus:outline-none focus:ring-2 focus:ring-[#c77dff]/50"
-                    style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(157, 78, 221, 0.2)' }}
+                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#F59E0B]/50"
+                    style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(217,119,6, 0.2)' }}
                   />
-                  <button onClick={handleAddTouchpoint} className="px-4 py-2.5 rounded-xl text-white text-sm font-medium" style={{ background: 'linear-gradient(135deg, #7b2cbf, #9d4edd)' }}>
+                  <button onClick={handleAddTouchpoint} className="px-4 py-2.5 rounded-xl text-white text-sm font-medium" style={{ background: 'linear-gradient(135deg, #B45309, #D97706)' }}>
                     Add
                   </button>
                 </div>
@@ -184,13 +184,13 @@ export function AttributionVisualizer({ faqs }: Props) {
 
               {/* Conversion Value */}
               <div className="mb-8">
-                <label className="block text-sm text-[#b794c7] mb-1.5">Conversion Value ($)</label>
+                <label className="block text-sm text-[#D6D0C2] mb-1.5">Conversion Value ($)</label>
                 <input
                   type="number"
                   value={conversionValue}
                   onChange={(e) => setConversionValue(e.target.value)}
-                  className="w-full max-w-xs px-4 py-2.5 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#c77dff]/50"
-                  style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(157, 78, 221, 0.2)' }}
+                  className="w-full max-w-xs px-4 py-2.5 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#F59E0B]/50"
+                  style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(217,119,6, 0.2)' }}
                 />
               </div>
 
@@ -204,9 +204,9 @@ export function AttributionVisualizer({ faqs }: Props) {
                       onClick={() => setSelectedModel(m)}
                       className="px-4 py-2 rounded-xl text-sm font-medium transition-all"
                       style={{
-                        background: selectedModel === m ? 'linear-gradient(135deg, #7b2cbf, #9d4edd)' : 'rgba(13, 8, 21, 0.6)',
-                        border: `1px solid ${selectedModel === m ? 'rgba(157,78,221,0.6)' : 'rgba(157,78,221,0.2)'}`,
-                        color: selectedModel === m ? 'white' : '#b794c7',
+                        background: selectedModel === m ? 'linear-gradient(135deg, #B45309, #D97706)' : 'rgba(13, 8, 21, 0.6)',
+                        border: `1px solid ${selectedModel === m ? 'rgba(217,119,6,0.6)' : 'rgba(217,119,6,0.2)'}`,
+                        color: selectedModel === m ? 'white' : '#D6D0C2',
                       }}
                     >
                       {m}
@@ -225,7 +225,7 @@ export function AttributionVisualizer({ faqs }: Props) {
                     return (
                       <div key={i}>
                         <div className="flex justify-between text-sm mb-1.5">
-                          <span className="text-[#b794c7]">{tp.name}</span>
+                          <span className="text-[#D6D0C2]">{tp.name}</span>
                           <span className="text-white font-medium">{credit.toFixed(1)}% — ${creditValue.toFixed(0)}</span>
                         </div>
                         <div className="h-8 rounded-lg overflow-hidden" style={{ background: 'rgba(13, 8, 21, 0.6)' }}>
@@ -233,7 +233,7 @@ export function AttributionVisualizer({ faqs }: Props) {
                             className="h-full rounded-lg transition-all duration-500 flex items-center px-3"
                             style={{
                               width: `${Math.max(credit, 2)}%`,
-                              background: `linear-gradient(135deg, #7b2cbf ${100 - credit}%, #c77dff 100%)`,
+                              background: `linear-gradient(135deg, #B45309 ${100 - credit}%, #F59E0B 100%)`,
                             }}
                           >
                             {credit >= 10 && <span className="text-xs text-white font-medium">{credit.toFixed(1)}%</span>}
@@ -252,9 +252,9 @@ export function AttributionVisualizer({ faqs }: Props) {
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="border-b border-[#2a1a3a]">
-                        <th className="text-left py-3 px-2 text-[#b794c7]">Touchpoint</th>
+                        <th className="text-left py-3 px-2 text-[#D6D0C2]">Touchpoint</th>
                         {models.map(m => (
-                          <th key={m} className={`text-right py-3 px-2 ${selectedModel === m ? 'text-[#c77dff]' : 'text-[#7c5a8a]'}`}>{m}</th>
+                          <th key={m} className={`text-right py-3 px-2 ${selectedModel === m ? 'text-[#F59E0B]' : 'text-[#71717A]'}`}>{m}</th>
                         ))}
                       </tr>
                     </thead>
@@ -263,7 +263,7 @@ export function AttributionVisualizer({ faqs }: Props) {
                         <tr key={i} className="border-b border-[#1a0f2a]">
                           <td className="py-3 px-2 text-white">{tp.name}</td>
                           {models.map(m => (
-                            <td key={m} className={`text-right py-3 px-2 ${selectedModel === m ? 'text-white font-medium' : 'text-[#7c5a8a]'}`}>
+                            <td key={m} className={`text-right py-3 px-2 ${selectedModel === m ? 'text-white font-medium' : 'text-[#71717A]'}`}>
                               {allCredits[m][i]?.toFixed(1)}%
                             </td>
                           ))}
@@ -275,10 +275,10 @@ export function AttributionVisualizer({ faqs }: Props) {
               </div>
 
               {/* Model Descriptions */}
-              <div className="p-4 rounded-xl mb-6" style={{ background: 'rgba(157, 78, 221, 0.08)', border: '1px solid rgba(157, 78, 221, 0.15)' }}>
+              <div className="p-4 rounded-xl mb-6" style={{ background: 'rgba(217,119,6, 0.08)', border: '1px solid rgba(217,119,6, 0.15)' }}>
                 <div className="flex items-start gap-3">
-                  <Info className="w-5 h-5 text-[#c77dff] mt-0.5 shrink-0" />
-                  <div className="text-sm text-[#b794c7]">
+                  <Info className="w-5 h-5 text-[#F59E0B] mt-0.5 shrink-0" />
+                  <div className="text-sm text-[#D6D0C2]">
                     {selectedModel === 'First Click' && 'First Click gives 100% credit to the first touchpoint. Best for understanding which channels drive awareness and initial interest.'}
                     {selectedModel === 'Last Click' && 'Last Click gives 100% credit to the final touchpoint before conversion. This is the default in most analytics platforms but often undervalues upper-funnel channels.'}
                     {selectedModel === 'Linear' && 'Linear attribution distributes credit equally across all touchpoints. Good for understanding the full journey but may over-credit low-impact touches.'}
@@ -290,11 +290,11 @@ export function AttributionVisualizer({ faqs }: Props) {
 
               {/* Actions */}
               <div className="flex flex-wrap gap-3">
-                <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-[#b794c7] hover:text-white transition-colors" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(157, 78, 221, 0.2)' }}>
+                <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-[#D6D0C2] hover:text-white transition-colors" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(217,119,6, 0.2)' }}>
                   <Share2 className="w-4 h-4" />
                   {copied ? 'Link Copied!' : 'Share Results'}
                 </button>
-                <button onClick={() => setShowEmail(true)} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-[#b794c7] hover:text-white transition-colors" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(157, 78, 221, 0.2)' }}>
+                <button onClick={() => setShowEmail(true)} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-[#D6D0C2] hover:text-white transition-colors" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(217,119,6, 0.2)' }}>
                   <Mail className="w-4 h-4" />
                   Get Report via Email
                 </button>
@@ -307,10 +307,10 @@ export function AttributionVisualizer({ faqs }: Props) {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"
-                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[#7c5a8a] focus:outline-none focus:ring-2 focus:ring-[#c77dff]/50"
-                    style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(157, 78, 221, 0.2)' }}
+                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#F59E0B]/50"
+                    style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(217,119,6, 0.2)' }}
                   />
-                  <button onClick={handleEmailCapture} className="px-4 py-2.5 rounded-xl text-white text-sm font-medium" style={{ background: 'linear-gradient(135deg, #7b2cbf, #9d4edd)' }}>
+                  <button onClick={handleEmailCapture} className="px-4 py-2.5 rounded-xl text-white text-sm font-medium" style={{ background: 'linear-gradient(135deg, #B45309, #D97706)' }}>
                     Send
                   </button>
                 </div>
@@ -322,7 +322,7 @@ export function AttributionVisualizer({ faqs }: Props) {
           <FadeUp delay={0.2}>
             <GlassCard className="p-6 md:p-8 mb-8">
               <h2 className="text-2xl font-bold text-white mb-4">Understanding Marketing Attribution Models</h2>
-              <div className="space-y-4 text-[#b794c7]">
+              <div className="space-y-4 text-[#D6D0C2]">
                 <p>Marketing attribution is the science of determining which touchpoints contribute to a conversion. With the average B2B buyer interacting with 20+ touchpoints before purchasing, choosing the right attribution model is critical for accurate budget allocation.</p>
                 <h3 className="text-lg font-semibold text-white">Why Attribution Models Matter</h3>
                 <p>The model you choose directly impacts which channels appear most valuable. First-click attribution will make your awareness campaigns look like heroes, while last-click makes your retargeting look unstoppable. The truth lies somewhere in between.</p>
@@ -345,13 +345,13 @@ export function AttributionVisualizer({ faqs }: Props) {
               <h2 className="text-2xl font-bold text-white mb-6">Frequently Asked Questions</h2>
               <div className="space-y-3">
                 {faqs.map((faq, i) => (
-                  <div key={i} className="rounded-xl overflow-hidden" style={{ background: 'rgba(13, 8, 21, 0.4)', border: '1px solid rgba(157, 78, 221, 0.1)' }}>
+                  <div key={i} className="rounded-xl overflow-hidden" style={{ background: 'rgba(13, 8, 21, 0.4)', border: '1px solid rgba(217,119,6, 0.1)' }}>
                     <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full text-left px-5 py-4 flex justify-between items-center">
                       <span className="text-white font-medium text-sm">{faq.question}</span>
-                      <span className="text-[#c77dff] text-lg">{openFaq === i ? '−' : '+'}</span>
+                      <span className="text-[#F59E0B] text-lg">{openFaq === i ? '−' : '+'}</span>
                     </button>
                     {openFaq === i && (
-                      <div className="px-5 pb-4 text-sm text-[#b794c7]">{faq.answer}</div>
+                      <div className="px-5 pb-4 text-sm text-[#D6D0C2]">{faq.answer}</div>
                     )}
                   </div>
                 ))}

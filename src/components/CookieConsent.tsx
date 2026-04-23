@@ -36,14 +36,14 @@ export default function CookieConsent() {
         >
           <div
             className="rounded-2xl border border-white/10 px-6 py-4 shadow-2xl backdrop-blur-sm"
-            style={{ backgroundColor: '#13091e' }}
+            style={{ backgroundColor: '#141416' }}
           >
             <p className="mb-3 text-sm leading-relaxed text-white/80">
               We use cookies to improve your experience and serve personalized ads.{' '}
               <Link
                 href="/privacy-policy"
                 className="underline underline-offset-2 transition-colors hover:text-white"
-                style={{ color: '#c77dff' }}
+                style={{ color: '#F59E0B' }}
               >
                 Privacy Policy
               </Link>
@@ -52,7 +52,7 @@ export default function CookieConsent() {
               <button
                 onClick={handleAccept}
                 className="rounded-lg px-5 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
-                style={{ backgroundColor: '#c77dff' }}
+                style={{ backgroundColor: '#F59E0B' }}
               >
                 Accept
               </button>

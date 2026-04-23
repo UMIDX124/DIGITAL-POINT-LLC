@@ -10,7 +10,7 @@ export default function ConversionLayout({
   return (
     <div
       className="relative min-h-screen flex flex-col"
-      style={{ background: 'linear-gradient(180deg, #0d0815 0%, #080510 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #0A0A0B 0%, #0A0A0B 100%)' }}
     >
       {/* Minimal header — logo + back link */}
       <header className="relative z-10 px-6 py-5 flex items-center justify-between max-w-7xl mx-auto w-full">
@@ -24,7 +24,7 @@ export default function ConversionLayout({
             style={{
               width: '40px',
               height: '40px',
-              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5)) drop-shadow(0 8px 16px rgba(139,92,246,0.3))',
+              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5)) drop-shadow(0 8px 16px rgba(217,119,6,0.3))',
             }}
           />
           <span className="font-display font-semibold text-base text-white/90 hidden sm:block">

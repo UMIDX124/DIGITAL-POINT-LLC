@@ -101,27 +101,27 @@ function RobotIcon({ className = "" }: { className?: string }) {
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      <circle cx="32" cy="8" r="3" fill="#c77dff" />
-      <rect x="30.5" y="10" width="3" height="8" rx="1.5" fill="#9d4edd" />
-      <rect x="14" y="18" width="36" height="24" rx="8" fill="#1a0f2e" stroke="#9d4edd" strokeWidth="2" />
-      <circle cx="24" cy="30" r="4" fill="#c77dff">
+      <circle cx="32" cy="8" r="3" fill="#F59E0B" />
+      <rect x="30.5" y="10" width="3" height="8" rx="1.5" fill="#D97706" />
+      <rect x="14" y="18" width="36" height="24" rx="8" fill="#141416" stroke="#D97706" strokeWidth="2" />
+      <circle cx="24" cy="30" r="4" fill="#F59E0B">
         <animate attributeName="r" values="4;3.5;4" dur="3s" repeatCount="indefinite" />
       </circle>
-      <circle cx="40" cy="30" r="4" fill="#c77dff">
+      <circle cx="40" cy="30" r="4" fill="#F59E0B">
         <animate attributeName="r" values="4;3.5;4" dur="3s" repeatCount="indefinite" begin="0.2s" />
       </circle>
       <circle cx="24" cy="29" r="1.5" fill="#fff" />
       <circle cx="40" cy="29" r="1.5" fill="#fff" />
-      <path d="M25 36 Q32 40 39 36" stroke="#ff6b9d" strokeWidth="2" strokeLinecap="round" fill="none" />
-      <circle cx="12" cy="30" r="3" fill="#9d4edd" />
-      <circle cx="52" cy="30" r="3" fill="#9d4edd" />
-      <rect x="20" y="44" width="24" height="14" rx="4" fill="#1a0f2e" stroke="#9d4edd" strokeWidth="2" />
-      <rect x="26" y="48" width="12" height="3" rx="1.5" fill="#c77dff" opacity="0.6" />
-      <rect x="28" y="53" width="8" height="2" rx="1" fill="#ff6b9d" opacity="0.5" />
-      <path d="M28 58 L32 64 L36 58" fill="#ff6b9d" opacity="0.7">
+      <path d="M25 36 Q32 40 39 36" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" fill="none" />
+      <circle cx="12" cy="30" r="3" fill="#D97706" />
+      <circle cx="52" cy="30" r="3" fill="#D97706" />
+      <rect x="20" y="44" width="24" height="14" rx="4" fill="#141416" stroke="#D97706" strokeWidth="2" />
+      <rect x="26" y="48" width="12" height="3" rx="1.5" fill="#F59E0B" opacity="0.6" />
+      <rect x="28" y="53" width="8" height="2" rx="1" fill="#F59E0B" opacity="0.5" />
+      <path d="M28 58 L32 64 L36 58" fill="#F59E0B" opacity="0.7">
         <animate attributeName="opacity" values="0.7;0.3;0.7" dur="0.6s" repeatCount="indefinite" />
       </path>
-      <path d="M30 58 L32 62 L34 58" fill="#c77dff" opacity="0.5">
+      <path d="M30 58 L32 62 L34 58" fill="#F59E0B" opacity="0.5">
         <animate attributeName="opacity" values="0.5;0.2;0.5" dur="0.4s" repeatCount="indefinite" />
       </path>
     </svg>
@@ -355,8 +355,8 @@ export default function SupportChatbot() {
             className="relative px-4 py-2.5 rounded-xl text-xs font-semibold text-white max-w-[200px] text-center cursor-pointer"
             onClick={() => setIsOpen(true)}
             style={{
-              background: 'linear-gradient(135deg, #9d4edd 0%, #7b2cbf 100%)',
-              boxShadow: '0 4px 24px rgba(157, 78, 221, 0.5), 0 0 40px rgba(157, 78, 221, 0.2)',
+              background: 'linear-gradient(135deg, #D97706 0%, #B45309 100%)',
+              boxShadow: '0 4px 24px rgba(217,119,6, 0.5), 0 0 40px rgba(217,119,6, 0.2)',
             }}
           >
             <span className="flex items-center gap-1.5">
@@ -366,7 +366,7 @@ export default function SupportChatbot() {
             {/* Arrow pointing down */}
             <div
               className="absolute -bottom-1.5 right-7 w-3 h-3 rotate-45"
-              style={{ background: '#7b2cbf' }}
+              style={{ background: '#B45309' }}
             />
           </motion.div>
         )}
@@ -375,8 +375,8 @@ export default function SupportChatbot() {
           onClick={() => setIsOpen(!isOpen)}
           className="relative w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center cursor-pointer border border-border-glass transition-transform duration-200 hover:scale-110 active:scale-95"
           style={{
-            background: "linear-gradient(135deg, #1a0f2e 0%, #2d1b4e 100%)",
-            boxShadow: '0 0 20px rgba(157,78,221,0.5), 0 4px 16px rgba(0,0,0,0.3)',
+            background: "linear-gradient(135deg, #141416 0%, #1C1C1F 100%)",
+            boxShadow: '0 0 20px rgba(217,119,6,0.5), 0 4px 16px rgba(0,0,0,0.3)',
           }}
           aria-label={isOpen ? "Close support chat" : "Open support chat"}
         >
@@ -386,7 +386,7 @@ export default function SupportChatbot() {
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#c77dff"
+              stroke="#F59E0B"
               strokeWidth="2"
               strokeLinecap="round"
             >
@@ -404,7 +404,7 @@ export default function SupportChatbot() {
               <span
                 className="absolute -inset-1 rounded-full pointer-events-none"
                 style={{
-                  background: 'radial-gradient(circle, rgba(157,78,221,0.3) 0%, transparent 70%)',
+                  background: 'radial-gradient(circle, rgba(217,119,6,0.3) 0%, transparent 70%)',
                   animation: 'pulse-glow 2s ease-in-out infinite',
                 }}
               />
@@ -413,7 +413,7 @@ export default function SupportChatbot() {
 
           {/* Notification dot */}
           {!isOpen && (
-            <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-green-400 border-2 border-[#1a0f2e] flex items-center justify-center">
+            <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-green-400 border-2 border-[#141416] flex items-center justify-center">
               <span className="w-1.5 h-1.5 rounded-full bg-white" />
             </span>
           )}
@@ -433,20 +433,20 @@ export default function SupportChatbot() {
               background: "rgba(13, 8, 21, 0.95)",
               backdropFilter: "blur(24px)",
               WebkitBackdropFilter: "blur(24px)",
-              border: "1px solid rgba(157, 78, 221, 0.25)",
+              border: "1px solid rgba(217,119,6, 0.25)",
             }}
           >
             {/* ── Header ── */}
             <div
               className="shrink-0 px-5 py-4 flex items-center gap-3"
               style={{
-                background: "linear-gradient(135deg, rgba(26, 15, 46, 0.9) 0%, rgba(45, 27, 78, 0.9) 100%)",
-                borderBottom: "1px solid rgba(157, 78, 221, 0.2)",
+                background: "linear-gradient(135deg, rgba(20,20,22, 0.9) 0%, rgba(45, 27, 78, 0.9) 100%)",
+                borderBottom: "1px solid rgba(217,119,6, 0.2)",
               }}
             >
               <div className="relative">
                 <RobotIcon className="w-9 h-9" />
-                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-400 rounded-full border-2 border-[#1a0f2e]" />
+                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-400 rounded-full border-2 border-[#141416]" />
               </div>
               <div className="flex-1">
                 <h3 className="text-sm font-semibold text-text-primary font-display">
@@ -602,8 +602,8 @@ export default function SupportChatbot() {
                         className="w-full py-2.5 rounded-lg text-sm font-semibold text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                         style={{
                           background: ticketSubmitting
-                            ? "rgba(157, 78, 221, 0.3)"
-                            : "linear-gradient(135deg, #9d4edd 0%, #7b2cbf 100%)",
+                            ? "rgba(217,119,6, 0.3)"
+                            : "linear-gradient(135deg, #D97706 0%, #B45309 100%)",
                         }}
                       >
                         {ticketSubmitting ? (
@@ -651,11 +651,11 @@ export default function SupportChatbot() {
                           style={
                             msg.role === "user"
                               ? {
-                                  background: "linear-gradient(135deg, #9d4edd 0%, #7b2cbf 100%)",
+                                  background: "linear-gradient(135deg, #D97706 0%, #B45309 100%)",
                                 }
                               : {
-                                  background: "rgba(26, 15, 46, 0.8)",
-                                  border: "1px solid rgba(157, 78, 221, 0.15)",
+                                  background: "rgba(20,20,22, 0.8)",
+                                  border: "1px solid rgba(217,119,6, 0.15)",
                                 }
                           }
                         >
@@ -674,8 +674,8 @@ export default function SupportChatbot() {
                       <div
                         className="rounded-2xl rounded-bl-md"
                         style={{
-                          background: "rgba(26, 15, 46, 0.8)",
-                          border: "1px solid rgba(157, 78, 221, 0.15)",
+                          background: "rgba(20,20,22, 0.8)",
+                          border: "1px solid rgba(217,119,6, 0.15)",
                         }}
                       >
                         <TypingIndicator />
@@ -713,7 +713,7 @@ export default function SupportChatbot() {
               <div
                 className="shrink-0 px-4 py-3 flex items-center gap-2"
                 style={{
-                  borderTop: "1px solid rgba(157, 78, 221, 0.15)",
+                  borderTop: "1px solid rgba(217,119,6, 0.15)",
                   background: "rgba(19, 9, 30, 0.8)",
                 }}
               >
@@ -746,7 +746,7 @@ export default function SupportChatbot() {
                     className="shrink-0 p-2 rounded-lg transition-all disabled:opacity-30"
                     style={{
                       background: inputValue?.trim()
-                        ? "linear-gradient(135deg, #9d4edd 0%, #7b2cbf 100%)"
+                        ? "linear-gradient(135deg, #D97706 0%, #B45309 100%)"
                         : "transparent",
                     }}
                     aria-label="Send message"

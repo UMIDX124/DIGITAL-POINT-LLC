@@ -146,17 +146,17 @@ export const GlassCard = memo(function GlassCard({ children, className, hover = 
         className
       )}
       style={{
-        background: 'rgba(26, 15, 46, 0.6)',
+        background: 'rgba(20,20,22, 0.6)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        border: '1px solid rgba(157, 78, 221, 0.2)',
+        border: '1px solid rgba(217,119,6, 0.2)',
       }}
     >
       {/* Inner glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'linear-gradient(135deg, rgba(199, 125, 255, 0.08) 0%, transparent 50%)',
+          background: 'linear-gradient(135deg, rgba(245,158,11, 0.08) 0%, transparent 50%)',
         }}
       />
       <div className="relative z-10">{children}</div>
@@ -176,11 +176,11 @@ export const MetricDisplay = memo(function MetricDisplay({ value, label, prefix,
   return (
     <div className={cn('text-center', className)}>
       <div className="font-display text-3xl md:text-4xl font-bold text-white tabular-nums">
-        {prefix && <span className="text-[#c77dff]">{prefix}</span>}
+        {prefix && <span className="text-[#F59E0B]">{prefix}</span>}
         {value}
-        {suffix && <span className="text-[#b794c7] text-xl">{suffix}</span>}
+        {suffix && <span className="text-[#D6D0C2] text-xl">{suffix}</span>}
       </div>
-      <p className="text-[#b794c7] text-sm mt-1">{label}</p>
+      <p className="text-[#D6D0C2] text-sm mt-1">{label}</p>
     </div>
   );
 });
@@ -201,13 +201,13 @@ export const SignalPoint = memo(function SignalPoint({ className, pulse = true, 
   return (
     <span
       className={cn(
-        'inline-block rounded-full bg-[#ff6b9d]',
+        'inline-block rounded-full bg-[#F59E0B]',
         pulse && 'animate-pulse',
         sizeClasses[size],
         className
       )}
       style={{
-        boxShadow: '0 0 8px rgba(255, 107, 157, 0.6)',
+        boxShadow: '0 0 8px rgba(245,158,11, 0.6)',
       }}
     />
   );
@@ -268,7 +268,7 @@ export function SectionHeader({ eyebrow, title, description, align = 'center', c
         <span
           className="text-sm font-medium uppercase tracking-wider mb-4 block"
           style={{
-            background: 'linear-gradient(90deg, #e0aaff, #c77dff)',
+            background: 'linear-gradient(90deg, #FBBF24, #F59E0B)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
           }}
@@ -280,7 +280,7 @@ export function SectionHeader({ eyebrow, title, description, align = 'center', c
         {title}
       </h2>
       {description && (
-        <p className="text-[#b794c7] text-lg mt-4 leading-relaxed">
+        <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed">
           {description}
         </p>
       )}

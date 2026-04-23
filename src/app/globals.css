@@ -3,539 +3,301 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ============================================
-   DIGITAL POINT LLC — COSMIC DESIGN SYSTEM
-   Premium Space-Inspired Theme
-   ============================================ */
+/* =======================================================================
+   DIGITAL POINT LLC — EXECUTIVE DARK SYSTEM
+   Dark surfaces · ivory type · single amber accent · hairline borders
+   ======================================================================= */
 
 @theme inline {
-  /* Background Colors */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  
-  /* Brand Colors - Cosmic Purple/Violet */
-  --color-plum: var(--plum);
-  --color-plum-light: var(--plum-light);
-  --color-plum-dark: var(--plum-dark);
-  --color-signal: var(--signal);
-  --color-signal-glow: var(--signal-glow);
-  --color-violet: var(--violet);
-  --color-violet-muted: var(--violet-muted);
-  --color-cosmic-pink: var(--cosmic-pink);
-  --color-cosmic-magenta: var(--cosmic-magenta);
-  
-  /* Surface Colors */
+  /* Core tokens */
+  --color-bg: var(--bg);
   --color-surface: var(--surface);
-  --color-surface-elevated: var(--surface-elevated);
-  --color-surface-glass: var(--surface-glass);
-  --color-surface-glass-strong: var(--surface-glass-strong);
-  
-  /* Text Colors */
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-text-muted: var(--text-muted);
-  
-  /* Border Colors */
-  --color-border-subtle: var(--border-subtle);
-  --color-border-glass: var(--border-glass);
-  --color-border-active: var(--border-active);
-  
-  /* Component Colors */
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
+  --color-surface-2: var(--surface-2);
   --color-border: var(--border);
-  
-  /* Chart Colors */
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  
+  --color-ivory: var(--ivory);
+  --color-ivory-dim: var(--ivory-dim);
+  --color-muted: var(--muted);
+  --color-amber: var(--amber);
+  --color-amber-bright: var(--amber-bright);
+
+  /* Tailwind/shadcn-compatible aliases so existing components keep working */
+  --color-background: var(--bg);
+  --color-foreground: var(--ivory);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--ivory);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--ivory);
+  --color-primary: var(--amber);
+  --color-primary-foreground: #0A0A0B;
+  --color-secondary: var(--surface-2);
+  --color-secondary-foreground: var(--ivory);
+  --color-muted-foreground: var(--muted);
+  --color-accent: var(--surface-2);
+  --color-accent-foreground: var(--ivory);
+  --color-destructive: #DC2626;
+  --color-ring: var(--amber-bright);
+  --color-input: var(--border);
+
+  /* Legacy aliases — every component that used cosmic vars now renders in the new palette */
+  --color-plum: var(--amber);
+  --color-plum-light: var(--amber-bright);
+  --color-plum-dark: #B45309;
+  --color-signal: var(--amber-bright);
+  --color-signal-glow: rgba(245, 158, 11, 0.25);
+  --color-violet: var(--amber);
+  --color-violet-muted: var(--amber-bright);
+  --color-cosmic-pink: var(--amber-bright);
+  --color-cosmic-magenta: var(--amber);
+  --color-surface-elevated: var(--surface-2);
+  --color-surface-glass: rgba(245, 158, 11, 0.04);
+  --color-surface-glass-strong: rgba(245, 158, 11, 0.08);
+  --color-text-primary: var(--ivory);
+  --color-text-secondary: var(--ivory-dim);
+  --color-text-muted: var(--muted);
+  --color-border-subtle: var(--border);
+  --color-border-glass: var(--border);
+  --color-border-active: var(--amber);
+
+  /* Charts — monotone amber ladder, no rainbow */
+  --color-chart-1: var(--amber);
+  --color-chart-2: var(--amber-bright);
+  --color-chart-3: #FBBF24;
+  --color-chart-4: var(--ivory-dim);
+  --color-chart-5: var(--muted);
+
   /* Radius */
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+
   /* Typography */
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-space-grotesk);
-  --font-mono: var(--font-ibm-plex-mono);
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-instrument-serif), Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
 /* ============================================
-   CSS VARIABLES — COSMIC DARK THEME
+   ROOT VARIABLES
    ============================================ */
 
 :root {
-  /* Base Radius */
-  --radius: 0.75rem;
-  
-  /* Background — Deep cosmic violet-black */
-  --background: #0d0815;
-  
-  /* Foreground — Soft white */
-  --foreground: #f4f0f9;
-  
-  /* Brand Colors — Cosmic Purple/Violet Palette */
-  --plum: #9d4edd;
-  --plum-light: #c77dff;
-  --plum-dark: #7b2cbf;
-  --signal: #ff6b9d;
-  --signal-glow: rgba(255, 107, 157, 0.4);
-  --violet: #8b5cf6;
-  --violet-muted: #a78bfa;
-  --cosmic-pink: #e0aaff;
-  --cosmic-magenta: #c026d3;
-  
-  /* Surface Colors */
-  --surface: #13091e;
-  --surface-elevated: #1a0f2e;
-  --surface-glass: rgba(157, 78, 221, 0.08);
-  --surface-glass-strong: rgba(157, 78, 221, 0.12);
-  
-  /* Text Colors */
-  --text-primary: #f4f0f9;
-  --text-secondary: #b794c7;
-  --text-muted: #7c5a8a;
-  
-  /* Border Colors */
-  --border-subtle: rgba(157, 78, 221, 0.15);
-  --border-glass: rgba(199, 125, 255, 0.2);
-  --border-active: rgba(199, 125, 255, 0.4);
-  
-  /* Component Colors */
-  --card: var(--surface-elevated);
-  --card-foreground: var(--text-primary);
-  --popover: var(--surface-elevated);
-  --popover-foreground: var(--text-primary);
-  --primary: var(--plum);
-  --primary-foreground: #ffffff;
-  --secondary: var(--surface-glass-strong);
-  --secondary-foreground: var(--text-primary);
-  --muted: rgba(157, 78, 221, 0.1);
-  --muted-foreground: var(--text-secondary);
-  --accent: var(--surface-glass-strong);
-  --accent-foreground: var(--text-primary);
-  --destructive: #dc2626;
-  --ring: var(--plum-light);
-  --input: var(--border-glass);
-  --border: var(--border-subtle);
-  
-  /* Chart Colors */
-  --chart-1: #9d4edd;
-  --chart-2: #c77dff;
-  --chart-3: #06b6d4;
-  --chart-4: #10b981;
-  --chart-5: #ff6b9d;
+  --radius: 0.5rem;
+
+  --bg: #0A0A0B;
+  --surface: #141416;
+  --surface-2: #1C1C1F;
+  --border: #27272A;
+  --ivory: #F5F1E8;
+  --ivory-dim: #D6D0C2;
+  --muted: #71717A;
+  --amber: #D97706;
+  --amber-bright: #F59E0B;
+
+  /* Legacy plain-var names still used by some components */
+  --background: var(--bg);
+  --foreground: var(--ivory);
+  --plum: var(--amber);
+  --plum-light: var(--amber-bright);
+  --plum-dark: #B45309;
+  --signal: var(--amber-bright);
+  --signal-glow: rgba(245, 158, 11, 0.25);
+  --violet: var(--amber);
+  --violet-muted: var(--amber-bright);
+  --cosmic-pink: var(--amber-bright);
+  --cosmic-magenta: var(--amber);
+  --surface-elevated: var(--surface-2);
+  --surface-glass: rgba(245, 158, 11, 0.04);
+  --surface-glass-strong: rgba(245, 158, 11, 0.08);
+  --text-primary: var(--ivory);
+  --text-secondary: var(--ivory-dim);
+  --text-muted: var(--muted);
+  --border-subtle: var(--border);
+  --border-glass: var(--border);
+  --border-active: var(--amber);
 }
 
 /* ============================================
-   BASE STYLES
+   BASE
    ============================================ */
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  
-  html {
-    scroll-behavior: smooth;
-  }
-  
+  html { scroll-behavior: smooth; }
   body {
-    @apply bg-background text-foreground antialiased;
+    background: var(--bg);
+    color: var(--ivory);
+    font-family: var(--font-inter), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
-  
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-space-grotesk), system-ui, sans-serif;
-    font-weight: 600;
+    font-family: var(--font-instrument-serif), Georgia, serif;
+    font-weight: 400;
     letter-spacing: -0.02em;
   }
-  
   code, pre, .font-mono {
-    font-family: var(--font-ibm-plex-mono), ui-monospace, monospace;
+    font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+    font-feature-settings: "tnum" 1;
   }
+
+  /* Type scale — display uses serif, body stays Inter */
+  .font-display { font-family: var(--font-instrument-serif), Georgia, serif; font-weight: 400; }
+
+  /* Selection */
+  ::selection { background: rgba(217, 119, 6, 0.35); color: var(--ivory); }
 }
 
 /* ============================================
-   UTILITY CLASSES
+   UTILITIES — flat surfaces, hairline borders, mono data
    ============================================ */
 
 @layer utilities {
-  /* Cosmic Glass Surface */
-  .glass {
-    background: rgba(26, 15, 46, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(157, 78, 221, 0.2);
+  .bg-bg          { background-color: var(--bg); }
+  .bg-surface     { background-color: var(--surface); }
+  .bg-surface-2   { background-color: var(--surface-2); }
+
+  .text-ivory     { color: var(--ivory); }
+  .text-ivory-dim { color: var(--ivory-dim); }
+  .text-muted     { color: var(--muted); }
+  .text-amber     { color: var(--amber); }
+  .text-amber-bright { color: var(--amber-bright); }
+
+  .border-hairline { border: 1px solid var(--border); }
+  .divide-hairline > * + * { border-top: 1px solid var(--border); }
+
+  .eyebrow {
+    font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
   }
-  
-  .glass-strong {
-    background: rgba(26, 15, 46, 0.8);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(199, 125, 255, 0.25);
+
+  .data {
+    font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
   }
-  
-  /* Signal Point Glow */
-  .signal-glow {
-    box-shadow: 0 0 20px var(--signal-glow);
+
+  .container-wide { @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10; }
+  .container-narrow { @apply mx-auto w-full max-w-5xl px-5 sm:px-8 lg:px-10; }
+  .container-prose { @apply mx-auto w-full max-w-3xl px-5 sm:px-8; }
+
+  .section-padding { @apply py-20 md:py-28 lg:py-32; }
+
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+
+  .custom-scrollbar { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+  .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+  .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--amber); }
+
+  /* Focus rings — amber, accessible */
+  .focus-ring { outline: none; }
+  .focus-ring:focus-visible {
+    outline: 2px solid var(--amber-bright);
+    outline-offset: 2px;
   }
-  
-  .signal-pulse {
-    animation: signal-pulse 2s ease-in-out infinite;
+
+  /* Card primitives */
+  .card-flat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: border-color 180ms ease, transform 180ms ease;
   }
-  
-  @keyframes signal-pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(1.1); }
+  .card-flat:hover { border-color: var(--amber); }
+
+  /* Legacy aliases — existing components that reference these still render */
+  .glass, .glass-strong {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
-  
-  /* Text Gradient */
-  .text-gradient {
-    background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  .text-gradient-plum {
-    background: linear-gradient(135deg, #e0aaff 0%, #c77dff 50%, #ff6b9d 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  /* Cosmic Background */
-  .cosmic-bg {
-    background: linear-gradient(180deg, #0d0815 0%, #1a0a2e 50%, #2d1b4e 100%);
-  }
-  
-  /* Stars Background */
-  .stars-bg {
-    background-image: radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.3), transparent),
-                      radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.2), transparent),
-                      radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.4), transparent),
-                      radial-gradient(2px 2px at 130px 80px, rgba(255,255,255,0.2), transparent),
-                      radial-gradient(1px 1px at 160px 120px, rgba(255,255,255,0.3), transparent);
-    background-size: 200px 200px;
-  }
-  
-  /* Noise Texture Overlay */
-  .noise-overlay {
-    position: relative;
-  }
-  
-  .noise-overlay::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    opacity: 0.02;
-    pointer-events: none;
-    z-index: 1;
-  }
-  
-  /* Subtle Grid Background */
-  .grid-bg {
-    background-image: 
-      linear-gradient(rgba(157, 78, 221, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(157, 78, 221, 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-  
-  /* Radial Gradient Background */
-  .radial-glow {
-    background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(157, 78, 221, 0.2), transparent);
-  }
-  
-  /* Cosmic Glow */
-  .cosmic-glow {
-    background: radial-gradient(ellipse 100% 100% at 50% 0%, rgba(157, 78, 221, 0.15) 0%, transparent 60%);
-  }
-  
-  /* Section Spacing */
-  .section-padding {
-    @apply py-20 md:py-28 lg:py-32;
-  }
-  
-  /* Container */
-  .container-narrow {
-    @apply mx-auto max-w-5xl px-4 sm:px-6 lg:px-8;
-  }
-  
-  .container-wide {
-    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
-  }
-  
-  /* Focus Ring */
-  .focus-ring {
-    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
-  }
-  
-  /* Hide Scrollbar */
-  .hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  
-  /* Custom Scrollbar */
-  .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: var(--border-glass) transparent;
-  }
-  
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  
-  .custom-scrollbar::-webkit-scrollbar-track {
+  .cosmic-bg, .cosmic-glow, .radial-glow, .stars-bg, .grid-bg, .noise-overlay {
     background: transparent;
   }
-  
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: var(--border-glass);
-    border-radius: 3px;
+  .noise-overlay::before { display: none; }
+  .signal-glow, .btn-glow, .btn-glow::before, .signal-pulse { box-shadow: none; }
+  .text-gradient, .text-gradient-plum {
+    background: none;
+    -webkit-background-clip: border-box;
+    -webkit-text-fill-color: currentColor;
+    background-clip: border-box;
+    color: inherit;
   }
-  
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: var(--border-active);
+
+  .card-hover {
+    transition: border-color 180ms ease, transform 180ms ease;
   }
+  .card-hover:hover {
+    border-color: var(--amber);
+    transform: none;
+    box-shadow: none;
+  }
+
+  .link-underline { position: relative; }
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--amber);
+    transition: width 220ms ease;
+  }
+  .link-underline:hover::after { width: 100%; }
+
+  .tabular-nums { font-variant-numeric: tabular-nums; }
 }
 
 /* ============================================
-   COMPONENT OVERRIDES
+   ANIMATIONS — minimal, tasteful
    ============================================ */
 
-/* Button enhancements */
-.btn-glow {
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-glow::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  background: linear-gradient(135deg, var(--plum-light), var(--cosmic-magenta));
-  border-radius: inherit;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: -1;
-  filter: blur(12px);
-}
-
-.btn-glow:hover::before {
-  opacity: 0.5;
-}
-
-/* Card hover effect */
-.card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.card-hover:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(157, 78, 221, 0.2);
-  border-color: var(--border-active);
-}
-
-/* Link underline animation */
-.link-underline {
-  position: relative;
-}
-
-.link-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--plum-light);
-  transition: width 0.3s ease;
-}
-
-.link-underline:hover::after {
-  width: 100%;
-}
-
-/* Tabular numbers for metrics */
-.tabular-nums {
-  font-variant-numeric: tabular-nums;
-}
-
-/* Selection styling */
-::selection {
-  background: rgba(157, 78, 221, 0.4);
-  color: var(--text-primary);
-}
-
-/* ============================================
-   ANIMATIONS
-   ============================================ */
-
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes fade-up {
-  from { 
-    opacity: 0; 
-    transform: translateY(20px);
-  }
-  to { 
-    opacity: 1; 
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes scale-in {
-  from { 
-    opacity: 0; 
-    transform: scale(0.95);
-  }
-  to { 
-    opacity: 1; 
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.98); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
-@keyframes slide-in-right {
-  from { 
-    opacity: 0; 
-    transform: translateX(20px);
-  }
-  to { 
-    opacity: 1; 
-    transform: translateX(0);
-  }
-}
+.animate-fade-in  { animation: fade-in 400ms ease forwards; }
+.animate-fade-up  { animation: fade-up 500ms ease forwards; }
+.animate-scale-in { animation: scale-in 400ms ease forwards; }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes orbit {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes dash {
-  to { stroke-dashoffset: 0; }
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 1; }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.5s ease forwards;
-}
-
-.animate-fade-up {
-  animation: fade-up 0.6s ease forwards;
-}
-
-.animate-scale-in {
-  animation: scale-in 0.4s ease forwards;
-}
-
-.animate-slide-in-right {
-  animation: slide-in-right 0.5s ease forwards;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-twinkle {
-  animation: twinkle 3s ease-in-out infinite;
-}
-
-/* Stagger children animations */
-.stagger-children > * {
-  opacity: 0;
-  animation: fade-up 0.6s ease forwards;
-}
-
+.stagger-children > * { opacity: 0; animation: fade-up 500ms ease forwards; }
 .stagger-children > *:nth-child(1) { animation-delay: 0ms; }
-.stagger-children > *:nth-child(2) { animation-delay: 100ms; }
-.stagger-children > *:nth-child(3) { animation-delay: 200ms; }
-.stagger-children > *:nth-child(4) { animation-delay: 300ms; }
-.stagger-children > *:nth-child(5) { animation-delay: 400ms; }
-.stagger-children > *:nth-child(6) { animation-delay: 500ms; }
-.stagger-children > *:nth-child(7) { animation-delay: 600ms; }
-.stagger-children > *:nth-child(8) { animation-delay: 700ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 80ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 160ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 240ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 320ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 400ms; }
 
-/* Animated gradient background */
-@keyframes gradient {
-  0% { background-position: 50% 0%; }
-  50% { background-position: 50% 100%; }
-  100% { background-position: 50% 0%; }
-}
+/* Legacy animation names kept as no-ops so existing classes don't break layout */
+@keyframes twinkle { 0%, 100% { opacity: 0; } 50% { opacity: 0; } }
+.animate-twinkle { animation: none; opacity: 0; }
+.animate-float, .animate-ping-slow, .animate-glow-pulse,
+.animate-gradient, .animate-pulse-glow, .animate-slide-in-right,
+.animate-fade-in-delayed, .animate-bounce-slow, .animate-float-slow,
+.animate-float-slow-reverse, .animate-nebula-1, .animate-nebula-2,
+.animate-spin-slow, .animate-gradient-shift { animation: none; }
 
-.animate-gradient {
-  animation: gradient 15s ease infinite;
-}
-
-/* Chatbot button glow pulse */
-@keyframes ping-slow {
-  0% { transform: scale(1); opacity: 0.6; }
-  50% { transform: scale(1.4); opacity: 0; }
-  100% { transform: scale(1); opacity: 0.6; }
-}
-
-.animate-ping-slow {
-  animation: ping-slow 2.5s ease-out infinite;
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.15); }
-}
-
-/* Glow pulse — replaces framer-motion infinite animations for better INP */
-@keyframes glow-pulse {
-  0%, 100% { opacity: 0.1; transform: scale(1); }
-  50% { opacity: 0.25; transform: scale(1.1); }
-}
-
-.animate-glow-pulse {
-  animation: glow-pulse 8s ease-in-out infinite;
-  will-change: opacity, transform;
-}
-
-/* Accessibility: respect user motion preferences */
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

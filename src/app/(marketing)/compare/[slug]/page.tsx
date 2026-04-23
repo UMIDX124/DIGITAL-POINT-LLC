@@ -55,7 +55,7 @@ export default async function ComparisonPage({ params }: PageProps) {
             {comparison.metaTitle}
           </h1>
 
-          <p className="text-[#b794c7] text-lg leading-relaxed">
+          <p className="text-[#D6D0C2] text-lg leading-relaxed">
             {comparison.intro}
           </p>
         </Container>
@@ -72,16 +72,16 @@ export default async function ComparisonPage({ params }: PageProps) {
               <thead>
                 <tr>
                   <th
-                    className="text-left text-xs uppercase tracking-wider text-[#7c5a8a] py-3 px-4 border-b"
-                    style={{ borderColor: 'rgba(157, 78, 221, 0.2)' }}
+                    className="text-left text-xs uppercase tracking-wider text-[#71717A] py-3 px-4 border-b"
+                    style={{ borderColor: 'rgba(217,119,6, 0.2)' }}
                   >
                     Category
                   </th>
                   <th
                     className="text-left text-xs uppercase tracking-wider py-3 px-4 border-b"
                     style={{
-                      borderColor: 'rgba(157, 78, 221, 0.2)',
-                      color: '#c77dff',
+                      borderColor: 'rgba(217,119,6, 0.2)',
+                      color: '#F59E0B',
                     }}
                   >
                     {comparison.optionA.name}
@@ -89,8 +89,8 @@ export default async function ComparisonPage({ params }: PageProps) {
                   <th
                     className="text-left text-xs uppercase tracking-wider py-3 px-4 border-b"
                     style={{
-                      borderColor: 'rgba(157, 78, 221, 0.2)',
-                      color: '#c77dff',
+                      borderColor: 'rgba(217,119,6, 0.2)',
+                      color: '#F59E0B',
                     }}
                   >
                     {comparison.optionB.name}
@@ -102,19 +102,19 @@ export default async function ComparisonPage({ params }: PageProps) {
                   <tr key={index}>
                     <td
                       className="text-sm font-medium text-white py-3 px-4 border-b"
-                      style={{ borderColor: 'rgba(157, 78, 221, 0.1)' }}
+                      style={{ borderColor: 'rgba(217,119,6, 0.1)' }}
                     >
                       {row.category}
                     </td>
                     <td
-                      className="text-sm text-[#b794c7] py-3 px-4 border-b"
-                      style={{ borderColor: 'rgba(157, 78, 221, 0.1)' }}
+                      className="text-sm text-[#D6D0C2] py-3 px-4 border-b"
+                      style={{ borderColor: 'rgba(217,119,6, 0.1)' }}
                     >
                       {row.optionA}
                     </td>
                     <td
-                      className="text-sm text-[#b794c7] py-3 px-4 border-b"
-                      style={{ borderColor: 'rgba(157, 78, 221, 0.1)' }}
+                      className="text-sm text-[#D6D0C2] py-3 px-4 border-b"
+                      style={{ borderColor: 'rgba(217,119,6, 0.1)' }}
                     >
                       {row.optionB}
                     </td>
@@ -134,8 +134,8 @@ export default async function ComparisonPage({ params }: PageProps) {
             <div
               className="rounded-2xl p-6 md:p-8"
               style={{
-                background: 'rgba(26, 15, 46, 0.6)',
-                border: '1px solid rgba(157, 78, 221, 0.2)',
+                background: 'rgba(20,20,22, 0.6)',
+                border: '1px solid rgba(217,119,6, 0.2)',
               }}
             >
               <h3 className="font-display text-xl font-bold text-white mb-6">
@@ -144,7 +144,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               <div className="mb-6">
                 <h4
                   className="text-sm font-semibold uppercase tracking-wider mb-3"
-                  style={{ color: '#c77dff' }}
+                  style={{ color: '#F59E0B' }}
                 >
                   Pros
                 </h4>
@@ -152,7 +152,7 @@ export default async function ComparisonPage({ params }: PageProps) {
                   {comparison.optionA.pros.map((pro, index) => (
                     <li
                       key={index}
-                      className="flex items-start gap-2 text-sm text-[#b794c7] leading-relaxed"
+                      className="flex items-start gap-2 text-sm text-[#D6D0C2] leading-relaxed"
                     >
                       <span className="text-green-400 mt-0.5 shrink-0">+</span>
                       {pro}
@@ -163,7 +163,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               <div>
                 <h4
                   className="text-sm font-semibold uppercase tracking-wider mb-3"
-                  style={{ color: '#c77dff' }}
+                  style={{ color: '#F59E0B' }}
                 >
                   Cons
                 </h4>
@@ -171,7 +171,7 @@ export default async function ComparisonPage({ params }: PageProps) {
                   {comparison.optionA.cons.map((con, index) => (
                     <li
                       key={index}
-                      className="flex items-start gap-2 text-sm text-[#b794c7] leading-relaxed"
+                      className="flex items-start gap-2 text-sm text-[#D6D0C2] leading-relaxed"
                     >
                       <span className="text-red-400 mt-0.5 shrink-0">-</span>
                       {con}
@@ -185,8 +185,8 @@ export default async function ComparisonPage({ params }: PageProps) {
             <div
               className="rounded-2xl p-6 md:p-8"
               style={{
-                background: 'rgba(26, 15, 46, 0.6)',
-                border: '1px solid rgba(157, 78, 221, 0.2)',
+                background: 'rgba(20,20,22, 0.6)',
+                border: '1px solid rgba(217,119,6, 0.2)',
               }}
             >
               <h3 className="font-display text-xl font-bold text-white mb-6">
@@ -195,7 +195,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               <div className="mb-6">
                 <h4
                   className="text-sm font-semibold uppercase tracking-wider mb-3"
-                  style={{ color: '#c77dff' }}
+                  style={{ color: '#F59E0B' }}
                 >
                   Pros
                 </h4>
@@ -203,7 +203,7 @@ export default async function ComparisonPage({ params }: PageProps) {
                   {comparison.optionB.pros.map((pro, index) => (
                     <li
                       key={index}
-                      className="flex items-start gap-2 text-sm text-[#b794c7] leading-relaxed"
+                      className="flex items-start gap-2 text-sm text-[#D6D0C2] leading-relaxed"
                     >
                       <span className="text-green-400 mt-0.5 shrink-0">+</span>
                       {pro}
@@ -214,7 +214,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               <div>
                 <h4
                   className="text-sm font-semibold uppercase tracking-wider mb-3"
-                  style={{ color: '#c77dff' }}
+                  style={{ color: '#F59E0B' }}
                 >
                   Cons
                 </h4>
@@ -222,7 +222,7 @@ export default async function ComparisonPage({ params }: PageProps) {
                   {comparison.optionB.cons.map((con, index) => (
                     <li
                       key={index}
-                      className="flex items-start gap-2 text-sm text-[#b794c7] leading-relaxed"
+                      className="flex items-start gap-2 text-sm text-[#D6D0C2] leading-relaxed"
                     >
                       <span className="text-red-400 mt-0.5 shrink-0">-</span>
                       {con}
@@ -244,11 +244,11 @@ export default async function ComparisonPage({ params }: PageProps) {
           <div
             className="rounded-2xl p-6 md:p-8"
             style={{
-              background: 'linear-gradient(135deg, rgba(123, 44, 191, 0.12), rgba(157, 78, 221, 0.06))',
-              border: '1px solid rgba(199, 125, 255, 0.2)',
+              background: 'linear-gradient(135deg, rgba(180,83,9, 0.12), rgba(217,119,6, 0.06))',
+              border: '1px solid rgba(245,158,11, 0.2)',
             }}
           >
-            <p className="text-[#b794c7] text-base leading-relaxed">
+            <p className="text-[#D6D0C2] text-base leading-relaxed">
               {comparison.recommendation}
             </p>
           </div>

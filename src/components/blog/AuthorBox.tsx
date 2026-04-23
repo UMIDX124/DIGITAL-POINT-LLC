@@ -42,8 +42,8 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
     <div
       className="rounded-2xl p-6 md:p-8 mt-12"
       style={{
-        background: '#13091e',
-        border: '1px solid rgba(157, 78, 221, 0.2)',
+        background: '#141416',
+        border: '1px solid rgba(217,119,6, 0.2)',
       }}
     >
       <div className="flex flex-col sm:flex-row gap-5 items-start">
@@ -51,7 +51,7 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
         <div
           className="shrink-0 w-16 h-16 rounded-full flex items-center justify-center font-display text-xl font-bold text-white"
           style={{
-            background: 'linear-gradient(135deg, #9d4edd 0%, #c77dff 100%)',
+            background: 'linear-gradient(135deg, #D97706 0%, #F59E0B 100%)',
           }}
           aria-hidden="true"
         >
@@ -60,13 +60,13 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
 
         {/* Author info */}
         <div className="flex-1 min-w-0">
-          <p className="text-xs uppercase tracking-wider text-[#7c5a8a] mb-1">
+          <p className="text-xs uppercase tracking-wider text-[#71717A] mb-1">
             Written by
           </p>
           <h3 className="font-display text-lg font-semibold text-white">
             {author.name}
           </h3>
-          <p className="text-[#c77dff] text-xs mb-1">{author.title}, Digital Point LLC</p>
+          <p className="text-[#F59E0B] text-xs mb-1">{author.title}, Digital Point LLC</p>
           {/* Expertise tags */}
           <div className="flex flex-wrap gap-2 mt-2">
             {author.expertise.map((tag) => (
@@ -74,9 +74,9 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
                 key={tag}
                 className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full"
                 style={{
-                  background: 'rgba(199, 125, 255, 0.1)',
-                  border: '1px solid rgba(199, 125, 255, 0.2)',
-                  color: '#c77dff',
+                  background: 'rgba(245,158,11, 0.1)',
+                  border: '1px solid rgba(245,158,11, 0.2)',
+                  color: '#F59E0B',
                 }}
               >
                 {tag}
@@ -84,7 +84,7 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
             ))}
           </div>
 
-          <p className="text-[#b794c7] text-sm leading-relaxed mt-3">
+          <p className="text-[#D6D0C2] text-sm leading-relaxed mt-3">
             {author.bio}
           </p>
 
@@ -92,7 +92,7 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
           <div className="flex items-center gap-4 mt-4">
             <Link
               href="/about"
-              className="text-[#c77dff] hover:text-[#e0aaff] text-sm font-medium transition-colors"
+              className="text-[#F59E0B] hover:text-[#FBBF24] text-sm font-medium transition-colors"
             >
               About Us
             </Link>
@@ -100,7 +100,7 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
               href="https://www.linkedin.com/company/digitalpointllc"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-[#c77dff] hover:text-[#e0aaff] text-sm font-medium transition-colors"
+              className="inline-flex items-center gap-1.5 text-[#F59E0B] hover:text-[#FBBF24] text-sm font-medium transition-colors"
             >
               <svg
                 className="w-4 h-4"

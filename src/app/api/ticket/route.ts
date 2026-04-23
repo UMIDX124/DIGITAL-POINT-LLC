@@ -109,7 +109,7 @@ export async function POST(request: NextRequest) {
         : 'info@digitalpointllc.com';
 
     const priorityLabel = priority === 'high' ? 'HIGH PRIORITY' : 'Normal';
-    const priorityColor = priority === 'high' ? '#ff6b9d' : '#c77dff';
+    const priorityColor = priority === 'high' ? '#F59E0B' : '#F59E0B';
 
     try {
       await sendEmail({
@@ -117,9 +117,9 @@ export async function POST(request: NextRequest) {
         subject: `[${priorityLabel}] Support Ticket: ${escapeHtml(subject)}`,
         replyTo: email,
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0d0815; color: #f4f0f9; padding: 32px; border-radius: 12px;">
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0B; color: #F5F1E8; padding: 32px; border-radius: 12px;">
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px;">
-              <h2 style="color: #c77dff; margin: 0;">Support Ticket</h2>
+              <h2 style="color: #F59E0B; margin: 0;">Support Ticket</h2>
               <span style="background: ${priorityColor}22; color: ${priorityColor}; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-left: 8px;">
                 ${priorityLabel}
               </span>
@@ -127,38 +127,38 @@ export async function POST(request: NextRequest) {
 
             <table style="width: 100%; border-collapse: collapse;">
               <tr>
-                <td style="padding: 10px 0; color: #b794c7; font-size: 13px; vertical-align: top; width: 100px;">From</td>
-                <td style="padding: 10px 0; color: #f4f0f9; font-size: 14px;">${escapeHtml(name)}</td>
+                <td style="padding: 10px 0; color: #D6D0C2; font-size: 13px; vertical-align: top; width: 100px;">From</td>
+                <td style="padding: 10px 0; color: #F5F1E8; font-size: 14px;">${escapeHtml(name)}</td>
               </tr>
               <tr>
-                <td style="padding: 10px 0; color: #b794c7; font-size: 13px; vertical-align: top;">Email</td>
+                <td style="padding: 10px 0; color: #D6D0C2; font-size: 13px; vertical-align: top;">Email</td>
                 <td style="padding: 10px 0;">
-                  <a href="mailto:${escapeHtml(email)}" style="color: #c77dff; text-decoration: none;">${escapeHtml(email)}</a>
+                  <a href="mailto:${escapeHtml(email)}" style="color: #F59E0B; text-decoration: none;">${escapeHtml(email)}</a>
                 </td>
               </tr>
               <tr>
-                <td style="padding: 10px 0; color: #b794c7; font-size: 13px; vertical-align: top;">Subject</td>
-                <td style="padding: 10px 0; color: #f4f0f9; font-size: 14px;">${escapeHtml(subject)}</td>
+                <td style="padding: 10px 0; color: #D6D0C2; font-size: 13px; vertical-align: top;">Subject</td>
+                <td style="padding: 10px 0; color: #F5F1E8; font-size: 14px;">${escapeHtml(subject)}</td>
               </tr>
             </table>
 
-            <hr style="border: none; border-top: 1px solid rgba(157,78,221,0.3); margin: 16px 0;" />
+            <hr style="border: none; border-top: 1px solid rgba(217,119,6,0.3); margin: 16px 0;" />
 
-            <div style="background: rgba(26, 15, 46, 0.6); padding: 16px; border-radius: 8px; border: 1px solid rgba(157,78,221,0.15);">
-              <p style="color: #b794c7; font-size: 12px; margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.5px;">Message</p>
-              <p style="color: #f4f0f9; font-size: 14px; line-height: 1.6; margin: 0; white-space: pre-wrap;">${escapeHtml(message)}</p>
+            <div style="background: rgba(20,20,22, 0.6); padding: 16px; border-radius: 8px; border: 1px solid rgba(217,119,6,0.15);">
+              <p style="color: #D6D0C2; font-size: 12px; margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.5px;">Message</p>
+              <p style="color: #F5F1E8; font-size: 14px; line-height: 1.6; margin: 0; white-space: pre-wrap;">${escapeHtml(message)}</p>
             </div>
 
-            <hr style="border: none; border-top: 1px solid rgba(157,78,221,0.3); margin: 16px 0;" />
+            <hr style="border: none; border-top: 1px solid rgba(217,119,6,0.3); margin: 16px 0;" />
 
             <table style="width: 100%; border-collapse: collapse;">
               <tr>
-                <td style="color: #7c5a8a; font-size: 11px;">Ticket ID: ${ticketId}</td>
-                <td style="color: #7c5a8a; font-size: 11px; text-align: right;">Created: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })}</td>
+                <td style="color: #71717A; font-size: 11px;">Ticket ID: ${ticketId}</td>
+                <td style="color: #71717A; font-size: 11px; text-align: right;">Created: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })}</td>
               </tr>
             </table>
 
-            <p style="color: #7c5a8a; font-size: 11px; margin: 12px 0 0; text-align: center;">
+            <p style="color: #71717A; font-size: 11px; margin: 12px 0 0; text-align: center;">
               This ticket was created via the Digital Point LLC support chatbot.
             </p>
           </div>

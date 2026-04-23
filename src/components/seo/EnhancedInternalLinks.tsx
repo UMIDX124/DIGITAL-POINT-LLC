@@ -70,7 +70,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
       className="mt-12 rounded-2xl p-6 sm:p-8"
       style={{
         background: 'rgba(13, 8, 21, 0.6)',
-        border: '1px solid rgba(157, 78, 221, 0.15)',
+        border: '1px solid rgba(217,119,6, 0.15)',
         backdropFilter: 'blur(12px)',
       }}
     >
@@ -82,7 +82,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
         {/* Related Blog Posts */}
         {relatedPosts.length > 0 && (
           <div>
-            <h3 className="text-sm font-medium uppercase tracking-wider text-[#7c5a8a] mb-3">
+            <h3 className="text-sm font-medium uppercase tracking-wider text-[#71717A] mb-3">
               Related Articles
             </h3>
             <ul className="space-y-2">
@@ -90,11 +90,11 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
                 <li key={post.slug}>
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="group flex items-start gap-2 text-[#b794c7] hover:text-[#c77dff] transition-colors"
+                    className="group flex items-start gap-2 text-[#D6D0C2] hover:text-[#F59E0B] transition-colors"
                   >
                     <span
                       className="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                      style={{ background: '#c77dff' }}
+                      style={{ background: '#F59E0B' }}
                     />
                     <span className="text-sm leading-snug group-hover:underline">
                       {post.title}
@@ -109,7 +109,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
         {/* Related Tools */}
         {selectedTools.length > 0 && (
           <div>
-            <h3 className="text-sm font-medium uppercase tracking-wider text-[#7c5a8a] mb-3">
+            <h3 className="text-sm font-medium uppercase tracking-wider text-[#71717A] mb-3">
               Free Tools
             </h3>
             <ul className="space-y-2">
@@ -117,7 +117,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
                 <li key={tool.slug}>
                   <Link
                     href={`/tools/${tool.slug}`}
-                    className="group flex items-start gap-2 text-[#b794c7] hover:text-[#c77dff] transition-colors"
+                    className="group flex items-start gap-2 text-[#D6D0C2] hover:text-[#F59E0B] transition-colors"
                   >
                     <span
                       className="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
@@ -125,7 +125,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
                     />
                     <span className="text-sm leading-snug">
                       <span className="group-hover:underline">{tool.title}</span>
-                      <span className="block text-xs text-[#7c5a8a] mt-0.5">
+                      <span className="block text-xs text-[#71717A] mt-0.5">
                         {tool.description}
                       </span>
                     </span>
@@ -139,7 +139,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
         {/* Related Research */}
         {selectedResearch.length > 0 && (
           <div>
-            <h3 className="text-sm font-medium uppercase tracking-wider text-[#7c5a8a] mb-3">
+            <h3 className="text-sm font-medium uppercase tracking-wider text-[#71717A] mb-3">
               Research
             </h3>
             <ul className="space-y-2">
@@ -147,7 +147,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
                 <li key={item.slug}>
                   <Link
                     href={`/research/${item.slug}`}
-                    className="group flex items-start gap-2 text-[#b794c7] hover:text-[#c77dff] transition-colors"
+                    className="group flex items-start gap-2 text-[#D6D0C2] hover:text-[#F59E0B] transition-colors"
                   >
                     <span
                       className="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
@@ -155,7 +155,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
                     />
                     <span className="text-sm leading-snug">
                       <span className="group-hover:underline">{item.title}</span>
-                      <span className="block text-xs text-[#7c5a8a] mt-0.5">
+                      <span className="block text-xs text-[#71717A] mt-0.5">
                         {item.description}
                       </span>
                     </span>
@@ -169,7 +169,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
         {/* Related Comparison */}
         {selectedComparison.length > 0 && (
           <div>
-            <h3 className="text-sm font-medium uppercase tracking-wider text-[#7c5a8a] mb-3">
+            <h3 className="text-sm font-medium uppercase tracking-wider text-[#71717A] mb-3">
               Comparisons
             </h3>
             <ul className="space-y-2">
@@ -177,11 +177,11 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
                 <li key={item.slug}>
                   <Link
                     href={`/compare/${item.slug}`}
-                    className="group flex items-start gap-2 text-[#b794c7] hover:text-[#c77dff] transition-colors"
+                    className="group flex items-start gap-2 text-[#D6D0C2] hover:text-[#F59E0B] transition-colors"
                   >
                     <span
                       className="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                      style={{ background: '#ff6b9d' }}
+                      style={{ background: '#F59E0B' }}
                     />
                     <span className="text-sm leading-snug group-hover:underline">
                       {item.title}

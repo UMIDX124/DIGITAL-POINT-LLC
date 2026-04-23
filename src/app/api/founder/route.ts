@@ -98,18 +98,18 @@ export async function POST(request: NextRequest) {
         subject: `Founder Contact — ${escapeHtml(name)}`,
         replyTo: email,
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0d0815; color: #f4f0f9; padding: 32px; border-radius: 12px;">
-            <h2 style="color: #ff6b9d; margin-top: 0;">New Founder Contact</h2>
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0B; color: #F5F1E8; padding: 32px; border-radius: 12px;">
+            <h2 style="color: #F59E0B; margin-top: 0;">New Founder Contact</h2>
             <table style="width: 100%; border-collapse: collapse;">
-              <tr><td style="padding: 8px 0; color: #b794c7;">Name</td><td style="padding: 8px 0; color: #f4f0f9;">${escapeHtml(name)}</td></tr>
-              <tr><td style="padding: 8px 0; color: #b794c7;">Email</td><td style="padding: 8px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #c77dff;">${escapeHtml(email)}</a></td></tr>
+              <tr><td style="padding: 8px 0; color: #D6D0C2;">Name</td><td style="padding: 8px 0; color: #F5F1E8;">${escapeHtml(name)}</td></tr>
+              <tr><td style="padding: 8px 0; color: #D6D0C2;">Email</td><td style="padding: 8px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #F59E0B;">${escapeHtml(email)}</a></td></tr>
             </table>
-            <div style="margin-top: 16px; padding: 16px; background: rgba(26,15,46,0.8); border-radius: 8px; border: 1px solid rgba(157,78,221,0.2);">
-              <p style="color: #b794c7; font-size: 12px; margin-top: 0;">Message</p>
-              <p style="color: #f4f0f9; margin-bottom: 0; white-space: pre-wrap;">${escapeHtml(message)}</p>
+            <div style="margin-top: 16px; padding: 16px; background: rgba(20,20,22,0.8); border-radius: 8px; border: 1px solid rgba(217,119,6,0.2);">
+              <p style="color: #D6D0C2; font-size: 12px; margin-top: 0;">Message</p>
+              <p style="color: #F5F1E8; margin-bottom: 0; white-space: pre-wrap;">${escapeHtml(message)}</p>
             </div>
-            <hr style="border: none; border-top: 1px solid rgba(157,78,221,0.3); margin: 16px 0;" />
-            <p style="color: #b794c7; font-size: 12px; margin-bottom: 0;">Submission ID: ${submissionId}</p>
+            <hr style="border: none; border-top: 1px solid rgba(217,119,6,0.3); margin: 16px 0;" />
+            <p style="color: #D6D0C2; font-size: 12px; margin-bottom: 0;">Submission ID: ${submissionId}</p>
           </div>
         `,
       });

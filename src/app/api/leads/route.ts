@@ -50,38 +50,38 @@ export async function POST(request: NextRequest) {
         subject: `High-Intent Lead from Chatbot — ${escapeHtml(name || 'Unknown')}`,
         replyTo: email,
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0d0815; color: #f4f0f9; padding: 32px; border-radius: 12px;">
-            <h2 style="color: #c77dff; margin: 0 0 16px;">New High-Intent Lead</h2>
-            <p style="color: #b794c7; font-size: 13px;">Captured via the AI chatbot (Cosmo)</p>
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0B; color: #F5F1E8; padding: 32px; border-radius: 12px;">
+            <h2 style="color: #F59E0B; margin: 0 0 16px;">New High-Intent Lead</h2>
+            <p style="color: #D6D0C2; font-size: 13px;">Captured via the AI chatbot (Cosmo)</p>
 
             <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
               <tr>
-                <td style="padding: 8px 0; color: #b794c7; font-size: 13px; width: 120px;">Name</td>
-                <td style="padding: 8px 0; color: #f4f0f9; font-size: 14px;">${escapeHtml(name || 'Not provided')}</td>
+                <td style="padding: 8px 0; color: #D6D0C2; font-size: 13px; width: 120px;">Name</td>
+                <td style="padding: 8px 0; color: #F5F1E8; font-size: 14px;">${escapeHtml(name || 'Not provided')}</td>
               </tr>
               <tr>
-                <td style="padding: 8px 0; color: #b794c7; font-size: 13px;">Email</td>
+                <td style="padding: 8px 0; color: #D6D0C2; font-size: 13px;">Email</td>
                 <td style="padding: 8px 0;">
-                  <a href="mailto:${escapeHtml(email)}" style="color: #c77dff; text-decoration: none;">${escapeHtml(email)}</a>
+                  <a href="mailto:${escapeHtml(email)}" style="color: #F59E0B; text-decoration: none;">${escapeHtml(email)}</a>
                 </td>
               </tr>
-              ${company ? `<tr><td style="padding: 8px 0; color: #b794c7; font-size: 13px;">Company</td><td style="padding: 8px 0; color: #f4f0f9; font-size: 14px;">${escapeHtml(company)}</td></tr>` : ''}
-              ${interest ? `<tr><td style="padding: 8px 0; color: #b794c7; font-size: 13px;">Interest</td><td style="padding: 8px 0; color: #f4f0f9; font-size: 14px;">${escapeHtml(interest)}</td></tr>` : ''}
+              ${company ? `<tr><td style="padding: 8px 0; color: #D6D0C2; font-size: 13px;">Company</td><td style="padding: 8px 0; color: #F5F1E8; font-size: 14px;">${escapeHtml(company)}</td></tr>` : ''}
+              ${interest ? `<tr><td style="padding: 8px 0; color: #D6D0C2; font-size: 13px;">Interest</td><td style="padding: 8px 0; color: #F5F1E8; font-size: 14px;">${escapeHtml(interest)}</td></tr>` : ''}
               <tr>
-                <td style="padding: 8px 0; color: #b794c7; font-size: 13px;">Lead Score</td>
+                <td style="padding: 8px 0; color: #D6D0C2; font-size: 13px;">Lead Score</td>
                 <td style="padding: 8px 0; color: #10b981; font-size: 14px; font-weight: 600;">${qualityScore}/100</td>
               </tr>
             </table>
 
             ${conversationSummary ? `
-            <hr style="border: none; border-top: 1px solid rgba(157,78,221,0.3); margin: 16px 0;" />
-            <div style="background: rgba(26, 15, 46, 0.6); padding: 16px; border-radius: 8px; border: 1px solid rgba(157,78,221,0.15);">
-              <p style="color: #b794c7; font-size: 12px; margin: 0 0 8px; text-transform: uppercase;">Conversation Summary</p>
-              <p style="color: #f4f0f9; font-size: 13px; line-height: 1.5; margin: 0; white-space: pre-wrap;">${escapeHtml(conversationSummary)}</p>
+            <hr style="border: none; border-top: 1px solid rgba(217,119,6,0.3); margin: 16px 0;" />
+            <div style="background: rgba(20,20,22, 0.6); padding: 16px; border-radius: 8px; border: 1px solid rgba(217,119,6,0.15);">
+              <p style="color: #D6D0C2; font-size: 12px; margin: 0 0 8px; text-transform: uppercase;">Conversation Summary</p>
+              <p style="color: #F5F1E8; font-size: 13px; line-height: 1.5; margin: 0; white-space: pre-wrap;">${escapeHtml(conversationSummary)}</p>
             </div>
             ` : ''}
 
-            <p style="color: #7c5a8a; font-size: 11px; margin: 16px 0 0; text-align: center;">
+            <p style="color: #71717A; font-size: 11px; margin: 16px 0 0; text-align: center;">
               Lead ID: ${lead.id} | Captured: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })}
             </p>
           </div>

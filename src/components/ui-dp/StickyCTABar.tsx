@@ -45,15 +45,15 @@ export function StickyCTABar() {
               background: 'linear-gradient(135deg, rgba(13,8,21,0.95) 0%, rgba(26,10,46,0.95) 100%)',
               backdropFilter: 'blur(16px)',
               WebkitBackdropFilter: 'blur(16px)',
-              borderTop: '1px solid rgba(199, 125, 255, 0.2)',
+              borderTop: '1px solid rgba(245,158,11, 0.2)',
             }}
           >
             <Link href="/free-growth-audit" className="block">
               <div
                 className="w-full py-3 rounded-xl text-center text-sm font-semibold text-white flex items-center justify-center gap-2"
                 style={{
-                  background: 'linear-gradient(135deg, #7b2cbf 0%, #9d4edd 50%, #c77dff 100%)',
-                  boxShadow: '0 4px 16px rgba(123, 44, 191, 0.4)',
+                  background: 'linear-gradient(135deg, #B45309 0%, #D97706 50%, #F59E0B 100%)',
+                  boxShadow: '0 4px 16px rgba(180,83,9, 0.4)',
                 }}
               >
                 Get Free Audit

@@ -55,20 +55,20 @@ export async function POST(req: Request) {
       to: email,
       subject: 'Welcome to Digital Point — Growth Insights',
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0d0815; color: #e0d6eb; padding: 40px 30px; border-radius: 12px;">
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0B; color: #e0d6eb; padding: 40px 30px; border-radius: 12px;">
           <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="color: #c77dff; font-size: 24px; margin: 0;">Welcome to Digital Point</h1>
-            <p style="color: #9080a0; font-size: 14px; margin-top: 8px;">Growth insights from $50M+ in managed ad spend</p>
+            <h1 style="color: #F59E0B; font-size: 24px; margin: 0;">Welcome to Digital Point</h1>
+            <p style="color: #71717A; font-size: 14px; margin-top: 8px;">Growth insights from $50M+ in managed ad spend</p>
           </div>
-          <div style="background: rgba(123, 44, 191, 0.1); border: 1px solid rgba(199, 125, 255, 0.2); border-radius: 8px; padding: 24px; margin-bottom: 24px;">
+          <div style="background: rgba(180,83,9, 0.1); border: 1px solid rgba(245,158,11, 0.2); border-radius: 8px; padding: 24px; margin-bottom: 24px;">
             <p style="margin: 0 0 12px; font-size: 15px; color: #e0d6eb;">Hey there 👋</p>
-            <p style="margin: 0 0 12px; font-size: 14px; color: #b794c7; line-height: 1.6;">
+            <p style="margin: 0 0 12px; font-size: 14px; color: #D6D0C2; line-height: 1.6;">
               Thanks for subscribing! You'll receive frameworks, benchmarks, and case studies that help performance marketers scale profitably.
             </p>
-            <p style="margin: 0; font-size: 14px; color: #b794c7; line-height: 1.6;">
+            <p style="margin: 0; font-size: 14px; color: #D6D0C2; line-height: 1.6;">
               Here's what to expect:
             </p>
-            <ul style="color: #b794c7; font-size: 14px; line-height: 1.8; padding-left: 20px;">
+            <ul style="color: #D6D0C2; font-size: 14px; line-height: 1.8; padding-left: 20px;">
               <li>ROAS optimization strategies</li>
               <li>CAC benchmarks by industry</li>
               <li>Attribution & analytics insights</li>
@@ -76,11 +76,11 @@ export async function POST(req: Request) {
             </ul>
           </div>
           <div style="text-align: center; margin-bottom: 24px;">
-            <a href="https://digitalpointllc.com/blog" style="display: inline-block; background: linear-gradient(135deg, #7b2cbf, #9d4edd); color: white; text-decoration: none; padding: 12px 28px; border-radius: 8px; font-size: 14px; font-weight: 600;">Read Our Latest Insights</a>
+            <a href="https://digitalpointllc.com/blog" style="display: inline-block; background: linear-gradient(135deg, #B45309, #D97706); color: white; text-decoration: none; padding: 12px 28px; border-radius: 8px; font-size: 14px; font-weight: 600;">Read Our Latest Insights</a>
           </div>
-          <div style="text-align: center; border-top: 1px solid rgba(199, 125, 255, 0.15); padding-top: 20px;">
-            <p style="color: #7c5a8a; font-size: 12px; margin: 0;">Digital Point LLC — Performance Marketing & Growth Systems</p>
-            <p style="color: #7c5a8a; font-size: 11px; margin-top: 4px;">You're receiving this because you subscribed at digitalpointllc.com</p>
+          <div style="text-align: center; border-top: 1px solid rgba(245,158,11, 0.15); padding-top: 20px;">
+            <p style="color: #71717A; font-size: 12px; margin: 0;">Digital Point LLC — Performance Marketing & Growth Systems</p>
+            <p style="color: #71717A; font-size: 11px; margin-top: 4px;">You're receiving this because you subscribed at digitalpointllc.com</p>
           </div>
         </div>
       `,
@@ -97,7 +97,7 @@ export async function POST(req: Request) {
         replyTo: email,
         html: `
           <div style="font-family: Arial, sans-serif; padding: 20px;">
-            <h2 style="color: #7b2cbf;">New Newsletter Subscriber</h2>
+            <h2 style="color: #B45309;">New Newsletter Subscriber</h2>
             <p><strong>Email:</strong> ${safeEmail}</p>
             <p><strong>Time:</strong> ${new Date().toLocaleString()}</p>
             <p><strong>DB Stored:</strong> ${dbSuccess ? 'Yes' : 'No (fallback mode)'}</p>

@@ -13,7 +13,7 @@ import type { Guide } from '@/lib/guides';
 function TableOfContents({ sections, activeId }: { sections: { id: string; title: string }[]; activeId: string }) {
   return (
     <nav className="space-y-1" aria-label="Table of contents">
-      <p className="text-xs font-semibold uppercase tracking-wider text-[#9080a0] mb-3">
+      <p className="text-xs font-semibold uppercase tracking-wider text-[#71717A] mb-3">
         Table of Contents
       </p>
       {sections.map((section) => (
@@ -22,8 +22,8 @@ function TableOfContents({ sections, activeId }: { sections: { id: string; title
           href={`#${section.id}`}
           className={`block text-sm py-1.5 px-3 rounded-lg transition-all duration-200 ${
             activeId === section.id
-              ? 'text-white bg-[rgba(199,125,255,0.12)] border-l-2 border-[#c77dff]'
-              : 'text-[#9080a0] hover:text-[#b794c7] hover:bg-[rgba(199,125,255,0.06)]'
+              ? 'text-white bg-[rgba(245,158,11,0.12)] border-l-2 border-[#F59E0B]'
+              : 'text-[#71717A] hover:text-[#D6D0C2] hover:bg-[rgba(245,158,11,0.06)]'
           }`}
         >
           {section.title}
@@ -38,17 +38,17 @@ function KeyTakeaway({ text }: { text: string }) {
     <div
       className="my-8 rounded-xl p-5"
       style={{
-        borderLeft: '3px solid #c77dff',
-        background: 'linear-gradient(135deg, rgba(199, 125, 255, 0.08), rgba(157, 78, 221, 0.03))',
+        borderLeft: '3px solid #F59E0B',
+        background: 'linear-gradient(135deg, rgba(245,158,11, 0.08), rgba(217,119,6, 0.03))',
       }}
     >
       <div className="flex items-start gap-3">
-        <Lightbulb className="w-5 h-5 text-[#c77dff] shrink-0 mt-0.5" />
+        <Lightbulb className="w-5 h-5 text-[#F59E0B] shrink-0 mt-0.5" />
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wider text-[#c77dff] mb-1.5">
+          <p className="text-xs font-semibold uppercase tracking-wider text-[#F59E0B] mb-1.5">
             Key Takeaway
           </p>
-          <p className="text-[#b794c7] text-sm leading-relaxed">{text}</p>
+          <p className="text-[#D6D0C2] text-sm leading-relaxed">{text}</p>
         </div>
       </div>
     </div>
@@ -64,7 +64,7 @@ function RelatedLinks({ links }: { links: Guide['relatedLinks'] }) {
   const typeColors: Record<string, string> = {
     tool: '#a3e635',
     research: '#7dd3fc',
-    blog: '#c77dff',
+    blog: '#F59E0B',
   };
 
   return (
@@ -75,9 +75,9 @@ function RelatedLinks({ links }: { links: Guide['relatedLinks'] }) {
           <Link
             key={link.href}
             href={link.href}
-            className="flex items-center gap-3 p-3 rounded-xl group transition-all duration-200 hover:bg-[rgba(199,125,255,0.06)]"
+            className="flex items-center gap-3 p-3 rounded-xl group transition-all duration-200 hover:bg-[rgba(245,158,11,0.06)]"
             style={{
-              border: '1px solid rgba(157, 78, 221, 0.15)',
+              border: '1px solid rgba(217,119,6, 0.15)',
             }}
           >
             <span
@@ -89,10 +89,10 @@ function RelatedLinks({ links }: { links: Guide['relatedLinks'] }) {
             >
               {typeLabels[link.type]}
             </span>
-            <span className="text-sm text-[#b794c7] group-hover:text-white transition-colors flex-1 min-w-0 truncate">
+            <span className="text-sm text-[#D6D0C2] group-hover:text-white transition-colors flex-1 min-w-0 truncate">
               {link.title}
             </span>
-            <ExternalLink className="w-3.5 h-3.5 text-[#9080a0] group-hover:text-[#c77dff] transition-colors shrink-0" />
+            <ExternalLink className="w-3.5 h-3.5 text-[#71717A] group-hover:text-[#F59E0B] transition-colors shrink-0" />
           </Link>
         ))}
       </div>
@@ -114,8 +114,8 @@ function FAQSection({ faqs }: { faqs: Guide['faqs'] }) {
             key={index}
             className="rounded-xl overflow-hidden"
             style={{
-              background: 'rgba(26, 15, 46, 0.6)',
-              border: '1px solid rgba(157, 78, 221, 0.15)',
+              background: 'rgba(20,20,22, 0.6)',
+              border: '1px solid rgba(217,119,6, 0.15)',
             }}
           >
             <button
@@ -123,7 +123,7 @@ function FAQSection({ faqs }: { faqs: Guide['faqs'] }) {
               className="w-full text-left p-5 flex items-start gap-3 cursor-pointer"
             >
               <ChevronRight
-                className={`w-4 h-4 text-[#c77dff] shrink-0 mt-1 transition-transform duration-200 ${
+                className={`w-4 h-4 text-[#F59E0B] shrink-0 mt-1 transition-transform duration-200 ${
                   openIndex === index ? 'rotate-90' : ''
                 }`}
               />
@@ -131,7 +131,7 @@ function FAQSection({ faqs }: { faqs: Guide['faqs'] }) {
             </button>
             {openIndex === index && (
               <div className="px-5 pb-5 pl-12">
-                <p className="text-[#b794c7] text-sm leading-relaxed">{faq.answer}</p>
+                <p className="text-[#D6D0C2] text-sm leading-relaxed">{faq.answer}</p>
               </div>
             )}
           </div>
@@ -179,22 +179,22 @@ export function GuideContent({ guide }: { guide: Guide }) {
               ]}
             />
             <div className="mt-6 mb-4 flex items-center gap-3">
-              <span className="flex items-center gap-1.5 text-[#9080a0] text-xs">
+              <span className="flex items-center gap-1.5 text-[#71717A] text-xs">
                 <BookOpen className="w-3.5 h-3.5" />
                 Pillar Guide
               </span>
-              <span className="text-[#9080a0] text-xs">-</span>
-              <span className="flex items-center gap-1.5 text-[#9080a0] text-xs">
+              <span className="text-[#71717A] text-xs">-</span>
+              <span className="flex items-center gap-1.5 text-[#71717A] text-xs">
                 <Clock className="w-3.5 h-3.5" />
                 {guide.readTime}
               </span>
-              <span className="text-[#9080a0] text-xs">-</span>
-              <span className="text-[#9080a0] text-xs">{guide.sections.length} sections</span>
+              <span className="text-[#71717A] text-xs">-</span>
+              <span className="text-[#71717A] text-xs">{guide.sections.length} sections</span>
             </div>
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
               {guide.title}
             </h1>
-            <p className="text-[#b794c7] text-lg leading-relaxed max-w-2xl">
+            <p className="text-[#D6D0C2] text-lg leading-relaxed max-w-2xl">
               {guide.description}
             </p>
           </FadeUp>
@@ -209,7 +209,7 @@ export function GuideContent({ guide }: { guide: Guide }) {
             <aside className="hidden lg:block w-64 shrink-0">
               <div className="sticky top-28">
                 <TableOfContents sections={tocItems} activeId={activeId} />
-                <div className="mt-6 pt-6" style={{ borderTop: '1px solid rgba(157, 78, 221, 0.15)' }}>
+                <div className="mt-6 pt-6" style={{ borderTop: '1px solid rgba(217,119,6, 0.15)' }}>
                   <GrowthAuditCTA variant="compact" />
                 </div>
               </div>
@@ -220,7 +220,7 @@ export function GuideContent({ guide }: { guide: Guide }) {
               {/* Mobile ToC */}
               <div className="lg:hidden mb-8">
                 <GlassCard className="p-4">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-[#9080a0] mb-2">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-[#71717A] mb-2">
                     In This Guide
                   </p>
                   <ol className="space-y-1">
@@ -228,9 +228,9 @@ export function GuideContent({ guide }: { guide: Guide }) {
                       <li key={item.id}>
                         <a
                           href={`#${item.id}`}
-                          className="flex items-center gap-2 text-sm text-[#b794c7] hover:text-white transition-colors py-1"
+                          className="flex items-center gap-2 text-sm text-[#D6D0C2] hover:text-white transition-colors py-1"
                         >
-                          <span className="text-[#c77dff] text-xs font-mono w-5 text-right shrink-0">
+                          <span className="text-[#F59E0B] text-xs font-mono w-5 text-right shrink-0">
                             {String(i + 1).padStart(2, '0')}
                           </span>
                           {item.title}
@@ -247,10 +247,10 @@ export function GuideContent({ guide }: { guide: Guide }) {
                   <FadeUp delay={index * 0.03}>
                     <div className={index > 0 ? 'mt-14' : ''}>
                       <div className="flex items-center gap-3 mb-4">
-                        <span className="text-[#c77dff] text-sm font-mono">
+                        <span className="text-[#F59E0B] text-sm font-mono">
                           {String(index + 1).padStart(2, '0')}
                         </span>
-                        <div className="h-px flex-1 bg-gradient-to-r from-[rgba(199,125,255,0.2)] to-transparent" />
+                        <div className="h-px flex-1 bg-gradient-to-r from-[rgba(245,158,11,0.2)] to-transparent" />
                       </div>
                       <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-6">
                         {section.title}

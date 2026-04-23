@@ -83,7 +83,7 @@ interface BlogPostContentProps {
 export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts }: BlogPostContentProps) {
   const [firstHalf, secondHalf] = splitHtmlAtMiddle(htmlContent);
 
-  const proseClasses = `prose prose-invert prose-purple max-w-none
+  const proseClasses = `prose prose-invert max-w-none
                   [&_h2]:font-display [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-white [&_h2]:mt-10 [&_h2]:mb-4
                   [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-white [&_h3]:mt-8 [&_h3]:mb-3
                   [&_p]:text-[#D6D0C2] [&_p]:leading-relaxed [&_p]:mb-4

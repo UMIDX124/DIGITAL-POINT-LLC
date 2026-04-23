@@ -3,7 +3,6 @@ import { Instrument_Serif, Inter, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-import CookieConsent from "@/components/CookieConsent";
 
 const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
@@ -220,7 +219,6 @@ export default function RootLayout({
       >
         {children}
         <Toaster />
-        <CookieConsent />
         {process.env.NEXT_PUBLIC_ADSENSE_ID ? (
           <Script
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`}

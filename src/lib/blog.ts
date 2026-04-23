@@ -31,12 +31,12 @@ export type BlogCategory =
 
 export const categoryMeta: Record<BlogCategory, { color: string; slug: string; description: string }> = {
   'Marketing Attribution': {
-    color: '#c77dff',
+    color: '#F59E0B',
     slug: 'marketing-attribution',
     description: 'Multi-touch attribution, tracking models, and measurement frameworks for modern marketers.',
   },
   'Paid Ads Benchmarks': {
-    color: '#ff6b9d',
+    color: '#F59E0B',
     slug: 'paid-ads-benchmarks',
     description: 'Industry benchmarks for CPC, CPM, CTR, ROAS, and conversion rates across ad platforms.',
   },
@@ -151,18 +151,18 @@ export function markdownToHtml(content: string): string {
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
     // Links
-    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" class="text-[#c77dff] hover:text-[#e0aaff] underline">$1</a>')
+    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" class="text-[#F59E0B] hover:text-[#FBBF24] underline">$1</a>')
     // Unordered lists
     .replace(/^- (.+)$/gm, '<li>$1</li>')
     // Numbered lists
     .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
     // Horizontal rules
-    .replace(/^---$/gm, '<hr class="border-[rgba(157,78,221,0.15)] my-8" />')
+    .replace(/^---$/gm, '<hr class="border-[rgba(217,119,6,0.15)] my-8" />')
     // Code blocks
-    .replace(/`(.+?)`/g, '<code class="px-1.5 py-0.5 rounded bg-[rgba(157,78,221,0.15)] text-[#e0aaff] text-sm font-mono">$1</code>');
+    .replace(/`(.+?)`/g, '<code class="px-1.5 py-0.5 rounded bg-[rgba(217,119,6,0.15)] text-[#FBBF24] text-sm font-mono">$1</code>');
 
   // Wrap consecutive <li> in <ul>
-  html = html.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul class="list-disc pl-6 space-y-2 text-[#b794c7]">$1</ul>');
+  html = html.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul class="list-disc pl-6 space-y-2 text-[#D6D0C2]">$1</ul>');
 
   // Wrap remaining text lines in <p>
   html = html

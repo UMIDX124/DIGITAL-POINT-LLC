@@ -124,7 +124,7 @@ function AuditForm() {
           <CheckCircle className="w-7 h-7 text-green-400" />
         </motion.div>
         <h3 className="font-display text-xl font-bold text-white mb-2">Audit Requested!</h3>
-        <p className="text-[#b794c7] text-sm">We&apos;ll review your setup and respond within 24–48 hours.</p>
+        <p className="text-[#D6D0C2] text-sm">We&apos;ll review your setup and respond within 24–48 hours.</p>
       </div>
     );
   }
@@ -140,7 +140,7 @@ function AuditForm() {
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           placeholder="Your name"
-          className="bg-[#1a0a2e]/50 border-[#3d1a5e] focus:border-[#c77dff] text-white placeholder:text-[#7c5a8a]"
+          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#F59E0B] text-white placeholder:text-[#71717A]"
         />
         {errors.name && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.name}</p>}
       </div>
@@ -155,7 +155,7 @@ function AuditForm() {
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           placeholder="you@company.com"
-          className="bg-[#1a0a2e]/50 border-[#3d1a5e] focus:border-[#c77dff] text-white placeholder:text-[#7c5a8a]"
+          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#F59E0B] text-white placeholder:text-[#71717A]"
         />
         {errors.email && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.email}</p>}
       </div>
@@ -169,7 +169,7 @@ function AuditForm() {
           value={formData.company}
           onChange={(e) => setFormData({ ...formData, company: e.target.value })}
           placeholder="Company name (optional)"
-          className="bg-[#1a0a2e]/50 border-[#3d1a5e] focus:border-[#c77dff] text-white placeholder:text-[#7c5a8a]"
+          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#F59E0B] text-white placeholder:text-[#71717A]"
         />
       </div>
 
@@ -181,7 +181,7 @@ function AuditForm() {
           value={formData.bottleneck}
           onValueChange={(v) => setFormData({ ...formData, bottleneck: v })}
         >
-          <SelectTrigger className="bg-[#1a0a2e]/50 border-[#3d1a5e] text-white">
+          <SelectTrigger className="bg-[#141416]/50 border-[#3d1a5e] text-white">
             <SelectValue placeholder="Select your biggest challenge" />
           </SelectTrigger>
           <SelectContent>
@@ -198,7 +198,7 @@ function AuditForm() {
         disabled={isSubmitting}
         className="w-full py-5 text-base font-semibold group cursor-pointer"
         style={{
-          background: 'linear-gradient(135deg, #7b2cbf 0%, #9d4edd 50%, #c77dff 100%)',
+          background: 'linear-gradient(135deg, #B45309 0%, #D97706 50%, #F59E0B 100%)',
         }}
       >
         {isSubmitting ? (
@@ -306,7 +306,7 @@ function FounderContactForm() {
           <CheckCircle className="w-7 h-7 text-green-400" />
         </motion.div>
         <h3 className="font-display text-xl font-bold text-white mb-2">Message Sent!</h3>
-        <p className="text-[#b794c7] text-sm">A co-founder will get back to you within 24 hours.</p>
+        <p className="text-[#D6D0C2] text-sm">A co-founder will get back to you within 24 hours.</p>
       </div>
     );
   }
@@ -322,7 +322,7 @@ function FounderContactForm() {
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           placeholder="Your name"
-          className="bg-[#1a0a2e]/50 border-[#3d1a5e] focus:border-[#ff6b9d] text-white placeholder:text-[#7c5a8a]"
+          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#F59E0B] text-white placeholder:text-[#71717A]"
         />
         {errors.name && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.name}</p>}
       </div>
@@ -337,7 +337,7 @@ function FounderContactForm() {
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           placeholder="you@company.com"
-          className="bg-[#1a0a2e]/50 border-[#3d1a5e] focus:border-[#ff6b9d] text-white placeholder:text-[#7c5a8a]"
+          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#F59E0B] text-white placeholder:text-[#71717A]"
         />
         {errors.email && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.email}</p>}
       </div>
@@ -352,7 +352,7 @@ function FounderContactForm() {
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           placeholder="What's on your mind?"
           rows={4}
-          className="bg-[#1a0a2e]/50 border-[#3d1a5e] focus:border-[#ff6b9d] text-white resize-none placeholder:text-[#7c5a8a]"
+          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#F59E0B] text-white resize-none placeholder:text-[#71717A]"
         />
         {errors.message && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.message}</p>}
       </div>
@@ -362,7 +362,7 @@ function FounderContactForm() {
         disabled={isSubmitting}
         className="w-full py-5 text-base font-semibold group cursor-pointer"
         style={{
-          background: 'linear-gradient(135deg, #9d4edd 0%, #ff6b9d 100%)',
+          background: 'linear-gradient(135deg, #D97706 0%, #F59E0B 100%)',
         }}
       >
         {isSubmitting ? (
@@ -375,7 +375,7 @@ function FounderContactForm() {
       <div className="flex items-center justify-center gap-4 pt-2">
         <a
           href="mailto:info@digitalpointllc.com"
-          className="flex items-center gap-1.5 text-[#c77dff] hover:text-[#e0aaff] transition-colors text-xs"
+          className="flex items-center gap-1.5 text-[#F59E0B] hover:text-[#FBBF24] transition-colors text-xs"
         >
           <Mail className="w-3.5 h-3.5" />
           info@digitalpointllc.com
@@ -384,7 +384,7 @@ function FounderContactForm() {
           href="https://linkedin.com/company/digitalpointllc"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 text-[#c77dff] hover:text-[#e0aaff] transition-colors text-xs"
+          className="flex items-center gap-1.5 text-[#F59E0B] hover:text-[#FBBF24] transition-colors text-xs"
         >
           <Linkedin className="w-3.5 h-3.5" />
           LinkedIn
@@ -400,7 +400,7 @@ export function FounderFormSection() {
   return (
     <Section className="relative overflow-hidden">
       {/* Cosmic background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#13091e] via-[#1a0a2e] to-[#0d0815]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#141416] via-[#141416] to-[#0A0A0B]" />
 
       {/* Glow effect */}
       <motion.div
@@ -408,7 +408,7 @@ export function FounderFormSection() {
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full blur-3xl pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse, rgba(157, 78, 221, 0.25) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse, rgba(217,119,6, 0.25) 0%, transparent 70%)',
         }}
       />
 
@@ -425,17 +425,17 @@ export function FounderFormSection() {
             <div
               className="relative rounded-2xl overflow-hidden h-full flex flex-col"
               style={{
-                background: 'rgba(26, 15, 46, 0.6)',
+                background: 'rgba(20,20,22, 0.6)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
-                border: '1px solid rgba(157, 78, 221, 0.25)',
+                border: '1px solid rgba(217,119,6, 0.25)',
               }}
             >
               {/* Inner glow */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(199, 125, 255, 0.08) 0%, transparent 50%)',
+                  background: 'linear-gradient(135deg, rgba(245,158,11, 0.08) 0%, transparent 50%)',
                 }}
               />
 
@@ -445,17 +445,17 @@ export function FounderFormSection() {
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                     style={{
-                      background: 'rgba(157, 78, 221, 0.2)',
-                      border: '1px solid rgba(199, 125, 255, 0.3)',
+                      background: 'rgba(217,119,6, 0.2)',
+                      border: '1px solid rgba(245,158,11, 0.3)',
                     }}
                   >
-                    <Search className="w-5 h-5 text-[#c77dff]" />
+                    <Search className="w-5 h-5 text-[#F59E0B]" />
                   </div>
                   <div>
                     <h3 className="font-display text-lg font-bold text-white">Free Growth Audit</h3>
                   </div>
                 </div>
-                <p className="text-[#b794c7] text-sm mb-5">
+                <p className="text-[#D6D0C2] text-sm mb-5">
                   Get a clear picture of what&apos;s working and what to fix next.
                 </p>
 
@@ -470,9 +470,9 @@ export function FounderFormSection() {
                       key={text}
                       className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs"
                       style={{
-                        background: 'rgba(157, 78, 221, 0.1)',
-                        border: '1px solid rgba(199, 125, 255, 0.15)',
-                        color: '#c77dff',
+                        background: 'rgba(217,119,6, 0.1)',
+                        border: '1px solid rgba(245,158,11, 0.15)',
+                        color: '#F59E0B',
                       }}
                     >
                       <Icon className="w-3 h-3" />
@@ -494,17 +494,17 @@ export function FounderFormSection() {
             <div
               className="relative rounded-2xl overflow-hidden h-full flex flex-col"
               style={{
-                background: 'rgba(26, 15, 46, 0.6)',
+                background: 'rgba(20,20,22, 0.6)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255, 107, 157, 0.2)',
+                border: '1px solid rgba(245,158,11, 0.2)',
               }}
             >
               {/* Inner glow — pink accent */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(255, 107, 157, 0.06) 0%, transparent 50%)',
+                  background: 'linear-gradient(135deg, rgba(245,158,11, 0.06) 0%, transparent 50%)',
                 }}
               />
 
@@ -514,17 +514,17 @@ export function FounderFormSection() {
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                     style={{
-                      background: 'rgba(255, 107, 157, 0.15)',
-                      border: '1px solid rgba(255, 107, 157, 0.3)',
+                      background: 'rgba(245,158,11, 0.15)',
+                      border: '1px solid rgba(245,158,11, 0.3)',
                     }}
                   >
-                    <MessageSquare className="w-5 h-5 text-[#ff6b9d]" />
+                    <MessageSquare className="w-5 h-5 text-[#F59E0B]" />
                   </div>
                   <div>
                     <h3 className="font-display text-lg font-bold text-white">Talk to Our Co-Founders</h3>
                   </div>
                 </div>
-                <p className="text-[#b794c7] text-sm mb-5">
+                <p className="text-[#D6D0C2] text-sm mb-5">
                   No sales team. No handoffs. Just a direct conversation.
                 </p>
 
@@ -538,9 +538,9 @@ export function FounderFormSection() {
                       key={text}
                       className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs"
                       style={{
-                        background: 'rgba(255, 107, 157, 0.1)',
-                        border: '1px solid rgba(255, 107, 157, 0.15)',
-                        color: '#ff6b9d',
+                        background: 'rgba(245,158,11, 0.1)',
+                        border: '1px solid rgba(245,158,11, 0.15)',
+                        color: '#F59E0B',
                       }}
                     >
                       <Icon className="w-3 h-3" />

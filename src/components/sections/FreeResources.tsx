@@ -34,7 +34,7 @@ export function FreeResources() {
           <span
             className="text-sm font-medium uppercase tracking-wider mb-4 block"
             style={{
-              background: 'linear-gradient(90deg, #e0aaff, #c77dff)',
+              background: 'linear-gradient(90deg, #FBBF24, #F59E0B)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}
@@ -44,7 +44,7 @@ export function FreeResources() {
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
             Guides &amp; Frameworks
           </h2>
-          <p className="text-[#b794c7] text-lg mt-4 leading-relaxed">
+          <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed">
             Actionable playbooks you can implement today — no email required
           </p>
         </div>
@@ -79,7 +79,7 @@ export function FreeResources() {
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                     style={{
                       background:
-                        'linear-gradient(135deg, rgba(199, 125, 255, 0.06) 0%, transparent 60%)',
+                        'linear-gradient(135deg, rgba(245,158,11, 0.06) 0%, transparent 60%)',
                     }}
                   />
 
@@ -88,25 +88,25 @@ export function FreeResources() {
                     <div
                       className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
                       style={{
-                        background: 'rgba(157, 78, 221, 0.15)',
-                        border: '1px solid rgba(199, 125, 255, 0.2)',
+                        background: 'rgba(217,119,6, 0.15)',
+                        border: '1px solid rgba(245,158,11, 0.2)',
                       }}
                     >
-                      <Icon className="w-5 h-5 text-[#c77dff]" />
+                      <Icon className="w-5 h-5 text-[#F59E0B]" />
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-display text-lg font-semibold text-white mb-2 leading-snug group-hover:text-[#c77dff] transition-colors">
+                    <h3 className="font-display text-lg font-semibold text-white mb-2 leading-snug group-hover:text-[#F59E0B] transition-colors">
                       {resource.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-[#7c5a8a] text-sm leading-relaxed flex-1 mb-5">
+                    <p className="text-[#71717A] text-sm leading-relaxed flex-1 mb-5">
                       {resource.description}
                     </p>
 
                     {/* CTA */}
-                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[#c77dff] group-hover:text-[#e0aaff] transition-colors">
+                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[#F59E0B] group-hover:text-[#FBBF24] transition-colors">
                       Read Free Guide
                       <span
                         aria-hidden="true"

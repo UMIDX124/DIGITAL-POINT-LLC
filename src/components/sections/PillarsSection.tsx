@@ -1,103 +1,65 @@
-import { TrendingUp, Settings, Users, ArrowRight } from 'lucide-react';
-import { Section, Container, SectionHeader, FadeUp, GlassCard, SignalPoint } from '@/components/ui-dp/AnimatedElements';
-import Link from 'next/link';
+'use client';
 
-const pillars = [
-  {
-    icon: TrendingUp,
-    title: 'Performance Marketing',
-    description: 'We run your paid acquisition. Meta, Google, YouTube. But only after tracking is in place—so we know what actually works.',
-    features: ['Media buying', 'Creative testing', 'CAC & ROAS tracking', 'Landing pages'],
-    link: '/performance-marketing',
-  },
-  {
-    icon: Settings,
-    title: 'Systems & Reporting',
-    description: 'Attribution. Dashboards. CRM structure. The invisible infrastructure that lets you make decisions with confidence.',
-    features: ['Attribution setup', 'Custom dashboards', 'CRM integration', 'Automation'],
-    link: '/systems-reporting',
-  },
-  {
-    icon: Users,
-    title: 'Remote Workforce',
-    description: 'Trained specialists who execute without constant oversight. Media buyers, analysts, creatives—all managed for you.',
-    features: ['Role-specific talent', 'Pod structure', 'QA built-in', 'Weekly reporting'],
-    link: '/remote-workforce',
-  },
-];
+import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
+import { copy } from '@/lib/copy';
 
 export function PillarsSection() {
+  const { eyebrow, headline, body, cards } = copy.pillars;
 
   return (
-    <Section className="relative overflow-hidden">
-      {/* Cosmic gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#1a0a2e] via-[#1d0f33] to-[#13091e]" />
-      
-      <Container className="relative z-10">
-        <SectionHeader
-          eyebrow="What We Build"
-          title="Three parts. One system."
-          description="Marketing without tracking is gambling. Execution without ownership is chaos. We fix both."
-          align="center"
-        />
+    <section
+      id="pillars"
+      className="relative section-padding"
+      style={{ background: '#0A0A0B', borderBottom: '1px solid #27272A' }}
+    >
+      <div className="container-wide">
+        <header className="max-w-3xl mb-16">
+          <p className="eyebrow mb-5">{eyebrow}</p>
+          <h2 className="font-display text-[36px] md:text-[52px] leading-[1.05] tracking-tight text-[color:var(--ivory)]">
+            {headline}
+          </h2>
+          <p className="mt-6 text-[16px] md:text-[17px] leading-[1.6] text-[color:var(--ivory-dim)] max-w-2xl">
+            {body}
+          </p>
+        </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {pillars.map((pillar, index) => (
-            <FadeUp key={pillar.title} delay={index * 0.1}>
-              <Link
-                href={pillar.link}
-                className="block w-full text-left"
-              >
-                <GlassCard className="p-8 h-full group cursor-pointer">
-                  {/* Icon */}
-                  <div 
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110"
-                    style={{
-                      background: 'rgba(157, 78, 221, 0.15)',
-                      border: '1px solid rgba(199, 125, 255, 0.2)',
-                    }}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5" data-pillars>
+          {cards.map((card) => (
+            <Link
+              key={card.id}
+              href={card.href}
+              className="group relative flex flex-col card-flat p-8 min-h-[340px] focus-ring"
+              data-pillar-card
+            >
+              <p className="eyebrow mb-6">{card.eyebrow}</p>
+
+              <h3 className="font-display text-[26px] md:text-[30px] leading-[1.1] tracking-tight text-[color:var(--ivory)]">
+                {card.title}
+              </h3>
+
+              <p className="mt-4 text-[14.5px] leading-[1.55] text-[color:var(--ivory-dim)]">
+                {card.body}
+              </p>
+
+              <ul className="mt-auto pt-8 divide-hairline">
+                {card.stats.map((stat) => (
+                  <li
+                    key={stat}
+                    className="py-2.5 font-mono text-[12px] text-[color:var(--muted)] tracking-wide"
                   >
-                    <pillar.icon className="w-7 h-7 text-[#c77dff]" />
-                  </div>
+                    {stat}
+                  </li>
+                ))}
+              </ul>
 
-                  {/* Title */}
-                  <h3 
-                    className="font-display text-xl font-bold mb-3 transition-colors"
-                    style={{
-                      background: 'linear-gradient(90deg, #ffffff, #c77dff)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                    }}
-                  >
-                    {pillar.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-[#b794c7] text-sm leading-relaxed mb-6">
-                    {pillar.description}
-                  </p>
-
-                  {/* Features */}
-                  <ul className="space-y-2 mb-6">
-                    {pillar.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-2 text-[#9080a0] text-sm">
-                        <SignalPoint size="sm" pulse={false} />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTA */}
-                  <div className="flex items-center text-[#c77dff] text-sm font-medium group-hover:text-[#e0aaff] transition-colors">
-                    Learn more
-                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </GlassCard>
-              </Link>
-            </FadeUp>
+              <span className="absolute top-8 right-8 text-[color:var(--muted)] group-hover:text-[color:var(--amber)] transition-colors">
+                <ArrowUpRight className="w-5 h-5" />
+              </span>
+            </Link>
           ))}
         </div>
-      </Container>
-    </Section>
+      </div>
+    </section>
   );
 }

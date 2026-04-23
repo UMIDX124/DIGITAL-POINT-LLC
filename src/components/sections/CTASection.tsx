@@ -1,110 +1,42 @@
-import { ArrowRight, Mail, Linkedin } from 'lucide-react';
-import { Section, Container, FadeUp } from '@/components/ui-dp/AnimatedElements';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { copy } from '@/lib/copy';
 
 export function CTASection() {
+  const { eyebrow, headline, body, ctaPrimary, ctaSecondary } = copy.finalCta;
 
   return (
-    <Section className="relative overflow-hidden">
-      {/* Cosmic gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#1a0a2e] via-[#2d1b4e] to-[#1a0a2e]" />
+    <section
+      className="relative section-padding"
+      style={{ background: '#0A0A0B' }}
+      id="cta"
+    >
+      <div className="container-narrow text-center">
+        <p className="eyebrow mb-5">{eyebrow}</p>
+        <h2 className="font-display text-[40px] md:text-[60px] leading-[1.05] tracking-tight text-[color:var(--ivory)] max-w-3xl mx-auto">
+          {headline}
+        </h2>
+        <p className="mt-6 text-[16px] md:text-[17px] leading-[1.6] text-[color:var(--ivory-dim)] max-w-xl mx-auto">
+          {body}
+        </p>
 
-      {/* Glow — CSS animation instead of framer-motion infinite */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full blur-3xl animate-glow-pulse"
-        style={{
-          background: 'radial-gradient(ellipse, rgba(199, 125, 255, 0.4) 0%, transparent 70%)',
-        }}
-      />
-
-      <Container className="relative z-10">
-        <FadeUp>
-          <div className="max-w-3xl mx-auto text-center">
-            {/* Badge */}
-            <div 
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
-              style={{
-                background: 'rgba(157, 78, 221, 0.15)',
-                border: '1px solid rgba(199, 125, 255, 0.3)',
-              }}
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-[#ff6b9d] animate-ping" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ff6b9d]"></span>
-              </span>
-              <span className="text-[#e0aaff] text-sm">Free. No pitch. Just clarity.</span>
-            </div>
-
-            {/* Heading */}
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
-              Know exactly what&apos;s{' '}
-              <span 
-                className="bg-gradient-to-r from-[#e0aaff] via-[#c77dff] to-[#ff6b9d] bg-clip-text text-transparent"
-              >
-                blocking your growth
-              </span>
-              .
-            </h2>
-
-            {/* Description */}
-            <p className="text-[#b794c7] text-lg mb-10 max-w-xl mx-auto">
-              One call. We review your setup, tell you what&apos;s missing, and give you a clear path forward. Even if you never work with us.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Link href="/free-growth-audit" className="w-full sm:w-auto">
-                <span
-                  className="flex sm:inline-flex w-full sm:w-auto justify-center px-8 py-4 text-lg font-semibold text-white rounded-xl overflow-hidden group transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98]"
-                  style={{
-                    background: 'linear-gradient(135deg, #7b2cbf 0%, #9d4edd 50%, #c77dff 100%)',
-                    boxShadow: '0 4px 20px rgba(123, 44, 191, 0.4)',
-                  }}
-                >
-                  <span className="flex items-center justify-center gap-2">
-                    Get Your Growth Audit
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </span>
-              </Link>
-            </div>
-
-            {/* What you get */}
-            <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-12">
-              {[
-                'Attribution gaps identified',
-                'Reporting blindspots exposed',
-                'Clear next steps',
-              ].map((item) => (
-                <span key={item} className="flex items-center gap-2 text-[#9080a0] text-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#c77dff]" />
-                  {item}
-                </span>
-              ))}
-            </div>
-
-            {/* Contact info */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-              <a 
-                href="mailto:info@digitalpointllc.com"
-                className="flex items-center gap-2 text-[#c77dff] hover:text-[#e0aaff] transition-colors text-sm"
-              >
-                <Mail className="w-4 h-4" />
-                info@digitalpointllc.com
-              </a>
-              <a 
-                href="https://linkedin.com/company/digitalpointllc"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-[#c77dff] hover:text-[#e0aaff] transition-colors text-sm"
-              >
-                <Linkedin className="w-4 h-4" />
-                LinkedIn
-              </a>
-            </div>
-          </div>
-        </FadeUp>
-      </Container>
-    </Section>
+        <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+          <Link
+            href={ctaPrimary.href}
+            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14px] font-medium rounded-md text-[#0A0A0B] focus-ring"
+            style={{ background: 'var(--amber-bright)' }}
+          >
+            {ctaPrimary.label}
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+          <Link
+            href={ctaSecondary.href}
+            className="inline-flex items-center justify-center px-6 py-3.5 text-[14px] font-medium rounded-md text-[color:var(--ivory)] border-hairline focus-ring hover:border-[color:var(--amber)] transition-colors"
+          >
+            {ctaSecondary.label}
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }

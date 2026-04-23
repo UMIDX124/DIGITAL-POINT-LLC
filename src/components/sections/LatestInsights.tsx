@@ -13,7 +13,7 @@ export function LatestInsights() {
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[450px] pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse at center top, rgba(157, 78, 221, 0.12) 0%, transparent 70%)',
+            'radial-gradient(ellipse at center top, rgba(217,119,6, 0.12) 0%, transparent 70%)',
         }}
       />
 
@@ -23,7 +23,7 @@ export function LatestInsights() {
           <span
             className="text-sm font-medium uppercase tracking-wider mb-4 block"
             style={{
-              background: 'linear-gradient(90deg, #e0aaff, #c77dff)',
+              background: 'linear-gradient(90deg, #FBBF24, #F59E0B)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}
@@ -33,7 +33,7 @@ export function LatestInsights() {
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
             Latest Insights
           </h2>
-          <p className="text-[#b794c7] text-lg mt-4 leading-relaxed">
+          <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed">
             Expert analysis on paid acquisition, attribution, and growth systems
           </p>
         </div>
@@ -41,7 +41,7 @@ export function LatestInsights() {
         {/* Post grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {posts.map((post) => {
-            const catColor = categoryMeta[post.category]?.color ?? '#c77dff';
+            const catColor = categoryMeta[post.category]?.color ?? '#F59E0B';
 
             return (
               <article
@@ -57,7 +57,7 @@ export function LatestInsights() {
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                   style={{
                     background:
-                      'linear-gradient(135deg, rgba(199, 125, 255, 0.06) 0%, transparent 60%)',
+                      'linear-gradient(135deg, rgba(245,158,11, 0.06) 0%, transparent 60%)',
                   }}
                 />
 
@@ -75,19 +75,19 @@ export function LatestInsights() {
                   </span>
 
                   {/* Title */}
-                  <h3 className="font-display text-lg font-semibold text-white mb-2 leading-snug group-hover:text-[#c77dff] transition-colors">
+                  <h3 className="font-display text-lg font-semibold text-white mb-2 leading-snug group-hover:text-[#F59E0B] transition-colors">
                     <Link href={`/blog/${post.slug}`} className="after:absolute after:inset-0">
                       {post.title}
                     </Link>
                   </h3>
 
                   {/* Excerpt */}
-                  <p className="text-[#7c5a8a] text-sm leading-relaxed line-clamp-3 mb-4 flex-1">
+                  <p className="text-[#71717A] text-sm leading-relaxed line-clamp-3 mb-4 flex-1">
                     {post.excerpt}
                   </p>
 
                   {/* Meta */}
-                  <div className="flex items-center gap-3 text-xs text-[#7c5a8a]">
+                  <div className="flex items-center gap-3 text-xs text-[#71717A]">
                     <time dateTime={post.date}>
                       {new Date(post.date).toLocaleDateString('en-US', {
                         month: 'short',
@@ -95,7 +95,7 @@ export function LatestInsights() {
                         year: 'numeric',
                       })}
                     </time>
-                    <span className="w-1 h-1 rounded-full bg-[#7c5a8a]" />
+                    <span className="w-1 h-1 rounded-full bg-[#71717A]" />
                     <span>{post.readTime}</span>
                   </div>
                 </div>
@@ -108,7 +108,7 @@ export function LatestInsights() {
         <div className="text-center mt-10">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1.5 text-[#c77dff] hover:text-[#e0aaff] font-medium transition-colors"
+            className="inline-flex items-center gap-1.5 text-[#F59E0B] hover:text-[#FBBF24] font-medium transition-colors"
           >
             View All Articles
             <span aria-hidden="true">&rarr;</span>

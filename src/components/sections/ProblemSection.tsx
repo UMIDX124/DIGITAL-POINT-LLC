@@ -45,7 +45,7 @@ export function ProblemSection() {
   return (
     <Section className="relative overflow-hidden">
       {/* Cosmic background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0d0815] via-[#13091e] to-[#1a0a2e]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0B] via-[#141416] to-[#141416]" />
 
       {/* Stars */}
       <div className="absolute inset-0 opacity-30">
@@ -82,13 +82,13 @@ export function ProblemSection() {
             {/* Main Title */}
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-[1.15] tracking-tight mb-6">
               <span className="block">You&apos;re not guessing.</span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#e0aaff] via-[#c77dff] to-[#ff6b9d]">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#FBBF24] via-[#F59E0B] to-[#F59E0B]">
                 You just don&apos;t have the data.
               </span>
             </h2>
 
             {/* Description */}
-            <p className="text-[#b794c7] text-lg md:text-xl leading-relaxed">
+            <p className="text-[#D6D0C2] text-lg md:text-xl leading-relaxed">
               Most founders are running on instinct because their systems don&apos;t tell them the truth.
             </p>
           </div>
@@ -102,17 +102,17 @@ export function ProblemSection() {
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
                     style={{
-                      background: 'rgba(157, 78, 221, 0.15)',
-                      border: '1px solid rgba(199, 125, 255, 0.2)',
+                      background: 'rgba(217,119,6, 0.15)',
+                      border: '1px solid rgba(245,158,11, 0.2)',
                     }}
                   >
-                    <problem.icon className="w-6 h-6 text-[#c77dff]" />
+                    <problem.icon className="w-6 h-6 text-[#F59E0B]" />
                   </div>
                   <div>
                     <h3 className="font-display font-semibold text-white mb-2">
                       {problem.title}
                     </h3>
-                    <p className="text-[#b794c7] text-sm leading-relaxed">
+                    <p className="text-[#D6D0C2] text-sm leading-relaxed">
                       {problem.description}
                     </p>
                   </div>

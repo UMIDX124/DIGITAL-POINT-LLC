@@ -17,14 +17,14 @@ const Metric = memo(function Metric({ value, label }: { value: string; label: st
       <div
         className="font-display text-3xl md:text-4xl font-bold mb-1"
         style={{
-          background: 'linear-gradient(90deg, #e0aaff, #c77dff)',
+          background: 'linear-gradient(90deg, #FBBF24, #F59E0B)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
         }}
       >
         {value}
       </div>
-      <div className="text-[#9080a0] text-sm">{label}</div>
+      <div className="text-[#71717A] text-sm">{label}</div>
     </div>
   );
 });
@@ -35,9 +35,9 @@ export function ProofBar() {
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(180deg, rgba(13,8,21,0) 0%, rgba(157,78,221,0.05) 50%, rgba(13,8,21,0) 100%)',
-          borderTop: '1px solid rgba(199, 125, 255, 0.08)',
-          borderBottom: '1px solid rgba(199, 125, 255, 0.08)',
+          background: 'linear-gradient(180deg, rgba(13,8,21,0) 0%, rgba(217,119,6,0.05) 50%, rgba(13,8,21,0) 100%)',
+          borderTop: '1px solid rgba(245,158,11, 0.08)',
+          borderBottom: '1px solid rgba(245,158,11, 0.08)',
         }}
       />
 

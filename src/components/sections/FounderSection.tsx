@@ -8,13 +8,13 @@ export function FounderSection() {
   return (
     <Section className="relative overflow-hidden">
       {/* Cosmic background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0d0815] via-[#1a0a2e] to-[#13091e]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0B] via-[#141416] to-[#141416]" />
       
       {/* Glow effect */}
       <div 
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl opacity-10"
         style={{
-          background: 'radial-gradient(ellipse, rgba(199, 125, 255, 0.5) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse, rgba(245,158,11, 0.5) 0%, transparent 70%)',
         }}
       />
       
@@ -28,8 +28,8 @@ export function FounderSection() {
                   <div 
                     className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden flex items-center justify-center"
                     style={{
-                      background: 'linear-gradient(135deg, rgba(157, 78, 221, 0.4) 0%, rgba(123, 44, 191, 0.2) 100%)',
-                      border: '2px solid rgba(199, 125, 255, 0.3)',
+                      background: 'linear-gradient(135deg, rgba(217,119,6, 0.4) 0%, rgba(180,83,9, 0.2) 100%)',
+                      border: '2px solid rgba(245,158,11, 0.3)',
                     }}
                   >
                     {/* Founder Avatar - Initials */}
@@ -37,7 +37,7 @@ export function FounderSection() {
                       <span 
                         className="text-4xl md:text-5xl font-display font-bold"
                         style={{
-                          background: 'linear-gradient(135deg, #e0aaff 0%, #c77dff 50%, #ff6b9d 100%)',
+                          background: 'linear-gradient(135deg, #FBBF24 0%, #F59E0B 50%, #F59E0B 100%)',
                           WebkitBackgroundClip: 'text',
                           WebkitTextFillColor: 'transparent',
                         }}
@@ -53,7 +53,7 @@ export function FounderSection() {
                   <div 
                     className="text-sm font-medium uppercase tracking-wider mb-2"
                     style={{
-                      background: 'linear-gradient(90deg, #e0aaff, #c77dff)',
+                      background: 'linear-gradient(90deg, #FBBF24, #F59E0B)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                     }}
@@ -65,14 +65,14 @@ export function FounderSection() {
                     Every engagement starts with a co-founder review.
                   </h2>
                   
-                  <p className="text-[#b794c7] leading-relaxed mb-6">
+                  <p className="text-[#D6D0C2] leading-relaxed mb-6">
                     No sales team. No account handoffs. You work directly with people who've built and scaled businesses — because the best execution comes from people who understand what's at stake.
                   </p>
                   
                   <div className="flex items-center justify-center md:justify-start gap-4">
                     <a 
                       href="mailto:info@digitalpointllc.com"
-                      className="flex items-center gap-2 text-[#c77dff] hover:text-[#e0aaff] transition-colors text-sm"
+                      className="flex items-center gap-2 text-[#F59E0B] hover:text-[#FBBF24] transition-colors text-sm"
                     >
                       <Mail className="w-4 h-4" />
                       info@digitalpointllc.com
@@ -81,7 +81,7 @@ export function FounderSection() {
                       href="https://linkedin.com/company/digitalpointllc"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-[#c77dff] hover:text-[#e0aaff] transition-colors text-sm"
+                      className="flex items-center gap-2 text-[#F59E0B] hover:text-[#FBBF24] transition-colors text-sm"
                     >
                       <Linkedin className="w-4 h-4" />
                       LinkedIn

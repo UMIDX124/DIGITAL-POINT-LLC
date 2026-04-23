@@ -36,13 +36,13 @@ export function SystemSection() {
   return (
     <Section className="relative overflow-hidden">
       {/* Cosmic background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0d0815] via-[#13091e] to-[#1a0a2e]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0B] via-[#141416] to-[#141416]" />
       
       {/* Subtle glow */}
       <div 
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[400px] rounded-full blur-3xl opacity-10"
         style={{
-          background: 'radial-gradient(ellipse, rgba(199, 125, 255, 0.5) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse, rgba(245,158,11, 0.5) 0%, transparent 70%)',
         }}
       />
 
@@ -64,14 +64,14 @@ export function SystemSection() {
                     <div 
                       className="w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-3"
                       style={{
-                        background: 'rgba(157, 78, 221, 0.15)',
-                        border: '1px solid rgba(199, 125, 255, 0.2)',
+                        background: 'rgba(217,119,6, 0.15)',
+                        border: '1px solid rgba(245,158,11, 0.2)',
                       }}
                     >
-                      <step.icon className="w-5 h-5 text-[#c77dff]" />
+                      <step.icon className="w-5 h-5 text-[#F59E0B]" />
                     </div>
                     <h4 className="font-display font-bold text-white text-sm mb-1">{step.title}</h4>
-                    <p className="text-[#9080a0] text-xs leading-relaxed">{step.description}</p>
+                    <p className="text-[#71717A] text-xs leading-relaxed">{step.description}</p>
                   </GlassCard>
                   
                   {/* Arrow */}
@@ -81,7 +81,7 @@ export function SystemSection() {
                         animate={{ x: [0, 4, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
                       >
-                        <ArrowRight className="w-4 h-4 text-[#c77dff] opacity-50" />
+                        <ArrowRight className="w-4 h-4 text-[#F59E0B] opacity-50" />
                       </motion.div>
                     </div>
                   )}
@@ -93,7 +93,7 @@ export function SystemSection() {
                         animate={{ y: [0, 4, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut', delay: index * 0.2 }}
                       >
-                        <ArrowRight className="w-4 h-4 text-[#c77dff] opacity-50 rotate-90" />
+                        <ArrowRight className="w-4 h-4 text-[#F59E0B] opacity-50 rotate-90" />
                       </motion.div>
                     </div>
                   )}
@@ -112,8 +112,8 @@ export function SystemSection() {
               <div 
                 className="inline-block p-6 rounded-2xl"
                 style={{
-                  background: 'rgba(157, 78, 221, 0.08)',
-                  border: '1px solid rgba(199, 125, 255, 0.15)',
+                  background: 'rgba(217,119,6, 0.08)',
+                  border: '1px solid rgba(245,158,11, 0.15)',
                 }}
               >
                 <p className="text-white/80 text-sm leading-relaxed max-w-xl">

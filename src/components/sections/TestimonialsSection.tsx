@@ -9,7 +9,7 @@ const testimonials = [
     metric: '+127% MRR',
     metricLabel: 'Revenue growth in 6 months',
     initials: 'SC',
-    color: '#c77dff',
+    color: '#F59E0B',
   },
   {
     quote: "Got execution capacity without the hiring headaches. They own outcomes, not just tasks.",
@@ -18,7 +18,7 @@ const testimonials = [
     metric: '3.1x ROAS',
     metricLabel: 'Return on ad spend',
     initials: 'MT',
-    color: '#ff6b9d',
+    color: '#F59E0B',
   },
   {
     quote: "We went from 'no idea where leads come from' to full attribution in 3 weeks.",
@@ -27,7 +27,7 @@ const testimonials = [
     metric: '-41% CAC',
     metricLabel: 'Customer acquisition cost reduction',
     initials: 'JW',
-    color: '#e0aaff',
+    color: '#FBBF24',
   },
 ];
 
@@ -35,7 +35,7 @@ export function TestimonialsSection() {
   return (
     <Section className="relative overflow-hidden">
       {/* Cosmic background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0510] via-[#13091e] to-[#1a0a2e]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0510] via-[#141416] to-[#141416]" />
 
       <Container className="relative z-10">
         <SectionHeader
@@ -53,24 +53,24 @@ export function TestimonialsSection() {
                 <div
                   className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full self-start mb-5"
                   style={{
-                    background: 'rgba(157, 78, 221, 0.1)',
-                    border: '1px solid rgba(199, 125, 255, 0.15)',
+                    background: 'rgba(217,119,6, 0.1)',
+                    border: '1px solid rgba(245,158,11, 0.15)',
                   }}
                 >
                   <span
                     className="text-sm font-bold"
                     style={{
-                      background: 'linear-gradient(90deg, #c77dff, #ff6b9d)',
+                      background: 'linear-gradient(90deg, #F59E0B, #F59E0B)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                     }}
                   >
                     {testimonial.metric}
                   </span>
-                  <span className="text-[#9080a0] text-xs">{testimonial.metricLabel}</span>
+                  <span className="text-[#71717A] text-xs">{testimonial.metricLabel}</span>
                 </div>
 
-                <Quote className="w-8 h-8 text-[#c77dff] opacity-50 mb-4" />
+                <Quote className="w-8 h-8 text-[#F59E0B] opacity-50 mb-4" />
 
                 <p className="text-white/90 text-sm leading-relaxed mb-6 flex-grow">
                   &ldquo;{testimonial.quote}&rdquo;
@@ -78,7 +78,7 @@ export function TestimonialsSection() {
 
                 <div
                   className="pt-4 border-t flex items-center gap-3"
-                  style={{ borderColor: 'rgba(157, 78, 221, 0.2)' }}
+                  style={{ borderColor: 'rgba(217,119,6, 0.2)' }}
                 >
                   {/* Avatar */}
                   <div
@@ -92,7 +92,7 @@ export function TestimonialsSection() {
                   </div>
                   <div>
                     <div className="font-medium text-white text-sm">{testimonial.author}</div>
-                    <div className="text-[#9080a0] text-xs">{testimonial.title}</div>
+                    <div className="text-[#71717A] text-xs">{testimonial.title}</div>
                   </div>
                 </div>
               </GlassCard>

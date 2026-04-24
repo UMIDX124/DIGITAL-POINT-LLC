@@ -6,7 +6,17 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 /**
  * Global GSAP + ScrollTrigger init for the marketing tree.
- * One-time registration + scroll-driven reveals. Respects prefers-reduced-motion.
+ * Respects prefers-reduced-motion.
+ *
+ * Phase 3a-fix reliability layers:
+ *   1. Bridge Lenis scroll events into ScrollTrigger. Without this, Lenis's
+ *      virtual-transform scroll is invisible to ScrollTrigger and triggers
+ *      below the fold stall at `opacity: 0`. Root cause of the invisible-
+ *      Automation-row / invisible-Workflow / invisible-RecentWork bugs.
+ *   2. ScrollTrigger.refresh() after tween registration + on window load so
+ *      trigger positions recalc once fonts/images settle.
+ *   3. 2.5s fallback safety net: any reveal element whose trigger never fired
+ *      gets force-revealed so the page can't stay in a half-hidden state.
  */
 export function ScrollMotion() {
   useEffect(() => {
@@ -16,10 +26,25 @@ export function ScrollMotion() {
 
     gsap.registerPlugin(ScrollTrigger);
 
+    // ---- Lenis <-> ScrollTrigger bridge ----------------------------------
+    // LenisProvider exposes window.__lenis__. Retry once on next tick if
+    // LenisProvider's useEffect hasn't run yet.
+    const attachLenisBridge = () => {
+      const lenis = window.__lenis__;
+      if (!lenis) return false;
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time: number) => lenis.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+      return true;
+    };
+    if (!attachLenisBridge()) {
+      setTimeout(attachLenisBridge, 60);
+    }
+
     const ctx = gsap.context(() => {
       // Hero headline — split by word. Each word gets its own inline-block
       // span; a literal text-node space is appended BETWEEN siblings so inline-
-      // block layout doesn't collapse the inter-word gaps (Phase-2 bug fix).
+      // block layout doesn't collapse the inter-word gaps.
       const headline = document.querySelector<HTMLElement>('[data-hero-headline]');
       if (headline && !headline.dataset.split) {
         const text = headline.textContent ?? '';
@@ -39,179 +64,87 @@ export function ScrollMotion() {
         gsap.fromTo(
           spans,
           { y: 40, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.9,
-            ease: 'power3.out',
-            stagger: 0.08,
-            delay: 0.1,
-          },
+          { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out', stagger: 0.08, delay: 0.1 },
         );
       }
 
-      // Hero eyebrow + subhead + cta — stagger in after headline
-      gsap.fromTo(
-        '[data-hero-eyebrow]',
-        { y: 16, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' },
-      );
-      gsap.fromTo(
-        '[data-hero-subhead]',
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, delay: 0.6, ease: 'power2.out' },
-      );
-      gsap.fromTo(
-        '[data-hero-cta]',
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, delay: 0.8, ease: 'power2.out' },
-      );
+      // Hero eyebrow + subhead + cta — load-time cascade (no scrollTrigger).
+      gsap.fromTo('[data-hero-eyebrow]', { y: 16, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' });
+      gsap.fromTo('[data-hero-subhead]', { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, delay: 0.6, ease: 'power2.out' });
+      gsap.fromTo('[data-hero-cta]', { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, delay: 0.8, ease: 'power2.out' });
 
-      // Pillar cards — scroll-in stagger
-      const pillarCards = gsap.utils.toArray<HTMLElement>('[data-pillar-card]');
-      if (pillarCards.length) {
-        gsap.fromTo(
-          pillarCards,
-          { y: 40, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.7,
-            ease: 'power2.out',
-            stagger: 0.12,
-            scrollTrigger: {
-              trigger: '[data-pillars]',
-              start: 'top 75%',
-              once: true,
-            },
-          },
-        );
-      }
-
-      // Case strip — right-enter stagger
-      const caseCards = gsap.utils.toArray<HTMLElement>('[data-case-strip] > a');
-      if (caseCards.length) {
-        gsap.fromTo(
-          caseCards,
-          { x: 40, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 0.7,
-            ease: 'power2.out',
-            stagger: 0.2,
-            scrollTrigger: {
-              trigger: '[data-case-strip]',
-              start: 'top 75%',
-              once: true,
-            },
-          },
-        );
-      }
-
-      // Generic section reveal for any element with data-reveal.
-      // Respects data-reveal-delay (in seconds) on the element.
-      gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach((el) => {
-        const delay = parseFloat(el.dataset.revealDelay ?? '0') || 0;
-        gsap.fromTo(
-          el,
-          { y: 30, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.7,
-            delay,
-            ease: 'power2.out',
-            scrollTrigger: { trigger: el, start: 'top 85%', once: true },
-          },
-        );
+      // Common reveal options — `once: true` but with a safer trigger window
+      // (start earlier so offscreen elements below the fold actually receive
+      // the onEnter callback when ScrollTrigger calculates positions after
+      // Lenis bridge is active).
+      const revealTrigger = (trigger: Element | string) => ({
+        trigger,
+        start: 'top 92%',
+        once: true,
       });
 
-      // Stagger group — each [data-stagger-group] reveals its direct
-      // [data-stagger-item] children in cascade. Stagger interval read from
-      // `data-stagger-delay` (seconds) on the group, default 0.08.
+      // Pillar cards
+      const pillarCards = gsap.utils.toArray<HTMLElement>('[data-pillar-card]');
+      if (pillarCards.length) {
+        gsap.fromTo(pillarCards, { y: 40, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7, ease: 'power2.out', stagger: 0.12,
+            scrollTrigger: revealTrigger('[data-pillars]') });
+      }
+
+      // Case strip
+      const caseCards = gsap.utils.toArray<HTMLElement>('[data-case-strip] > a');
+      if (caseCards.length) {
+        gsap.fromTo(caseCards, { x: 40, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.7, ease: 'power2.out', stagger: 0.2,
+            scrollTrigger: revealTrigger('[data-case-strip]') });
+      }
+
+      // Generic data-reveal (wins over per-element start; honors data-reveal-delay).
+      gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach((el) => {
+        const delay = parseFloat(el.dataset.revealDelay ?? '0') || 0;
+        gsap.fromTo(el, { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7, delay, ease: 'power2.out',
+            scrollTrigger: revealTrigger(el) });
+      });
+
+      // Stagger group
       gsap.utils.toArray<HTMLElement>('[data-stagger-group]').forEach((group) => {
         const items = Array.from(group.querySelectorAll<HTMLElement>('[data-stagger-item]'));
         if (!items.length) return;
         const stagger = parseFloat(group.dataset.staggerDelay ?? '0.08') || 0.08;
-        gsap.fromTo(
-          items,
-          { y: 24, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.6,
-            ease: 'power2.out',
-            stagger,
-            scrollTrigger: { trigger: group, start: 'top 85%', once: true },
-          },
-        );
+        gsap.fromTo(items, { y: 24, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', stagger,
+            scrollTrigger: revealTrigger(group) });
       });
 
-      // Services list — stagger lines in
+      // Services list
       const serviceItems = gsap.utils.toArray<HTMLElement>('[data-service-item]');
       if (serviceItems.length) {
-        gsap.fromTo(
-          serviceItems,
-          { y: 24, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.6,
-            ease: 'power2.out',
-            stagger: 0.08,
-            scrollTrigger: {
-              trigger: '[data-services-list]',
-              start: 'top 80%',
-              once: true,
-            },
-          },
-        );
+        gsap.fromTo(serviceItems, { y: 24, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', stagger: 0.08,
+            scrollTrigger: revealTrigger('[data-services-list]') });
       }
 
-      // Recent Work cards — stagger + y-lift
+      // Recent Work cards
       const workCards = gsap.utils.toArray<HTMLElement>('[data-work-card]');
       if (workCards.length) {
-        gsap.fromTo(
-          workCards,
-          { y: 36, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.7,
-            ease: 'power2.out',
-            stagger: 0.14,
-            scrollTrigger: {
-              trigger: '[data-work-grid]',
-              start: 'top 80%',
-              once: true,
-            },
-          },
-        );
+        gsap.fromTo(workCards, { y: 36, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7, ease: 'power2.out', stagger: 0.14,
+            scrollTrigger: revealTrigger('[data-work-grid]') });
       }
 
-      // Testimonial cards — stagger
+      // Testimonial cards
       const testimonialCards = gsap.utils.toArray<HTMLElement>('[data-testimonial-card]');
       if (testimonialCards.length) {
-        gsap.fromTo(
-          testimonialCards,
-          { y: 30, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.7,
-            ease: 'power2.out',
-            stagger: 0.12,
-            scrollTrigger: {
-              trigger: '[data-testimonials]',
-              start: 'top 80%',
-              once: true,
-            },
-          },
-        );
+        gsap.fromTo(testimonialCards, { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7, ease: 'power2.out', stagger: 0.12,
+            scrollTrigger: revealTrigger('[data-testimonials]') });
       }
 
-      // Workflow SVG — draw connector paths + pop nodes
+      // Workflow SVG draw-in timeline
       const workflowPaths = gsap.utils.toArray<SVGPathElement>('[data-workflow-path]');
       const workflowNodes = gsap.utils.toArray<SVGGElement>('[data-workflow-node]');
       const workflowLabels = gsap.utils.toArray<HTMLElement>('[data-workflow-label]');
@@ -221,36 +154,59 @@ export function ScrollMotion() {
           p.style.strokeDasharray = `${len}`;
           p.style.strokeDashoffset = `${len}`;
         });
-        gsap
-          .timeline({
-            scrollTrigger: {
-              trigger: '[data-workflow]',
-              start: 'top 75%',
-              once: true,
-            },
-          })
-          .to(workflowPaths, {
-            strokeDashoffset: 0,
-            duration: 0.9,
-            stagger: 0.15,
-            ease: 'power2.inOut',
-          })
-          .fromTo(
-            workflowNodes,
+        gsap.timeline({ scrollTrigger: revealTrigger('[data-workflow]') })
+          .to(workflowPaths, { strokeDashoffset: 0, duration: 0.9, stagger: 0.15, ease: 'power2.inOut' })
+          .fromTo(workflowNodes,
             { opacity: 0, scale: 0.85, transformOrigin: 'center center' },
-            { opacity: 1, scale: 1, duration: 0.5, stagger: 0.15, ease: 'back.out(2)' },
-            '<0.2',
-          )
-          .fromTo(
-            workflowLabels,
-            { y: 16, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: 'power2.out' },
-            '-=0.4',
-          );
+            { opacity: 1, scale: 1, duration: 0.5, stagger: 0.15, ease: 'back.out(2)' }, '<0.2')
+          .fromTo(workflowLabels, { y: 16, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: 'power2.out' }, '-=0.4');
       }
     });
 
+    // Refresh immediately to pick up post-init layout.
+    ScrollTrigger.refresh();
+    // Refresh again on window load so images + fonts don't shift trigger Ys.
+    const onLoad = () => ScrollTrigger.refresh();
+    window.addEventListener('load', onLoad);
+
+    // ---- Fallback safety net --------------------------------------------
+    // After 2.5s, any element still sitting at opacity:0 gets force-revealed.
+    // Covers: Lenis bridge never attached, ScrollTrigger stalled, DOM
+    // mutation invalidated trigger position, etc. Content MUST NEVER stay
+    // invisible.
+    const fallbackId = window.setTimeout(() => {
+      const selectors = [
+        '[data-reveal]',
+        '[data-stagger-item]',
+        '[data-service-item]',
+        '[data-work-card]',
+        '[data-testimonial-card]',
+        '[data-pillar-card]',
+        '[data-workflow-label]',
+      ];
+      gsap.utils.toArray<HTMLElement>(selectors.join(',')).forEach((el) => {
+        const o = parseFloat(getComputedStyle(el).opacity || '1');
+        if (o < 0.05) {
+          gsap.set(el, { opacity: 1, y: 0, x: 0, clearProps: 'transform' });
+        }
+      });
+      // Workflow nodes (SVGGElement)
+      gsap.utils.toArray<SVGGElement>('[data-workflow-node]').forEach((el) => {
+        const o = parseFloat(getComputedStyle(el).opacity || '1');
+        if (o < 0.05) gsap.set(el, { opacity: 1, scale: 1 });
+      });
+      // Workflow paths — draw full if still dashed
+      gsap.utils.toArray<SVGPathElement>('[data-workflow-path]').forEach((p) => {
+        if (parseFloat(p.style.strokeDashoffset || '0') > 0.5) {
+          p.style.strokeDashoffset = '0';
+        }
+      });
+    }, 2500);
+
     return () => {
+      window.clearTimeout(fallbackId);
+      window.removeEventListener('load', onLoad);
       ctx.revert();
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };

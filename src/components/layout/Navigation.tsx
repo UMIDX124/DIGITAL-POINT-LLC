@@ -74,7 +74,7 @@ export function Navigation() {
       >
         <nav className="relative container-wide">
           <div className="flex items-center justify-between gap-6 h-16">
-            <Link href="/" className="flex items-center gap-3 shrink-0 group">
+            <Link href="/" className="flex items-center gap-3 shrink-0 group nav-logo-wrap">
               <Image
                 src="/Dp-logo1.png"
                 alt="Digital Point LLC"
@@ -82,7 +82,7 @@ export function Navigation() {
                 height={40}
                 priority
                 style={{ width: '36px', height: 'auto' }}
-                className="transition-opacity duration-200 group-hover:opacity-90"
+                className="nav-logo transition-opacity duration-200 group-hover:opacity-90"
               />
               <div className="hidden sm:flex flex-col leading-none">
                 <span className="font-display text-[17px] text-[color:var(--ivory)]">Digital Point</span>

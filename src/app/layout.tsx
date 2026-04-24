@@ -7,6 +7,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { GrainOverlay } from "@/components/background/GrainOverlay";
 import { CursorBloom } from "@/components/background/CursorBloom";
+import { VisibilityPause } from "@/components/motion/VisibilityPause";
 
 /**
  * Phase 4a font stack:
@@ -220,6 +221,7 @@ export default function RootLayout({
       >
         <GrainOverlay />
         <CursorBloom />
+        <VisibilityPause />
         {children}
         <Toaster />
         {process.env.NEXT_PUBLIC_ADSENSE_ID ? (

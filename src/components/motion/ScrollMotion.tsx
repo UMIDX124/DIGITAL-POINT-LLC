@@ -144,6 +144,45 @@ export function ScrollMotion() {
             scrollTrigger: revealTrigger('[data-testimonials]') });
       }
 
+      // Phase 4h — subtle parallax on Recent Work cards. 5% slower than
+      // page scroll, capped at 30px vertical drift. Uses `scrub` so it
+      // stays locked to scroll position.
+      if (typeof window !== 'undefined' && !window.matchMedia('(max-width: 767px)').matches) {
+        const workGrid = document.querySelector('[data-work-grid]');
+        if (workGrid) {
+          gsap.to(workGrid, {
+            y: -30,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '#recent-work',
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 0.6,
+            },
+          });
+        }
+      }
+
+      // Phase 4h — pull quote opacity scrub. Text fades in as it nears
+      // viewport center and stays bold through the middle third.
+      const pullQuote = document.querySelector('.pull-quote-text');
+      if (pullQuote) {
+        gsap.fromTo(
+          pullQuote,
+          { opacity: 0.3 },
+          {
+            opacity: 1,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: pullQuote,
+              start: 'top 80%',
+              end: 'center 50%',
+              scrub: 0.8,
+            },
+          },
+        );
+      }
+
       // Workflow SVG draw-in timeline
       const workflowPaths = gsap.utils.toArray<SVGPathElement>('[data-workflow-path]');
       const workflowNodes = gsap.utils.toArray<SVGGElement>('[data-workflow-node]');

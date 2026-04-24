@@ -512,6 +512,26 @@
 .stagger-children > *:nth-child(6) { animation-delay: 400ms; }
 
 /* ============================================
+   PHASE 4h — hover micro-interactions + wolf-logo tilt + link underline.
+   ============================================ */
+.nav-logo {
+  transition: transform var(--dur-short) var(--ease-out-soft);
+  will-change: transform;
+}
+.nav-logo-wrap:hover .nav-logo { transform: rotate(3deg); }
+
+/* Animated underline on any anchor tagged .text-link */
+a.text-link {
+  position: relative;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--dur-short) var(--ease-out-soft);
+}
+a.text-link:hover { background-size: 100% 1px; }
+
+/* ============================================
    RECENT WORK — Phase 4e
    Card hover: border brightens, translateY(-2px), soft purple glow.
    ============================================ */
@@ -660,6 +680,13 @@
 
 [data-cosmo-root][data-cosmo-io-paused="true"] *,
 [data-cosmo-root][data-cosmo-io-paused="true"] {
+  animation-play-state: paused !important;
+}
+
+/* Phase 4g/4h — pause continuous motion when the tab is hidden. */
+html[data-paused-global="true"] [data-cosmo-root] *,
+html[data-paused-global="true"] [data-cosmo-root],
+html[data-paused-global="true"] .grain-overlay {
   animation-play-state: paused !important;
 }
 

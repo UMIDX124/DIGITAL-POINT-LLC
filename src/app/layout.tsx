@@ -5,6 +5,8 @@ import { GeistMono } from "geist/font/mono";
 import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { GrainOverlay } from "@/components/background/GrainOverlay";
+import { CursorBloom } from "@/components/background/CursorBloom";
 
 /**
  * Phase 4a font stack:
@@ -216,6 +218,8 @@ export default function RootLayout({
         className={`${instrumentSerif.variable} ${GeistSans.variable} ${GeistMono.variable} antialiased`}
         style={{ background: "#0D0D0D", color: "#F5F5F7" }}
       >
+        <GrainOverlay />
+        <CursorBloom />
         {children}
         <Toaster />
         {process.env.NEXT_PUBLIC_ADSENSE_ID ? (

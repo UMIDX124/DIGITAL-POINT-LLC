@@ -512,6 +512,22 @@
 .stagger-children > *:nth-child(6) { animation-delay: 400ms; }
 
 /* ============================================
+   RECENT WORK — Phase 4e
+   Card hover: border brightens, translateY(-2px), soft purple glow.
+   ============================================ */
+.recent-work-card {
+  transition:
+    transform var(--dur-medium) var(--ease-out-soft),
+    border-color var(--dur-short) var(--ease-out-soft),
+    box-shadow var(--dur-medium) var(--ease-out-soft);
+}
+.recent-work-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-bright);
+  box-shadow: 0 16px 48px var(--accent-glow-soft);
+}
+
+/* ============================================
    SERVICES LIST — Phase 4d
    Massive editorial rows with per-letter hover scale. Letters animate
    independently via transition-delay stored inline (rendered by the

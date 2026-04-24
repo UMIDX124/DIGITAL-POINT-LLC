@@ -1,42 +1,69 @@
 import { copy } from '@/lib/copy';
 
 /**
- * Phase 2: Workflow SVG. Four-step lead lifecycle (Lead -> Scored -> Routed
- * -> Reported) rendered as a minimal hand-coded diagram. Paths and nodes
- * carry `data-workflow-*` attributes so ScrollMotion can draw them in on
- * scroll via stroke-dashoffset interpolation.
+ * Phase 4e Workflow diagram. Four-step lead lifecycle (Lead → Scored →
+ * Routed → Reported). Horizontal on desktop, vertical stack on mobile.
+ *
+ * Connector paths draw left-to-right via stroke-dashoffset animation in
+ * ScrollMotion. Node dots scale-in; labels fade-up. Data attributes
+ * preserved for the existing GSAP timeline.
  */
 export function WorkflowSection() {
   const { eyebrow, headline, body, steps } = copy.workflow;
 
   return (
     <section
-      className="relative section-main"
-      style={{ background: 'var(--bg)', borderBottom: '1px solid var(--border)' }}
+      className="relative"
+      style={{
+        background: 'var(--bg-primary)',
+        borderBottom: '1px solid var(--border-subtle)',
+        paddingTop: 'var(--section-space)',
+        paddingBottom: 'var(--section-space)',
+      }}
       id="workflow"
     >
       <div className="container-wide">
-        <header className="max-w-2xl mb-[var(--space-8)]">
-          <p className="eyebrow mb-5" data-reveal>{eyebrow}</p>
-          <h2 className="t-h2 font-display text-[color:var(--ivory)]" data-reveal>
+        <header className="max-w-2xl mb-[var(--section-space-tight)]">
+          <p
+            className="font-mono uppercase mb-5"
+            data-reveal
+            style={{
+              fontSize: 'var(--text-micro)',
+              letterSpacing: '0.12em',
+              color: 'var(--text-tertiary)',
+            }}
+          >
+            {eyebrow}
+          </p>
+          <h2
+            className="font-hero"
+            data-reveal
+            style={{
+              fontSize: 'var(--text-h2)',
+              color: 'var(--text-primary)',
+              lineHeight: 1,
+              letterSpacing: '-0.02em',
+            }}
+          >
             {headline}
           </h2>
-          <p className="mt-5 t-main text-[color:var(--ivory-dim)] max-w-xl" data-reveal>
+          <p
+            className="mt-6 font-body max-w-xl"
+            data-reveal
+            style={{
+              fontSize: 'var(--text-body)',
+              color: 'var(--text-secondary)',
+              lineHeight: 1.55,
+            }}
+          >
             {body}
           </p>
         </header>
 
-        {/* SVG pipeline — horizontal on desktop, stacks below md */}
         <div className="relative" data-workflow>
-          {/* Desktop SVG — 4 nodes on a horizontal axis */}
+          {/* Desktop horizontal diagram */}
           <div className="hidden md:block">
-            <svg
-              viewBox="0 0 1200 220"
-              preserveAspectRatio="xMidYMid meet"
-              className="w-full h-auto"
-              aria-hidden="true"
-            >
-              {/* Connector paths — drawn in by ScrollMotion */}
+            <svg viewBox="0 0 1200 220" preserveAspectRatio="xMidYMid meet" className="w-full h-auto" aria-hidden="true">
               {[
                 { id: 'a', d: 'M 180 110 L 420 110' },
                 { id: 'b', d: 'M 480 110 L 720 110' },
@@ -45,24 +72,24 @@ export function WorkflowSection() {
                 <path
                   key={p.id}
                   d={p.d}
-                  stroke="var(--amber)"
-                  strokeWidth="1.5"
+                  stroke="var(--accent)"
+                  strokeWidth="2"
                   fill="none"
                   strokeLinecap="round"
                   data-workflow-path
                 />
               ))}
-              {/* Nodes */}
               {[150, 450, 750, 1050].map((cx, i) => (
                 <g key={cx} data-workflow-node>
-                  <circle cx={cx} cy="110" r="28" fill="var(--bg)" stroke="var(--amber)" strokeWidth="1.5" />
-                  <circle cx={cx} cy="110" r="5" fill="var(--amber-bright)" />
+                  <circle cx={cx} cy="110" r="28" fill="var(--bg-primary)" stroke="var(--accent)" strokeWidth="1.5" />
+                  <circle cx={cx} cy="110" r="10" fill="var(--accent-bright)" opacity="0.25" />
+                  <circle cx={cx} cy="110" r="6" fill="var(--accent-bright)" />
                   <text
                     x={cx}
                     y="62"
                     fontSize="11"
-                    fontFamily="var(--font-jetbrains-mono)"
-                    fill="var(--muted)"
+                    fontFamily="var(--font-mono)"
+                    fill="var(--text-tertiary)"
                     textAnchor="middle"
                     letterSpacing="1.5"
                   >
@@ -72,14 +99,28 @@ export function WorkflowSection() {
               ))}
             </svg>
 
-            {/* Labels under each node */}
-            <div className="mt-[var(--space-4)] grid grid-cols-4 gap-4">
+            <div className="mt-6 grid grid-cols-4 gap-4">
               {steps.map((step) => (
                 <div key={step.n} className="text-center" data-workflow-label>
-                  <h3 className="font-display t-h5 text-[color:var(--ivory)]">
+                  <h3
+                    className="font-hero"
+                    style={{
+                      fontSize: 'var(--text-h5)',
+                      color: 'var(--text-primary)',
+                      letterSpacing: '-0.01em',
+                    }}
+                  >
                     {step.label}
                   </h3>
-                  <p className="mt-2 t-caption text-[color:var(--ivory-dim)] max-w-[20ch] mx-auto">
+                  <p
+                    className="mt-2 font-body mx-auto"
+                    style={{
+                      fontSize: '0.9375rem',
+                      color: 'var(--text-secondary)',
+                      maxWidth: '22ch',
+                      lineHeight: 1.5,
+                    }}
+                  >
                     {step.detail}
                   </p>
                 </div>
@@ -87,18 +128,44 @@ export function WorkflowSection() {
             </div>
           </div>
 
-          {/* Mobile: vertical stack */}
-          <ol className="md:hidden divide-hairline">
-            {steps.map((step) => (
-              <li key={step.n} className="py-[var(--space-5)] flex gap-[var(--space-4)]" data-workflow-label>
-                <span className="font-mono text-[12px] text-[color:var(--amber)] tracking-widest shrink-0 pt-1">
+          {/* Mobile vertical list */}
+          <ol className="md:hidden">
+            {steps.map((step, i) => (
+              <li
+                key={step.n}
+                className="py-6 flex gap-5"
+                data-workflow-label
+                style={{ borderBottom: i < steps.length - 1 ? '1px solid var(--border-subtle)' : undefined }}
+              >
+                <span
+                  className="font-mono shrink-0 pt-1"
+                  style={{
+                    fontSize: '0.75rem',
+                    color: 'var(--accent-bright)',
+                    letterSpacing: '0.14em',
+                  }}
+                >
                   {step.n}
                 </span>
                 <div>
-                  <h3 className="font-display t-h5 text-[color:var(--ivory)]">
+                  <h3
+                    className="font-hero"
+                    style={{
+                      fontSize: 'var(--text-h5)',
+                      color: 'var(--text-primary)',
+                      letterSpacing: '-0.01em',
+                    }}
+                  >
                     {step.label}
                   </h3>
-                  <p className="mt-1.5 t-caption text-[color:var(--ivory-dim)]">
+                  <p
+                    className="mt-2 font-body"
+                    style={{
+                      fontSize: '0.9375rem',
+                      color: 'var(--text-secondary)',
+                      lineHeight: 1.5,
+                    }}
+                  >
                     {step.detail}
                   </p>
                 </div>

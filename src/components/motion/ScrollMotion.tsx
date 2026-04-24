@@ -163,22 +163,22 @@ export function ScrollMotion() {
         }
       }
 
-      // Phase 4h — pull quote opacity scrub. Text fades in as it nears
-      // viewport center and stays bold through the middle third.
+      // Phase 4h — pull quote emphasis. The generic [data-reveal] handler
+      // already fades the blockquote in; we add a tiny scale accent so the
+      // line-break moment feels intentional. `once: true` guarantees the
+      // final state is opacity 1 regardless of scroll direction (the scrub
+      // variant left the quote at 0.3 whenever the user scrolled back to
+      // the top).
       const pullQuote = document.querySelector('.pull-quote-text');
       if (pullQuote) {
         gsap.fromTo(
           pullQuote,
-          { opacity: 0.3 },
+          { scale: 0.98 },
           {
-            opacity: 1,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: pullQuote,
-              start: 'top 80%',
-              end: 'center 50%',
-              scrub: 0.8,
-            },
+            scale: 1,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: pullQuote, start: 'top 85%', once: true },
           },
         );
       }

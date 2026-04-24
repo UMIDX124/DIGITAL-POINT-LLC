@@ -51,7 +51,8 @@ function WorkCard({ case_, size }: { case_: CaseItem; size: 'featured' | 'standa
   return (
     <Link
       href={case_.href}
-      className="group relative flex flex-col card-flat p-[var(--space-5)] md:p-[var(--space-6)] h-full focus-ring"
+      className="group relative flex flex-col card-flat p-[var(--space-5)] md:p-[var(--space-6)] h-full focus-ring hover:-translate-y-1 transition-transform duration-[550ms]"
+      style={{ transitionTimingFunction: 'var(--ease-brand)' }}
       data-work-card
     >
       {/* SVG dashboard viz */}

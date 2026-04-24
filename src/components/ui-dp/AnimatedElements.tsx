@@ -1,218 +1,25 @@
-'use client';
-
-import { motion, useInView } from 'framer-motion';
-import { useRef, ReactNode, memo } from 'react';
+import { memo, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
-interface FadeUpProps {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
-  duration?: number;
-}
+/**
+ * Phase 3a: AnimatedElements is now a thin, SERVER-COMPONENT-first layout
+ * library. framer-motion has been removed from this module's tree. Scroll
+ * reveals are handled by ScrollMotion.tsx via `data-reveal` /
+ * `data-stagger-group` / `data-stagger-item` attributes, so nothing in this
+ * file needs to ship client-side JS beyond what the DOM already holds.
+ *
+ * Every export from the legacy API is preserved (Section, Container,
+ * SectionHeader, FadeUp, StaggerContainer, StaggerItem, GlassCard, SignalPoint,
+ * MetricDisplay). Visual output is flatter and more editorial — GlassCard now
+ * renders as card-flat (hairline border, no glass, no inner glow), and eyebrow
+ * gradient fills have been replaced with solid amber.
+ */
 
-export function FadeUp({ children, className, delay = 0, duration = 0.6 }: FadeUpProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration, delay, ease: [0.25, 0.4, 0.25, 1] }}
-      className={className}
-      style={{ willChange: 'transform, opacity' }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-interface FadeInProps {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
-}
-
-export function FadeIn({ children, className, delay = 0 }: FadeInProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-      transition={{ duration: 0.5, delay }}
-      className={className}
-      style={{ willChange: 'opacity' }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-interface ScaleInProps {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
-}
-
-export function ScaleIn({ children, className, delay = 0 }: ScaleInProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.5, delay, ease: [0.25, 0.4, 0.25, 1] }}
-      className={className}
-      style={{ willChange: 'transform, opacity' }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-interface StaggerContainerProps {
-  children: ReactNode;
-  className?: string;
-  staggerDelay?: number;
-}
-
-export function StaggerContainer({ children, className, staggerDelay = 0.1 }: StaggerContainerProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={isInView ? 'visible' : 'hidden'}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: {
-            staggerChildren: staggerDelay,
-          },
-        },
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-export const staggerItem = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] as const },
-  },
-};
-
-interface StaggerItemProps {
-  children: ReactNode;
-  className?: string;
-}
-
-export function StaggerItem({ children, className }: StaggerItemProps) {
-  return (
-    <motion.div variants={staggerItem} className={className} style={{ willChange: 'transform, opacity' }}>
-      {children}
-    </motion.div>
-  );
-}
-
-interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: ReactNode;
-  className?: string;
-  hover?: boolean;
-}
-
-/** Memoized GlassCard to avoid re-renders in list contexts */
-export const GlassCard = memo(function GlassCard({ children, className, hover = true, ...rest }: GlassCardProps) {
-  return (
-    <div
-      {...rest}
-      className={cn(
-        'relative rounded-2xl overflow-hidden',
-        hover && 'transition-shadow duration-300 hover:shadow-xl',
-        className
-      )}
-      style={{
-        background: 'rgba(20,20,22, 0.6)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        border: '1px solid rgba(217,119,6, 0.2)',
-      }}
-    >
-      {/* Inner glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'linear-gradient(135deg, rgba(245,158,11, 0.08) 0%, transparent 50%)',
-        }}
-      />
-      <div className="relative z-10">{children}</div>
-    </div>
-  );
-});
-
-interface MetricDisplayProps {
-  value: string;
-  label: string;
-  prefix?: string;
-  suffix?: string;
-  className?: string;
-}
-
-export const MetricDisplay = memo(function MetricDisplay({ value, label, prefix, suffix, className }: MetricDisplayProps) {
-  return (
-    <div className={cn('text-center', className)}>
-      <div className="font-display text-3xl md:text-4xl font-bold text-white tabular-nums">
-        {prefix && <span className="text-[#F59E0B]">{prefix}</span>}
-        {value}
-        {suffix && <span className="text-[#D6D0C2] text-xl">{suffix}</span>}
-      </div>
-      <p className="text-[#D6D0C2] text-sm mt-1">{label}</p>
-    </div>
-  );
-});
-
-interface SignalPointProps {
-  className?: string;
-  pulse?: boolean;
-  size?: 'sm' | 'md' | 'lg';
-}
-
-export const SignalPoint = memo(function SignalPoint({ className, pulse = true, size = 'md' }: SignalPointProps) {
-  const sizeClasses = {
-    sm: 'w-2 h-2',
-    md: 'w-3 h-3',
-    lg: 'w-4 h-4',
-  };
-
-  return (
-    <span
-      className={cn(
-        'inline-block rounded-full bg-[#F59E0B]',
-        pulse && 'animate-pulse',
-        sizeClasses[size],
-        className
-      )}
-      style={{
-        boxShadow: '0 0 8px rgba(245,158,11, 0.6)',
-      }}
-    />
-  );
-});
-
+/* =========================================================================
+   Section — wraps a <section> with the Phase 1 fluid section-padding tokens.
+   Legacy `background` prop still accepted; maps to class names that globals.css
+   already aliases to transparent so no visual regression on legacy consumers.
+   ========================================================================= */
 interface SectionProps {
   children: ReactNode;
   className?: string;
@@ -225,11 +32,11 @@ export function Section({ children, className, id, background = 'none' }: Sectio
     <section
       id={id}
       className={cn(
-        'section-padding relative',
+        'section-main relative',
         background === 'gradient' && 'cosmic-glow',
         background === 'grid' && 'grid-bg',
         background === 'cosmic' && 'cosmic-bg',
-        className
+        className,
       )}
     >
       {children}
@@ -237,6 +44,9 @@ export function Section({ children, className, id, background = 'none' }: Sectio
   );
 }
 
+/* =========================================================================
+   Container — standard centered width wrapper. Fluid --site-margin applies.
+   ========================================================================= */
 interface ContainerProps {
   children: ReactNode;
   className?: string;
@@ -244,15 +54,17 @@ interface ContainerProps {
 }
 
 export function Container({ children, className, size = 'wide' }: ContainerProps) {
-  const sizeClasses = {
-    narrow: 'container-narrow',
-    wide: 'container-wide',
-    full: 'w-full px-4 sm:px-6 lg:px-8',
-  };
-
-  return <div className={cn(sizeClasses[size], className)}>{children}</div>;
+  const sizeClass =
+    size === 'narrow' ? 'container-narrow' :
+    size === 'full'   ? 'w-full px-[var(--site-margin)]' :
+    'container-wide';
+  return <div className={cn(sizeClass, className)}>{children}</div>;
 }
 
+/* =========================================================================
+   SectionHeader — eyebrow + h2 + optional description. Solid amber eyebrow
+   (no gradient). Always reveal-animated via data-reveal.
+   ========================================================================= */
 interface SectionHeaderProps {
   eyebrow?: string;
   title: string;
@@ -263,27 +75,157 @@ interface SectionHeaderProps {
 
 export function SectionHeader({ eyebrow, title, description, align = 'center', className }: SectionHeaderProps) {
   return (
-    <div className={cn('mb-12 md:mb-16', align === 'center' && 'text-center max-w-3xl mx-auto', className)}>
-      {eyebrow && (
-        <span
-          className="text-sm font-medium uppercase tracking-wider mb-4 block"
-          style={{
-            background: 'linear-gradient(90deg, #FBBF24, #F59E0B)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
-        >
-          {eyebrow}
-        </span>
+    <header
+      className={cn(
+        'mb-12 md:mb-16',
+        align === 'center' && 'text-center max-w-3xl mx-auto',
+        className,
       )}
-      <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
-        {title}
-      </h2>
+      data-reveal
+    >
+      {eyebrow && <p className="eyebrow mb-5">{eyebrow}</p>}
+      <h2 className="t-h2 font-display text-[color:var(--ivory)]">{title}</h2>
       {description && (
-        <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed">
+        <p className="mt-4 t-lead text-[color:var(--ivory-dim)] leading-relaxed">
           {description}
         </p>
       )}
+    </header>
+  );
+}
+
+/* =========================================================================
+   FadeUp — reveal wrapper. Emits data-reveal so ScrollMotion picks it up and
+   plays the y:30 -> 0, opacity:0 -> 1 handler. Optional `delay` prop (seconds)
+   maps to an inline custom property; ScrollMotion reads it for per-element
+   delay.
+   ========================================================================= */
+interface FadeUpProps {
+  children: ReactNode;
+  className?: string;
+  delay?: number;     // seconds
+  duration?: number;  // seconds — accepted for API parity; ScrollMotion uses a fixed 0.7s
+}
+
+export function FadeUp({ children, className, delay = 0 }: FadeUpProps) {
+  return (
+    <div
+      className={className}
+      data-reveal
+      {...(delay > 0 ? { 'data-reveal-delay': String(delay) } : {})}
+    >
+      {children}
     </div>
   );
 }
+
+/* =========================================================================
+   StaggerContainer / StaggerItem — group of children revealed in cascade.
+   Tag children with data-stagger-item so ScrollMotion's stagger handler picks
+   up the whole group when the parent enters the viewport.
+   ========================================================================= */
+interface StaggerContainerProps {
+  children: ReactNode;
+  className?: string;
+  staggerDelay?: number; // seconds between children; default 0.08
+}
+
+export function StaggerContainer({ children, className, staggerDelay = 0.08 }: StaggerContainerProps) {
+  return (
+    <div
+      className={className}
+      data-stagger-group
+      data-stagger-delay={String(staggerDelay)}
+    >
+      {children}
+    </div>
+  );
+}
+
+interface StaggerItemProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export function StaggerItem({ children, className }: StaggerItemProps) {
+  return (
+    <div className={className} data-stagger-item>
+      {children}
+    </div>
+  );
+}
+
+/* =========================================================================
+   GlassCard — now a flat card (hairline border, no backdrop-blur, no glass
+   inner glow). `hover` prop toggles the amber-border hover behavior from
+   `.card-flat`; defaults on.
+   ========================================================================= */
+interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: ReactNode;
+  className?: string;
+  hover?: boolean;
+}
+
+export const GlassCard = memo(function GlassCard({ children, className, hover = true, ...rest }: GlassCardProps) {
+  return (
+    <div
+      {...rest}
+      className={cn(
+        'relative',
+        hover ? 'card-flat' : 'bg-[color:var(--surface)] border-hairline rounded-lg',
+        className,
+      )}
+    >
+      {children}
+    </div>
+  );
+});
+
+/* =========================================================================
+   SignalPoint — amber pulse dot. Pure CSS animation (keyframe already lives
+   globally via Tailwind's `animate-pulse`).
+   ========================================================================= */
+interface SignalPointProps {
+  className?: string;
+  pulse?: boolean;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+export const SignalPoint = memo(function SignalPoint({ className, pulse = true, size = 'md' }: SignalPointProps) {
+  const dim = size === 'sm' ? 'w-2 h-2' : size === 'lg' ? 'w-4 h-4' : 'w-3 h-3';
+  return (
+    <span
+      className={cn(
+        'inline-block rounded-full bg-[color:var(--amber-bright)]',
+        pulse && 'animate-pulse',
+        dim,
+        className,
+      )}
+      aria-hidden="true"
+    />
+  );
+});
+
+/* =========================================================================
+   MetricDisplay — big mono number with a caption label. Server-compatible.
+   ========================================================================= */
+interface MetricDisplayProps {
+  value: string;
+  label: string;
+  prefix?: string;
+  suffix?: string;
+  className?: string;
+}
+
+export const MetricDisplay = memo(function MetricDisplay({ value, label, prefix, suffix, className }: MetricDisplayProps) {
+  return (
+    <div className={cn('text-center', className)} data-reveal>
+      <div className="font-mono text-[32px] md:text-[40px] leading-none text-[color:var(--ivory)] tabular-nums">
+        {prefix && <span className="text-[color:var(--amber)]">{prefix}</span>}
+        {value}
+        {suffix && <span className="text-[color:var(--ivory-dim)] text-[20px]">{suffix}</span>}
+      </div>
+      <p className="text-[color:var(--ivory-dim)] text-sm mt-2">{label}</p>
+    </div>
+  );
+});

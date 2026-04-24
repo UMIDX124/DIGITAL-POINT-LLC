@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from '@/lib/framer-compat';
 import { Linkedin, Mail } from 'lucide-react';
 import { Section, Container, FadeUp, GlassCard } from '@/components/ui-dp/AnimatedElements';
 

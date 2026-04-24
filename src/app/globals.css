@@ -392,6 +392,15 @@
     outline-offset: 2px;
   }
 
+  /* Phase 3a: override Tailwind's default transition on shadcn Buttons so they
+     ride the brand ease curve instead of the generic 0.15s color curve.
+     Scoped via shadcn's own data-slot="button" stamp so plain <button> elements
+     elsewhere in the tree are untouched. */
+  [data-slot="button"] {
+    transition-duration: 400ms;
+    transition-timing-function: var(--ease-brand);
+  }
+
   /* Card primitives — now use the signature easing curve. */
   .card-flat {
     background: var(--surface);

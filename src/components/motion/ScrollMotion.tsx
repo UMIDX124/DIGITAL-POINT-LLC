@@ -17,22 +17,27 @@ export function ScrollMotion() {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // Hero headline — split by word
+      // Hero headline — split by word. Each word gets its own inline-block
+      // span; a literal text-node space is appended BETWEEN siblings so inline-
+      // block layout doesn't collapse the inter-word gaps (Phase-2 bug fix).
       const headline = document.querySelector<HTMLElement>('[data-hero-headline]');
       if (headline && !headline.dataset.split) {
         const text = headline.textContent ?? '';
         headline.textContent = '';
-        const words = text.split(' ').map((w) => {
+        const parts = text.split(' ');
+        const spans: HTMLSpanElement[] = [];
+        parts.forEach((w, i) => {
           const span = document.createElement('span');
           span.style.display = 'inline-block';
           span.style.willChange = 'transform, opacity';
-          span.textContent = w + ' ';
+          span.textContent = w;
           headline.appendChild(span);
-          return span;
+          spans.push(span);
+          if (i < parts.length - 1) headline.appendChild(document.createTextNode(' '));
         });
         headline.dataset.split = '1';
         gsap.fromTo(
-          words,
+          spans,
           { y: 40, opacity: 0 },
           {
             y: 0,
@@ -104,8 +109,10 @@ export function ScrollMotion() {
         );
       }
 
-      // Generic section reveal for any element with data-reveal
+      // Generic section reveal for any element with data-reveal.
+      // Respects data-reveal-delay (in seconds) on the element.
       gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach((el) => {
+        const delay = parseFloat(el.dataset.revealDelay ?? '0') || 0;
         gsap.fromTo(
           el,
           { y: 30, opacity: 0 },
@@ -113,8 +120,30 @@ export function ScrollMotion() {
             y: 0,
             opacity: 1,
             duration: 0.7,
+            delay,
             ease: 'power2.out',
-            scrollTrigger: { trigger: el, start: 'top 80%', once: true },
+            scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+          },
+        );
+      });
+
+      // Stagger group — each [data-stagger-group] reveals its direct
+      // [data-stagger-item] children in cascade. Stagger interval read from
+      // `data-stagger-delay` (seconds) on the group, default 0.08.
+      gsap.utils.toArray<HTMLElement>('[data-stagger-group]').forEach((group) => {
+        const items = Array.from(group.querySelectorAll<HTMLElement>('[data-stagger-item]'));
+        if (!items.length) return;
+        const stagger = parseFloat(group.dataset.staggerDelay ?? '0.08') || 0.08;
+        gsap.fromTo(
+          items,
+          { y: 24, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.6,
+            ease: 'power2.out',
+            stagger,
+            scrollTrigger: { trigger: group, start: 'top 85%', once: true },
           },
         );
       });

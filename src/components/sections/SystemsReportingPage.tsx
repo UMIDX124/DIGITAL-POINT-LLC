@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from '@/lib/framer-compat';
 import { Button } from '@/components/ui/button';
 import { 
   Settings, BarChart3, Database, Workflow, PieChart, FileText,

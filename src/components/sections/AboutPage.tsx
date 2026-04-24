@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from '@/lib/framer-compat';
 import { ArrowRight, Globe, Users, Target, TrendingUp, Shield, Clock } from 'lucide-react';
 import {
   Section, Container, SectionHeader, FadeUp, GlassCard,

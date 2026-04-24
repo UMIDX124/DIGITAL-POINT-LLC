@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView } from '@/lib/framer-compat';
 import { useRef } from 'react';
 
 type DividerVariant = 'wave' | 'curve' | 'angle';

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from '@/lib/framer-compat';
 import { Button } from '@/components/ui/button';
 import { 
   TrendingUp, BarChart3, Users, Clock, ArrowRight, 

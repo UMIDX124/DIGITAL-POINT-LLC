@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from '@/lib/framer-compat';
 import { Mail, Linkedin, MapPin, Clock, Send, CheckCircle, ArrowRight } from 'lucide-react';
 import {
   Section, Container, FadeUp, GlassCard,

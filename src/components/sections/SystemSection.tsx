@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from '@/lib/framer-compat';
 import { ArrowRight, Target, BarChart2, LineChart, Lightbulb, Users } from 'lucide-react';
 import { Section, Container, SectionHeader, FadeUp, GlassCard } from '@/components/ui-dp/AnimatedElements';
 

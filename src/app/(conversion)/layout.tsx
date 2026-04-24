@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import SupportChatbot from '@/components/ui-dp/SupportChatbot';
 
 export default function ConversionLayout({
   children,
@@ -47,8 +46,6 @@ export default function ConversionLayout({
       <main className="relative z-10 flex-1">
         {children}
       </main>
-
-      <SupportChatbot />
     </div>
   );
 }

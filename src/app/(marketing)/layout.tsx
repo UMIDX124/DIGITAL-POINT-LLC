@@ -5,11 +5,10 @@ import { LenisProvider } from '@/components/motion/LenisProvider';
 import { ScrollMotion } from '@/components/motion/ScrollMotion';
 
 /**
- * Cosmo chatbot (SupportChatbot) is intentionally NOT mounted.
- * See Phase 2 of the April 2026 rebuild — chatbot disabled pending a rewrite
- * because its copy contradicted the "no AI-only report" hero line and its
- * Groq key was misconfigured. Files preserved at
- * src/components/ui-dp/SupportChatbot.tsx for future re-enablement.
+ * Cosmo chatbot intentionally NOT mounted. SupportChatbot + the
+ * src/lib/ai-chatbot orchestrator + /api/chat route were deleted in Phase 3a
+ * once the 40 KB of unused AI SDK surface area was confirmed dead. Re-enable
+ * by checking out a pre-3a SHA if ever wanted back.
  */
 
 export default function MarketingLayout({

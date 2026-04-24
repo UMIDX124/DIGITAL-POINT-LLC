@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion } from '@/lib/framer-compat';
 
 interface GrowthAuditCTAProps {
   variant?: 'inline' | 'banner' | 'compact';

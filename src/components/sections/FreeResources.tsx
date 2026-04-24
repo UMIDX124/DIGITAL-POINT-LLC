@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { BarChart3, Target, TrendingDown } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion } from '@/lib/framer-compat';
 
 const resources = [
   {

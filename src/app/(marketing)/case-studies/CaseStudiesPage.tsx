@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion } from '@/lib/framer-compat';
 import { Section, Container, SectionHeader, FadeUp } from '@/components/ui-dp/AnimatedElements';
 import { caseStudies } from '@/lib/case-studies';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';

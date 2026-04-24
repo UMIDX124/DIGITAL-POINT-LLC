@@ -511,6 +511,46 @@
 .stagger-children > *:nth-child(5) { animation-delay: 320ms; }
 .stagger-children > *:nth-child(6) { animation-delay: 400ms; }
 
+/* ============================================
+   COSMO ORB — Phase 4b
+   Purely decorative AI mascot visual. All animations are CSS keyframes so
+   no JS runs for breath/rotation/inner-pulse/dust-orbit. Mouse-follow +
+   scroll-morph are JS and live in the component itself.
+
+   IntersectionObserver flips [data-cosmo-io-paused="true"] on the root
+   when offscreen; we map that to animation-play-state: paused on every
+   descendant to save battery without teardown cost.
+
+   prefers-reduced-motion freezes every layer to its steady-state frame
+   via the blanket override at the bottom of this file.
+   ============================================ */
+
+@keyframes cosmo-breath {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.02); opacity: 0.95; }
+}
+@keyframes cosmo-inner-pulse {
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+@keyframes cosmo-ring-spin-cw  { from { transform: rotate(0deg);    } to { transform: rotate(360deg);  } }
+@keyframes cosmo-ring-spin-ccw { from { transform: rotate(0deg);    } to { transform: rotate(-360deg); } }
+@keyframes cosmo-dust-orbit {
+  0%   { transform: rotate(0deg)   translateX(var(--cosmo-dust-radius)) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(var(--cosmo-dust-radius)) rotate(-360deg); }
+}
+
+[data-cosmo-root] [data-cosmo-breath]       { animation: cosmo-breath       4s ease-in-out infinite; transform-origin: 50% 50%; }
+[data-cosmo-root] [data-cosmo-inner-pulse]  { animation: cosmo-inner-pulse  2.4s ease-in-out infinite; transform-origin: 50% 50%; }
+[data-cosmo-root] [data-cosmo-ring-outer]   { animation: cosmo-ring-spin-cw  40s linear infinite; transform-origin: 50% 50%; transform-box: fill-box; }
+[data-cosmo-root] [data-cosmo-ring-middle]  { animation: cosmo-ring-spin-ccw 28s linear infinite; transform-origin: 50% 50%; transform-box: fill-box; }
+[data-cosmo-root] [data-cosmo-dust]         { animation: cosmo-dust-orbit   var(--cosmo-dust-duration, 20s) linear infinite; transform-origin: 0 0; }
+
+[data-cosmo-root][data-cosmo-io-paused="true"] *,
+[data-cosmo-root][data-cosmo-io-paused="true"] {
+  animation-play-state: paused !important;
+}
+
 /* Legacy animation names kept as no-ops so existing classes don't break layout. */
 @keyframes twinkle { 0%, 100% { opacity: 0; } 50% { opacity: 0; } }
 .animate-twinkle { animation: none; opacity: 0; }

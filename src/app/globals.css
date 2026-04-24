@@ -512,6 +512,52 @@
 .stagger-children > *:nth-child(6) { animation-delay: 400ms; }
 
 /* ============================================
+   SERVICES LIST — Phase 4d
+   Massive editorial rows with per-letter hover scale. Letters animate
+   independently via transition-delay stored inline (rendered by the
+   component); hover on .service-row triggers a color + scale shift across
+   all .service-letter children.
+   ============================================ */
+.service-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.25rem;
+  padding-block: clamp(1.5rem, 3.2vh, 2.75rem);
+  border-bottom: 1px solid var(--border-subtle);
+}
+@media (min-width: 768px) { .service-row { gap: 2rem; } }
+
+.service-letter {
+  transition:
+    transform var(--dur-medium) var(--ease-brand),
+    color var(--dur-short) var(--ease-out-soft);
+  transform-origin: 50% 85%;
+  will-change: transform;
+}
+.service-row:hover .service-letter { transform: scale(1.1); }
+.service-row:hover .service-name   { color: var(--accent-bright); }
+
+.service-arrow {
+  color: var(--text-tertiary);
+  transform: translateX(-8px);
+  opacity: 0;
+  transition:
+    transform var(--dur-short) var(--ease-out-soft),
+    opacity   var(--dur-short) var(--ease-out-soft),
+    color     var(--dur-short) var(--ease-out-soft);
+}
+.service-row:hover .service-arrow {
+  transform: translateX(0);
+  opacity: 1;
+  color: var(--accent-bright);
+}
+
+/* Logo strip hover brighten */
+.logo-mark { transition: color var(--dur-short) var(--ease-out-soft); }
+[data-stagger-item]:hover .logo-mark { color: var(--text-primary); }
+
+/* ============================================
    HERO WORD-REVEAL — Phase 4c
    Wraps each non-space token in the hero headline with .word > .word-inner.
    The outer .word clips the inner; the inner starts at translateY(110%) and

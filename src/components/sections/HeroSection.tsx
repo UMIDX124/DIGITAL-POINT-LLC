@@ -1,119 +1,237 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import { copy } from '@/lib/copy';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { CosmoOrb } from '@/components/cosmo/CosmoOrb';
+import { splitIntoWords, isWhitespace } from '@/lib/wordSplit';
 
 /**
- * Phase 2 hero.
- * Centered editorial serif headline with a hand-coded abstract amber SVG
- * ornament sitting above the eyebrow. No R3F, no three.js, no raster.
+ * Phase 4c editorial hero.
+ *
+ * Divyansh-style split-layout: headline + sub + CTAs on the left, Cosmo orb
+ * on the right. Mobile collapses to a single column with the orb below the
+ * content.
+ *
+ * Headline "Meet the workforce you don't have to hire." ships with a 3-part
+ * structure so "the workforce" is rendered as Instrument Serif italic in
+ * accent-bright. Each non-space word is wrapped in a .word > .word-inner
+ * pair for GSAP staggered translateY reveal.
+ *
+ * Scroll-morph on the orb is wired here (not in the component) because the
+ * hero owns the scroll length that drives the morph.
  */
+
+// Word-split the headline but preserve italic spans for "the workforce".
+const HEAD_PARTS: Array<{ text: string; italic: boolean }> = [
+  { text: 'Meet', italic: false },
+  { text: 'the workforce', italic: true },
+  { text: "you don't have to hire.", italic: false },
+];
+
+const HERO_EYEBROW = 'Digital Point LLC · AI-powered operations · Since 2017';
+const HERO_SUB =
+  'AI workflows and trained operators that run your marketing, back-office, and reporting — together. So you scale without scaling headcount.';
+
 export function HeroSection() {
-  const { eyebrow, headline, subhead, ctaPrimary, ctaSecondary } = copy.hero;
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const orbWrapRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      if (!reduced) {
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+        // Cosmo orb fade + scale
+        tl.fromTo(
+          '[data-hero-orb]',
+          { opacity: 0, scale: 0.9 },
+          { opacity: 1, scale: 1, duration: 0.8 },
+          0,
+        )
+          // Eyebrow
+          .fromTo(
+            '[data-hero-eyebrow]',
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.6 },
+            0.2,
+          )
+          // Headline words — staggered translateY from 110% to 0
+          .fromTo(
+            '[data-hero-headline] .word-inner',
+            { yPercent: 110 },
+            { yPercent: 0, duration: 0.9, stagger: 0.06, ease: 'cubic-bezier(0.65, 0.05, 0, 1)' },
+            0.35,
+          )
+          // Sub
+          .fromTo(
+            '[data-hero-sub]',
+            { opacity: 0, y: 16 },
+            { opacity: 1, y: 0, duration: 0.7 },
+            1.1,
+          )
+          // CTAs
+          .fromTo(
+            '[data-hero-cta] > *',
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.6, stagger: 0.15 },
+            1.4,
+          );
+      }
+
+      // Orb scroll-morph tied to hero scroll length.
+      const orbEl = orbWrapRef.current;
+      if (orbEl && !reduced) {
+        gsap.to(orbEl, {
+          scale: 0.9,
+          y: 40,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 0.8,
+          },
+        });
+      }
+
+      // Subtle parallax — eyebrow drifts up slower than content (Phase 4h).
+      if (!reduced) {
+        gsap.to('[data-hero-eyebrow]', {
+          y: -20,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 0.9,
+          },
+        });
+      }
+
+      ScrollTrigger.refresh();
+    }, sectionRef);
+
+    const onLoad = () => ScrollTrigger.refresh();
+    window.addEventListener('load', onLoad);
+
+    return () => {
+      window.removeEventListener('load', onLoad);
+      ctx.revert();
+    };
+  }, []);
 
   return (
     <section
-      className="relative w-full overflow-hidden section-top"
-      style={{
-        background: 'var(--bg)',
-        paddingBottom: 'var(--section-main)',
-        borderBottom: '1px solid var(--border)',
-      }}
+      ref={sectionRef}
       id="hero"
+      className="hero relative w-full overflow-hidden"
+      style={{
+        background: 'var(--bg-primary)',
+        minHeight: '100dvh',
+        display: 'flex',
+        alignItems: 'center',
+        paddingTop: 'var(--section-top)',
+        paddingBottom: 'var(--section-main)',
+      }}
     >
-      <div className="container-narrow relative text-center">
-        {/* Abstract amber ornament — two concentric arcs over a thin baseline.
-            Reads as an aperture / signal mark. Hand-coded, single-color amber. */}
-        <div className="mx-auto mb-10 flex justify-center" aria-hidden="true">
-          <HeroOrnament />
+      {/* Ambient purple glow — bottom-right corner */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background:
+            'radial-gradient(ellipse 70% 55% at 85% 90%, var(--accent-glow-soft), transparent 60%)',
+        }}
+      />
+
+      <div
+        className="relative mx-auto w-full max-w-[90rem] grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 items-center"
+        style={{ paddingInline: 'var(--container-gutter)' }}
+      >
+        <div className="hero-content">
+          <p
+            className="font-mono uppercase mb-8"
+            data-hero-eyebrow
+            style={{
+              fontSize: 'var(--text-micro)',
+              letterSpacing: '0.12em',
+              color: 'var(--text-tertiary)',
+            }}
+          >
+            {HERO_EYEBROW}
+          </p>
+
+          <h1
+            className="font-hero mb-8"
+            data-hero-headline
+            style={{ fontSize: 'var(--text-hero)', color: 'var(--text-primary)', maxWidth: '16ch' }}
+          >
+            {HEAD_PARTS.map((part, pi) => {
+              const tokens = splitIntoWords(part.text);
+              return tokens.map((tok, ti) => {
+                if (isWhitespace(tok)) return <span key={`s-${pi}-${ti}`}>{tok}</span>;
+                const WordTag: 'span' | 'em' = part.italic ? 'em' : 'span';
+                return (
+                  <WordTag
+                    key={`w-${pi}-${ti}`}
+                    className={
+                      'word inline-block overflow-hidden align-top ' +
+                      (part.italic ? 'font-italic-display not-italic' : '')
+                    }
+                    style={
+                      part.italic
+                        ? { color: 'var(--accent-bright)', fontStyle: 'italic' }
+                        : undefined
+                    }
+                  >
+                    <span className="word-inner inline-block" data-word-reveal>
+                      {tok}
+                    </span>
+                  </WordTag>
+                );
+              });
+            })}
+            {/* Trailing space between part 1 and part 2 */}
+          </h1>
+
+          <p
+            className="font-body mb-10"
+            data-hero-sub
+            style={{
+              fontSize: 'var(--text-body)',
+              color: 'var(--text-secondary)',
+              maxWidth: '42ch',
+              lineHeight: 1.55,
+            }}
+          >
+            {HERO_SUB}
+          </p>
+
+          <div className="flex flex-wrap gap-4" data-hero-cta>
+            <Link href="/free-growth-audit" className="cta-primary">
+              Book a free audit
+              <span aria-hidden="true">→</span>
+            </Link>
+            <Link href="#recent-work" className="cta-ghost">
+              See what we run
+            </Link>
+          </div>
         </div>
 
-        <p className="eyebrow" data-hero-eyebrow>
-          {eyebrow}
-        </p>
-
-        <h1
-          className="display font-display mt-8 mx-auto max-w-[18ch] text-[color:var(--ivory)]"
-          data-hero-headline
-        >
-          {headline}
-        </h1>
-
-        <p
-          className="t-lead mx-auto mt-8 max-w-2xl text-[color:var(--ivory-dim)]"
-          data-hero-subhead
-        >
-          {subhead}
-        </p>
-
         <div
-          className="mt-10 flex flex-col sm:flex-row gap-3 justify-center"
-          data-hero-cta
+          ref={orbWrapRef}
+          className="hero-orb-wrap relative flex items-center justify-center"
+          data-hero-orb
         >
-          <Link
-            href={ctaPrimary.href}
-            className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14px] font-medium rounded-md text-[#0A0A0B] focus-ring transition-[background-color] duration-[400ms] hover:bg-[var(--amber)]"
-            style={{ background: 'var(--amber-bright)', transitionTimingFunction: 'var(--ease-brand)' }}
-          >
-            {ctaPrimary.label}
-            <ArrowRight className="w-4 h-4 transition-transform duration-[400ms] group-hover:translate-x-0.5" style={{ transitionTimingFunction: 'var(--ease-brand)' }} />
-          </Link>
-          <Link
-            href={ctaSecondary.href}
-            className="inline-flex items-center justify-center px-6 py-3.5 text-[14px] font-medium rounded-md text-[color:var(--ivory)] border-hairline focus-ring hover:border-[color:var(--amber)] transition-colors duration-[400ms]"
-            style={{ transitionTimingFunction: 'var(--ease-brand)' }}
-          >
-            {ctaSecondary.label}
-          </Link>
+          <CosmoOrb size="md" scrollMorph={true} mouseFollow={true} />
         </div>
       </div>
     </section>
-  );
-}
-
-/**
- * Hand-coded abstract amber ornament. No external imports.
- * Concentric arc pair + thin crosshair baseline rendered in a single SVG.
- * Scales fluidly from 112px -> 168px across viewport sizes.
- */
-function HeroOrnament() {
-  return (
-    <svg
-      width="168"
-      height="168"
-      viewBox="0 0 168 168"
-      fill="none"
-      className="w-[7rem] h-[7rem] md:w-[9rem] md:h-[9rem] lg:w-[10.5rem] lg:h-[10.5rem]"
-      aria-hidden="true"
-    >
-      {/* Outer incomplete arc — aperture mark */}
-      <path
-        d="M 84 12 A 72 72 0 1 1 12 84"
-        stroke="var(--amber-bright)"
-        strokeWidth="1.25"
-        strokeLinecap="round"
-        fill="none"
-      />
-      {/* Inner arc, offset angle — reinforces the ring gesture */}
-      <path
-        d="M 148 84 A 64 64 0 0 1 84 148"
-        stroke="var(--amber)"
-        strokeWidth="1.25"
-        strokeLinecap="round"
-        fill="none"
-      />
-      {/* Thin diagonal hairline crossing center — editorial axis */}
-      <line
-        x1="36"
-        y1="132"
-        x2="132"
-        y2="36"
-        stroke="var(--ivory-dim)"
-        strokeWidth="0.75"
-        strokeLinecap="round"
-        opacity="0.35"
-      />
-      {/* Center dot — focal anchor */}
-      <circle cx="84" cy="84" r="2.5" fill="var(--amber-bright)" />
-    </svg>
   );
 }

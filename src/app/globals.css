@@ -512,6 +512,56 @@
 .stagger-children > *:nth-child(6) { animation-delay: 400ms; }
 
 /* ============================================
+   HERO WORD-REVEAL — Phase 4c
+   Wraps each non-space token in the hero headline with .word > .word-inner.
+   The outer .word clips the inner; the inner starts at translateY(110%) and
+   is animated to 0 by GSAP on mount. If GSAP fails for any reason, the
+   ScrollMotion 2.5s fallback resets it via [data-word-reveal] and
+   [data-letter-reveal] selectors.
+   ============================================ */
+.word { display: inline-block; overflow: hidden; vertical-align: top; line-height: inherit; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.word-inner { display: inline-block; transform: translateY(110%); will-change: transform; }
+
+/* ============================================
+   CTA BUTTONS — Phase 4c
+   Primary = filled purple, ghost = outlined.
+   ============================================ */
+.cta-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--accent); color: #ffffff;
+  padding: 0.95rem 1.6rem; border-radius: 2px;
+  font-family: var(--font-geist-sans), var(--font-sans), sans-serif;
+  font-weight: 500; font-size: 0.9375rem; letter-spacing: -0.01em;
+  transition:
+    transform var(--dur-short) var(--ease-out-soft),
+    background-color var(--dur-short) var(--ease-out-soft),
+    box-shadow var(--dur-short) var(--ease-out-soft);
+}
+.cta-primary:hover {
+  background: var(--accent-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px var(--accent-glow);
+}
+.cta-primary:active { transform: translateY(0); }
+
+.cta-ghost {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: transparent; color: var(--text-primary);
+  padding: 0.95rem 1.6rem; border: 1px solid var(--border-default); border-radius: 2px;
+  font-family: var(--font-geist-sans), var(--font-sans), sans-serif;
+  font-weight: 500; font-size: 0.9375rem; letter-spacing: -0.01em;
+  transition:
+    border-color var(--dur-short) var(--ease-out-soft),
+    background-color var(--dur-short) var(--ease-out-soft),
+    color var(--dur-short) var(--ease-out-soft);
+}
+.cta-ghost:hover {
+  border-color: var(--accent);
+  background: var(--accent-glow-soft);
+  color: var(--text-primary);
+}
+
+/* ============================================
    COSMO ORB — Phase 4b
    Purely decorative AI mascot visual. All animations are CSS keyframes so
    no JS runs for breath/rotation/inner-pulse/dust-orbit. Mouse-follow +

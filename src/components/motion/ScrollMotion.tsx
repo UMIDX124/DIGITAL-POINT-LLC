@@ -184,11 +184,22 @@ export function ScrollMotion() {
         '[data-testimonial-card]',
         '[data-pillar-card]',
         '[data-workflow-label]',
+        // Phase 4c additions:
+        '[data-word-reveal]',
+        '[data-letter-reveal]',
       ];
       gsap.utils.toArray<HTMLElement>(selectors.join(',')).forEach((el) => {
         const o = parseFloat(getComputedStyle(el).opacity || '1');
         if (o < 0.05) {
           gsap.set(el, { opacity: 1, y: 0, x: 0, clearProps: 'transform' });
+        }
+      });
+      // Hero word-reveal inner spans — translate-back if still at 110%.
+      gsap.utils.toArray<HTMLElement>('[data-word-reveal]').forEach((el) => {
+        const t = getComputedStyle(el).transform;
+        if (t && t !== 'none') {
+          // If translateY is still ~110%, force back to 0.
+          gsap.set(el, { yPercent: 0, y: 0, clearProps: 'transform' });
         }
       });
       // Workflow nodes (SVGGElement)

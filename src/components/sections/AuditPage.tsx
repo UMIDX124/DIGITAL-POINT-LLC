@@ -154,9 +154,9 @@ export function AuditPage() {
           <FadeUp>
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm mb-6"
               style={{
-                background: 'rgba(217,119,6, 0.15)',
-                border: '1px solid rgba(245,158,11, 0.2)',
-                color: '#F59E0B',
+                background: 'rgba(99,102,241, 0.15)',
+                border: '1px solid rgba(129,140,248, 0.2)',
+                color: '#6366F1',
               }}
             >
               <SignalPoint size="sm" />
@@ -166,7 +166,7 @@ export function AuditPage() {
 
           <FadeUp delay={0.1}>
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-white leading-[1.1] tracking-tight max-w-3xl">
-              Get a <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FBBF24] to-[#F59E0B]">free growth audit</span>
+              Get a <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#818CF8] to-[#6366F1]">free growth audit</span>
             </h1>
           </FadeUp>
 
@@ -193,7 +193,7 @@ export function AuditPage() {
                       {step > 1 && (
                         <button
                           onClick={goBack}
-                          className="flex items-center gap-1 text-[#F59E0B] hover:text-[#FBBF24] text-sm transition-colors"
+                          className="flex items-center gap-1 text-[#6366F1] hover:text-[#818CF8] text-sm transition-colors"
                         >
                           <ArrowLeft className="w-3 h-3" />
                           Back
@@ -203,7 +203,7 @@ export function AuditPage() {
                     <div className="h-1 bg-[#141416] rounded-full overflow-hidden">
                       <motion.div
                         className="h-full rounded-full"
-                        style={{ background: 'linear-gradient(90deg, #B45309, #F59E0B, #F59E0B)' }}
+                        style={{ background: 'linear-gradient(90deg, #4338CA, #6366F1, #6366F1)' }}
                         initial={{ width: 0 }}
                         animate={{ width: `${progressPercent}%` }}
                         transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -237,27 +237,27 @@ export function AuditPage() {
                             className="w-full text-left p-4 rounded-xl transition-all duration-200 group flex items-center gap-4"
                             style={{
                               background: formData.bottleneck === challenge.id
-                                ? 'rgba(217,119,6, 0.2)'
-                                : 'rgba(217,119,6, 0.05)',
+                                ? 'rgba(99,102,241, 0.2)'
+                                : 'rgba(99,102,241, 0.05)',
                               border: formData.bottleneck === challenge.id
-                                ? '1px solid rgba(245,158,11, 0.4)'
-                                : '1px solid rgba(245,158,11, 0.1)',
+                                ? '1px solid rgba(129,140,248, 0.4)'
+                                : '1px solid rgba(129,140,248, 0.1)',
                             }}
                           >
                             <div
                               className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition-transform group-hover:scale-110"
                               style={{
-                                background: 'rgba(217,119,6, 0.15)',
-                                border: '1px solid rgba(245,158,11, 0.2)',
+                                background: 'rgba(99,102,241, 0.15)',
+                                border: '1px solid rgba(129,140,248, 0.2)',
                               }}
                             >
-                              <challenge.icon className="w-5 h-5 text-[#F59E0B]" />
+                              <challenge.icon className="w-5 h-5 text-[#6366F1]" />
                             </div>
                             <div>
                               <div className="text-white font-medium text-sm">{challenge.label}</div>
                               <div className="text-[#71717A] text-xs mt-0.5">{challenge.description}</div>
                             </div>
-                            <ArrowRight className="w-4 h-4 text-[#F59E0B] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <ArrowRight className="w-4 h-4 text-[#6366F1] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
                           </button>
                         ))}
                       </div>
@@ -288,14 +288,14 @@ export function AuditPage() {
                             className="p-4 rounded-xl text-center transition-all duration-200 group"
                             style={{
                               background: formData.adSpend === range.id
-                                ? 'rgba(217,119,6, 0.2)'
-                                : 'rgba(217,119,6, 0.05)',
+                                ? 'rgba(99,102,241, 0.2)'
+                                : 'rgba(99,102,241, 0.05)',
                               border: formData.adSpend === range.id
-                                ? '1px solid rgba(245,158,11, 0.4)'
-                                : '1px solid rgba(245,158,11, 0.1)',
+                                ? '1px solid rgba(129,140,248, 0.4)'
+                                : '1px solid rgba(129,140,248, 0.1)',
                             }}
                           >
-                            <div className="text-white font-medium text-sm group-hover:text-[#FBBF24] transition-colors">
+                            <div className="text-white font-medium text-sm group-hover:text-[#818CF8] transition-colors">
                               {range.label}
                             </div>
                           </button>
@@ -330,7 +330,7 @@ export function AuditPage() {
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             placeholder="Your name"
-                            className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#F59E0B] text-white"
+                            className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#6366F1] text-white"
                           />
                           {errors.name && (
                             <p className="text-red-400 text-xs mt-1">{errors.name}</p>
@@ -347,7 +347,7 @@ export function AuditPage() {
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             placeholder="you@company.com"
-                            className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#F59E0B] text-white"
+                            className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#6366F1] text-white"
                           />
                           {errors.email && (
                             <p className="text-red-400 text-xs mt-1">{errors.email}</p>
@@ -363,7 +363,7 @@ export function AuditPage() {
                             value={formData.company}
                             onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                             placeholder="Company name (optional)"
-                            className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#F59E0B] text-white"
+                            className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#6366F1] text-white"
                           />
                         </div>
 
@@ -372,7 +372,7 @@ export function AuditPage() {
                           disabled={isSubmitting}
                           className="w-full py-6 text-lg font-semibold group"
                           style={{
-                            background: 'linear-gradient(135deg, #B45309 0%, #D97706 50%, #F59E0B 100%)',
+                            background: 'linear-gradient(135deg, #4338CA 0%, #4F46E5 50%, #6366F1 100%)',
                           }}
                         >
                           {isSubmitting ? (
@@ -415,7 +415,7 @@ export function AuditPage() {
                       <div className="flex items-center justify-center gap-4 text-sm">
                         <a
                           href="mailto:info@digitalpointllc.com"
-                          className="flex items-center gap-2 text-[#F59E0B] hover:text-[#FBBF24] transition-colors"
+                          className="flex items-center gap-2 text-[#6366F1] hover:text-[#818CF8] transition-colors"
                         >
                           <Mail className="w-4 h-4" />
                           info@digitalpointllc.com
@@ -450,7 +450,7 @@ export function AuditPage() {
 
               <GlassCard className="p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <Clock className="w-5 h-5 text-[#F59E0B]" />
+                  <Clock className="w-5 h-5 text-[#6366F1]" />
                   <h3 className="font-display font-semibold text-white">
                     Response Time
                   </h3>
@@ -462,7 +462,7 @@ export function AuditPage() {
 
               <GlassCard className="p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <User className="w-5 h-5 text-[#F59E0B]" />
+                  <User className="w-5 h-5 text-[#6366F1]" />
                   <h3 className="font-display font-semibold text-white">
                     Co-Founder Led
                   </h3>
@@ -472,7 +472,7 @@ export function AuditPage() {
                 </p>
                 <a
                   href="mailto:info@digitalpointllc.com"
-                  className="flex items-center gap-2 text-[#F59E0B] hover:text-[#FBBF24] transition-colors text-sm"
+                  className="flex items-center gap-2 text-[#6366F1] hover:text-[#818CF8] transition-colors text-sm"
                 >
                   <Mail className="w-4 h-4" />
                   info@digitalpointllc.com

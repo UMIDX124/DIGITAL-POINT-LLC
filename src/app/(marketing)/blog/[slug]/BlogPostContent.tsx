@@ -42,7 +42,7 @@ function CollapsibleTOC({ toc }: { toc: { id: string; text: string; level: numbe
   return (
     <div
       className="rounded-xl p-5"
-      style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(217,119,6, 0.15)' }}
+      style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(99,102,241, 0.15)' }}
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
@@ -60,7 +60,7 @@ function CollapsibleTOC({ toc }: { toc: { id: string; text: string; level: numbe
           <a
             key={item.id}
             href={`#${item.id}`}
-            className={`block text-xs text-[#71717A] hover:text-[#F59E0B] transition-colors py-0.5 ${
+            className={`block text-xs text-[#71717A] hover:text-[#6366F1] transition-colors py-0.5 ${
               item.level === 3 ? 'pl-4' : ''
             }`}
           >
@@ -89,9 +89,9 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
                   [&_p]:text-[#D6D0C2] [&_p]:leading-relaxed [&_p]:mb-4
                   [&_strong]:text-white
                   [&_ul]:my-4 [&_li]:text-[#D6D0C2] [&_li]:mb-1
-                  [&_code]:text-[#FBBF24]
-                  [&_a]:text-[#F59E0B] [&_a]:hover:text-[#FBBF24]
-                  [&_hr]:border-[rgba(217,119,6,0.15)] [&_hr]:my-8`;
+                  [&_code]:text-[#818CF8]
+                  [&_a]:text-[#6366F1] [&_a]:hover:text-[#818CF8]
+                  [&_hr]:border-[rgba(99,102,241,0.15)] [&_hr]:my-8`;
 
   return (
     <>
@@ -141,7 +141,7 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
             </h1>
             <p className="text-[#D6D0C2] text-lg mt-4 max-w-2xl">{post.excerpt}</p>
             <p className="text-[#71717A] text-sm mt-3">
-              By <span className="text-[#F59E0B]">{post.author}</span>
+              By <span className="text-[#6366F1]">{post.author}</span>
             </p>
           </FadeUp>
         </Container>
@@ -171,11 +171,11 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
 
               {/* FAQ Section if present */}
               {post.faqs && post.faqs.length > 0 && (
-                <div className="mt-12 pt-8" style={{ borderTop: '1px solid rgba(217,119,6, 0.15)' }}>
+                <div className="mt-12 pt-8" style={{ borderTop: '1px solid rgba(99,102,241, 0.15)' }}>
                   <h2 className="font-display text-2xl font-bold text-white mb-6">Frequently Asked Questions</h2>
                   <div className="space-y-4">
                     {post.faqs.map((faq, i) => (
-                      <div key={i} className="rounded-xl p-5" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(217,119,6, 0.15)' }}>
+                      <div key={i} className="rounded-xl p-5" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(99,102,241, 0.15)' }}>
                         <h3 className="text-white font-medium text-sm mb-2">{faq.question}</h3>
                         <p className="text-[#71717A] text-sm">{faq.answer}</p>
                       </div>
@@ -205,9 +205,9 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
                         key={rp.slug}
                         href={`/blog/${rp.slug}`}
                         className="group rounded-xl p-4 transition-all hover:scale-[1.01]"
-                        style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(217,119,6, 0.15)' }}
+                        style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(99,102,241, 0.15)' }}
                       >
-                        <h4 className="text-white text-sm font-medium group-hover:text-[#FBBF24] transition-colors leading-snug">
+                        <h4 className="text-white text-sm font-medium group-hover:text-[#818CF8] transition-colors leading-snug">
                           {rp.title}
                         </h4>
                         <p className="text-[#71717A] text-xs mt-2">{rp.readTime}</p>
@@ -231,7 +231,7 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
               {/* Back to blog */}
               <Link
                 href="/blog"
-                className="flex items-center gap-2 text-[#71717A] hover:text-[#F59E0B] transition-colors text-xs"
+                className="flex items-center gap-2 text-[#71717A] hover:text-[#6366F1] transition-colors text-xs"
               >
                 <ArrowLeft className="w-3 h-3" />
                 All articles

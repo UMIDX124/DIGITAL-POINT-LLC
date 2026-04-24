@@ -10,12 +10,12 @@ import { GrowthAuditCTA } from '@/components/seo/GrowthAuditCTA';
 import type { Guide } from '@/lib/guides';
 
 const guideColors: Record<string, string> = {
-  'marketing-attribution-complete-guide': '#F59E0B',
-  'paid-ads-optimization-guide': '#F59E0B',
-  'cac-roas-guide': '#fbbf24',
+  'marketing-attribution-complete-guide': '#6366F1',
+  'paid-ads-optimization-guide': '#6366F1',
+  'cac-roas-guide': '#818CF8',
   'marketing-analytics-guide': '#7dd3fc',
   'remote-marketing-team-guide': '#a3e635',
-  'growth-systems-guide': '#FBBF24',
+  'growth-systems-guide': '#818CF8',
 };
 
 export function GuidesHub({ guides }: { guides: Guide[] }) {
@@ -42,7 +42,7 @@ export function GuidesHub({ guides }: { guides: Guide[] }) {
         <Container size="wide">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {guides.map((guide, index) => {
-              const color = guideColors[guide.slug] || '#F59E0B';
+              const color = guideColors[guide.slug] || '#6366F1';
               return (
                 <FadeUp key={guide.slug} delay={index * 0.08}>
                   <Link href={`/guides/${guide.slug}`} className="block group h-full">
@@ -65,7 +65,7 @@ export function GuidesHub({ guides }: { guides: Guide[] }) {
                               {guide.sections.length} sections
                             </span>
                           </div>
-                          <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#FBBF24] transition-colors mb-2">
+                          <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#818CF8] transition-colors mb-2">
                             {guide.title}
                           </h3>
                           <p className="text-[#D6D0C2] text-sm leading-relaxed mb-3">
@@ -78,7 +78,7 @@ export function GuidesHub({ guides }: { guides: Guide[] }) {
                             >
                               Pillar Guide
                             </span>
-                            <span className="flex items-center gap-1 text-[#F59E0B] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span className="flex items-center gap-1 text-[#6366F1] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                               Read Guide <ArrowRight className="w-3.5 h-3.5" />
                             </span>
                           </div>

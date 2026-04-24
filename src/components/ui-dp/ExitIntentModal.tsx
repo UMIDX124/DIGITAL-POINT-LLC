@@ -46,7 +46,7 @@ export function ExitIntentModal() {
         className="sm:max-w-md border-0"
         style={{
           background: 'linear-gradient(135deg, #141416 0%, #1C1C1F 100%)',
-          border: '1px solid rgba(245,158,11, 0.2)',
+          border: '1px solid rgba(129,140,248, 0.2)',
         }}
       >
         <DialogHeader>
@@ -64,7 +64,7 @@ export function ExitIntentModal() {
             onClick={() => setOpen(false)}
             className="w-full py-3 rounded-xl text-sm font-semibold text-white flex items-center justify-center gap-2"
             style={{
-              background: 'linear-gradient(135deg, #B45309 0%, #D97706 50%, #F59E0B 100%)',
+              background: 'linear-gradient(135deg, #4338CA 0%, #4F46E5 50%, #6366F1 100%)',
               boxShadow: '0 4px 16px rgba(180,83,9, 0.4)',
             }}
           >

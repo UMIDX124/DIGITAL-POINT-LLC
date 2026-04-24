@@ -53,14 +53,14 @@ const qualityMetrics = [
 
 const keyStats = [
   { value: '59%', label: 'Avg Cost Savings', color: '#a3e635' },
-  { value: '$768K', label: 'Savings (10-person)', color: '#F59E0B' },
-  { value: '4.3/5', label: 'Client Satisfaction', color: '#fbbf24' },
+  { value: '$768K', label: 'Savings (10-person)', color: '#6366F1' },
+  { value: '4.3/5', label: 'Client Satisfaction', color: '#818CF8' },
   { value: '91%', label: 'On-Time Delivery', color: '#7dd3fc' },
 ];
 
 const glassStyle = {
   background: 'rgba(13, 8, 21, 0.5)',
-  border: '1px solid rgba(217,119,6, 0.15)',
+  border: '1px solid rgba(99,102,241, 0.15)',
 };
 
 export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
@@ -112,16 +112,16 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(217,119,6,0.15)]">
+                    <tr className="border-b border-[rgba(99,102,241,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Role</th>
-                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">US Fully Loaded</th>
+                      <th className="text-right py-3 px-4 text-[#6366F1] font-medium">US Fully Loaded</th>
                       <th className="text-right py-3 px-4 text-[#a3e635] font-medium">Managed Remote</th>
-                      <th className="text-right py-3 px-4 text-[#fbbf24] font-medium">Savings</th>
+                      <th className="text-right py-3 px-4 text-[#818CF8] font-medium">Savings</th>
                     </tr>
                   </thead>
                   <tbody>
                     {roleCostComparison.map((row, i) => (
-                      <tr key={row.role} className={i < roleCostComparison.length - 1 ? 'border-b border-[rgba(217,119,6,0.08)]' : ''}>
+                      <tr key={row.role} className={i < roleCostComparison.length - 1 ? 'border-b border-[rgba(99,102,241,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.role}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.usFullyLoaded}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.remote}</td>
@@ -146,15 +146,15 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(217,119,6,0.15)]">
+                    <tr className="border-b border-[rgba(99,102,241,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Cost Item</th>
-                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">Annual Cost</th>
+                      <th className="text-right py-3 px-4 text-[#6366F1] font-medium">Annual Cost</th>
                       <th className="text-right py-3 px-4 text-[#7dd3fc] font-medium">% of Total</th>
                     </tr>
                   </thead>
                   <tbody>
                     {usOverheadBreakdown.map((row, i) => (
-                      <tr key={row.item} className={i < usOverheadBreakdown.length - 1 ? 'border-b border-[rgba(217,119,6,0.08)]' : ''}>
+                      <tr key={row.item} className={i < usOverheadBreakdown.length - 1 ? 'border-b border-[rgba(99,102,241,0.08)]' : ''}>
                         <td className={`py-3 px-4 font-medium ${i === usOverheadBreakdown.length - 1 ? 'text-white' : 'text-[#D6D0C2]'}`}>
                           {row.item}
                         </td>
@@ -181,16 +181,16 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(217,119,6,0.15)]">
+                    <tr className="border-b border-[rgba(99,102,241,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Team Size</th>
-                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">US Annual</th>
+                      <th className="text-right py-3 px-4 text-[#6366F1] font-medium">US Annual</th>
                       <th className="text-right py-3 px-4 text-[#a3e635] font-medium">Remote Annual</th>
-                      <th className="text-right py-3 px-4 text-[#fbbf24] font-medium">Annual Savings</th>
+                      <th className="text-right py-3 px-4 text-[#818CF8] font-medium">Annual Savings</th>
                     </tr>
                   </thead>
                   <tbody>
                     {teamScaleComparison.map((row, i) => (
-                      <tr key={row.teamSize} className={i < teamScaleComparison.length - 1 ? 'border-b border-[rgba(217,119,6,0.08)]' : ''}>
+                      <tr key={row.teamSize} className={i < teamScaleComparison.length - 1 ? 'border-b border-[rgba(99,102,241,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.teamSize}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.usAnnual}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.remoteAnnual}</td>
@@ -214,16 +214,16 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(217,119,6,0.15)]">
+                    <tr className="border-b border-[rgba(99,102,241,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Metric</th>
                       <th className="text-right py-3 px-4 text-[#a3e635] font-medium">Managed Remote</th>
-                      <th className="text-right py-3 px-4 text-[#fbbf24] font-medium">Freelancers</th>
+                      <th className="text-right py-3 px-4 text-[#818CF8] font-medium">Freelancers</th>
                       <th className="text-right py-3 px-4 text-[#7dd3fc] font-medium">US In-House</th>
                     </tr>
                   </thead>
                   <tbody>
                     {qualityMetrics.map((row, i) => (
-                      <tr key={row.metric} className={i < qualityMetrics.length - 1 ? 'border-b border-[rgba(217,119,6,0.08)]' : ''}>
+                      <tr key={row.metric} className={i < qualityMetrics.length - 1 ? 'border-b border-[rgba(99,102,241,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.metric}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.managed}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.freelancer}</td>

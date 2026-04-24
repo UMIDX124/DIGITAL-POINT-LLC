@@ -45,14 +45,14 @@ const channelCAC = [
 
 const keyStats = [
   { value: '$198', label: 'Avg B2C CAC', color: '#a3e635' },
-  { value: '$702', label: 'Avg B2B CAC', color: '#F59E0B' },
-  { value: '14%', label: 'YoY CAC Increase', color: '#F59E0B' },
-  { value: '1:3.8', label: 'Avg LTV:CAC', color: '#fbbf24' },
+  { value: '$702', label: 'Avg B2B CAC', color: '#6366F1' },
+  { value: '14%', label: 'YoY CAC Increase', color: '#6366F1' },
+  { value: '1:3.8', label: 'Avg LTV:CAC', color: '#818CF8' },
 ];
 
 const glassStyle = {
   background: 'rgba(13, 8, 21, 0.5)',
-  border: '1px solid rgba(217,119,6, 0.15)',
+  border: '1px solid rgba(99,102,241, 0.15)',
 };
 
 export function AverageCACByIndustry({ faqs }: Props) {
@@ -104,17 +104,17 @@ export function AverageCACByIndustry({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(217,119,6,0.15)]">
+                    <tr className="border-b border-[rgba(99,102,241,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Industry</th>
-                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">B2B CAC</th>
+                      <th className="text-right py-3 px-4 text-[#6366F1] font-medium">B2B CAC</th>
                       <th className="text-right py-3 px-4 text-[#a3e635] font-medium">B2C CAC</th>
-                      <th className="text-right py-3 px-4 text-[#fbbf24] font-medium">LTV:CAC</th>
+                      <th className="text-right py-3 px-4 text-[#818CF8] font-medium">LTV:CAC</th>
                       <th className="text-right py-3 px-4 text-[#7dd3fc] font-medium">Payback</th>
                     </tr>
                   </thead>
                   <tbody>
                     {industryCAC.map((row, i) => (
-                      <tr key={row.industry} className={i < industryCAC.length - 1 ? 'border-b border-[rgba(217,119,6,0.08)]' : ''}>
+                      <tr key={row.industry} className={i < industryCAC.length - 1 ? 'border-b border-[rgba(99,102,241,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.industry}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.b2bCac}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.b2cCac}</td>
@@ -140,19 +140,19 @@ export function AverageCACByIndustry({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(217,119,6,0.15)]">
+                    <tr className="border-b border-[rgba(99,102,241,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Channel</th>
                       <th className="text-right py-3 px-4 text-[#a3e635] font-medium">Avg CAC</th>
-                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">YoY Trend</th>
-                      <th className="text-right py-3 px-4 text-[#fbbf24] font-medium">Lead Quality</th>
+                      <th className="text-right py-3 px-4 text-[#6366F1] font-medium">YoY Trend</th>
+                      <th className="text-right py-3 px-4 text-[#818CF8] font-medium">Lead Quality</th>
                     </tr>
                   </thead>
                   <tbody>
                     {channelCAC.map((row, i) => (
-                      <tr key={row.channel} className={i < channelCAC.length - 1 ? 'border-b border-[rgba(217,119,6,0.08)]' : ''}>
+                      <tr key={row.channel} className={i < channelCAC.length - 1 ? 'border-b border-[rgba(99,102,241,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.channel}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.avgCac}</td>
-                        <td className="py-3 px-4 text-right" style={{ color: row.trend.startsWith('-') ? '#a3e635' : '#F59E0B' }}>
+                        <td className="py-3 px-4 text-right" style={{ color: row.trend.startsWith('-') ? '#a3e635' : '#6366F1' }}>
                           {row.trend}
                         </td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.quality}</td>

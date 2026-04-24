@@ -153,8 +153,8 @@ export function SystemsReportingPage() {
             {systemTypes.map((system) => (
               <StaggerItem key={system.title}>
                 <GlassCard className="p-6 h-full">
-                  <div className="w-12 h-12 rounded-xl bg-violet/10 flex items-center justify-center mb-4">
-                    <system.icon className="w-6 h-6 text-violet" />
+                  <div className="w-12 h-12 rounded-xl bg-[color:var(--accent-glow-soft)] flex items-center justify-center mb-4">
+                    <system.icon className="w-6 h-6 text-[color:var(--accent)]" />
                   </div>
                   <h3 className="font-display font-semibold text-text-primary mb-2">
                     {system.title}
@@ -189,7 +189,7 @@ export function SystemsReportingPage() {
                     onClick={() => setActiveTab(tab)}
                     className={`w-full text-left p-4 rounded-xl transition-all ${
                       activeTab.id === tab.id
-                        ? 'bg-surface-glass border border-violet'
+                        ? 'bg-surface-glass border border-[color:var(--accent)]'
                         : 'bg-surface-glass border border-transparent hover:border-border-glass'
                     }`}
                   >
@@ -218,7 +218,7 @@ export function SystemsReportingPage() {
                       transition={{ delay: i * 0.1 }}
                       className="flex items-center gap-3"
                     >
-                      <div className="w-8 h-8 rounded-full bg-violet/10 flex items-center justify-center text-violet text-sm font-mono">
+                      <div className="w-8 h-8 rounded-full bg-[color:var(--accent-glow-soft)] flex items-center justify-center text-[color:var(--accent)] text-sm font-mono">
                         {i + 1}
                       </div>
                       <span className="text-text-primary">{step}</span>

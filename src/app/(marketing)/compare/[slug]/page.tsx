@@ -73,15 +73,15 @@ export default async function ComparisonPage({ params }: PageProps) {
                 <tr>
                   <th
                     className="text-left text-xs uppercase tracking-wider text-[#71717A] py-3 px-4 border-b"
-                    style={{ borderColor: 'rgba(217,119,6, 0.2)' }}
+                    style={{ borderColor: 'rgba(99,102,241, 0.2)' }}
                   >
                     Category
                   </th>
                   <th
                     className="text-left text-xs uppercase tracking-wider py-3 px-4 border-b"
                     style={{
-                      borderColor: 'rgba(217,119,6, 0.2)',
-                      color: '#F59E0B',
+                      borderColor: 'rgba(99,102,241, 0.2)',
+                      color: '#6366F1',
                     }}
                   >
                     {comparison.optionA.name}
@@ -89,8 +89,8 @@ export default async function ComparisonPage({ params }: PageProps) {
                   <th
                     className="text-left text-xs uppercase tracking-wider py-3 px-4 border-b"
                     style={{
-                      borderColor: 'rgba(217,119,6, 0.2)',
-                      color: '#F59E0B',
+                      borderColor: 'rgba(99,102,241, 0.2)',
+                      color: '#6366F1',
                     }}
                   >
                     {comparison.optionB.name}
@@ -102,19 +102,19 @@ export default async function ComparisonPage({ params }: PageProps) {
                   <tr key={index}>
                     <td
                       className="text-sm font-medium text-white py-3 px-4 border-b"
-                      style={{ borderColor: 'rgba(217,119,6, 0.1)' }}
+                      style={{ borderColor: 'rgba(99,102,241, 0.1)' }}
                     >
                       {row.category}
                     </td>
                     <td
                       className="text-sm text-[#D6D0C2] py-3 px-4 border-b"
-                      style={{ borderColor: 'rgba(217,119,6, 0.1)' }}
+                      style={{ borderColor: 'rgba(99,102,241, 0.1)' }}
                     >
                       {row.optionA}
                     </td>
                     <td
                       className="text-sm text-[#D6D0C2] py-3 px-4 border-b"
-                      style={{ borderColor: 'rgba(217,119,6, 0.1)' }}
+                      style={{ borderColor: 'rgba(99,102,241, 0.1)' }}
                     >
                       {row.optionB}
                     </td>
@@ -135,7 +135,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               className="rounded-2xl p-6 md:p-8"
               style={{
                 background: 'rgba(20,20,22, 0.6)',
-                border: '1px solid rgba(217,119,6, 0.2)',
+                border: '1px solid rgba(99,102,241, 0.2)',
               }}
             >
               <h3 className="font-display text-xl font-bold text-white mb-6">
@@ -144,7 +144,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               <div className="mb-6">
                 <h4
                   className="text-sm font-semibold uppercase tracking-wider mb-3"
-                  style={{ color: '#F59E0B' }}
+                  style={{ color: '#6366F1' }}
                 >
                   Pros
                 </h4>
@@ -163,7 +163,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               <div>
                 <h4
                   className="text-sm font-semibold uppercase tracking-wider mb-3"
-                  style={{ color: '#F59E0B' }}
+                  style={{ color: '#6366F1' }}
                 >
                   Cons
                 </h4>
@@ -186,7 +186,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               className="rounded-2xl p-6 md:p-8"
               style={{
                 background: 'rgba(20,20,22, 0.6)',
-                border: '1px solid rgba(217,119,6, 0.2)',
+                border: '1px solid rgba(99,102,241, 0.2)',
               }}
             >
               <h3 className="font-display text-xl font-bold text-white mb-6">
@@ -195,7 +195,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               <div className="mb-6">
                 <h4
                   className="text-sm font-semibold uppercase tracking-wider mb-3"
-                  style={{ color: '#F59E0B' }}
+                  style={{ color: '#6366F1' }}
                 >
                   Pros
                 </h4>
@@ -214,7 +214,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               <div>
                 <h4
                   className="text-sm font-semibold uppercase tracking-wider mb-3"
-                  style={{ color: '#F59E0B' }}
+                  style={{ color: '#6366F1' }}
                 >
                   Cons
                 </h4>
@@ -244,8 +244,8 @@ export default async function ComparisonPage({ params }: PageProps) {
           <div
             className="rounded-2xl p-6 md:p-8"
             style={{
-              background: 'linear-gradient(135deg, rgba(180,83,9, 0.12), rgba(217,119,6, 0.06))',
-              border: '1px solid rgba(245,158,11, 0.2)',
+              background: 'linear-gradient(135deg, rgba(180,83,9, 0.12), rgba(99,102,241, 0.06))',
+              border: '1px solid rgba(129,140,248, 0.2)',
             }}
           >
             <p className="text-[#D6D0C2] text-base leading-relaxed">

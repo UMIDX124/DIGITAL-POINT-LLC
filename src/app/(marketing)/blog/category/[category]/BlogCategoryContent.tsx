@@ -36,7 +36,7 @@ export function BlogCategoryContent({ categoryName, meta, posts }: Props) {
             <FadeUp>
               <div className="text-center py-16">
                 <p className="text-[#71717A] text-lg">No articles in this category yet.</p>
-                <Link href="/blog" className="inline-flex items-center gap-2 text-[#F59E0B] hover:text-[#FBBF24] mt-4 text-sm">
+                <Link href="/blog" className="inline-flex items-center gap-2 text-[#6366F1] hover:text-[#818CF8] mt-4 text-sm">
                   <ArrowLeft className="w-4 h-4" /> Back to blog
                 </Link>
               </div>
@@ -56,16 +56,16 @@ export function BlogCategoryContent({ categoryName, meta, posts }: Props) {
                           {categoryName}
                         </span>
                       </div>
-                      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#FBBF24] transition-colors mb-3 leading-snug">
+                      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#818CF8] transition-colors mb-3 leading-snug">
                         {post.title}
                       </h3>
                       <p className="text-[#71717A] text-sm leading-relaxed flex-1 mb-4">{post.excerpt}</p>
-                      <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(217,119,6, 0.1)' }}>
+                      <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(99,102,241, 0.1)' }}>
                         <div className="flex items-center gap-3 text-[#71717A] text-xs">
                           <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
                           <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{post.readTime}</span>
                         </div>
-                        <ArrowRight className="w-4 h-4 text-[#F59E0B] opacity-0 group-hover:opacity-100 transition-all" />
+                        <ArrowRight className="w-4 h-4 text-[#6366F1] opacity-0 group-hover:opacity-100 transition-all" />
                       </div>
                     </GlassCard>
                   </Link>

@@ -23,7 +23,7 @@ export function GrowthAuditCTA({
         href="/free-growth-audit"
         className={`inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white rounded-xl transition-transform hover:scale-[1.02] active:scale-[0.98] ${className}`}
         style={{
-          background: 'linear-gradient(135deg, #B45309 0%, #D97706 100%)',
+          background: 'linear-gradient(135deg, #4338CA 0%, #4F46E5 100%)',
           boxShadow: '0 4px 16px rgba(180,83,9, 0.3)',
         }}
       >
@@ -38,8 +38,8 @@ export function GrowthAuditCTA({
       <div
         className={`rounded-xl p-5 flex items-center justify-between gap-4 flex-wrap ${className}`}
         style={{
-          background: 'linear-gradient(135deg, rgba(180,83,9, 0.12), rgba(217,119,6, 0.06))',
-          border: '1px solid rgba(245,158,11, 0.2)',
+          background: 'linear-gradient(135deg, rgba(180,83,9, 0.12), rgba(99,102,241, 0.06))',
+          border: '1px solid rgba(129,140,248, 0.2)',
         }}
       >
         <div>
@@ -50,7 +50,7 @@ export function GrowthAuditCTA({
           href="/free-growth-audit"
           className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white rounded-lg transition-transform hover:scale-[1.02] active:scale-[0.98] shrink-0"
           style={{
-            background: 'linear-gradient(135deg, #B45309 0%, #D97706 100%)',
+            background: 'linear-gradient(135deg, #4338CA 0%, #4F46E5 100%)',
           }}
         >
           Free Audit <ArrowRight className="w-3 h-3" />
@@ -64,8 +64,8 @@ export function GrowthAuditCTA({
     <div
       className={`rounded-2xl p-8 md:p-10 text-center ${className}`}
       style={{
-        background: 'linear-gradient(135deg, rgba(180,83,9, 0.15), rgba(217,119,6, 0.08))',
-        border: '1px solid rgba(245,158,11, 0.2)',
+        background: 'linear-gradient(135deg, rgba(180,83,9, 0.15), rgba(99,102,241, 0.08))',
+        border: '1px solid rgba(129,140,248, 0.2)',
       }}
     >
       <h3 className="font-display text-xl md:text-2xl font-bold text-white mb-3">{title}</h3>
@@ -74,7 +74,7 @@ export function GrowthAuditCTA({
         <motion.span
           className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-xl"
           style={{
-            background: 'linear-gradient(135deg, #B45309 0%, #D97706 100%)',
+            background: 'linear-gradient(135deg, #4338CA 0%, #4F46E5 100%)',
             boxShadow: '0 4px 16px rgba(180,83,9, 0.3)',
           }}
           whileHover={{ scale: 1.02 }}

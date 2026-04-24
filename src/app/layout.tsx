@@ -1,28 +1,27 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Inter, JetBrains_Mono } from "next/font/google";
+import { Instrument_Serif } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
+/**
+ * Phase 4a font stack:
+ * - Geist Sans (Vercel, OFL) → primary UI + body (replaces Inter)
+ * - Geist Mono (Vercel, OFL) → data + eyebrow labels (replaces JetBrains Mono)
+ * - Instrument Serif → hero display + pull quote + italic accents (unchanged)
+ *
+ * Legacy --font-inter / --font-jetbrains-mono CSS vars are aliased to Geist
+ * in globals.css so existing components (RecentWorkSection SVG labels etc.)
+ * keep resolving without a component-level rewrite.
+ */
 const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
   subsets: ["latin"],
   display: "swap",
   weight: ["400"],
   style: ["normal", "italic"],
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -50,7 +49,7 @@ export const metadata: Metadata = {
     "Meta ads agency",
     "Google ads agency",
     "n8n workflows",
-    "Groq AI",
+    "AI automation",
     "pod-based marketing team",
   ],
   authors: [{ name: "M. Faizan Rafiq" }, { name: "Anwaar Tayyab" }],
@@ -210,12 +209,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
-        <meta name="theme-color" content="#0A0A0B" />
-        <meta name="msapplication-TileColor" content="#0A0A0B" />
+        <meta name="theme-color" content="#0D0D0D" />
+        <meta name="msapplication-TileColor" content="#0D0D0D" />
       </head>
       <body
-        className={`${instrumentSerif.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
-        style={{ background: "#0A0A0B", color: "#F5F1E8" }}
+        className={`${instrumentSerif.variable} ${GeistSans.variable} ${GeistMono.variable} antialiased`}
+        style={{ background: "#0D0D0D", color: "#F5F5F7" }}
       >
         {children}
         <Toaster />

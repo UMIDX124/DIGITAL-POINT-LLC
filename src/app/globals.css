@@ -4,282 +4,273 @@
 @custom-variant dark (&:is(.dark *));
 
 /* =======================================================================
-   DIGITAL POINT LLC — EXECUTIVE DARK · DIVYANSH-TASTE REDESIGN
-   Dark surfaces · ivory type · single amber accent · hairline borders
+   DIGITAL POINT LLC — PHASE 4a: DIVYANSH-REPLICA VISUAL SYSTEM
+   Dark surfaces · purple primary · editorial typography · motion tokens
 
-   Token system ported from divyanshagarwal.com (Phase 1, redesign/divyansh-taste branch).
-   Reference decoded values live in /tmp/REFERENCE-ANALYSIS.md.
+   PRIMARY COLOR SUPERSEDURE (durable, documented in commit):
+   DPL primary is PURPLE #6366F1. This supersedes the legacy amber/gold
+   rule in global ~/.claude/CLAUDE.md for the DPL site ONLY. Other projects
+   (CRM, VCS, BSL) keep their existing color rules.
 
-   PORT vs DIVERGE (intentional decisions):
-   - Reference brand accent #ff4d00 -> our amber #D97706 / #F59E0B
-     (Brand constraint: amber + charcoal, never neon orange.)
-   - Reference typeface "PP Neue Montreal Medium" (one face) -> our Instrument Serif
-     (display) + Inter (body) + JetBrains Mono (data).
-     (Our two-face editorial pairing is pre-existing and load-cheap via next/font.
-      The reference's one-face discipline still informs weight + tracking choices.)
-   - Reference light theme skipped; dark-only. (Matches project brief.)
-   - Reference custom SVG cursors skipped. (design-taste-frontend SKILL §7 bans
-     custom cursors; also ruined by license/CDN surface area.)
-   - Reference fluid clamps (20em -> 90em = 320px -> 1440px) PORTED verbatim,
-     just mapped onto our display/body pair instead of one medium-weight sans.
-   - Signature easing cubic-bezier(.65, .05, 0, 1) PORTED as --ease-brand.
-   - Reference 12-column Webflow grid superseded by Tailwind v4 defaults; section
-     paddings + container widths use the ported section-space tokens.
+   TOKEN SYSTEM — ported from divyanshagarwal.com at 0.78× scale, palette
+   remapped to DPL purple on dark charcoal.
+
+   PRESERVE (Phase 0-3a contracts, do NOT break):
+   - Scroll-reveal safety net: ScrollMotion.tsx 2.5s fallback must still
+     see [data-reveal], [data-stagger-item], [data-service-item],
+     [data-work-card], [data-testimonial-card], [data-pillar-card],
+     [data-workflow-label]. New 4c-4h attributes (e.g. [data-word-reveal],
+     [data-letter-reveal]) get added to that selector list when introduced.
+   - Signature ease cubic-bezier(0.65, 0.05, 0, 1) stays as --ease-brand.
+   - Fluid clamp typography + spacing scales (ported verbatim from ref).
+   - [data-slot="button"] Tailwind-transition override stays.
+   - .card-flat / .divide-hairline / .container-wide / .container-narrow
+     / .section-main|sm|lg|top / .eyebrow / .focus-ring primitives stay,
+     retargeted to the new palette.
+
+   INTRODUCE (new in 4a):
+   - Purple accent system (--accent, --accent-bright, --accent-deep,
+     --accent-glow, --accent-glow-soft).
+   - Multi-layer background system (--bg-primary/secondary/tertiary/elevated).
+   - New text/border color taxonomy (--text-primary..muted, --border-subtle..bright).
+   - Hero-scale type token (--text-hero = 0.78× Divyansh hero clamp).
+   - Motion tokens (--ease-out-soft, --ease-in-soft, --dur-micro..hero).
+   - Section-space + container-gutter tokens matching Divyansh rhythm.
+   - Type utility classes (.font-hero, .font-display, .font-body, .font-italic-display).
+
+   ALIAS (legacy name → new purple value):
+   - --amber, --amber-bright, --plum, --plum-light, --plum-dark, --signal
+     all retargeted to the purple palette so any component that still
+     references them renders correctly until its rewrite lands.
    ======================================================================= */
 
 @theme inline {
-  /* --- Palette aliases (unchanged) --- */
-  --color-bg: var(--bg);
-  --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
-  --color-border: var(--border);
-  --color-ivory: var(--ivory);
-  --color-ivory-dim: var(--ivory-dim);
-  --color-muted: var(--muted);
-  --color-amber: var(--amber);
-  --color-amber-bright: var(--amber-bright);
+  /* --- Purple accent surfacing (new canonical primary) --- */
+  --color-accent: var(--accent);
+  --color-accent-bright: var(--accent-bright);
+  --color-accent-deep: var(--accent-deep);
 
-  /* shadcn-compatible aliases so existing components keep working */
-  --color-background: var(--bg);
-  --color-foreground: var(--ivory);
-  --color-card: var(--surface);
-  --color-card-foreground: var(--ivory);
-  --color-popover: var(--surface);
-  --color-popover-foreground: var(--ivory);
-  --color-primary: var(--amber);
-  --color-primary-foreground: #0A0A0B;
-  --color-secondary: var(--surface-2);
-  --color-secondary-foreground: var(--ivory);
-  --color-muted-foreground: var(--muted);
-  --color-accent: var(--surface-2);
-  --color-accent-foreground: var(--ivory);
+  /* --- Background system --- */
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-bg-elevated: var(--bg-elevated);
+
+  /* --- Text system --- */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-muted: var(--text-muted);
+
+  /* --- Legacy aliases retargeted to new palette --- */
+  --color-bg: var(--bg-primary);
+  --color-surface: var(--bg-secondary);
+  --color-surface-2: var(--bg-elevated);
+  --color-border: var(--border-default);
+  --color-ivory: var(--text-primary);
+  --color-ivory-dim: var(--text-secondary);
+  --color-muted: var(--text-tertiary);
+  --color-amber: var(--accent);
+  --color-amber-bright: var(--accent-bright);
+
+  /* shadcn-compatible aliases */
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  --color-card: var(--bg-secondary);
+  --color-card-foreground: var(--text-primary);
+  --color-popover: var(--bg-secondary);
+  --color-popover-foreground: var(--text-primary);
+  --color-primary: var(--accent);
+  --color-primary-foreground: var(--bg-primary);
+  --color-secondary: var(--bg-elevated);
+  --color-secondary-foreground: var(--text-primary);
+  --color-muted-foreground: var(--text-tertiary);
+  --color-accent-foreground: var(--text-primary);
   --color-destructive: #DC2626;
-  --color-ring: var(--amber-bright);
-  --color-input: var(--border);
+  --color-ring: var(--accent-bright);
+  --color-input: var(--border-default);
 
-  /* Legacy cosmic aliases still mapped to the amber palette so any code on the
-     old wrappers renders in the right system until Phase 2/3 removes them. */
-  --color-plum: var(--amber);
-  --color-plum-light: var(--amber-bright);
-  --color-plum-dark: #B45309;
-  --color-signal: var(--amber-bright);
-  --color-signal-glow: rgba(245, 158, 11, 0.25);
-  --color-cosmic-pink: var(--amber-bright);
-  --color-cosmic-magenta: var(--amber);
-  --color-surface-elevated: var(--surface-2);
-  --color-surface-glass: rgba(245, 158, 11, 0.04);
-  --color-surface-glass-strong: rgba(245, 158, 11, 0.08);
-  --color-text-primary: var(--ivory);
-  --color-text-secondary: var(--ivory-dim);
-  --color-text-muted: var(--muted);
-  --color-border-subtle: var(--border);
-  --color-border-glass: var(--border);
-  --color-border-active: var(--amber);
+  /* Cosmic-era aliases still in use by legacy sub-pages */
+  --color-plum: var(--accent);
+  --color-plum-light: var(--accent-bright);
+  --color-plum-dark: var(--accent-deep);
+  --color-signal: var(--accent-bright);
+  --color-signal-glow: var(--accent-glow);
+  --color-cosmic-pink: var(--accent-bright);
+  --color-cosmic-magenta: var(--accent);
+  --color-surface-elevated: var(--bg-elevated);
+  --color-surface-glass: var(--accent-glow-soft);
+  --color-surface-glass-strong: var(--accent-glow);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-glass: var(--border-default);
+  --color-border-active: var(--accent);
 
-  /* Charts — monotone amber ladder, no rainbow */
-  --color-chart-1: var(--amber);
-  --color-chart-2: var(--amber-bright);
-  --color-chart-3: #FBBF24;
-  --color-chart-4: var(--ivory-dim);
-  --color-chart-5: var(--muted);
+  /* Charts — purple ladder */
+  --color-chart-1: var(--accent);
+  --color-chart-2: var(--accent-bright);
+  --color-chart-3: #A5B4FC;
+  --color-chart-4: var(--text-secondary);
+  --color-chart-5: var(--text-tertiary);
 
-  /* Radius — unchanged */
+  /* Radius */
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 8px;
   --radius-xl: 12px;
   --radius-2xl: 16px;
 
-  /* Typography family aliases (unchanged) */
-  --font-sans: var(--font-inter), system-ui, sans-serif;
+  /* Typography family aliases
+     Geist Sans / Mono ship via next/font's `geist` npm package. Instrument
+     Serif remains the display face. */
+  --font-sans: var(--font-geist-sans, var(--font-inter)), system-ui, sans-serif;
   --font-display: var(--font-instrument-serif), Georgia, serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-mono: var(--font-geist-mono, var(--font-jetbrains-mono)), ui-monospace, monospace;
 
   /* ===================================================================
-     FLUID TYPE SCALE — ported from ref (/tmp/ref-home.html style block 6).
-     Each token is `clamp(min, fluid, max)` mapping viewport 320px -> 1440px.
-     Ref values kept verbatim; semantics attached to our serif-for-display,
-     sans-for-body system.
+     FLUID TYPE SCALE — Phase 4a Divyansh × 0.78
      ------------------------------------------------------------------- */
 
-  /* ref --_typography---font-size--display: clamp(3rem, 1.7143rem + 6.4286vw, 7.5rem)
-     our text-display (48px -> 120px): editorial hero headline size.
-     Rationale: identical clamp carries our serif to the same visual weight. */
-  --text-display: clamp(3rem, 1.7143rem + 6.4286vw, 7.5rem);
+  /* Divyansh hero headline × 0.78 (75px → 174px).
+     Rationale: the reference hero tops out at ~120px; 0.78× keeps our
+     headline commanding without competing with Cosmo orb presence. */
+  --text-hero: clamp(4.7rem, 10.9vw, 10.9rem);
 
-  /* ref --_typography---font-size--h1: clamp(2.1875rem, 1.2589rem + 4.6429vw, 5.4375rem)
-     our text-h1 (35px -> 87px): primary section header.
-     Rationale: ported verbatim so section hierarchy matches reference rhythm. */
-  --text-h1: clamp(2.1875rem, 1.2589rem + 4.6429vw, 5.4375rem);
+  /* Display (section feature title) — prompt spec 50px → 125px. */
+  --text-display: clamp(3.1rem, 7.8vw, 7.8rem);
 
-  /* ref --_typography---font-size--h2: clamp(2.0625rem, 1.4018rem + 3.3036vw, 4.375rem)
-     our text-h2 (33px -> 70px): secondary section header.
-     Rationale: same ratio as ref; below-display sections read calmer. */
-  --text-h2: clamp(2.0625rem, 1.4018rem + 3.3036vw, 4.375rem);
+  /* H1 (primary section header) — 40px → 88px. */
+  --text-h1: clamp(2.5rem, 5.5vw, 5.5rem);
 
-  /* ref --_typography---font-size--h3: clamp(1.8125rem, 1.3304rem + 2.4107vw, 3.5rem)
-     our text-h3 (29px -> 56px): card title / pull quote.
-     Rationale: holds editorial weight inside cards without shouting. */
-  --text-h3: clamp(1.8125rem, 1.3304rem + 2.4107vw, 3.5rem);
+  /* H2 (secondary section header) — 32px → 69px. */
+  --text-h2: clamp(2rem, 4.3vw, 4.3rem);
 
-  /* ref --_typography---font-size--h4: clamp(1.5625rem, 1.2946rem + 1.3393vw, 2.5rem)
-     our text-h4 (25px -> 40px): eyebrow accent headline / service row item.
-     Rationale: ports the step between h3 and h5 cleanly. */
+  /* H3 (card title / pull quote) — 24px → 48px. */
+  --text-h3: clamp(1.5rem, 3vw, 3rem);
+
+  /* Kept from Phase 1 port (used by existing sub-pages; not re-scaled):
+     h4 = 25→40, h5 = 20→30, h6 = 17→24, lead = 17→20, main = 15→18,
+     caption = 13→16. */
   --text-h4: clamp(1.5625rem, 1.2946rem + 1.3393vw, 2.5rem);
-
-  /* ref --_typography---font-size--h5: clamp(1.25rem, 1.0714rem + 0.8929vw, 1.875rem)
-     our text-h5 (20px -> 30px): card inner heading / metric label big.
-     Rationale: same fluid ratio; pairs with our mono numeric. */
   --text-h5: clamp(1.25rem, 1.0714rem + 0.8929vw, 1.875rem);
-
-  /* ref --_typography---font-size--h6: clamp(1.0625rem, 0.9375rem + 0.625vw, 1.5rem)
-     our text-h6 (17px -> 24px): small heading / footer column label.
-     Rationale: ported for consistency with ref footer hierarchy. */
   --text-h6: clamp(1.0625rem, 0.9375rem + 0.625vw, 1.5rem);
-
-  /* ref --_typography---font-size--text-large: clamp(1.0625rem, 1.0089rem + 0.2679vw, 1.25rem)
-     our text-lead (17px -> 20px): hero subhead / lead paragraph.
-     Rationale: ported verbatim — subhead should ride one step above body. */
   --text-lead: clamp(1.0625rem, 1.0089rem + 0.2679vw, 1.25rem);
-
-  /* ref --_typography---font-size--text-main: clamp(0.9375rem, 0.8839rem + 0.2679vw, 1.125rem)
-     our text-main (15px -> 18px): default body paragraph size.
-     Rationale: ported verbatim; replaces the current hardcoded 14.5-17px mix. */
   --text-main: clamp(0.9375rem, 0.8839rem + 0.2679vw, 1.125rem);
-
-  /* ref --_typography---font-size--text-small: clamp(0.8125rem, 0.7589rem + 0.2679vw, 1rem)
-     our text-caption (13px -> 16px): secondary caption / label.
-     Rationale: ported verbatim; feeds our existing eyebrow/muted copy. */
   --text-caption: clamp(0.8125rem, 0.7589rem + 0.2679vw, 1rem);
 
-  /* ===================================================================
-     EASING — single signature curve ported from ref.
-     Exposes Tailwind utility `ease-brand`.
-     ------------------------------------------------------------------- */
+  /* Prompt-spec discrete sizes (non-fluid). */
+  --text-body: 1.0625rem;   /* 17px */
+  --text-small: 0.875rem;   /* 14px */
+  --text-micro: 0.75rem;    /* 12px */
 
-  /* ref transition curve: cubic-bezier(.65, .05, 0, 1)
-     our --ease-brand: PORTED verbatim.
-     Rationale: this curve is the single most distinctive motion primitive on
-     the ref site — used at 400ms for hover transforms and 550ms for section
-     transforms. Our Phase 2/4 motion should default to this over power3.out. */
-  --ease-brand: cubic-bezier(.65, .05, 0, 1);
+  /* ===================================================================
+     MOTION TOKENS — Phase 4a
+     ------------------------------------------------------------------- */
+  --ease-brand: cubic-bezier(0.65, 0.05, 0, 1);
+  --ease-out-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-in-soft: cubic-bezier(0.32, 0, 0.67, 0);
+
+  --dur-micro: 200ms;
+  --dur-short: 300ms;
+  --dur-medium: 500ms;
+  --dur-long: 800ms;
+  --dur-hero: 1100ms;
 }
 
 /* ============================================
-   ROOT VARIABLES — colors + fluid spacing scale
+   :root — color values + fluid spacing scale
    ============================================ */
 
 :root {
   --radius: 0.5rem;
 
-  /* Palette (unchanged from Executive Dark) */
-  --bg: #0A0A0B;
-  --surface: #141416;
-  --surface-2: #1C1C1F;
-  --border: #27272A;
-  --ivory: #F5F1E8;
-  --ivory-dim: #D6D0C2;
-  --muted: #71717A;
-  --amber: #D97706;
-  --amber-bright: #F59E0B;
+  /* --- Background system (premium depth) --- */
+  --bg-primary: #0D0D0D;
+  --bg-secondary: #111114;
+  --bg-tertiary: #0A0A0B;
+  --bg-elevated: #151518;
 
-  /* Legacy plain-var names still used by some components */
-  --background: var(--bg);
-  --foreground: var(--ivory);
-  --plum: var(--amber);
-  --plum-light: var(--amber-bright);
-  --plum-dark: #B45309;
-  --signal: var(--amber-bright);
-  --signal-glow: rgba(245, 158, 11, 0.25);
-  --cosmic-pink: var(--amber-bright);
-  --cosmic-magenta: var(--amber);
-  --surface-elevated: var(--surface-2);
-  --surface-glass: rgba(245, 158, 11, 0.04);
-  --surface-glass-strong: rgba(245, 158, 11, 0.08);
-  --text-primary: var(--ivory);
-  --text-secondary: var(--ivory-dim);
-  --text-muted: var(--muted);
-  --border-subtle: var(--border);
-  --border-glass: var(--border);
-  --border-active: var(--amber);
+  /* --- Purple accent system (new canonical) --- */
+  --accent: #6366F1;
+  --accent-bright: #818CF8;
+  --accent-deep: #4F46E5;
+  --accent-glow: rgba(99, 102, 241, 0.25);
+  --accent-glow-soft: rgba(99, 102, 241, 0.08);
+
+  /* --- Text --- */
+  --text-primary: #F5F5F7;
+  --text-secondary: #A1A1AA;
+  --text-tertiary: #71717A;
+  --text-muted: #52525B;
+
+  /* --- Borders --- */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.1);
+  --border-bright: rgba(99, 102, 241, 0.3);
+
+  /* ----- Legacy palette aliases → purple palette -----
+     Components not yet rewritten still reference these names. They resolve
+     to the new purple values so visual output is consistent without
+     per-component edits. */
+  --bg: var(--bg-primary);
+  --surface: var(--bg-secondary);
+  --surface-2: var(--bg-elevated);
+  --border: var(--border-default);
+  --ivory: var(--text-primary);
+  --ivory-dim: var(--text-secondary);
+  --muted: var(--text-tertiary);
+  --amber: var(--accent);
+  --amber-bright: var(--accent-bright);
+
+  --background: var(--bg-primary);
+  --foreground: var(--text-primary);
+  --plum: var(--accent);
+  --plum-light: var(--accent-bright);
+  --plum-dark: var(--accent-deep);
+  --signal: var(--accent-bright);
+  --signal-glow: var(--accent-glow);
+  --cosmic-pink: var(--accent-bright);
+  --cosmic-magenta: var(--accent);
+  --surface-elevated: var(--bg-elevated);
+  --surface-glass: var(--accent-glow-soft);
+  --surface-glass-strong: var(--accent-glow);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-glass: var(--border-default);
+  --border-active: var(--accent);
+
+  /* ----- Legacy font-var aliases → Geist -----
+     RecentWorkSection + WorkflowSection inline SVG labels reference
+     var(--font-jetbrains-mono) directly. Aliasing keeps them resolved to
+     Geist Mono without component edits. */
+  --font-inter: var(--font-geist-sans);
+  --font-jetbrains-mono: var(--font-geist-mono);
 
   /* ------------------------------------------------------------------
-     FLUID SPACING SCALE — ported from ref (same clamp formulas).
-     Applied via `var(--space-N)` or the `.pad-*` utility classes below.
-     Kept off the Tailwind numeric spacing scale to avoid clobbering the
-     default `p-1` -> `p-8` utilities.
+     FLUID SPACING SCALE — retained from Phase 1 port.
      ------------------------------------------------------------------ */
-
-  /* ref --_spacing---space--1: clamp(0.375rem, 0.3393rem + 0.1786vw, 0.5rem)
-     our --space-1 (6 -> 8px): fine inline gap.
-     Rationale: ported verbatim; matches ref's tight rhythm inside cards. */
   --space-1: clamp(0.375rem, 0.3393rem + 0.1786vw, 0.5rem);
-
-  /* ref --_spacing---space--2: clamp(0.625rem, 0.5893rem + 0.1786vw, 0.75rem)
-     our --space-2 (10 -> 12px): list item padding.
-     Rationale: ported verbatim. */
   --space-2: clamp(0.625rem, 0.5893rem + 0.1786vw, 0.75rem);
-
-  /* ref --_spacing---space--3: clamp(0.875rem, 0.8393rem + 0.1786vw, 1rem)
-     our --space-3 (14 -> 16px): default inner padding.
-     Rationale: ported verbatim; replaces hardcoded p-4 in Phase 2/3. */
   --space-3: clamp(0.875rem, 0.8393rem + 0.1786vw, 1rem);
-
-  /* ref --_spacing---space--4: clamp(1.25rem, 1.1786rem + 0.3571vw, 1.5rem)
-     our --space-4 (20 -> 24px): card outer padding.
-     Rationale: ported verbatim; aligns card breathing room w/ ref. */
   --space-4: clamp(1.25rem, 1.1786rem + 0.3571vw, 1.5rem);
-
-  /* ref --_spacing---space--5: clamp(1.75rem, 1.6786rem + 0.3571vw, 2rem)
-     our --space-5 (28 -> 32px): between-element stack.
-     Rationale: ported verbatim. */
   --space-5: clamp(1.75rem, 1.6786rem + 0.3571vw, 2rem);
-
-  /* ref --_spacing---space--6: clamp(2rem, 1.8571rem + 0.7143vw, 2.5rem)
-     our --space-6 (32 -> 40px): header -> body gap.
-     Rationale: ported verbatim. */
   --space-6: clamp(2rem, 1.8571rem + 0.7143vw, 2.5rem);
-
-  /* ref --_spacing---space--7: clamp(2.25rem, 2.0357rem + 1.0714vw, 3rem)
-     our --space-7 (36 -> 48px): hero header -> eyebrow gap.
-     Rationale: ported verbatim. */
   --space-7: clamp(2.25rem, 2.0357rem + 1.0714vw, 3rem);
-
-  /* ref --_spacing---space--8: clamp(2.5rem, 2.0714rem + 2.1429vw, 4rem)
-     our --space-8 (40 -> 64px): large inter-element gap.
-     Rationale: ported verbatim. */
   --space-8: clamp(2.5rem, 2.0714rem + 2.1429vw, 4rem);
 
   /* ------------------------------------------------------------------
-     SECTION-SPACE — vertical padding rhythm between sections.
-     Ported from ref (four named tiers). Utility classes below map
-     each tier to `padding-top` + `padding-bottom`.
+     SECTION-SPACE — Phase 1 tiers retained; Phase 4a adds --section-space
+     + --section-space-tight + --container-gutter from Divyansh spec.
      ------------------------------------------------------------------ */
-
-  /* ref --_spacing---section-space--small: clamp(3rem, 2.4286rem + 2.8571vw, 5rem)
-     our --section-sm (48 -> 80px): tight inter-section break.
-     Rationale: ported verbatim; small rhythm for dense sequential content. */
   --section-sm: clamp(3rem, 2.4286rem + 2.8571vw, 5rem);
-
-  /* ref --_spacing---section-space--main: clamp(4rem, 3.1429rem + 4.2857vw, 7rem)
-     our --section-main (64 -> 112px): standard section padding.
-     Rationale: ported verbatim; replaces current py-20/28/32 stepped util. */
   --section-main: clamp(4rem, 3.1429rem + 4.2857vw, 7rem);
-
-  /* ref --_spacing---section-space--large: clamp(5.5rem, 4.2143rem + 6.4286vw, 10rem)
-     our --section-lg (88 -> 160px): pull-quote / hero section padding.
-     Rationale: ported verbatim; lets editorial sections breathe. */
   --section-lg: clamp(5.5rem, 4.2143rem + 6.4286vw, 10rem);
-
-  /* ref --_spacing---section-space--page-top: clamp(7rem, 5rem + 10vw, 14rem)
-     our --section-top (112 -> 224px): hero top padding.
-     Rationale: ported verbatim; matches ref's page-top breathing room. */
   --section-top: clamp(7rem, 5rem + 10vw, 14rem);
 
-  /* ref --site--margin: clamp(1rem, 0.4286rem + 2.8571vw, 3rem)
-     our --site-margin (16 -> 48px): horizontal container padding.
-     Rationale: ported verbatim; replaces px-5 sm:px-8 lg:px-10 on containers. */
+  /* Divyansh primary section rhythm (100 → 174 px). */
+  --section-space: clamp(6.25rem, 12.5vh, 10.9rem);
+  --section-space-tight: clamp(4rem, 8vh, 6rem);
+
   --site-margin: clamp(1rem, 0.4286rem + 2.8571vw, 3rem);
+  --container-gutter: clamp(1.5rem, 5vw, 4rem);
 }
 
 /* ============================================
@@ -292,27 +283,60 @@
   }
   html { scroll-behavior: smooth; }
   body {
-    background: var(--bg);
-    color: var(--ivory);
-    font-family: var(--font-inter), system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-geist-sans), var(--font-sans), system-ui, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-instrument-serif), Georgia, serif;
     font-weight: 400;
     letter-spacing: -0.02em;
   }
-  code, pre, .font-mono {
-    font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  code, pre {
+    font-family: var(--font-mono);
     font-feature-settings: "tnum" 1;
   }
 
-  /* Type scale — display uses serif, body stays Inter */
-  .font-display { font-family: var(--font-instrument-serif), Georgia, serif; font-weight: 400; }
+  /* Selection — purple */
+  ::selection { background: rgba(99, 102, 241, 0.35); color: var(--text-primary); }
+}
 
-  /* Selection */
-  ::selection { background: rgba(217, 119, 6, 0.35); color: var(--ivory); }
+/* ============================================
+   TYPE UTILITY CLASSES — Phase 4a
+   ============================================ */
+
+@layer utilities {
+  .font-hero {
+    font-family: var(--font-instrument-serif), Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 0.92;
+  }
+  .font-display {
+    font-family: var(--font-geist-sans), var(--font-sans);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+  }
+  .font-body {
+    font-family: var(--font-geist-sans), var(--font-sans);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.5;
+  }
+  .font-mono {
+    font-family: var(--font-geist-mono), var(--font-mono);
+    font-weight: 400;
+    letter-spacing: 0;
+    font-feature-settings: "tnum" 1;
+  }
+  .font-italic-display {
+    font-family: var(--font-instrument-serif), Georgia, serif;
+    font-style: italic;
+  }
 }
 
 /* ============================================
@@ -320,58 +344,67 @@
    ============================================ */
 
 @layer utilities {
-  .bg-bg          { background-color: var(--bg); }
-  .bg-surface     { background-color: var(--surface); }
-  .bg-surface-2   { background-color: var(--surface-2); }
+  .bg-bg          { background-color: var(--bg-primary); }
+  .bg-surface     { background-color: var(--bg-secondary); }
+  .bg-surface-2   { background-color: var(--bg-elevated); }
 
-  .text-ivory     { color: var(--ivory); }
-  .text-ivory-dim { color: var(--ivory-dim); }
-  .text-muted     { color: var(--muted); }
-  .text-amber     { color: var(--amber); }
-  .text-amber-bright { color: var(--amber-bright); }
+  .text-ivory     { color: var(--text-primary); }
+  .text-ivory-dim { color: var(--text-secondary); }
+  .text-muted     { color: var(--text-tertiary); }
 
-  .border-hairline { border: 1px solid var(--border); }
-  .divide-hairline > * + * { border-top: 1px solid var(--border); }
+  /* Legacy .text-amber / .text-amber-bright aliases — now purple. */
+  .text-amber         { color: var(--accent); }
+  .text-amber-bright  { color: var(--accent-bright); }
+
+  .text-accent         { color: var(--accent); }
+  .text-accent-bright  { color: var(--accent-bright); }
+
+  .border-hairline { border: 1px solid var(--border-default); }
+  .divide-hairline > * + * { border-top: 1px solid var(--border-default); }
 
   .eyebrow {
-    font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+    font-family: var(--font-geist-mono), var(--font-mono);
     font-size: 11px;
     line-height: 1;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--amber);
+    color: var(--accent-bright);
   }
 
   .data {
-    font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+    font-family: var(--font-geist-mono), var(--font-mono);
     font-variant-numeric: tabular-nums;
     letter-spacing: -0.01em;
   }
 
-  /* ---- NEW: fluid type utility classes (wrap the --text-* tokens).
-     Use in components Phase 2/3: `<h1 class="display tracking-tight-2">`
-     instead of `<h1 class="text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px]">`. */
-  .display   { font-size: var(--text-display);  line-height: 1;     letter-spacing: -0.03em; }
-  .t-h1      { font-size: var(--text-h1);       line-height: 1.05;  letter-spacing: -0.02em; }
-  .t-h2      { font-size: var(--text-h2);       line-height: 1.05;  letter-spacing: -0.02em; }
-  .t-h3      { font-size: var(--text-h3);       line-height: 1.1;   letter-spacing: -0.02em; }
-  .t-h4      { font-size: var(--text-h4);       line-height: 1.15;  letter-spacing: -0.015em; }
-  .t-h5      { font-size: var(--text-h5);       line-height: 1.2;   letter-spacing: -0.01em; }
-  .t-h6      { font-size: var(--text-h6);       line-height: 1.3;   letter-spacing: -0.01em; }
+  /* Fluid type utility classes. */
+  .t-hero    { font-size: var(--text-hero);     line-height: 0.92; letter-spacing: -0.02em; }
+  .display   { font-size: var(--text-display);  line-height: 1;    letter-spacing: -0.03em; }
+  .t-h1      { font-size: var(--text-h1);       line-height: 1.05; letter-spacing: -0.02em; }
+  .t-h2      { font-size: var(--text-h2);       line-height: 1.05; letter-spacing: -0.02em; }
+  .t-h3      { font-size: var(--text-h3);       line-height: 1.1;  letter-spacing: -0.02em; }
+  .t-h4      { font-size: var(--text-h4);       line-height: 1.15; letter-spacing: -0.015em; }
+  .t-h5      { font-size: var(--text-h5);       line-height: 1.2;  letter-spacing: -0.01em; }
+  .t-h6      { font-size: var(--text-h6);       line-height: 1.3;  letter-spacing: -0.01em; }
   .t-lead    { font-size: var(--text-lead);     line-height: 1.5; }
   .t-main    { font-size: var(--text-main);     line-height: 1.6; }
   .t-caption { font-size: var(--text-caption);  line-height: 1.5; }
+  .t-body    { font-size: var(--text-body);     line-height: 1.5; }
+  .t-small   { font-size: var(--text-small);    line-height: 1.45; }
+  .t-micro   { font-size: var(--text-micro);    line-height: 1.4; letter-spacing: 0.04em; }
 
-  /* ---- NEW: fluid section-space utilities. */
-  .section-sm   { padding-top: var(--section-sm);   padding-bottom: var(--section-sm); }
-  .section-main { padding-top: var(--section-main); padding-bottom: var(--section-main); }
-  .section-lg   { padding-top: var(--section-lg);   padding-bottom: var(--section-lg); }
-  .section-top  { padding-top: var(--section-top); }
+  /* Fluid section-space utilities. */
+  .section-sm    { padding-top: var(--section-sm);    padding-bottom: var(--section-sm); }
+  .section-main  { padding-top: var(--section-main);  padding-bottom: var(--section-main); }
+  .section-lg    { padding-top: var(--section-lg);    padding-bottom: var(--section-lg); }
+  .section-top   { padding-top: var(--section-top); }
+  .section-space       { padding-top: var(--section-space);       padding-bottom: var(--section-space); }
+  .section-space-tight { padding-top: var(--section-space-tight); padding-bottom: var(--section-space-tight); }
 
-  /* Legacy stepped utility — preserved so sections not yet rewritten keep their rhythm. */
+  /* Legacy stepped utility. */
   .section-padding { @apply py-20 md:py-28 lg:py-32; }
 
-  /* ---- UPDATED: containers now use the fluid --site-margin. */
+  /* Containers. */
   .container-wide   { margin-inline: auto; width: 100%; max-width: 80rem; padding-inline: var(--site-margin); }
   .container-narrow { margin-inline: auto; width: 100%; max-width: 64rem; padding-inline: var(--site-margin); }
   .container-prose  { margin-inline: auto; width: 100%; max-width: 48rem; padding-inline: var(--site-margin); }
@@ -379,41 +412,38 @@
   .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   .hide-scrollbar::-webkit-scrollbar { display: none; }
 
-  .custom-scrollbar { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+  .custom-scrollbar { scrollbar-width: thin; scrollbar-color: var(--border-default) transparent; }
   .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
   .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-  .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--amber); }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 3px; }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-  /* Focus rings — amber, accessible */
+  /* Focus rings — purple, accessible. */
   .focus-ring { outline: none; }
   .focus-ring:focus-visible {
-    outline: 2px solid var(--amber-bright);
+    outline: 2px solid var(--accent-bright);
     outline-offset: 2px;
   }
 
-  /* Phase 3a: override Tailwind's default transition on shadcn Buttons so they
-     ride the brand ease curve instead of the generic 0.15s color curve.
-     Scoped via shadcn's own data-slot="button" stamp so plain <button> elements
-     elsewhere in the tree are untouched. */
+  /* Phase 3a: shadcn Button transition override — now on brand ease. */
   [data-slot="button"] {
-    transition-duration: 400ms;
+    transition-duration: var(--dur-short);
     transition-timing-function: var(--ease-brand);
   }
 
-  /* Card primitives — now use the signature easing curve. */
+  /* Card primitives. */
   .card-flat {
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-default);
     border-radius: 8px;
-    transition: border-color 400ms var(--ease-brand), transform 400ms var(--ease-brand);
+    transition: border-color var(--dur-medium) var(--ease-brand), transform var(--dur-medium) var(--ease-brand);
   }
-  .card-flat:hover { border-color: var(--amber); }
+  .card-flat:hover { border-color: var(--border-bright); }
 
-  /* Legacy aliases — existing components that reference these still render */
+  /* Legacy cosmic/glass no-ops — kept so legacy className references resolve. */
   .glass, .glass-strong {
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-default);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
@@ -431,10 +461,10 @@
   }
 
   .card-hover {
-    transition: border-color 400ms var(--ease-brand), transform 400ms var(--ease-brand);
+    transition: border-color var(--dur-medium) var(--ease-brand), transform var(--dur-medium) var(--ease-brand);
   }
   .card-hover:hover {
-    border-color: var(--amber);
+    border-color: var(--border-bright);
     transform: none;
     box-shadow: none;
   }
@@ -447,8 +477,8 @@
     left: 0;
     width: 0;
     height: 1px;
-    background: var(--amber);
-    transition: width 400ms var(--ease-brand);
+    background: var(--accent);
+    transition: width var(--dur-medium) var(--ease-brand);
   }
   .link-underline:hover::after { width: 100%; }
 
@@ -469,11 +499,11 @@
   to   { opacity: 1; transform: scale(1); }
 }
 
-.animate-fade-in  { animation: fade-in 400ms var(--ease-brand) forwards; }
-.animate-fade-up  { animation: fade-up 500ms var(--ease-brand) forwards; }
-.animate-scale-in { animation: scale-in 400ms var(--ease-brand) forwards; }
+.animate-fade-in  { animation: fade-in var(--dur-medium) var(--ease-brand) forwards; }
+.animate-fade-up  { animation: fade-up var(--dur-medium) var(--ease-brand) forwards; }
+.animate-scale-in { animation: scale-in var(--dur-medium) var(--ease-brand) forwards; }
 
-.stagger-children > * { opacity: 0; animation: fade-up 500ms var(--ease-brand) forwards; }
+.stagger-children > * { opacity: 0; animation: fade-up var(--dur-medium) var(--ease-brand) forwards; }
 .stagger-children > *:nth-child(1) { animation-delay: 0ms; }
 .stagger-children > *:nth-child(2) { animation-delay: 80ms; }
 .stagger-children > *:nth-child(3) { animation-delay: 160ms; }
@@ -481,7 +511,7 @@
 .stagger-children > *:nth-child(5) { animation-delay: 320ms; }
 .stagger-children > *:nth-child(6) { animation-delay: 400ms; }
 
-/* Legacy animation names kept as no-ops so existing classes don't break layout */
+/* Legacy animation names kept as no-ops so existing classes don't break layout. */
 @keyframes twinkle { 0%, 100% { opacity: 0; } 50% { opacity: 0; } }
 .animate-twinkle { animation: none; opacity: 0; }
 .animate-float, .animate-ping-slow, .animate-glow-pulse,
@@ -490,7 +520,7 @@
 .animate-float-slow-reverse, .animate-nebula-1, .animate-nebula-2,
 .animate-spin-slow, .animate-gradient-shift { animation: none; }
 
-/* Accessibility */
+/* Accessibility — reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

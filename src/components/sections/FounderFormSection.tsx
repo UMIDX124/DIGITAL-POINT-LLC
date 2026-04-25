@@ -55,6 +55,7 @@ function AuditForm() {
 
   useEffect(() => {
     if (!formStarted && (formData.name || formData.email)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: derive form-started flag from input state
       setFormStarted(true);
       trackFormStart('free_audit');
     }
@@ -62,6 +63,7 @@ function AuditForm() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: read URL UTM params once on mount
     setFormData(prev => ({
       ...prev,
       utmSource: params.get('utm_source') || undefined,
@@ -233,6 +235,7 @@ function FounderContactForm() {
 
   useEffect(() => {
     if (!formStarted && (formData.name || formData.email || formData.message)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: derive form-started flag from input state
       setFormStarted(true);
       trackFormStart('founder_contact');
     }
@@ -240,6 +243,7 @@ function FounderContactForm() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: read URL UTM params once on mount
     setFormData(prev => ({
       ...prev,
       utmSource: params.get('utm_source') || undefined,

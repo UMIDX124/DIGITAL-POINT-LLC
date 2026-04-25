@@ -58,6 +58,7 @@ export function AuditPage() {
   // Get UTM params from URL
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: read URL UTM params once on mount
     setFormData(prev => ({
       ...prev,
       utmSource: params.get('utm_source') || undefined,

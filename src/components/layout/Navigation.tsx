@@ -51,6 +51,7 @@ export function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: close mobile menu when navigation changes
   useEffect(() => { setIsOpen(false); }, [pathname]);
 
   const isActive = useCallback((href: string) => {

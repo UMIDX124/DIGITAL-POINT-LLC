@@ -20,11 +20,11 @@ export function CaseStudiesPage() {
               ]}
             />
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mt-6 max-w-4xl">
-              Client Results That Speak for Themselves
+              AI Deployments That Speak for Themselves
             </h1>
             <p className="text-[#D6D0C2] text-lg mt-4 max-w-2xl">
-              Real strategies. Measurable outcomes. See how we help growth-stage
-              businesses turn ad spend into predictable revenue.
+              Real agent stacks. Measurable outcomes. See how we replaced
+              operations headcount with AI + automation + operator backstop.
             </p>
           </FadeUp>
         </Container>

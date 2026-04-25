@@ -25,12 +25,12 @@ const values = [
   {
     icon: TrendingUp,
     title: 'Outcomes, Not Activity',
-    description: 'We measure what matters — revenue, ROAS, qualified leads. Not impressions and vanity metrics.',
+    description: 'We measure what matters — operator-hours replaced, workflows automated, headcount avoided. Not vanity metrics.',
   },
   {
     icon: Shield,
     title: 'Ownership Mentality',
-    description: 'We treat your budget like ours. Every dollar gets scrutiny, every campaign gets attention.',
+    description: 'We treat your operations like ours. Every workflow gets scrutiny, every agent gets monitored.',
   },
   {
     icon: Users,

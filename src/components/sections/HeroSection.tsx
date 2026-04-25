@@ -20,7 +20,7 @@ import MagneticCTA from '@/components/effects/MagneticCTA';
 
 const HERO_EYEBROW = 'DIGITAL POINT LLC · EST. 2017';
 const HERO_SUB =
-  'AI agents lead. Automation handles the repeat. Trained operators back the loop. Together they run your marketing, back-office, and reporting — so you scale without scaling headcount.';
+  'AI agents lead. Automation handles the repeat. Trained operators back the loop. Together they run your CRM, ops, reporting, and growth workflows — so you scale without scaling headcount.';
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement | null>(null);

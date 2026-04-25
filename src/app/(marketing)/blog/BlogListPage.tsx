@@ -113,13 +113,13 @@ export function BlogListPage({ posts, categories, categoryMeta }: Props) {
               Resources & Insights
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Insights from the{' '}
+              Field notes from running{' '}
               <span className="bg-gradient-to-r from-[#818CF8] via-[#6366F1] to-[#6366F1] bg-clip-text text-transparent">
-                growth trenches
+                AI in production
               </span>
             </h1>
             <p className="text-[#D6D0C2] text-lg md:text-xl max-w-2xl leading-relaxed">
-              Frameworks, case studies, and hard-won lessons from managing $50M+ in ad spend and building remote teams across the globe.
+              What works, what breaks, and what we ship next. Agent stacks, automation engineering, operator workflows — from the team running them daily.
             </p>
           </FadeUp>
         </Container>

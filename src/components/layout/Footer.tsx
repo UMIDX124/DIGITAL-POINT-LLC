@@ -39,7 +39,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-[color:var(--ivory-dim)] text-sm leading-relaxed max-w-xs">
-              Pod-based operators and AI workflows that run marketing, back-office, and reporting. One team. Three practices. You pay for outcomes, not headcount.
+              AI + operator infrastructure for companies that want to scale without scaling team. AI agents lead, automation handles the repeat, operators back the loop.
             </p>
           </div>
 

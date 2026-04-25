@@ -168,7 +168,7 @@ export function AuditPage() {
 
           <FadeUp delay={0.2}>
             <p className="text-[#D6D0C2] text-lg mt-4 max-w-2xl">
-              No pressure. No generic advice. Just clarity on what&apos;s working and what to fix next.
+              Forty-five minutes. We map where AI agents could be running your repeatable work, where automation could remove handoffs, and where operators are still earning their seat. You leave with a deployment-ready blueprint — no agency retainer attached.
             </p>
           </FadeUp>
         </Container>
@@ -260,7 +260,7 @@ export function AuditPage() {
                     </motion.div>
                   )}
 
-                  {/* Step 2: Ad Spend */}
+                  {/* Step 2: Operations Scale */}
                   {step === 2 && (
                     <motion.div
                       key="step2"
@@ -270,7 +270,7 @@ export function AuditPage() {
                       transition={{ duration: 0.3 }}
                     >
                       <h2 className="font-display text-xl font-bold text-white mb-2">
-                        Monthly ad spend?
+                        Monthly ops budget?
                       </h2>
                       <p className="text-[#D6D0C2] text-sm mb-6">
                         This helps us calibrate our recommendations to your scale.

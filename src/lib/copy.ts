@@ -17,10 +17,10 @@ export const copy = {
   },
 
   hero: {
-    eyebrow: 'REMOTE OPERATORS · AI WORKFLOWS · SINCE 2017',
-    headline: 'Growth without the payroll.',
+    eyebrow: 'AI AGENTS · AUTOMATION · OPERATORS · SINCE 2017',
+    headline: 'Hire the AI. Skip the headcount.',
     subhead:
-      "We deploy trained operators and AI workflows that run your marketing, your back-office, and your reporting — so you don't hire a full department to scale one. One team. Three practices. Measurable outcomes.",
+      'AI agents lead. Automation handles the repeat. Trained operators back the loop. Together they run your CRM, ops, reporting, and growth workflows — so you scale without scaling headcount.',
     ctaPrimary: { label: 'Book a free audit', href: '/free-growth-audit' },
     ctaSecondary: { label: 'See what we run', href: '#services' },
   },
@@ -32,8 +32,8 @@ export const copy = {
    * ------------------------------------------------------------------ */
   servicesList: {
     // Phase 11 — AI-first hierarchy. AI Agents lead, automation handles
-    // the repeat, trained operators back the loop. Performance marketing
-    // and reporting are operated by the AI+human stack.
+    // the repeat, trained operators back the loop. Campaigns and reporting
+    // are operated by the AI + human stack.
     eyebrow: 'HOW WE RUN OPS',
     headline: 'AI agents lead. Operators back the loop.',
     items: [
@@ -55,7 +55,7 @@ export const copy = {
       {
         label: 'Performance Marketing',
         href: '/performance-marketing',
-        description: 'Ad campaigns + growth experiments operated by the AI+human stack.',
+        description: "Ad campaigns and growth experiments — operated by the AI + human stack above. We don't sell agency hours; we sell campaign execution that AI runs and operators audit.",
       },
       {
         label: 'Systems & Reporting',
@@ -110,39 +110,39 @@ export const copy = {
    * ------------------------------------------------------------------ */
   recentWork: {
     eyebrow: 'RECENT WORK',
-    headline: 'Operated engagements, anonymized.',
-    body: 'Representative results from pods we run today. Client identifiers removed at the clients\' request.',
+    headline: 'AI deployments, anonymized.',
+    body: 'Representative results from agent + automation stacks we run today. Client identifiers removed at the clients\' request.',
     cases: [
       {
-        id: 'ecom',
-        industry: 'E-COMMERCE · PAID ACQUISITION',
-        title: '6.8x blended ROAS across 14 markets',
+        id: 'ops',
+        industry: 'B2B SAAS · OPS AUTOMATION',
+        title: '14,400 operator-hours replaced in year one',
         context:
-          'Rebuilt creative testing, consolidated attribution, re-scoped the media mix. Spend rose from $180K to $640K a month without CAC drift.',
-        metric: '6.8x',
-        metricLabel: 'Blended ROAS',
+          'Built an agent stack covering lead routing, sales follow-up, CRM enrichment, and weekly reporting. Replaced six full-time ops roles with AI workflows backed by two reviewers.',
+        metric: '14.4K',
+        metricLabel: 'Operator-hours replaced',
         href: '/case-studies',
         viz: 'line-ascending' as const,
       },
       {
-        id: 'saas',
+        id: 'pipeline',
         industry: 'B2B SAAS · LEAD OPERATIONS',
-        title: '+89% qualified pipeline in 90 days',
+        title: '+89% qualified pipeline with 1 reviewer (was 4)',
         context:
-          'Consolidated lead sources, built routing + enrichment, deployed an adaptive follow-up sequence. Sales stopped chasing bad leads.',
+          'Consolidated lead sources, built AI routing + enrichment + adaptive follow-up. Sales stopped chasing bad leads; team shrank from four reviewers to one auditing AI output.',
         metric: '+89%',
         metricLabel: 'Qualified pipeline',
         href: '/case-studies',
         viz: 'funnel-stages' as const,
       },
       {
-        id: 'leadgen',
-        industry: 'LEAD GEN · AGENCY DESK',
-        title: '5.3x CPL reduction in two markets',
+        id: 'monitoring',
+        industry: 'PORTFOLIO OPS · 24/7 MONITORING',
+        title: '60% of manual oversight automated',
         context:
-          'Killed 60% of underperforming campaigns, rebuilt landing pages against real search intent, tuned creative cadence. CPL fell from $84 to $16.',
-        metric: '5.3x',
-        metricLabel: 'CPL reduction',
+          'Replaced a daily-standup ritual with an agent stack monitoring 40+ accounts. Threshold alerts, anomaly detection, and weekly narrative reports run unattended; operators handle exceptions only.',
+        metric: '60%',
+        metricLabel: 'Manual oversight automated',
         href: '/case-studies',
         viz: 'bar-before-after' as const,
       },
@@ -154,7 +154,7 @@ export const copy = {
    * Italic serif display, amber accent mark.
    * ------------------------------------------------------------------ */
   pullQuote: {
-    text: 'Every dollar you spend on marketing should be accountable.',
+    text: "If a process is repeatable, an AI should be running it. If it's not, an operator should be backing it. That's the entire pitch.",
     attribution: 'Faizan Rafiq, Co-founder',
   },
 
@@ -186,40 +186,40 @@ export const copy = {
       {
         featured: true,
         quote:
-          'They built the tracking we had been avoiding for two years. Now I actually know where to spend, and the meeting where we justify the number is fifteen minutes long.',
+          'They replaced the four operations hires we kept failing to keep. The AI agents do 80% of the work, two reviewers handle the rest, and our headcount line stopped growing.',
         author: 'Sarah Chen',
         role: 'CEO, B2B SaaS',
-        metric: '+127%',
-        metricLabel: 'MRR in 6 months',
+        metric: '4 → 1',
+        metricLabel: 'Ops headcount',
         initials: 'SC',
       },
       {
         featured: false,
         quote:
-          'Got execution capacity without the hiring headaches. They own outcomes, not just tasks.',
+          'They own outcomes, not just tasks. The agent stack runs without me checking on it daily.',
         author: 'Marcus Thompson',
         role: 'Founder, E-commerce',
-        metric: '3.1x',
-        metricLabel: 'ROAS',
+        metric: '24/7',
+        metricLabel: 'Unattended runtime',
         initials: 'MT',
       },
       {
         featured: false,
         quote:
-          'We went from no idea where leads come from to full attribution in three weeks.',
+          'We went from manual lead handling to a fully automated pipeline in three weeks. Operators audit; AI does the work.',
         author: 'Jennifer Walsh',
-        role: 'CMO, Agency',
-        metric: '-41%',
-        metricLabel: 'CAC',
+        role: 'COO, Services',
+        metric: '−72%',
+        metricLabel: 'Manual ops time',
         initials: 'JW',
       },
     ] as const,
   },
 
   trustStrip: [
-    'MEDIA BUYING',
+    'AI AGENTS',
+    'WORKFLOW AUTOMATION',
     'LEAD OPERATIONS',
-    'AUTOMATION',
     'REPORTING',
     'QA',
     'PORTFOLIO MONITORING',
@@ -228,54 +228,55 @@ export const copy = {
   math: {
     eyebrow: 'THE MATH',
     headline:
-      'An in-house team costs $400,000 a year. We cost a fraction of that, and we actually show up on Monday.',
+      'A four-person ops team costs $400,000 a year. An AI stack costs a fraction of that, and it shows up at 6am.',
     body:
-      "A senior media buyer is $120K. An operations manager is $95K. A reporting analyst is $85K. Plus benefits, tools, turnover. Most growing businesses can't justify that. DPL runs all three functions as an operated service — pod-based humans, AI workflows behind them, transparent reporting on top. You pay for outcomes, not headcount.",
-    anchor: { value: 400000, label: 'Fully-loaded in-house team (annual)', format: 'usd0' as const },
+      "An operations manager is $95K. A reporting analyst is $85K. A lead-routing coordinator is $70K. A QA reviewer is $65K. Plus benefits, tools, turnover. Most growing businesses can't justify that. DPL runs all four functions as an AI agent stack — operators only audit exceptions and edge cases. You pay for outcomes, not headcount.",
+    anchor: { value: 400000, label: 'Fully-loaded in-house ops team (annual)', format: 'usd0' as const },
     pullQuote: 'Hire the output. Not the desk.',
     lineItems: [
-      { role: 'Senior media buyer', usd: 120000 },
       { role: 'Operations manager', usd: 95000 },
       { role: 'Reporting analyst', usd: 85000 },
-      { role: 'Benefits + tools + turnover', usd: 100000 },
+      { role: 'Lead-routing coordinator', usd: 70000 },
+      { role: 'QA reviewer', usd: 65000 },
+      { role: 'Benefits + tools + turnover', usd: 85000 },
     ],
   },
 
   pillars: {
     eyebrow: 'WHAT WE RUN',
-    headline: 'One team. Three practices. Operated as a service.',
+    headline: 'AI agents lead. Automation handles the repeat. Operators back the loop.',
     body:
-      "We don't sell seats and templates. We run the function — daily standups, weekly reviews, monthly reporting. You watch the outputs.",
+      "We don't sell agency hours or seats. We deploy AI agent stacks that run the function — operators audit exceptions, automation handles the repeat work, you watch the outputs.",
     cards: [
       {
         order: 1,
-        eyebrow: 'OPERATORS',
-        title: 'Teams you trust without hiring',
+        eyebrow: 'AI AGENTS',
+        title: 'Custom-trained agents that run the work',
         body:
-          'Pre-vetted pods of media buyers, VAs, SDRs, and analysts. Structured onboarding, daily standups, weekly reviews, replacement guarantee.',
-        stats: ['24–48h response', 'Weekly reviews', '100% output visibility'],
-        href: '/remote-workforce',
-        id: 'workforce',
+          'Lead routing, sales follow-up, CRM enrichment, reporting, QA. Deployed on Groq inference + custom code. Agents handle 80%+ of repeatable work; operators audit exceptions.',
+        stats: ['24/7 runtime', '80%+ unattended', 'Operator audit on exceptions'],
+        href: '/automation#ai-agents',
+        id: 'ai-agents',
       },
       {
         order: 2,
-        eyebrow: 'WORKFLOWS',
-        title: 'AI that runs the boring parts',
+        eyebrow: 'AUTOMATION',
+        title: 'Multi-step workflows that replace handoffs',
         body:
-          'Lead capture, document intake, follow-up sequences, portfolio monitoring, reporting automation. Deployed on n8n and custom code. We operate the automations — you watch the outputs.',
+          'Document intake, follow-up sequences, portfolio monitoring, reporting automation. Deployed on n8n and custom code. We build, we operate, you watch the outputs.',
         stats: ['8+ workflows in production', '24/7 runtime', 'Zero config on your end'],
         href: '/automation',
         id: 'automation',
       },
       {
         order: 3,
-        eyebrow: 'CAMPAIGNS',
-        title: 'Paid acquisition, tracked properly',
+        eyebrow: 'OPERATORS',
+        title: 'Trained humans backing the AI',
         body:
-          "Meta, Google, YouTube. We run media only after attribution is solid — so we know what's actually working.",
-        stats: ['$50M+ managed (representative)', '200+ audits', 'Avg 4.2x ROAS (representative)'],
-        href: '/performance-marketing',
-        id: 'marketing',
+          'Pre-vetted operators handle exception cases AI can\'t resolve. Structured onboarding, daily standups, weekly reviews, replacement guarantee. Trust + scale, not contractor churn.',
+        stats: ['24–48h response', 'Weekly reviews', '100% output visibility'],
+        href: '/remote-workforce',
+        id: 'operators',
       },
     ],
   },
@@ -350,9 +351,9 @@ export const copy = {
 
   founders: {
     eyebrow: 'ABOUT',
-    headline: 'We started as a marketing firm. We evolved into an operated team.',
+    headline: 'We started running operations. We evolved into running them with AI.',
     body:
-      "Digital Point LLC was founded in 2017 by M. Faizan Rafiq and Anwaar Tayyab. We started buying media for growth-stage businesses. Along the way we realized the bigger unlock was never the campaign — it was the team and the system behind the campaign. Today we operate three practices under one roof, and our founders still sign off on every engagement personally.",
+      "Digital Point LLC was founded in 2017 by M. Faizan Rafiq and Anwaar Tayyab. We spent five years operating campaigns, lead pipelines, and reporting stacks for growth-stage businesses by hand. Along the way we realized the bigger unlock was never the human heroics — it was building agents and automation that ran the work, with operators auditing the edges. Today we deploy AI agent stacks for companies that want to scale without scaling team, and our founders still sign off on every engagement personally.",
     founders: [
       { name: 'M. Faizan Rafiq', role: 'Co-Founder' },
       { name: 'Anwaar Tayyab', role: 'Co-Founder' },
@@ -361,9 +362,9 @@ export const copy = {
 
   finalCta: {
     eyebrow: "LET'S WORK",
-    headline: "Let's find what's draining your budget.",
+    headline: "Let's map where AI could be running your repeatable work.",
     body:
-      "A co-founder reviews your setup personally. Free. Written plan within 5 business days. If we can't help, we'll tell you — and usually point you to someone who can.",
+      "A co-founder reviews your setup personally. Free. Written plan within 5 business days — what AI can run, what automation can stitch, where operators stay. If we can't help, we'll tell you.",
     ctaPrimary: { label: 'Book a 30-min audit', href: '/free-growth-audit' },
     ctaSecondary: { label: 'See case studies', href: '/case-studies' },
   },

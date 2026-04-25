@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import { AuditPage } from '@/components/sections/AuditPage';
 
 export const metadata: Metadata = {
-  title: 'Free Growth Audit',
+  title: 'Book a Free Audit',
   description:
-    'Get a free, no-obligation review of your marketing setup. We analyze your ad spend, attribution gaps, and conversion rates to find quick wins.',
+    'Forty-five minutes. We map where AI agents could be running your repeatable work, where automation could remove handoffs, and where operators are still earning their seat. You leave with a deployment-ready blueprint — no agency retainer attached.',
   openGraph: {
-    title: 'Free Growth Audit — Digital Point LLC',
+    title: 'Book a Free Audit — Digital Point LLC',
     description:
-      'Free, no-obligation review of your marketing setup. Find what is broken and what to fix next.',
+      "We map where AI agents could be running your repeatable work and where automation could replace handoffs. Deployment-ready blueprint in 45 minutes.",
     url: 'https://digitalpointllc.com/free-growth-audit',
   },
   alternates: {

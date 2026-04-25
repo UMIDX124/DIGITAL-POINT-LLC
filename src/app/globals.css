@@ -143,15 +143,16 @@
      fits the viewport cleanly. */
   --text-hero: clamp(3.5rem, 8vw, 8rem);
 
-  /* Display (section feature title) — Phase 6 v2 retune to ~78px @1440
-     so service-list rows establish editorial scale (not billboard).
-     Was clamp(3.1rem, 7.8vw, 7.8rem) — 112.32px @1440. */
-  --text-display: clamp(3rem, 5.4vw, 5.4rem);
+  /* Display (service rows) — Phase 9 retune to ~56px @1440 (was 78px).
+     User feedback: rows were billboard-scale, eating 2.5+ viewport heights
+     of vertical scroll. New range 32-56px keeps editorial weight without
+     dominating. */
+  --text-display: clamp(2rem, 4vw, 3.5rem);
 
-  /* H1 (primary section header) — Phase 6 v2 retune to ~63px @1440 so
-     section h2 sits clearly below service-row scale (78px). Hierarchy
-     delta ~24%. Was clamp(2.5rem, 5.5vw, 5.5rem) — 79.2px. */
-  --text-h1: clamp(2.4rem, 4.4vw, 4.4rem);
+  /* H1 (section h2 headings) — Phase 9 retune to ~63px @1440 cap (was 70).
+     Hierarchy now: hero 128 > section 63 > service rows 56. Subtle 1.13×
+     ratio between section heading and rows. */
+  --text-h1: clamp(2.25rem, 4.4vw, 4rem);
 
   /* H2 (secondary section header) — 32px → 69px. */
   --text-h2: clamp(2rem, 4.3vw, 4.3rem);
@@ -181,11 +182,13 @@
   --ease-out-soft: cubic-bezier(0.33, 1, 0.68, 1);
   --ease-in-soft: cubic-bezier(0.32, 0, 0.67, 0);
 
-  --dur-micro: 200ms;
-  --dur-short: 300ms;
-  --dur-medium: 500ms;
-  --dur-long: 800ms;
-  --dur-hero: 1100ms;
+  /* Phase 9 — animation speed tune. User flagged "boht slow". Each tier
+     dropped ~30-40% closer to Apple/Stripe/Linear marketing benchmarks. */
+  --dur-micro: 100ms;
+  --dur-short: 200ms;
+  --dur-medium: 350ms;
+  --dur-long: 600ms;
+  --dur-hero: 800ms;
 }
 
 /* ============================================
@@ -595,7 +598,9 @@ a.text-link:hover,
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 1.25rem;
-  padding-block: clamp(1.5rem, 3.2vh, 2.75rem);
+  /* Phase 9 — tightened from clamp(1.5rem, 3.2vh, 2.75rem). Each side now
+     16-22px (32-44px total per row) — closer rhythm, less vertical eat. */
+  padding-block: clamp(1rem, 1.8vh, 1.375rem);
   border-bottom: 1px solid var(--border-subtle);
 }
 @media (min-width: 768px) { .service-row { gap: 2rem; } }
@@ -605,10 +610,12 @@ a.text-link:hover,
    parent's :hover triggers a color + lift cascade. transition-delay
    reads from --letter-index so letters fan out left-to-right. */
 .letter-hover-char {
+  /* Phase 9 — cascade tightened: 12ms → 8ms per letter, transition
+     0.28s → 0.2s. A 23-char service name now lands at ~376ms (was ~544ms). */
   transition:
-    transform 0.28s ease-out,
-    color 0.28s ease-out;
-  transition-delay: calc(var(--letter-index, 0) * 12ms);
+    transform 0.2s ease-out,
+    color 0.2s ease-out;
+  transition-delay: calc(var(--letter-index, 0) * 8ms);
   transform-origin: 50% 85%;
   will-change: transform;
 }
@@ -905,3 +912,89 @@ html[data-paused-global="true"] .chat-trigger-sparkle {
 
 /* Phase 7: ScrambleText was removed (production hover-freeze regression);
    restored letter-hover via .letter-hover-char above. */
+
+/* ============================================
+   PHASE 9 — DUAL-ROW INFINITE LOGO MARQUEE
+   Two rows, opposite directions, ~45s loop, CSS-only.
+   Each row contains TWO copies of the same list, animated with a
+   translateX(-50%) translation so the duplicate seamlessly continues
+   when the original wraps. Pause on hover, freeze under reduced
+   motion, edge-fade via mask-image.
+   ============================================ */
+.logo-marquee {
+  position: relative;
+  overflow: hidden;
+  --marquee-fade: 80px;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--marquee-fade),
+    #000 calc(100% - var(--marquee-fade)),
+    transparent 100%
+  );
+          mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--marquee-fade),
+    #000 calc(100% - var(--marquee-fade)),
+    transparent 100%
+  );
+}
+
+.logo-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.logo-marquee-track[data-direction="left"]  { animation: marquee-left  45s linear infinite; }
+.logo-marquee-track[data-direction="right"] { animation: marquee-right 45s linear infinite; }
+
+.logo-marquee-track:hover { animation-play-state: paused; }
+
+.logo-marquee-list {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 64px;
+  padding-inline: 32px;
+  list-style: none;
+}
+
+.logo-marquee-list .logo-mark {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  user-select: none;
+  transition: color var(--dur-short) var(--ease-out-soft);
+}
+
+.logo-marquee:hover .logo-mark { color: var(--text-secondary); }
+
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-track[data-direction="left"],
+  .logo-marquee-track[data-direction="right"] {
+    animation: none;
+    transform: none;
+  }
+  .logo-marquee {
+    overflow-x: auto;
+  }
+}
+
+html[data-paused-global="true"] .logo-marquee-track {
+  animation-play-state: paused;
+}

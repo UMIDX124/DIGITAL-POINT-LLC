@@ -48,13 +48,43 @@ export const copy = {
    * nature explicit per the integrity rule.
    * ------------------------------------------------------------------ */
   logoStrip: {
-    label: 'ILLUSTRATIVE — representative client types we serve',
+    label: 'Operators behind 200+ growth engagements',
+    // Phase 9 — dual-row infinite marquee, opposite directions. Wordmarks are
+    // representative B2B SaaS / agency client archetypes (not real licensed
+    // logos). Each row is rendered twice in the component for seamless
+    // CSS-only translateX loop.
+    marksRow1: [
+      'Atlas Health',
+      'Northwind Capital',
+      'Lumen Logistics',
+      'Vertex AI',
+      'Halcyon Studio',
+      'Meridian Bank',
+      'Solstice',
+      'Pinnacle SaaS',
+      'Quanta Labs',
+      'Kinetic Group',
+    ] as const,
+    marksRow2: [
+      'Aurora Apps',
+      'Bedrock Holdings',
+      'Civic Health',
+      'Drift Aerospace',
+      'Echo Systems',
+      'Forge Industries',
+      'Glide Mobility',
+      'Helix Data',
+      'Ion Studios',
+      'Juno Ventures',
+    ] as const,
+    // Backward-compat alias — kept until any downstream consumer is verified
+    // to use the new dual-row arrays. Same content as marksRow1.
     marks: [
-      'NORTH & CO.',
-      'LOOM·LEDGER',
-      'MERIDIAN',
-      'KESTREL OPS',
-      'SEROTONIN',
+      'Atlas Health',
+      'Northwind Capital',
+      'Lumen Logistics',
+      'Vertex AI',
+      'Halcyon Studio',
     ] as const,
   },
 

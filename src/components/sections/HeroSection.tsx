@@ -81,19 +81,21 @@ export function HeroSection() {
       // `gsap.set()` landed opacity but not yPercent. fromTo guarantees
       // both FROM and TO states are explicit and the tween covers both
       // properties cleanly. onComplete clears any stuck transform string.
+      // Phase 9 — animation timeline tightened. Last word lands ~780ms
+      // (was ~1.77s). delay 0.4 → 0.15, duration 0.95 → 0.45, stagger
+      // 0.07 → 0.035. Surrounding cascade (orb/eyebrow/sub/CTAs) shrunk
+      // proportionally so the entire hero settles in <1.2s.
       gsap.fromTo(
         innerEls,
         { yPercent: 110, opacity: 0 },
         {
           yPercent: 0,
           opacity: 1,
-          duration: 0.95,
-          stagger: 0.07,
+          duration: 0.45,
+          stagger: 0.035,
           ease: 'cubic-bezier(0.65, 0.05, 0, 1)',
-          delay: 0.4,
+          delay: 0.15,
           onComplete: () => {
-            // Belt-and-suspenders: kill any residual transform inline style
-            // so even if a future tween glitches, words stay visible.
             innerEls.forEach((el) => {
               el.style.transform = 'translateY(0%)';
               el.style.opacity = '1';
@@ -103,12 +105,11 @@ export function HeroSection() {
         },
       );
 
-      // Surrounding mount cascade — orb + eyebrow + sub + CTAs.
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-      tl.fromTo('[data-hero-orb]', { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.8 }, 0)
-        .fromTo('[data-hero-eyebrow]', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6 }, 0.2)
-        .fromTo('[data-hero-sub]', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7 }, 1.15)
-        .fromTo('[data-hero-cta] > *', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.15 }, 1.4);
+      tl.fromTo('[data-hero-orb]', { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.5 }, 0)
+        .fromTo('[data-hero-eyebrow]', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 }, 0.1)
+        .fromTo('[data-hero-sub]', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45 }, 0.55)
+        .fromTo('[data-hero-cta] > *', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.08 }, 0.7);
 
       // Scroll-tied effects.
       const orbEl = orbWrapRef.current;

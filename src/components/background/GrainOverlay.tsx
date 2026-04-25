@@ -42,7 +42,7 @@ export function GrainOverlay() {
       style={{
         zIndex: 1,
         mixBlendMode: 'overlay',
-        opacity: 0.05,
+        opacity: 0.075,
         transform: 'translateZ(0)',
         willChange: 'opacity',
       }}

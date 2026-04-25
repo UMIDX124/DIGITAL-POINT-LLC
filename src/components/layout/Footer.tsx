@@ -28,14 +28,14 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-3 mb-6">
               <Image
                 src="/Dp-logo1.png"
-                alt="Digital Point LLC"
-                width={128}
-                height={128}
-                style={{ width: '64px', height: 'auto' }}
+                alt="Digital Point"
+                width={160}
+                height={160}
+                style={{ width: '80px', height: 'auto' }}
               />
               <div className="flex flex-col leading-none">
-                <span className="font-display text-lg text-[color:var(--ivory)]">Digital Point</span>
-                <span className="text-[color:var(--muted)] text-[10px] tracking-[0.2em] uppercase mt-1">LLC · Since 2017</span>
+                <span className="font-display text-xl text-[color:var(--ivory)]">Digital Point LLC</span>
+                <span className="text-[color:var(--muted)] text-[10px] tracking-[0.2em] uppercase mt-1.5">Est. 2017</span>
               </div>
             </Link>
             <p className="text-[color:var(--ivory-dim)] text-sm leading-relaxed max-w-xs">

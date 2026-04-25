@@ -13,7 +13,7 @@ export function WorkflowSection() {
 
   return (
     <section
-      className="relative"
+      className="relative section-deferred"
       style={{
         background: 'var(--bg-primary)',
         borderBottom: '1px solid var(--border-subtle)',

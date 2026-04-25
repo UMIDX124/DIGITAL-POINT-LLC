@@ -9,7 +9,7 @@ export function PullQuoteSection() {
 
   return (
     <section
-      className="relative overflow-hidden"
+      className="relative overflow-hidden section-deferred"
       style={{
         background: 'var(--bg-tertiary)',
         borderBottom: '1px solid var(--border-subtle)',
@@ -28,16 +28,16 @@ export function PullQuoteSection() {
         }}
       />
 
-      <div className="container-narrow relative">
+      <div className="relative mx-auto max-w-[68rem]" style={{ paddingInline: 'var(--container-gutter)' }}>
         <blockquote
           className="pull-quote-text font-italic-display text-center mx-auto"
           style={{
-            fontSize: 'var(--text-display)',
+            fontSize: 'clamp(3rem, 6vw, 6rem)',
             color: 'var(--text-primary)',
             fontStyle: 'italic',
-            lineHeight: 1.08,
+            lineHeight: 1.05,
             letterSpacing: '-0.02em',
-            maxWidth: '16ch',
+            maxWidth: '24ch',
           }}
           data-reveal
         >

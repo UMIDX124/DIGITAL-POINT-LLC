@@ -16,14 +16,14 @@ export function TestimonialsSection() {
 
   return (
     <section
-      className="relative"
+      id="testimonials"
+      className="relative section-deferred"
       style={{
         background: 'var(--bg-secondary)',
         borderBottom: '1px solid var(--border-subtle)',
         paddingTop: 'var(--section-space)',
         paddingBottom: 'var(--section-space)',
       }}
-      id="testimonials"
     >
       <div className="container-wide">
         <header className="max-w-2xl mb-[var(--section-space-tight)]">

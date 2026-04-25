@@ -11,7 +11,7 @@ export function CTASection() {
   return (
     <section
       id="cta"
-      className="relative overflow-hidden"
+      className="relative overflow-hidden section-deferred"
       style={{
         background: 'var(--bg-tertiary)',
         paddingTop: 'var(--section-space)',

@@ -19,7 +19,7 @@ export function RecentWorkSection() {
   return (
     <section
       id="recent-work"
-      className="relative"
+      className="relative section-deferred"
       style={{
         background: 'var(--bg-primary)',
         borderBottom: '1px solid var(--border-subtle)',

@@ -117,7 +117,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`dark ${instrumentSerif.variable} ${GeistSans.variable} ${GeistMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         {/* Organization Schema */}
         <script
@@ -216,7 +220,7 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#0D0D0D" />
       </head>
       <body
-        className={`${instrumentSerif.variable} ${GeistSans.variable} ${GeistMono.variable} antialiased`}
+        className="font-sans antialiased"
         style={{ background: "#0D0D0D", color: "#F5F5F7" }}
       >
         <GrainOverlay />

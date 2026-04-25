@@ -77,7 +77,6 @@ function TestimonialCard({ item, size }: { item: Testimonial; size: 'featured' |
       data-testimonial-card
       style={{
         background: 'var(--bg-elevated)',
-        border: '1px solid var(--border-subtle)',
         borderRadius: '2px',
         padding: isFeatured ? '2rem' : '1.75rem',
         minHeight: isFeatured ? '26rem' : '14rem',

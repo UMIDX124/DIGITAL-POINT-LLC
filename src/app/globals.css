@@ -561,6 +561,7 @@ a.text-link:hover { background-size: 100% 1px; }
    the two grid sections read as part of the same interactive family.
    ============================================ */
 .testimonial-card {
+  border: 1px solid var(--border-subtle);
   transition:
     transform var(--dur-short) var(--ease-out-soft),
     border-color var(--dur-short) var(--ease-out-soft),

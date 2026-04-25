@@ -126,14 +126,22 @@
   --font-display: var(--font-instrument-serif), Georgia, serif;
   --font-mono: var(--font-geist-mono, var(--font-jetbrains-mono)), ui-monospace, monospace;
 
+  /* Tailwind v4 preflight reads --default-font-family / --default-mono-font-family
+     for html/body font-family. Explicit Geist-first stack fixes Phase 4 bug
+     where body fell through to system sans. */
+  --default-font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --default-mono-font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
   /* ===================================================================
      FLUID TYPE SCALE — Phase 4a Divyansh × 0.78
      ------------------------------------------------------------------- */
 
-  /* Divyansh hero headline × 0.78 (75px → 174px).
-     Rationale: the reference hero tops out at ~120px; 0.78× keeps our
-     headline commanding without competing with Cosmo orb presence. */
-  --text-hero: clamp(4.7rem, 10.9vw, 10.9rem);
+  /* Divyansh hero headline — Phase 5 shrink to prevent 100dvh overflow at
+     1440×900 on the 1.4fr split column. Previous clamp(4.7rem, 10.9vw, 10.9rem)
+     resolved to 157px and overran the 564px flex-centered content box. New
+     clamp maxes at 128px (8rem) which wraps to ~3 lines on 728px column and
+     fits the viewport cleanly. */
+  --text-hero: clamp(3.5rem, 8vw, 8rem);
 
   /* Display (section feature title) — prompt spec 50px → 125px. */
   --text-display: clamp(3.1rem, 7.8vw, 7.8rem);

@@ -42,31 +42,9 @@ export function ScrollMotion() {
     }
 
     const ctx = gsap.context(() => {
-      // Hero headline — split by word. Each word gets its own inline-block
-      // span; a literal text-node space is appended BETWEEN siblings so inline-
-      // block layout doesn't collapse the inter-word gaps.
-      const headline = document.querySelector<HTMLElement>('[data-hero-headline]');
-      if (headline && !headline.dataset.split) {
-        const text = headline.textContent ?? '';
-        headline.textContent = '';
-        const parts = text.split(' ');
-        const spans: HTMLSpanElement[] = [];
-        parts.forEach((w, i) => {
-          const span = document.createElement('span');
-          span.style.display = 'inline-block';
-          span.style.willChange = 'transform, opacity';
-          span.textContent = w;
-          headline.appendChild(span);
-          spans.push(span);
-          if (i < parts.length - 1) headline.appendChild(document.createTextNode(' '));
-        });
-        headline.dataset.split = '1';
-        gsap.fromTo(
-          spans,
-          { y: 40, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out', stagger: 0.08, delay: 0.1 },
-        );
-      }
+      // Hero word-split + headline reveal is now owned by HeroSection.tsx
+      // (Phase 4c). Do not touch [data-hero-headline] from here — its React-
+      // rendered <em> italic accent + .word-inner structure must survive.
 
       // Hero eyebrow + subhead + cta — load-time cascade (no scrollTrigger).
       gsap.fromTo('[data-hero-eyebrow]', { y: 16, opacity: 0 },

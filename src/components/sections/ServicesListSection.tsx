@@ -27,9 +27,9 @@ export function ServicesListSection() {
       }}
     >
       <div className="container-wide">
-        <header className="max-w-3xl mb-[var(--section-space-tight)]">
+        <header className="mb-12 lg:mb-16" style={{ maxWidth: '24ch' }}>
           <p
-            className="font-mono uppercase mb-6"
+            className="font-mono uppercase mb-5"
             data-reveal
             style={{
               fontSize: 'var(--text-micro)',
@@ -45,7 +45,7 @@ export function ServicesListSection() {
             style={{
               fontSize: 'var(--text-h1)',
               color: 'var(--text-primary)',
-              lineHeight: 1.02,
+              lineHeight: 1.05,
               letterSpacing: '-0.02em',
             }}
           >

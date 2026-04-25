@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { CosmoOrb } from '@/components/cosmo/CosmoOrb';
 import MagneticCTA from '@/components/effects/MagneticCTA';
 import { splitIntoWords, isWhitespace } from '@/lib/wordSplit';
 
@@ -303,10 +302,13 @@ export function HeroSection() {
 
         <div
           ref={orbWrapRef}
-          className="hero-orb-wrap relative flex items-center justify-center"
+          className="hero-pulse-wrap relative flex items-center justify-center"
           data-hero-orb
         >
-          <CosmoOrb size="md" scrollMorph={true} mouseFollow={true} />
+          {/* Phase 11 — replaced 5-layer SVG orb with a minimal vertical
+              breathing line. Near-zero perf cost, doesn't compete with hero
+              text, fades + scales on scroll the same way the previous mark did. */}
+          <span className="hero-pulse-line" aria-hidden="true" />
         </div>
       </div>
     </section>

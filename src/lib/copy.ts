@@ -31,14 +31,37 @@ export const copy = {
    * sub-page. Order matters — it is read top-to-bottom like a contents page.
    * ------------------------------------------------------------------ */
   servicesList: {
-    eyebrow: 'WHAT WE OPERATE',
-    headline: 'Five practices under one operating system.',
+    // Phase 11 — AI-first hierarchy. AI Agents lead, automation handles
+    // the repeat, trained operators back the loop. Performance marketing
+    // and reporting are operated by the AI+human stack.
+    eyebrow: 'HOW WE RUN OPS',
+    headline: 'AI agents lead. Operators back the loop.',
     items: [
-      { label: 'Performance Marketing', href: '/performance-marketing' },
-      { label: 'Remote Workforce', href: '/remote-workforce' },
-      { label: 'Automation', href: '/automation' },
-      { label: 'Systems & Reporting', href: '/systems-reporting' },
-      { label: 'Post-Launch Monitoring', href: '/automation#monitoring' },
+      {
+        label: 'AI Agents',
+        href: '/automation#ai-agents',
+        description: 'Custom-trained agents handling lead routing, sales follow-up, reporting, QA — 24/7.',
+      },
+      {
+        label: 'Workflow Automation',
+        href: '/automation',
+        description: 'Multi-step automations across CRM, email, ads, fulfillment that replace manual ops.',
+      },
+      {
+        label: 'Remote Operators',
+        href: '/remote-workforce',
+        description: "Trained humans handling exception cases AI can't resolve. Trust + scale.",
+      },
+      {
+        label: 'Performance Marketing',
+        href: '/performance-marketing',
+        description: 'Ad campaigns + growth experiments operated by the AI+human stack.',
+      },
+      {
+        label: 'Systems & Reporting',
+        href: '/systems-reporting',
+        description: 'Live dashboards, weekly reports, attribution truth — automated assembly, human review.',
+      },
     ] as const,
   },
 

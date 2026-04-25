@@ -8,7 +8,7 @@ type Props = {
 };
 
 /**
- * Phase 6 v2 chat trigger — Cosmo-orb-styled mini button.
+ * Phase 6 v2 / Phase 11 chat trigger — gradient-orb mini button.
  *
  * Animations are pure CSS keyframes (bob/wink/wave/sparkle) declared in
  * globals.css under the chat-trigger-* family. Auto-paused via

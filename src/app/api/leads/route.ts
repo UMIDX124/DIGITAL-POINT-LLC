@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0B; color: #F5F1E8; padding: 32px; border-radius: 12px;">
             <h2 style="color: #6366F1; margin: 0 0 16px;">New High-Intent Lead</h2>
-            <p style="color: #D6D0C2; font-size: 13px;">Captured via the AI chatbot (Cosmo)</p>
+            <p style="color: #D6D0C2; font-size: 13px;">Captured via the DPL AI chatbot</p>
 
             <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
               <tr>

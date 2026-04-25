@@ -143,16 +143,16 @@
      fits the viewport cleanly. */
   --text-hero: clamp(3.5rem, 8vw, 8rem);
 
-  /* Display (service rows) — Phase 9 retune to ~56px @1440 (was 78px).
-     User feedback: rows were billboard-scale, eating 2.5+ viewport heights
-     of vertical scroll. New range 32-56px keeps editorial weight without
-     dominating. */
-  --text-display: clamp(2rem, 4vw, 3.5rem);
+  /* Display (service rows) — Phase 11 retune to ~42px @1440 (was 56px).
+     User feedback: rows still felt billboard-scale; AI-first copy reorder
+     means rows carry less visual weight (the heading carries the message
+     now). Range 28-44px on mobile-to-desktop. */
+  --text-display: clamp(1.75rem, 2.8vw, 2.625rem);
 
-  /* H1 (section h2 headings) — Phase 10 retune to land exactly 64.4px @1440
-     so section/row hierarchy ratio is 1.15× (64.4 / 56 = 1.15). Was 4.4vw
-     capping at 4rem which resolved to 63.36px (1.13× ratio). */
-  --text-h1: clamp(2.25rem, 4.47vw, 4.0625rem);
+  /* H1 (section h2 headings) — Phase 11 retune to ~50px @1440 (was 64).
+     New ratio: heading 50 / row 42 = 1.19× (target 1.20-1.28 window).
+     Mobile: 32-36px. */
+  --text-h1: clamp(2rem, 3.5vw, 3.25rem);
 
   /* H2 (secondary section header) — 32px → 69px. */
   --text-h2: clamp(2rem, 4.3vw, 4.3rem);
@@ -598,9 +598,10 @@ a.text-link:hover,
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 1.25rem;
-  /* Phase 9 — tightened from clamp(1.5rem, 3.2vh, 2.75rem). Each side now
-     16-22px (32-44px total per row) — closer rhythm, less vertical eat. */
-  padding-block: clamp(1rem, 1.8vh, 1.375rem);
+  /* Phase 11 — py-5 equivalent (20px each side, 40px total per row).
+     With 5 rows + heading + section padding, fits comfortably in 80%
+     of 900px viewport at 1440 desktop. */
+  padding-block: 1.25rem;
   border-bottom: 1px solid var(--border-subtle);
 }
 @media (min-width: 768px) { .service-row { gap: 2rem; } }
@@ -704,48 +705,43 @@ a.text-link:hover,
 }
 
 /* ============================================
-   COSMO ORB — Phase 4b
-   Purely decorative AI mascot visual. All animations are CSS keyframes so
-   no JS runs for breath/rotation/inner-pulse/dust-orbit. Mouse-follow +
-   scroll-morph are JS and live in the component itself.
-
-   IntersectionObserver flips [data-cosmo-io-paused="true"] on the root
-   when offscreen; we map that to animation-play-state: paused on every
-   descendant to save battery without teardown cost.
-
-   prefers-reduced-motion freezes every layer to its steady-state frame
-   via the blanket override at the bottom of this file.
+   PHASE 11 — HERO PULSE LINE
+   Replaces the 5-layer SVG orb. Single 1px×200px vertical line at
+   --accent 30% opacity, breathing scaleY + opacity. Near-zero perf cost,
+   doesn't compete with hero text. Pause-on-tab-hidden.
    ============================================ */
-
-@keyframes cosmo-breath {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.02); opacity: 0.95; }
+.hero-pulse-wrap {
+  width: min(280px, 35vh);
+  height: min(280px, 35vh);
 }
-@keyframes cosmo-inner-pulse {
-  0%, 100% { opacity: 0.9; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.15); }
+.hero-pulse-line {
+  display: block;
+  width: 1px;
+  height: 200px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--accent) 20%,
+    var(--accent-bright) 50%,
+    var(--accent) 80%,
+    transparent 100%
+  );
+  opacity: 0.55;
+  transform-origin: 50% 50%;
+  animation: hero-pulse-breathe 4s ease-in-out infinite;
+  will-change: transform, opacity;
 }
-@keyframes cosmo-ring-spin-cw  { from { transform: rotate(0deg);    } to { transform: rotate(360deg);  } }
-@keyframes cosmo-ring-spin-ccw { from { transform: rotate(0deg);    } to { transform: rotate(-360deg); } }
-@keyframes cosmo-dust-orbit {
-  0%   { transform: rotate(0deg)   translateX(var(--cosmo-dust-radius)) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(var(--cosmo-dust-radius)) rotate(-360deg); }
+@keyframes hero-pulse-breathe {
+  0%, 100% { transform: scaleY(1); opacity: 0.55; }
+  50%      { transform: scaleY(1.1); opacity: 0.85; }
 }
 
-[data-cosmo-root] [data-cosmo-breath]       { animation: cosmo-breath       4s ease-in-out infinite; transform-origin: 50% 50%; }
-[data-cosmo-root] [data-cosmo-inner-pulse]  { animation: cosmo-inner-pulse  2.4s ease-in-out infinite; transform-origin: 50% 50%; }
-[data-cosmo-root] [data-cosmo-ring-outer]   { animation: cosmo-ring-spin-cw  40s linear infinite; transform-origin: 50% 50%; transform-box: fill-box; }
-[data-cosmo-root] [data-cosmo-ring-middle]  { animation: cosmo-ring-spin-ccw 28s linear infinite; transform-origin: 50% 50%; transform-box: fill-box; }
-[data-cosmo-root] [data-cosmo-dust]         { animation: cosmo-dust-orbit   var(--cosmo-dust-duration, 20s) linear infinite; transform-origin: 0 0; }
-
-[data-cosmo-root][data-cosmo-io-paused="true"] *,
-[data-cosmo-root][data-cosmo-io-paused="true"] {
-  animation-play-state: paused !important;
+@media (prefers-reduced-motion: reduce) {
+  .hero-pulse-line { animation: none; }
 }
 
-/* Phase 4g/4h — pause continuous motion when the tab is hidden. */
-html[data-paused-global="true"] [data-cosmo-root] *,
-html[data-paused-global="true"] [data-cosmo-root],
+/* Pause continuous motion when the tab is hidden. */
+html[data-paused-global="true"] .hero-pulse-line,
 html[data-paused-global="true"] .grain-overlay {
   animation-play-state: paused !important;
 }

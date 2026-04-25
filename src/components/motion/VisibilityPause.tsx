@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 /**
  * Phase 4g/4h — global visibility pause. Sets html[data-paused-global="true"]
  * when the tab is hidden. Paired CSS in globals.css flips animation-play-
- * state: paused on continuous-motion descendants (Cosmo orb layers, grain)
+ * state: paused on continuous-motion descendants (hero pulse line, grain)
  * so the GPU can idle and battery isn't burned on a hidden tab.
  */
 export function VisibilityPause() {

@@ -1,7 +1,7 @@
 /**
  * Shared pointer RAF — one mousemove listener + one requestAnimationFrame
  * loop shared across every consumer that needs pointer-tracked motion on
- * desktop (Cosmo orb mouse-follow in Phase 4b; cursor bloom in Phase 4g).
+ * desktop (cursor bloom). Phase 4b orb consumer removed in Phase 11.
  *
  * Why shared: three independent RAF loops would compound to ~45 wake-ups
  * per frame on desktop. One shared loop runs handlers in the same tick.

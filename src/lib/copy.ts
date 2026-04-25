@@ -77,15 +77,6 @@ export const copy = {
       'Ion Studios',
       'Juno Ventures',
     ] as const,
-    // Backward-compat alias — kept until any downstream consumer is verified
-    // to use the new dual-row arrays. Same content as marksRow1.
-    marks: [
-      'Atlas Health',
-      'Northwind Capital',
-      'Lumen Logistics',
-      'Vertex AI',
-      'Halcyon Studio',
-    ] as const,
   },
 
   /* ------------------------------------------------------------------

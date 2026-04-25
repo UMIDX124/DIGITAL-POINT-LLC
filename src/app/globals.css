@@ -149,10 +149,10 @@
      dominating. */
   --text-display: clamp(2rem, 4vw, 3.5rem);
 
-  /* H1 (section h2 headings) — Phase 9 retune to ~63px @1440 cap (was 70).
-     Hierarchy now: hero 128 > section 63 > service rows 56. Subtle 1.13×
-     ratio between section heading and rows. */
-  --text-h1: clamp(2.25rem, 4.4vw, 4rem);
+  /* H1 (section h2 headings) — Phase 10 retune to land exactly 64.4px @1440
+     so section/row hierarchy ratio is 1.15× (64.4 / 56 = 1.15). Was 4.4vw
+     capping at 4rem which resolved to 63.36px (1.13× ratio). */
+  --text-h1: clamp(2.25rem, 4.47vw, 4.0625rem);
 
   /* H2 (secondary section header) — 32px → 69px. */
   --text-h2: clamp(2rem, 4.3vw, 4.3rem);

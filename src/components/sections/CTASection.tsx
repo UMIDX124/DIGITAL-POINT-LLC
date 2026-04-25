@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { copy } from '@/lib/copy';
+import MagneticCTA from '@/components/effects/MagneticCTA';
 
 /**
  * Phase 4f final CTA — dramatic purple-glow moment. Massive italic serif
@@ -67,11 +68,13 @@ export function CTASection() {
           {body}
         </p>
 
-        <div className="mt-12 flex flex-col sm:flex-row gap-3 justify-center" data-reveal>
-          <Link href={ctaPrimary.href} className="cta-primary">
-            {ctaPrimary.label}
-            <span aria-hidden="true">→</span>
-          </Link>
+        <div className="mt-12 flex flex-col sm:flex-row gap-3 justify-center items-center" data-reveal>
+          <MagneticCTA strength={0.3} radius={90}>
+            <Link href={ctaPrimary.href} className="cta-primary" data-cta-primary>
+              {ctaPrimary.label}
+              <span aria-hidden="true">→</span>
+            </Link>
+          </MagneticCTA>
           <Link href={ctaSecondary.href} className="cta-ghost">
             {ctaSecondary.label}
           </Link>

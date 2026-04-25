@@ -196,7 +196,7 @@ export const SignalPoint = memo(function SignalPoint({ className, pulse = true, 
   return (
     <span
       className={cn(
-        'inline-block rounded-full bg-[color:var(--amber-bright)]',
+        'inline-block rounded-full bg-[color:var(--accent-bright)]',
         pulse && 'animate-pulse',
         dim,
         className,
@@ -221,7 +221,7 @@ export const MetricDisplay = memo(function MetricDisplay({ value, label, prefix,
   return (
     <div className={cn('text-center', className)} data-reveal>
       <div className="font-mono text-[32px] md:text-[40px] leading-none text-[color:var(--ivory)] tabular-nums">
-        {prefix && <span className="text-[color:var(--amber)]">{prefix}</span>}
+        {prefix && <span className="text-[color:var(--accent)]">{prefix}</span>}
         {value}
         {suffix && <span className="text-[color:var(--ivory-dim)] text-[20px]">{suffix}</span>}
       </div>

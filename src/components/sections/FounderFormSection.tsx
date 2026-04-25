@@ -45,32 +45,34 @@ interface AuditFormData {
 }
 
 function AuditForm() {
-  const [formData, setFormData] = useState<AuditFormData>({
-    name: '', email: '', company: '', bottleneck: '',
+  // Phase 8 — UTM params read via lazy initializer (root-cause fix for
+  // react-hooks/set-state-in-effect lint).
+  const [formData, setFormData] = useState<AuditFormData>(() => {
+    const base = { name: '', email: '', company: '', bottleneck: '' };
+    if (typeof window === 'undefined') return base;
+    const p = new URLSearchParams(window.location.search);
+    return {
+      ...base,
+      utmSource: p.get('utm_source') || undefined,
+      utmMedium: p.get('utm_medium') || undefined,
+      utmCampaign: p.get('utm_campaign') || undefined,
+    };
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Partial<AuditFormData>>({});
+  // formStarted derived from input state via the same effect that fires the
+  // analytics event — the suppression stays because this is a genuine
+  // effect-driven derivation (state observation triggers analytics side effect).
   const [formStarted, setFormStarted] = useState(false);
 
   useEffect(() => {
     if (!formStarted && (formData.name || formData.email)) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: derive form-started flag from input state
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: form-started derived from input state, fires analytics
       setFormStarted(true);
       trackFormStart('free_audit');
     }
   }, [formData, formStarted]);
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: read URL UTM params once on mount
-    setFormData(prev => ({
-      ...prev,
-      utmSource: params.get('utm_source') || undefined,
-      utmMedium: params.get('utm_medium') || undefined,
-      utmCampaign: params.get('utm_campaign') || undefined,
-    }));
-  }, []);
 
   const validate = () => {
     const e: Partial<AuditFormData> = {};
@@ -225,8 +227,17 @@ interface FounderFormData {
 }
 
 function FounderContactForm() {
-  const [formData, setFormData] = useState<FounderFormData>({
-    name: '', email: '', message: '',
+  // Phase 8 — UTM params read via lazy initializer (root-cause fix).
+  const [formData, setFormData] = useState<FounderFormData>(() => {
+    const base = { name: '', email: '', message: '' };
+    if (typeof window === 'undefined') return base;
+    const p = new URLSearchParams(window.location.search);
+    return {
+      ...base,
+      utmSource: p.get('utm_source') || undefined,
+      utmMedium: p.get('utm_medium') || undefined,
+      utmCampaign: p.get('utm_campaign') || undefined,
+    };
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -235,22 +246,11 @@ function FounderContactForm() {
 
   useEffect(() => {
     if (!formStarted && (formData.name || formData.email || formData.message)) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: derive form-started flag from input state
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: form-started derived from input state, fires analytics
       setFormStarted(true);
       trackFormStart('founder_contact');
     }
   }, [formData, formStarted]);
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: read URL UTM params once on mount
-    setFormData(prev => ({
-      ...prev,
-      utmSource: params.get('utm_source') || undefined,
-      utmMedium: params.get('utm_medium') || undefined,
-      utmCampaign: params.get('utm_campaign') || undefined,
-    }));
-  }, []);
 
   const validate = () => {
     const e: Partial<FounderFormData> = {};

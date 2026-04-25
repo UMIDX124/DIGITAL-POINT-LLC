@@ -29,7 +29,7 @@ export function TheMathSection() {
 
             <blockquote
               className="mt-10 pl-5 font-display italic text-[22px] md:text-[26px] leading-snug text-[color:var(--ivory)]"
-              style={{ borderLeft: '2px solid var(--amber)' }}
+              style={{ borderLeft: '2px solid var(--accent)' }}
             >
               &ldquo;{pullQuote}&rdquo;
             </blockquote>
@@ -43,7 +43,7 @@ export function TheMathSection() {
               style={{ background: '#141416' }}
             >
               <p className="eyebrow mb-4">In-house (annual)</p>
-              <div className="font-mono text-[48px] md:text-[64px] lg:text-[72px] leading-none tracking-tight text-[color:var(--amber)]">
+              <div className="font-mono text-[48px] md:text-[64px] lg:text-[72px] leading-none tracking-tight text-[color:var(--accent)]">
                 ${value.toLocaleString('en-US')}
               </div>
               <p className="mt-3 text-[13px] text-[color:var(--muted)]">{anchor.label}</p>
@@ -59,7 +59,7 @@ export function TheMathSection() {
                 ))}
                 <div className="flex items-center justify-between pt-4 pb-1">
                   <span className="eyebrow">Total</span>
-                  <span className="font-mono text-[16px] text-[color:var(--amber)] tabular-nums">
+                  <span className="font-mono text-[16px] text-[color:var(--accent)] tabular-nums">
                     ${total.toLocaleString('en-US')}
                   </span>
                 </div>

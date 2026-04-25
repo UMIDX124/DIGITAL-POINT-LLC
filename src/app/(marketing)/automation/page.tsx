@@ -33,7 +33,7 @@ export default function AutomationPage() {
               <Link
                 href={hero.ctaPrimary.href}
                 className="inline-flex items-center gap-2 px-6 py-3.5 text-[14px] font-medium rounded-md text-[#0A0A0B] focus-ring"
-                style={{ background: 'var(--amber-bright)' }}
+                style={{ background: 'var(--accent-bright)' }}
               >
                 {hero.ctaPrimary.label}
                 <ArrowRight className="w-4 h-4" />
@@ -62,7 +62,7 @@ export default function AutomationPage() {
                 <p className="mt-3 text-[14.5px] leading-[1.6] text-[color:var(--ivory-dim)]">
                   {card.body}
                 </p>
-                <p className="mt-auto pt-6 font-mono text-[12px] text-[color:var(--amber)] tracking-wide">
+                <p className="mt-auto pt-6 font-mono text-[12px] text-[color:var(--accent)] tracking-wide">
                   {card.stat}
                 </p>
               </div>
@@ -151,7 +151,7 @@ export default function AutomationPage() {
                     <div key={row.name} className="flex items-center justify-between py-3">
                       <span className="text-[14px] text-[color:var(--ivory-dim)]">{row.name}</span>
                       <span className="font-mono text-[12px] text-[color:var(--muted)]">
-                        {row.runs} runs · <span className="text-[color:var(--amber)]">{row.status}</span>
+                        {row.runs} runs · <span className="text-[color:var(--accent)]">{row.status}</span>
                       </span>
                     </div>
                   ))}
@@ -181,7 +181,7 @@ export default function AutomationPage() {
                 <div
                   key={tier.name}
                   className="card-flat p-8 flex flex-col"
-                  style={featured ? { borderColor: 'var(--amber)' } : undefined}
+                  style={featured ? { borderColor: 'var(--accent)' } : undefined}
                 >
                   <p className="eyebrow mb-5">{tier.name}</p>
                   <div className="font-display text-[36px] text-[color:var(--ivory)] leading-none">
@@ -192,7 +192,7 @@ export default function AutomationPage() {
                   </p>
                   <Link
                     href={tier.href}
-                    className="mt-auto pt-8 inline-flex items-center gap-2 text-[13px] font-medium text-[color:var(--amber)] focus-ring"
+                    className="mt-auto pt-8 inline-flex items-center gap-2 text-[13px] font-medium text-[color:var(--accent)] focus-ring"
                   >
                     {tier.cta}
                     <ArrowUpRight className="w-4 h-4" />
@@ -216,7 +216,7 @@ export default function AutomationPage() {
           <Link
             href="/free-growth-audit"
             className="mt-8 inline-flex items-center gap-2 px-6 py-3.5 text-[14px] font-medium rounded-md text-[#0A0A0B]"
-            style={{ background: 'var(--amber-bright)' }}
+            style={{ background: 'var(--accent-bright)' }}
           >
             Book a free audit
             <ArrowRight className="w-4 h-4" />

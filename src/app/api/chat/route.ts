@@ -78,29 +78,57 @@ export async function POST(req: NextRequest) {
 
     const apiKey = process.env.GROQ_API_KEY;
     if (!apiKey) {
-      console.error('GROQ_API_KEY not configured');
-      return NextResponse.json({ error: 'AI service not configured' }, { status: 500 });
+      console.error('[chat] GROQ_API_KEY not configured');
+      return NextResponse.json(
+        { error: 'AI service not configured. Try again in a minute — admin is fixing this now.' },
+        { status: 503 },
+      );
     }
 
-    const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
-        messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...sanitized],
-        max_tokens: 350,
-        temperature: 0.6,
-        top_p: 0.9,
-      }),
-      signal: AbortSignal.timeout(20_000),
-    });
+    const model = process.env.GROQ_MODEL || 'llama-3.3-70b-versatile';
+
+    // Phase 8 — single retry on 502/503/504 (transient Groq edge errors).
+    // Most live failures are momentary; one immediate retry usually wins.
+    const callGroq = async () =>
+      fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model,
+          messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...sanitized],
+          max_tokens: 350,
+          temperature: 0.6,
+          top_p: 0.9,
+        }),
+        signal: AbortSignal.timeout(20_000),
+      });
+
+    let groqRes = await callGroq();
+    if ([502, 503, 504].includes(groqRes.status)) {
+      console.warn(`[chat] groq ${groqRes.status} — retrying once`);
+      groqRes = await callGroq();
+    }
 
     if (!groqRes.ok) {
       const errText = await groqRes.text().catch(() => '');
       console.error(`[chat] groq ${groqRes.status} body=${errText.slice(0, 300)}`);
+
+      // Map Groq errors to user-facing messages.
+      if (groqRes.status === 401 || groqRes.status === 403) {
+        return NextResponse.json(
+          { error: 'AI service authentication failed. Admin has been notified.' },
+          { status: 503 },
+        );
+      }
+      if (groqRes.status === 429) {
+        return NextResponse.json(
+          { error: 'AI service is busy. Try again in a few seconds.' },
+          { status: 429 },
+        );
+      }
       return NextResponse.json(
         { error: 'AI service temporarily unavailable. Please try again.' },
         { status: 502 },
@@ -111,7 +139,7 @@ export async function POST(req: NextRequest) {
     const reply = data?.choices?.[0]?.message?.content?.trim() ?? '';
     if (!reply) {
       console.error('[chat] empty reply from groq');
-      return NextResponse.json({ error: 'Empty response from AI' }, { status: 502 });
+      return NextResponse.json({ error: 'Got an empty reply. Try rephrasing the question.' }, { status: 502 });
     }
 
     console.log(`[chat] success duration=${Date.now() - reqStart}ms replyLen=${reply.length}`);

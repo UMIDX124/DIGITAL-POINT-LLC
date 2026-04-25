@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Phase 3a: framer-motion compatibility shim.
  *

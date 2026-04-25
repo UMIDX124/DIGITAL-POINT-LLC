@@ -35,18 +35,9 @@ export function ScrollMotion() {
       if (cancelled) return;
       gsap.registerPlugin(ScrollTrigger);
 
-      // ---- Lenis <-> ScrollTrigger bridge --------------------------------
-      const attachLenisBridge = () => {
-        const lenis = window.__lenis__;
-        if (!lenis) return false;
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time: number) => lenis.raf(time * 1000));
-        gsap.ticker.lagSmoothing(0);
-        return true;
-      };
-      if (!attachLenisBridge()) {
-        setTimeout(attachLenisBridge, 60);
-      }
+      // Phase 8: Lenis bridge removed (Lenis itself was removed in Phase 8
+      // — native scroll is the design choice). ScrollTrigger now reads
+      // from the native window scroll directly.
 
       const ctx = gsap.context(() => {
         const revealTrigger = (trigger: Element | string) => ({

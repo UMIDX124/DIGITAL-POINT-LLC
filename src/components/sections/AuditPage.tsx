@@ -44,28 +44,23 @@ const TOTAL_STEPS = 4;
 
 export function AuditPage() {
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    company: '',
-    bottleneck: '',
-    adSpend: '',
+  // Phase 8 — UTM params read via lazy initializer so client-side state
+  // hydrates with URL data without an effect (root-cause fix for the
+  // react-hooks/set-state-in-effect lint that previously had a suppression).
+  const [formData, setFormData] = useState<FormData>(() => {
+    const base = { name: '', email: '', company: '', bottleneck: '', adSpend: '' };
+    if (typeof window === 'undefined') return base;
+    const p = new URLSearchParams(window.location.search);
+    return {
+      ...base,
+      utmSource: p.get('utm_source') || undefined,
+      utmMedium: p.get('utm_medium') || undefined,
+      utmCampaign: p.get('utm_campaign') || undefined,
+    };
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [formStarted, setFormStarted] = useState(false);
-
-  // Get UTM params from URL
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: read URL UTM params once on mount
-    setFormData(prev => ({
-      ...prev,
-      utmSource: params.get('utm_source') || undefined,
-      utmMedium: params.get('utm_medium') || undefined,
-      utmCampaign: params.get('utm_campaign') || undefined,
-    }));
-  }, []);
 
   const trackStep = (stepNumber: number) => {
     trackEvent('form_step', { step: stepNumber, form: 'free_audit' });

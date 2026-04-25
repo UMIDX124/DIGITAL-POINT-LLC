@@ -23,7 +23,7 @@ const NavLink = memo(function NavLink({ item, active }: { item: { name: string; 
       href={item.href}
       className={cn(
         'px-3 py-2 text-[13px] font-medium transition-colors duration-200 whitespace-nowrap',
-        active ? 'text-[color:var(--amber)]' : 'text-[color:var(--ivory-dim)] hover:text-[color:var(--ivory)]'
+        active ? 'text-[color:var(--accent)]' : 'text-[color:var(--ivory-dim)] hover:text-[color:var(--ivory)]'
       )}
     >
       {item.name}
@@ -99,8 +99,8 @@ export function Navigation() {
             <div className="hidden lg:block">
               <Link
                 href="/free-growth-audit"
-                className="px-4 py-2 text-[13px] font-medium text-[#0A0A0B] rounded-md whitespace-nowrap inline-block transition-colors duration-150"
-                style={{ background: 'var(--amber-bright)' }}
+                className="px-4 py-2 text-[13px] font-medium text-[#0A0A0B] rounded-md whitespace-nowrap inline-block transition-colors duration-150 hover:opacity-90"
+                style={{ background: 'var(--accent-bright)' }}
               >
                 Book a free audit
               </Link>
@@ -133,7 +133,7 @@ export function Navigation() {
                 className={cn(
                   'px-4 py-3 min-h-[44px] text-sm font-medium transition-colors',
                   isActive(item.href)
-                    ? 'text-[color:var(--amber)]'
+                    ? 'text-[color:var(--accent)]'
                     : 'text-[color:var(--ivory-dim)] hover:text-[color:var(--ivory)]'
                 )}
               >
@@ -144,7 +144,7 @@ export function Navigation() {
               <Link
                 href="/free-growth-audit"
                 className="block w-full py-3 rounded-md text-sm font-medium text-[#0A0A0B] text-center"
-                style={{ background: 'var(--amber-bright)' }}
+                style={{ background: 'var(--accent-bright)' }}
               >
                 Book a free audit
               </Link>

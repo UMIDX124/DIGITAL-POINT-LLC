@@ -21,7 +21,7 @@ export function ProcessSection() {
           {steps.map((step) => (
             <div key={step.n} className="card-flat p-8">
               <div className="flex items-baseline gap-4 mb-6">
-                <span className="font-mono text-[12px] text-[color:var(--amber)] tracking-widest">
+                <span className="font-mono text-[12px] text-[color:var(--accent)] tracking-widest">
                   {step.n}
                 </span>
                 <span className="flex-1 h-px" style={{ background: '#27272A' }} />

@@ -53,7 +53,7 @@ export function PillarsSection() {
                 ))}
               </ul>
 
-              <span className="absolute top-8 right-8 text-[color:var(--muted)] group-hover:text-[color:var(--amber)] transition-colors">
+              <span className="absolute top-8 right-8 text-[color:var(--muted)] group-hover:text-[color:var(--accent)] transition-colors">
                 <ArrowUpRight className="w-5 h-5" />
               </span>
             </Link>

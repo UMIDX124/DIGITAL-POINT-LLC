@@ -556,6 +556,23 @@ a.text-link:hover { background-size: 100% 1px; }
 }
 
 /* ============================================
+   TESTIMONIALS — Phase 5b
+   Card hover: border brightens, subtle lift. Matches recent-work feel so
+   the two grid sections read as part of the same interactive family.
+   ============================================ */
+.testimonial-card {
+  transition:
+    transform var(--dur-short) var(--ease-out-soft),
+    border-color var(--dur-short) var(--ease-out-soft),
+    box-shadow var(--dur-short) var(--ease-out-soft);
+}
+.testimonial-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-bright);
+  box-shadow: 0 12px 32px var(--accent-glow-soft);
+}
+
+/* ============================================
    SERVICES LIST — Phase 4d
    Massive editorial rows with per-letter hover scale. Letters animate
    independently via transition-delay stored inline (rendered by the

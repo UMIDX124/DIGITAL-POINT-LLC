@@ -16,7 +16,7 @@ export function GrainOverlay() {
       style={{
         zIndex: 1,
         mixBlendMode: 'overlay',
-        opacity: 0.035,
+        opacity: 0.05,
         // GPU-promotion + pointer-event isolation.
         transform: 'translateZ(0)',
         willChange: 'opacity',

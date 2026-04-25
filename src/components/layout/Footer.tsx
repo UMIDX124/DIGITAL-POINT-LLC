@@ -29,9 +29,9 @@ export function Footer() {
               <Image
                 src="/Dp-logo1.png"
                 alt="Digital Point LLC"
-                width={40}
-                height={40}
-                style={{ width: '40px', height: 'auto' }}
+                width={128}
+                height={128}
+                style={{ width: '64px', height: 'auto' }}
               />
               <div className="flex flex-col leading-none">
                 <span className="font-display text-lg text-[color:var(--ivory)]">Digital Point</span>

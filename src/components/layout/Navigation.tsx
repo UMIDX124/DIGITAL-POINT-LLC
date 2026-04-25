@@ -78,10 +78,10 @@ export function Navigation() {
               <Image
                 src="/Dp-logo1.png"
                 alt="Digital Point LLC"
-                width={40}
-                height={40}
+                width={96}
+                height={96}
                 priority
-                style={{ width: '36px', height: 'auto' }}
+                style={{ width: '48px', height: 'auto' }}
                 className="nav-logo transition-opacity duration-200 group-hover:opacity-90"
               />
               <div className="hidden sm:flex flex-col leading-none">

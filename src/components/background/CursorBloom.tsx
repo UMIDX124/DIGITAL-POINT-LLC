@@ -50,7 +50,7 @@ export function CursorBloom() {
         willChange: 'transform',
         background:
           'radial-gradient(circle, var(--accent-glow-soft) 0%, transparent 70%)',
-        opacity: 0.5,
+        opacity: 0.8,
         transform: 'translate3d(-9999px, -9999px, 0)',
       }}
     />

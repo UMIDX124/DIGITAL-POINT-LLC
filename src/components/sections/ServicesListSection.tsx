@@ -77,7 +77,7 @@ export function ServicesListSection() {
                   <span
                     className="service-name font-hero"
                     style={{
-                      fontSize: 'var(--text-h1)',
+                      fontSize: 'clamp(3rem, 6.5vw, 6.5rem)',
                       color: 'var(--text-primary)',
                       lineHeight: 1,
                       letterSpacing: '-0.02em',

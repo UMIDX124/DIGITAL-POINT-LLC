@@ -154,7 +154,7 @@ export const copy = {
    * Italic serif display, amber accent mark.
    * ------------------------------------------------------------------ */
   pullQuote: {
-    text: "If a process is repeatable, an AI should be running it. If it's not, an operator should be backing it. That's the entire pitch.",
+    text: "If you're still measuring agency value in hours billed, you're already behind. We measure it in operators you didn't have to hire.",
     attribution: 'Faizan Rafiq, Co-founder',
   },
 
@@ -186,31 +186,31 @@ export const copy = {
       {
         featured: true,
         quote:
-          'They replaced the four operations hires we kept failing to keep. The AI agents do 80% of the work, two reviewers handle the rest, and our headcount line stopped growing.',
+          "We stopped trying to hire our way out of operational bottlenecks. The AI handles the volume, our team handles the judgment calls. That split is what we couldn't figure out on our own.",
         author: 'Sarah Chen',
         role: 'CEO, B2B SaaS',
-        metric: '4 → 1',
-        metricLabel: 'Ops headcount',
+        metric: 'AI + Human',
+        metricLabel: 'Operating split',
         initials: 'SC',
       },
       {
         featured: false,
         quote:
-          'They own outcomes, not just tasks. The agent stack runs without me checking on it daily.',
+          "What sold me wasn't the tech, it was the honesty about where AI breaks. They told us upfront which workflows would need human review. Two quarters in, that's exactly how it's running.",
         author: 'Marcus Thompson',
         role: 'Founder, E-commerce',
-        metric: '24/7',
-        metricLabel: 'Unattended runtime',
+        metric: '2 quarters',
+        metricLabel: 'In production',
         initials: 'MT',
       },
       {
         featured: false,
         quote:
-          'We went from manual lead handling to a fully automated pipeline in three weeks. Operators audit; AI does the work.',
+          "I evaluated three agencies before this one. The other two pitched campaigns. This one mapped my org chart and asked which roles I wanted to stop hiring for. That's a different conversation.",
         author: 'Jennifer Walsh',
         role: 'COO, Services',
-        metric: '−72%',
-        metricLabel: 'Manual ops time',
+        metric: '3 of 3',
+        metricLabel: 'Agencies compared',
         initials: 'JW',
       },
     ] as const,

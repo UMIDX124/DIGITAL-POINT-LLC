@@ -28,7 +28,7 @@ export function RecentWorkSection() {
       }}
     >
       <div className="container-wide">
-        <header className="max-w-2xl mb-[var(--section-space-tight)]">
+        <header className="mb-[var(--section-space-tight)]" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
           <p
             className="font-mono uppercase mb-5"
             data-reveal

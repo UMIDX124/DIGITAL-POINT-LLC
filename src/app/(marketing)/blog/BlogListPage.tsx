@@ -112,7 +112,7 @@ export function BlogListPage({ posts, categories, categoryMeta }: Props) {
               <SignalPoint size="sm" />
               Resources & Insights
             </span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
               Field notes from running{' '}
               <span className="bg-gradient-to-r from-[#818CF8] via-[#6366F1] to-[#6366F1] bg-clip-text text-transparent">
                 AI in production

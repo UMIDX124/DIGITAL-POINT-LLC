@@ -37,7 +37,7 @@ export function PullQuoteSection() {
             fontStyle: 'italic',
             lineHeight: 1.05,
             letterSpacing: '-0.02em',
-            maxWidth: '24ch',
+            maxWidth: 'var(--maxw-pullquote)',
           }}
           data-reveal
         >

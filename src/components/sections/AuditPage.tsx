@@ -161,7 +161,7 @@ export function AuditPage() {
           </FadeUp>
 
           <FadeUp delay={0.1}>
-            <h1 className="font-display text-4xl sm:text-5xl font-bold text-white leading-[1.1] tracking-tight max-w-3xl">
+            <h1 className="font-display text-4xl sm:text-5xl font-bold text-white leading-[1.1] tracking-tight" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
               Get a <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#818CF8] to-[#6366F1]">free growth audit</span>
             </h1>
           </FadeUp>

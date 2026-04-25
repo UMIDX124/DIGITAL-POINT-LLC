@@ -206,6 +206,15 @@
   --lh-normal:  1.5;
   --lh-relaxed: 1.65;
 
+  /* Phase 11 residuals — heading + body max-width system.
+     Centralizes container widths so every section heading wraps at a
+     consistent character count instead of stacking word-per-line. */
+  --maxw-heading-display:        22ch;
+  --maxw-heading-section:        18ch;
+  --maxw-heading-section-mobile: 14ch;
+  --maxw-pullquote:              28ch;
+  --maxw-body:                   65ch;
+
   --ls-display:   -0.03em;
   --ls-tight:     -0.02em;
   --ls-normal:    0;

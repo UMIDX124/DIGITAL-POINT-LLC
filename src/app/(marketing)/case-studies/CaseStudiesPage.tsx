@@ -19,7 +19,7 @@ export function CaseStudiesPage() {
                 { label: 'Case Studies', href: '/case-studies' },
               ]}
             />
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mt-6 max-w-4xl">
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mt-6" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
               AI Deployments That Speak for Themselves
             </h1>
             <p className="text-[#D6D0C2] text-lg mt-4 max-w-2xl">

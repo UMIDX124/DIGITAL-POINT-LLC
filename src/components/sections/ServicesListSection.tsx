@@ -27,7 +27,7 @@ export function ServicesListSection() {
       }}
     >
       <div className="container-wide">
-        <header className="mb-12 lg:mb-16" style={{ maxWidth: '24ch' }}>
+        <header className="mb-12 lg:mb-16" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
           <p
             className="font-mono uppercase mb-5"
             data-reveal

@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: "%s | Digital Point LLC",
   },
   description:
-    "Digital Point operates the AI agent + automation stack that runs your marketing, CRM, ops, and reporting — so you scale without scaling headcount.",
+    "Digital Point operates the AI agent + automation stack that runs your CRM, ops, reporting, and growth workflows — so you scale without scaling headcount.",
   keywords: [
     "AI agents",
     "AI automation agency",
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Digital Point — Hire the AI. Skip the headcount.",
     description:
-      "Digital Point operates the AI agent + automation stack that runs your marketing, CRM, ops, and reporting — so you scale without scaling headcount.",
+      "Digital Point operates the AI agent + automation stack that runs your CRM, ops, reporting, and growth workflows — so you scale without scaling headcount.",
     url: "https://digitalpointllc.com",
     siteName: "Digital Point LLC",
     type: "website",
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Digital Point — Hire the AI. Skip the headcount.",
     description:
-      "Digital Point operates the AI agent + automation stack that runs your marketing, CRM, ops, and reporting — so you scale without scaling headcount.",
+      "Digital Point operates the AI agent + automation stack that runs your CRM, ops, reporting, and growth workflows — so you scale without scaling headcount.",
     images: ["/og-image.png"],
     creator: "@digitalpointllc",
   },
@@ -132,7 +132,7 @@ export default function RootLayout({
               url: "https://www.digitalpointllc.com",
               logo: "https://www.digitalpointllc.com/Dp-logo1.png",
               description:
-                "Digital Point operates the AI agent + automation stack that runs your marketing, CRM, ops, and reporting — so you scale without scaling headcount.",
+                "Digital Point operates the AI agent + automation stack that runs your CRM, ops, reporting, and growth workflows — so you scale without scaling headcount.",
               sameAs: [
                 "https://www.linkedin.com/company/digitalpointllc",
               ],
@@ -163,7 +163,7 @@ export default function RootLayout({
               "@type": "ProfessionalService",
               name: "Digital Point LLC",
               description:
-                "AI agent and automation infrastructure that runs operational workflows — CRM, ops, reporting, marketing — so you scale without scaling team.",
+                "AI agent and automation infrastructure that runs operational workflows — CRM, ops, reporting, growth — so you scale without scaling team.",
               url: "https://digitalpointllc.com",
               serviceType: [
                 "AI Agent Deployment",

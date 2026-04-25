@@ -156,7 +156,7 @@ export function ResultsPage() {
           </FadeUp>
 
           <FadeUp delay={0.1}>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-text-primary leading-[1.1] tracking-tight max-w-4xl">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-text-primary leading-[1.1] tracking-tight" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
               What changes when{' '}
               <span className="text-gradient-plum">acquisition, reporting, and execution</span>{' '}
               finally line up.

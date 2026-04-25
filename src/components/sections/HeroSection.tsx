@@ -193,7 +193,7 @@ export function HeroSection() {
             style={{
               fontSize: 'var(--text-hero)',
               color: 'var(--text-primary)',
-              maxWidth: '18ch',
+              maxWidth: 'var(--maxw-heading-display)',
               lineHeight: 'var(--lh-display)',
               letterSpacing: 'var(--ls-display)',
             }}

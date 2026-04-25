@@ -25,56 +25,29 @@ declare global {
 }
 
 /**
- * Phase 6 v2 — Lenis lazy-loaded + mobile-disabled.
+ * Phase 7 — Lenis FULLY DISABLED.
  *
- * The Lenis bundle (~12 KB gzipped) was loading eagerly on every page.
- * On touch devices it added bundle weight without delivering value
- * (native momentum scrolling already feels good on mobile). Now Lenis
- * is dynamic-imported only on viewports >= 768px AND prefers-reduced-
- * motion: no-preference.
+ * User reported felt-smoothness regression on the live preview: scrolling
+ * felt heavy. Lenis intercepts wheel/touch events and re-runs RAF-throttled
+ * scroll math, which on modern macOS/iOS clashes with the OS-level GPU-
+ * accelerated momentum scroll — net result is laggier than native.
+ *
+ * Native scroll is the right primitive for a marketing site. Linear,
+ * Stripe, Vercel marketing all use native scroll. Lenis is for award-
+ * bait portfolio choreography (Cuberto, Active Theory) — DPL is a B2B
+ * services site optimizing for conversion.
+ *
+ * The provider is kept (no-op) so re-enabling later is a single-edit
+ * change. The Lenis dependency stays in package.json but isn't imported
+ * anywhere — Tree-shaking removes it from the bundle.
+ *
+ * If this is permanently dropped, follow-up cleanup: remove the import
+ * indirection in ScrollMotion.tsx (window.__lenis__ check is harmless
+ * — it just always returns false now).
  */
 export function LenisProvider() {
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) return;
-    if (window.matchMedia('(max-width: 767px)').matches) return;
-
-    let cancelled = false;
-    let cleanup: (() => void) | undefined;
-
-    (async () => {
-      const { default: Lenis } = await import('lenis');
-      if (cancelled) return;
-
-      const lenis = new Lenis({
-        duration: 1.05,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
-        touchMultiplier: 1.0,
-      }) as unknown as LenisInstance;
-
-      window.__lenis__ = lenis;
-
-      let rafId = 0;
-      const raf = (time: number) => {
-        lenis.raf(time);
-        rafId = requestAnimationFrame(raf);
-      };
-      rafId = requestAnimationFrame(raf);
-
-      cleanup = () => {
-        cancelAnimationFrame(rafId);
-        lenis.destroy();
-        if (window.__lenis__ === lenis) delete window.__lenis__;
-      };
-    })();
-
-    return () => {
-      cancelled = true;
-      cleanup?.();
-    };
+    // Intentionally empty. Native scroll is the design choice.
   }, []);
 
   return null;

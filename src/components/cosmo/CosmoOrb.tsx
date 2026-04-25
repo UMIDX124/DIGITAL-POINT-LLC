@@ -100,12 +100,16 @@ export const CosmoOrb = memo(function CosmoOrb({
     if (!mouseFollow) return;
     const core = coreRef.current;
     const outerRing = outerRingRef.current;
+    const root = rootRef.current;
     if (!core && !outerRing) return;
 
     const unsub = subscribePointer(({ sx, sy, active }) => {
       if (!active) return;
-      // Core translates up to 15px; outer ring parallaxes at 8px (shallower
-      // depth). Both honor normalized sx/sy in [-1, 1].
+      // Phase 7 — viewport gate. The IntersectionObserver already pauses
+      // CSS animations via [data-cosmo-io-paused], but the JS subscription
+      // kept running. Reading the data attribute is a single DOM access
+      // per tick (cheap) and short-circuits the transform writes.
+      if (root && root.dataset.cosmoIoPaused === 'true') return;
       if (core) {
         core.style.transform = `translate3d(${sx * 15}px, ${sy * 15}px, 0)`;
       }

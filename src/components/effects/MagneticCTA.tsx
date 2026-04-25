@@ -60,13 +60,29 @@ export default function MagneticCTA({
       const rect = el.getBoundingClientRect();
       const cx = rect.left + rect.width / 2;
       const cy = rect.top + rect.height / 2;
-      const dx = e.clientX - cx;
-      const dy = e.clientY - cy;
-      const distance = Math.sqrt(dx * dx + dy * dy);
+      const dxAbs = Math.abs(e.clientX - cx);
+      const dyAbs = Math.abs(e.clientY - cy);
+
+      // Phase 7 — bounding-box pre-distance gate. Skip the sqrt + tween
+      // wake-up when the cursor is clearly outside the magnetic field
+      // (covers ~95% of mousemove events on a typical page where the
+      // cursor isn't hovering near the CTA). Cheaper than the full
+      // Euclidean distance every frame.
+      const farThreshold = radius * 1.5;
+      if (dxAbs > farThreshold || dyAbs > farThreshold) {
+        if (targetX !== 0 || targetY !== 0) {
+          targetX = 0;
+          targetY = 0;
+          if (rafId === null) rafId = requestAnimationFrame(tick);
+        }
+        return;
+      }
+
+      const distance = Math.sqrt(dxAbs * dxAbs + dyAbs * dyAbs);
       if (distance < radius) {
         const factor = (1 - distance / radius) * strength;
-        targetX = dx * factor;
-        targetY = dy * factor;
+        targetX = (e.clientX - cx) * factor;
+        targetY = (e.clientY - cy) * factor;
       } else {
         targetX = 0;
         targetY = 0;

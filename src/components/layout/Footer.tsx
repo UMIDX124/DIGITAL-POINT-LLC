@@ -72,7 +72,7 @@ export function Footer() {
           <div>
             <h4 className="eyebrow mb-5">Connect</h4>
             <div className="space-y-4">
-              <a href="mailto:info@digitalpointllc.com" className="flex items-center gap-3 text-[color:var(--ivory-dim)] hover:text-[color:var(--amber)] text-sm transition-colors">
+              <a href="mailto:info@digitalpointllc.com" className="text-link flex items-center gap-3 text-[color:var(--ivory-dim)] hover:text-[color:var(--amber)] text-sm transition-colors">
                 <Mail className="w-4 h-4" />
                 info@digitalpointllc.com
               </a>
@@ -80,7 +80,7 @@ export function Footer() {
                 href="https://linkedin.com/company/digitalpointllc"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-[color:var(--ivory-dim)] hover:text-[color:var(--amber)] text-sm transition-colors"
+                className="text-link flex items-center gap-3 text-[color:var(--ivory-dim)] hover:text-[color:var(--amber)] text-sm transition-colors"
               >
                 <Linkedin className="w-4 h-4" />
                 LinkedIn

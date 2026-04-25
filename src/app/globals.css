@@ -141,18 +141,37 @@
      resolved to 157px and overran the 564px flex-centered content box. New
      clamp maxes at 128px (8rem) which wraps to ~3 lines on 728px column and
      fits the viewport cleanly. */
-  --text-hero: clamp(3.5rem, 8vw, 8rem);
+  /* ===================================================================
+     PHASE 11 ADDENDUM — MODULAR SCALE (1.25× ratio, base 16px)
+     Source-of-truth size tokens. All semantic --text-* tokens below
+     derive from these. Adding a new size means picking from this scale
+     first; only add a new --fs-* step if the scale itself is missing it.
+     ------------------------------------------------------------------- */
+  --fs-base: 1rem;         /* 16px  — body */
+  --fs-sm:   0.875rem;     /* 14px  — caption, mono labels */
+  --fs-xs:   0.75rem;      /* 12px  — eyebrow, footer meta */
+  --fs-md:   1.125rem;     /* 18px  — emphasized body */
+  --fs-lg:   1.5rem;       /* 24px  — large body, blockquote */
+  --fs-xl:   2rem;         /* 32px  — h4, sub-headings */
+  --fs-2xl:  2.5rem;       /* 40px  — h3, service row mobile */
+  --fs-3xl:  3rem;         /* 48px  — section h2 mobile */
+  --fs-4xl:  3.75rem;      /* 60px  — service row desktop */
+  --fs-5xl:  4.5rem;       /* 72px  — section h2 desktop */
+  --fs-6xl:  5.5rem;       /* 88px  — hero h1 mobile */
+  --fs-7xl:  7.5rem;       /* 120px — hero h1 desktop */
 
-  /* Display (service rows) — Phase 11 retune to ~42px @1440 (was 56px).
-     User feedback: rows still felt billboard-scale; AI-first copy reorder
-     means rows carry less visual weight (the heading carries the message
-     now). Range 28-44px on mobile-to-desktop. */
-  --text-display: clamp(1.75rem, 2.8vw, 2.625rem);
+  /* Hero h1 — clamps from 6xl to 7xl across viewport. */
+  --text-hero: clamp(var(--fs-6xl), 8vw, var(--fs-7xl));
 
-  /* H1 (section h2 headings) — Phase 11 retune to ~50px @1440 (was 64).
-     New ratio: heading 50 / row 42 = 1.19× (target 1.20-1.28 window).
-     Mobile: 32-36px. */
-  --text-h1: clamp(2rem, 3.5vw, 3.25rem);
+  /* Service rows — clamps from 2xl to 4xl. */
+  --text-service-row: clamp(var(--fs-2xl), 4vw, var(--fs-4xl));
+
+  /* Section h2 — clamps from 3xl to 5xl. */
+  --text-h1: clamp(var(--fs-3xl), 5vw, var(--fs-5xl));
+
+  /* Legacy alias for service rows (some components still reference
+     --text-display). Maps to the new --text-service-row scale. */
+  --text-display: var(--text-service-row);
 
   /* H2 (secondary section header) — 32px → 69px. */
   --text-h2: clamp(2rem, 4.3vw, 4.3rem);
@@ -174,6 +193,24 @@
   --text-body: 1.0625rem;   /* 17px */
   --text-small: 0.875rem;   /* 14px */
   --text-micro: 0.75rem;    /* 12px */
+
+  /* Phase 11 addendum — additional scale-derived semantic tokens. */
+  --text-body-lg:    var(--fs-lg);    /* 24px — long-form */
+  --text-caption:    var(--fs-sm);    /* 14px — captions */
+  --text-mono-label: var(--fs-xs);    /* 12px — eyebrows, mono labels */
+
+  /* Phase 11 addendum — line-height + letter-spacing tokens. */
+  --lh-display: 1.02;
+  --lh-tight:   1.1;
+  --lh-snug:    1.25;
+  --lh-normal:  1.5;
+  --lh-relaxed: 1.65;
+
+  --ls-display:   -0.03em;
+  --ls-tight:     -0.02em;
+  --ls-normal:    0;
+  --ls-mono:      0.15em;
+  --ls-mono-wide: 0.2em;
 
   /* ===================================================================
      MOTION TOKENS — Phase 4a
@@ -766,19 +803,16 @@ html[data-paused-global="true"] .grain-overlay {
 }
 
 /* ============================================
-   PHASE 7 — HERO ITALIC BRACKETS
-   Decorative [ ] around the italic accent in the hero h1. Sit OUTSIDE
-   the .word > .word-inner reveal structure so they appear immediately
-   without participating in the staggered word cascade.
+   PHASE 11 ADDENDUM — HERO EM
+   Italic + accent purple emphasis on "the AI" inside the hero h1.
+   Replaces the Phase 7 [bracket] decoration which user never approved
+   and which clipped italic glyphs visually.
    ============================================ */
-.em-bracket {
-  color: var(--accent-bright);
-  font-family: var(--font-instrument-serif), Georgia, serif;
+.hero-em {
   font-style: italic;
-  font-weight: 300;
-  opacity: 0.6;
-  margin-inline: 0.04em;
-  letter-spacing: -0.04em;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+  padding-right: 0.05em;
 }
 
 /* ============================================

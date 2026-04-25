@@ -3,7 +3,6 @@
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import MagneticCTA from '@/components/effects/MagneticCTA';
-import { splitIntoWords, isWhitespace } from '@/lib/wordSplit';
 
 /**
  * Phase 6 v2 editorial hero — AI-first hybrid positioning.
@@ -15,15 +14,9 @@ import { splitIntoWords, isWhitespace } from '@/lib/wordSplit';
  * inter-word whitespace.
  */
 
-// Word-split the headline but preserve italic spans for "the AI".
-// Each part flushes as inline-block .word elements; spaces between parts
-// are inserted explicitly as inline (non-block) text spans so the layout
-// renders with proper whitespace.
-const HEAD_PARTS: Array<{ text: string; italic: boolean }> = [
-  { text: 'Hire', italic: false },
-  { text: 'the AI.', italic: true },
-  { text: 'Skip the headcount.', italic: false },
-];
+// Phase 11 addendum — hero brackets removed. Headline is now hardcoded JSX
+// (was a HEAD_PARTS array iteration with [ ] decorative spans). The italic
+// em wraps "the AI" only; the period attaches inline outside the em.
 
 const HERO_EYEBROW = 'DIGITAL POINT LLC · EST. 2017';
 const HERO_SUB =
@@ -197,67 +190,39 @@ export function HeroSection() {
             ref={headlineRef}
             className="font-hero mb-8"
             data-hero-headline
-            style={{ fontSize: 'var(--text-hero)', color: 'var(--text-primary)', maxWidth: '18ch' }}
+            style={{
+              fontSize: 'var(--text-hero)',
+              color: 'var(--text-primary)',
+              maxWidth: '18ch',
+              lineHeight: 'var(--lh-display)',
+              letterSpacing: 'var(--ls-display)',
+            }}
           >
-            {HEAD_PARTS.map((part, pi) => {
-              const tokens = splitIntoWords(part.text);
-              const renderedTokens: React.ReactNode[] = [];
-              if (part.italic) {
-                renderedTokens.push(
-                  <span key={`br-open-${pi}`} aria-hidden="true" className="em-bracket">
-                    [
-                  </span>,
-                );
-              }
-              tokens.forEach((tok, ti) => {
-                if (isWhitespace(tok)) {
-                  renderedTokens.push(
-                    <span key={`s-${pi}-${ti}`} aria-hidden="true">
-                      {' '}
-                    </span>,
-                  );
-                  return;
-                }
-                const WordTag: 'span' | 'em' = part.italic ? 'em' : 'span';
-                renderedTokens.push(
-                  <WordTag
-                    key={`w-${pi}-${ti}`}
-                    className={
-                      'word inline-block overflow-hidden align-top ' +
-                      (part.italic ? 'font-italic-display not-italic' : '')
-                    }
-                    style={
-                      part.italic
-                        ? { color: 'var(--accent-bright)', fontStyle: 'italic' }
-                        : undefined
-                    }
-                  >
-                    <span className="word-inner inline-block" data-word-reveal>
-                      {tok}
-                    </span>
-                  </WordTag>,
-                );
-              });
-
-              if (part.italic) {
-                renderedTokens.push(
-                  <span key={`br-close-${pi}`} aria-hidden="true" className="em-bracket">
-                    ]
-                  </span>,
-                );
-              }
-
-              // Inter-part space: keeps adjacent inline-block .word siblings
-              // visibly separated.
-              if (pi < HEAD_PARTS.length - 1) {
-                renderedTokens.push(
-                  <span key={`gap-${pi}`} aria-hidden="true">
-                    {' '}
-                  </span>,
-                );
-              }
-              return renderedTokens;
-            })}
+            <span className="word inline-block overflow-hidden align-top">
+              <span className="word-inner inline-block" data-word-reveal>Hire</span>
+            </span>
+            <span aria-hidden="true">{' '}</span>
+            <em className="hero-em font-italic-display not-italic">
+              <span className="word inline-block overflow-hidden align-top">
+                <span className="word-inner inline-block" data-word-reveal>the</span>
+              </span>
+              <span aria-hidden="true">{' '}</span>
+              <span className="word inline-block overflow-hidden align-top">
+                <span className="word-inner inline-block" data-word-reveal>AI</span>
+              </span>
+            </em>
+            <span aria-hidden="true">. </span>
+            <span className="word inline-block overflow-hidden align-top">
+              <span className="word-inner inline-block" data-word-reveal>Skip</span>
+            </span>
+            <span aria-hidden="true">{' '}</span>
+            <span className="word inline-block overflow-hidden align-top">
+              <span className="word-inner inline-block" data-word-reveal>the</span>
+            </span>
+            <span aria-hidden="true">{' '}</span>
+            <span className="word inline-block overflow-hidden align-top">
+              <span className="word-inner inline-block" data-word-reveal>headcount.</span>
+            </span>
           </h1>
 
           <p

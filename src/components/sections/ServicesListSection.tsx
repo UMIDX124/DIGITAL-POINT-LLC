@@ -32,8 +32,8 @@ export function ServicesListSection() {
             className="font-mono uppercase mb-5"
             data-reveal
             style={{
-              fontSize: 'var(--text-micro)',
-              letterSpacing: '0.12em',
+              fontSize: 'var(--text-mono-label)',
+              letterSpacing: 'var(--ls-mono-wide)',
               color: 'var(--text-tertiary)',
             }}
           >
@@ -45,8 +45,8 @@ export function ServicesListSection() {
             style={{
               fontSize: 'var(--text-h1)',
               color: 'var(--text-primary)',
-              lineHeight: 1.05,
-              letterSpacing: '-0.02em',
+              lineHeight: 'var(--lh-tight)',
+              letterSpacing: 'var(--ls-tight)',
             }}
           >
             {headline}
@@ -75,10 +75,10 @@ export function ServicesListSection() {
                 <span
                   className="service-name font-hero"
                   style={{
-                    fontSize: 'var(--text-display)',
+                    fontSize: 'var(--text-service-row)',
                     color: 'var(--text-primary)',
-                    lineHeight: 1,
-                    letterSpacing: '-0.02em',
+                    lineHeight: 'var(--lh-snug)',
+                    letterSpacing: 'var(--ls-tight)',
                   }}
                 >
                   <LetterHoverText text={`/ ${item.label}`} />

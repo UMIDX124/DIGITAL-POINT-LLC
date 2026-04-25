@@ -1,0 +1,47 @@
+{
+  "[data-reveal]": {
+    "count": 17,
+    "lowOpacity": 0,
+    "avgOpacity": 1
+  },
+  "[data-stagger-item]": {
+    "count": 5,
+    "lowOpacity": 0,
+    "avgOpacity": 1
+  },
+  "[data-service-item]": {
+    "count": 5,
+    "lowOpacity": 0,
+    "avgOpacity": 1
+  },
+  "[data-work-card]": {
+    "count": 3,
+    "lowOpacity": 0,
+    "avgOpacity": 1
+  },
+  "[data-testimonial-card]": {
+    "count": 3,
+    "lowOpacity": 0,
+    "avgOpacity": 1
+  },
+  "[data-workflow-label]": {
+    "count": 8,
+    "lowOpacity": 0,
+    "avgOpacity": 1
+  },
+  "[data-word-reveal]": {
+    "count": 0,
+    "lowOpacity": 0,
+    "avgOpacity": null
+  },
+  "[data-workflow-path]": {
+    "count": 3,
+    "lowOpacity": 0,
+    "avgOpacity": 1
+  },
+  "[data-workflow-node]": {
+    "count": 4,
+    "lowOpacity": 0,
+    "avgOpacity": 1
+  }
+}

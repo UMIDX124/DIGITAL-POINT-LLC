@@ -1,0 +1,362 @@
+{
+  "hero-h1": {
+    "found": true,
+    "selector": "#hero h1",
+    "tag": "h1",
+    "fontFamily": "\"Instrument Serif\", \"Instrument Serif Fallback\", Georgia, serif",
+    "fontSize": "156.96px",
+    "fontWeight": "400",
+    "lineHeight": "144.403px",
+    "letterSpacing": "-3.1392px",
+    "color": "rgb(245, 245, 247)",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "rect": {
+      "x": 64,
+      "y": -136,
+      "w": 728,
+      "h": 578
+    }
+  },
+  "hero-eyebrow": {
+    "found": true,
+    "selector": "[data-hero-eyebrow]",
+    "tag": "p",
+    "fontFamily": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "lineHeight": "18px",
+    "letterSpacing": "1.44px",
+    "color": "rgb(113, 113, 122)",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "rect": {
+      "x": 64,
+      "y": -185,
+      "w": 728,
+      "h": 18
+    }
+  },
+  "hero-sub": {
+    "found": true,
+    "selector": "[data-hero-sub]",
+    "tag": "p",
+    "fontFamily": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "fontSize": "17px",
+    "fontWeight": "400",
+    "lineHeight": "26.35px",
+    "letterSpacing": "-0.17px",
+    "color": "rgb(161, 161, 170)",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "rect": {
+      "x": 64,
+      "y": 474,
+      "w": 450,
+      "h": 79
+    }
+  },
+  "hero-cta-primary": {
+    "found": true,
+    "selector": "#hero .cta-primary",
+    "tag": "a",
+    "fontFamily": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "fontSize": "15px",
+    "fontWeight": "500",
+    "lineHeight": "22.5px",
+    "letterSpacing": "-0.15px",
+    "color": "rgb(255, 255, 255)",
+    "bgColor": "rgb(99, 102, 241)",
+    "rect": {
+      "x": 64,
+      "y": 593,
+      "w": 189,
+      "h": 55
+    }
+  },
+  "hero-cta-ghost": {
+    "found": true,
+    "selector": "#hero .cta-ghost",
+    "tag": "a",
+    "fontFamily": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "fontSize": "15px",
+    "fontWeight": "500",
+    "lineHeight": "22.5px",
+    "letterSpacing": "-0.15px",
+    "color": "rgb(245, 245, 247)",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "rect": {
+      "x": 269,
+      "y": 593,
+      "w": 166,
+      "h": 55
+    }
+  },
+  "services-h2": {
+    "found": true,
+    "selector": "#services h2",
+    "tag": "h2",
+    "fontFamily": "\"Instrument Serif\", \"Instrument Serif Fallback\", Georgia, serif",
+    "fontSize": "79.2px",
+    "fontWeight": "400",
+    "lineHeight": "75.24px",
+    "letterSpacing": "-1.584px",
+    "color": "rgb(245, 245, 247)",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "rect": {
+      "x": 128,
+      "y": 914,
+      "w": 222,
+      "h": 451
+    }
+  },
+  "services-row-name": {
+    "found": true,
+    "selector": "#services .service-name",
+    "tag": "span",
+    "fontFamily": "\"Instrument Serif\", \"Instrument Serif Fallback\", Georgia, serif",
+    "fontSize": "79.2px",
+    "fontWeight": "400",
+    "lineHeight": "79.2px",
+    "letterSpacing": "-1.584px",
+    "color": "rgb(245, 245, 247)",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "rect": {
+      "x": 178,
+      "y": 1466,
+      "w": 1070,
+      "h": 79
+    }
+  },
+  "services-index": {
+    "found": true,
+    "selector": "#services .service-index",
+    "tag": "span",
+    "fontFamily": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "lineHeight": "18px",
+    "letterSpacing": "1.44px",
+    "color": "rgb(113, 113, 122)",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "rect": {
+      "x": 128,
+      "y": 1497,
+      "w": 18,
+      "h": 18
+    }
+  },
+  "logo-strip-mark": {
+    "found": true,
+    "selector": "section[aria-label=\"Representative client types\"] li",
+    "tag": "li",
+    "fontFamily": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "lineHeight": "21px",
+    "letterSpacing": "2.1px",
+    "color": "rgb(113, 113, 122)",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "rect": {
+      "x": 359,
+      "y": 2367,
+      "w": 113,
+      "h": 21
+    }
+  },
+  "recent-work-h2": {
+    "found": true,
+    "selector": "#recent-work h2",
+    "tag": "h2",
+    "fontFamily": "\"Instrument Serif\", \"Instrument Serif Fallback\", Georgia, serif",
+    "fontSize": "61.92px",
+    "fontWeight": "400",
+    "lineHeight": "61.92px",
+    "letterSpacing": "-1.2384px",
+    "color": "rgb(245, 245, 247)",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "rect": {
+      "x": 128,
+      "y": 2611,
+      "w": 672,
+      "h": 124
+    }
+  },
+  "recent-work-card-title": {
+    "found": true,
+    "selector": "#recent-work [data-work-card] h3",
+    "tag": "h3",
+    "fontFamily": "\"Instrument Serif\", \"Instrument Serif Fallback\", Georgia, serif",
+    "fontSize": "43.2px",
+    "fontWeight": "400",
+    "lineHeight": "45.36px",
+    "letterSpacing": "-0.864px",
+    "color": "rgb(245, 245, 247)",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "rect": {
+      "x": 161,
+      "y": 3356,
+      "w": 616,
+      "h": 45
+    }
+  },
+  "pullquote-text": {
+    "found": true,
+    "selector": ".pull-quote-text",
+    "tag": "blockquote",
+    "fontFamily": "\"Instrument Serif\", \"Instrument Serif Fallback\", Georgia, serif",
+    "fontSize": "79.2px",
+    "fontWeight": "400",
+    "lineHeight": "87.12px",
+    "letterSpacing": "-1.584px",
+    "color": "rgb(245, 245, 247)",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "rect": {
+      "x": 428,
+      "y": 4334,
+      "w": 584,
+      "h": 348
+    }
+  },
+  "pullquote-attrib": {
+    "found": true,
+    "selector": "section[aria-label=\"Operating principle\"] p",
+    "tag": "p",
+    "fontFamily": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "lineHeight": "18px",
+    "letterSpacing": "2.16px",
+    "color": "rgb(113, 113, 122)",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "rect": {
+      "x": 256,
+      "y": 4723,
+      "w": 928,
+      "h": 18
+    }
+  },
+  "workflow-h2": {
+    "found": true,
+    "selector": "#workflow h2",
+    "tag": "h2",
+    "fontFamily": "\"Instrument Serif\", \"Instrument Serif Fallback\", Georgia, serif",
+    "fontSize": "61.92px",
+    "fontWeight": "400",
+    "lineHeight": "61.92px",
+    "letterSpacing": "-1.2384px",
+    "color": "rgb(245, 245, 247)",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "rect": {
+      "x": 128,
+      "y": 5005,
+      "w": 672,
+      "h": 124
+    }
+  },
+  "workflow-label": {
+    "found": true,
+    "selector": "[data-workflow-label] h3",
+    "tag": "h3",
+    "fontFamily": "\"Instrument Serif\", \"Instrument Serif Fallback\", Georgia, serif",
+    "fontSize": "30px",
+    "fontWeight": "400",
+    "lineHeight": "27.6px",
+    "letterSpacing": "-0.3px",
+    "color": "rgb(245, 245, 247)",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "rect": {
+      "x": 128,
+      "y": 5518,
+      "w": 284,
+      "h": 28
+    }
+  },
+  "testimonials-h2": {
+    "found": true,
+    "selector": "#testimonials h2",
+    "tag": "h2",
+    "fontFamily": "\"Instrument Serif\", \"Instrument Serif Fallback\", Georgia, serif",
+    "fontSize": "61.92px",
+    "fontWeight": "400",
+    "lineHeight": "61.92px",
+    "letterSpacing": "-1.2384px",
+    "color": "rgb(245, 245, 247)",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "rect": {
+      "x": 128,
+      "y": 5863,
+      "w": 672,
+      "h": 62
+    }
+  },
+  "testimonial-quote": {
+    "found": true,
+    "selector": "#testimonials blockquote",
+    "tag": "blockquote",
+    "fontFamily": "\"Instrument Serif\", \"Instrument Serif Fallback\", Georgia, serif",
+    "fontSize": "39.9995px",
+    "fontWeight": "400",
+    "lineHeight": "45.9994px",
+    "letterSpacing": "-0.399995px",
+    "color": "rgb(245, 245, 247)",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "rect": {
+      "x": 161,
+      "y": 6077,
+      "w": 616,
+      "h": 184
+    }
+  },
+  "cta-headline": {
+    "found": true,
+    "selector": "#cta h2",
+    "tag": "h2",
+    "fontFamily": "\"Instrument Serif\", \"Instrument Serif Fallback\", Georgia, serif",
+    "fontSize": "79.2px",
+    "fontWeight": "400",
+    "lineHeight": "83.16px",
+    "letterSpacing": "-1.584px",
+    "color": "rgb(245, 245, 247)",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "rect": {
+      "x": 391,
+      "y": 6784,
+      "w": 657,
+      "h": 166
+    }
+  },
+  "cta-body": {
+    "found": true,
+    "selector": "#cta h2 ~ p",
+    "tag": "p",
+    "fontFamily": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "fontSize": "17px",
+    "fontWeight": "400",
+    "lineHeight": "26.35px",
+    "letterSpacing": "-0.17px",
+    "color": "rgb(161, 161, 170)",
+    "bgColor": "rgba(0, 0, 0, 0)",
+    "rect": {
+      "x": 442,
+      "y": 6982,
+      "w": 557,
+      "h": 79
+    }
+  },
+  "body": {
+    "found": true,
+    "selector": "body",
+    "tag": "body",
+    "fontFamily": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "fontSize": "16px",
+    "fontWeight": "400",
+    "lineHeight": "24px",
+    "letterSpacing": "normal",
+    "color": "rgb(245, 245, 247)",
+    "bgColor": "rgb(13, 13, 13)",
+    "rect": {
+      "x": 0,
+      "y": -410,
+      "w": 1440,
+      "h": 8112
+    }
+  }
+}

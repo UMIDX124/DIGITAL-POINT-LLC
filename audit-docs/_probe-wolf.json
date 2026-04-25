@@ -1,0 +1,24 @@
+{
+  "navImg": {
+    "src": "/_next/image?url=%2FDp-logo1.png&w=96&q=75",
+    "alt": "Digital Point LLC"
+  },
+  "footerImg": {
+    "src": "/_next/image?url=%2FDp-logo1.png&w=96&q=75",
+    "alt": "Digital Point LLC"
+  },
+  "allImgs": [
+    {
+      "src": "/_next/image?url=%2FDp-logo1.png&w=96&q=75",
+      "alt": "Digital Point LLC",
+      "w": 36,
+      "h": 38.25
+    },
+    {
+      "src": "/_next/image?url=%2FDp-logo1.png&w=96&q=75",
+      "alt": "Digital Point LLC",
+      "w": 40,
+      "h": 42.5
+    }
+  ]
+}

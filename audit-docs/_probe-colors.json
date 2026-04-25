@@ -1,0 +1,12 @@
+{
+  "rootAccent": "#6366f1",
+  "rootAccentBright": "#818cf8",
+  "rootAccentDeep": "#4f46e5",
+  "rootBgPrimary": "#0d0d0d",
+  "rootTextPrimary": "#f5f5f7",
+  "bodyBg": "rgb(13, 13, 13)",
+  "bodyColor": "rgb(245, 245, 247)",
+  "grainExists": true,
+  "cursorBloomExists": true,
+  "cosmoExists": true
+}

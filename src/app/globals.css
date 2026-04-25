@@ -207,13 +207,16 @@
   --lh-relaxed: 1.65;
 
   /* Phase 11 residuals — heading + body max-width system.
-     Centralizes container widths so every section heading wraps at a
-     consistent character count instead of stacking word-per-line. */
-  --maxw-heading-display:        22ch;
-  --maxw-heading-section:        18ch;
-  --maxw-heading-section-mobile: 14ch;
-  --maxw-pullquote:              28ch;
-  --maxw-body:                   65ch;
+     rem-based so the value resolves the same regardless of which element
+     applies it (ch resolves at element font-size, which made the
+     section-heading max-width misbehave when applied to the wrapping
+     <header> at body 16px). All targets calibrated for the
+     post-modular-scale type sizes. */
+  --maxw-heading-display:        44rem;  /* hero h1 (~704px) */
+  --maxw-heading-section:        36rem;  /* section h2 desktop (~576px) */
+  --maxw-heading-section-mobile: 22rem;  /* section h2 mobile (~352px) */
+  --maxw-pullquote:              48rem;  /* pull quote (~768px) */
+  --maxw-body:                   42rem;  /* body paragraph (~672px) */
 
   --ls-display:   -0.03em;
   --ls-tight:     -0.02em;

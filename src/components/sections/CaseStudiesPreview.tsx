@@ -38,14 +38,14 @@ export function CaseStudiesPreview() {
 
               <div className="mt-auto pt-8">
                 <div className="flex items-baseline gap-3">
-                  <span className="font-mono text-[36px] text-[color:var(--amber)] tabular-nums">
+                  <span className="font-mono text-[36px] text-[color:var(--accent)] tabular-nums">
                     {study.highlightMetric}
                   </span>
                   <span className="eyebrow">{study.highlightLabel}</span>
                 </div>
               </div>
 
-              <span className="absolute top-8 right-8 text-[color:var(--muted)] group-hover:text-[color:var(--amber)] transition-colors">
+              <span className="absolute top-8 right-8 text-[color:var(--muted)] group-hover:text-[color:var(--accent)] transition-colors">
                 <ArrowUpRight className="w-5 h-5" />
               </span>
             </Link>

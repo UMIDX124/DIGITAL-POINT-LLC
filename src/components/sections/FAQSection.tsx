@@ -35,14 +35,14 @@ export function FAQSection() {
                 >
                   <span className={cn(
                     'font-display text-[20px] md:text-[22px] leading-snug transition-colors',
-                    isOpen ? 'text-[color:var(--amber)]' : 'text-[color:var(--ivory)]'
+                    isOpen ? 'text-[color:var(--accent)]' : 'text-[color:var(--ivory)]'
                   )}>
                     {item.q}
                   </span>
                   <ChevronDown
                     className={cn(
                       'w-5 h-5 mt-1 shrink-0 transition-transform text-[color:var(--muted)]',
-                      isOpen ? 'rotate-180 text-[color:var(--amber)]' : ''
+                      isOpen ? 'rotate-180 text-[color:var(--accent)]' : ''
                     )}
                   />
                 </button>

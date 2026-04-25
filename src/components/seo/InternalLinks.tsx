@@ -9,14 +9,14 @@ const serviceLinks = [
     title: 'Performance Marketing',
     description: 'Paid ads, ROAS optimization, and attribution tracking.',
     icon: BarChart3,
-    color: '#F59E0B',
+    color: '#6366F1',
   },
   {
     slug: 'remote-workforce',
     title: 'Remote Workforce',
     description: 'Dedicated remote teams that integrate with yours.',
     icon: Users,
-    color: '#F59E0B',
+    color: '#6366F1',
   },
   {
     slug: 'systems-reporting',
@@ -93,12 +93,12 @@ export function InternalLinks({
               className="group rounded-xl p-4 transition-all hover:scale-[1.01]"
               style={{
                 background: 'rgba(13, 8, 21, 0.5)',
-                border: '1px solid rgba(217,119,6, 0.15)',
+                border: '1px solid rgba(99,102,241, 0.15)',
               }}
             >
               <div className="flex items-center gap-2 mb-2">
                 <Icon className="w-4 h-4" style={{ color: service.color }} />
-                <span className="text-white text-sm font-medium group-hover:text-[#FBBF24] transition-colors">
+                <span className="text-white text-sm font-medium group-hover:text-[#818CF8] transition-colors">
                   {service.title}
                 </span>
                 <ArrowRight className="w-3 h-3 text-[#71717A] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />

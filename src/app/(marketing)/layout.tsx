@@ -1,15 +1,15 @@
 import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';
 import { StickyCTABar } from '@/components/ui-dp/StickyCTABar';
-import { LenisProvider } from '@/components/motion/LenisProvider';
 import { ScrollMotion } from '@/components/motion/ScrollMotion';
 
 /**
- * Cosmo chatbot (SupportChatbot) is intentionally NOT mounted.
- * See Phase 2 of the April 2026 rebuild — chatbot disabled pending a rewrite
- * because its copy contradicted the "no AI-only report" hero line and its
- * Groq key was misconfigured. Files preserved at
- * src/components/ui-dp/SupportChatbot.tsx for future re-enablement.
+ * Phase 8: LenisProvider fully removed. Native scroll is the design choice
+ * for marketing — felt smoother on macOS/iOS native momentum than a
+ * RAF-throttled wrapper.
+ *
+ * Groq AI chatbot is mounted at the root layout (src/app/layout.tsx) so
+ * it persists across all routes including marketing.
  */
 
 export default function MarketingLayout({
@@ -19,7 +19,6 @@ export default function MarketingLayout({
 }) {
   return (
     <div className="relative min-h-screen flex flex-col" style={{ background: '#0A0A0B' }}>
-      <LenisProvider />
       <ScrollMotion />
       <Navigation />
       <main className="flex-1">{children}</main>

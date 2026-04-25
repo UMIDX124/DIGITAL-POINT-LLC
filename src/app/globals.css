@@ -4,66 +4,113 @@
 @custom-variant dark (&:is(.dark *));
 
 /* =======================================================================
-   DIGITAL POINT LLC — EXECUTIVE DARK SYSTEM
-   Dark surfaces · ivory type · single amber accent · hairline borders
+   DIGITAL POINT LLC — PHASE 4a: DIVYANSH-REPLICA VISUAL SYSTEM
+   Dark surfaces · purple primary · editorial typography · motion tokens
+
+   PRIMARY COLOR SUPERSEDURE (durable, documented in commit):
+   DPL primary is PURPLE #6366F1. This supersedes the legacy amber/gold
+   rule in global ~/.claude/CLAUDE.md for the DPL site ONLY. Other projects
+   (CRM, VCS, BSL) keep their existing color rules.
+
+   TOKEN SYSTEM — ported from divyanshagarwal.com at 0.78× scale, palette
+   remapped to DPL purple on dark charcoal.
+
+   PRESERVE (Phase 0-3a contracts, do NOT break):
+   - Scroll-reveal safety net: ScrollMotion.tsx 2.5s fallback must still
+     see [data-reveal], [data-stagger-item], [data-service-item],
+     [data-work-card], [data-testimonial-card], [data-pillar-card],
+     [data-workflow-label]. New 4c-4h attributes (e.g. [data-word-reveal],
+     [data-letter-reveal]) get added to that selector list when introduced.
+   - Signature ease cubic-bezier(0.65, 0.05, 0, 1) stays as --ease-brand.
+   - Fluid clamp typography + spacing scales (ported verbatim from ref).
+   - [data-slot="button"] Tailwind-transition override stays.
+   - .card-flat / .divide-hairline / .container-wide / .container-narrow
+     / .section-main|sm|lg|top / .eyebrow / .focus-ring primitives stay,
+     retargeted to the new palette.
+
+   INTRODUCE (new in 4a):
+   - Purple accent system (--accent, --accent-bright, --accent-deep,
+     --accent-glow, --accent-glow-soft).
+   - Multi-layer background system (--bg-primary/secondary/tertiary/elevated).
+   - New text/border color taxonomy (--text-primary..muted, --border-subtle..bright).
+   - Hero-scale type token (--text-hero = 0.78× Divyansh hero clamp).
+   - Motion tokens (--ease-out-soft, --ease-in-soft, --dur-micro..hero).
+   - Section-space + container-gutter tokens matching Divyansh rhythm.
+   - Type utility classes (.font-hero, .font-display, .font-body, .font-italic-display).
+
+   ALIAS (legacy name → new purple value):
+   - --amber, --amber-bright, --plum, --plum-light, --plum-dark, --signal
+     all retargeted to the purple palette so any component that still
+     references them renders correctly until its rewrite lands.
    ======================================================================= */
 
 @theme inline {
-  /* Core tokens */
-  --color-bg: var(--bg);
-  --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
-  --color-border: var(--border);
-  --color-ivory: var(--ivory);
-  --color-ivory-dim: var(--ivory-dim);
-  --color-muted: var(--muted);
-  --color-amber: var(--amber);
-  --color-amber-bright: var(--amber-bright);
+  /* --- Purple accent surfacing (new canonical primary) --- */
+  --color-accent: var(--accent);
+  --color-accent-bright: var(--accent-bright);
+  --color-accent-deep: var(--accent-deep);
 
-  /* Tailwind/shadcn-compatible aliases so existing components keep working */
-  --color-background: var(--bg);
-  --color-foreground: var(--ivory);
-  --color-card: var(--surface);
-  --color-card-foreground: var(--ivory);
-  --color-popover: var(--surface);
-  --color-popover-foreground: var(--ivory);
-  --color-primary: var(--amber);
-  --color-primary-foreground: #0A0A0B;
-  --color-secondary: var(--surface-2);
-  --color-secondary-foreground: var(--ivory);
-  --color-muted-foreground: var(--muted);
-  --color-accent: var(--surface-2);
-  --color-accent-foreground: var(--ivory);
+  /* --- Background system --- */
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-bg-elevated: var(--bg-elevated);
+
+  /* --- Text system --- */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-muted: var(--text-muted);
+
+  /* --- Legacy aliases retargeted to new palette --- */
+  --color-bg: var(--bg-primary);
+  --color-surface: var(--bg-secondary);
+  --color-surface-2: var(--bg-elevated);
+  --color-border: var(--border-default);
+  --color-ivory: var(--text-primary);
+  --color-ivory-dim: var(--text-secondary);
+  --color-muted: var(--text-tertiary);
+  --color-amber: var(--accent);
+  --color-amber-bright: var(--accent-bright);
+
+  /* shadcn-compatible aliases */
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  --color-card: var(--bg-secondary);
+  --color-card-foreground: var(--text-primary);
+  --color-popover: var(--bg-secondary);
+  --color-popover-foreground: var(--text-primary);
+  --color-primary: var(--accent);
+  --color-primary-foreground: var(--bg-primary);
+  --color-secondary: var(--bg-elevated);
+  --color-secondary-foreground: var(--text-primary);
+  --color-muted-foreground: var(--text-tertiary);
+  --color-accent-foreground: var(--text-primary);
   --color-destructive: #DC2626;
-  --color-ring: var(--amber-bright);
-  --color-input: var(--border);
+  --color-ring: var(--accent-bright);
+  --color-input: var(--border-default);
 
-  /* Legacy aliases — every component that used cosmic vars now renders in the new palette */
-  --color-plum: var(--amber);
-  --color-plum-light: var(--amber-bright);
-  --color-plum-dark: #B45309;
-  --color-signal: var(--amber-bright);
-  --color-signal-glow: rgba(245, 158, 11, 0.25);
-  --color-violet: var(--amber);
-  --color-violet-muted: var(--amber-bright);
-  --color-cosmic-pink: var(--amber-bright);
-  --color-cosmic-magenta: var(--amber);
-  --color-surface-elevated: var(--surface-2);
-  --color-surface-glass: rgba(245, 158, 11, 0.04);
-  --color-surface-glass-strong: rgba(245, 158, 11, 0.08);
-  --color-text-primary: var(--ivory);
-  --color-text-secondary: var(--ivory-dim);
-  --color-text-muted: var(--muted);
-  --color-border-subtle: var(--border);
-  --color-border-glass: var(--border);
-  --color-border-active: var(--amber);
+  /* Cosmic-era aliases still in use by legacy sub-pages */
+  --color-plum: var(--accent);
+  --color-plum-light: var(--accent-bright);
+  --color-plum-dark: var(--accent-deep);
+  --color-signal: var(--accent-bright);
+  --color-signal-glow: var(--accent-glow);
+  --color-cosmic-pink: var(--accent-bright);
+  --color-cosmic-magenta: var(--accent);
+  --color-surface-elevated: var(--bg-elevated);
+  --color-surface-glass: var(--accent-glow-soft);
+  --color-surface-glass-strong: var(--accent-glow);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-glass: var(--border-default);
+  --color-border-active: var(--accent);
 
-  /* Charts — monotone amber ladder, no rainbow */
-  --color-chart-1: var(--amber);
-  --color-chart-2: var(--amber-bright);
-  --color-chart-3: #FBBF24;
-  --color-chart-4: var(--ivory-dim);
-  --color-chart-5: var(--muted);
+  /* Charts — purple ladder */
+  --color-chart-1: var(--accent);
+  --color-chart-2: var(--accent-bright);
+  --color-chart-3: #A5B4FC;
+  --color-chart-4: var(--text-secondary);
+  --color-chart-5: var(--text-tertiary);
 
   /* Radius */
   --radius-sm: 4px;
@@ -72,50 +119,170 @@
   --radius-xl: 12px;
   --radius-2xl: 16px;
 
-  /* Typography */
-  --font-sans: var(--font-inter), system-ui, sans-serif;
+  /* Typography family aliases
+     Geist Sans / Mono ship via next/font's `geist` npm package. Instrument
+     Serif remains the display face. */
+  --font-sans: var(--font-geist-sans, var(--font-inter)), system-ui, sans-serif;
   --font-display: var(--font-instrument-serif), Georgia, serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-mono: var(--font-geist-mono, var(--font-jetbrains-mono)), ui-monospace, monospace;
+
+  /* Tailwind v4 preflight reads --default-font-family / --default-mono-font-family
+     for html/body font-family. Explicit Geist-first stack fixes Phase 4 bug
+     where body fell through to system sans. */
+  --default-font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --default-mono-font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* ===================================================================
+     FLUID TYPE SCALE — Phase 4a Divyansh × 0.78
+     ------------------------------------------------------------------- */
+
+  /* Divyansh hero headline — Phase 5 shrink to prevent 100dvh overflow at
+     1440×900 on the 1.4fr split column. Previous clamp(4.7rem, 10.9vw, 10.9rem)
+     resolved to 157px and overran the 564px flex-centered content box. New
+     clamp maxes at 128px (8rem) which wraps to ~3 lines on 728px column and
+     fits the viewport cleanly. */
+  --text-hero: clamp(3.5rem, 8vw, 8rem);
+
+  /* Display (section feature title) — Phase 6 v2 retune to ~78px @1440
+     so service-list rows establish editorial scale (not billboard).
+     Was clamp(3.1rem, 7.8vw, 7.8rem) — 112.32px @1440. */
+  --text-display: clamp(3rem, 5.4vw, 5.4rem);
+
+  /* H1 (primary section header) — Phase 6 v2 retune to ~63px @1440 so
+     section h2 sits clearly below service-row scale (78px). Hierarchy
+     delta ~24%. Was clamp(2.5rem, 5.5vw, 5.5rem) — 79.2px. */
+  --text-h1: clamp(2.4rem, 4.4vw, 4.4rem);
+
+  /* H2 (secondary section header) — 32px → 69px. */
+  --text-h2: clamp(2rem, 4.3vw, 4.3rem);
+
+  /* H3 (card title / pull quote) — 24px → 48px. */
+  --text-h3: clamp(1.5rem, 3vw, 3rem);
+
+  /* Kept from Phase 1 port (used by existing sub-pages; not re-scaled):
+     h4 = 25→40, h5 = 20→30, h6 = 17→24, lead = 17→20, main = 15→18,
+     caption = 13→16. */
+  --text-h4: clamp(1.5625rem, 1.2946rem + 1.3393vw, 2.5rem);
+  --text-h5: clamp(1.25rem, 1.0714rem + 0.8929vw, 1.875rem);
+  --text-h6: clamp(1.0625rem, 0.9375rem + 0.625vw, 1.5rem);
+  --text-lead: clamp(1.0625rem, 1.0089rem + 0.2679vw, 1.25rem);
+  --text-main: clamp(0.9375rem, 0.8839rem + 0.2679vw, 1.125rem);
+  --text-caption: clamp(0.8125rem, 0.7589rem + 0.2679vw, 1rem);
+
+  /* Prompt-spec discrete sizes (non-fluid). */
+  --text-body: 1.0625rem;   /* 17px */
+  --text-small: 0.875rem;   /* 14px */
+  --text-micro: 0.75rem;    /* 12px */
+
+  /* ===================================================================
+     MOTION TOKENS — Phase 4a
+     ------------------------------------------------------------------- */
+  --ease-brand: cubic-bezier(0.65, 0.05, 0, 1);
+  --ease-out-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-in-soft: cubic-bezier(0.32, 0, 0.67, 0);
+
+  --dur-micro: 200ms;
+  --dur-short: 300ms;
+  --dur-medium: 500ms;
+  --dur-long: 800ms;
+  --dur-hero: 1100ms;
 }
 
 /* ============================================
-   ROOT VARIABLES
+   :root — color values + fluid spacing scale
    ============================================ */
 
 :root {
   --radius: 0.5rem;
 
-  --bg: #0A0A0B;
-  --surface: #141416;
-  --surface-2: #1C1C1F;
-  --border: #27272A;
-  --ivory: #F5F1E8;
-  --ivory-dim: #D6D0C2;
-  --muted: #71717A;
-  --amber: #D97706;
-  --amber-bright: #F59E0B;
+  /* --- Background system (premium depth) --- */
+  --bg-primary: #0D0D0D;
+  --bg-secondary: #111114;
+  --bg-tertiary: #0A0A0B;
+  --bg-elevated: #151518;
 
-  /* Legacy plain-var names still used by some components */
-  --background: var(--bg);
-  --foreground: var(--ivory);
-  --plum: var(--amber);
-  --plum-light: var(--amber-bright);
-  --plum-dark: #B45309;
-  --signal: var(--amber-bright);
-  --signal-glow: rgba(245, 158, 11, 0.25);
-  --violet: var(--amber);
-  --violet-muted: var(--amber-bright);
-  --cosmic-pink: var(--amber-bright);
-  --cosmic-magenta: var(--amber);
-  --surface-elevated: var(--surface-2);
-  --surface-glass: rgba(245, 158, 11, 0.04);
-  --surface-glass-strong: rgba(245, 158, 11, 0.08);
-  --text-primary: var(--ivory);
-  --text-secondary: var(--ivory-dim);
-  --text-muted: var(--muted);
-  --border-subtle: var(--border);
-  --border-glass: var(--border);
-  --border-active: var(--amber);
+  /* --- Purple accent system (new canonical) --- */
+  --accent: #6366F1;
+  --accent-bright: #818CF8;
+  --accent-deep: #4F46E5;
+  --accent-glow: rgba(99, 102, 241, 0.25);
+  --accent-glow-soft: rgba(99, 102, 241, 0.08);
+
+  /* --- Text --- */
+  --text-primary: #F5F5F7;
+  --text-secondary: #A1A1AA;
+  --text-tertiary: #71717A;
+  --text-muted: #52525B;
+
+  /* --- Borders --- */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.1);
+  --border-bright: rgba(99, 102, 241, 0.3);
+
+  /* ----- Legacy palette aliases → purple palette -----
+     Components not yet rewritten still reference these names. They resolve
+     to the new purple values so visual output is consistent without
+     per-component edits. */
+  --bg: var(--bg-primary);
+  --surface: var(--bg-secondary);
+  --surface-2: var(--bg-elevated);
+  --border: var(--border-default);
+  --ivory: var(--text-primary);
+  --ivory-dim: var(--text-secondary);
+  --muted: var(--text-tertiary);
+  --amber: var(--accent);
+  --amber-bright: var(--accent-bright);
+
+  --background: var(--bg-primary);
+  --foreground: var(--text-primary);
+  --plum: var(--accent);
+  --plum-light: var(--accent-bright);
+  --plum-dark: var(--accent-deep);
+  --signal: var(--accent-bright);
+  --signal-glow: var(--accent-glow);
+  --cosmic-pink: var(--accent-bright);
+  --cosmic-magenta: var(--accent);
+  --surface-elevated: var(--bg-elevated);
+  --surface-glass: var(--accent-glow-soft);
+  --surface-glass-strong: var(--accent-glow);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-glass: var(--border-default);
+  --border-active: var(--accent);
+
+  /* ----- Legacy font-var aliases → Geist -----
+     RecentWorkSection + WorkflowSection inline SVG labels reference
+     var(--font-jetbrains-mono) directly. Aliasing keeps them resolved to
+     Geist Mono without component edits. */
+  --font-inter: var(--font-geist-sans);
+  --font-jetbrains-mono: var(--font-geist-mono);
+
+  /* ------------------------------------------------------------------
+     FLUID SPACING SCALE — retained from Phase 1 port.
+     ------------------------------------------------------------------ */
+  --space-1: clamp(0.375rem, 0.3393rem + 0.1786vw, 0.5rem);
+  --space-2: clamp(0.625rem, 0.5893rem + 0.1786vw, 0.75rem);
+  --space-3: clamp(0.875rem, 0.8393rem + 0.1786vw, 1rem);
+  --space-4: clamp(1.25rem, 1.1786rem + 0.3571vw, 1.5rem);
+  --space-5: clamp(1.75rem, 1.6786rem + 0.3571vw, 2rem);
+  --space-6: clamp(2rem, 1.8571rem + 0.7143vw, 2.5rem);
+  --space-7: clamp(2.25rem, 2.0357rem + 1.0714vw, 3rem);
+  --space-8: clamp(2.5rem, 2.0714rem + 2.1429vw, 4rem);
+
+  /* ------------------------------------------------------------------
+     SECTION-SPACE — Phase 1 tiers retained; Phase 4a adds --section-space
+     + --section-space-tight + --container-gutter from Divyansh spec.
+     ------------------------------------------------------------------ */
+  --section-sm: clamp(3rem, 2.4286rem + 2.8571vw, 5rem);
+  --section-main: clamp(4rem, 3.1429rem + 4.2857vw, 7rem);
+  --section-lg: clamp(5.5rem, 4.2143rem + 6.4286vw, 10rem);
+  --section-top: clamp(7rem, 5rem + 10vw, 14rem);
+
+  /* Divyansh primary section rhythm (100 → 174 px). */
+  --section-space: clamp(6.25rem, 12.5vh, 10.9rem);
+  --section-space-tight: clamp(4rem, 8vh, 6rem);
+
+  --site-margin: clamp(1rem, 0.4286rem + 2.8571vw, 3rem);
+  --container-gutter: clamp(1.5rem, 5vw, 4rem);
 }
 
 /* ============================================
@@ -128,27 +295,60 @@
   }
   html { scroll-behavior: smooth; }
   body {
-    background: var(--bg);
-    color: var(--ivory);
-    font-family: var(--font-inter), system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-geist-sans), var(--font-sans), system-ui, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-instrument-serif), Georgia, serif;
     font-weight: 400;
     letter-spacing: -0.02em;
   }
-  code, pre, .font-mono {
-    font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  code, pre {
+    font-family: var(--font-mono);
     font-feature-settings: "tnum" 1;
   }
 
-  /* Type scale — display uses serif, body stays Inter */
-  .font-display { font-family: var(--font-instrument-serif), Georgia, serif; font-weight: 400; }
+  /* Selection — purple */
+  ::selection { background: rgba(99, 102, 241, 0.35); color: var(--text-primary); }
+}
 
-  /* Selection */
-  ::selection { background: rgba(217, 119, 6, 0.35); color: var(--ivory); }
+/* ============================================
+   TYPE UTILITY CLASSES — Phase 4a
+   ============================================ */
+
+@layer utilities {
+  .font-hero {
+    font-family: var(--font-instrument-serif), Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 0.92;
+  }
+  .font-display {
+    font-family: var(--font-geist-sans), var(--font-sans);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+  }
+  .font-body {
+    font-family: var(--font-geist-sans), var(--font-sans);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.5;
+  }
+  .font-mono {
+    font-family: var(--font-geist-mono), var(--font-mono);
+    font-weight: 400;
+    letter-spacing: 0;
+    font-feature-settings: "tnum" 1;
+  }
+  .font-italic-display {
+    font-family: var(--font-instrument-serif), Georgia, serif;
+    font-style: italic;
+  }
 }
 
 /* ============================================
@@ -156,69 +356,106 @@
    ============================================ */
 
 @layer utilities {
-  .bg-bg          { background-color: var(--bg); }
-  .bg-surface     { background-color: var(--surface); }
-  .bg-surface-2   { background-color: var(--surface-2); }
+  .bg-bg          { background-color: var(--bg-primary); }
+  .bg-surface     { background-color: var(--bg-secondary); }
+  .bg-surface-2   { background-color: var(--bg-elevated); }
 
-  .text-ivory     { color: var(--ivory); }
-  .text-ivory-dim { color: var(--ivory-dim); }
-  .text-muted     { color: var(--muted); }
-  .text-amber     { color: var(--amber); }
-  .text-amber-bright { color: var(--amber-bright); }
+  .text-ivory     { color: var(--text-primary); }
+  .text-ivory-dim { color: var(--text-secondary); }
+  .text-muted     { color: var(--text-tertiary); }
 
-  .border-hairline { border: 1px solid var(--border); }
-  .divide-hairline > * + * { border-top: 1px solid var(--border); }
+  /* Legacy .text-amber / .text-amber-bright aliases — now purple. */
+  .text-amber         { color: var(--accent); }
+  .text-amber-bright  { color: var(--accent-bright); }
+
+  .text-accent         { color: var(--accent); }
+  .text-accent-bright  { color: var(--accent-bright); }
+
+  .border-hairline { border: 1px solid var(--border-default); }
+  .divide-hairline > * + * { border-top: 1px solid var(--border-default); }
 
   .eyebrow {
-    font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+    font-family: var(--font-geist-mono), var(--font-mono);
     font-size: 11px;
     line-height: 1;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--amber);
+    color: var(--accent-bright);
   }
 
   .data {
-    font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+    font-family: var(--font-geist-mono), var(--font-mono);
     font-variant-numeric: tabular-nums;
     letter-spacing: -0.01em;
   }
 
-  .container-wide { @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10; }
-  .container-narrow { @apply mx-auto w-full max-w-5xl px-5 sm:px-8 lg:px-10; }
-  .container-prose { @apply mx-auto w-full max-w-3xl px-5 sm:px-8; }
+  /* Fluid type utility classes. */
+  .t-hero    { font-size: var(--text-hero);     line-height: 0.92; letter-spacing: -0.02em; }
+  .display   { font-size: var(--text-display);  line-height: 1;    letter-spacing: -0.03em; }
+  .t-h1      { font-size: var(--text-h1);       line-height: 1.05; letter-spacing: -0.02em; }
+  .t-h2      { font-size: var(--text-h2);       line-height: 1.05; letter-spacing: -0.02em; }
+  .t-h3      { font-size: var(--text-h3);       line-height: 1.1;  letter-spacing: -0.02em; }
+  .t-h4      { font-size: var(--text-h4);       line-height: 1.15; letter-spacing: -0.015em; }
+  .t-h5      { font-size: var(--text-h5);       line-height: 1.2;  letter-spacing: -0.01em; }
+  .t-h6      { font-size: var(--text-h6);       line-height: 1.3;  letter-spacing: -0.01em; }
+  .t-lead    { font-size: var(--text-lead);     line-height: 1.5; }
+  .t-main    { font-size: var(--text-main);     line-height: 1.6; }
+  .t-caption { font-size: var(--text-caption);  line-height: 1.5; }
+  .t-body    { font-size: var(--text-body);     line-height: 1.5; }
+  .t-small   { font-size: var(--text-small);    line-height: 1.45; }
+  .t-micro   { font-size: var(--text-micro);    line-height: 1.4; letter-spacing: 0.04em; }
 
+  /* Fluid section-space utilities. */
+  .section-sm    { padding-top: var(--section-sm);    padding-bottom: var(--section-sm); }
+  .section-main  { padding-top: var(--section-main);  padding-bottom: var(--section-main); }
+  .section-lg    { padding-top: var(--section-lg);    padding-bottom: var(--section-lg); }
+  .section-top   { padding-top: var(--section-top); }
+  .section-space       { padding-top: var(--section-space);       padding-bottom: var(--section-space); }
+  .section-space-tight { padding-top: var(--section-space-tight); padding-bottom: var(--section-space-tight); }
+
+  /* Legacy stepped utility. */
   .section-padding { @apply py-20 md:py-28 lg:py-32; }
+
+  /* Containers. */
+  .container-wide   { margin-inline: auto; width: 100%; max-width: 80rem; padding-inline: var(--site-margin); }
+  .container-narrow { margin-inline: auto; width: 100%; max-width: 64rem; padding-inline: var(--site-margin); }
+  .container-prose  { margin-inline: auto; width: 100%; max-width: 48rem; padding-inline: var(--site-margin); }
 
   .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   .hide-scrollbar::-webkit-scrollbar { display: none; }
 
-  .custom-scrollbar { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+  .custom-scrollbar { scrollbar-width: thin; scrollbar-color: var(--border-default) transparent; }
   .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
   .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-  .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--amber); }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 3px; }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-  /* Focus rings — amber, accessible */
+  /* Focus rings — purple, accessible. */
   .focus-ring { outline: none; }
   .focus-ring:focus-visible {
-    outline: 2px solid var(--amber-bright);
+    outline: 2px solid var(--accent-bright);
     outline-offset: 2px;
   }
 
-  /* Card primitives */
-  .card-flat {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    transition: border-color 180ms ease, transform 180ms ease;
+  /* Phase 3a: shadcn Button transition override — now on brand ease. */
+  [data-slot="button"] {
+    transition-duration: var(--dur-short);
+    transition-timing-function: var(--ease-brand);
   }
-  .card-flat:hover { border-color: var(--amber); }
 
-  /* Legacy aliases — existing components that reference these still render */
+  /* Card primitives. */
+  .card-flat {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-default);
+    border-radius: 8px;
+    transition: border-color var(--dur-medium) var(--ease-brand), transform var(--dur-medium) var(--ease-brand);
+  }
+  .card-flat:hover { border-color: var(--border-bright); }
+
+  /* Legacy cosmic/glass no-ops — kept so legacy className references resolve. */
   .glass, .glass-strong {
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-default);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
@@ -236,10 +473,10 @@
   }
 
   .card-hover {
-    transition: border-color 180ms ease, transform 180ms ease;
+    transition: border-color var(--dur-medium) var(--ease-brand), transform var(--dur-medium) var(--ease-brand);
   }
   .card-hover:hover {
-    border-color: var(--amber);
+    border-color: var(--border-bright);
     transform: none;
     box-shadow: none;
   }
@@ -252,8 +489,8 @@
     left: 0;
     width: 0;
     height: 1px;
-    background: var(--amber);
-    transition: width 220ms ease;
+    background: var(--accent);
+    transition: width var(--dur-medium) var(--ease-brand);
   }
   .link-underline:hover::after { width: 100%; }
 
@@ -274,11 +511,11 @@
   to   { opacity: 1; transform: scale(1); }
 }
 
-.animate-fade-in  { animation: fade-in 400ms ease forwards; }
-.animate-fade-up  { animation: fade-up 500ms ease forwards; }
-.animate-scale-in { animation: scale-in 400ms ease forwards; }
+.animate-fade-in  { animation: fade-in var(--dur-medium) var(--ease-brand) forwards; }
+.animate-fade-up  { animation: fade-up var(--dur-medium) var(--ease-brand) forwards; }
+.animate-scale-in { animation: scale-in var(--dur-medium) var(--ease-brand) forwards; }
 
-.stagger-children > * { opacity: 0; animation: fade-up 500ms ease forwards; }
+.stagger-children > * { opacity: 0; animation: fade-up var(--dur-medium) var(--ease-brand) forwards; }
 .stagger-children > *:nth-child(1) { animation-delay: 0ms; }
 .stagger-children > *:nth-child(2) { animation-delay: 80ms; }
 .stagger-children > *:nth-child(3) { animation-delay: 160ms; }
@@ -286,7 +523,227 @@
 .stagger-children > *:nth-child(5) { animation-delay: 320ms; }
 .stagger-children > *:nth-child(6) { animation-delay: 400ms; }
 
-/* Legacy animation names kept as no-ops so existing classes don't break layout */
+/* ============================================
+   PHASE 4h — hover micro-interactions + wolf-logo tilt + link underline.
+   ============================================ */
+.nav-logo {
+  transition: transform var(--dur-short) var(--ease-out-soft);
+  will-change: transform;
+}
+.nav-logo-wrap:hover .nav-logo { transform: rotate(3deg); }
+
+/* Animated underline on any anchor tagged .text-link */
+a.text-link,
+.text-link {
+  position: relative;
+  color: var(--text-secondary);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--dur-short) var(--ease-out-soft), color var(--dur-short) var(--ease-out-soft);
+}
+a.text-link:hover,
+.text-link:hover {
+  background-size: 100% 1px;
+  color: var(--text-primary);
+}
+
+/* ============================================
+   RECENT WORK — Phase 4e
+   Card hover: border brightens, translateY(-2px), soft purple glow.
+   ============================================ */
+.recent-work-card {
+  transition:
+    transform var(--dur-medium) var(--ease-out-soft),
+    border-color var(--dur-short) var(--ease-out-soft),
+    box-shadow var(--dur-medium) var(--ease-out-soft);
+}
+.recent-work-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-bright);
+  box-shadow: 0 16px 48px var(--accent-glow-soft);
+}
+
+/* ============================================
+   TESTIMONIALS — Phase 5b
+   Card hover: border brightens, subtle lift. Matches recent-work feel so
+   the two grid sections read as part of the same interactive family.
+   ============================================ */
+.testimonial-card {
+  border: 1px solid var(--border-subtle);
+  transition:
+    transform var(--dur-short) var(--ease-out-soft),
+    border-color var(--dur-short) var(--ease-out-soft),
+    box-shadow var(--dur-short) var(--ease-out-soft);
+}
+.testimonial-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-bright);
+  box-shadow: 0 12px 32px var(--accent-glow-soft);
+}
+
+/* ============================================
+   SERVICES LIST — Phase 7 letter-hover (CSS-only)
+   Massive editorial rows. Each character renders as a .letter-hover-char
+   span; the parent .service-row :hover triggers per-letter cascade via
+   transition-delay derived from the inline --letter-index custom property.
+   No JS runtime; immune to the Phase 6 ScrambleText freeze regression.
+   ============================================ */
+.service-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.25rem;
+  padding-block: clamp(1.5rem, 3.2vh, 2.75rem);
+  border-bottom: 1px solid var(--border-subtle);
+}
+@media (min-width: 768px) { .service-row { gap: 2rem; } }
+
+/* Phase 7 — LetterHoverText (CSS-only per-character transitions).
+   Each .letter-hover-char span is a child of [data-service-row]; the
+   parent's :hover triggers a color + lift cascade. transition-delay
+   reads from --letter-index so letters fan out left-to-right. */
+.letter-hover-char {
+  transition:
+    transform 0.28s ease-out,
+    color 0.28s ease-out;
+  transition-delay: calc(var(--letter-index, 0) * 12ms);
+  transform-origin: 50% 85%;
+  will-change: transform;
+}
+[data-service-row]:hover .letter-hover-char {
+  color: var(--accent-bright);
+  transform: translateY(-2px);
+}
+.service-row:hover .service-name { color: var(--accent-bright); }
+
+@media (prefers-reduced-motion: reduce) {
+  .letter-hover-char,
+  [data-service-row]:hover .letter-hover-char {
+    transition: color 0.15s ease-out !important;
+    transform: none !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+.service-arrow {
+  color: var(--text-tertiary);
+  transform: translateX(-8px);
+  opacity: 0;
+  transition:
+    transform var(--dur-short) var(--ease-out-soft),
+    opacity   var(--dur-short) var(--ease-out-soft),
+    color     var(--dur-short) var(--ease-out-soft);
+}
+.service-row:hover .service-arrow {
+  transform: translateX(0);
+  opacity: 1;
+  color: var(--accent-bright);
+}
+
+/* Logo strip hover brighten */
+.logo-mark { transition: color var(--dur-short) var(--ease-out-soft); }
+[data-stagger-item]:hover .logo-mark { color: var(--text-primary); }
+
+/* ============================================
+   HERO WORD-REVEAL — Phase 4c
+   Wraps each non-space token in the hero headline with .word > .word-inner.
+   The outer .word clips the inner; the inner starts at translateY(110%) and
+   is animated to 0 by GSAP on mount. If GSAP fails for any reason, the
+   ScrollMotion 2.5s fallback resets it via [data-word-reveal] and
+   [data-letter-reveal] selectors.
+   ============================================ */
+.word { display: inline-block; overflow: hidden; vertical-align: top; line-height: inherit; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.word-inner { display: inline-block; transform: translateY(110%); will-change: transform; }
+
+/* ============================================
+   CTA BUTTONS — Phase 4c
+   Primary = filled purple, ghost = outlined.
+   ============================================ */
+.cta-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--accent); color: #ffffff;
+  padding: 0.95rem 1.6rem; border-radius: 2px;
+  font-family: var(--font-geist-sans), var(--font-sans), sans-serif;
+  font-weight: 500; font-size: 0.9375rem; letter-spacing: -0.01em;
+  transition:
+    transform var(--dur-short) var(--ease-out-soft),
+    background-color var(--dur-short) var(--ease-out-soft),
+    box-shadow var(--dur-short) var(--ease-out-soft);
+}
+.cta-primary:hover {
+  background: var(--accent-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px var(--accent-glow);
+}
+.cta-primary:active { transform: translateY(0); }
+
+.cta-ghost {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: transparent; color: var(--text-primary);
+  padding: 0.95rem 1.6rem; border: 1px solid var(--border-default); border-radius: 2px;
+  font-family: var(--font-geist-sans), var(--font-sans), sans-serif;
+  font-weight: 500; font-size: 0.9375rem; letter-spacing: -0.01em;
+  transition:
+    border-color var(--dur-short) var(--ease-out-soft),
+    background-color var(--dur-short) var(--ease-out-soft),
+    color var(--dur-short) var(--ease-out-soft);
+}
+.cta-ghost:hover {
+  border-color: var(--accent);
+  background: var(--accent-glow-soft);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   COSMO ORB — Phase 4b
+   Purely decorative AI mascot visual. All animations are CSS keyframes so
+   no JS runs for breath/rotation/inner-pulse/dust-orbit. Mouse-follow +
+   scroll-morph are JS and live in the component itself.
+
+   IntersectionObserver flips [data-cosmo-io-paused="true"] on the root
+   when offscreen; we map that to animation-play-state: paused on every
+   descendant to save battery without teardown cost.
+
+   prefers-reduced-motion freezes every layer to its steady-state frame
+   via the blanket override at the bottom of this file.
+   ============================================ */
+
+@keyframes cosmo-breath {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.02); opacity: 0.95; }
+}
+@keyframes cosmo-inner-pulse {
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+@keyframes cosmo-ring-spin-cw  { from { transform: rotate(0deg);    } to { transform: rotate(360deg);  } }
+@keyframes cosmo-ring-spin-ccw { from { transform: rotate(0deg);    } to { transform: rotate(-360deg); } }
+@keyframes cosmo-dust-orbit {
+  0%   { transform: rotate(0deg)   translateX(var(--cosmo-dust-radius)) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(var(--cosmo-dust-radius)) rotate(-360deg); }
+}
+
+[data-cosmo-root] [data-cosmo-breath]       { animation: cosmo-breath       4s ease-in-out infinite; transform-origin: 50% 50%; }
+[data-cosmo-root] [data-cosmo-inner-pulse]  { animation: cosmo-inner-pulse  2.4s ease-in-out infinite; transform-origin: 50% 50%; }
+[data-cosmo-root] [data-cosmo-ring-outer]   { animation: cosmo-ring-spin-cw  40s linear infinite; transform-origin: 50% 50%; transform-box: fill-box; }
+[data-cosmo-root] [data-cosmo-ring-middle]  { animation: cosmo-ring-spin-ccw 28s linear infinite; transform-origin: 50% 50%; transform-box: fill-box; }
+[data-cosmo-root] [data-cosmo-dust]         { animation: cosmo-dust-orbit   var(--cosmo-dust-duration, 20s) linear infinite; transform-origin: 0 0; }
+
+[data-cosmo-root][data-cosmo-io-paused="true"] *,
+[data-cosmo-root][data-cosmo-io-paused="true"] {
+  animation-play-state: paused !important;
+}
+
+/* Phase 4g/4h — pause continuous motion when the tab is hidden. */
+html[data-paused-global="true"] [data-cosmo-root] *,
+html[data-paused-global="true"] [data-cosmo-root],
+html[data-paused-global="true"] .grain-overlay {
+  animation-play-state: paused !important;
+}
+
+/* Legacy animation names kept as no-ops so existing classes don't break layout. */
 @keyframes twinkle { 0%, 100% { opacity: 0; } 50% { opacity: 0; } }
 .animate-twinkle { animation: none; opacity: 0; }
 .animate-float, .animate-ping-slow, .animate-glow-pulse,
@@ -295,7 +752,7 @@
 .animate-float-slow-reverse, .animate-nebula-1, .animate-nebula-2,
 .animate-spin-slow, .animate-gradient-shift { animation: none; }
 
-/* Accessibility */
+/* Accessibility — reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -304,3 +761,147 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ============================================
+   PHASE 7 — HERO ITALIC BRACKETS
+   Decorative [ ] around the italic accent in the hero h1. Sit OUTSIDE
+   the .word > .word-inner reveal structure so they appear immediately
+   without participating in the staggered word cascade.
+   ============================================ */
+.em-bracket {
+  color: var(--accent-bright);
+  font-family: var(--font-instrument-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  opacity: 0.6;
+  margin-inline: 0.04em;
+  letter-spacing: -0.04em;
+}
+
+/* ============================================
+   PHASE 6 v2 — HERO AMBIENT (C.3)
+   Conic gradient sweeping behind hero content. Desktop only.
+   Pure CSS, no JS, GPU-friendly transform animation.
+   ============================================ */
+.hero-ambient {
+  position: absolute;
+  inset: -10%;
+  background: conic-gradient(
+    from 0deg at 50% 100%,
+    rgba(99, 102, 241, 0) 0deg,
+    rgba(99, 102, 241, 0.10) 90deg,
+    rgba(129, 140, 248, 0.06) 180deg,
+    rgba(99, 102, 241, 0.10) 270deg,
+    rgba(99, 102, 241, 0) 360deg
+  );
+  animation: hero-ambient-rotate 60s linear infinite;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  filter: blur(60px);
+  opacity: 0.55;
+  z-index: 0;
+}
+
+@keyframes hero-ambient-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .hero-ambient { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ambient { animation: none; }
+}
+
+html[data-paused-global="true"] .hero-ambient {
+  animation-play-state: paused;
+}
+
+/* ============================================
+   PHASE 6 v2 — CHAT TRIGGER (Duolingo-style)
+   ============================================ */
+@keyframes chat-trigger-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+.chat-trigger {
+  animation: chat-trigger-bob 3s ease-in-out infinite;
+}
+.chat-trigger:hover { animation-play-state: paused; }
+
+@keyframes chat-trigger-wink {
+  0%, 96%, 100% { opacity: 0; transform: scaleY(1); }
+  98%           { opacity: 0.4; transform: scaleY(0.1); }
+}
+.chat-trigger-wink {
+  background: rgba(0, 0, 0, 0.7);
+  animation: chat-trigger-wink 8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes chat-trigger-wave {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  20%      { transform: translateY(-6px) rotate(-8deg); }
+  40%      { transform: translateY(-6px) rotate(8deg); }
+  60%      { transform: translateY(-6px) rotate(-6deg); }
+  80%      { transform: translateY(-6px) rotate(6deg); }
+}
+.chat-trigger-wave { animation: chat-trigger-wave 1.6s ease-in-out 1; }
+
+@keyframes chat-trigger-sparkle {
+  0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+  50%      { opacity: 1; transform: scale(1.2) rotate(180deg); }
+}
+.chat-trigger-sparkle { animation: chat-trigger-sparkle 2s ease-in-out infinite; }
+
+.chat-trigger-open { animation: none; transform: scale(0.9); }
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-trigger,
+  .chat-trigger-wink,
+  .chat-trigger-wave,
+  .chat-trigger-sparkle {
+    animation: none !important;
+  }
+}
+
+html[data-paused-global="true"] .chat-trigger,
+html[data-paused-global="true"] .chat-trigger-wink,
+html[data-paused-global="true"] .chat-trigger-sparkle {
+  animation-play-state: paused;
+}
+
+/* ============================================
+   PHASE 6 v2 — CHAT PANEL
+   ============================================ */
+@keyframes chat-dot-pulse {
+  0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+  40%           { opacity: 1;   transform: scale(1); }
+}
+.chat-dot { animation: chat-dot-pulse 1.2s ease-in-out infinite; }
+
+@keyframes chat-panel-enter {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.chat-panel {
+  animation: chat-panel-enter 0.25s ease-out;
+  transform-origin: bottom right;
+  will-change: transform, opacity;
+}
+
+/* ============================================
+   PHASE 6 v2 — D.9 content-visibility
+   Below-fold sections render only when near viewport.
+   Saves layout cost on initial paint without affecting visuals.
+   ============================================ */
+.section-deferred {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 800px;
+}
+
+/* Phase 7: ScrambleText was removed (production hover-freeze regression);
+   restored letter-hover via .letter-hover-char above. */

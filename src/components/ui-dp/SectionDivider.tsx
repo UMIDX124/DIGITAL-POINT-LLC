@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView } from '@/lib/framer-compat';
 import { useRef } from 'react';
 
 type DividerVariant = 'wave' | 'curve' | 'angle';
@@ -48,18 +48,18 @@ function WaveSVG() {
     >
       <defs>
         <linearGradient id="wave-grad" x1="0" y1="0" x2="1440" y2="0" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#B45309" stopOpacity="0" />
-          <stop offset="20%" stopColor="#D97706" stopOpacity="0.25" />
-          <stop offset="50%" stopColor="#F59E0B" stopOpacity="0.35" />
-          <stop offset="80%" stopColor="#D97706" stopOpacity="0.25" />
-          <stop offset="100%" stopColor="#B45309" stopOpacity="0" />
+          <stop offset="0%" stopColor="#4338CA" stopOpacity="0" />
+          <stop offset="20%" stopColor="#4F46E5" stopOpacity="0.25" />
+          <stop offset="50%" stopColor="#6366F1" stopOpacity="0.35" />
+          <stop offset="80%" stopColor="#4F46E5" stopOpacity="0.25" />
+          <stop offset="100%" stopColor="#4338CA" stopOpacity="0" />
         </linearGradient>
         <linearGradient id="wave-grad-inner" x1="0" y1="0" x2="1440" y2="0" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#D97706" stopOpacity="0" />
-          <stop offset="30%" stopColor="#F59E0B" stopOpacity="0.15" />
-          <stop offset="50%" stopColor="#FBBF24" stopOpacity="0.2" />
-          <stop offset="70%" stopColor="#F59E0B" stopOpacity="0.15" />
-          <stop offset="100%" stopColor="#D97706" stopOpacity="0" />
+          <stop offset="0%" stopColor="#4F46E5" stopOpacity="0" />
+          <stop offset="30%" stopColor="#6366F1" stopOpacity="0.15" />
+          <stop offset="50%" stopColor="#818CF8" stopOpacity="0.2" />
+          <stop offset="70%" stopColor="#6366F1" stopOpacity="0.15" />
+          <stop offset="100%" stopColor="#4F46E5" stopOpacity="0" />
         </linearGradient>
       </defs>
       {/* Primary wave */}
@@ -97,15 +97,15 @@ function CurveSVG() {
     >
       <defs>
         <linearGradient id="curve-grad" x1="0" y1="0" x2="1440" y2="0" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#D97706" stopOpacity="0" />
-          <stop offset="25%" stopColor="#F59E0B" stopOpacity="0.3" />
-          <stop offset="50%" stopColor="#FBBF24" stopOpacity="0.4" />
-          <stop offset="75%" stopColor="#F59E0B" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#D97706" stopOpacity="0" />
+          <stop offset="0%" stopColor="#4F46E5" stopOpacity="0" />
+          <stop offset="25%" stopColor="#6366F1" stopOpacity="0.3" />
+          <stop offset="50%" stopColor="#818CF8" stopOpacity="0.4" />
+          <stop offset="75%" stopColor="#6366F1" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#4F46E5" stopOpacity="0" />
         </linearGradient>
         <radialGradient id="curve-glow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.12" />
-          <stop offset="100%" stopColor="#F59E0B" stopOpacity="0" />
+          <stop offset="0%" stopColor="#6366F1" stopOpacity="0.12" />
+          <stop offset="100%" stopColor="#6366F1" stopOpacity="0" />
         </radialGradient>
       </defs>
       {/* Soft glow behind the curve */}
@@ -140,15 +140,15 @@ function AngleSVG() {
     >
       <defs>
         <linearGradient id="angle-grad" x1="0" y1="35" x2="1440" y2="35" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#B45309" stopOpacity="0" />
-          <stop offset="15%" stopColor="#D97706" stopOpacity="0.2" />
-          <stop offset="50%" stopColor="#F59E0B" stopOpacity="0.35" />
-          <stop offset="85%" stopColor="#D97706" stopOpacity="0.2" />
-          <stop offset="100%" stopColor="#B45309" stopOpacity="0" />
+          <stop offset="0%" stopColor="#4338CA" stopOpacity="0" />
+          <stop offset="15%" stopColor="#4F46E5" stopOpacity="0.2" />
+          <stop offset="50%" stopColor="#6366F1" stopOpacity="0.35" />
+          <stop offset="85%" stopColor="#4F46E5" stopOpacity="0.2" />
+          <stop offset="100%" stopColor="#4338CA" stopOpacity="0" />
         </linearGradient>
         <linearGradient id="angle-fill" x1="720" y1="20" x2="720" y2="70" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#D97706" stopOpacity="0.06" />
-          <stop offset="100%" stopColor="#D97706" stopOpacity="0" />
+          <stop offset="0%" stopColor="#4F46E5" stopOpacity="0.06" />
+          <stop offset="100%" stopColor="#4F46E5" stopOpacity="0" />
         </linearGradient>
       </defs>
       {/* Angled line pair — like a shallow chevron pointing down */}

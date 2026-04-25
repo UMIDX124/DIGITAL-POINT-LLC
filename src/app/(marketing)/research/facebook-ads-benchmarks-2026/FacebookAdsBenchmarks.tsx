@@ -33,14 +33,14 @@ const yearOverYear = [
 
 const keyStats = [
   { value: '$1.72', label: 'Avg CPC', color: '#7dd3fc' },
-  { value: '$12.47', label: 'Avg CPM', color: '#F59E0B' },
+  { value: '$12.47', label: 'Avg CPM', color: '#6366F1' },
   { value: '1.49%', label: 'Avg CTR', color: '#a3e635' },
-  { value: '2.87x', label: 'Avg ROAS', color: '#F59E0B' },
+  { value: '2.87x', label: 'Avg ROAS', color: '#6366F1' },
 ];
 
 const glassStyle = {
   background: 'rgba(13, 8, 21, 0.5)',
-  border: '1px solid rgba(217,119,6, 0.15)',
+  border: '1px solid rgba(99,102,241, 0.15)',
 };
 
 export function FacebookAdsBenchmarks({ faqs }: Props) {
@@ -92,17 +92,17 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(217,119,6,0.15)]">
+                    <tr className="border-b border-[rgba(99,102,241,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Industry</th>
                       <th className="text-right py-3 px-4 text-[#7dd3fc] font-medium">CPC</th>
-                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">CPM</th>
+                      <th className="text-right py-3 px-4 text-[#6366F1] font-medium">CPM</th>
                       <th className="text-right py-3 px-4 text-[#a3e635] font-medium">CTR</th>
-                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">ROAS</th>
+                      <th className="text-right py-3 px-4 text-[#6366F1] font-medium">ROAS</th>
                     </tr>
                   </thead>
                   <tbody>
                     {industryBenchmarks.map((row, i) => (
-                      <tr key={row.industry} className={i < industryBenchmarks.length - 1 ? 'border-b border-[rgba(217,119,6,0.08)]' : ''}>
+                      <tr key={row.industry} className={i < industryBenchmarks.length - 1 ? 'border-b border-[rgba(99,102,241,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.industry}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.cpc}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.cpm}</td>
@@ -128,22 +128,22 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(217,119,6,0.15)]">
+                    <tr className="border-b border-[rgba(99,102,241,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Metric</th>
                       <th className="text-right py-3 px-4 text-[#71717A] font-medium">2024</th>
                       <th className="text-right py-3 px-4 text-[#71717A] font-medium">2025</th>
-                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">2026</th>
+                      <th className="text-right py-3 px-4 text-[#6366F1] font-medium">2026</th>
                       <th className="text-right py-3 px-4 text-[#71717A] font-medium">YoY</th>
                     </tr>
                   </thead>
                   <tbody>
                     {yearOverYear.map((row, i) => (
-                      <tr key={row.metric} className={i < yearOverYear.length - 1 ? 'border-b border-[rgba(217,119,6,0.08)]' : ''}>
+                      <tr key={row.metric} className={i < yearOverYear.length - 1 ? 'border-b border-[rgba(99,102,241,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.metric}</td>
                         <td className="py-3 px-4 text-right text-[#71717A]">{row.value2024}</td>
                         <td className="py-3 px-4 text-right text-[#71717A]">{row.value2025}</td>
                         <td className="py-3 px-4 text-right text-white font-medium">{row.value2026}</td>
-                        <td className="py-3 px-4 text-right" style={{ color: row.change.startsWith('+') ? '#F59E0B' : '#a3e635' }}>
+                        <td className="py-3 px-4 text-right" style={{ color: row.change.startsWith('+') ? '#6366F1' : '#a3e635' }}>
                           {row.change}
                         </td>
                       </tr>

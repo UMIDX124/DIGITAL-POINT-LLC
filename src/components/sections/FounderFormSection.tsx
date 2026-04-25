@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from '@/lib/framer-compat';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -45,30 +45,34 @@ interface AuditFormData {
 }
 
 function AuditForm() {
-  const [formData, setFormData] = useState<AuditFormData>({
-    name: '', email: '', company: '', bottleneck: '',
+  // Phase 8 — UTM params read via lazy initializer (root-cause fix for
+  // react-hooks/set-state-in-effect lint).
+  const [formData, setFormData] = useState<AuditFormData>(() => {
+    const base = { name: '', email: '', company: '', bottleneck: '' };
+    if (typeof window === 'undefined') return base;
+    const p = new URLSearchParams(window.location.search);
+    return {
+      ...base,
+      utmSource: p.get('utm_source') || undefined,
+      utmMedium: p.get('utm_medium') || undefined,
+      utmCampaign: p.get('utm_campaign') || undefined,
+    };
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Partial<AuditFormData>>({});
+  // formStarted derived from input state via the same effect that fires the
+  // analytics event — the suppression stays because this is a genuine
+  // effect-driven derivation (state observation triggers analytics side effect).
   const [formStarted, setFormStarted] = useState(false);
 
   useEffect(() => {
     if (!formStarted && (formData.name || formData.email)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: form-started derived from input state, fires analytics
       setFormStarted(true);
       trackFormStart('free_audit');
     }
   }, [formData, formStarted]);
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    setFormData(prev => ({
-      ...prev,
-      utmSource: params.get('utm_source') || undefined,
-      utmMedium: params.get('utm_medium') || undefined,
-      utmCampaign: params.get('utm_campaign') || undefined,
-    }));
-  }, []);
 
   const validate = () => {
     const e: Partial<AuditFormData> = {};
@@ -140,7 +144,7 @@ function AuditForm() {
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           placeholder="Your name"
-          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#F59E0B] text-white placeholder:text-[#71717A]"
+          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#6366F1] text-white placeholder:text-[#71717A]"
         />
         {errors.name && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.name}</p>}
       </div>
@@ -155,7 +159,7 @@ function AuditForm() {
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           placeholder="you@company.com"
-          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#F59E0B] text-white placeholder:text-[#71717A]"
+          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#6366F1] text-white placeholder:text-[#71717A]"
         />
         {errors.email && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.email}</p>}
       </div>
@@ -169,7 +173,7 @@ function AuditForm() {
           value={formData.company}
           onChange={(e) => setFormData({ ...formData, company: e.target.value })}
           placeholder="Company name (optional)"
-          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#F59E0B] text-white placeholder:text-[#71717A]"
+          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#6366F1] text-white placeholder:text-[#71717A]"
         />
       </div>
 
@@ -198,7 +202,7 @@ function AuditForm() {
         disabled={isSubmitting}
         className="w-full py-5 text-base font-semibold group cursor-pointer"
         style={{
-          background: 'linear-gradient(135deg, #B45309 0%, #D97706 50%, #F59E0B 100%)',
+          background: 'linear-gradient(135deg, #4338CA 0%, #4F46E5 50%, #6366F1 100%)',
         }}
       >
         {isSubmitting ? (
@@ -223,8 +227,17 @@ interface FounderFormData {
 }
 
 function FounderContactForm() {
-  const [formData, setFormData] = useState<FounderFormData>({
-    name: '', email: '', message: '',
+  // Phase 8 — UTM params read via lazy initializer (root-cause fix).
+  const [formData, setFormData] = useState<FounderFormData>(() => {
+    const base = { name: '', email: '', message: '' };
+    if (typeof window === 'undefined') return base;
+    const p = new URLSearchParams(window.location.search);
+    return {
+      ...base,
+      utmSource: p.get('utm_source') || undefined,
+      utmMedium: p.get('utm_medium') || undefined,
+      utmCampaign: p.get('utm_campaign') || undefined,
+    };
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -233,20 +246,11 @@ function FounderContactForm() {
 
   useEffect(() => {
     if (!formStarted && (formData.name || formData.email || formData.message)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: form-started derived from input state, fires analytics
       setFormStarted(true);
       trackFormStart('founder_contact');
     }
   }, [formData, formStarted]);
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    setFormData(prev => ({
-      ...prev,
-      utmSource: params.get('utm_source') || undefined,
-      utmMedium: params.get('utm_medium') || undefined,
-      utmCampaign: params.get('utm_campaign') || undefined,
-    }));
-  }, []);
 
   const validate = () => {
     const e: Partial<FounderFormData> = {};
@@ -322,7 +326,7 @@ function FounderContactForm() {
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           placeholder="Your name"
-          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#F59E0B] text-white placeholder:text-[#71717A]"
+          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#6366F1] text-white placeholder:text-[#71717A]"
         />
         {errors.name && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.name}</p>}
       </div>
@@ -337,7 +341,7 @@ function FounderContactForm() {
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           placeholder="you@company.com"
-          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#F59E0B] text-white placeholder:text-[#71717A]"
+          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#6366F1] text-white placeholder:text-[#71717A]"
         />
         {errors.email && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.email}</p>}
       </div>
@@ -352,7 +356,7 @@ function FounderContactForm() {
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           placeholder="What's on your mind?"
           rows={4}
-          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#F59E0B] text-white resize-none placeholder:text-[#71717A]"
+          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#6366F1] text-white resize-none placeholder:text-[#71717A]"
         />
         {errors.message && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.message}</p>}
       </div>
@@ -362,7 +366,7 @@ function FounderContactForm() {
         disabled={isSubmitting}
         className="w-full py-5 text-base font-semibold group cursor-pointer"
         style={{
-          background: 'linear-gradient(135deg, #D97706 0%, #F59E0B 100%)',
+          background: 'linear-gradient(135deg, #4F46E5 0%, #6366F1 100%)',
         }}
       >
         {isSubmitting ? (
@@ -375,7 +379,7 @@ function FounderContactForm() {
       <div className="flex items-center justify-center gap-4 pt-2">
         <a
           href="mailto:info@digitalpointllc.com"
-          className="flex items-center gap-1.5 text-[#F59E0B] hover:text-[#FBBF24] transition-colors text-xs"
+          className="flex items-center gap-1.5 text-[#6366F1] hover:text-[#818CF8] transition-colors text-xs"
         >
           <Mail className="w-3.5 h-3.5" />
           info@digitalpointllc.com
@@ -384,7 +388,7 @@ function FounderContactForm() {
           href="https://linkedin.com/company/digitalpointllc"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 text-[#F59E0B] hover:text-[#FBBF24] transition-colors text-xs"
+          className="flex items-center gap-1.5 text-[#6366F1] hover:text-[#818CF8] transition-colors text-xs"
         >
           <Linkedin className="w-3.5 h-3.5" />
           LinkedIn
@@ -408,7 +412,7 @@ export function FounderFormSection() {
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full blur-3xl pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse, rgba(217,119,6, 0.25) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse, rgba(99,102,241, 0.25) 0%, transparent 70%)',
         }}
       />
 
@@ -428,14 +432,14 @@ export function FounderFormSection() {
                 background: 'rgba(20,20,22, 0.6)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
-                border: '1px solid rgba(217,119,6, 0.25)',
+                border: '1px solid rgba(99,102,241, 0.25)',
               }}
             >
               {/* Inner glow */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(245,158,11, 0.08) 0%, transparent 50%)',
+                  background: 'linear-gradient(135deg, rgba(129,140,248, 0.08) 0%, transparent 50%)',
                 }}
               />
 
@@ -445,11 +449,11 @@ export function FounderFormSection() {
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                     style={{
-                      background: 'rgba(217,119,6, 0.2)',
-                      border: '1px solid rgba(245,158,11, 0.3)',
+                      background: 'rgba(99,102,241, 0.2)',
+                      border: '1px solid rgba(129,140,248, 0.3)',
                     }}
                   >
-                    <Search className="w-5 h-5 text-[#F59E0B]" />
+                    <Search className="w-5 h-5 text-[#6366F1]" />
                   </div>
                   <div>
                     <h3 className="font-display text-lg font-bold text-white">Free Growth Audit</h3>
@@ -470,9 +474,9 @@ export function FounderFormSection() {
                       key={text}
                       className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs"
                       style={{
-                        background: 'rgba(217,119,6, 0.1)',
-                        border: '1px solid rgba(245,158,11, 0.15)',
-                        color: '#F59E0B',
+                        background: 'rgba(99,102,241, 0.1)',
+                        border: '1px solid rgba(129,140,248, 0.15)',
+                        color: '#6366F1',
                       }}
                     >
                       <Icon className="w-3 h-3" />
@@ -497,14 +501,14 @@ export function FounderFormSection() {
                 background: 'rgba(20,20,22, 0.6)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
-                border: '1px solid rgba(245,158,11, 0.2)',
+                border: '1px solid rgba(129,140,248, 0.2)',
               }}
             >
               {/* Inner glow — pink accent */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(245,158,11, 0.06) 0%, transparent 50%)',
+                  background: 'linear-gradient(135deg, rgba(129,140,248, 0.06) 0%, transparent 50%)',
                 }}
               />
 
@@ -514,11 +518,11 @@ export function FounderFormSection() {
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                     style={{
-                      background: 'rgba(245,158,11, 0.15)',
-                      border: '1px solid rgba(245,158,11, 0.3)',
+                      background: 'rgba(129,140,248, 0.15)',
+                      border: '1px solid rgba(129,140,248, 0.3)',
                     }}
                   >
-                    <MessageSquare className="w-5 h-5 text-[#F59E0B]" />
+                    <MessageSquare className="w-5 h-5 text-[#6366F1]" />
                   </div>
                   <div>
                     <h3 className="font-display text-lg font-bold text-white">Talk to Our Co-Founders</h3>
@@ -538,9 +542,9 @@ export function FounderFormSection() {
                       key={text}
                       className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs"
                       style={{
-                        background: 'rgba(245,158,11, 0.1)',
-                        border: '1px solid rgba(245,158,11, 0.15)',
-                        color: '#F59E0B',
+                        background: 'rgba(129,140,248, 0.1)',
+                        border: '1px solid rgba(129,140,248, 0.15)',
+                        color: '#6366F1',
                       }}
                     >
                       <Icon className="w-3 h-3" />

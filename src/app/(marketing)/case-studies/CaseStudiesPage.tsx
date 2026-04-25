@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion } from '@/lib/framer-compat';
 import { Section, Container, SectionHeader, FadeUp } from '@/components/ui-dp/AnimatedElements';
 import { caseStudies } from '@/lib/case-studies';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
@@ -40,7 +40,7 @@ export function CaseStudiesPage() {
                   className="rounded-2xl overflow-hidden"
                   style={{
                     background: 'rgba(13, 8, 21, 0.6)',
-                    border: '1px solid rgba(217,119,6, 0.2)',
+                    border: '1px solid rgba(99,102,241, 0.2)',
                   }}
                   whileHover={{ scale: 1.005 }}
                   transition={{ duration: 0.2 }}
@@ -50,8 +50,8 @@ export function CaseStudiesPage() {
                     className="px-4 sm:px-6 md:px-8 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
                     style={{
                       background:
-                        'linear-gradient(135deg, rgba(217,119,6, 0.1) 0%, rgba(13, 8, 21, 0.8) 100%)',
-                      borderBottom: '1px solid rgba(217,119,6, 0.15)',
+                        'linear-gradient(135deg, rgba(99,102,241, 0.1) 0%, rgba(13, 8, 21, 0.8) 100%)',
+                      borderBottom: '1px solid rgba(99,102,241, 0.15)',
                     }}
                   >
                     <div>
@@ -65,7 +65,7 @@ export function CaseStudiesPage() {
                     <div className="text-right">
                       <p
                         className="font-display text-2xl font-bold"
-                        style={{ color: '#F59E0B' }}
+                        style={{ color: '#6366F1' }}
                       >
                         {study.highlightMetric}
                       </p>
@@ -79,7 +79,7 @@ export function CaseStudiesPage() {
                   <div className="px-4 sm:px-6 md:px-8 py-6 space-y-6">
                     {/* Problem */}
                     <div>
-                      <h3 className="text-xs uppercase tracking-wider text-[#D97706] font-semibold mb-2">
+                      <h3 className="text-xs uppercase tracking-wider text-[#4F46E5] font-semibold mb-2">
                         The Problem
                       </h3>
                       <p className="text-[#D6D0C2] text-sm leading-relaxed">
@@ -89,7 +89,7 @@ export function CaseStudiesPage() {
 
                     {/* Strategy */}
                     <div>
-                      <h3 className="text-xs uppercase tracking-wider text-[#F59E0B] font-semibold mb-2">
+                      <h3 className="text-xs uppercase tracking-wider text-[#6366F1] font-semibold mb-2">
                         Our Strategy
                       </h3>
                       <p className="text-[#D6D0C2] text-sm leading-relaxed">
@@ -99,7 +99,7 @@ export function CaseStudiesPage() {
 
                     {/* Results */}
                     <div>
-                      <h3 className="text-xs uppercase tracking-wider text-[#F59E0B] font-semibold mb-3">
+                      <h3 className="text-xs uppercase tracking-wider text-[#6366F1] font-semibold mb-3">
                         Results
                       </h3>
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
@@ -108,13 +108,13 @@ export function CaseStudiesPage() {
                             key={r.label}
                             className="rounded-xl p-3 sm:p-4 text-center"
                             style={{
-                              background: 'rgba(217,119,6, 0.08)',
-                              border: '1px solid rgba(217,119,6, 0.12)',
+                              background: 'rgba(99,102,241, 0.08)',
+                              border: '1px solid rgba(99,102,241, 0.12)',
                             }}
                           >
                             <p
                               className="font-display text-lg font-bold"
-                              style={{ color: '#F59E0B' }}
+                              style={{ color: '#6366F1' }}
                             >
                               {r.value}
                             </p>
@@ -131,11 +131,11 @@ export function CaseStudiesPage() {
                       <div
                         className="rounded-xl p-5"
                         style={{
-                          background: 'linear-gradient(135deg, rgba(180,83,9, 0.08), rgba(217,119,6, 0.05))',
-                          border: '1px solid rgba(245,158,11, 0.12)',
+                          background: 'linear-gradient(135deg, rgba(180,83,9, 0.08), rgba(99,102,241, 0.05))',
+                          border: '1px solid rgba(129,140,248, 0.12)',
                         }}
                       >
-                        <h3 className="text-xs uppercase tracking-wider text-[#FBBF24] font-semibold mb-2">
+                        <h3 className="text-xs uppercase tracking-wider text-[#818CF8] font-semibold mb-2">
                           Behind the Scenes
                         </h3>
                         <p className="text-[#D6D0C2] text-sm leading-relaxed italic">
@@ -159,7 +159,7 @@ export function CaseStudiesPage() {
                 href="/free-growth-audit"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-white transition-all hover:scale-105"
                 style={{
-                  background: 'linear-gradient(135deg, #D97706 0%, #F59E0B 100%)',
+                  background: 'linear-gradient(135deg, #4F46E5 0%, #6366F1 100%)',
                 }}
               >
                 Get Your Free Growth Audit

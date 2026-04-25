@@ -23,7 +23,7 @@ const NavLink = memo(function NavLink({ item, active }: { item: { name: string; 
       href={item.href}
       className={cn(
         'px-3 py-2 text-[13px] font-medium transition-colors duration-200 whitespace-nowrap',
-        active ? 'text-[color:var(--amber)]' : 'text-[color:var(--ivory-dim)] hover:text-[color:var(--ivory)]'
+        active ? 'text-[color:var(--accent)]' : 'text-[color:var(--ivory-dim)] hover:text-[color:var(--ivory)]'
       )}
     >
       {item.name}
@@ -51,6 +51,7 @@ export function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: close mobile menu when navigation changes
   useEffect(() => { setIsOpen(false); }, [pathname]);
 
   const isActive = useCallback((href: string) => {
@@ -73,21 +74,20 @@ export function Navigation() {
         }}
       >
         <nav className="relative container-wide">
-          <div className="flex items-center justify-between gap-6 h-16">
-            <Link href="/" className="flex items-center gap-3 shrink-0 group">
+          <div className="flex items-center justify-between gap-6 h-20">
+            <Link href="/" className="flex items-center gap-3 shrink-0 group nav-logo-wrap">
               <Image
                 src="/Dp-logo1.png"
-                alt="Digital Point LLC"
-                width={40}
-                height={40}
+                alt="Digital Point"
+                width={128}
+                height={128}
                 priority
-                style={{ width: '36px', height: 'auto' }}
-                className="transition-opacity duration-200 group-hover:opacity-90"
+                style={{ width: '60px', height: 'auto' }}
+                className="nav-logo transition-opacity duration-200 group-hover:opacity-90"
               />
-              <div className="hidden sm:flex flex-col leading-none">
-                <span className="font-display text-[17px] text-[color:var(--ivory)]">Digital Point</span>
-                <span className="text-[color:var(--muted)] text-[10px] tracking-[0.2em] uppercase mt-0.5">LLC · Since 2017</span>
-              </div>
+              <span className="hidden sm:block font-display text-[19px] tracking-tight text-[color:var(--ivory)] leading-none">
+                Digital Point
+              </span>
             </Link>
 
             <div className="hidden lg:flex items-center gap-1 flex-1 justify-center">
@@ -99,8 +99,8 @@ export function Navigation() {
             <div className="hidden lg:block">
               <Link
                 href="/free-growth-audit"
-                className="px-4 py-2 text-[13px] font-medium text-[#0A0A0B] rounded-md whitespace-nowrap inline-block transition-colors duration-150"
-                style={{ background: 'var(--amber-bright)' }}
+                className="px-4 py-2 text-[13px] font-medium text-[#0A0A0B] rounded-md whitespace-nowrap inline-block transition-colors duration-150 hover:opacity-90"
+                style={{ background: 'var(--accent-bright)' }}
               >
                 Book a free audit
               </Link>
@@ -133,7 +133,7 @@ export function Navigation() {
                 className={cn(
                   'px-4 py-3 min-h-[44px] text-sm font-medium transition-colors',
                   isActive(item.href)
-                    ? 'text-[color:var(--amber)]'
+                    ? 'text-[color:var(--accent)]'
                     : 'text-[color:var(--ivory-dim)] hover:text-[color:var(--ivory)]'
                 )}
               >
@@ -144,7 +144,7 @@ export function Navigation() {
               <Link
                 href="/free-growth-audit"
                 className="block w-full py-3 rounded-md text-sm font-medium text-[#0A0A0B] text-center"
-                style={{ background: 'var(--amber-bright)' }}
+                style={{ background: 'var(--accent-bright)' }}
               >
                 Book a free audit
               </Link>

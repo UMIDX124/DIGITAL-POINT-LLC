@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import SupportChatbot from '@/components/ui-dp/SupportChatbot';
 
 export default function ConversionLayout({
   children,
@@ -24,7 +23,7 @@ export default function ConversionLayout({
             style={{
               width: '40px',
               height: '40px',
-              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5)) drop-shadow(0 8px 16px rgba(217,119,6,0.3))',
+              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5)) drop-shadow(0 8px 16px rgba(99,102,241,0.3))',
             }}
           />
           <span className="font-display font-semibold text-base text-white/90 hidden sm:block">
@@ -47,8 +46,6 @@ export default function ConversionLayout({
       <main className="relative z-10 flex-1">
         {children}
       </main>
-
-      <SupportChatbot />
     </div>
   );
 }

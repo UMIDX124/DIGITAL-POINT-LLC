@@ -41,15 +41,15 @@ const trackingAccuracy = [
 ];
 
 const keyStats = [
-  { value: '61%', label: 'Trackable Conversions', color: '#F59E0B' },
-  { value: '41%', label: 'Still Use Last-Click', color: '#fbbf24' },
+  { value: '61%', label: 'Trackable Conversions', color: '#6366F1' },
+  { value: '41%', label: 'Still Use Last-Click', color: '#818CF8' },
   { value: '52%', label: 'Hybrid Model Adoption', color: '#a3e635' },
-  { value: '20-40%', label: 'Platform Over-Reporting', color: '#F59E0B' },
+  { value: '20-40%', label: 'Platform Over-Reporting', color: '#6366F1' },
 ];
 
 const glassStyle = {
   background: 'rgba(13, 8, 21, 0.5)',
-  border: '1px solid rgba(217,119,6, 0.15)',
+  border: '1px solid rgba(99,102,241, 0.15)',
 };
 
 export function MarketingAttributionStatistics({ faqs }: Props) {
@@ -101,19 +101,19 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(217,119,6,0.15)]">
+                    <tr className="border-b border-[rgba(99,102,241,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Model</th>
-                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">Adoption</th>
+                      <th className="text-right py-3 px-4 text-[#6366F1] font-medium">Adoption</th>
                       <th className="text-right py-3 px-4 text-[#a3e635] font-medium">YoY Change</th>
-                      <th className="text-right py-3 px-4 text-[#fbbf24] font-medium">Est. Accuracy</th>
+                      <th className="text-right py-3 px-4 text-[#818CF8] font-medium">Est. Accuracy</th>
                     </tr>
                   </thead>
                   <tbody>
                     {modelAdoption.map((row, i) => (
-                      <tr key={row.model} className={i < modelAdoption.length - 1 ? 'border-b border-[rgba(217,119,6,0.08)]' : ''}>
+                      <tr key={row.model} className={i < modelAdoption.length - 1 ? 'border-b border-[rgba(99,102,241,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.model}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.adoption}</td>
-                        <td className="py-3 px-4 text-right" style={{ color: row.trend.startsWith('+') ? '#a3e635' : '#F59E0B' }}>
+                        <td className="py-3 px-4 text-right" style={{ color: row.trend.startsWith('+') ? '#a3e635' : '#6366F1' }}>
                           {row.trend}
                         </td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.accuracy}</td>
@@ -137,17 +137,17 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(217,119,6,0.15)]">
+                    <tr className="border-b border-[rgba(99,102,241,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Privacy Change</th>
-                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">Key Stat</th>
+                      <th className="text-right py-3 px-4 text-[#6366F1] font-medium">Key Stat</th>
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Impact</th>
                     </tr>
                   </thead>
                   <tbody>
                     {privacyImpact.map((row, i) => (
-                      <tr key={row.change} className={i < privacyImpact.length - 1 ? 'border-b border-[rgba(217,119,6,0.08)]' : ''}>
+                      <tr key={row.change} className={i < privacyImpact.length - 1 ? 'border-b border-[rgba(99,102,241,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.change}</td>
-                        <td className="py-3 px-4 text-right font-semibold" style={{ color: '#F59E0B' }}>{row.stat}</td>
+                        <td className="py-3 px-4 text-right font-semibold" style={{ color: '#6366F1' }}>{row.stat}</td>
                         <td className="py-3 px-4 text-[#D6D0C2] text-xs">{row.impact}</td>
                       </tr>
                     ))}
@@ -168,20 +168,20 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(217,119,6,0.15)]">
+                    <tr className="border-b border-[rgba(99,102,241,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Platform</th>
-                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">Reported</th>
+                      <th className="text-right py-3 px-4 text-[#6366F1] font-medium">Reported</th>
                       <th className="text-right py-3 px-4 text-[#a3e635] font-medium">Est. Actual</th>
-                      <th className="text-right py-3 px-4 text-[#F59E0B] font-medium">Gap</th>
+                      <th className="text-right py-3 px-4 text-[#6366F1] font-medium">Gap</th>
                     </tr>
                   </thead>
                   <tbody>
                     {trackingAccuracy.map((row, i) => (
-                      <tr key={row.platform} className={i < trackingAccuracy.length - 1 ? 'border-b border-[rgba(217,119,6,0.08)]' : ''}>
+                      <tr key={row.platform} className={i < trackingAccuracy.length - 1 ? 'border-b border-[rgba(99,102,241,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.platform}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.reported}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.actual}</td>
-                        <td className="py-3 px-4 text-right text-[#F59E0B]">{row.gap}</td>
+                        <td className="py-3 px-4 text-right text-[#6366F1]">{row.gap}</td>
                       </tr>
                     ))}
                   </tbody>

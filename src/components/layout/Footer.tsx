@@ -21,21 +21,21 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-auto" style={{ background: '#0A0A0B', borderTop: '1px solid var(--amber)' }}>
+    <footer className="relative mt-auto" style={{ background: '#0A0A0B', borderTop: '1px solid var(--accent)' }}>
       <div className="container-wide">
         <div className="py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
               <Image
                 src="/Dp-logo1.png"
-                alt="Digital Point LLC"
-                width={40}
-                height={40}
-                style={{ width: '40px', height: 'auto' }}
+                alt="Digital Point"
+                width={160}
+                height={160}
+                style={{ width: '80px', height: 'auto' }}
               />
               <div className="flex flex-col leading-none">
-                <span className="font-display text-lg text-[color:var(--ivory)]">Digital Point</span>
-                <span className="text-[color:var(--muted)] text-[10px] tracking-[0.2em] uppercase mt-1">LLC · Since 2017</span>
+                <span className="font-display text-xl text-[color:var(--ivory)]">Digital Point LLC</span>
+                <span className="text-[color:var(--muted)] text-[10px] tracking-[0.2em] uppercase mt-1.5">Est. 2017</span>
               </div>
             </Link>
             <p className="text-[color:var(--ivory-dim)] text-sm leading-relaxed max-w-xs">
@@ -48,7 +48,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-[color:var(--ivory-dim)] hover:text-[color:var(--amber)] text-sm transition-colors">
+                  <Link href={link.href} className="text-[color:var(--ivory-dim)] hover:text-[color:var(--accent)] text-sm transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -61,7 +61,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-[color:var(--ivory-dim)] hover:text-[color:var(--amber)] text-sm transition-colors">
+                  <Link href={link.href} className="text-[color:var(--ivory-dim)] hover:text-[color:var(--accent)] text-sm transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -72,7 +72,7 @@ export function Footer() {
           <div>
             <h4 className="eyebrow mb-5">Connect</h4>
             <div className="space-y-4">
-              <a href="mailto:info@digitalpointllc.com" className="flex items-center gap-3 text-[color:var(--ivory-dim)] hover:text-[color:var(--amber)] text-sm transition-colors">
+              <a href="mailto:info@digitalpointllc.com" className="text-link flex items-center gap-3 text-[color:var(--ivory-dim)] hover:text-[color:var(--accent)] text-sm transition-colors">
                 <Mail className="w-4 h-4" />
                 info@digitalpointllc.com
               </a>
@@ -80,7 +80,7 @@ export function Footer() {
                 href="https://linkedin.com/company/digitalpointllc"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-[color:var(--ivory-dim)] hover:text-[color:var(--amber)] text-sm transition-colors"
+                className="text-link flex items-center gap-3 text-[color:var(--ivory-dim)] hover:text-[color:var(--accent)] text-sm transition-colors"
               >
                 <Linkedin className="w-4 h-4" />
                 LinkedIn
@@ -88,7 +88,7 @@ export function Footer() {
               <Link
                 href="/free-growth-audit"
                 className="inline-block mt-2 px-4 py-2 text-[13px] font-medium text-[#0A0A0B] rounded-md"
-                style={{ background: 'var(--amber-bright)' }}
+                style={{ background: 'var(--accent-bright)' }}
               >
                 Book a free audit
               </Link>

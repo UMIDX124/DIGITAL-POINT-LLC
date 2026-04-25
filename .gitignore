@@ -57,3 +57,7 @@ server.log
 
 # Upload folder
 /upload/
+# Claude Code / Taste Skill local scaffolding
+.agents/
+skills-lock.json
+.claude/skills/

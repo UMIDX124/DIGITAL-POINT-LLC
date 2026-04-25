@@ -2,134 +2,150 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { CosmoOrb } from '@/components/cosmo/CosmoOrb';
+import MagneticCTA from '@/components/effects/MagneticCTA';
 import { splitIntoWords, isWhitespace } from '@/lib/wordSplit';
 
-// Phase 5c-retry: dynamic-import(CosmoOrb) was evaluated and rolled back.
-// Splitting the orb into a secondary chunk added mobile TBT (320→480ms)
-// from extra chunk load + eval without winning LCP (hero h1 text was the
-// LCP candidate all along, not the orb). Keeping the orb SSR-inline plus
-// the feGaussianBlur removal (C2) + deferred grain/bloom (C3/C4) is the
-// better balance on mobile throttled network.
-
 /**
- * Phase 4c editorial hero.
+ * Phase 6 v2 editorial hero — AI-first hybrid positioning.
  *
- * Divyansh-style split-layout: headline + sub + CTAs on the left, Cosmo orb
- * on the right. Mobile collapses to a single column with the orb below the
- * content.
- *
- * Headline "Meet the workforce you don't have to hire." ships with a 3-part
- * structure so "the workforce" is rendered as Instrument Serif italic in
- * accent-bright. Each non-space word is wrapped in a .word > .word-inner
- * pair for GSAP staggered translateY reveal.
- *
- * Scroll-morph on the orb is wired here (not in the component) because the
- * hero owns the scroll length that drives the morph.
+ * Word-reveal animation is component-owned (no ScrollMotion dependency).
+ * GSAP is lazy-imported in useEffect so it doesn't block first paint.
+ * The headline is a flat token list with explicit space tokens between
+ * HEAD_PARTS so adjacent inline-block .word elements render with visible
+ * inter-word whitespace.
  */
 
-// Word-split the headline but preserve italic spans for "the workforce".
+// Word-split the headline but preserve italic spans for "the AI".
+// Each part flushes as inline-block .word elements; spaces between parts
+// are inserted explicitly as inline (non-block) text spans so the layout
+// renders with proper whitespace.
 const HEAD_PARTS: Array<{ text: string; italic: boolean }> = [
-  { text: 'Meet', italic: false },
-  { text: 'the workforce', italic: true },
-  { text: "you don't have to hire.", italic: false },
+  { text: 'Hire', italic: false },
+  { text: 'the AI.', italic: true },
+  { text: 'Skip the headcount.', italic: false },
 ];
 
-const HERO_EYEBROW = 'Digital Point LLC · AI-powered operations · Since 2017';
+const HERO_EYEBROW = 'DIGITAL POINT LLC · EST. 2017';
 const HERO_SUB =
-  'AI workflows and trained operators that run your marketing, back-office, and reporting — together. So you scale without scaling headcount.';
+  'AI agents lead. Automation handles the repeat. Trained operators back the loop. Together they run your marketing, back-office, and reporting — so you scale without scaling headcount.';
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const headlineRef = useRef<HTMLHeadingElement | null>(null);
   const orbWrapRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const headline = headlineRef.current;
+    if (!headline) return;
 
-    gsap.registerPlugin(ScrollTrigger);
+    const innerEls = Array.from(
+      headline.querySelectorAll<HTMLSpanElement>('[data-word-reveal]'),
+    );
 
-    const ctx = gsap.context(() => {
-      if (!reduced) {
-        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-        // Cosmo orb fade + scale
-        tl.fromTo(
-          '[data-hero-orb]',
-          { opacity: 0, scale: 0.9 },
-          { opacity: 1, scale: 1, duration: 0.8 },
-          0,
-        )
-          // Eyebrow
-          .fromTo(
-            '[data-hero-eyebrow]',
-            { opacity: 0, y: 12 },
-            { opacity: 1, y: 0, duration: 0.6 },
-            0.2,
-          )
-          // Headline words — staggered translateY from 110% to 0
-          .fromTo(
-            '[data-hero-headline] .word-inner',
-            { yPercent: 110 },
-            { yPercent: 0, duration: 0.9, stagger: 0.06, ease: 'cubic-bezier(0.65, 0.05, 0, 1)' },
-            0.35,
-          )
-          // Sub
-          .fromTo(
-            '[data-hero-sub]',
-            { opacity: 0, y: 16 },
-            { opacity: 1, y: 0, duration: 0.7 },
-            1.1,
-          )
-          // CTAs
-          .fromTo(
-            '[data-hero-cta] > *',
-            { opacity: 0, y: 12 },
-            { opacity: 1, y: 0, duration: 0.6, stagger: 0.15 },
-            1.4,
-          );
-      }
+    // Forced final-state helper — used by both the reduced-motion path and
+    // the 1.5s safety net that protects against GSAP scheduling regressions
+    // (Phase 6 visual probe caught the .to() landing opacity but stranding
+    // yPercent: 110 — clipped by .word overflow:hidden).
+    const forceVisible = () => {
+      innerEls.forEach((el) => {
+        el.style.transform = 'translateY(0%)';
+        el.style.opacity = '1';
+      });
+    };
 
-      // Orb scroll-morph tied to hero scroll length.
+    if (reduced) {
+      forceVisible();
+      return;
+    }
+
+    let cancelled = false;
+    let cleanup: (() => void) | undefined;
+
+    // Safety net — if the GSAP timeline ever fails to land yPercent:0 within
+    // 1.5s, force the final state so the headline is never invisible.
+    const safetyId = window.setTimeout(forceVisible, 1500);
+
+    (async () => {
+      const [{ default: gsap }, { ScrollTrigger }] = await Promise.all([
+        import('gsap'),
+        import('gsap/ScrollTrigger'),
+      ]);
+      if (cancelled) return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Word reveal — direct fromTo (not chained inside a timeline). This
+      // avoids the Phase 6 regression where `.to(innerEls, ...)` after a
+      // `gsap.set()` landed opacity but not yPercent. fromTo guarantees
+      // both FROM and TO states are explicit and the tween covers both
+      // properties cleanly. onComplete clears any stuck transform string.
+      gsap.fromTo(
+        innerEls,
+        { yPercent: 110, opacity: 0 },
+        {
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.95,
+          stagger: 0.07,
+          ease: 'cubic-bezier(0.65, 0.05, 0, 1)',
+          delay: 0.4,
+          onComplete: () => {
+            // Belt-and-suspenders: kill any residual transform inline style
+            // so even if a future tween glitches, words stay visible.
+            innerEls.forEach((el) => {
+              el.style.transform = 'translateY(0%)';
+              el.style.opacity = '1';
+            });
+            window.clearTimeout(safetyId);
+          },
+        },
+      );
+
+      // Surrounding mount cascade — orb + eyebrow + sub + CTAs.
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      tl.fromTo('[data-hero-orb]', { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.8 }, 0)
+        .fromTo('[data-hero-eyebrow]', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6 }, 0.2)
+        .fromTo('[data-hero-sub]', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7 }, 1.15)
+        .fromTo('[data-hero-cta] > *', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.15 }, 1.4);
+
+      // Scroll-tied effects.
       const orbEl = orbWrapRef.current;
-      if (orbEl && !reduced) {
-        gsap.to(orbEl, {
-          scale: 0.9,
-          y: 40,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: sectionRef.current,
+      const triggers: ScrollTrigger[] = [];
+      if (orbEl) {
+        triggers.push(
+          ScrollTrigger.create({
+            trigger: sectionRef.current!,
             start: 'top top',
             end: 'bottom top',
             scrub: 0.8,
-          },
-        });
+            animation: gsap.to(orbEl, { scale: 0.9, y: 40, ease: 'none' }),
+          }),
+        );
       }
-
-      // Subtle parallax — eyebrow drifts up slower than content (Phase 4h).
-      if (!reduced) {
-        gsap.to('[data-hero-eyebrow]', {
-          y: -20,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 0.9,
-          },
-        });
-      }
+      triggers.push(
+        ScrollTrigger.create({
+          trigger: sectionRef.current!,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.9,
+          animation: gsap.to('[data-hero-eyebrow]', { y: -20, ease: 'none' }),
+        }),
+      );
 
       ScrollTrigger.refresh();
-    }, sectionRef);
 
-    const onLoad = () => ScrollTrigger.refresh();
-    window.addEventListener('load', onLoad);
+      cleanup = () => {
+        tl.kill();
+        triggers.forEach((t) => t.kill());
+      };
+    })();
 
     return () => {
-      window.removeEventListener('load', onLoad);
-      ctx.revert();
+      cancelled = true;
+      window.clearTimeout(safetyId);
+      cleanup?.();
     };
   }, []);
 
@@ -157,6 +173,9 @@ export function HeroSection() {
         }}
       />
 
+      {/* Conic ambient sweep (Phase 6 C.3) — desktop only, behind content */}
+      <div className="hero-ambient" aria-hidden="true" />
+
       <div
         className="relative mx-auto w-full max-w-[90rem] grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 items-center"
         style={{ paddingInline: 'var(--container-gutter)' }}
@@ -167,7 +186,7 @@ export function HeroSection() {
             data-hero-eyebrow
             style={{
               fontSize: 'var(--text-micro)',
-              letterSpacing: '0.12em',
+              letterSpacing: '0.16em',
               color: 'var(--text-tertiary)',
             }}
           >
@@ -175,14 +194,23 @@ export function HeroSection() {
           </p>
 
           <h1
+            ref={headlineRef}
             className="font-hero mb-8"
             data-hero-headline
-            style={{ fontSize: 'var(--text-hero)', color: 'var(--text-primary)', maxWidth: '16ch' }}
+            style={{ fontSize: 'var(--text-hero)', color: 'var(--text-primary)', maxWidth: '18ch' }}
           >
             {HEAD_PARTS.map((part, pi) => {
               const tokens = splitIntoWords(part.text);
-              return tokens.map((tok, ti) => {
-                if (isWhitespace(tok)) return <span key={`s-${pi}-${ti}`}>{tok}</span>;
+              const renderedTokens = tokens.map((tok, ti) => {
+                if (isWhitespace(tok)) {
+                  // Render space as a non-block inline span — preserves
+                  // whitespace between adjacent inline-block .word siblings.
+                  return (
+                    <span key={`s-${pi}-${ti}`} aria-hidden="true">
+                      {' '}
+                    </span>
+                  );
+                }
                 const WordTag: 'span' | 'em' = part.italic ? 'em' : 'span';
                 return (
                   <WordTag
@@ -203,8 +231,20 @@ export function HeroSection() {
                   </WordTag>
                 );
               });
+
+              // Insert a non-breaking space BETWEEN parts so adjacent
+              // inline-block .word elements (last word of part N, first
+              // word of part N+1) render with visible whitespace. The
+              // last part doesn't get a trailing space.
+              if (pi < HEAD_PARTS.length - 1) {
+                renderedTokens.push(
+                  <span key={`gap-${pi}`} aria-hidden="true">
+                    {' '}
+                  </span>,
+                );
+              }
+              return renderedTokens;
             })}
-            {/* Trailing space between part 1 and part 2 */}
           </h1>
 
           <p
@@ -213,20 +253,36 @@ export function HeroSection() {
             style={{
               fontSize: 'var(--text-body)',
               color: 'var(--text-secondary)',
-              maxWidth: '42ch',
+              maxWidth: '46ch',
               lineHeight: 1.55,
             }}
           >
             {HERO_SUB}
           </p>
 
-          <div className="flex flex-wrap gap-4" data-hero-cta>
-            <Link href="/free-growth-audit" className="cta-primary">
-              Book a free audit
-              <span aria-hidden="true">→</span>
-            </Link>
-            <Link href="#recent-work" className="cta-ghost">
+          <div className="flex flex-wrap items-center gap-6" data-hero-cta>
+            <MagneticCTA strength={0.3} radius={90}>
+              <Link href="/free-growth-audit" className="cta-primary" data-cta-primary>
+                Book a free audit
+                <span aria-hidden="true">→</span>
+              </Link>
+            </MagneticCTA>
+            <Link href="#recent-work" className="text-link inline-flex items-center gap-1.5">
               See what we run
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
             </Link>
           </div>
         </div>

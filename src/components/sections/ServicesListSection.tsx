@@ -1,19 +1,16 @@
 import Link from 'next/link';
 import { copy } from '@/lib/copy';
-import ScrambleText from '@/components/effects/ScrambleText';
+import LetterHoverText from '@/components/effects/LetterHoverText';
 
 /**
- * Phase 6 v2 services list.
+ * Phase 7 services list — restored letter-hover (CSS-only).
  *
- * Heavy per-letter hover spans (Phase 4d) replaced with ScrambleText —
- * single-element setState per row, ~80% lighter DOM, more AI-flavored
- * Matrix-flash effect. Letter-hover CSS still defines fallback color
- * shift via `.service-row:hover .service-name` for non-JS / no-scramble
- * environments.
- *
- * Section header widened to max-w-[36ch] (Phase 6 A.3) so the heading
- * "Five practices under one operating system." flows in 2 lines instead
- * of stacking word-per-line.
+ * ScrambleText (Phase 6) was rolled back: it occasionally froze in a
+ * scrambled state on production hover, leaving service rows reading as
+ * gibberish — trust killer for a B2B services agency. Letter-hover is
+ * Divyansh-style brand-appropriate, mechanically simpler, and 100%
+ * crash-proof (pure CSS transitions per-character with stagger via
+ * transition-delay derived from the letter's index).
  */
 export function ServicesListSection() {
   const { eyebrow, headline, items } = copy.servicesList;
@@ -30,7 +27,7 @@ export function ServicesListSection() {
       }}
     >
       <div className="container-wide">
-        <header className="max-w-[36ch] mb-[var(--section-space-tight)]">
+        <header className="max-w-3xl mb-[var(--section-space-tight)]">
           <p
             className="font-mono uppercase mb-6"
             data-reveal
@@ -43,7 +40,7 @@ export function ServicesListSection() {
             {eyebrow}
           </p>
           <h2
-            className="font-hero"
+            className="font-hero text-balance"
             data-reveal
             style={{
               fontSize: 'var(--text-h1)',
@@ -84,7 +81,7 @@ export function ServicesListSection() {
                     letterSpacing: '-0.02em',
                   }}
                 >
-                  <ScrambleText text={`/ ${item.label}`} trigger="hover" speed={28} />
+                  <LetterHoverText text={`/ ${item.label}`} />
                 </span>
                 <span
                   className="service-arrow hidden md:inline-block"

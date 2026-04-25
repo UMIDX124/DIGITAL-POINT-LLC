@@ -584,11 +584,11 @@ a.text-link:hover,
 }
 
 /* ============================================
-   SERVICES LIST — Phase 4d
-   Massive editorial rows with per-letter hover scale. Letters animate
-   independently via transition-delay stored inline (rendered by the
-   component); hover on .service-row triggers a color + scale shift across
-   all .service-letter children.
+   SERVICES LIST — Phase 7 letter-hover (CSS-only)
+   Massive editorial rows. Each character renders as a .letter-hover-char
+   span; the parent .service-row :hover triggers per-letter cascade via
+   transition-delay derived from the inline --letter-index custom property.
+   No JS runtime; immune to the Phase 6 ScrambleText freeze regression.
    ============================================ */
 .service-row {
   display: grid;
@@ -600,15 +600,32 @@ a.text-link:hover,
 }
 @media (min-width: 768px) { .service-row { gap: 2rem; } }
 
-.service-letter {
+/* Phase 7 — LetterHoverText (CSS-only per-character transitions).
+   Each .letter-hover-char span is a child of [data-service-row]; the
+   parent's :hover triggers a color + lift cascade. transition-delay
+   reads from --letter-index so letters fan out left-to-right. */
+.letter-hover-char {
   transition:
-    transform var(--dur-medium) var(--ease-brand),
-    color var(--dur-short) var(--ease-out-soft);
+    transform 0.28s ease-out,
+    color 0.28s ease-out;
+  transition-delay: calc(var(--letter-index, 0) * 12ms);
   transform-origin: 50% 85%;
   will-change: transform;
 }
-.service-row:hover .service-letter { transform: scale(1.1); }
-.service-row:hover .service-name   { color: var(--accent-bright); }
+[data-service-row]:hover .letter-hover-char {
+  color: var(--accent-bright);
+  transform: translateY(-2px);
+}
+.service-row:hover .service-name { color: var(--accent-bright); }
+
+@media (prefers-reduced-motion: reduce) {
+  .letter-hover-char,
+  [data-service-row]:hover .letter-hover-char {
+    transition: color 0.15s ease-out !important;
+    transform: none !important;
+    transition-delay: 0ms !important;
+  }
+}
 
 .service-arrow {
   color: var(--text-tertiary);
@@ -746,6 +763,22 @@ html[data-paused-global="true"] .grain-overlay {
 }
 
 /* ============================================
+   PHASE 7 — HERO ITALIC BRACKETS
+   Decorative [ ] around the italic accent in the hero h1. Sit OUTSIDE
+   the .word > .word-inner reveal structure so they appear immediately
+   without participating in the staggered word cascade.
+   ============================================ */
+.em-bracket {
+  color: var(--accent-bright);
+  font-family: var(--font-instrument-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  opacity: 0.6;
+  margin-inline: 0.04em;
+  letter-spacing: -0.04em;
+}
+
+/* ============================================
    PHASE 6 v2 — HERO AMBIENT (C.3)
    Conic gradient sweeping behind hero content. Desktop only.
    Pure CSS, no JS, GPU-friendly transform animation.
@@ -870,7 +903,5 @@ html[data-paused-global="true"] .chat-trigger-sparkle {
   contain-intrinsic-size: 0 800px;
 }
 
-/* Service row hover keeps the bright accent on the row name. The
-   per-letter scale + transition-delay still fire (cheap CSS) but
-   the heavier per-letter span structure is replaced by ScrambleText
-   in Phase 6. */
+/* Phase 7: ScrambleText was removed (production hover-freeze regression);
+   restored letter-hover via .letter-hover-char above. */

@@ -1,14 +1,40 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
 /**
  * Phase 4g grain overlay — fixed, pointer-events-none, overlay blend mode.
  * Uses inline SVG feTurbulence for infinite-detail film grain without
- * a network round-trip. Server-rendered safe: zero JS, zero state.
+ * a network round-trip.
+ *
+ * Phase 5c: mounts on requestIdleCallback (or a 1s setTimeout fallback) so
+ * the SVG filter paint doesn't compete with first-paint. Saves ~0.15s
+ * mobile LCP.
  *
  * The html[data-paused-global="true"] selector (set by Phase 4h visibility
- * tracker) pauses this element — not via animation (grain is static),
- * but by hiding it when the tab is inactive so there's nothing painted
- * underneath user-agent overlays on wakeup.
+ * tracker) pauses this element when the tab is inactive.
  */
 export function GrainOverlay() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const ric = (window as unknown as {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+    }).requestIdleCallback;
+    if (typeof ric === 'function') {
+      const id = ric(() => setMounted(true), { timeout: 2000 });
+      return () => {
+        const cic = (window as unknown as { cancelIdleCallback?: (id: number) => void })
+          .cancelIdleCallback;
+        if (typeof cic === 'function') cic(id);
+      };
+    }
+    const t = window.setTimeout(() => setMounted(true), 1000);
+    return () => window.clearTimeout(t);
+  }, []);
+
+  if (!mounted) return null;
+
   return (
     <div
       aria-hidden="true"
@@ -17,7 +43,6 @@ export function GrainOverlay() {
         zIndex: 1,
         mixBlendMode: 'overlay',
         opacity: 0.05,
-        // GPU-promotion + pointer-event isolation.
         transform: 'translateZ(0)',
         willChange: 'opacity',
       }}

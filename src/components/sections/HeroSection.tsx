@@ -1,11 +1,34 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { CosmoOrb } from '@/components/cosmo/CosmoOrb';
 import { splitIntoWords, isWhitespace } from '@/lib/wordSplit';
+
+// Phase 5c — dynamic-import the Cosmo orb so its SVG + GSAP-bound JS
+// (~10 KB) moves out of the initial main bundle. Soft purple glow
+// placeholder keeps the hero layout steady during hydration.
+const CosmoOrb = dynamic(
+  () => import('@/components/cosmo/CosmoOrb').then((m) => m.CosmoOrb),
+  {
+    ssr: false,
+    loading: () => (
+      <div
+        aria-hidden="true"
+        style={{
+          width: 'min(280px, 35vh)',
+          height: 'min(280px, 35vh)',
+          borderRadius: '50%',
+          background:
+            'radial-gradient(circle at 50% 50%, var(--accent-glow), transparent 70%)',
+          opacity: 0.6,
+        }}
+      />
+    ),
+  },
+);
 
 /**
  * Phase 4c editorial hero.

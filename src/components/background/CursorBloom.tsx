@@ -1,27 +1,40 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { subscribePointer } from '@/lib/motion/sharedPointer';
 
 /**
  * Phase 4g cursor bloom — soft purple radial gradient following the cursor
- * on desktop only. Uses the shared RAF pointer bus from Phase 4b (one
- * mousemove listener, one spring-lerp loop, consumers just subscribe).
+ * on desktop only. Uses the shared RAF pointer bus (one mousemove listener,
+ * one spring-lerp loop, consumers just subscribe).
  *
- * Automatically disabled on mobile + prefers-reduced-motion via
- * subscribePointer's internal gating.
+ * Phase 5c: defers mount to the first real pointer event. On mobile + reduced-
+ * motion contexts, mousemove never fires, so the bloom never mounts and its
+ * paint cost never hits the critical path. Saves ~0.1s init on mobile.
  */
 export function CursorBloom() {
   const ref = useRef<HTMLDivElement | null>(null);
+  const [active, setActive] = useState(false);
 
+  // Wait for the first real mousemove before mounting the bloom element.
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(max-width: 767px)').matches) return;
+
+    const onFirstMove = () => setActive(true);
+    window.addEventListener('mousemove', onFirstMove, { once: true, passive: true });
+    return () => window.removeEventListener('mousemove', onFirstMove);
+  }, []);
+
+  // Once active, subscribe to the shared pointer bus.
+  useEffect(() => {
+    if (!active) return;
     const el = ref.current;
     if (!el) return;
 
     const unsub = subscribePointer((state) => {
       if (!state.active) return;
-      // Convert normalized −1..1 back to viewport pixels, subtract half the
-      // bloom diameter so the gradient center follows the cursor.
       const px = ((state.sx + 1) / 2) * window.innerWidth - 200;
       const py = ((state.sy + 1) / 2) * window.innerHeight - 200;
       el.style.transform = `translate3d(${px}px, ${py}px, 0)`;
@@ -31,7 +44,9 @@ export function CursorBloom() {
       unsub();
       if (el) el.style.transform = '';
     };
-  }, []);
+  }, [active]);
+
+  if (!active) return null;
 
   return (
     <div

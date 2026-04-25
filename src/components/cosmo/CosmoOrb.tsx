@@ -140,11 +140,15 @@ export const CosmoOrb = memo(function CosmoOrb({
           aria-hidden="true"
         >
           <defs>
-            {/* Outer halo — soft bloom around the orb. */}
-            <radialGradient id="cosmo-halo" cx="50%" cy="50%" r="50%">
-              <stop offset="0%"   stopColor="var(--accent-bright)" stopOpacity="0.35" />
-              <stop offset="45%"  stopColor="var(--accent)"        stopOpacity="0.18" />
-              <stop offset="80%"  stopColor="var(--accent-deep)"   stopOpacity="0.05" />
+            {/* Outer halo — soft bloom. Phase 5c: multi-stop radial gradient
+                simulates the Gaussian-blur falloff without the compositor
+                cost of feGaussianBlur (mobile LCP saver). */}
+            <radialGradient id="cosmo-halo" cx="50%" cy="50%" r="52%">
+              <stop offset="0%"   stopColor="var(--accent-bright)" stopOpacity="0.55" />
+              <stop offset="22%"  stopColor="var(--accent-bright)" stopOpacity="0.4"  />
+              <stop offset="45%"  stopColor="var(--accent)"        stopOpacity="0.2"  />
+              <stop offset="70%"  stopColor="var(--accent)"        stopOpacity="0.08" />
+              <stop offset="90%"  stopColor="var(--accent-deep)"   stopOpacity="0.02" />
               <stop offset="100%" stopColor="var(--accent-deep)"   stopOpacity="0"    />
             </radialGradient>
 
@@ -168,15 +172,10 @@ export const CosmoOrb = memo(function CosmoOrb({
               <stop offset="40%"  stopColor="#E0E7FF" stopOpacity="0.9" />
               <stop offset="100%" stopColor="#A5B4FC" stopOpacity="0"   />
             </radialGradient>
-
-            {/* Halo blur filter — avoids compositing off the main layer. */}
-            <filter id="cosmo-halo-blur" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="18" />
-            </filter>
           </defs>
 
-          {/* Layer 1: halo, blurred, largest. */}
-          <circle cx="200" cy="200" r="200" fill="url(#cosmo-halo)" filter="url(#cosmo-halo-blur)" opacity="0.9" />
+          {/* Layer 1: halo, pre-baked gradient (no filter). */}
+          <circle cx="200" cy="200" r="200" fill="url(#cosmo-halo)" opacity="0.9" />
 
           {/* Layer 2: outer ring, slowly rotating CW. */}
           <g ref={outerRingRef}>

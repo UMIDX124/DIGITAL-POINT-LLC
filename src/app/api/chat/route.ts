@@ -37,6 +37,14 @@ function rateLimitOk(ip: string): boolean {
 }
 
 export async function POST(req: NextRequest) {
+  const reqStart = Date.now();
+  // Phase 7 — diagnostic instrumentation (visible in Vercel runtime logs).
+  // Helps diagnose env propagation issues quickly: hasKey + length is
+  // enough to confirm the runtime sees the key without leaking it.
+  const hasKey = !!process.env.GROQ_API_KEY;
+  const keyLen = process.env.GROQ_API_KEY?.length ?? 0;
+  console.log(`[chat] req hasKey=${hasKey} keyLen=${keyLen}`);
+
   try {
     const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
     if (!rateLimitOk(ip)) {
@@ -92,7 +100,7 @@ export async function POST(req: NextRequest) {
 
     if (!groqRes.ok) {
       const errText = await groqRes.text().catch(() => '');
-      console.error('Groq API error:', groqRes.status, errText.slice(0, 200));
+      console.error(`[chat] groq ${groqRes.status} body=${errText.slice(0, 300)}`);
       return NextResponse.json(
         { error: 'AI service temporarily unavailable. Please try again.' },
         { status: 502 },
@@ -102,13 +110,15 @@ export async function POST(req: NextRequest) {
     const data = await groqRes.json();
     const reply = data?.choices?.[0]?.message?.content?.trim() ?? '';
     if (!reply) {
+      console.error('[chat] empty reply from groq');
       return NextResponse.json({ error: 'Empty response from AI' }, { status: 502 });
     }
 
+    console.log(`[chat] success duration=${Date.now() - reqStart}ms replyLen=${reply.length}`);
     return NextResponse.json({ reply });
   } catch (e: unknown) {
     const err = e as { name?: string; message?: string };
-    console.error('Chat API exception:', err?.message || e);
+    console.error(`[chat] exception name=${err?.name} msg=${err?.message ?? String(e)}`);
     if (err?.name === 'TimeoutError' || err?.name === 'AbortError') {
       return NextResponse.json({ error: 'AI request timed out. Try a shorter message.' }, { status: 504 });
     }

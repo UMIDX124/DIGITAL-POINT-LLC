@@ -201,18 +201,25 @@ export function HeroSection() {
           >
             {HEAD_PARTS.map((part, pi) => {
               const tokens = splitIntoWords(part.text);
-              const renderedTokens = tokens.map((tok, ti) => {
+              const renderedTokens: React.ReactNode[] = [];
+              if (part.italic) {
+                renderedTokens.push(
+                  <span key={`br-open-${pi}`} aria-hidden="true" className="em-bracket">
+                    [
+                  </span>,
+                );
+              }
+              tokens.forEach((tok, ti) => {
                 if (isWhitespace(tok)) {
-                  // Render space as a non-block inline span — preserves
-                  // whitespace between adjacent inline-block .word siblings.
-                  return (
+                  renderedTokens.push(
                     <span key={`s-${pi}-${ti}`} aria-hidden="true">
                       {' '}
-                    </span>
+                    </span>,
                   );
+                  return;
                 }
                 const WordTag: 'span' | 'em' = part.italic ? 'em' : 'span';
-                return (
+                renderedTokens.push(
                   <WordTag
                     key={`w-${pi}-${ti}`}
                     className={
@@ -228,14 +235,20 @@ export function HeroSection() {
                     <span className="word-inner inline-block" data-word-reveal>
                       {tok}
                     </span>
-                  </WordTag>
+                  </WordTag>,
                 );
               });
 
-              // Insert a non-breaking space BETWEEN parts so adjacent
-              // inline-block .word elements (last word of part N, first
-              // word of part N+1) render with visible whitespace. The
-              // last part doesn't get a trailing space.
+              if (part.italic) {
+                renderedTokens.push(
+                  <span key={`br-close-${pi}`} aria-hidden="true" className="em-bracket">
+                    ]
+                  </span>,
+                );
+              }
+
+              // Inter-part space: keeps adjacent inline-block .word siblings
+              // visibly separated.
               if (pi < HEAD_PARTS.length - 1) {
                 renderedTokens.push(
                   <span key={`gap-${pi}`} aria-hidden="true">

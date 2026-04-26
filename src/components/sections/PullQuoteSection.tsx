@@ -28,16 +28,23 @@ export function PullQuoteSection() {
         }}
       />
 
-      <div className="relative mx-auto max-w-[68rem]" style={{ paddingInline: 'var(--container-gutter)' }}>
+      <div className="relative mx-auto max-w-[88rem]" style={{ paddingInline: 'var(--container-gutter)' }}>
         <blockquote
           className="pull-quote-text font-italic-display text-center mx-auto"
           style={{
-            fontSize: 'clamp(2.25rem, 4.5vw, 4.5rem)',
+            /* Phase 16 D.4 — clamp ceiling lowered from 4.5rem to 3.5rem so
+               the line wraps wider before hitting the size cap. Combined
+               with the 80ch max-width below, the Faizan quote now lands
+               in 3 horizontal lines on desktop instead of the prior
+               vertical 6-line column. */
+            fontSize: 'clamp(1.75rem, 3.4vw, 3.5rem)',
             color: 'var(--text-primary)',
             fontStyle: 'italic',
-            lineHeight: 1.1,
-            letterSpacing: '-0.02em',
-            maxWidth: 'var(--maxw-pullquote)',
+            lineHeight: 1.18,
+            letterSpacing: '-0.015em',
+            /* 80ch reading measure replaces --maxw-pullquote (was 36rem
+               post-Phase-15-tighten). Editorial wide-line look. */
+            maxWidth: '80ch',
           }}
           data-reveal
         >

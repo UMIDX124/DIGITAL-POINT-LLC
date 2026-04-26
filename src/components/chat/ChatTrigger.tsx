@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
 type Props = {
@@ -8,15 +9,15 @@ type Props = {
 };
 
 /**
- * Phase 6 v2 / Phase 11 chat trigger — gradient-orb mini button.
+ * Phase 16 D.5 — Cosmo chat trigger with DP mascot embed.
  *
- * Animations are pure CSS keyframes (bob/wink/wave/sparkle) declared in
- * globals.css under the chat-trigger-* family. Auto-paused via
- * html[data-paused-global="true"] (tab visibility) and disabled under
- * prefers-reduced-motion.
+ * The mini button now embeds /Dp-logo1.png (mascot) instead of the
+ * abstract gradient orb. Idle 'breathe' animation (4s scale 1↔1.04)
+ * via CSS keyframes; hover scales 1.08 + brightness 1.15. Pure CSS,
+ * no JS animation loops, prefers-reduced-motion disables breathe.
  *
- * Wave animation triggers once after 30s of idle (no click + no panel
- * open), then resets if user has interacted.
+ * Wave animation (30s idle trigger) preserved for first-time-visitor
+ * attention.
  */
 export default function ChatTrigger({ onClick, panelOpen }: Props) {
   const ref = useRef<HTMLButtonElement>(null);
@@ -49,10 +50,7 @@ export default function ChatTrigger({ onClick, panelOpen }: Props) {
       className={[
         'fixed bottom-6 right-6 z-50',
         'h-16 w-16 rounded-full',
-        'bg-gradient-to-br from-[#FFA833] via-[#FF8800] to-[#C26800]',
-        'shadow-[0_0_24px_rgba(255, 136, 0,0.55),inset_0_1px_2px_rgba(255,255,255,0.4)]',
-        'hover:scale-110 hover:shadow-[0_0_32px_rgba(255, 136, 0,0.85)]',
-        'active:scale-95',
+        'cosmo-fab',
         'transition-transform duration-200 ease-out',
         'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-bright)]',
         'chat-trigger',
@@ -61,22 +59,18 @@ export default function ChatTrigger({ onClick, panelOpen }: Props) {
       ]
         .filter(Boolean)
         .join(' ')}
-      style={{ willChange: 'transform' }}
     >
       <span className="block h-full w-full rounded-full relative overflow-hidden">
-        {/* Inner specular highlight */}
-        <span
-          className="absolute top-3 left-3 h-3 w-3 rounded-full bg-white/85 blur-[1.5px]"
-          aria-hidden="true"
+        <Image
+          src="/Dp-logo1.png"
+          alt=""
+          fill
+          sizes="64px"
+          className="cosmo-mascot object-contain p-1"
+          priority={false}
+          unoptimized
         />
-        {/* Inner core orb */}
-        <span
-          className="absolute inset-0 m-auto h-9 w-9 rounded-full bg-gradient-to-br from-white/40 via-white/10 to-transparent"
-          aria-hidden="true"
-        />
-        {/* Wink shutter */}
-        <span className="chat-trigger-wink absolute inset-x-3 top-1/2 h-[2px] -translate-y-1/2 rounded-full" aria-hidden="true" />
-        {/* Sparkle on wave */}
+        {/* Sparkle on wave (first-visit attention cue) */}
         {showWave && (
           <span className="chat-trigger-sparkle absolute -top-1 -right-1 h-3 w-3" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor" className="text-white/90">

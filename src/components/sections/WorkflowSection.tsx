@@ -22,7 +22,7 @@ export function WorkflowSection() {
       }}
       id="workflow"
     >
-      <div className="container-wide">
+      <div className="container-bleed">
         <header className="max-w-2xl mb-[var(--section-space-tight)]">
           <p
             className="font-mono uppercase mb-5"

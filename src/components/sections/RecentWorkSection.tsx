@@ -27,7 +27,7 @@ export function RecentWorkSection() {
         paddingBottom: 'var(--section-space)',
       }}
     >
-      <div className="container-wide">
+      <div className="container-bleed">
         <header className="mb-[var(--section-space-tight)]" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
           <p
             className="font-mono uppercase mb-5"

@@ -1142,15 +1142,24 @@ html[data-paused-global="true"] .logo-marquee-track {
 .services-pin-frame {
   position: sticky;
   top: 0;
-  min-height: 85vh;
+  /* Phase 16 D.2 — reduced from 85vh to 60vh.
+     User reported "3-4 scroll attempts before first frame releases."
+     Root cause: CSS sticky requires scroll distance equal to the parent
+     section's content height past the sticky element before it unsticks.
+     With 5 frames at 85vh each, the first-frame release needed ~85vh of
+     scroll = ~700px on desktop = many wheel ticks. 60vh cuts that to
+     ~480px on desktop, ~360px on tablet — first wheel tick now visibly
+     advances pin progression. Total section height drops from 425vh to
+     300vh. Spec note: ServicesPinReveal is CSS-sticky-based, not GSAP
+     ScrollTrigger — refresh-post-fonts/anticipatePin from spec D.2 don't
+     apply here. */
+  min-height: 60vh;
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--border-subtle);
-  /* Phase 14 lag fix — isolate paint/layout cost so 5 stacked sticky
-     frames don't trigger composite-storm during scroll. content-visibility:
-     auto was tested but produced CLS variance (0/0.08/0.196 across 3 LH
-     runs on home mobile) — reverted; layout/paint/style contain is enough
-     for the composite isolation we need. */
+  /* Phase 14 lag fix — isolate paint/layout cost so stacked sticky frames
+     don't trigger composite-storm during scroll. content-visibility: auto
+     was tested but produced CLS variance — reverted in iter 2. */
   contain: layout paint style;
 }
 /* Phase 14 visual polish — last frame's hairline produced a double border

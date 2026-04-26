@@ -3,7 +3,9 @@
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import MagneticCTA from '@/components/effects/MagneticCTA';
-import { AutomationFlow } from '@/components/hero/AutomationFlow';
+import { AutomationOrbit } from '@/components/hero/AutomationOrbit';
+// Phase 16 A.1 — AutomationFlow kept on disk pending mockup ship-it.
+// import { AutomationFlow } from '@/components/hero/AutomationFlow';
 
 /**
  * Phase 6 v2 editorial hero — AI-first hybrid positioning.
@@ -289,12 +291,12 @@ export function HeroSection() {
           className="hero-pulse-wrap relative flex items-center justify-center"
           data-hero-orb
         >
-          {/* Phase 14 — automation flow visualisation replaces the Phase 11
-              breathing line. 4-node 2×2 grid (Lead Trigger → AI Score →
-              Operator Route → CRM Updated) with dashed flowing connections.
-              Pure CSS animations, hidden under 768px so the hero copy gets
-              the full column on mobile. */}
-          <AutomationFlow />
+          {/* Phase 16 A.1 — orbital system replacing Phase 14 2×2 grid.
+              Cosmo mascot at center as the "sun"; 4 process nodes on two
+              concentric rings; SVG light-cone arcs imply Lead → AI →
+              Operator → CRM signal flow. 90s GPU rotation, mobile-hidden,
+              reduced-motion static. */}
+          <AutomationOrbit />
         </div>
       </div>
     </section>

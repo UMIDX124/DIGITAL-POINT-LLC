@@ -87,15 +87,15 @@ const fallbackArticles = [
 ];
 
 const categoryColors: Record<string, string> = {
-  'Marketing Attribution': '#A78BFA',
-  'Paid Ads Benchmarks': '#A78BFA',
-  'CAC ROAS Optimization': '#C4B5FD',
-  'Marketing Analytics': '#A78BFA',
-  'Remote Workforce': '#C4B5FD',
+  'Marketing Attribution': '#FF8800',
+  'Paid Ads Benchmarks': '#FF8800',
+  'CAC ROAS Optimization': '#FFA833',
+  'Marketing Analytics': '#FF8800',
+  'Remote Workforce': '#FFA833',
   'Growth Systems': '#f472b6',
-  'Performance Marketing': '#A78BFA',
-  'AI & Automation': '#C4B5FD',
-  'Systems & Reporting': '#A78BFA',
+  'Performance Marketing': '#FF8800',
+  'AI & Automation': '#FFA833',
+  'Systems & Reporting': '#FF8800',
 };
 
 export function BlogListPage({ posts, categories, categoryMeta }: Props) {
@@ -114,7 +114,7 @@ export function BlogListPage({ posts, categories, categoryMeta }: Props) {
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
               Field notes from running{' '}
-              <span className="bg-gradient-to-r from-[#C4B5FD] via-[#A78BFA] to-[#A78BFA] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FF8800] bg-clip-text text-transparent">
                 AI in production
               </span>
             </h1>
@@ -165,20 +165,20 @@ export function BlogListPage({ posts, categories, categoryMeta }: Props) {
                       <span
                         className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium"
                         style={{
-                          background: `${categoryColors[article.category] || '#A78BFA'}15`,
-                          border: `1px solid ${categoryColors[article.category] || '#A78BFA'}30`,
-                          color: categoryColors[article.category] || '#A78BFA',
+                          background: `${categoryColors[article.category] || '#FF8800'}15`,
+                          border: `1px solid ${categoryColors[article.category] || '#FF8800'}30`,
+                          color: categoryColors[article.category] || '#FF8800',
                         }}
                       >
                         <Tag className="w-3 h-3" />
                         {article.category}
                       </span>
                     </div>
-                    <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#C4B5FD] transition-colors mb-3 leading-snug">
+                    <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#FFA833] transition-colors mb-3 leading-snug">
                       {article.title}
                     </h3>
                     <p className="text-[#8E8E96] text-sm leading-relaxed flex-1 mb-4">{article.excerpt}</p>
-                    <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(167,139,250, 0.1)' }}>
+                    <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(255, 136, 0, 0.1)' }}>
                       <div className="flex items-center gap-3 text-[#8E8E96] text-xs">
                         <span>{new Date(article.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
                         <span className="flex items-center gap-1">
@@ -186,7 +186,7 @@ export function BlogListPage({ posts, categories, categoryMeta }: Props) {
                           {article.readTime}
                         </span>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-[#A78BFA] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                      <ArrowRight className="w-4 h-4 text-[#FF8800] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                     </div>
                   </GlassCard>
                 </Link>

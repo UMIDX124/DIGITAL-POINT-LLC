@@ -94,7 +94,7 @@ export default async function ServiceCityPage({ params }: PageProps) {
               >
                 <span
                   className="mt-2 w-2 h-2 rounded-full shrink-0"
-                  style={{ background: '#A78BFA' }}
+                  style={{ background: '#FF8800' }}
                 />
                 {benefit}
               </li>

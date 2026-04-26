@@ -12,7 +12,7 @@ const reports = [
     title: 'Facebook Ads Benchmarks 2026',
     description: 'CPC, CPM, CTR, and ROAS benchmarks across 12 industries. Updated with Q1 2026 data from $48M+ in tracked ad spend.',
     icon: BarChart3,
-    color: '#A78BFA',
+    color: '#FF8800',
     date: 'March 2026',
     readTime: '12 min read',
     stat: '12 Industries',
@@ -22,7 +22,7 @@ const reports = [
     title: 'Google Ads ROAS Benchmarks by Industry',
     description: 'Search, Display, YouTube, and Performance Max ROAS benchmarks. Based on analysis of $62M in Google Ads spend across verticals.',
     icon: TrendingUp,
-    color: '#C4B5FD',
+    color: '#FFA833',
     date: 'February 2026',
     readTime: '14 min read',
     stat: '4 Campaign Types',
@@ -32,7 +32,7 @@ const reports = [
     title: 'Average Customer Acquisition Cost by Industry',
     description: 'CAC benchmarks across 18 industries with breakdowns by company size, channel, and business model (B2B vs B2C).',
     icon: DollarSign,
-    color: '#C4B5FD',
+    color: '#FFA833',
     date: 'January 2026',
     readTime: '15 min read',
     stat: '18 Industries',
@@ -42,7 +42,7 @@ const reports = [
     title: 'Marketing Attribution Statistics 2026',
     description: 'Attribution model adoption rates, tracking accuracy post-iOS 17, and the real impact of privacy changes on marketing measurement.',
     icon: Eye,
-    color: '#A78BFA',
+    color: '#FF8800',
     date: 'March 2026',
     readTime: '11 min read',
     stat: '47 Data Points',
@@ -52,7 +52,7 @@ const reports = [
     title: 'Remote Workforce Cost Analysis',
     description: 'Comprehensive cost comparison of US in-house teams vs. managed remote teams across marketing, engineering, and operations roles.',
     icon: Users,
-    color: '#A78BFA',
+    color: '#FF8800',
     date: 'February 2026',
     readTime: '13 min read',
     stat: '8 Role Categories',
@@ -101,7 +101,7 @@ export function ResearchHub() {
                             <span className="text-[#8E8E96] text-xs">-</span>
                             <span className="text-[#8E8E96] text-xs">{report.readTime}</span>
                           </div>
-                          <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#C4B5FD] transition-colors mb-2">
+                          <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#FFA833] transition-colors mb-2">
                             {report.title}
                           </h3>
                           <p className="text-[#A1A1AA] text-sm leading-relaxed mb-3">
@@ -114,7 +114,7 @@ export function ResearchHub() {
                             >
                               {report.stat}
                             </span>
-                            <span className="flex items-center gap-1 text-[#A78BFA] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span className="flex items-center gap-1 text-[#FF8800] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                               Read Report <ArrowRight className="w-3.5 h-3.5" />
                             </span>
                           </div>

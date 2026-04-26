@@ -13,7 +13,7 @@ export function LatestInsights() {
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[450px] pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse at center top, rgba(167,139,250, 0.12) 0%, transparent 70%)',
+            'radial-gradient(ellipse at center top, rgba(255, 136, 0, 0.12) 0%, transparent 70%)',
         }}
       />
 
@@ -23,7 +23,7 @@ export function LatestInsights() {
           <span
             className="text-sm font-medium uppercase tracking-wider mb-4 block"
             style={{
-              background: 'linear-gradient(90deg, #C4B5FD, #A78BFA)',
+              background: 'linear-gradient(90deg, #FFA833, #FF8800)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}
@@ -41,7 +41,7 @@ export function LatestInsights() {
         {/* Post grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {posts.map((post) => {
-            const catColor = categoryMeta[post.category]?.color ?? '#A78BFA';
+            const catColor = categoryMeta[post.category]?.color ?? '#FF8800';
 
             return (
               <article
@@ -57,7 +57,7 @@ export function LatestInsights() {
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                   style={{
                     background:
-                      'linear-gradient(135deg, rgba(196,181,253, 0.06) 0%, transparent 60%)',
+                      'linear-gradient(135deg, rgba(255, 168, 51, 0.06) 0%, transparent 60%)',
                   }}
                 />
 
@@ -75,7 +75,7 @@ export function LatestInsights() {
                   </span>
 
                   {/* Title */}
-                  <h3 className="font-display text-lg font-semibold text-white mb-2 leading-snug group-hover:text-[#A78BFA] transition-colors">
+                  <h3 className="font-display text-lg font-semibold text-white mb-2 leading-snug group-hover:text-[#FF8800] transition-colors">
                     <Link href={`/blog/${post.slug}`} className="after:absolute after:inset-0">
                       {post.title}
                     </Link>
@@ -108,7 +108,7 @@ export function LatestInsights() {
         <div className="text-center mt-10">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1.5 text-[#A78BFA] hover:text-[#C4B5FD] font-medium transition-colors"
+            className="inline-flex items-center gap-1.5 text-[#FF8800] hover:text-[#FFA833] font-medium transition-colors"
           >
             View All Articles
             <span aria-hidden="true">&rarr;</span>

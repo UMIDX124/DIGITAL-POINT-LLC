@@ -109,7 +109,7 @@ export async function POST(request: NextRequest) {
         : 'info@digitalpointllc.com';
 
     const priorityLabel = priority === 'high' ? 'HIGH PRIORITY' : 'Normal';
-    const priorityColor = priority === 'high' ? '#A78BFA' : '#A78BFA';
+    const priorityColor = priority === 'high' ? '#FF8800' : '#FF8800';
 
     try {
       await sendEmail({
@@ -119,7 +119,7 @@ export async function POST(request: NextRequest) {
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0B; color: #F5F1E8; padding: 32px; border-radius: 12px;">
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px;">
-              <h2 style="color: #A78BFA; margin: 0;">Support Ticket</h2>
+              <h2 style="color: #FF8800; margin: 0;">Support Ticket</h2>
               <span style="background: ${priorityColor}22; color: ${priorityColor}; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-left: 8px;">
                 ${priorityLabel}
               </span>
@@ -133,7 +133,7 @@ export async function POST(request: NextRequest) {
               <tr>
                 <td style="padding: 10px 0; color: #D6D0C2; font-size: 13px; vertical-align: top;">Email</td>
                 <td style="padding: 10px 0;">
-                  <a href="mailto:${escapeHtml(email)}" style="color: #A78BFA; text-decoration: none;">${escapeHtml(email)}</a>
+                  <a href="mailto:${escapeHtml(email)}" style="color: #FF8800; text-decoration: none;">${escapeHtml(email)}</a>
                 </td>
               </tr>
               <tr>
@@ -142,14 +142,14 @@ export async function POST(request: NextRequest) {
               </tr>
             </table>
 
-            <hr style="border: none; border-top: 1px solid rgba(167,139,250,0.3); margin: 16px 0;" />
+            <hr style="border: none; border-top: 1px solid rgba(255, 136, 0,0.3); margin: 16px 0;" />
 
-            <div style="background: rgba(20,20,22, 0.6); padding: 16px; border-radius: 8px; border: 1px solid rgba(167,139,250,0.15);">
+            <div style="background: rgba(20,20,22, 0.6); padding: 16px; border-radius: 8px; border: 1px solid rgba(255, 136, 0,0.15);">
               <p style="color: #D6D0C2; font-size: 12px; margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.5px;">Message</p>
               <p style="color: #F5F1E8; font-size: 14px; line-height: 1.6; margin: 0; white-space: pre-wrap;">${escapeHtml(message)}</p>
             </div>
 
-            <hr style="border: none; border-top: 1px solid rgba(167,139,250,0.3); margin: 16px 0;" />
+            <hr style="border: none; border-top: 1px solid rgba(255, 136, 0,0.3); margin: 16px 0;" />
 
             <table style="width: 100%; border-collapse: collapse;">
               <tr>

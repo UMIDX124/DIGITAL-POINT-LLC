@@ -230,12 +230,12 @@ export default function RootLayout({
           }}
         />
 
-        <meta name="theme-color" content="#0D0D0D" />
-        <meta name="msapplication-TileColor" content="#0D0D0D" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
       </head>
       <body
         className="font-sans antialiased"
-        style={{ background: "#0D0D0D", color: "#F5F5F7" }}
+        style={{ background: "#000000", color: "#F5F5F7" }}
       >
         <div className="dpl-intro-loader" aria-hidden="true">
           <span className="dpl-intro-wordmark">Digital Point</span>

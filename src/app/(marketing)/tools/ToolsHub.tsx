@@ -15,7 +15,7 @@ const tools = [
     title: 'ROAS Calculator',
     description: 'Calculate your Return on Ad Spend instantly. Compare platform-reported vs. blended ROAS.',
     icon: TrendingUp,
-    color: '#A78BFA',
+    color: '#FF8800',
     tags: ['Paid Ads', 'ROI'],
   },
   {
@@ -23,7 +23,7 @@ const tools = [
     title: 'CAC Calculator',
     description: 'Calculate Customer Acquisition Cost across channels. Find your most efficient acquisition source.',
     icon: DollarSign,
-    color: '#A78BFA',
+    color: '#FF8800',
     tags: ['Unit Economics', 'Growth'],
   },
   {
@@ -31,7 +31,7 @@ const tools = [
     title: 'Ad Spend Profit Calculator',
     description: 'Model profitability at different ad spend levels. Find your optimal budget allocation.',
     icon: Calculator,
-    color: '#C4B5FD',
+    color: '#FFA833',
     tags: ['Budget', 'Profitability'],
   },
   {
@@ -39,7 +39,7 @@ const tools = [
     title: 'Attribution Model Visualizer',
     description: 'Compare first-click, last-click, linear, time-decay, and position-based attribution models side by side.',
     icon: PieChart,
-    color: '#A78BFA',
+    color: '#FF8800',
     tags: ['Attribution', 'Analytics'],
   },
   {
@@ -47,7 +47,7 @@ const tools = [
     title: 'Dashboard Cost Calculator',
     description: 'Estimate the cost of building vs. buying a marketing analytics dashboard for your team.',
     icon: BarChart3,
-    color: '#C4B5FD',
+    color: '#FFA833',
     tags: ['Reporting', 'Systems'],
   },
 ];
@@ -66,7 +66,7 @@ export function ToolsHub() {
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
               Marketing{' '}
-              <span className="bg-gradient-to-r from-[#C4B5FD] via-[#A78BFA] to-[#A78BFA] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FF8800] bg-clip-text text-transparent">
                 calculators
               </span>
               {' '}& tools
@@ -93,13 +93,13 @@ export function ToolsHub() {
                       >
                         <Icon className="w-6 h-6" style={{ color: tool.color }} />
                       </div>
-                      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#C4B5FD] transition-colors mb-2">
+                      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#FFA833] transition-colors mb-2">
                         {tool.title}
                       </h3>
                       <p className="text-[#8E8E96] text-sm leading-relaxed flex-1 mb-4">{tool.description}</p>
                       <div className="flex gap-2">
                         {tool.tags.map((tag) => (
-                          <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] text-[#8E8E96] bg-[rgba(167,139,250,0.1)]">
+                          <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] text-[#8E8E96] bg-[rgba(255, 136, 0,0.1)]">
                             {tag}
                           </span>
                         ))}

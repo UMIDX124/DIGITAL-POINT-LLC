@@ -137,9 +137,9 @@ export default function ChatPanel({ open, onClose }: Props) {
               style={
                 m.role === 'user'
                   ? {
-                      background: 'rgba(196, 181, 253, 0.15)',
+                      background: 'rgba(255, 168, 51, 0.15)',
                       color: 'var(--text-primary)',
-                      border: '1px solid rgba(196, 181, 253, 0.3)',
+                      border: '1px solid rgba(255, 168, 51, 0.3)',
                     }
                   : {
                       background: 'var(--bg-elevated)',

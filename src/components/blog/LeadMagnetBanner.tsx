@@ -8,16 +8,16 @@ export function LeadMagnetBanner() {
     <section
       className="rounded-2xl p-8 md:p-12 text-center my-12"
       style={{
-        background: 'linear-gradient(135deg, rgba(167, 139, 250,0.18) 0%, rgba(13,8,21,0.9) 50%, rgba(167,139,250,0.12) 100%)',
-        border: '1px solid rgba(196,181,253, 0.2)',
+        background: 'linear-gradient(135deg, rgba(255, 136, 0,0.18) 0%, rgba(13,8,21,0.9) 50%, rgba(255, 136, 0,0.12) 100%)',
+        border: '1px solid rgba(255, 168, 51, 0.2)',
       }}
     >
       <div className="flex justify-center mb-4">
         <div
           className="w-12 h-12 rounded-xl flex items-center justify-center"
           style={{
-            background: 'linear-gradient(135deg, #4338CA 0%, #7C3AED 100%)',
-            boxShadow: '0 4px 24px rgba(167, 139, 250, 0.4)',
+            background: 'linear-gradient(135deg, #C26800 0%, #C26800 100%)',
+            boxShadow: '0 4px 24px rgba(255, 136, 0, 0.4)',
           }}
         >
           <BarChart3 className="w-6 h-6 text-white" />
@@ -37,8 +37,8 @@ export function LeadMagnetBanner() {
           href="/free-growth-audit"
           className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-xl transition-transform hover:scale-[1.02] active:scale-[0.98]"
           style={{
-            background: 'linear-gradient(135deg, #4338CA 0%, #7C3AED 100%)',
-            boxShadow: '0 4px 16px rgba(167, 139, 250, 0.3)',
+            background: 'linear-gradient(135deg, #C26800 0%, #C26800 100%)',
+            boxShadow: '0 4px 16px rgba(255, 136, 0, 0.3)',
           }}
         >
           Book Free Audit
@@ -48,9 +48,9 @@ export function LeadMagnetBanner() {
           href="/results"
           className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
           style={{
-            color: '#A78BFA',
-            border: '1px solid rgba(196,181,253, 0.3)',
-            background: 'rgba(167,139,250, 0.08)',
+            color: '#FF8800',
+            border: '1px solid rgba(255, 168, 51, 0.3)',
+            background: 'rgba(255, 136, 0, 0.08)',
           }}
         >
           See Results First

@@ -17,7 +17,7 @@ const Metric = memo(function Metric({ value, label }: { value: string; label: st
       <div
         className="font-display text-3xl md:text-4xl font-bold mb-1"
         style={{
-          background: 'linear-gradient(90deg, #C4B5FD, #A78BFA)',
+          background: 'linear-gradient(90deg, #FFA833, #FF8800)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
         }}
@@ -35,9 +35,9 @@ export function ProofBar() {
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(180deg, rgba(13,8,21,0) 0%, rgba(167,139,250,0.05) 50%, rgba(13,8,21,0) 100%)',
-          borderTop: '1px solid rgba(196,181,253, 0.08)',
-          borderBottom: '1px solid rgba(196,181,253, 0.08)',
+          background: 'linear-gradient(180deg, rgba(13,8,21,0) 0%, rgba(255, 136, 0,0.05) 50%, rgba(13,8,21,0) 100%)',
+          borderTop: '1px solid rgba(255, 168, 51, 0.08)',
+          borderBottom: '1px solid rgba(255, 168, 51, 0.08)',
         }}
       />
 

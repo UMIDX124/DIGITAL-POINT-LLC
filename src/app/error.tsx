@@ -9,7 +9,7 @@ export default function Error({
   return (
     <div
       className="min-h-screen flex items-center justify-center px-4"
-      style={{ background: 'linear-gradient(180deg, #0D0D0D 0%, #111114 50%, #0D0D0D 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #000000 0%, #111114 50%, #000000 100%)' }}
     >
       <div className="text-center max-w-md">
         <div
@@ -31,7 +31,7 @@ export default function Error({
           onClick={reset}
           className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all hover:scale-105 cursor-pointer"
           style={{
-            background: 'linear-gradient(135deg, #7C3AED 0%, #A78BFA 50%, #C4B5FD 100%)',
+            background: 'linear-gradient(135deg, #C26800 0%, #FF8800 50%, #FFA833 100%)',
           }}
         >
           Try Again

@@ -94,7 +94,7 @@ export default async function ServiceIndustryPage({ params }: PageProps) {
               >
                 <span
                   className="mt-2 w-2 h-2 rounded-full shrink-0"
-                  style={{ background: '#A78BFA' }}
+                  style={{ background: '#FF8800' }}
                 />
                 {benefit}
               </li>
@@ -117,7 +117,7 @@ export default async function ServiceIndustryPage({ params }: PageProps) {
                 <span
                   className="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold text-white"
                   style={{
-                    background: 'linear-gradient(135deg, #4338CA 0%, #7C3AED 100%)',
+                    background: 'linear-gradient(135deg, #C26800 0%, #C26800 100%)',
                   }}
                 >
                   {index + 1}

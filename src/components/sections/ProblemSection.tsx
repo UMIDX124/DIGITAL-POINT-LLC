@@ -82,7 +82,7 @@ export function ProblemSection() {
             {/* Main Title */}
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-[1.15] tracking-tight mb-6">
               <span className="block">You&apos;re not guessing.</span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#C4B5FD] via-[#A78BFA] to-[#A78BFA]">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FF8800]">
                 You just don&apos;t have the data.
               </span>
             </h2>
@@ -102,11 +102,11 @@ export function ProblemSection() {
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
                     style={{
-                      background: 'rgba(167,139,250, 0.15)',
-                      border: '1px solid rgba(196,181,253, 0.2)',
+                      background: 'rgba(255, 136, 0, 0.15)',
+                      border: '1px solid rgba(255, 168, 51, 0.2)',
                     }}
                   >
-                    <problem.icon className="w-6 h-6 text-[#A78BFA]" />
+                    <problem.icon className="w-6 h-6 text-[#FF8800]" />
                   </div>
                   <div>
                     <h3 className="font-display font-semibold text-white mb-2">

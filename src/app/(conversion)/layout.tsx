@@ -23,7 +23,7 @@ export default function ConversionLayout({
             style={{
               width: '40px',
               height: '40px',
-              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5)) drop-shadow(0 8px 16px rgba(167,139,250,0.3))',
+              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5)) drop-shadow(0 8px 16px rgba(255, 136, 0,0.3))',
             }}
           />
           <span className="font-display font-semibold text-base text-white/90 hidden sm:block">

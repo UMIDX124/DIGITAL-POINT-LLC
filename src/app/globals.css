@@ -27,7 +27,7 @@
    Dark surfaces · purple primary · editorial typography · motion tokens
 
    PRIMARY COLOR SUPERSEDURE (durable, documented in commit):
-   DPL primary is PURPLE #A78BFA. This supersedes the legacy amber/gold
+   DPL primary is PURPLE #FF8800. This supersedes the legacy amber/gold
    rule in global ~/.claude/CLAUDE.md for the DPL site ONLY. Other projects
    (CRM, VCS, BSL) keep their existing color rules.
 
@@ -127,7 +127,7 @@
   /* Charts — purple ladder */
   --color-chart-1: var(--accent);
   --color-chart-2: var(--accent-bright);
-  --color-chart-3: #A5B4FC;
+  --color-chart-3: #FFA833;
   --color-chart-4: var(--text-secondary);
   --color-chart-5: var(--text-tertiary);
 
@@ -267,29 +267,41 @@
   --font-instrument-serif: 'InstrumentSerifLocal';
   --radius: 0.5rem;
 
-  /* --- Background system (premium depth) --- */
-  --bg-primary: #0D0D0D;
-  --bg-secondary: #111114;
-  --bg-tertiary: #0A0A0B;
-  --bg-elevated: #151518;
+  /* --- Phase 16 Section A: Bloomberg Operator palette ---
+     Pure black canvas, phosphor amber primary, instrument blue secondary
+     (sparing — semantic emphasis on data/AI moments only). Replaces the
+     Phase 13 violet system. --bg-canvas is the new canonical name; the
+     legacy --bg-primary / --bg-secondary / --bg-tertiary / --bg-elevated
+     names continue to resolve so unrewritten components still render. */
+  --bg-canvas: #000000;
+  --bg-primary: #000000;
+  --bg-secondary: #050505;
+  --bg-tertiary: #030303;
+  --bg-elevated: #0A0A0A;
 
-  /* --- Purple accent system (new canonical) --- */
-  --accent: #A78BFA;
-  --accent-bright: #C4B5FD;
-  --accent-deep: #7C3AED;
-  --accent-glow: rgba(167, 139, 250, 0.25);
-  --accent-glow-soft: rgba(167, 139, 250, 0.08);
+  /* --- Phosphor amber + instrument blue accents --- */
+  --accent-primary: #FF8800;
+  --accent-secondary: #2A8FBD;
+  --ring-stroke: #3A2D14;
+  --cta-text-on-amber: #1A0E00;
+  /* Legacy --accent / --accent-bright / --accent-deep names retained,
+     retargeted to the new amber so existing rules keep rendering. */
+  --accent: #FF8800;
+  --accent-bright: #FFA833;
+  --accent-deep: #C26800;
+  --accent-glow: rgba(255, 136, 0, 0.25);
+  --accent-glow-soft: rgba(255, 136, 0, 0.08);
 
   /* --- Text --- */
-  --text-primary: #F5F5F7;
-  --text-secondary: #A1A1AA;
-  --text-tertiary: #8E8E96;
-  --text-muted: #7E7E84;
+  --text-primary: #ECECEC;
+  --text-secondary: #A8A8A8;
+  --text-tertiary: #9A9A9A;
+  --text-muted: #9A9A9A;
 
   /* --- Borders --- */
   --border-subtle: rgba(255, 255, 255, 0.06);
   --border-default: rgba(255, 255, 255, 0.1);
-  --border-bright: rgba(167, 139, 250, 0.3);
+  --border-bright: rgba(255, 136, 0, 0.3);
 
   /* ----- Legacy palette aliases → purple palette -----
      Components not yet rewritten still reference these names. They resolve
@@ -385,7 +397,7 @@
   }
 
   /* Selection — purple */
-  ::selection { background: rgba(167, 139, 250, 0.35); color: var(--text-primary); }
+  ::selection { background: rgba(255, 136, 0, 0.35); color: var(--text-primary); }
 }
 
 /* ============================================
@@ -741,7 +753,7 @@ a.text-link:hover,
 .cta-primary {
   display: inline-flex; align-items: center; gap: 0.5rem;
   /* Phase 15 a11y — accent bg with #0A0A0B text reads ~13:1 (AAA).
-     Previous #ffffff on #A78BFA was ~2.5:1 (failed WCAG AA). */
+     Previous #ffffff on #FF8800 was ~2.5:1 (failed WCAG AA). */
   background: var(--accent); color: #0A0A0B;
   padding: 0.95rem 1.6rem; border-radius: 2px;
   font-family: var(--font-geist-sans), var(--font-sans), sans-serif;
@@ -859,11 +871,11 @@ html[data-paused-global="true"] .grain-overlay {
   inset: -10%;
   background: conic-gradient(
     from 0deg at 50% 100%,
-    rgba(167, 139, 250, 0) 0deg,
-    rgba(167, 139, 250, 0.10) 90deg,
-    rgba(196, 181, 253, 0.06) 180deg,
-    rgba(167, 139, 250, 0.10) 270deg,
-    rgba(167, 139, 250, 0) 360deg
+    rgba(255, 136, 0, 0) 0deg,
+    rgba(255, 136, 0, 0.10) 90deg,
+    rgba(255, 168, 51, 0.06) 180deg,
+    rgba(255, 136, 0, 0.10) 270deg,
+    rgba(255, 136, 0, 0) 360deg
   );
   animation: hero-ambient-rotate 60s linear infinite;
   pointer-events: none;
@@ -1175,6 +1187,114 @@ html[data-paused-global="true"] .logo-marquee-track {
 }
 
 /* ===================================================================
+   Phase 16 A.1 — Hero AutomationOrbit (galaxy/orbital system).
+   Replaces or augments AutomationFlow 2×2. Single GPU rotation on the
+   spinner container; nodes positioned absolutely; SVG light-cone arcs
+   imply signal direction. < 768px hidden. Reduced-motion = static.
+   ------------------------------------------------------------------- */
+.automation-orbit {
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  /* Gravitational well — subtle radial deepening behind the orbit so the
+     center reads as a focal point. Pure CSS, no animation, zero JS. */
+  background: radial-gradient(
+    ellipse 70% 70% at 50% 50%,
+    rgba(255, 136, 0, 0.08) 0%,
+    rgba(255, 136, 0, 0.03) 40%,
+    transparent 70%
+  );
+}
+@media (max-width: 767px) {
+  .automation-orbit { display: none; }
+}
+.automation-orbit-spinner {
+  position: absolute;
+  inset: 0;
+  animation: orbit-spin 90s linear infinite;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+@keyframes orbit-spin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .automation-orbit-spinner {
+    animation: none;
+  }
+}
+.automation-orbit-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.automation-orbit-cosmo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 32px;
+  height: 32px;
+  margin-left: -16px;
+  margin-top: -16px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Subtle glow only — no pulse. */
+  box-shadow:
+    0 0 0 1px rgba(255, 136, 0, 0.4),
+    0 0 24px 4px rgba(255, 136, 0, 0.18);
+  overflow: hidden;
+}
+.automation-orbit-cosmo img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+.automation-orbit-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--accent);
+  min-width: 6.5rem;
+  /* Subtle elevation; no animation. */
+  box-shadow: 0 4px 18px -8px rgba(0, 0, 0, 0.6);
+}
+.automation-orbit-node-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+}
+.automation-orbit-node-label {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.85rem;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+.automation-orbit-node-sub {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+/* ===================================================================
    Phase 14 — Hero AutomationFlow (right-column 2×2 grid).
    Sequential node fade-in (0/100/200/300ms), flowing dashed paths,
    periodic node pulse (5s cycle, staggered). All CSS, no JS.
@@ -1437,7 +1557,7 @@ html[data-paused-global="true"] .logo-marquee-track {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #0D0D0D;
+  background: #000000;
   pointer-events: none;
   animation: dpl-intro-stage 1100ms cubic-bezier(0.65, 0.05, 0, 1) forwards;
 }
@@ -1459,7 +1579,7 @@ html[data-i-seen="1"] .dpl-intro-loader { display: none; }
   margin-top: 1.5rem;
   width: 0;
   height: 1px;
-  background: #A78BFA;
+  background: #FF8800;
   animation: dpl-intro-line-fill 700ms cubic-bezier(0.33, 1, 0.68, 1) forwards;
 }
 @keyframes dpl-intro-fade-in { to { opacity: 1; } }

@@ -63,7 +63,7 @@ export function AboutPage() {
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
               Built for businesses that need{' '}
-              <span className="bg-gradient-to-r from-[#C4B5FD] via-[#A78BFA] to-[#A78BFA] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FF8800] bg-clip-text text-transparent">
                 real growth
               </span>
               , not reports about growth.
@@ -83,7 +83,7 @@ export function AboutPage() {
               className="rounded-2xl p-8 md:p-12 grid grid-cols-2 md:grid-cols-4 gap-8"
               style={{
                 background: 'rgba(20,20,22, 0.5)',
-                border: '1px solid rgba(167,139,250, 0.15)',
+                border: '1px solid rgba(255, 136, 0, 0.15)',
               }}
             >
               <MetricDisplay value="8" suffix="+" label="Years in Market" />
@@ -110,7 +110,7 @@ export function AboutPage() {
               className="rounded-2xl p-8 md:p-10"
               style={{
                 background: 'rgba(20,20,22, 0.5)',
-                border: '1px solid rgba(167,139,250, 0.15)',
+                border: '1px solid rgba(255, 136, 0, 0.15)',
               }}
             >
               <p className="text-[#D6D0C2] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
@@ -125,15 +125,15 @@ export function AboutPage() {
               <p className="text-white text-base leading-relaxed font-medium" style={{ maxWidth: 'var(--maxw-body)' }}>
                 We&apos;re still those two guys who argue about attribution over coffee. We just have a bigger team now — and better coffee.
               </p>
-              <div className="flex flex-wrap gap-6 mt-6 pt-6" style={{ borderTop: '1px solid rgba(167,139,250, 0.15)' }}>
+              <div className="flex flex-wrap gap-6 mt-6 pt-6" style={{ borderTop: '1px solid rgba(255, 136, 0, 0.15)' }}>
                 <div>
                   <p className="text-white font-display font-semibold">M. Faizan Rafiq</p>
-                  <p className="text-[#A78BFA] text-sm">Co-Founder &middot; The Ads Guy</p>
+                  <p className="text-[#FF8800] text-sm">Co-Founder &middot; The Ads Guy</p>
                   <p className="text-[#8E8E96] text-xs mt-1">Secretly competitive about ROAS the way some people are about fantasy football.</p>
                 </div>
                 <div>
                   <p className="text-white font-display font-semibold">Anwaar Tayyab</p>
-                  <p className="text-[#A78BFA] text-sm">Co-Founder &middot; The Data Guy</p>
+                  <p className="text-[#FF8800] text-sm">Co-Founder &middot; The Data Guy</p>
                   <p className="text-[#8E8E96] text-xs mt-1">Will redesign your entire dashboard if one chart is slightly misleading. You&apos;ve been warned.</p>
                 </div>
               </div>
@@ -142,19 +142,19 @@ export function AboutPage() {
 
           <div className="relative max-w-3xl mx-auto">
             {/* Timeline line */}
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#A78BFA] via-[#7C3AED] to-transparent" />
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#FF8800] via-[#C26800] to-transparent" />
 
             <StaggerContainer className="space-y-12">
               {milestones.map((item, i) => (
                 <StaggerItem key={item.year}>
                   <div className={`relative flex items-start gap-8 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                     {/* Dot */}
-                    <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#A78BFA] z-10"
-                      style={{ boxShadow: '0 0 12px rgba(196,181,253, 0.6)' }}
+                    <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#FF8800] z-10"
+                      style={{ boxShadow: '0 0 12px rgba(255, 168, 51, 0.6)' }}
                     />
 
                     <div className={`ml-12 md:ml-0 md:w-[calc(50%-2rem)] ${i % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8'}`}>
-                      <span className="text-[#A78BFA] font-mono text-sm">{item.year}</span>
+                      <span className="text-[#FF8800] font-mono text-sm">{item.year}</span>
                       <h3 className="font-display text-xl font-semibold text-white mt-1">{item.title}</h3>
                       <p className="text-[#D6D0C2] text-sm mt-2 leading-relaxed">{item.description}</p>
                     </div>
@@ -178,7 +178,7 @@ export function AboutPage() {
             {values.map((value) => (
               <StaggerItem key={value.title}>
                 <GlassCard className="p-6 h-full">
-                  <value.icon className="w-8 h-8 text-[#A78BFA] mb-4" />
+                  <value.icon className="w-8 h-8 text-[#FF8800] mb-4" />
                   <h3 className="font-display text-lg font-semibold text-white mb-2">{value.title}</h3>
                   <p className="text-[#D6D0C2] text-sm leading-relaxed">{value.description}</p>
                 </GlassCard>
@@ -203,8 +203,8 @@ export function AboutPage() {
                 <motion.span
                   className="inline-flex items-center gap-2 px-8 py-4 text-lg font-semibold text-white rounded-xl"
                   style={{
-                    background: 'linear-gradient(135deg, #4338CA 0%, #7C3AED 50%, #A78BFA 100%)',
-                    boxShadow: '0 4px 20px rgba(167, 139, 250, 0.4)',
+                    background: 'linear-gradient(135deg, #C26800 0%, #C26800 50%, #FF8800 100%)',
+                    boxShadow: '0 4px 20px rgba(255, 136, 0, 0.4)',
                   }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

@@ -46,7 +46,7 @@ export function ExitIntentModal() {
         className="sm:max-w-md border-0"
         style={{
           background: 'linear-gradient(135deg, #141416 0%, #1C1C1F 100%)',
-          border: '1px solid rgba(196,181,253, 0.2)',
+          border: '1px solid rgba(255, 168, 51, 0.2)',
         }}
       >
         <DialogHeader>
@@ -64,8 +64,8 @@ export function ExitIntentModal() {
             onClick={() => setOpen(false)}
             className="w-full py-3 rounded-xl text-sm font-semibold text-white flex items-center justify-center gap-2"
             style={{
-              background: 'linear-gradient(135deg, #4338CA 0%, #7C3AED 50%, #A78BFA 100%)',
-              boxShadow: '0 4px 16px rgba(167, 139, 250, 0.4)',
+              background: 'linear-gradient(135deg, #C26800 0%, #C26800 50%, #FF8800 100%)',
+              boxShadow: '0 4px 16px rgba(255, 136, 0, 0.4)',
             }}
           >
             Get Free Audit

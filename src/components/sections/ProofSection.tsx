@@ -45,7 +45,7 @@ export function ProofSection() {
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-3xl animate-glow-pulse"
         style={{
-          background: 'radial-gradient(ellipse, rgba(167,139,250, 0.4) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse, rgba(255, 136, 0, 0.4) 0%, transparent 70%)',
         }}
       />
 
@@ -62,10 +62,10 @@ export function ProofSection() {
             <FadeUp key={study.company} delay={index * 0.1}>
               <GlassCard className="p-6 h-full">
                 <div className="flex items-start justify-between mb-4">
-                  <div className="text-xs font-medium text-[#A78BFA] px-3 py-1 rounded-full"
+                  <div className="text-xs font-medium text-[#FF8800] px-3 py-1 rounded-full"
                     style={{
-                      background: 'rgba(167,139,250, 0.15)',
-                      border: '1px solid rgba(196,181,253, 0.2)',
+                      background: 'rgba(255, 136, 0, 0.15)',
+                      border: '1px solid rgba(255, 168, 51, 0.2)',
                     }}
                   >
                     {study.company}
@@ -74,7 +74,7 @@ export function ProofSection() {
                     <div 
                       className="font-display text-2xl font-bold"
                       style={{
-                        background: 'linear-gradient(135deg, #C4B5FD 0%, #A78BFA 50%, #A78BFA 100%)',
+                        background: 'linear-gradient(135deg, #FFA833 0%, #FF8800 50%, #FF8800 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                       }}
@@ -96,7 +96,7 @@ export function ProofSection() {
                   </div>
                   <div>
                     <div className="text-[#8E8E96] text-xs uppercase tracking-wide mb-1">Result</div>
-                    <p className="text-[#A78BFA] text-sm font-medium">{study.result}</p>
+                    <p className="text-[#FF8800] text-sm font-medium">{study.result}</p>
                   </div>
                 </div>
               </GlassCard>

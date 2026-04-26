@@ -27,7 +27,7 @@ export function CACCalculator({ faqs }: Props) {
   const paybackMonths = cac > 0 && customerLtv > 0 ? (cac / (customerLtv / 12)) : 0;
 
   const ratioRating = ltvCacRatio >= 5 ? 'Excellent' : ltvCacRatio >= 3 ? 'Healthy' : ltvCacRatio >= 1 ? 'Needs Work' : ltvCacRatio > 0 ? 'Danger' : '';
-  const ratioColor = ltvCacRatio >= 5 ? '#C4B5FD' : ltvCacRatio >= 3 ? '#A78BFA' : ltvCacRatio >= 1 ? '#C4B5FD' : '#A78BFA';
+  const ratioColor = ltvCacRatio >= 5 ? '#FFA833' : ltvCacRatio >= 3 ? '#FF8800' : ltvCacRatio >= 1 ? '#FFA833' : '#FF8800';
 
   const handleShare = () => {
     const url = `${window.location.origin}/tools/cac-calculator?ms=${marketingSpend}&ss=${salesSpend}&nc=${newCustomers}&ltv=${ltv}`;
@@ -45,7 +45,7 @@ export function CACCalculator({ faqs }: Props) {
             <Breadcrumbs items={[{ label: 'Tools', href: '/tools' }, { label: 'CAC Calculator', href: '/tools/cac-calculator' }]} />
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mt-6">
               CAC{' '}
-              <span className="bg-gradient-to-r from-[#A78BFA] via-[#A78BFA] to-[#C4B5FD] bg-clip-text text-transparent">Calculator</span>
+              <span className="bg-gradient-to-r from-[#FF8800] via-[#FF8800] to-[#FFA833] bg-clip-text text-transparent">Calculator</span>
             </h1>
             <p className="text-[#D6D0C2] text-lg mt-3 max-w-2xl">
               Calculate your Customer Acquisition Cost and LTV:CAC ratio to measure growth efficiency.
@@ -66,8 +66,8 @@ export function CACCalculator({ faqs }: Props) {
                     <div className="relative">
                       <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8E96]" />
                       <input type="number" value={marketingSpend} onChange={(e) => setMarketingSpend(e.target.value)} placeholder="25,000"
-                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
-                        style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }} />
+                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                        style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }} />
                     </div>
                   </div>
                   <div>
@@ -75,8 +75,8 @@ export function CACCalculator({ faqs }: Props) {
                     <div className="relative">
                       <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8E96]" />
                       <input type="number" value={salesSpend} onChange={(e) => setSalesSpend(e.target.value)} placeholder="10,000"
-                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
-                        style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }} />
+                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                        style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }} />
                     </div>
                   </div>
                   <div>
@@ -84,8 +84,8 @@ export function CACCalculator({ faqs }: Props) {
                     <div className="relative">
                       <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8E96]" />
                       <input type="number" value={newCustomers} onChange={(e) => setNewCustomers(e.target.value)} placeholder="50"
-                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
-                        style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }} />
+                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                        style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }} />
                     </div>
                   </div>
                   <div>
@@ -93,8 +93,8 @@ export function CACCalculator({ faqs }: Props) {
                     <div className="relative">
                       <TrendingUp className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8E96]" />
                       <input type="number" value={ltv} onChange={(e) => setLtv(e.target.value)} placeholder="2,000"
-                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
-                        style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }} />
+                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                        style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }} />
                     </div>
                   </div>
                 </div>
@@ -105,22 +105,22 @@ export function CACCalculator({ faqs }: Props) {
               <GlassCard className="p-6 md:p-8">
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="font-display text-xl font-semibold text-white">Results</h2>
-                  <button onClick={handleShare} className="p-2 rounded-lg text-[#8E8E96] hover:text-[#A78BFA] transition-colors" style={{ background: 'rgba(167,139,250, 0.1)' }}>
+                  <button onClick={handleShare} className="p-2 rounded-lg text-[#8E8E96] hover:text-[#FF8800] transition-colors" style={{ background: 'rgba(255, 136, 0, 0.1)' }}>
                     <Share2 className="w-4 h-4" />
                   </button>
                 </div>
-                {copied && <p className="text-[#C4B5FD] text-xs mb-3">Link copied!</p>}
+                {copied && <p className="text-[#FFA833] text-xs mb-3">Link copied!</p>}
 
                 <div className="space-y-4">
-                  <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(167,139,250, 0.15)' }}>
+                  <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
                     <span className="text-[#8E8E96] text-sm">Customer Acquisition Cost</span>
-                    <p className="font-display text-3xl font-bold text-[#A78BFA] mt-1">
+                    <p className="font-display text-3xl font-bold text-[#FF8800] mt-1">
                       {cac > 0 ? `$${cac.toFixed(0)}` : '—'}
                     </p>
                   </div>
 
                   {ltvCacRatio > 0 && (
-                    <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(167,139,250, 0.15)' }}>
+                    <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
                       <div className="flex items-center justify-between">
                         <span className="text-[#8E8E96] text-sm">LTV:CAC Ratio</span>
                         <span className="text-xs px-2 py-0.5 rounded-full" style={{ color: ratioColor, background: `${ratioColor}15` }}>{ratioRating}</span>
@@ -132,11 +132,11 @@ export function CACCalculator({ faqs }: Props) {
                   )}
 
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(167,139,250, 0.15)' }}>
+                    <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
                       <span className="text-[#8E8E96] text-xs">Total Spend</span>
                       <p className="font-display text-lg font-bold text-white mt-1">{totalSpend > 0 ? `$${totalSpend.toLocaleString()}` : '—'}</p>
                     </div>
-                    <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(167,139,250, 0.15)' }}>
+                    <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
                       <span className="text-[#8E8E96] text-xs">Payback Period</span>
                       <p className="font-display text-lg font-bold text-white mt-1">{paybackMonths > 0 ? `${paybackMonths.toFixed(1)} mo` : '—'}</p>
                     </div>
@@ -155,20 +155,20 @@ export function CACCalculator({ faqs }: Props) {
                   <p className="text-[#D6D0C2] text-sm leading-relaxed mb-3">
                     Customer Acquisition Cost is calculated by dividing total sales and marketing expenses by the number of new customers acquired in a given period.
                   </p>
-                  <div className="rounded-xl p-4 text-center font-mono text-[#A78BFA]" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(167,139,250, 0.15)' }}>
+                  <div className="rounded-xl p-4 text-center font-mono text-[#FF8800]" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
                     CAC = (Marketing Spend + Sales Spend) / New Customers
                   </div>
                 </div>
 
                 <div>
                   <h2 className="font-display text-2xl font-bold text-white mb-4">CAC Benchmarks by Industry</h2>
-                  <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(167,139,250, 0.15)' }}>
+                  <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(255, 136, 0, 0.15)' }}>
                     <table className="w-full text-sm">
                       <thead>
-                        <tr style={{ background: 'rgba(167,139,250, 0.1)' }}>
-                          <th className="text-left px-4 py-3 text-[#A78BFA] font-medium">Industry</th>
-                          <th className="text-right px-4 py-3 text-[#A78BFA] font-medium">Avg CAC</th>
-                          <th className="text-right px-4 py-3 text-[#A78BFA] font-medium">Avg LTV:CAC</th>
+                        <tr style={{ background: 'rgba(255, 136, 0, 0.1)' }}>
+                          <th className="text-left px-4 py-3 text-[#FF8800] font-medium">Industry</th>
+                          <th className="text-right px-4 py-3 text-[#FF8800] font-medium">Avg CAC</th>
+                          <th className="text-right px-4 py-3 text-[#FF8800] font-medium">Avg LTV:CAC</th>
                         </tr>
                       </thead>
                       <tbody className="text-[#D6D0C2]">
@@ -179,10 +179,10 @@ export function CACCalculator({ faqs }: Props) {
                           ['FinTech', '$300-$1,000', '3-6:1'],
                           ['Healthcare', '$600-$2,500', '5-10:1'],
                         ].map(([industry, cac, ratio]) => (
-                          <tr key={industry} style={{ borderTop: '1px solid rgba(167,139,250, 0.1)' }}>
+                          <tr key={industry} style={{ borderTop: '1px solid rgba(255, 136, 0, 0.1)' }}>
                             <td className="px-4 py-3">{industry}</td>
                             <td className="px-4 py-3 text-right font-mono">{cac}</td>
-                            <td className="px-4 py-3 text-right font-mono text-[#C4B5FD]">{ratio}</td>
+                            <td className="px-4 py-3 text-right font-mono text-[#FFA833]">{ratio}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -194,7 +194,7 @@ export function CACCalculator({ faqs }: Props) {
                   <h2 className="font-display text-2xl font-bold text-white mb-4">FAQ</h2>
                   <div className="space-y-3">
                     {faqs.map((faq, i) => (
-                      <div key={i} className="rounded-xl p-5" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(167,139,250, 0.15)' }}>
+                      <div key={i} className="rounded-xl p-5" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
                         <h3 className="text-white font-medium text-sm mb-2">{faq.question}</h3>
                         <p className="text-[#8E8E96] text-sm">{faq.answer}</p>
                       </div>

@@ -70,7 +70,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
       className="mt-12 rounded-2xl p-6 sm:p-8"
       style={{
         background: 'rgba(13, 8, 21, 0.6)',
-        border: '1px solid rgba(167,139,250, 0.15)',
+        border: '1px solid rgba(255, 136, 0, 0.15)',
         backdropFilter: 'blur(12px)',
       }}
     >
@@ -90,11 +90,11 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
                 <li key={post.slug}>
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="group flex items-start gap-2 text-[#D6D0C2] hover:text-[#A78BFA] transition-colors"
+                    className="group flex items-start gap-2 text-[#D6D0C2] hover:text-[#FF8800] transition-colors"
                   >
                     <span
                       className="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                      style={{ background: '#A78BFA' }}
+                      style={{ background: '#FF8800' }}
                     />
                     <span className="text-sm leading-snug group-hover:underline">
                       {post.title}
@@ -117,11 +117,11 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
                 <li key={tool.slug}>
                   <Link
                     href={`/tools/${tool.slug}`}
-                    className="group flex items-start gap-2 text-[#D6D0C2] hover:text-[#A78BFA] transition-colors"
+                    className="group flex items-start gap-2 text-[#D6D0C2] hover:text-[#FF8800] transition-colors"
                   >
                     <span
                       className="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                      style={{ background: '#C4B5FD' }}
+                      style={{ background: '#FFA833' }}
                     />
                     <span className="text-sm leading-snug">
                       <span className="group-hover:underline">{tool.title}</span>
@@ -147,11 +147,11 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
                 <li key={item.slug}>
                   <Link
                     href={`/research/${item.slug}`}
-                    className="group flex items-start gap-2 text-[#D6D0C2] hover:text-[#A78BFA] transition-colors"
+                    className="group flex items-start gap-2 text-[#D6D0C2] hover:text-[#FF8800] transition-colors"
                   >
                     <span
                       className="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                      style={{ background: '#A78BFA' }}
+                      style={{ background: '#FF8800' }}
                     />
                     <span className="text-sm leading-snug">
                       <span className="group-hover:underline">{item.title}</span>
@@ -177,11 +177,11 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
                 <li key={item.slug}>
                   <Link
                     href={`/compare/${item.slug}`}
-                    className="group flex items-start gap-2 text-[#D6D0C2] hover:text-[#A78BFA] transition-colors"
+                    className="group flex items-start gap-2 text-[#D6D0C2] hover:text-[#FF8800] transition-colors"
                   >
                     <span
                       className="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                      style={{ background: '#A78BFA' }}
+                      style={{ background: '#FF8800' }}
                     />
                     <span className="text-sm leading-snug group-hover:underline">
                       {item.title}

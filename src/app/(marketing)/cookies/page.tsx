@@ -134,8 +134,8 @@ export default function CookiesPage() {
           <div
             className="rounded-xl p-6 mt-12"
             style={{
-              background: 'rgba(167, 139, 250, 0.08)',
-              border: '1px solid rgba(167, 139, 250, 0.2)',
+              background: 'rgba(255, 136, 0, 0.08)',
+              border: '1px solid rgba(255, 136, 0, 0.2)',
               maxWidth: 'var(--maxw-body)',
             }}
           >

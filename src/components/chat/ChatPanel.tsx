@@ -12,22 +12,37 @@ type Props = {
 
 const GREETING: Message = {
   role: 'assistant',
-  content:
-    "Hi — I'm the DPL AI agent. Ask me about our services, how we work, or what we can run for you. What's on your mind?",
+  content: "Hey, I'm Cosmo. What can I help with?",
 };
+
+// Phase 17b 3-restructured G4 — quick-reply pills shown alongside the
+// initial greeting until the user sends their first message.
+const QUICK_REPLIES: readonly string[] = [
+  'What do you do?',
+  'How does pricing work?',
+  'Book an audit',
+] as const;
 
 export default function ChatPanel({ open, onClose }: Props) {
   const [messages, setMessages] = useState<Message[]>([GREETING]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Phase 17b 3-restructured G3 — skeleton mount state. Shown for ≥300ms
+  // when panel opens before the actual greeting + quick-reply pills surface.
+  const [showSkeleton, setShowSkeleton] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (open) {
-      setTimeout(() => inputRef.current?.focus(), 100);
-    }
+    if (!open) return;
+    setShowSkeleton(true);
+    const t1 = setTimeout(() => setShowSkeleton(false), 350);
+    const t2 = setTimeout(() => inputRef.current?.focus(), 450);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
   }, [open]);
 
   useEffect(() => {
@@ -43,8 +58,8 @@ export default function ChatPanel({ open, onClose }: Props) {
     return () => window.removeEventListener('keydown', onKey);
   }, [open, onClose]);
 
-  const send = async () => {
-    const text = input.trim();
+  const send = async (overrideText?: string) => {
+    const text = (overrideText ?? input).trim();
     if (!text || loading) return;
 
     setError(null);
@@ -90,9 +105,13 @@ export default function ChatPanel({ open, onClose }: Props) {
 
   if (!open) return null;
 
+  // Phase 17b 3-restructured G4 — quick-reply pills shown until the user
+  // has sent any message (i.e. messages array still equals the GREETING).
+  const showQuickReplies = !showSkeleton && messages.length === 1 && messages[0] === GREETING && !loading;
+
   return (
     <div
-      className="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] h-[520px] max-h-[calc(100vh-8rem)] flex flex-col rounded-2xl shadow-2xl chat-panel"
+      className="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] h-[520px] max-h-[calc(100vh-8rem)] flex flex-col rounded-2xl shadow-2xl chat-panel chat-panel-enter"
       style={{
         background: 'color-mix(in srgb, var(--bg-canvas) 95%, transparent)',
         backdropFilter: 'blur(16px)',
@@ -125,7 +144,27 @@ export default function ChatPanel({ open, onClose }: Props) {
       </div>
 
       <div ref={listRef} className="flex-1 overflow-y-auto px-5 py-4 space-y-3">
-        {messages.map((m, i) => (
+        {/* Phase 17b 3-restructured G3 — skeleton state shown for ~350ms
+            while panel slides in. Three pulsing placeholder bubbles in
+            bot-bubble style. Suppressed once skeleton timer expires. */}
+        {showSkeleton && (
+          <div className="space-y-3" aria-hidden="true">
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="flex justify-start">
+                <div
+                  className="px-4 py-2.5 rounded-2xl chat-skeleton-pulse"
+                  style={{
+                    background: 'var(--bg-elevated)',
+                    border: '1px solid var(--border-default)',
+                    width: ['72%', '60%', '48%'][i],
+                    height: '32px',
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        )}
+        {!showSkeleton && messages.map((m, i) => (
           <div
             key={i}
             data-chat-message
@@ -152,6 +191,26 @@ export default function ChatPanel({ open, onClose }: Props) {
             </div>
           </div>
         ))}
+        {/* Phase 17b 3-restructured G4 — quick-reply pills below greeting. */}
+        {showQuickReplies && (
+          <div className="flex flex-wrap gap-2 pt-1">
+            {QUICK_REPLIES.map((q) => (
+              <button
+                key={q}
+                type="button"
+                onClick={() => send(q)}
+                className="px-3 py-1.5 text-xs rounded-full transition-colors"
+                style={{
+                  background: 'transparent',
+                  border: '1px solid var(--ring-stroke)',
+                  color: 'var(--text-primary)',
+                }}
+              >
+                {q}
+              </button>
+            ))}
+          </div>
+        )}
         {loading && (
           <div className="flex justify-start">
             <div
@@ -202,7 +261,7 @@ export default function ChatPanel({ open, onClose }: Props) {
           />
           <button
             data-chat-send
-            onClick={send}
+            onClick={() => send()}
             disabled={!input.trim() || loading}
             aria-label="Send message"
             className="h-11 w-11 rounded-xl flex items-center justify-center transition-colors disabled:opacity-40 disabled:cursor-not-allowed"

@@ -144,6 +144,19 @@ export function ServicesPinReveal() {
                   {item.label}
                 </h3>
                 <p className="services-pin-desc font-body">{item.description}</p>
+                {/* Phase 17b 3-restructured C2 — outcome metric per service. */}
+                <p
+                  className="services-pin-metric font-mono uppercase tabular-nums"
+                  style={{
+                    fontSize: 'var(--text-micro)',
+                    letterSpacing: '0.14em',
+                    color: 'var(--accent-primary)',
+                    marginTop: '1rem',
+                    marginBottom: '1rem',
+                  }}
+                >
+                  {item.metric}
+                </p>
                 <Link href={item.href} className="services-pin-link text-link">
                   Explore {item.label.toLowerCase()}
                   <span aria-hidden="true">→</span>

@@ -8,8 +8,9 @@ import { GrainOverlay } from "@/components/background/GrainOverlay";
 import { CursorBloom } from "@/components/background/CursorBloom";
 import { VisibilityPause } from "@/components/motion/VisibilityPause";
 import ChatWidget from "@/components/chat/ChatWidget";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+// Phase 17b 3-restructured A3 — analytics gated on cookie consent.
+import CookieConsent from "@/components/compliance/CookieConsent";
+import AnalyticsGate from "@/components/compliance/AnalyticsGate";
 
 /**
  * Phase 12 — Instrument Serif served via manual @font-face in globals.css
@@ -247,8 +248,8 @@ export default function RootLayout({
         {children}
         <ChatWidget />
         <Toaster />
-        <Analytics />
-        <SpeedInsights />
+        <CookieConsent />
+        <AnalyticsGate />
         {process.env.NEXT_PUBLIC_ADSENSE_ID ? (
           <Script
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`}

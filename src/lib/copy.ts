@@ -36,31 +36,41 @@ export const copy = {
     // are operated by the AI + human stack.
     eyebrow: 'HOW WE RUN OPS',
     headline: 'AI agents lead. Operators back the loop.',
+    /* Phase 17b 3-restructured C2 — metric per service. Substantiation:
+       01 numbers from HeroDataTicker readouts (142ms p95); 02 number from
+       RecentWork case study ("14,400 operator-hours replaced"); 03/04/05
+       use generic capability framing per K7 (no fabricated numbers where
+       substantiation is incomplete). */
     items: [
       {
         label: 'AI Agents',
         href: '/automation#ai-agents',
         description: 'Custom-trained agents handling lead routing, sales follow-up, reporting, QA — 24/7.',
+        metric: '24/7 lead routing · 142ms p95 latency',
       },
       {
         label: 'Workflow Automation',
         href: '/automation',
         description: 'Multi-step automations across CRM, email, ads, fulfillment that replace manual ops.',
+        metric: '14.4K operator-hours replaced/yr (case study)',
       },
       {
         label: 'Remote Operators',
         href: '/remote-workforce',
         description: "Trained humans handling exception cases AI can't resolve. Trust + scale.",
+        metric: 'Trained operators · audit visibility on every action',
       },
       {
         label: 'Performance Marketing',
         href: '/performance-marketing',
         description: "Ad campaigns and growth experiments — operated by the AI + human stack above. We don't sell agency hours; we sell campaign execution that AI runs and operators audit.",
+        metric: 'Performance ad ops with ROI accountability',
       },
       {
         label: 'Systems & Reporting',
         href: '/systems-reporting',
         description: 'Live dashboards, weekly reports, attribution truth — automated assembly, human review.',
+        metric: 'Live dashboards · automated assembly · human review',
       },
     ] as const,
   },
@@ -278,39 +288,54 @@ export const copy = {
     body: 'Representative engagements. Details anonymized where the client asked us to.',
   },
 
+  /* Phase 17b 3-restructured H1 — 8-question canonical set per directive.
+     Q7 (cancellation terms) and Q8 (NDA willingness) use defensible
+     capability language — Umer to ratify exact wording before any
+     contractual commitment, but the home-page narrative-level claims
+     hold (we sign mutual NDAs; cancellation handled at deployment level). */
   faq: {
-    eyebrow: 'COMMON QUESTIONS',
-    headline: 'Before you get on a call.',
+    eyebrow: 'QUESTIONS',
+    headline: 'What people ask before they book.',
     items: [
       {
-        q: 'What does "operated" actually mean?',
+        q: 'How is this different from hiring an agency?',
         a:
-          "We run the function end-to-end under our management — hiring, training, QA, reporting, replacement if someone doesn't work out. You don't manage our people. You manage us.",
+          "Most agencies sell hours and hand you a deck. We deploy AI agents and automation that run your work 24/7, with trained operators auditing exception cases. You pay for outcomes that scale — not staff time that doesn't.",
       },
       {
-        q: 'How is this different from Upwork or a VA platform?',
+        q: 'Do I need to replace my existing team?',
         a:
-          "Upwork sells you a contractor and walks away. We build a pod — usually 2 to 5 specialists plus a lead — and the pod reports into us, not into you. If someone leaves, we backfill within 5 business days. If output misses, that's on our desk, not yours.",
+          "No. Most engagements augment an existing team — AI agents take the repeat work, operators handle exceptions, and your people focus on judgment + strategy. We map what's replaceable vs. what stays human in the audit.",
       },
       {
-        q: 'What do the AI workflows actually do for me?',
+        q: 'What if the AI gets something wrong?',
         a:
-          'Day-to-day grunt work that eats your team. Lead capture into your CRM with enrichment. Document intake and parsing. Follow-up sequences that adapt. Reporting rollups across ad platforms, CRM, and finance. Portfolio monitoring that alerts on threshold breaches. Operator-built and operator-maintained — not a toy chatbot.',
+          "Every agent action is logged and auditable. Trained operators review exception cases AI can't resolve, and we tune the agent before re-deploying. Errors stay observable — never silent.",
       },
       {
-        q: 'Do I need to buy software licenses?',
+        q: "What's the typical onboarding timeline?",
         a:
-          'No. We run the automations on our stack (n8n, custom code, Groq for inference) and expose only the read-only outputs to you. If you want to own the stack at the end of the engagement, we transfer it at cost.',
+          'A free 30-min audit + a written deployment plan within 5 business days. Production agents typically run within 2–4 weeks of plan approval, depending on integration depth and data access.',
       },
       {
-        q: 'How do you price this?',
+        q: 'Can you integrate with our existing CRM?',
         a:
-          "Three tiers. Audit-only is always free. Pilot engagement is a fixed scope at a fixed price, usually 2 to 6 weeks. Retainer is monthly, priced against the headcount you'd otherwise hire. You cancel with 30 days' notice — no multi-year contracts.",
+          'Yes — we build against the systems you already run (HubSpot, Salesforce, Pipedrive, Airtable, Notion, custom Postgres, etc.). The audit phase confirms integration shape before any commitment.',
       },
       {
-        q: 'Who runs the audit?',
+        q: 'How do you ensure data security?',
         a:
-          'Me (Faizan) or my co-founder (Anwaar). No junior associate. No AI-generated report. We review your setup by hand and deliver a written plan. If there is nothing we can help with, we say so.',
+          'Inference runs on Groq with no data retention; agent state lives in your CRM, not ours; all integrations use scoped credentials you control. We sign mutual NDAs before reviewing live data, and access is read-scoped wherever the workflow allows.',
+      },
+      {
+        q: 'What happens if we want to cancel?',
+        a:
+          'Engagements are scoped at the deployment level — you keep the AI agents, automation, and runbooks we ship. We document everything for handoff so cancellation never means starting over. Specific terms are agreed in the deployment contract.',
+      },
+      {
+        q: 'Do you sign NDAs?',
+        a:
+          'Yes — mutual NDAs are standard before reviewing live data or strategic context. We can sign yours, or use a standard mutual NDA we provide.',
       },
     ],
   },
@@ -331,7 +356,7 @@ export const copy = {
     headline: "Let's map where AI could be running your repeatable work.",
     body:
       "A co-founder reviews your setup personally. Free. Written plan within 5 business days — what AI can run, what automation can stitch, where operators stay. If we can't help, we'll tell you.",
-    ctaPrimary: { label: 'Book a 30-min audit', href: '/free-growth-audit' },
+    ctaPrimary: { label: 'Talk to a co-founder', href: '/free-growth-audit' },
     ctaSecondary: { label: 'See case studies', href: '/case-studies' },
   },
 

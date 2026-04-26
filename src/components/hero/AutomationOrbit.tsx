@@ -25,11 +25,47 @@ const CX = 200;
 const CY = 150;
 
 // Cardinal positions (top, right, bottom, left) on outer ellipse rx=138 ry=98.
+// Phase 17b 3-restructured G1 — `tip` field provides hover/focus tooltip
+// content via native SVG <title>. Browser-native hover surfaces the
+// description; <title> is also read by screen readers via accessible name
+// recompute, so this serves both UX-affordance and a11y.
 const NODES = [
-  { id: 'trigger',  num: '01', label: 'Lead Trigger',   x: CX,        y: CY - 98, stroke: 'var(--accent-primary)' },
-  { id: 'ai',       num: '02', label: 'AI Score',       x: CX + 138,  y: CY,      stroke: 'var(--accent-secondary)' },
-  { id: 'operator', num: '03', label: 'Operator Route', x: CX,        y: CY + 98, stroke: 'var(--accent-primary)' },
-  { id: 'crm',      num: '04', label: 'CRM Updated',    x: CX - 138,  y: CY,      stroke: 'var(--accent-primary)' },
+  {
+    id: 'trigger',
+    num: '01',
+    label: 'Lead Trigger',
+    tip: 'Inbound lead detected',
+    x: CX,
+    y: CY - 98,
+    stroke: 'var(--accent-primary)',
+  },
+  {
+    id: 'ai',
+    num: '02',
+    label: 'AI Score',
+    tip: 'Qualification + intent scoring',
+    x: CX + 138,
+    y: CY,
+    stroke: 'var(--accent-secondary)',
+  },
+  {
+    id: 'operator',
+    num: '03',
+    label: 'Operator Route',
+    tip: 'Human assignment if escalation needed',
+    x: CX,
+    y: CY + 98,
+    stroke: 'var(--accent-primary)',
+  },
+  {
+    id: 'crm',
+    num: '04',
+    label: 'CRM Updated',
+    tip: 'State synced, follow-up scheduled',
+    x: CX - 138,
+    y: CY,
+    stroke: 'var(--accent-primary)',
+  },
 ] as const;
 
 // Label-position offsets (relative to node center) — readable spacing.
@@ -118,7 +154,8 @@ export function AutomationOrbit() {
             />
           ))}
 
-          {/* Node circles. */}
+          {/* Node circles. Phase 17b 3-restructured G1 — <title> children
+              expose hover tooltip + accessible name. */}
           {NODES.map((n) => (
             <circle
               key={`node-${n.id}`}
@@ -128,7 +165,12 @@ export function AutomationOrbit() {
               fill="var(--bg-canvas)"
               stroke={n.stroke}
               strokeWidth="1.2"
-            />
+              tabIndex={0}
+              role="img"
+              aria-label={`${n.label}: ${n.tip}`}
+            >
+              <title>{`${n.label} — ${n.tip}`}</title>
+            </circle>
           ))}
 
           {/* Counter-rotated labels — appear stationary as group rotates. */}
@@ -178,7 +220,12 @@ export function AutomationOrbit() {
           fill="var(--bg-canvas)"
           stroke="var(--accent-primary)"
           strokeWidth="1.2"
-        />
+          tabIndex={0}
+          role="img"
+          aria-label="Cosmo: AI orchestrator coordinating the loop"
+        >
+          <title>Cosmo — AI orchestrator coordinating the loop</title>
+        </circle>
         <text
           x={CX}
           y={CY + 4}

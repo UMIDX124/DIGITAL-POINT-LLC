@@ -4,6 +4,9 @@ import { LogoStripSection } from '@/components/sections/LogoStripSection';
 import { RecentWorkSection } from '@/components/sections/RecentWorkSection';
 import { PullQuoteSection } from '@/components/sections/PullQuoteSection';
 import { WorkflowSection } from '@/components/sections/WorkflowSection';
+// Phase 17b 3-restructured H1 + H2 — comparison table + FAQ on home.
+import { ComparisonTable } from '@/components/sections/ComparisonTable';
+import { FAQSection } from '@/components/sections/FAQSection';
 import { CTASection } from '@/components/sections/CTASection';
 
 /* Phase 13 — TestimonialsSection removed. Brand integrity: DPL has clients
@@ -19,8 +22,10 @@ export default function HomePage() {
       <ServicesPinReveal />
       <LogoStripSection />
       <RecentWorkSection />
+      <ComparisonTable />
       <PullQuoteSection />
       <WorkflowSection />
+      <FAQSection />
       <CTASection />
     </>
   );

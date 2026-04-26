@@ -73,6 +73,18 @@ export function CTASection() {
             {ctaSecondary.label}
           </Link>
         </div>
+
+        {/* Phase 17b 3-restructured D2 — trust micro-copy under CTA. */}
+        <p
+          className="mt-6"
+          style={{
+            fontSize: '12px',
+            color: 'var(--text-muted)',
+            letterSpacing: '0.02em',
+          }}
+        >
+          Free · Written plan in 5 days · Co-founder reviews personally
+        </p>
       </div>
     </section>
   );

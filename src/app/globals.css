@@ -890,6 +890,10 @@ html[data-paused-global="true"] .grain-overlay {
   font-style: italic;
   color: var(--accent);
   letter-spacing: -0.01em;
+  /* Phase 17b 3-restructured F3 — prevent ugly mid-word breaks on the
+     italic em element at narrow viewports. */
+  word-break: keep-all;
+  hyphens: none;
   /* Phase 16 D.1 + Phase 17b 2A — vertical breathing room for both
      ascender (i tittle) and descender / italic-slant bottom extent. */
   padding: 0.12em 0.05em 0.16em 0.02em;
@@ -939,6 +943,30 @@ html[data-paused-global="true"] .grain-overlay {
 @media (prefers-reduced-motion: reduce) {
   .cosmo-mascot { animation: none; }
 }
+
+/* Phase 17b 3-restructured G3 — chat panel slide-in entry. */
+@keyframes chat-panel-slide-in {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+.chat-panel-enter {
+  animation: chat-panel-slide-in 250ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat-panel-enter { animation: none; }
+}
+
+/* Phase 17b 3-restructured G3 — chat skeleton pulse. */
+@keyframes chat-skeleton-pulse-anim {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 0.85; }
+}
+.chat-skeleton-pulse {
+  animation: chat-skeleton-pulse-anim 1.2s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat-skeleton-pulse { animation: none; opacity: 0.7; }
+}
 /* Word-reveal slides .word-inner up from yPercent:110 to 0 inside .word
    which has overflow:hidden (Tailwind utility on the span). Phase 17b 2A
    → 2A-REFIX expands both axes of the .word container so italic ascenders
@@ -973,6 +1001,14 @@ html[data-paused-global="true"] .grain-overlay {
 }
 @media (max-width: 1023px) {
   .hero-ticker { display: none; }
+}
+/* Phase 17b 3-restructured B1 — at narrow desktop (≤1280px) the
+   right-side .hero-ticker-readouts column collides with the hero
+   "Skip" word. Hide the readouts column at narrow desktop, keep the
+   left ID block + bottom strip (which don't collide). At >1280px
+   everything renders as before per Phase 16 C spec. */
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .hero-ticker-readouts { display: none; }
 }
 .hero-ticker-id {
   position: absolute;
@@ -1262,7 +1298,9 @@ html[data-paused-global="true"] .logo-marquee-track {
   font-style: italic;
   line-height: 0.9;
   color: var(--accent);
-  opacity: 0.15;
+  /* Phase 17b 3-restructured B3 — was 0.15, dropped to 0.08 per audit:
+     numerals were distracting during scroll past services frames. */
+  opacity: 0.08;
   pointer-events: none;
   user-select: none;
   letter-spacing: -0.04em;

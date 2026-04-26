@@ -1,25 +1,86 @@
+'use client';
+
 /**
- * Phase 16 C — Live data ticker substrate (Bloomberg Operator).
+ * Phase 16 C → Phase 17b 3-restructured G2 — live data ticker substrate.
  *
- * Replaces Phase 6 .hero-ambient conic blur with functional metadata.
  * Three placements (all decorative, aria-hidden):
  *   - Top-left ID block      $DPL.OPS / live          — instrument blue
  *   - Right-side data column readouts (5 rows)        — phosphor amber
  *   - Bottom strip metadata  prod / uplink / sync     — phosphor amber
  *
- * Mono 9px, low opacity (0.12–0.18) — visible but non-distracting.
- * Mobile: hidden < 1024px to preserve perf + readability.
+ * G2 — counters increment subtly via setInterval (5–15s cadence). Small
+ * deltas: +1–3 on integer counters, ±0.1–0.3% on rates, ±2–5ms on latency.
+ * UTC clock advances each second. prefers-reduced-motion gate stops all
+ * increments. Mobile <1024px hidden via CSS (locked). Locked opacities
+ * (0.18 amber / 0.12 UTC / 0.18 instrument-blue) preserved via globals.css.
  */
 
-const RIGHT_COLUMN = [
-  ['leads.scored',   '1247',     '+12',     '14:32:08'],
-  ['agents.active',  '12/14',    'ok',      '14:32:08'],
-  ['ops.routed',     '89',       'qual_rate', '71.2%'],
-  ['latency.p95',    '142ms',    'err',     '0.04%'],
-  ['queue.depth',    '23',       'drained', '14:31:54'],
-] as const;
+import { useEffect, useState } from 'react';
+
+type Counters = {
+  leadsScored: number;     // integer  (1247 baseline)
+  agentsActive: string;    // '12/14'
+  opsRouted: number;       // integer  (89 baseline)
+  qualRate: number;        // percent  (71.2 baseline)
+  latencyP95: number;      // ms       (142 baseline)
+  errRate: number;         // percent  (0.04 baseline)
+  queueDepth: number;      // integer  (23 baseline)
+};
+
+const INITIAL: Counters = {
+  leadsScored: 1247,
+  agentsActive: '12/14',
+  opsRouted: 89,
+  qualRate: 71.2,
+  latencyP95: 142,
+  errRate: 0.04,
+  queueDepth: 23,
+};
+
+function pad(n: number) {
+  return n.toString().padStart(2, '0');
+}
+
+function formatTime(d: Date) {
+  return `${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}:${pad(d.getUTCSeconds())}`;
+}
+
+function formatDate(d: Date) {
+  return `${d.getUTCFullYear()}.${pad(d.getUTCMonth() + 1)}.${pad(d.getUTCDate())}`;
+}
 
 export function HeroDataTicker() {
+  const [c, setC] = useState<Counters>(INITIAL);
+  const [now, setNow] = useState<Date>(() => new Date());
+
+  useEffect(() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+
+    // UTC clock — 1s.
+    const clock = setInterval(() => setNow(new Date()), 1_000);
+
+    // Counters — 7s cadence with small per-tick deltas.
+    const counters = setInterval(() => {
+      setC((prev) => ({
+        leadsScored: prev.leadsScored + Math.floor(Math.random() * 3) + 1,
+        agentsActive: prev.agentsActive,
+        opsRouted: prev.opsRouted + (Math.random() > 0.5 ? 1 : 0),
+        qualRate: Math.max(60, Math.min(85, prev.qualRate + (Math.random() - 0.5) * 0.3)),
+        latencyP95: Math.max(100, Math.min(200, prev.latencyP95 + Math.round((Math.random() - 0.5) * 5))),
+        errRate: Math.max(0.01, Math.min(0.15, prev.errRate + (Math.random() - 0.5) * 0.01)),
+        queueDepth: Math.max(0, prev.queueDepth + Math.round((Math.random() - 0.5) * 4)),
+      }));
+    }, 7_000);
+
+    return () => {
+      clearInterval(clock);
+      clearInterval(counters);
+    };
+  }, []);
+
+  const t = formatTime(now);
+
   return (
     <div className="hero-ticker" aria-hidden="true">
       {/* Top-left ID block. */}
@@ -30,18 +91,41 @@ export function HeroDataTicker() {
 
       {/* Right-side data column (operator readouts). */}
       <div className="hero-ticker-readouts">
-        {RIGHT_COLUMN.map((row, i) => (
-          <div key={i} className="hero-ticker-row">
-            {row.map((cell, j) => (
-              <span key={j}>{cell}</span>
-            ))}
-          </div>
-        ))}
+        <div className="hero-ticker-row">
+          <span>leads.scored</span>
+          <span>{c.leadsScored.toLocaleString()}</span>
+          <span>+{Math.floor(Math.random() * 8) + 8}</span>
+          <span>{t}</span>
+        </div>
+        <div className="hero-ticker-row">
+          <span>agents.active</span>
+          <span>{c.agentsActive}</span>
+          <span>ok</span>
+          <span>{t}</span>
+        </div>
+        <div className="hero-ticker-row">
+          <span>ops.routed</span>
+          <span>{c.opsRouted}</span>
+          <span>qual_rate</span>
+          <span>{c.qualRate.toFixed(1)}%</span>
+        </div>
+        <div className="hero-ticker-row">
+          <span>latency.p95</span>
+          <span>{c.latencyP95}ms</span>
+          <span>err</span>
+          <span>{c.errRate.toFixed(2)}%</span>
+        </div>
+        <div className="hero-ticker-row">
+          <span>queue.depth</span>
+          <span>{c.queueDepth}</span>
+          <span>drained</span>
+          <span>{t}</span>
+        </div>
       </div>
 
       {/* Bottom strip metadata. */}
       <div className="hero-ticker-strip">
-        2026.04.26 14:32:08 UTC | dpl-prod-us-east | uplink ok | sync 142ms | err 0.04%
+        {formatDate(now)} {t} UTC | dpl-prod-us-east | uplink ok | sync {c.latencyP95}ms | err {c.errRate.toFixed(2)}%
       </div>
     </div>
   );

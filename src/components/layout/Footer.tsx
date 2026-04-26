@@ -1,6 +1,7 @@
 import { Linkedin } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import CookiePrefsLink from '@/components/compliance/CookiePrefsLink';
 
 const footerLinks = {
   services: [
@@ -73,16 +74,24 @@ export function Footer() {
             <h4 className="eyebrow mb-5">Connect</h4>
             <div className="space-y-4">
               <p className="text-[color:var(--ivory-dim)] text-sm leading-relaxed" style={{ maxWidth: '24rem' }}>
-                We don&apos;t list a generic support inbox. Most agencies hide
-                behind a hello@ queue where your message lines up with
-                everyone else&apos;s. We don&apos;t run that way.
+                Reach out directly. Your inquiry routes to the operator best
+                matched to your stage — not a ticket pool — because we&apos;re
+                personally accountable for what we ship.
               </p>
-              <p className="text-[color:var(--muted)] text-xs leading-relaxed" style={{ maxWidth: '24rem' }}>
-                Reach out through Cosmo or our audit form — your inquiry
-                routes directly to the operator best matched to your stage,
-                not a ticket pool. We answer from our personal accounts
-                because we&apos;re personally accountable for what we ship.
-              </p>
+              {/* Phase 17b 3-restructured E1+E2+E3 — direct mailto, location +
+                  timezone, response-time commitment. */}
+              <ul className="text-[color:var(--ivory-dim)] text-sm space-y-2 leading-relaxed">
+                <li>
+                  <a
+                    href="mailto:hello@digitalpointllc.com"
+                    className="text-link hover:text-[color:var(--accent)] transition-colors"
+                  >
+                    hello@digitalpointllc.com
+                  </a>
+                </li>
+                <li className="text-[color:var(--muted)]">Lahore, PK · UTC+5</li>
+                <li className="text-[color:var(--muted)]">We reply within 24h on weekdays</li>
+              </ul>
               <a
                 href="https://linkedin.com/company/digitalpointllc"
                 target="_blank"
@@ -97,10 +106,23 @@ export function Footer() {
                 className="inline-block mt-2 px-4 py-2 text-[13px] font-medium text-[#0A0A0B] rounded-md"
                 style={{ background: 'var(--accent-bright)' }}
               >
-                Book a free audit
+                Talk to a co-founder
               </Link>
             </div>
           </div>
+        </div>
+
+        {/* Phase 17b 3-restructured E4 — trust badges. SOC 2 Ready halted
+            per K5 substantiation gap. GDPR Compliant ships post-A3 cookie
+            banner. 5-day plan ships per existing CTA copy ("Written plan
+            within 5 business days"). */}
+        <div
+          className="py-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.18em]"
+          style={{ borderTop: '1px solid #27272A', color: 'var(--text-muted)' }}
+        >
+          <span>GDPR Compliant</span>
+          <span aria-hidden="true">·</span>
+          <span>5-Day Written Plan Guaranteed</span>
         </div>
 
         <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4" style={{ borderTop: '1px solid #27272A' }}>
@@ -110,8 +132,15 @@ export function Footer() {
           <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-6 gap-y-2">
             <Link href="/privacy-policy" className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors">Privacy</Link>
             <Link href="/terms-of-service" className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors">Terms</Link>
-            <Link href="/cookies" className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors">Cookies</Link>
-            <Link href="/contact" className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors">Contact</Link>
+            {/* Phase 17b 3-restructured A3 — Cookies link reopens the
+                consent preference banner via a tiny client wrapper. */}
+            <CookiePrefsLink
+              href="/cookies"
+              className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors"
+            >
+              Cookies
+            </CookiePrefsLink>
+            <Link href="/#cta" className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors">Contact</Link>
           </div>
         </div>
       </div>

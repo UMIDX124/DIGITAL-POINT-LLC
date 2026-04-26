@@ -260,12 +260,12 @@ export function HeroSection() {
           <div className="flex flex-wrap items-center gap-6" data-hero-cta>
             <MagneticCTA strength={0.3} radius={90}>
               <Link href="/free-growth-audit" className="cta-primary" data-cta-primary>
-                Book a free audit
+                Book a free 30-min audit
                 <span aria-hidden="true">→</span>
               </Link>
             </MagneticCTA>
-            <Link href="#recent-work" className="text-link inline-flex items-center gap-1.5">
-              See what we run
+            <Link href="/case-studies" className="text-link inline-flex items-center gap-1.5">
+              See how it runs
               <svg
                 width="14"
                 height="14"
@@ -282,6 +282,18 @@ export function HeroSection() {
               </svg>
             </Link>
           </div>
+
+          {/* Phase 17b 3-restructured D2 — trust micro-copy under primary CTA. */}
+          <p
+            className="hero-trust-microcopy mt-4"
+            style={{
+              fontSize: '12px',
+              color: 'var(--text-muted)',
+              letterSpacing: '0.02em',
+            }}
+          >
+            Free · 30 min · No sales pitch · Co-founder reviews personally
+          </p>
 
           {/* Phase 13 — operator-accountability trust signals.
               CSS-only stagger fade-in (no GSAP, no JS), kicks in after the

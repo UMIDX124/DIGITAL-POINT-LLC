@@ -32,10 +32,10 @@ export function PullQuoteSection() {
         <blockquote
           className="pull-quote-text font-italic-display text-center mx-auto"
           style={{
-            fontSize: 'clamp(3rem, 6vw, 6rem)',
+            fontSize: 'clamp(2.25rem, 4.5vw, 4.5rem)',
             color: 'var(--text-primary)',
             fontStyle: 'italic',
-            lineHeight: 1.05,
+            lineHeight: 1.1,
             letterSpacing: '-0.02em',
             maxWidth: 'var(--maxw-pullquote)',
           }}

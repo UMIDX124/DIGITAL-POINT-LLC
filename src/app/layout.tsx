@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Instrument_Serif } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import Script from "next/script";
@@ -11,22 +10,11 @@ import { VisibilityPause } from "@/components/motion/VisibilityPause";
 import ChatWidget from "@/components/chat/ChatWidget";
 
 /**
- * Phase 4a font stack:
- * - Geist Sans (Vercel, OFL) → primary UI + body (replaces Inter)
- * - Geist Mono (Vercel, OFL) → data + eyebrow labels (replaces JetBrains Mono)
- * - Instrument Serif → hero display + pull quote + italic accents (unchanged)
- *
- * Legacy --font-inter / --font-jetbrains-mono CSS vars are aliased to Geist
- * in globals.css so existing components (RecentWorkSection SVG labels etc.)
- * keep resolving without a component-level rewrite.
+ * Phase 12 — Instrument Serif served via manual @font-face in globals.css
+ * (latin-subset ~10 KB / weight). Regular preloaded selectively in <head>;
+ * italic loads on-demand when CSS first references it (hero-em / pullquote).
+ * Geist Sans + Mono are already self-hosted via the `geist` npm package.
  */
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400"],
-  style: ["normal", "italic"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://digitalpointllc.com"),
@@ -117,7 +105,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${instrumentSerif.variable} ${GeistSans.variable} ${GeistMono.variable}`}
+      className={`dark ${GeistSans.variable} ${GeistMono.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -211,8 +199,31 @@ export default function RootLayout({
           }}
         />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preload"
+          href="/fonts/instrument-serif-regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/instrument-serif-italic.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+
+        {/* Phase 12 — CSS-only intro loader sessionStorage gate. Inline
+            script runs synchronously before paint to mark <html> if the
+            intro has been shown this session. CSS in globals.css uses the
+            attribute selector to skip the @keyframes when present. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(sessionStorage.getItem('dpl_i')==='1')document.documentElement.dataset.iSeen='1';else sessionStorage.setItem('dpl_i','1')}catch(e){}",
+          }}
+        />
 
         <meta name="theme-color" content="#0D0D0D" />
         <meta name="msapplication-TileColor" content="#0D0D0D" />
@@ -221,6 +232,10 @@ export default function RootLayout({
         className="font-sans antialiased"
         style={{ background: "#0D0D0D", color: "#F5F5F7" }}
       >
+        <div className="dpl-intro-loader" aria-hidden="true">
+          <span className="dpl-intro-wordmark">Digital Point</span>
+          <span className="dpl-intro-line" />
+        </div>
         <GrainOverlay />
         <CursorBloom />
         <VisibilityPause />

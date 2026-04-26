@@ -3,6 +3,25 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Phase 12 — manual @font-face for Instrument Serif. Latin-subset, ~10 KB
+   each. Same family name across regular + italic so font-style: italic
+   resolves to the italic file. font-display: swap = no FOIT block on LCP.
+   Regular is preloaded selectively in <head>; italic loads on-demand. */
+@font-face {
+  font-family: 'InstrumentSerifLocal';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/instrument-serif-regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'InstrumentSerifLocal';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/instrument-serif-italic.woff2') format('woff2');
+}
+
 /* =======================================================================
    DIGITAL POINT LLC — PHASE 4a: DIVYANSH-REPLICA VISUAL SYSTEM
    Dark surfaces · purple primary · editorial typography · motion tokens
@@ -245,6 +264,7 @@
    ============================================ */
 
 :root {
+  --font-instrument-serif: 'InstrumentSerifLocal';
   --radius: 0.5rem;
 
   /* --- Background system (premium depth) --- */
@@ -1039,4 +1059,125 @@ html[data-paused-global="true"] .chat-trigger-sparkle {
 
 html[data-paused-global="true"] .logo-marquee-track {
   animation-play-state: paused;
+}
+
+/* ===================================================================
+   Phase 12 — CSS reveals (Class C migration from GSAP).
+   IntersectionObserver in ScrollMotion.tsx adds .is-revealed when
+   elements enter viewport; CSS animation runs once per element.
+   power2.out approximated by cubic-bezier(0.33, 1, 0.68, 1).
+   ------------------------------------------------------------------- */
+/* No global opacity:0 here — that hides elements from LCP measurement
+   until animation completes. ScrollMotion.tsx applies inline
+   opacity:0 only to off-screen targets (preserving above-fold LCP). */
+
+[data-pillar-card].is-revealed {
+  animation: dpl-reveal-y-40 0.7s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+[data-case-strip] > a.is-revealed {
+  animation: dpl-reveal-x-40 0.7s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+[data-reveal].is-revealed {
+  animation: dpl-reveal-y-30 0.7s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+[data-stagger-item].is-revealed,
+[data-service-item].is-revealed {
+  animation: dpl-reveal-y-24 0.6s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+[data-work-card].is-revealed {
+  animation: dpl-reveal-y-36 0.7s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+[data-testimonial-card].is-revealed {
+  animation: dpl-reveal-y-30 0.7s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+.pull-quote-text.is-revealed {
+  animation: dpl-reveal-scale 0.8s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
+@keyframes dpl-reveal-y-40 {
+  from { transform: translate3d(0, 40px, 0); opacity: 0; }
+  to   { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+@keyframes dpl-reveal-y-36 {
+  from { transform: translate3d(0, 36px, 0); opacity: 0; }
+  to   { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+@keyframes dpl-reveal-y-30 {
+  from { transform: translate3d(0, 30px, 0); opacity: 0; }
+  to   { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+@keyframes dpl-reveal-y-24 {
+  from { transform: translate3d(0, 24px, 0); opacity: 0; }
+  to   { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+@keyframes dpl-reveal-x-40 {
+  from { transform: translate3d(40px, 0, 0); opacity: 0; }
+  to   { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+@keyframes dpl-reveal-scale {
+  from { transform: scale(0.98); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-pillar-card],
+  [data-case-strip] > a,
+  [data-reveal],
+  [data-stagger-item],
+  [data-service-item],
+  [data-work-card],
+  [data-testimonial-card],
+  .pull-quote-text {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* ===================================================================
+   Phase 12 — Intro Loader (CSS-only, no React).
+   Sessions where html[data-i-seen="1"] is set by inline pre-paint script
+   skip the loader entirely. Otherwise: 0-700ms wordmark fade-in + line
+   fill, 700-1100ms slide-up exit, 1100ms+ display:none via animation.
+   prefers-reduced-motion = skip entirely.
+   ------------------------------------------------------------------- */
+.dpl-intro-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0D0D0D;
+  pointer-events: none;
+  animation: dpl-intro-stage 1100ms cubic-bezier(0.65, 0.05, 0, 1) forwards;
+}
+html[data-i-seen="1"] .dpl-intro-loader { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .dpl-intro-loader { display: none !important; }
+}
+.dpl-intro-wordmark {
+  font-family: var(--font-instrument-serif), serif;
+  font-style: italic;
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: #F5F5F7;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: dpl-intro-fade-in 700ms cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+.dpl-intro-line {
+  display: block;
+  margin-top: 1.5rem;
+  width: 0;
+  height: 1px;
+  background: #6366F1;
+  animation: dpl-intro-line-fill 700ms cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+@keyframes dpl-intro-fade-in { to { opacity: 1; } }
+@keyframes dpl-intro-line-fill { to { width: 200px; } }
+@keyframes dpl-intro-stage {
+  0%   { opacity: 1; transform: translateY(0); }
+  64%  { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-100px); visibility: hidden; }
 }

@@ -113,16 +113,16 @@ export function AboutPage() {
                 border: '1px solid rgba(99,102,241, 0.15)',
               }}
             >
-              <p className="text-[#D6D0C2] text-base leading-relaxed mb-4">
+              <p className="text-[#D6D0C2] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
                 Here&apos;s the honest version: back in 2017, Faizan was managing ad accounts and kept seeing the same thing — businesses pouring money into campaigns with no idea what was actually driving revenue. Anwaar, on the other hand, was deep in the data side, building dashboards that nobody used because they answered the wrong questions.
               </p>
-              <p className="text-[#D6D0C2] text-base leading-relaxed mb-4">
+              <p className="text-[#D6D0C2] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
                 We met, argued about attribution models over too much coffee, and realized we were solving two halves of the same problem. Faizan knew how to make ads perform. Anwaar knew how to prove it. Together, we figured — why not just do both?
               </p>
-              <p className="text-[#D6D0C2] text-base leading-relaxed mb-4">
+              <p className="text-[#D6D0C2] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
                 Digital Point started in a spare room with one client who took a chance on us. Eight years later, we&apos;ve managed over $50M in ad spend, built remote teams across continents, and helped businesses go from &ldquo;we think our ads work&rdquo; to &ldquo;we know exactly what&apos;s driving revenue.&rdquo;
               </p>
-              <p className="text-white text-base leading-relaxed font-medium">
+              <p className="text-white text-base leading-relaxed font-medium" style={{ maxWidth: 'var(--maxw-body)' }}>
                 We&apos;re still those two guys who argue about attribution over coffee. We just have a bigger team now — and better coffee.
               </p>
               <div className="flex flex-wrap gap-6 mt-6 pt-6" style={{ borderTop: '1px solid rgba(99,102,241, 0.15)' }}>

@@ -111,7 +111,7 @@ export default function ChatPanel({ open, onClose }: Props) {
             DPL AI Agent
           </div>
           <div className="text-xs mt-0.5" style={{ color: 'var(--text-tertiary)' }}>
-            Powered by Groq · llama-3.3-70b
+            DPL AI Agent · Cosmo
           </div>
         </div>
         <button

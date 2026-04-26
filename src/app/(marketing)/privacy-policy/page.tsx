@@ -32,7 +32,7 @@ export default function PrivacyPolicyPage() {
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Privacy Policy
             </h1>
-            <p className="text-[#71717A] text-sm mb-12">
+            <p className="text-[#8E8E96] text-sm mb-12">
               Last updated: March 23, 2026
             </p>
 

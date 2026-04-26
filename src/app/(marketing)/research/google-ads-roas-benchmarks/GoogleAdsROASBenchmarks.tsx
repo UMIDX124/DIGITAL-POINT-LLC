@@ -56,7 +56,7 @@ export function GoogleAdsROASBenchmarks({ faqs }: Props) {
             { label: 'Google Ads ROAS Benchmarks', href: '/research/google-ads-roas-benchmarks' },
           ]} />
           <div className="mt-8">
-            <span className="text-[#71717A] text-sm">February 2026 &middot; 14 min read</span>
+            <span className="text-[#8E8E96] text-sm">February 2026 &middot; 14 min read</span>
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 leading-tight">
               Google Ads ROAS Benchmarks by Industry
             </h1>
@@ -77,7 +77,7 @@ export function GoogleAdsROASBenchmarks({ faqs }: Props) {
                   <div className="font-display text-2xl md:text-3xl font-bold" style={{ color: stat.color }}>
                     {stat.value}
                   </div>
-                  <p className="text-[#71717A] text-sm mt-1">{stat.label}</p>
+                  <p className="text-[#8E8E96] text-sm mt-1">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -95,11 +95,11 @@ export function GoogleAdsROASBenchmarks({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(167,139,250,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Campaign Type</th>
+                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Campaign Type</th>
                       <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">Avg ROAS</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">Avg CPC</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">Conv Rate</th>
-                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Best For</th>
+                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Best For</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -109,7 +109,7 @@ export function GoogleAdsROASBenchmarks({ faqs }: Props) {
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.avgRoas}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.avgCpc}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.avgConvRate}</td>
-                        <td className="py-3 px-4 text-[#71717A] text-xs">{row.bestFor}</td>
+                        <td className="py-3 px-4 text-[#8E8E96] text-xs">{row.bestFor}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -130,7 +130,7 @@ export function GoogleAdsROASBenchmarks({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(167,139,250,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Industry</th>
+                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Industry</th>
                       <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">Search ROAS</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">Avg CPC</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">Conv Rate</th>
@@ -149,7 +149,7 @@ export function GoogleAdsROASBenchmarks({ faqs }: Props) {
                 </table>
               </div>
             </div>
-            <p className="text-[#71717A] text-xs mt-3">Data based on analysis of $62M in Google Ads spend across 420+ accounts, 2025-2026.</p>
+            <p className="text-[#8E8E96] text-xs mt-3">Data based on analysis of $62M in Google Ads spend across 420+ accounts, 2025-2026.</p>
           </FadeUp>
         </Container>
       </Section>

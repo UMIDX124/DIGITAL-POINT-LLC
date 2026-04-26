@@ -82,12 +82,12 @@ export function LatestInsights() {
                   </h3>
 
                   {/* Excerpt */}
-                  <p className="text-[#71717A] text-sm leading-relaxed line-clamp-3 mb-4 flex-1">
+                  <p className="text-[#8E8E96] text-sm leading-relaxed line-clamp-3 mb-4 flex-1">
                     {post.excerpt}
                   </p>
 
                   {/* Meta */}
-                  <div className="flex items-center gap-3 text-xs text-[#71717A]">
+                  <div className="flex items-center gap-3 text-xs text-[#8E8E96]">
                     <time dateTime={post.date}>
                       {new Date(post.date).toLocaleDateString('en-US', {
                         month: 'short',
@@ -95,7 +95,7 @@ export function LatestInsights() {
                         year: 'numeric',
                       })}
                     </time>
-                    <span className="w-1 h-1 rounded-full bg-[#71717A]" />
+                    <span className="w-1 h-1 rounded-full bg-[#8E8E96]" />
                     <span>{post.readTime}</span>
                   </div>
                 </div>

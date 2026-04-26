@@ -177,9 +177,9 @@ export function BlogListPage({ posts, categories, categoryMeta }: Props) {
                     <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#C4B5FD] transition-colors mb-3 leading-snug">
                       {article.title}
                     </h3>
-                    <p className="text-[#71717A] text-sm leading-relaxed flex-1 mb-4">{article.excerpt}</p>
+                    <p className="text-[#8E8E96] text-sm leading-relaxed flex-1 mb-4">{article.excerpt}</p>
                     <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(167,139,250, 0.1)' }}>
-                      <div className="flex items-center gap-3 text-[#71717A] text-xs">
+                      <div className="flex items-center gap-3 text-[#8E8E96] text-xs">
                         <span>{new Date(article.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
                         <span className="flex items-center gap-1">
                           <Clock className="w-3 h-3" />

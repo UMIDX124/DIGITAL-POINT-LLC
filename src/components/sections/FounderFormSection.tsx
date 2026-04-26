@@ -144,7 +144,7 @@ function AuditForm() {
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           placeholder="Your name"
-          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#A78BFA] text-white placeholder:text-[#71717A]"
+          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#A78BFA] text-white placeholder:text-[#8E8E96]"
         />
         {errors.name && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.name}</p>}
       </div>
@@ -159,7 +159,7 @@ function AuditForm() {
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           placeholder="you@company.com"
-          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#A78BFA] text-white placeholder:text-[#71717A]"
+          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#A78BFA] text-white placeholder:text-[#8E8E96]"
         />
         {errors.email && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.email}</p>}
       </div>
@@ -173,7 +173,7 @@ function AuditForm() {
           value={formData.company}
           onChange={(e) => setFormData({ ...formData, company: e.target.value })}
           placeholder="Company name (optional)"
-          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#A78BFA] text-white placeholder:text-[#71717A]"
+          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#A78BFA] text-white placeholder:text-[#8E8E96]"
         />
       </div>
 
@@ -326,7 +326,7 @@ function FounderContactForm() {
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           placeholder="Your name"
-          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#A78BFA] text-white placeholder:text-[#71717A]"
+          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#A78BFA] text-white placeholder:text-[#8E8E96]"
         />
         {errors.name && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.name}</p>}
       </div>
@@ -341,7 +341,7 @@ function FounderContactForm() {
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           placeholder="you@company.com"
-          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#A78BFA] text-white placeholder:text-[#71717A]"
+          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#A78BFA] text-white placeholder:text-[#8E8E96]"
         />
         {errors.email && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.email}</p>}
       </div>
@@ -356,7 +356,7 @@ function FounderContactForm() {
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           placeholder="What's on your mind?"
           rows={4}
-          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#A78BFA] text-white resize-none placeholder:text-[#71717A]"
+          className="bg-[#141416]/50 border-[#3d1a5e] focus:border-[#A78BFA] text-white resize-none placeholder:text-[#8E8E96]"
         />
         {errors.message && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.message}</p>}
       </div>
@@ -377,7 +377,7 @@ function FounderContactForm() {
       </Button>
 
       <div className="flex flex-col items-center justify-center gap-2 pt-2 text-center">
-        <p className="text-[#71717A] text-xs leading-relaxed" style={{ maxWidth: '32rem' }}>
+        <p className="text-[#8E8E96] text-xs leading-relaxed" style={{ maxWidth: '32rem' }}>
           Routed directly to the operator best matched to your stage — not a ticket pool. We answer from personal accounts.
         </p>
         <a

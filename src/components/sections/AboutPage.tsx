@@ -129,12 +129,12 @@ export function AboutPage() {
                 <div>
                   <p className="text-white font-display font-semibold">M. Faizan Rafiq</p>
                   <p className="text-[#A78BFA] text-sm">Co-Founder &middot; The Ads Guy</p>
-                  <p className="text-[#71717A] text-xs mt-1">Secretly competitive about ROAS the way some people are about fantasy football.</p>
+                  <p className="text-[#8E8E96] text-xs mt-1">Secretly competitive about ROAS the way some people are about fantasy football.</p>
                 </div>
                 <div>
                   <p className="text-white font-display font-semibold">Anwaar Tayyab</p>
                   <p className="text-[#A78BFA] text-sm">Co-Founder &middot; The Data Guy</p>
-                  <p className="text-[#71717A] text-xs mt-1">Will redesign your entire dashboard if one chart is slightly misleading. You&apos;ve been warned.</p>
+                  <p className="text-[#8E8E96] text-xs mt-1">Will redesign your entire dashboard if one chart is slightly misleading. You&apos;ve been warned.</p>
                 </div>
               </div>
             </div>

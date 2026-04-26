@@ -110,6 +110,7 @@ export function Footer() {
           <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-6 gap-y-2">
             <Link href="/privacy-policy" className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors">Privacy</Link>
             <Link href="/terms-of-service" className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors">Terms</Link>
+            <Link href="/cookies" className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors">Cookies</Link>
             <Link href="/contact" className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors">Contact</Link>
           </div>
         </div>

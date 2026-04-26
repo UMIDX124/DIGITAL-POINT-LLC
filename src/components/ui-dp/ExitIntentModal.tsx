@@ -74,7 +74,7 @@ export function ExitIntentModal() {
 
           <button
             onClick={() => setOpen(false)}
-            className="w-full py-2.5 text-sm text-[#71717A] hover:text-white transition-colors text-center"
+            className="w-full py-2.5 text-sm text-[#8E8E96] hover:text-white transition-colors text-center"
           >
             Maybe later
           </button>

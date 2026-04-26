@@ -96,10 +96,10 @@ export function ToolsHub() {
                       <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#C4B5FD] transition-colors mb-2">
                         {tool.title}
                       </h3>
-                      <p className="text-[#71717A] text-sm leading-relaxed flex-1 mb-4">{tool.description}</p>
+                      <p className="text-[#8E8E96] text-sm leading-relaxed flex-1 mb-4">{tool.description}</p>
                       <div className="flex gap-2">
                         {tool.tags.map((tag) => (
-                          <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] text-[#71717A] bg-[rgba(167,139,250,0.1)]">
+                          <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] text-[#8E8E96] bg-[rgba(167,139,250,0.1)]">
                             {tag}
                           </span>
                         ))}

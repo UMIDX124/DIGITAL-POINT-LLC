@@ -82,7 +82,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
         {/* Related Blog Posts */}
         {relatedPosts.length > 0 && (
           <div>
-            <h3 className="text-sm font-medium uppercase tracking-wider text-[#71717A] mb-3">
+            <h3 className="text-sm font-medium uppercase tracking-wider text-[#8E8E96] mb-3">
               Related Articles
             </h3>
             <ul className="space-y-2">
@@ -109,7 +109,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
         {/* Related Tools */}
         {selectedTools.length > 0 && (
           <div>
-            <h3 className="text-sm font-medium uppercase tracking-wider text-[#71717A] mb-3">
+            <h3 className="text-sm font-medium uppercase tracking-wider text-[#8E8E96] mb-3">
               Free Tools
             </h3>
             <ul className="space-y-2">
@@ -125,7 +125,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
                     />
                     <span className="text-sm leading-snug">
                       <span className="group-hover:underline">{tool.title}</span>
-                      <span className="block text-xs text-[#71717A] mt-0.5">
+                      <span className="block text-xs text-[#8E8E96] mt-0.5">
                         {tool.description}
                       </span>
                     </span>
@@ -139,7 +139,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
         {/* Related Research */}
         {selectedResearch.length > 0 && (
           <div>
-            <h3 className="text-sm font-medium uppercase tracking-wider text-[#71717A] mb-3">
+            <h3 className="text-sm font-medium uppercase tracking-wider text-[#8E8E96] mb-3">
               Research
             </h3>
             <ul className="space-y-2">
@@ -155,7 +155,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
                     />
                     <span className="text-sm leading-snug">
                       <span className="group-hover:underline">{item.title}</span>
-                      <span className="block text-xs text-[#71717A] mt-0.5">
+                      <span className="block text-xs text-[#8E8E96] mt-0.5">
                         {item.description}
                       </span>
                     </span>
@@ -169,7 +169,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
         {/* Related Comparison */}
         {selectedComparison.length > 0 && (
           <div>
-            <h3 className="text-sm font-medium uppercase tracking-wider text-[#71717A] mb-3">
+            <h3 className="text-sm font-medium uppercase tracking-wider text-[#8E8E96] mb-3">
               Comparisons
             </h3>
             <ul className="space-y-2">

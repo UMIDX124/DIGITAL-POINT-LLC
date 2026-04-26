@@ -81,21 +81,21 @@ export function ProofSection() {
                     >
                       {study.metric}
                     </div>
-                    <div className="text-[#71717A] text-xs">{study.metricLabel}</div>
+                    <div className="text-[#8E8E96] text-xs">{study.metricLabel}</div>
                   </div>
                 </div>
                 
                 <div className="space-y-3">
                   <div>
-                    <div className="text-[#71717A] text-xs uppercase tracking-wide mb-1">Situation</div>
+                    <div className="text-[#8E8E96] text-xs uppercase tracking-wide mb-1">Situation</div>
                     <p className="text-white/80 text-sm">{study.situation}</p>
                   </div>
                   <div>
-                    <div className="text-[#71717A] text-xs uppercase tracking-wide mb-1">What We Did</div>
+                    <div className="text-[#8E8E96] text-xs uppercase tracking-wide mb-1">What We Did</div>
                     <p className="text-white/80 text-sm">{study.action}</p>
                   </div>
                   <div>
-                    <div className="text-[#71717A] text-xs uppercase tracking-wide mb-1">Result</div>
+                    <div className="text-[#8E8E96] text-xs uppercase tracking-wide mb-1">Result</div>
                     <p className="text-[#A78BFA] text-sm font-medium">{study.result}</p>
                   </div>
                 </div>

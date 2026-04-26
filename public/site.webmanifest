@@ -1,0 +1,39 @@
+{
+  "name": "Digital Point LLC",
+  "short_name": "Digital Point",
+  "description": "Hire the AI. Skip the headcount. AI agents, automation, and trained operators running CRM, ops, reporting, and growth workflows.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#0D0D0D",
+  "background_color": "#0D0D0D",
+  "icons": [
+    {
+      "src": "/favicon-16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/Dp-logo1.png",
+      "sizes": "510x543",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

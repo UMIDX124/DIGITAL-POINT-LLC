@@ -122,7 +122,7 @@ export function ContactPage() {
                               {method.title}
                             </h3>
                             <p className="text-[#A78BFA] text-sm mt-0.5">{method.value}</p>
-                            <p className="text-[#71717A] text-xs mt-1">{method.description}</p>
+                            <p className="text-[#8E8E96] text-xs mt-1">{method.description}</p>
                           </div>
                         </div>
                       </GlassCard>
@@ -134,8 +134,8 @@ export function ContactPage() {
               <div className="space-y-3 pt-4">
                 {officeDetails.map((detail) => (
                   <div key={detail.label} className="flex items-center gap-3 text-sm">
-                    <detail.icon className="w-4 h-4 text-[#71717A]" />
-                    <span className="text-[#71717A]">{detail.label}:</span>
+                    <detail.icon className="w-4 h-4 text-[#8E8E96]" />
+                    <span className="text-[#8E8E96]">{detail.label}:</span>
                     <span className="text-[#D6D0C2]">{detail.value}</span>
                   </div>
                 ))}
@@ -178,7 +178,7 @@ export function ContactPage() {
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-5">
                       <h3 className="font-display text-xl font-semibold text-white mb-2">Drop us a line</h3>
-                      <p className="text-[#71717A] text-sm mb-6">No form letters, no auto-replies. A real human (probably Faizan, let&apos;s be honest) will get back to you within 24 hours.</p>
+                      <p className="text-[#8E8E96] text-sm mb-6">No form letters, no auto-replies. A real human (probably Faizan, let&apos;s be honest) will get back to you within 24 hours.</p>
 
                       <div>
                         <label htmlFor="contact-name" className="block text-sm text-[#D6D0C2] mb-1.5">Name</label>
@@ -188,7 +188,7 @@ export function ContactPage() {
                           required
                           value={form.name}
                           onChange={(e) => setForm(f => ({ ...f, name: e.target.value }))}
-                          className="w-full px-4 py-3 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
+                          className="w-full px-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
                           style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }}
                           placeholder="Your name"
                         />
@@ -202,7 +202,7 @@ export function ContactPage() {
                           required
                           value={form.email}
                           onChange={(e) => setForm(f => ({ ...f, email: e.target.value }))}
-                          className="w-full px-4 py-3 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
+                          className="w-full px-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
                           style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }}
                           placeholder="you@company.com"
                         />
@@ -216,7 +216,7 @@ export function ContactPage() {
                           rows={5}
                           value={form.message}
                           onChange={(e) => setForm(f => ({ ...f, message: e.target.value }))}
-                          className="w-full px-4 py-3 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50 resize-none"
+                          className="w-full px-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50 resize-none"
                           style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }}
                           placeholder="Tell us about your project, challenges, or what you need help with..."
                         />

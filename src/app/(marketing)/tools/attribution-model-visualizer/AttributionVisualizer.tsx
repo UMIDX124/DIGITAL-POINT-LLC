@@ -158,10 +158,10 @@ export function AttributionVisualizer({ faqs }: Props) {
                         {i + 1}
                       </div>
                       <div className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }}>
-                        {tp.name} <span className="text-[#71717A]">({tp.channel})</span>
+                        {tp.name} <span className="text-[#8E8E96]">({tp.channel})</span>
                       </div>
                       {touchpoints.length > 2 && (
-                        <button onClick={() => handleRemoveTouchpoint(i)} className="text-[#71717A] hover:text-[#A78BFA] transition-colors text-lg">×</button>
+                        <button onClick={() => handleRemoveTouchpoint(i)} className="text-[#8E8E96] hover:text-[#A78BFA] transition-colors text-lg">×</button>
                       )}
                     </div>
                   ))}
@@ -173,7 +173,7 @@ export function AttributionVisualizer({ faqs }: Props) {
                     onChange={(e) => setNewTouchpoint(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleAddTouchpoint()}
                     placeholder="Add touchpoint (e.g., YouTube Ad)"
-                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
+                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
                     style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }}
                   />
                   <button onClick={handleAddTouchpoint} className="px-4 py-2.5 rounded-xl text-white text-sm font-medium" style={{ background: 'linear-gradient(135deg, #4338CA, #7C3AED)' }}>
@@ -254,7 +254,7 @@ export function AttributionVisualizer({ faqs }: Props) {
                       <tr className="border-b border-[#2a1a3a]">
                         <th className="text-left py-3 px-2 text-[#D6D0C2]">Touchpoint</th>
                         {models.map(m => (
-                          <th key={m} className={`text-right py-3 px-2 ${selectedModel === m ? 'text-[#A78BFA]' : 'text-[#71717A]'}`}>{m}</th>
+                          <th key={m} className={`text-right py-3 px-2 ${selectedModel === m ? 'text-[#A78BFA]' : 'text-[#8E8E96]'}`}>{m}</th>
                         ))}
                       </tr>
                     </thead>
@@ -263,7 +263,7 @@ export function AttributionVisualizer({ faqs }: Props) {
                         <tr key={i} className="border-b border-[#1a0f2a]">
                           <td className="py-3 px-2 text-white">{tp.name}</td>
                           {models.map(m => (
-                            <td key={m} className={`text-right py-3 px-2 ${selectedModel === m ? 'text-white font-medium' : 'text-[#71717A]'}`}>
+                            <td key={m} className={`text-right py-3 px-2 ${selectedModel === m ? 'text-white font-medium' : 'text-[#8E8E96]'}`}>
                               {allCredits[m][i]?.toFixed(1)}%
                             </td>
                           ))}
@@ -307,7 +307,7 @@ export function AttributionVisualizer({ faqs }: Props) {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"
-                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
+                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
                     style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }}
                   />
                   <button onClick={handleEmailCapture} className="px-4 py-2.5 rounded-xl text-white text-sm font-medium" style={{ background: 'linear-gradient(135deg, #4338CA, #7C3AED)' }}>

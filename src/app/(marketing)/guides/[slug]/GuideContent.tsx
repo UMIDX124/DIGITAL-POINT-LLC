@@ -13,7 +13,7 @@ import type { Guide } from '@/lib/guides';
 function TableOfContents({ sections, activeId }: { sections: { id: string; title: string }[]; activeId: string }) {
   return (
     <nav className="space-y-1" aria-label="Table of contents">
-      <p className="text-xs font-semibold uppercase tracking-wider text-[#71717A] mb-3">
+      <p className="text-xs font-semibold uppercase tracking-wider text-[#8E8E96] mb-3">
         Table of Contents
       </p>
       {sections.map((section) => (
@@ -23,7 +23,7 @@ function TableOfContents({ sections, activeId }: { sections: { id: string; title
           className={`block text-sm py-1.5 px-3 rounded-lg transition-all duration-200 ${
             activeId === section.id
               ? 'text-white bg-[rgba(196,181,253,0.12)] border-l-2 border-[#A78BFA]'
-              : 'text-[#71717A] hover:text-[#D6D0C2] hover:bg-[rgba(196,181,253,0.06)]'
+              : 'text-[#8E8E96] hover:text-[#D6D0C2] hover:bg-[rgba(196,181,253,0.06)]'
           }`}
         >
           {section.title}
@@ -92,7 +92,7 @@ function RelatedLinks({ links }: { links: Guide['relatedLinks'] }) {
             <span className="text-sm text-[#D6D0C2] group-hover:text-white transition-colors flex-1 min-w-0 truncate">
               {link.title}
             </span>
-            <ExternalLink className="w-3.5 h-3.5 text-[#71717A] group-hover:text-[#A78BFA] transition-colors shrink-0" />
+            <ExternalLink className="w-3.5 h-3.5 text-[#8E8E96] group-hover:text-[#A78BFA] transition-colors shrink-0" />
           </Link>
         ))}
       </div>
@@ -179,17 +179,17 @@ export function GuideContent({ guide }: { guide: Guide }) {
               ]}
             />
             <div className="mt-6 mb-4 flex items-center gap-3">
-              <span className="flex items-center gap-1.5 text-[#71717A] text-xs">
+              <span className="flex items-center gap-1.5 text-[#8E8E96] text-xs">
                 <BookOpen className="w-3.5 h-3.5" />
                 Pillar Guide
               </span>
-              <span className="text-[#71717A] text-xs">-</span>
-              <span className="flex items-center gap-1.5 text-[#71717A] text-xs">
+              <span className="text-[#8E8E96] text-xs">-</span>
+              <span className="flex items-center gap-1.5 text-[#8E8E96] text-xs">
                 <Clock className="w-3.5 h-3.5" />
                 {guide.readTime}
               </span>
-              <span className="text-[#71717A] text-xs">-</span>
-              <span className="text-[#71717A] text-xs">{guide.sections.length} sections</span>
+              <span className="text-[#8E8E96] text-xs">-</span>
+              <span className="text-[#8E8E96] text-xs">{guide.sections.length} sections</span>
             </div>
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
               {guide.title}
@@ -220,7 +220,7 @@ export function GuideContent({ guide }: { guide: Guide }) {
               {/* Mobile ToC */}
               <div className="lg:hidden mb-8">
                 <GlassCard className="p-4">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-[#71717A] mb-2">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-[#8E8E96] mb-2">
                     In This Guide
                   </p>
                   <ol className="space-y-1">

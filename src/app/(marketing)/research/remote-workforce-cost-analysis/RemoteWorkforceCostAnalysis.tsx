@@ -74,7 +74,7 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
             { label: 'Remote Workforce Cost Analysis', href: '/research/remote-workforce-cost-analysis' },
           ]} />
           <div className="mt-8">
-            <span className="text-[#71717A] text-sm">February 2026 &middot; 13 min read</span>
+            <span className="text-[#8E8E96] text-sm">February 2026 &middot; 13 min read</span>
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 leading-tight">
               Remote Workforce Cost Analysis
             </h1>
@@ -95,7 +95,7 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
                   <div className="font-display text-2xl md:text-3xl font-bold" style={{ color: stat.color }}>
                     {stat.value}
                   </div>
-                  <p className="text-[#71717A] text-sm mt-1">{stat.label}</p>
+                  <p className="text-[#8E8E96] text-sm mt-1">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -113,7 +113,7 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(167,139,250,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Role</th>
+                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Role</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">US Fully Loaded</th>
                       <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">Managed Remote</th>
                       <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">Savings</th>
@@ -132,7 +132,7 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
                 </table>
               </div>
             </div>
-            <p className="text-[#71717A] text-xs mt-3">US costs include salary, benefits, payroll taxes, equipment, and allocated office space. Remote costs include salary, management overhead, tools, and quality assurance.</p>
+            <p className="text-[#8E8E96] text-xs mt-3">US costs include salary, benefits, payroll taxes, equipment, and allocated office space. Remote costs include salary, management overhead, tools, and quality assurance.</p>
           </FadeUp>
         </Container>
       </Section>
@@ -147,7 +147,7 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(167,139,250,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Cost Item</th>
+                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Cost Item</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">Annual Cost</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">% of Total</th>
                     </tr>
@@ -182,7 +182,7 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(167,139,250,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Team Size</th>
+                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Team Size</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">US Annual</th>
                       <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">Remote Annual</th>
                       <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">Annual Savings</th>
@@ -215,7 +215,7 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(167,139,250,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Metric</th>
+                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Metric</th>
                       <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">Managed Remote</th>
                       <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">Freelancers</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">US In-House</th>
@@ -234,7 +234,7 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
                 </table>
               </div>
             </div>
-            <p className="text-[#71717A] text-xs mt-3">Quality metrics based on internal data from managed remote team engagements across 120+ client accounts, 2024-2026.</p>
+            <p className="text-[#8E8E96] text-xs mt-3">Quality metrics based on internal data from managed remote team engagements across 120+ client accounts, 2024-2026.</p>
           </FadeUp>
         </Container>
       </Section>

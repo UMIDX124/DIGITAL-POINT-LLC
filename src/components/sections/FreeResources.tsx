@@ -101,7 +101,7 @@ export function FreeResources() {
                     </h3>
 
                     {/* Description */}
-                    <p className="text-[#71717A] text-sm leading-relaxed flex-1 mb-5">
+                    <p className="text-[#8E8E96] text-sm leading-relaxed flex-1 mb-5">
                       {resource.description}
                     </p>
 

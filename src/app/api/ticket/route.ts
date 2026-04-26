@@ -153,12 +153,12 @@ export async function POST(request: NextRequest) {
 
             <table style="width: 100%; border-collapse: collapse;">
               <tr>
-                <td style="color: #71717A; font-size: 11px;">Ticket ID: ${ticketId}</td>
-                <td style="color: #71717A; font-size: 11px; text-align: right;">Created: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })}</td>
+                <td style="color: #8E8E96; font-size: 11px;">Ticket ID: ${ticketId}</td>
+                <td style="color: #8E8E96; font-size: 11px; text-align: right;">Created: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })}</td>
               </tr>
             </table>
 
-            <p style="color: #71717A; font-size: 11px; margin: 12px 0 0; text-align: center;">
+            <p style="color: #8E8E96; font-size: 11px; margin: 12px 0 0; text-align: center;">
               This ticket was created via the Digital Point LLC support chatbot.
             </p>
           </div>

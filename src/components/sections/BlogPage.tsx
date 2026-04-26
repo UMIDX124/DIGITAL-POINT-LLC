@@ -93,13 +93,13 @@ const BlogCard = memo(function BlogCard({ article }: { article: typeof articles[
       </h3>
 
       {/* Excerpt */}
-      <p className="text-[#71717A] text-sm leading-relaxed flex-1 mb-4">
+      <p className="text-[#8E8E96] text-sm leading-relaxed flex-1 mb-4">
         {article.excerpt}
       </p>
 
       {/* Meta */}
       <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(167,139,250, 0.1)' }}>
-        <div className="flex items-center gap-3 text-[#71717A] text-xs">
+        <div className="flex items-center gap-3 text-[#8E8E96] text-xs">
           <span>{article.date}</span>
           <span className="flex items-center gap-1">
             <Clock className="w-3 h-3" />

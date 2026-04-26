@@ -176,12 +176,12 @@ export function DashboardCostCalculator({ faqs }: Props) {
                     }}
                   >
                     <div className="flex items-center gap-2 mb-1">
-                      <div className={`w-4 h-4 rounded border ${item.value ? 'bg-[#7C3AED] border-[#7C3AED]' : 'border-[#71717A]'} flex items-center justify-center`}>
+                      <div className={`w-4 h-4 rounded border ${item.value ? 'bg-[#7C3AED] border-[#7C3AED]' : 'border-[#8E8E96]'} flex items-center justify-center`}>
                         {item.value && <CheckCircle className="w-3 h-3 text-white" />}
                       </div>
                       <span className="text-white text-sm font-medium">{item.label}</span>
                     </div>
-                    <p className="text-xs text-[#71717A] ml-6">{item.desc}</p>
+                    <p className="text-xs text-[#8E8E96] ml-6">{item.desc}</p>
                   </button>
                 ))}
               </div>
@@ -214,7 +214,7 @@ export function DashboardCostCalculator({ faqs }: Props) {
                         <tr key={tool.name} className="border-b border-[#1a0f2a]">
                           <td className="py-3 px-3">
                             <span className="text-white">{tool.name}</span>
-                            <span className="text-xs text-[#71717A] ml-2">{tool.tier}</span>
+                            <span className="text-xs text-[#8E8E96] ml-2">{tool.tier}</span>
                           </td>
                           <td className="text-right py-3 px-3 text-[#D6D0C2]">${setupCost.toLocaleString()}</td>
                           <td className="text-right py-3 px-3 text-[#D6D0C2]">${totalMonthly.toLocaleString()}/mo</td>
@@ -226,7 +226,7 @@ export function DashboardCostCalculator({ faqs }: Props) {
                 </table>
               </div>
 
-              <p className="text-xs text-[#71717A] mb-6">
+              <p className="text-xs text-[#8E8E96] mb-6">
                 * Monthly costs include selected infrastructure (warehouse: ${warehouseCost}/mo, ETL: ${etlCost}/mo{needsAnalyst ? `, analyst: $${analystCost}/mo` : ''})
               </p>
 
@@ -249,7 +249,7 @@ export function DashboardCostCalculator({ faqs }: Props) {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"
-                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
+                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
                     style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }}
                   />
                   <button onClick={handleEmailCapture} className="px-4 py-2.5 rounded-xl text-white text-sm font-medium" style={{ background: 'linear-gradient(135deg, #4338CA, #7C3AED)' }}>

@@ -60,7 +60,7 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
 
         {/* Author info */}
         <div className="flex-1 min-w-0">
-          <p className="text-xs uppercase tracking-wider text-[#71717A] mb-1">
+          <p className="text-xs uppercase tracking-wider text-[#8E8E96] mb-1">
             Written by
           </p>
           <h3 className="font-display text-lg font-semibold text-white">

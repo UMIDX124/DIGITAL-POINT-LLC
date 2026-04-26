@@ -55,7 +55,7 @@ export function CaseStudiesPage() {
                     }}
                   >
                     <div>
-                      <p className="text-[#71717A] text-xs uppercase tracking-wider mb-1">
+                      <p className="text-[#8E8E96] text-xs uppercase tracking-wider mb-1">
                         {study.industry}
                       </p>
                       <h2 className="font-display text-xl font-bold text-white">
@@ -69,7 +69,7 @@ export function CaseStudiesPage() {
                       >
                         {study.highlightMetric}
                       </p>
-                      <p className="text-[#71717A] text-xs">
+                      <p className="text-[#8E8E96] text-xs">
                         {study.highlightLabel}
                       </p>
                     </div>
@@ -118,7 +118,7 @@ export function CaseStudiesPage() {
                             >
                               {r.value}
                             </p>
-                            <p className="text-[#71717A] text-xs mt-1">
+                            <p className="text-[#8E8E96] text-xs mt-1">
                               {r.label}
                             </p>
                           </div>

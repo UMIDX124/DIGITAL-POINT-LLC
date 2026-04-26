@@ -251,7 +251,7 @@ export function AuditPage() {
                             </div>
                             <div>
                               <div className="text-white font-medium text-sm">{challenge.label}</div>
-                              <div className="text-[#71717A] text-xs mt-0.5">{challenge.description}</div>
+                              <div className="text-[#8E8E96] text-xs mt-0.5">{challenge.description}</div>
                             </div>
                             <ArrowRight className="w-4 h-4 text-[#A78BFA] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
                           </button>

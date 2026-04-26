@@ -101,9 +101,9 @@ export function InternalLinks({
                 <span className="text-white text-sm font-medium group-hover:text-[#C4B5FD] transition-colors">
                   {service.title}
                 </span>
-                <ArrowRight className="w-3 h-3 text-[#71717A] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ArrowRight className="w-3 h-3 text-[#8E8E96] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-              <p className="text-[#71717A] text-xs">{service.description}</p>
+              <p className="text-[#8E8E96] text-xs">{service.description}</p>
             </Link>
           );
         })}

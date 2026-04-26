@@ -71,7 +71,7 @@ export function SystemSection() {
                       <step.icon className="w-5 h-5 text-[#A78BFA]" />
                     </div>
                     <h4 className="font-display font-bold text-white text-sm mb-1">{step.title}</h4>
-                    <p className="text-[#71717A] text-xs leading-relaxed">{step.description}</p>
+                    <p className="text-[#8E8E96] text-xs leading-relaxed">{step.description}</p>
                   </GlassCard>
                   
                   {/* Arrow */}

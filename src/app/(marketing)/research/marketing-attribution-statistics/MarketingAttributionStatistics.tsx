@@ -63,7 +63,7 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
             { label: 'Marketing Attribution Statistics', href: '/research/marketing-attribution-statistics' },
           ]} />
           <div className="mt-8">
-            <span className="text-[#71717A] text-sm">March 2026 &middot; 11 min read</span>
+            <span className="text-[#8E8E96] text-sm">March 2026 &middot; 11 min read</span>
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 leading-tight">
               Marketing Attribution Statistics 2026
             </h1>
@@ -84,7 +84,7 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
                   <div className="font-display text-2xl md:text-3xl font-bold" style={{ color: stat.color }}>
                     {stat.value}
                   </div>
-                  <p className="text-[#71717A] text-sm mt-1">{stat.label}</p>
+                  <p className="text-[#8E8E96] text-sm mt-1">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -102,7 +102,7 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(167,139,250,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Model</th>
+                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Model</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">Adoption</th>
                       <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">YoY Change</th>
                       <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">Est. Accuracy</th>
@@ -123,7 +123,7 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
                 </table>
               </div>
             </div>
-            <p className="text-[#71717A] text-xs mt-3">Adoption rates exceed 100% because many organizations use multiple models simultaneously. Hybrid approaches are counted separately.</p>
+            <p className="text-[#8E8E96] text-xs mt-3">Adoption rates exceed 100% because many organizations use multiple models simultaneously. Hybrid approaches are counted separately.</p>
           </FadeUp>
         </Container>
       </Section>
@@ -138,9 +138,9 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(167,139,250,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Privacy Change</th>
+                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Privacy Change</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">Key Stat</th>
-                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Impact</th>
+                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Impact</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -169,7 +169,7 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(167,139,250,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Platform</th>
+                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Platform</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">Reported</th>
                       <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">Est. Actual</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">Gap</th>
@@ -188,7 +188,7 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
                 </table>
               </div>
             </div>
-            <p className="text-[#71717A] text-xs mt-3">Accuracy estimates based on comparison of platform-reported data against server-side conversion data and incrementality tests.</p>
+            <p className="text-[#8E8E96] text-xs mt-3">Accuracy estimates based on comparison of platform-reported data against server-side conversion data and incrementality tests.</p>
           </FadeUp>
         </Container>
       </Section>

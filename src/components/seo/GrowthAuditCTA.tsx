@@ -44,7 +44,7 @@ export function GrowthAuditCTA({
       >
         <div>
           <p className="text-white font-medium text-sm">{title}</p>
-          <p className="text-[#71717A] text-xs mt-0.5">{description}</p>
+          <p className="text-[#8E8E96] text-xs mt-0.5">{description}</p>
         </div>
         <Link
           href="/free-growth-audit"

@@ -21,7 +21,7 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
           url: `${baseUrl}${item.href}`,
         }))}
       />
-      <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-[#71717A]">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-[#8E8E96]">
         {allItems.map((item, index) => (
           <span key={item.href} className="flex items-center gap-1.5">
             {index > 0 && <ChevronRight className="w-3 h-3" />}

@@ -58,7 +58,7 @@ export async function POST(req: Request) {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0B; color: #e0d6eb; padding: 40px 30px; border-radius: 12px;">
           <div style="text-align: center; margin-bottom: 30px;">
             <h1 style="color: #A78BFA; font-size: 24px; margin: 0;">Welcome to Digital Point</h1>
-            <p style="color: #71717A; font-size: 14px; margin-top: 8px;">Growth insights from $50M+ in managed ad spend</p>
+            <p style="color: #8E8E96; font-size: 14px; margin-top: 8px;">Growth insights from $50M+ in managed ad spend</p>
           </div>
           <div style="background: rgba(167, 139, 250, 0.1); border: 1px solid rgba(196,181,253, 0.2); border-radius: 8px; padding: 24px; margin-bottom: 24px;">
             <p style="margin: 0 0 12px; font-size: 15px; color: #e0d6eb;">Hey there 👋</p>
@@ -79,8 +79,8 @@ export async function POST(req: Request) {
             <a href="https://digitalpointllc.com/blog" style="display: inline-block; background: linear-gradient(135deg, #4338CA, #7C3AED); color: white; text-decoration: none; padding: 12px 28px; border-radius: 8px; font-size: 14px; font-weight: 600;">Read Our Latest Insights</a>
           </div>
           <div style="text-align: center; border-top: 1px solid rgba(196,181,253, 0.15); padding-top: 20px;">
-            <p style="color: #71717A; font-size: 12px; margin: 0;">Digital Point LLC — Performance Marketing & Growth Systems</p>
-            <p style="color: #71717A; font-size: 11px; margin-top: 4px;">You're receiving this because you subscribed at digitalpointllc.com</p>
+            <p style="color: #8E8E96; font-size: 12px; margin: 0;">Digital Point LLC — Performance Marketing & Growth Systems</p>
+            <p style="color: #8E8E96; font-size: 11px; margin-top: 4px;">You're receiving this because you subscribed at digitalpointllc.com</p>
           </div>
         </div>
       `,

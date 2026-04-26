@@ -72,7 +72,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               <thead>
                 <tr>
                   <th
-                    className="text-left text-xs uppercase tracking-wider text-[#71717A] py-3 px-4 border-b"
+                    className="text-left text-xs uppercase tracking-wider text-[#8E8E96] py-3 px-4 border-b"
                     style={{ borderColor: 'rgba(167,139,250, 0.2)' }}
                   >
                     Category

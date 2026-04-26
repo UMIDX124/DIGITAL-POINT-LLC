@@ -56,12 +56,12 @@ export function GuidesHub({ guides }: { guides: Guide[] }) {
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-1.5">
-                            <span className="flex items-center gap-1 text-[#71717A] text-xs">
+                            <span className="flex items-center gap-1 text-[#8E8E96] text-xs">
                               <Clock className="w-3 h-3" />
                               {guide.readTime}
                             </span>
-                            <span className="text-[#71717A] text-xs">-</span>
-                            <span className="text-[#71717A] text-xs">
+                            <span className="text-[#8E8E96] text-xs">-</span>
+                            <span className="text-[#8E8E96] text-xs">
                               {guide.sections.length} sections
                             </span>
                           </div>

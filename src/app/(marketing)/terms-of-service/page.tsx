@@ -17,7 +17,7 @@ const sectionHeadingClass =
 
 const bodyTextClass = 'text-[#D6D0C2] leading-relaxed mb-4';
 
-const secondaryTextClass = 'text-[#71717A] leading-relaxed mb-4';
+const secondaryTextClass = 'text-[#8E8E96] leading-relaxed mb-4';
 
 export default function TermsOfServicePage() {
   return (

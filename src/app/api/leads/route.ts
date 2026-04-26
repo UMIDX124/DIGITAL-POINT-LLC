@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
             </div>
             ` : ''}
 
-            <p style="color: #71717A; font-size: 11px; margin: 16px 0 0; text-align: center;">
+            <p style="color: #8E8E96; font-size: 11px; margin: 16px 0 0; text-align: center;">
               Lead ID: ${lead.id} | Captured: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })}
             </p>
           </div>

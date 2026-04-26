@@ -25,7 +25,7 @@ export function BlogCategoryContent({ categoryName, meta, posts }: Props) {
               {categoryName}
             </h1>
             <p className="text-[#D6D0C2] text-lg mt-4 max-w-2xl">{meta.description}</p>
-            <p className="text-[#71717A] text-sm mt-2">{posts.length} article{posts.length !== 1 ? 's' : ''}</p>
+            <p className="text-[#8E8E96] text-sm mt-2">{posts.length} article{posts.length !== 1 ? 's' : ''}</p>
           </FadeUp>
         </Container>
       </section>
@@ -35,7 +35,7 @@ export function BlogCategoryContent({ categoryName, meta, posts }: Props) {
           {posts.length === 0 ? (
             <FadeUp>
               <div className="text-center py-16">
-                <p className="text-[#71717A] text-lg">No articles in this category yet.</p>
+                <p className="text-[#8E8E96] text-lg">No articles in this category yet.</p>
                 <Link href="/blog" className="inline-flex items-center gap-2 text-[#A78BFA] hover:text-[#C4B5FD] mt-4 text-sm">
                   <ArrowLeft className="w-4 h-4" /> Back to blog
                 </Link>
@@ -59,9 +59,9 @@ export function BlogCategoryContent({ categoryName, meta, posts }: Props) {
                       <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#C4B5FD] transition-colors mb-3 leading-snug">
                         {post.title}
                       </h3>
-                      <p className="text-[#71717A] text-sm leading-relaxed flex-1 mb-4">{post.excerpt}</p>
+                      <p className="text-[#8E8E96] text-sm leading-relaxed flex-1 mb-4">{post.excerpt}</p>
                       <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(167,139,250, 0.1)' }}>
-                        <div className="flex items-center gap-3 text-[#71717A] text-xs">
+                        <div className="flex items-center gap-3 text-[#8E8E96] text-xs">
                           <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
                           <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{post.readTime}</span>
                         </div>

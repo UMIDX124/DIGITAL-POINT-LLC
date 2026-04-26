@@ -54,7 +54,7 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
             { label: 'Facebook Ads Benchmarks 2026', href: '/research/facebook-ads-benchmarks-2026' },
           ]} />
           <div className="mt-8">
-            <span className="text-[#71717A] text-sm">March 2026 &middot; 12 min read</span>
+            <span className="text-[#8E8E96] text-sm">March 2026 &middot; 12 min read</span>
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 leading-tight">
               Facebook Ads Benchmarks 2026
             </h1>
@@ -75,7 +75,7 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
                   <div className="font-display text-2xl md:text-3xl font-bold" style={{ color: stat.color }}>
                     {stat.value}
                   </div>
-                  <p className="text-[#71717A] text-sm mt-1">{stat.label}</p>
+                  <p className="text-[#8E8E96] text-sm mt-1">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -93,7 +93,7 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(167,139,250,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Industry</th>
+                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Industry</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">CPC</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">CPM</th>
                       <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">CTR</th>
@@ -114,7 +114,7 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
                 </table>
               </div>
             </div>
-            <p className="text-[#71717A] text-xs mt-3">Data based on analysis of $48M+ in Meta Ads spend across 340+ accounts, Q4 2025 - Q1 2026.</p>
+            <p className="text-[#8E8E96] text-xs mt-3">Data based on analysis of $48M+ in Meta Ads spend across 340+ accounts, Q4 2025 - Q1 2026.</p>
           </FadeUp>
         </Container>
       </Section>
@@ -129,19 +129,19 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(167,139,250,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#71717A] font-medium">Metric</th>
-                      <th className="text-right py-3 px-4 text-[#71717A] font-medium">2024</th>
-                      <th className="text-right py-3 px-4 text-[#71717A] font-medium">2025</th>
+                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Metric</th>
+                      <th className="text-right py-3 px-4 text-[#8E8E96] font-medium">2024</th>
+                      <th className="text-right py-3 px-4 text-[#8E8E96] font-medium">2025</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">2026</th>
-                      <th className="text-right py-3 px-4 text-[#71717A] font-medium">YoY</th>
+                      <th className="text-right py-3 px-4 text-[#8E8E96] font-medium">YoY</th>
                     </tr>
                   </thead>
                   <tbody>
                     {yearOverYear.map((row, i) => (
                       <tr key={row.metric} className={i < yearOverYear.length - 1 ? 'border-b border-[rgba(167,139,250,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.metric}</td>
-                        <td className="py-3 px-4 text-right text-[#71717A]">{row.value2024}</td>
-                        <td className="py-3 px-4 text-right text-[#71717A]">{row.value2025}</td>
+                        <td className="py-3 px-4 text-right text-[#8E8E96]">{row.value2024}</td>
+                        <td className="py-3 px-4 text-right text-[#8E8E96]">{row.value2025}</td>
                         <td className="py-3 px-4 text-right text-white font-medium">{row.value2026}</td>
                         <td className="py-3 px-4 text-right" style={{ color: row.change.startsWith('+') ? '#A78BFA' : '#C4B5FD' }}>
                           {row.change}

@@ -97,9 +97,9 @@ export function ResearchHub() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-1.5">
-                            <span className="text-[#71717A] text-xs">{report.date}</span>
-                            <span className="text-[#71717A] text-xs">-</span>
-                            <span className="text-[#71717A] text-xs">{report.readTime}</span>
+                            <span className="text-[#8E8E96] text-xs">{report.date}</span>
+                            <span className="text-[#8E8E96] text-xs">-</span>
+                            <span className="text-[#8E8E96] text-xs">{report.readTime}</span>
                           </div>
                           <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#C4B5FD] transition-colors mb-2">
                             {report.title}

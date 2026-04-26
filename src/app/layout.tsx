@@ -55,6 +55,7 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-touch-icon.png",
   },
+  manifest: "/site.webmanifest",
   openGraph: {
     title: "Digital Point — Hire the AI. Skip the headcount.",
     description:

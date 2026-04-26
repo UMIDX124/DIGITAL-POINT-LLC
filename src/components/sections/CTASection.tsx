@@ -3,8 +3,12 @@ import { copy } from '@/lib/copy';
 import MagneticCTA from '@/components/effects/MagneticCTA';
 
 /**
- * Phase 4f final CTA — dramatic purple-glow moment. Massive italic serif
- * headline on bg-tertiary with a strong ambient glow behind the text.
+ * Phase 4f → 17b 2A-REFIX final CTA. Originally a "dramatic purple-glow
+ * moment" with radial-gradient pseudo-element behind the headline. Phase
+ * 16 migrated palette but kept the gradient — production verification
+ * surfaced amber bleed at section bottom inconsistent with Bloomberg
+ * Operator zero-gradient canon. 2A-REFIX drops the gradient + section
+ * overflow-hidden + raises line-height to clear italic descenders.
  */
 export function CTASection() {
   const { eyebrow, headline, body, ctaPrimary, ctaSecondary } = copy.finalCta;
@@ -12,23 +16,13 @@ export function CTASection() {
   return (
     <section
       id="cta"
-      className="relative overflow-hidden section-deferred"
+      className="relative section-deferred"
       style={{
-        background: 'var(--bg-tertiary)',
+        background: 'var(--bg-canvas)',
         paddingTop: 'var(--section-space)',
         paddingBottom: 'var(--section-space)',
       }}
     >
-      {/* Strong purple ambient glow, centered behind content */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        aria-hidden="true"
-        style={{
-          background:
-            'radial-gradient(ellipse 65% 55% at 50% 55%, var(--accent-glow), transparent 70%)',
-        }}
-      />
-
       <div className="container-narrow text-center relative">
         <p
           className="font-mono uppercase mb-6"
@@ -48,7 +42,7 @@ export function CTASection() {
             fontSize: 'var(--text-h1)',
             fontStyle: 'italic',
             color: 'var(--text-primary)',
-            lineHeight: 1.05,
+            lineHeight: 1.32,
             letterSpacing: '-0.02em',
             maxWidth: '18ch',
           }}

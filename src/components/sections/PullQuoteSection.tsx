@@ -1,33 +1,25 @@
 import { copy } from '@/lib/copy';
 
 /**
- * Phase 4e pull quote — centered italic serif on bg-tertiary with a soft
- * purple radial glow behind the text. Max-width 16ch for editorial breath.
+ * Phase 4e → 17b 2A-REFIX pull quote. Originally centered italic serif on
+ * bg-tertiary with a soft amber radial glow. 2A-REFIX drops the glow
+ * (Bloomberg Operator zero-gradient canon) + section overflow-hidden +
+ * raises line-height to 1.32 to clear italic descenders.
  */
 export function PullQuoteSection() {
   const { text, attribution } = copy.pullQuote;
 
   return (
     <section
-      className="relative overflow-hidden section-deferred"
+      className="relative section-deferred"
       style={{
-        background: 'var(--bg-tertiary)',
+        background: 'var(--bg-canvas)',
         borderBottom: '1px solid var(--border-subtle)',
         paddingTop: 'var(--section-space)',
         paddingBottom: 'var(--section-space)',
       }}
       aria-label="Operating principle"
     >
-      {/* Soft purple radial glow behind the text */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        aria-hidden="true"
-        style={{
-          background:
-            'radial-gradient(ellipse 50% 40% at 50% 50%, var(--accent-glow-soft), transparent 70%)',
-        }}
-      />
-
       <div className="relative mx-auto max-w-[88rem]" style={{ paddingInline: 'var(--container-gutter)' }}>
         <blockquote
           className="pull-quote-text font-italic-display text-center mx-auto"
@@ -40,7 +32,7 @@ export function PullQuoteSection() {
             fontSize: 'clamp(1.75rem, 3.4vw, 3.5rem)',
             color: 'var(--text-primary)',
             fontStyle: 'italic',
-            lineHeight: 1.18,
+            lineHeight: 1.32,
             letterSpacing: '-0.015em',
             /* 80ch reading measure replaces --maxw-pullquote (was 36rem
                post-Phase-15-tighten). Editorial wide-line look. */

@@ -107,7 +107,12 @@ export function HeroSection() {
         .fromTo('[data-hero-sub]', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45 }, 0.55)
         .fromTo('[data-hero-cta] > *', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.08 }, 0.7);
 
-      // Scroll-tied effects.
+      // Scroll-tied effects. Phase 17b 2A-REFIX (Scope C) — added
+      // anticipatePin + fastScrollEnd + invalidateOnRefresh to smooth
+      // pin engagement and resize behaviour. Snap y/scale to integer
+      // pixels via gsap snap so sub-pixel transform interpolation can't
+      // accumulate floating-point error during scrub — the symptom user
+      // reported as font vibration / jiggering on slow scroll.
       const orbEl = orbWrapRef.current;
       const triggers: ScrollTrigger[] = [];
       if (orbEl) {
@@ -117,7 +122,15 @@ export function HeroSection() {
             start: 'top top',
             end: 'bottom top',
             scrub: 0.8,
-            animation: gsap.to(orbEl, { scale: 0.9, y: 40, ease: 'none' }),
+            anticipatePin: 1,
+            fastScrollEnd: true,
+            invalidateOnRefresh: true,
+            animation: gsap.to(orbEl, {
+              scale: 0.9,
+              y: 40,
+              ease: 'none',
+              snap: { y: 1 },
+            }),
           }),
         );
       }
@@ -127,7 +140,14 @@ export function HeroSection() {
           start: 'top top',
           end: 'bottom top',
           scrub: 0.9,
-          animation: gsap.to('[data-hero-eyebrow]', { y: -20, ease: 'none' }),
+          anticipatePin: 1,
+          fastScrollEnd: true,
+          invalidateOnRefresh: true,
+          animation: gsap.to('[data-hero-eyebrow]', {
+            y: -20,
+            ease: 'none',
+            snap: { y: 1 },
+          }),
         }),
       );
 
@@ -189,7 +209,11 @@ export function HeroSection() {
               fontSize: 'var(--text-hero)',
               color: 'var(--text-primary)',
               maxWidth: 'var(--maxw-heading-display)',
-              lineHeight: 'var(--lh-display)',
+              /* Phase 17b 2A-REFIX — was --lh-display (1.02), too tight for
+                 italic descenders on .hero-em. Bumped to --lh-tight (1.10)
+                 to give the line box room for the italic 'I' tail without
+                 affecting headline visual weight materially. */
+              lineHeight: 'var(--lh-tight)',
               letterSpacing: 'var(--ls-display)',
             }}
           >

@@ -436,15 +436,16 @@
   .font-italic-display {
     font-family: var(--font-instrument-serif), Georgia, serif;
     font-style: italic;
-    /* Phase 16 D.1 → Phase 17b 2A — Instrument Serif italic glyphs (i tittle
-       at top; g/p/y/f descenders + italic slant at bottom) need cross-section
-       breathing room. Tightened parent line-heights in hero h1, pull-quote,
-       services-pin numerals, CTA italic emphasis, RecentWork were all
-       clipping. Padding-block widened from 0.04em to 0.10em to handle
-       descender extent without changing baseline alignment. Components
-       can still override per-instance. */
-    line-height: 1.22;
-    padding-block: 0.10em;
+    /* Phase 16 D.1 → Phase 17b 2A → 2A-REFIX. Cross-section default for
+       all Instrument Serif italic surfaces. Pillar 2A's 1.22 / 0.10em
+       was insufficient because the actual clip surface was `contain: paint`
+       on .section-deferred + .services-pin-frame ancestors (now dropped in
+       2A-REFIX). With paint-region clipping removed, this leaf-level
+       padding still provides line-box breathing room for cases where
+       components apply their own overflow:hidden ancestors. Minimum
+       line-height per directive: 1.30 on display italic. */
+    line-height: 1.32;
+    padding-block: 0.12em;
     font-feature-settings: "calt" 1, "liga" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -940,11 +941,13 @@ html[data-paused-global="true"] .grain-overlay {
 }
 /* Word-reveal slides .word-inner up from yPercent:110 to 0 inside .word
    which has overflow:hidden (Tailwind utility on the span). Phase 17b 2A
-   expands both axes of the .word container so italic ascenders + descenders
-   + slant-extent all fit inside the clip without breaking the slide reveal. */
+   → 2A-REFIX expands both axes of the .word container so italic ascenders
+   + descenders + slant-extent all fit inside the clip without breaking the
+   slide reveal. padding-bottom raised to 0.32em for deeper descender clearance
+   given the inline h1 lineHeight constraint. */
 .hero-em .word {
-  padding-top: 0.18em;
-  padding-bottom: 0.22em;
+  padding-top: 0.20em;
+  padding-bottom: 0.32em;
 }
 
 /* ============================================
@@ -1090,18 +1093,21 @@ html[data-paused-global="true"] .chat-trigger-sparkle {
 }
 
 /* ============================================
-   PHASE 17b PILLAR 1 — content-visibility:auto removal.
-   Phase 6 v2 D.9 used content-visibility:auto for below-fold deferral,
-   but the property is the same one that produced the 0.196 CLS regression
-   in Phase 14 iter 1. Section 4 of the Phase 17a audit caught a single
-   r3 home-mobile run hitting the exact 0.196 magnitude — the rule still
-   manifests at full severity even when medians look bounded.
-   Replaced with `contain: layout paint style` (the kept-legitimate use
-   on .services-pin-frame, line ~1204). Drops contain-intrinsic-size since
-   it's only meaningful with content-visibility:auto.
+   PHASE 17b PILLAR 1 → 2A-REFIX — content-visibility / containment
+   strategy.
+   Phase 6 v2 D.9 used content-visibility:auto for below-fold deferral
+   (produced 0.196 CLS regression in Phase 14 iter 1). Pillar 1 replaced
+   with `contain: layout paint style`, which dropped CLS but kept `paint`
+   — the property that clips descenders at the element's content box.
+   Production verification falsified Pillar 2A's italic-clipping fix
+   precisely because `contain: paint` was clipping italic descenders on
+   every .section-deferred consumer.
+   2A-REFIX drops `paint` from the contain declaration. `layout style`
+   alone preserves CLS protection (layout independence + style isolation)
+   without paint-region clipping.
    ============================================ */
 .section-deferred {
-  contain: layout paint style;
+  contain: layout style;
 }
 
 /* Phase 7: ScrambleText was removed (production hover-freeze regression);
@@ -1225,10 +1231,13 @@ html[data-paused-global="true"] .logo-marquee-track {
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--border-subtle);
-  /* Phase 14 lag fix — isolate paint/layout cost so stacked sticky frames
-     don't trigger composite-storm during scroll. content-visibility: auto
-     was tested but produced CLS variance — reverted in iter 2. */
-  contain: layout paint style;
+  /* Phase 14 lag fix → 2A-REFIX. Originally `contain: layout paint style`
+     for composite-storm prevention on stacked sticky frames. The `paint`
+     value clips the giant 22vw italic numeral's descender at the frame
+     content box (Instrument Serif italic numerals have slight slant tail).
+     Drop `paint`; keep `layout style` for layout-cost isolation without
+     paint-region clipping. */
+  contain: layout style;
 }
 /* Phase 14 visual polish — last frame's hairline produced a double border
    against the next section. Drop it. */

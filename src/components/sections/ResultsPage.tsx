@@ -181,7 +181,7 @@ export function ResultsPage() {
                 onClick={() => setActiveFilter(filter)}
                 className={`px-4 py-2 rounded-lg text-sm transition-all ${
                   activeFilter === filter
-                    ? 'bg-plum text-white'
+                    ? 'bg-plum text-[#0A0A0B]'
                     : 'bg-surface-glass text-text-secondary hover:text-text-primary'
                 }`}
               >
@@ -356,7 +356,7 @@ export function ResultsPage() {
               </p>
               <Link href="/free-growth-audit">
                 <Button
-                  className="bg-plum hover:bg-plum-light text-white font-semibold px-8 py-6 group"
+                  className="bg-plum hover:bg-plum-light text-[#0A0A0B] font-semibold px-8 py-6 group"
                 >
                   Request Free Growth Audit
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />

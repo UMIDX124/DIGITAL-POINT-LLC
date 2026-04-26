@@ -120,7 +120,7 @@ export function SystemsReportingPage() {
             <div className="flex flex-wrap gap-4 mt-8">
               <Link href="/free-growth-audit">
                 <Button
-                  className="bg-plum hover:bg-plum-light text-white font-semibold px-6 group"
+                  className="bg-plum hover:bg-plum-light text-[#0A0A0B] font-semibold px-6 group"
                 >
                   Get Audit
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -269,7 +269,7 @@ export function SystemsReportingPage() {
               </p>
               <Link href="/free-growth-audit">
                 <Button
-                  className="bg-plum hover:bg-plum-light text-white font-semibold px-8 py-6 group"
+                  className="bg-plum hover:bg-plum-light text-[#0A0A0B] font-semibold px-8 py-6 group"
                 >
                   Request Free Growth Audit
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />

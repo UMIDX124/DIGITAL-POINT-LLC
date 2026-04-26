@@ -740,10 +740,12 @@ a.text-link:hover,
    ============================================ */
 .cta-primary {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  background: var(--accent); color: #ffffff;
+  /* Phase 15 a11y — accent bg with #0A0A0B text reads ~13:1 (AAA).
+     Previous #ffffff on #A78BFA was ~2.5:1 (failed WCAG AA). */
+  background: var(--accent); color: #0A0A0B;
   padding: 0.95rem 1.6rem; border-radius: 2px;
   font-family: var(--font-geist-sans), var(--font-sans), sans-serif;
-  font-weight: 500; font-size: 0.9375rem; letter-spacing: -0.01em;
+  font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.01em;
   transition:
     transform var(--dur-short) var(--ease-out-soft),
     background-color var(--dur-short) var(--ease-out-soft),

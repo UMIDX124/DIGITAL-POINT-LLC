@@ -1,5 +1,7 @@
-'use client';
-
+// Phase 14 D.1 — converted to server component (was 'use client' since
+// Phase 11). Zero hooks, zero event handlers, all reveal animation lives
+// in ScrollMotion via data-* attrs. Killing the client boundary removes
+// the hydration cost that pegged blog list mobile TBT to ~390-500ms.
 import { memo } from 'react';
 import { ArrowRight, Clock, Tag } from 'lucide-react';
 import {

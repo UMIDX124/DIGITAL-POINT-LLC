@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import MagneticCTA from '@/components/effects/MagneticCTA';
+import { AutomationFlow } from '@/components/hero/AutomationFlow';
 
 /**
  * Phase 6 v2 editorial hero — AI-first hybrid positioning.
@@ -288,10 +289,12 @@ export function HeroSection() {
           className="hero-pulse-wrap relative flex items-center justify-center"
           data-hero-orb
         >
-          {/* Phase 11 — replaced 5-layer SVG orb with a minimal vertical
-              breathing line. Near-zero perf cost, doesn't compete with hero
-              text, fades + scales on scroll the same way the previous mark did. */}
-          <span className="hero-pulse-line" aria-hidden="true" />
+          {/* Phase 14 — automation flow visualisation replaces the Phase 11
+              breathing line. 4-node 2×2 grid (Lead Trigger → AI Score →
+              Operator Route → CRM Updated) with dashed flowing connections.
+              Pure CSS animations, hidden under 768px so the hero copy gets
+              the full column on mobile. */}
+          <AutomationFlow />
         </div>
       </div>
     </section>

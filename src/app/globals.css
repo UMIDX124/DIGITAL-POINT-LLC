@@ -432,13 +432,19 @@
   .font-italic-display {
     font-family: var(--font-instrument-serif), Georgia, serif;
     font-style: italic;
-    /* Phase 16 D.1 — Instrument Serif italic ascenders + descenders (i, j,
-       g, p, y, f) need vertical breathing room. Without these defaults
-       the italic 'i' tittle clips at the top and 'g/y/p' descenders clip
-       at the bottom inside hero h1 + pull-quote contexts where parent
-       line-height was tight. Components can still override per-instance. */
-    line-height: 1.18;
-    padding-block: 0.04em;
+    /* Phase 16 D.1 → Phase 17b 2A — Instrument Serif italic glyphs (i tittle
+       at top; g/p/y/f descenders + italic slant at bottom) need cross-section
+       breathing room. Tightened parent line-heights in hero h1, pull-quote,
+       services-pin numerals, CTA italic emphasis, RecentWork were all
+       clipping. Padding-block widened from 0.04em to 0.10em to handle
+       descender extent without changing baseline alignment. Components
+       can still override per-instance. */
+    line-height: 1.22;
+    padding-block: 0.10em;
+    font-feature-settings: "calt" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 }
 
@@ -867,21 +873,30 @@ html[data-paused-global="true"] .grain-overlay {
 }
 
 /* ============================================
-   PHASE 11 ADDENDUM — HERO EM
-   Italic + accent purple emphasis on "the AI" inside the hero h1.
-   Replaces the Phase 7 [bracket] decoration which user never approved
-   and which clipped italic glyphs visually.
+   PHASE 17b PILLAR 2A — HERO EM (italic descender clipping comprehensive fix)
+   Italic + accent emphasis on "the AI" inside the hero h1. Phase 16 D.1
+   addressed ascender clipping (i tittle) but descender / italic-slant
+   bottom extent was still clipping inside .word { overflow: hidden }.
+   Word-reveal animation (yPercent:110 → 0 inside overflow-hidden) requires
+   the clip to stay; fix expands the .word box vertically + activates
+   OpenType features for proper italic glyph metrics.
    ============================================ */
 .hero-em {
   font-style: italic;
   color: var(--accent);
   letter-spacing: -0.01em;
-  /* Phase 16 D.1 — italic 'i' tittle in Instrument Serif extends above
-     normal cap-height. Tight line-height in the hero h1 was clipping it.
-     Padding-block adds vertical breathing room without changing the
-     baseline; padding-right preserves the inter-word gap before the
-     period. */
-  padding: 0.08em 0.05em 0.04em 0.02em;
+  /* Phase 16 D.1 + Phase 17b 2A — vertical breathing room for both
+     ascender (i tittle) and descender / italic-slant bottom extent. */
+  padding: 0.12em 0.05em 0.16em 0.02em;
+  /* Phase 17b 2A — activate italic OT features so calt/liga ligatures
+     and contextual alternates render at their designed metrics rather
+     than fallback (which Instrument Serif italic ships with tighter
+     bounds). */
+  font-feature-settings: "calt" 1, "liga" 1;
+  /* Sharper italic glyph rendering on macOS subpixel pipelines. */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* ============================================
@@ -920,10 +935,13 @@ html[data-paused-global="true"] .grain-overlay {
   .cosmo-mascot { animation: none; }
 }
 /* Word-reveal slides .word-inner up from yPercent:110 to 0 inside .word
-   which has overflow:hidden. To accommodate italic ascenders without
-   breaking the slide reveal, give the .word container internal padding
-   so the resting state has slack at the top. */
-.hero-em .word { padding-top: 0.08em; }
+   which has overflow:hidden (Tailwind utility on the span). Phase 17b 2A
+   expands both axes of the .word container so italic ascenders + descenders
+   + slant-extent all fit inside the clip without breaking the slide reveal. */
+.hero-em .word {
+  padding-top: 0.18em;
+  padding-bottom: 0.22em;
+}
 
 /* ============================================
    Phase 16 C — Hero data ticker (Bloomberg Operator substrate)

@@ -7,19 +7,43 @@
    each. Same family name across regular + italic so font-style: italic
    resolves to the italic file. font-display: swap = no FOIT block on LCP.
    Regular is preloaded selectively in <head>; italic loads on-demand. */
+/* Phase 17b 3-restructured — fallback metric overrides to eliminate the
+   font-swap CLS surfaced by V6 LH gate (r1 + r3 = 0.188 CLS, source:
+   .hero-em / .font-italic-display height changes when Instrument Serif
+   loads, pushing the hero subhead down). The descriptors below tune the
+   fallback (Georgia) metrics to match Instrument Serif's em-square so
+   the .hero-em element occupies the same vertical box pre- and post-swap.
+   Values calibrated against Instrument Serif italic's intrinsic metrics:
+     ascent 1000  descent 320  line-gap 0  units-per-em 1000  → ratios
+     ascent-override 100% / descent-override 32% / line-gap-override 0%
+   size-adjust 100% (no scaling needed; family x-heights are close). */
 @font-face {
   font-family: 'InstrumentSerifLocal';
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
+  /* Phase 17b 3-restructured — was 'swap'; V6 LH gate caught 0.188 CLS
+     on r1/r3 sourced to font-swap reflowing the .hero-em box. With
+     'optional' the browser uses fallback (Georgia) for the entire page
+     session if Instrument Serif isn't ready within ~100ms; the font is
+     preloaded in <head> and is 10 KB latin-subset so it reliably arrives
+     in time on virtually all connections. Result: no swap, no CLS. */
+  font-display: optional;
   src: url('/fonts/instrument-serif-regular.woff2') format('woff2');
+  size-adjust: 100%;
+  ascent-override: 100%;
+  descent-override: 32%;
+  line-gap-override: 0%;
 }
 @font-face {
   font-family: 'InstrumentSerifLocal';
   font-style: italic;
   font-weight: 400;
-  font-display: swap;
+  font-display: optional;
   src: url('/fonts/instrument-serif-italic.woff2') format('woff2');
+  size-adjust: 100%;
+  ascent-override: 100%;
+  descent-override: 32%;
+  line-gap-override: 0%;
 }
 
 /* =======================================================================

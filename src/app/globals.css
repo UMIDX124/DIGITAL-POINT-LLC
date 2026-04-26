@@ -794,8 +794,14 @@ a.text-link:hover,
    doesn't compete with hero text. Pause-on-tab-hidden.
    ============================================ */
 .hero-pulse-wrap {
-  width: min(280px, 35vh);
-  height: min(280px, 35vh);
+  /* Phase 16 B — opened up from 280px square to host the new orbital
+     system at full 32rem × 24rem (4:3). The legacy 280px square was for
+     the Phase 11 1px breathing line. */
+  width: 100%;
+  max-width: 32rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .hero-pulse-line {
   display: block;
@@ -1187,111 +1193,51 @@ html[data-paused-global="true"] .logo-marquee-track {
 }
 
 /* ===================================================================
-   Phase 16 A.1 — Hero AutomationOrbit (galaxy/orbital system).
-   Replaces or augments AutomationFlow 2×2. Single GPU rotation on the
-   spinner container; nodes positioned absolutely; SVG light-cone arcs
-   imply signal direction. < 768px hidden. Reduced-motion = static.
+   Phase 16 B — Hero AutomationOrbit (Palette D geometry).
+   SVG-only. Outer + inner dashed orbit ellipses, 4 cardinal nodes,
+   COSMO anchor at center (static). Spinner group rotates 90s linear
+   infinite; labels counter-rotate so text stays upright. Pure GPU
+   transforms. < 768px hidden. Reduced-motion = static.
    ------------------------------------------------------------------- */
 .automation-orbit {
   position: relative;
   width: 100%;
-  max-width: 28rem;
-  aspect-ratio: 1 / 1;
+  max-width: 32rem;
+  aspect-ratio: 4 / 3;
   margin: 0 auto;
-  /* Gravitational well — subtle radial deepening behind the orbit so the
-     center reads as a focal point. Pure CSS, no animation, zero JS. */
-  background: radial-gradient(
-    ellipse 70% 70% at 50% 50%,
-    rgba(255, 136, 0, 0.08) 0%,
-    rgba(255, 136, 0, 0.03) 40%,
-    transparent 70%
-  );
 }
 @media (max-width: 767px) {
   .automation-orbit { display: none; }
 }
-.automation-orbit-spinner {
-  position: absolute;
-  inset: 0;
+.automation-orbit-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+.orbit-spinner {
   animation: orbit-spin 90s linear infinite;
-  transform-origin: 50% 50%;
+  will-change: transform;
+}
+.orbit-label {
+  /* Counter-rotation cancels the spinner's rotation so text reads
+     upright at every frame. Same duration, opposite direction. */
+  animation: orbit-spin-counter 90s linear infinite;
   will-change: transform;
 }
 @keyframes orbit-spin {
-  to { transform: rotate(360deg); }
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes orbit-spin-counter {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .automation-orbit-spinner {
+  .orbit-spinner,
+  .orbit-label {
     animation: none;
   }
-}
-.automation-orbit-svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-.automation-orbit-cosmo {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 32px;
-  height: 32px;
-  margin-left: -16px;
-  margin-top: -16px;
-  border-radius: 50%;
-  background: var(--bg-elevated);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* Subtle glow only — no pulse. */
-  box-shadow:
-    0 0 0 1px rgba(255, 136, 0, 0.4),
-    0 0 24px 4px rgba(255, 136, 0, 0.18);
-  overflow: hidden;
-}
-.automation-orbit-cosmo img {
-  width: 26px;
-  height: 26px;
-  object-fit: contain;
-}
-.automation-orbit-node {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.15rem;
-  padding: 0.55rem 0.75rem;
-  border-radius: 8px;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-subtle);
-  color: var(--accent);
-  min-width: 6.5rem;
-  /* Subtle elevation; no animation. */
-  box-shadow: 0 4px 18px -8px rgba(0, 0, 0, 0.6);
-}
-.automation-orbit-node-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-}
-.automation-orbit-node-label {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 0.85rem;
-  line-height: 1.1;
-  color: var(--text-primary);
-}
-.automation-orbit-node-sub {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
 }
 
 /* ===================================================================

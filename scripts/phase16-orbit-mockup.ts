@@ -15,7 +15,7 @@ async function main() {
       deviceScaleFactor: 2,
     });
     const page = await ctx.newPage();
-    await page.goto('http://localhost:3005', { waitUntil: 'networkidle', timeout: 30000 });
+    await page.goto('http://localhost:3006', { waitUntil: 'networkidle', timeout: 30000 });
     await page.evaluate(() => {
       try { sessionStorage.setItem('dpl_i', '1'); document.documentElement.dataset.iSeen = '1'; } catch {}
       const loader = document.querySelector('.dpl-intro-loader');

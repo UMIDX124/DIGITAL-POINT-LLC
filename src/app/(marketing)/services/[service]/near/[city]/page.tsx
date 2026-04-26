@@ -68,7 +68,7 @@ export default async function ServiceCityPage({ params }: PageProps) {
             ]}
           />
 
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-6 mb-8 leading-tight">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-6 mb-8 leading-tight" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
             {content.service.name} in {content.city.name}
           </h1>
 
@@ -83,7 +83,7 @@ export default async function ServiceCityPage({ params }: PageProps) {
 
       <Section className="py-16">
         <Container size="narrow">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8">
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
             Why {content.city.name} Businesses Choose Digital Point
           </h2>
           <ul className="space-y-4">
@@ -94,7 +94,7 @@ export default async function ServiceCityPage({ params }: PageProps) {
               >
                 <span
                   className="mt-2 w-2 h-2 rounded-full shrink-0"
-                  style={{ background: '#6366F1' }}
+                  style={{ background: '#A78BFA' }}
                 />
                 {benefit}
               </li>
@@ -105,7 +105,7 @@ export default async function ServiceCityPage({ params }: PageProps) {
 
       <Section className="py-16">
         <Container size="narrow">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8">
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
             Serving {content.city.name}, {content.city.state} and Beyond
           </h2>
           <div className="space-y-6 text-[#D6D0C2] text-base leading-relaxed">

@@ -68,7 +68,7 @@ export default async function ServiceIndustryPage({ params }: PageProps) {
             ]}
           />
 
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-6 mb-8 leading-tight">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-6 mb-8 leading-tight" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
             {content.service.name} for {content.industry.name}
           </h1>
 
@@ -83,7 +83,7 @@ export default async function ServiceIndustryPage({ params }: PageProps) {
 
       <Section className="py-16">
         <Container size="narrow">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8">
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
             Key Benefits
           </h2>
           <ul className="space-y-4">
@@ -94,7 +94,7 @@ export default async function ServiceIndustryPage({ params }: PageProps) {
               >
                 <span
                   className="mt-2 w-2 h-2 rounded-full shrink-0"
-                  style={{ background: '#6366F1' }}
+                  style={{ background: '#A78BFA' }}
                 />
                 {benefit}
               </li>
@@ -105,7 +105,7 @@ export default async function ServiceIndustryPage({ params }: PageProps) {
 
       <Section className="py-16">
         <Container size="narrow">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8">
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
             How We Help {content.industry.name} Companies
           </h2>
           <div className="space-y-6">
@@ -117,7 +117,7 @@ export default async function ServiceIndustryPage({ params }: PageProps) {
                 <span
                   className="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold text-white"
                   style={{
-                    background: 'linear-gradient(135deg, #4338CA 0%, #4F46E5 100%)',
+                    background: 'linear-gradient(135deg, #4338CA 0%, #7C3AED 100%)',
                   }}
                 >
                   {index + 1}

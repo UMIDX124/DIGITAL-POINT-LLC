@@ -88,12 +88,12 @@ export function DashboardCostCalculator({ faqs }: Props) {
 
           <FadeUp>
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm mb-6" style={{ background: 'rgba(99,102,241,0.15)', border: '1px solid rgba(99,102,241,0.3)' }}>
-                <LayoutDashboard className="w-4 h-4 text-[#6366F1]" />
-                <span className="text-[#6366F1]">Free Dashboard Tool</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm mb-6" style={{ background: 'rgba(167,139,250,0.15)', border: '1px solid rgba(167,139,250,0.3)' }}>
+                <LayoutDashboard className="w-4 h-4 text-[#A78BFA]" />
+                <span className="text-[#A78BFA]">Free Dashboard Tool</span>
               </div>
               <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                Marketing Dashboard <span className="text-[#6366F1]">Cost Calculator</span>
+                Marketing Dashboard <span className="text-[#A78BFA]">Cost Calculator</span>
               </h1>
               <p className="text-lg text-[#D6D0C2] max-w-2xl mx-auto">
                 Estimate the true cost of building or buying a marketing dashboard. Compare tools, infrastructure, and team costs for your specific needs.
@@ -113,8 +113,8 @@ export function DashboardCostCalculator({ faqs }: Props) {
                       onClick={() => toggleSource(source)}
                       className="px-3 py-2 rounded-xl text-sm transition-all"
                       style={{
-                        background: selectedSources.includes(source) ? 'linear-gradient(135deg, #4338CA, #4F46E5)' : 'rgba(13, 8, 21, 0.6)',
-                        border: `1px solid ${selectedSources.includes(source) ? 'rgba(99,102,241,0.6)' : 'rgba(99,102,241,0.2)'}`,
+                        background: selectedSources.includes(source) ? 'linear-gradient(135deg, #4338CA, #7C3AED)' : 'rgba(13, 8, 21, 0.6)',
+                        border: `1px solid ${selectedSources.includes(source) ? 'rgba(167,139,250,0.6)' : 'rgba(167,139,250,0.2)'}`,
                         color: selectedSources.includes(source) ? 'white' : '#D6D0C2',
                       }}
                     >
@@ -134,8 +134,8 @@ export function DashboardCostCalculator({ faqs }: Props) {
                     value={users}
                     onChange={(e) => setUsers(e.target.value)}
                     min="1"
-                    className="w-full px-4 py-2.5 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#6366F1]/50"
-                    style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(99,102,241, 0.2)' }}
+                    className="w-full px-4 py-2.5 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
+                    style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }}
                   />
                 </div>
                 <div>
@@ -147,8 +147,8 @@ export function DashboardCostCalculator({ faqs }: Props) {
                         onClick={() => setComplexity(c)}
                         className="flex-1 px-3 py-2.5 rounded-xl text-sm capitalize transition-all"
                         style={{
-                          background: complexity === c ? 'linear-gradient(135deg, #4338CA, #4F46E5)' : 'rgba(13, 8, 21, 0.6)',
-                          border: `1px solid ${complexity === c ? 'rgba(99,102,241,0.6)' : 'rgba(99,102,241,0.2)'}`,
+                          background: complexity === c ? 'linear-gradient(135deg, #4338CA, #7C3AED)' : 'rgba(13, 8, 21, 0.6)',
+                          border: `1px solid ${complexity === c ? 'rgba(167,139,250,0.6)' : 'rgba(167,139,250,0.2)'}`,
                           color: complexity === c ? 'white' : '#D6D0C2',
                         }}
                       >
@@ -171,12 +171,12 @@ export function DashboardCostCalculator({ faqs }: Props) {
                     onClick={() => item.set(!item.value)}
                     className="p-4 rounded-xl text-left transition-all"
                     style={{
-                      background: item.value ? 'rgba(99,102,241, 0.15)' : 'rgba(13, 8, 21, 0.4)',
-                      border: `1px solid ${item.value ? 'rgba(99,102,241,0.4)' : 'rgba(99,102,241,0.1)'}`,
+                      background: item.value ? 'rgba(167,139,250, 0.15)' : 'rgba(13, 8, 21, 0.4)',
+                      border: `1px solid ${item.value ? 'rgba(167,139,250,0.4)' : 'rgba(167,139,250,0.1)'}`,
                     }}
                   >
                     <div className="flex items-center gap-2 mb-1">
-                      <div className={`w-4 h-4 rounded border ${item.value ? 'bg-[#4F46E5] border-[#4F46E5]' : 'border-[#71717A]'} flex items-center justify-center`}>
+                      <div className={`w-4 h-4 rounded border ${item.value ? 'bg-[#7C3AED] border-[#7C3AED]' : 'border-[#71717A]'} flex items-center justify-center`}>
                         {item.value && <CheckCircle className="w-3 h-3 text-white" />}
                       </div>
                       <span className="text-white text-sm font-medium">{item.label}</span>
@@ -232,11 +232,11 @@ export function DashboardCostCalculator({ faqs }: Props) {
 
               {/* Actions */}
               <div className="flex flex-wrap gap-3">
-                <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-[#D6D0C2] hover:text-white transition-colors" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(99,102,241, 0.2)' }}>
+                <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-[#D6D0C2] hover:text-white transition-colors" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }}>
                   <Share2 className="w-4 h-4" />
                   {copied ? 'Link Copied!' : 'Share Results'}
                 </button>
-                <button onClick={() => setShowEmail(true)} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-[#D6D0C2] hover:text-white transition-colors" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(99,102,241, 0.2)' }}>
+                <button onClick={() => setShowEmail(true)} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-[#D6D0C2] hover:text-white transition-colors" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }}>
                   <Mail className="w-4 h-4" />
                   Get Detailed Report
                 </button>
@@ -249,10 +249,10 @@ export function DashboardCostCalculator({ faqs }: Props) {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"
-                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#6366F1]/50"
-                    style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(99,102,241, 0.2)' }}
+                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
+                    style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }}
                   />
-                  <button onClick={handleEmailCapture} className="px-4 py-2.5 rounded-xl text-white text-sm font-medium" style={{ background: 'linear-gradient(135deg, #4338CA, #4F46E5)' }}>
+                  <button onClick={handleEmailCapture} className="px-4 py-2.5 rounded-xl text-white text-sm font-medium" style={{ background: 'linear-gradient(135deg, #4338CA, #7C3AED)' }}>
                     Send
                   </button>
                 </div>
@@ -286,10 +286,10 @@ export function DashboardCostCalculator({ faqs }: Props) {
               <h2 className="text-2xl font-bold text-white mb-6">Frequently Asked Questions</h2>
               <div className="space-y-3">
                 {faqs.map((faq, i) => (
-                  <div key={i} className="rounded-xl overflow-hidden" style={{ background: 'rgba(13, 8, 21, 0.4)', border: '1px solid rgba(99,102,241, 0.1)' }}>
+                  <div key={i} className="rounded-xl overflow-hidden" style={{ background: 'rgba(13, 8, 21, 0.4)', border: '1px solid rgba(167,139,250, 0.1)' }}>
                     <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full text-left px-5 py-4 flex justify-between items-center">
                       <span className="text-white font-medium text-sm">{faq.question}</span>
-                      <span className="text-[#6366F1] text-lg">{openFaq === i ? '−' : '+'}</span>
+                      <span className="text-[#A78BFA] text-lg">{openFaq === i ? '−' : '+'}</span>
                     </button>
                     {openFaq === i && (
                       <div className="px-5 pb-4 text-sm text-[#D6D0C2]">{faq.answer}</div>

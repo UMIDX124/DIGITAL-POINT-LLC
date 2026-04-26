@@ -51,7 +51,7 @@ export default async function ComparisonPage({ params }: PageProps) {
             ]}
           />
 
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-6 mb-8 leading-tight">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-6 mb-8 leading-tight" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
             {comparison.metaTitle}
           </h1>
 
@@ -64,7 +64,7 @@ export default async function ComparisonPage({ params }: PageProps) {
       {/* Comparison Table */}
       <Section className="py-16">
         <Container size="narrow">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8">
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
             Side-by-Side Comparison
           </h2>
           <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
@@ -73,15 +73,15 @@ export default async function ComparisonPage({ params }: PageProps) {
                 <tr>
                   <th
                     className="text-left text-xs uppercase tracking-wider text-[#71717A] py-3 px-4 border-b"
-                    style={{ borderColor: 'rgba(99,102,241, 0.2)' }}
+                    style={{ borderColor: 'rgba(167,139,250, 0.2)' }}
                   >
                     Category
                   </th>
                   <th
                     className="text-left text-xs uppercase tracking-wider py-3 px-4 border-b"
                     style={{
-                      borderColor: 'rgba(99,102,241, 0.2)',
-                      color: '#6366F1',
+                      borderColor: 'rgba(167,139,250, 0.2)',
+                      color: '#A78BFA',
                     }}
                   >
                     {comparison.optionA.name}
@@ -89,8 +89,8 @@ export default async function ComparisonPage({ params }: PageProps) {
                   <th
                     className="text-left text-xs uppercase tracking-wider py-3 px-4 border-b"
                     style={{
-                      borderColor: 'rgba(99,102,241, 0.2)',
-                      color: '#6366F1',
+                      borderColor: 'rgba(167,139,250, 0.2)',
+                      color: '#A78BFA',
                     }}
                   >
                     {comparison.optionB.name}
@@ -102,19 +102,19 @@ export default async function ComparisonPage({ params }: PageProps) {
                   <tr key={index}>
                     <td
                       className="text-sm font-medium text-white py-3 px-4 border-b"
-                      style={{ borderColor: 'rgba(99,102,241, 0.1)' }}
+                      style={{ borderColor: 'rgba(167,139,250, 0.1)' }}
                     >
                       {row.category}
                     </td>
                     <td
                       className="text-sm text-[#D6D0C2] py-3 px-4 border-b"
-                      style={{ borderColor: 'rgba(99,102,241, 0.1)' }}
+                      style={{ borderColor: 'rgba(167,139,250, 0.1)' }}
                     >
                       {row.optionA}
                     </td>
                     <td
                       className="text-sm text-[#D6D0C2] py-3 px-4 border-b"
-                      style={{ borderColor: 'rgba(99,102,241, 0.1)' }}
+                      style={{ borderColor: 'rgba(167,139,250, 0.1)' }}
                     >
                       {row.optionB}
                     </td>
@@ -135,7 +135,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               className="rounded-2xl p-6 md:p-8"
               style={{
                 background: 'rgba(20,20,22, 0.6)',
-                border: '1px solid rgba(99,102,241, 0.2)',
+                border: '1px solid rgba(167,139,250, 0.2)',
               }}
             >
               <h3 className="font-display text-xl font-bold text-white mb-6">
@@ -144,7 +144,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               <div className="mb-6">
                 <h4
                   className="text-sm font-semibold uppercase tracking-wider mb-3"
-                  style={{ color: '#6366F1' }}
+                  style={{ color: '#A78BFA' }}
                 >
                   Pros
                 </h4>
@@ -163,7 +163,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               <div>
                 <h4
                   className="text-sm font-semibold uppercase tracking-wider mb-3"
-                  style={{ color: '#6366F1' }}
+                  style={{ color: '#A78BFA' }}
                 >
                   Cons
                 </h4>
@@ -186,7 +186,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               className="rounded-2xl p-6 md:p-8"
               style={{
                 background: 'rgba(20,20,22, 0.6)',
-                border: '1px solid rgba(99,102,241, 0.2)',
+                border: '1px solid rgba(167,139,250, 0.2)',
               }}
             >
               <h3 className="font-display text-xl font-bold text-white mb-6">
@@ -195,7 +195,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               <div className="mb-6">
                 <h4
                   className="text-sm font-semibold uppercase tracking-wider mb-3"
-                  style={{ color: '#6366F1' }}
+                  style={{ color: '#A78BFA' }}
                 >
                   Pros
                 </h4>
@@ -214,7 +214,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               <div>
                 <h4
                   className="text-sm font-semibold uppercase tracking-wider mb-3"
-                  style={{ color: '#6366F1' }}
+                  style={{ color: '#A78BFA' }}
                 >
                   Cons
                 </h4>
@@ -238,14 +238,14 @@ export default async function ComparisonPage({ params }: PageProps) {
       {/* Recommendation */}
       <Section className="py-16">
         <Container size="narrow">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-6">
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-6" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
             Our Recommendation
           </h2>
           <div
             className="rounded-2xl p-6 md:p-8"
             style={{
-              background: 'linear-gradient(135deg, rgba(180,83,9, 0.12), rgba(99,102,241, 0.06))',
-              border: '1px solid rgba(129,140,248, 0.2)',
+              background: 'linear-gradient(135deg, rgba(180,83,9, 0.12), rgba(167,139,250, 0.06))',
+              border: '1px solid rgba(196,181,253, 0.2)',
             }}
           >
             <p className="text-[#D6D0C2] text-base leading-relaxed">

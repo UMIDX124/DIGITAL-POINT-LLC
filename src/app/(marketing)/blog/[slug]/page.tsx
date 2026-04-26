@@ -57,7 +57,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const toc = generateTOC(post.content);
   const htmlContent = markdownToHtml(post.content);
   const baseUrl = 'https://digitalpointllc.com';
-  const catMeta = categoryMeta[post.category] || { color: '#6366F1', slug: post.category.toLowerCase().replace(/\s+/g, '-'), description: post.category };
+  const catMeta = categoryMeta[post.category] || { color: '#A78BFA', slug: post.category.toLowerCase().replace(/\s+/g, '-'), description: post.category };
 
   // Get related posts (same category, excluding current)
   const allPosts = getAllPosts();

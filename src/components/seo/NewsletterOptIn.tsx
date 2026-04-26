@@ -46,10 +46,10 @@ export function NewsletterOptIn({
         className={`rounded-xl p-6 text-center ${className}`}
         style={{
           background: 'rgba(180,83,9, 0.1)',
-          border: '1px solid rgba(129,140,248, 0.2)',
+          border: '1px solid rgba(196,181,253, 0.2)',
         }}
       >
-        <CheckCircle className="w-8 h-8 text-[#6366F1] mx-auto mb-2" />
+        <CheckCircle className="w-8 h-8 text-[#A78BFA] mx-auto mb-2" />
         <p className="text-white font-medium text-sm">You&apos;re in!</p>
         <p className="text-[#71717A] text-xs mt-1">Watch your inbox for growth insights.</p>
       </div>
@@ -62,12 +62,12 @@ export function NewsletterOptIn({
       style={{
         background: variant === 'sidebar'
           ? 'rgba(13, 8, 21, 0.6)'
-          : 'linear-gradient(135deg, rgba(180,83,9, 0.12), rgba(99,102,241, 0.06))',
-        border: '1px solid rgba(129,140,248, 0.2)',
+          : 'linear-gradient(135deg, rgba(180,83,9, 0.12), rgba(167,139,250, 0.06))',
+        border: '1px solid rgba(196,181,253, 0.2)',
       }}
     >
       <div className="flex items-center gap-2 mb-3">
-        <Mail className="w-4 h-4 text-[#6366F1]" />
+        <Mail className="w-4 h-4 text-[#A78BFA]" />
         <h3 className="text-white font-medium text-sm">{title}</h3>
       </div>
       <p className="text-[#71717A] text-xs mb-4">{description}</p>
@@ -78,10 +78,10 @@ export function NewsletterOptIn({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@company.com"
-          className="flex-1 px-3 py-2 rounded-lg text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#6366F1]/50"
+          className="flex-1 px-3 py-2 rounded-lg text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
           style={{
             background: 'rgba(13, 8, 21, 0.6)',
-            border: '1px solid rgba(99,102,241, 0.2)',
+            border: '1px solid rgba(167,139,250, 0.2)',
           }}
         />
         <button
@@ -89,14 +89,14 @@ export function NewsletterOptIn({
           disabled={status === 'submitting'}
           className="px-4 py-2 rounded-lg text-white text-sm font-medium transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 shrink-0"
           style={{
-            background: 'linear-gradient(135deg, #4338CA 0%, #4F46E5 100%)',
+            background: 'linear-gradient(135deg, #4338CA 0%, #7C3AED 100%)',
           }}
         >
           {status === 'submitting' ? '...' : <ArrowRight className="w-4 h-4" />}
         </button>
       </form>
       {status === 'error' && (
-        <p className="text-[#6366F1] text-xs mt-2">Something went wrong. Try again.</p>
+        <p className="text-[#A78BFA] text-xs mt-2">Something went wrong. Try again.</p>
       )}
     </div>
   );

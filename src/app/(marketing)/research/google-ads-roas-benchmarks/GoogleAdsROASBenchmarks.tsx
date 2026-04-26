@@ -35,14 +35,14 @@ const campaignTypeBenchmarks = [
 
 const keyStats = [
   { value: '4.2x', label: 'Avg Search ROAS', color: '#a3e635' },
-  { value: '3.1x', label: 'Avg PMax ROAS', color: '#6366F1' },
-  { value: '5.6x', label: 'Avg Shopping ROAS', color: '#818CF8' },
+  { value: '3.1x', label: 'Avg PMax ROAS', color: '#A78BFA' },
+  { value: '5.6x', label: 'Avg Shopping ROAS', color: '#C4B5FD' },
   { value: '$62M', label: 'Ad Spend Analyzed', color: '#7dd3fc' },
 ];
 
 const glassStyle = {
   background: 'rgba(13, 8, 21, 0.5)',
-  border: '1px solid rgba(99,102,241, 0.15)',
+  border: '1px solid rgba(167,139,250, 0.15)',
 };
 
 export function GoogleAdsROASBenchmarks({ faqs }: Props) {
@@ -94,17 +94,17 @@ export function GoogleAdsROASBenchmarks({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(99,102,241,0.15)]">
+                    <tr className="border-b border-[rgba(167,139,250,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Campaign Type</th>
                       <th className="text-right py-3 px-4 text-[#a3e635] font-medium">Avg ROAS</th>
                       <th className="text-right py-3 px-4 text-[#7dd3fc] font-medium">Avg CPC</th>
-                      <th className="text-right py-3 px-4 text-[#6366F1] font-medium">Conv Rate</th>
+                      <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">Conv Rate</th>
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Best For</th>
                     </tr>
                   </thead>
                   <tbody>
                     {campaignTypeBenchmarks.map((row, i) => (
-                      <tr key={row.type} className={i < campaignTypeBenchmarks.length - 1 ? 'border-b border-[rgba(99,102,241,0.08)]' : ''}>
+                      <tr key={row.type} className={i < campaignTypeBenchmarks.length - 1 ? 'border-b border-[rgba(167,139,250,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.type}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.avgRoas}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.avgCpc}</td>
@@ -129,16 +129,16 @@ export function GoogleAdsROASBenchmarks({ faqs }: Props) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-[rgba(99,102,241,0.15)]">
+                    <tr className="border-b border-[rgba(167,139,250,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Industry</th>
                       <th className="text-right py-3 px-4 text-[#a3e635] font-medium">Search ROAS</th>
                       <th className="text-right py-3 px-4 text-[#7dd3fc] font-medium">Avg CPC</th>
-                      <th className="text-right py-3 px-4 text-[#6366F1] font-medium">Conv Rate</th>
+                      <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">Conv Rate</th>
                     </tr>
                   </thead>
                   <tbody>
                     {searchBenchmarks.map((row, i) => (
-                      <tr key={row.industry} className={i < searchBenchmarks.length - 1 ? 'border-b border-[rgba(99,102,241,0.08)]' : ''}>
+                      <tr key={row.industry} className={i < searchBenchmarks.length - 1 ? 'border-b border-[rgba(167,139,250,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.industry}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.roas}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.cpc}</td>

@@ -1,5 +1,5 @@
 import { HeroSection } from '@/components/sections/HeroSection';
-import { ServicesListSection } from '@/components/sections/ServicesListSection';
+import { ServicesPinReveal } from '@/components/sections/ServicesPinReveal';
 import { LogoStripSection } from '@/components/sections/LogoStripSection';
 import { RecentWorkSection } from '@/components/sections/RecentWorkSection';
 import { PullQuoteSection } from '@/components/sections/PullQuoteSection';
@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <ServicesListSection />
+      <ServicesPinReveal />
       <LogoStripSection />
       <RecentWorkSection />
       <PullQuoteSection />

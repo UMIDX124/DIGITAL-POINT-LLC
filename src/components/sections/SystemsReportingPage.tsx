@@ -261,7 +261,7 @@ export function SystemsReportingPage() {
         <Container size="narrow">
           <FadeUp>
             <GlassCard className="p-8 md:p-12 text-center">
-              <h2 className="font-display text-3xl font-bold text-text-primary mb-4">
+              <h2 className="font-display text-3xl font-bold text-text-primary mb-4" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
                 Need systems clarity?
               </h2>
               <p className="text-text-secondary mb-6 max-w-lg mx-auto">

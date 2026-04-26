@@ -1,4 +1,4 @@
-import { Linkedin, Mail } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -72,10 +72,17 @@ export function Footer() {
           <div>
             <h4 className="eyebrow mb-5">Connect</h4>
             <div className="space-y-4">
-              <a href="mailto:info@digitalpointllc.com" className="text-link flex items-center gap-3 text-[color:var(--ivory-dim)] hover:text-[color:var(--accent)] text-sm transition-colors">
-                <Mail className="w-4 h-4" />
-                info@digitalpointllc.com
-              </a>
+              <p className="text-[color:var(--ivory-dim)] text-sm leading-relaxed" style={{ maxWidth: '24rem' }}>
+                We don&apos;t list a generic support inbox. Most agencies hide
+                behind a hello@ queue where your message lines up with
+                everyone else&apos;s. We don&apos;t run that way.
+              </p>
+              <p className="text-[color:var(--muted)] text-xs leading-relaxed" style={{ maxWidth: '24rem' }}>
+                Reach out through Cosmo or our audit form — your inquiry
+                routes directly to the operator best matched to your stage,
+                not a ticket pool. We answer from our personal accounts
+                because we&apos;re personally accountable for what we ship.
+              </p>
               <a
                 href="https://linkedin.com/company/digitalpointllc"
                 target="_blank"

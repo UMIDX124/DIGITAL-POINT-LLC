@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
         replyTo: email,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0B; color: #F5F1E8; padding: 32px; border-radius: 12px;">
-            <h2 style="color: #6366F1; margin: 0 0 16px;">New High-Intent Lead</h2>
+            <h2 style="color: #A78BFA; margin: 0 0 16px;">New High-Intent Lead</h2>
             <p style="color: #D6D0C2; font-size: 13px;">Captured via the DPL AI chatbot</p>
 
             <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
               <tr>
                 <td style="padding: 8px 0; color: #D6D0C2; font-size: 13px;">Email</td>
                 <td style="padding: 8px 0;">
-                  <a href="mailto:${escapeHtml(email)}" style="color: #6366F1; text-decoration: none;">${escapeHtml(email)}</a>
+                  <a href="mailto:${escapeHtml(email)}" style="color: #A78BFA; text-decoration: none;">${escapeHtml(email)}</a>
                 </td>
               </tr>
               ${company ? `<tr><td style="padding: 8px 0; color: #D6D0C2; font-size: 13px;">Company</td><td style="padding: 8px 0; color: #F5F1E8; font-size: 14px;">${escapeHtml(company)}</td></tr>` : ''}
@@ -74,8 +74,8 @@ export async function POST(request: NextRequest) {
             </table>
 
             ${conversationSummary ? `
-            <hr style="border: none; border-top: 1px solid rgba(99,102,241,0.3); margin: 16px 0;" />
-            <div style="background: rgba(20,20,22, 0.6); padding: 16px; border-radius: 8px; border: 1px solid rgba(99,102,241,0.15);">
+            <hr style="border: none; border-top: 1px solid rgba(167,139,250,0.3); margin: 16px 0;" />
+            <div style="background: rgba(20,20,22, 0.6); padding: 16px; border-radius: 8px; border: 1px solid rgba(167,139,250,0.15);">
               <p style="color: #D6D0C2; font-size: 12px; margin: 0 0 8px; text-transform: uppercase;">Conversation Summary</p>
               <p style="color: #F5F1E8; font-size: 13px; line-height: 1.5; margin: 0; white-space: pre-wrap;">${escapeHtml(conversationSummary)}</p>
             </div>

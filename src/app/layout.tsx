@@ -126,8 +126,10 @@ export default function RootLayout({
               ],
               contactPoint: {
                 "@type": "ContactPoint",
-                email: "info@digitalpointllc.com",
                 contactType: "customer service",
+                description:
+                  "Reach out via the on-site Cosmo chat or the free growth audit form. Direct operator routing — no shared inbox.",
+                url: "https://www.digitalpointllc.com/contact",
               },
               address: {
                 "@type": "PostalAddress",

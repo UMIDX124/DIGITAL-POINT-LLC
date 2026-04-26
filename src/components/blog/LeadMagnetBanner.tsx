@@ -8,15 +8,15 @@ export function LeadMagnetBanner() {
     <section
       className="rounded-2xl p-8 md:p-12 text-center my-12"
       style={{
-        background: 'linear-gradient(135deg, rgba(180,83,9,0.18) 0%, rgba(13,8,21,0.9) 50%, rgba(99,102,241,0.12) 100%)',
-        border: '1px solid rgba(129,140,248, 0.2)',
+        background: 'linear-gradient(135deg, rgba(180,83,9,0.18) 0%, rgba(13,8,21,0.9) 50%, rgba(167,139,250,0.12) 100%)',
+        border: '1px solid rgba(196,181,253, 0.2)',
       }}
     >
       <div className="flex justify-center mb-4">
         <div
           className="w-12 h-12 rounded-xl flex items-center justify-center"
           style={{
-            background: 'linear-gradient(135deg, #4338CA 0%, #4F46E5 100%)',
+            background: 'linear-gradient(135deg, #4338CA 0%, #7C3AED 100%)',
             boxShadow: '0 4px 24px rgba(180,83,9, 0.4)',
           }}
         >
@@ -37,7 +37,7 @@ export function LeadMagnetBanner() {
           href="/free-growth-audit"
           className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-xl transition-transform hover:scale-[1.02] active:scale-[0.98]"
           style={{
-            background: 'linear-gradient(135deg, #4338CA 0%, #4F46E5 100%)',
+            background: 'linear-gradient(135deg, #4338CA 0%, #7C3AED 100%)',
             boxShadow: '0 4px 16px rgba(180,83,9, 0.3)',
           }}
         >
@@ -48,9 +48,9 @@ export function LeadMagnetBanner() {
           href="/results"
           className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
           style={{
-            color: '#6366F1',
-            border: '1px solid rgba(129,140,248, 0.3)',
-            background: 'rgba(99,102,241, 0.08)',
+            color: '#A78BFA',
+            border: '1px solid rgba(196,181,253, 0.3)',
+            background: 'rgba(167,139,250, 0.08)',
           }}
         >
           See Results First

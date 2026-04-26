@@ -50,7 +50,7 @@ export function AdSpendCalculator({ faqs }: Props) {
             <Breadcrumbs items={[{ label: 'Tools', href: '/tools' }, { label: 'Ad Spend Profit Calculator', href: '/tools/ad-spend-profit-calculator' }]} />
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mt-6">
               Ad Spend{' '}
-              <span className="bg-gradient-to-r from-[#a3e635] via-[#6366F1] to-[#818CF8] bg-clip-text text-transparent">Profit</span>
+              <span className="bg-gradient-to-r from-[#a3e635] via-[#A78BFA] to-[#C4B5FD] bg-clip-text text-transparent">Profit</span>
               {' '}Calculator
             </h1>
             <p className="text-[#D6D0C2] text-lg mt-3 max-w-2xl">
@@ -72,8 +72,8 @@ export function AdSpendCalculator({ faqs }: Props) {
                     <div className="relative">
                       <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#71717A]" />
                       <input type="number" value={monthlySpend} onChange={(e) => setMonthlySpend(e.target.value)} placeholder="25,000"
-                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#6366F1]/50"
-                        style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(99,102,241, 0.2)' }} />
+                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
+                        style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }} />
                     </div>
                   </div>
                   <div>
@@ -81,8 +81,8 @@ export function AdSpendCalculator({ faqs }: Props) {
                     <div className="relative">
                       <TrendingUp className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#71717A]" />
                       <input type="number" step="0.1" value={roas} onChange={(e) => setRoas(e.target.value)} placeholder="4.0"
-                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#6366F1]/50"
-                        style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(99,102,241, 0.2)' }} />
+                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
+                        style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }} />
                     </div>
                   </div>
                   <div>
@@ -90,8 +90,8 @@ export function AdSpendCalculator({ faqs }: Props) {
                     <div className="relative">
                       <Percent className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#71717A]" />
                       <input type="number" value={cogsPercent} onChange={(e) => setCogsPercent(e.target.value)} placeholder="30"
-                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#6366F1]/50"
-                        style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(99,102,241, 0.2)' }} />
+                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
+                        style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }} />
                     </div>
                   </div>
                   <div>
@@ -99,8 +99,8 @@ export function AdSpendCalculator({ faqs }: Props) {
                     <div className="relative">
                       <Percent className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#71717A]" />
                       <input type="number" value={overheadPercent} onChange={(e) => setOverheadPercent(e.target.value)} placeholder="10"
-                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#6366F1]/50"
-                        style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(99,102,241, 0.2)' }} />
+                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#71717A] focus:outline-none focus:ring-2 focus:ring-[#A78BFA]/50"
+                        style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(167,139,250, 0.2)' }} />
                     </div>
                   </div>
                 </div>
@@ -112,27 +112,27 @@ export function AdSpendCalculator({ faqs }: Props) {
                 <h2 className="font-display text-xl font-semibold text-white mb-6">Profitability</h2>
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(99,102,241, 0.15)' }}>
+                    <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(167,139,250, 0.15)' }}>
                       <span className="text-[#71717A] text-xs">Monthly Revenue</span>
                       <p className="font-display text-xl font-bold text-white mt-1">{revenue > 0 ? `$${revenue.toLocaleString()}` : '—'}</p>
                     </div>
-                    <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(99,102,241, 0.15)' }}>
+                    <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(167,139,250, 0.15)' }}>
                       <span className="text-[#71717A] text-xs">Monthly Profit</span>
-                      <p className={`font-display text-xl font-bold mt-1 ${profit >= 0 ? 'text-[#a3e635]' : 'text-[#6366F1]'}`}>
+                      <p className={`font-display text-xl font-bold mt-1 ${profit >= 0 ? 'text-[#a3e635]' : 'text-[#A78BFA]'}`}>
                         {spend > 0 ? `$${profit.toLocaleString()}` : '—'}
                       </p>
                     </div>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(99,102,241, 0.15)' }}>
+                    <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(167,139,250, 0.15)' }}>
                       <span className="text-[#71717A] text-xs">Profit Margin</span>
-                      <p className={`font-display text-xl font-bold mt-1 ${profitMargin >= 0 ? 'text-[#6366F1]' : 'text-[#6366F1]'}`}>
+                      <p className={`font-display text-xl font-bold mt-1 ${profitMargin >= 0 ? 'text-[#A78BFA]' : 'text-[#A78BFA]'}`}>
                         {revenue > 0 ? `${profitMargin.toFixed(1)}%` : '—'}
                       </p>
                     </div>
-                    <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(99,102,241, 0.15)' }}>
+                    <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(167,139,250, 0.15)' }}>
                       <span className="text-[#71717A] text-xs">Annual Profit</span>
-                      <p className={`font-display text-xl font-bold mt-1 ${annualProfit >= 0 ? 'text-[#a3e635]' : 'text-[#6366F1]'}`}>
+                      <p className={`font-display text-xl font-bold mt-1 ${annualProfit >= 0 ? 'text-[#a3e635]' : 'text-[#A78BFA]'}`}>
                         {spend > 0 ? `$${annualProfit.toLocaleString()}` : '—'}
                       </p>
                     </div>
@@ -140,13 +140,13 @@ export function AdSpendCalculator({ faqs }: Props) {
 
                   {/* Scaling scenarios */}
                   {spend > 0 && roasVal > 0 && (
-                    <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(99,102,241, 0.15)' }}>
+                    <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(167,139,250, 0.15)' }}>
                       <span className="text-[#71717A] text-xs mb-3 block">Scaling Scenarios (with diminishing returns)</span>
                       <div className="space-y-2">
                         {scenarios.map((s) => (
                           <div key={s.label} className="flex items-center justify-between text-xs">
                             <span className="text-[#71717A]">{s.label} spend (${s.spend.toLocaleString()})</span>
-                            <span className={`font-mono ${s.profit >= 0 ? 'text-[#a3e635]' : 'text-[#6366F1]'}`}>
+                            <span className={`font-mono ${s.profit >= 0 ? 'text-[#a3e635]' : 'text-[#A78BFA]'}`}>
                               ${s.profit.toLocaleString()} profit
                             </span>
                           </div>
@@ -166,7 +166,7 @@ export function AdSpendCalculator({ faqs }: Props) {
                   <h2 className="font-display text-2xl font-bold text-white mb-4">FAQ</h2>
                   <div className="space-y-3">
                     {faqs.map((faq, i) => (
-                      <div key={i} className="rounded-xl p-5" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(99,102,241, 0.15)' }}>
+                      <div key={i} className="rounded-xl p-5" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(167,139,250, 0.15)' }}>
                         <h3 className="text-white font-medium text-sm mb-2">{faq.question}</h3>
                         <p className="text-[#71717A] text-sm">{faq.answer}</p>
                       </div>

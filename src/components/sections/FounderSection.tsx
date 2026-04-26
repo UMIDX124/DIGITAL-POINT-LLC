@@ -14,7 +14,7 @@ export function FounderSection() {
       <div 
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl opacity-10"
         style={{
-          background: 'radial-gradient(ellipse, rgba(129,140,248, 0.5) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse, rgba(196,181,253, 0.5) 0%, transparent 70%)',
         }}
       />
       
@@ -28,8 +28,8 @@ export function FounderSection() {
                   <div 
                     className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden flex items-center justify-center"
                     style={{
-                      background: 'linear-gradient(135deg, rgba(99,102,241, 0.4) 0%, rgba(180,83,9, 0.2) 100%)',
-                      border: '2px solid rgba(129,140,248, 0.3)',
+                      background: 'linear-gradient(135deg, rgba(167,139,250, 0.4) 0%, rgba(180,83,9, 0.2) 100%)',
+                      border: '2px solid rgba(196,181,253, 0.3)',
                     }}
                   >
                     {/* Founder Avatar - Initials */}
@@ -37,7 +37,7 @@ export function FounderSection() {
                       <span 
                         className="text-4xl md:text-5xl font-display font-bold"
                         style={{
-                          background: 'linear-gradient(135deg, #818CF8 0%, #6366F1 50%, #6366F1 100%)',
+                          background: 'linear-gradient(135deg, #C4B5FD 0%, #A78BFA 50%, #A78BFA 100%)',
                           WebkitBackgroundClip: 'text',
                           WebkitTextFillColor: 'transparent',
                         }}
@@ -53,7 +53,7 @@ export function FounderSection() {
                   <div 
                     className="text-sm font-medium uppercase tracking-wider mb-2"
                     style={{
-                      background: 'linear-gradient(90deg, #818CF8, #6366F1)',
+                      background: 'linear-gradient(90deg, #C4B5FD, #A78BFA)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                     }}
@@ -72,7 +72,7 @@ export function FounderSection() {
                   <div className="flex items-center justify-center md:justify-start gap-4">
                     <a 
                       href="mailto:info@digitalpointllc.com"
-                      className="flex items-center gap-2 text-[#6366F1] hover:text-[#818CF8] transition-colors text-sm"
+                      className="flex items-center gap-2 text-[#A78BFA] hover:text-[#C4B5FD] transition-colors text-sm"
                     >
                       <Mail className="w-4 h-4" />
                       info@digitalpointllc.com
@@ -81,7 +81,7 @@ export function FounderSection() {
                       href="https://linkedin.com/company/digitalpointllc"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-[#6366F1] hover:text-[#818CF8] transition-colors text-sm"
+                      className="flex items-center gap-2 text-[#A78BFA] hover:text-[#C4B5FD] transition-colors text-sm"
                     >
                       <Linkedin className="w-4 h-4" />
                       LinkedIn

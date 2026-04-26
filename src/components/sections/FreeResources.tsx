@@ -34,7 +34,7 @@ export function FreeResources() {
           <span
             className="text-sm font-medium uppercase tracking-wider mb-4 block"
             style={{
-              background: 'linear-gradient(90deg, #818CF8, #6366F1)',
+              background: 'linear-gradient(90deg, #C4B5FD, #A78BFA)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}
@@ -79,7 +79,7 @@ export function FreeResources() {
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                     style={{
                       background:
-                        'linear-gradient(135deg, rgba(129,140,248, 0.06) 0%, transparent 60%)',
+                        'linear-gradient(135deg, rgba(196,181,253, 0.06) 0%, transparent 60%)',
                     }}
                   />
 
@@ -88,15 +88,15 @@ export function FreeResources() {
                     <div
                       className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
                       style={{
-                        background: 'rgba(99,102,241, 0.15)',
-                        border: '1px solid rgba(129,140,248, 0.2)',
+                        background: 'rgba(167,139,250, 0.15)',
+                        border: '1px solid rgba(196,181,253, 0.2)',
                       }}
                     >
-                      <Icon className="w-5 h-5 text-[#6366F1]" />
+                      <Icon className="w-5 h-5 text-[#A78BFA]" />
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-display text-lg font-semibold text-white mb-2 leading-snug group-hover:text-[#6366F1] transition-colors">
+                    <h3 className="font-display text-lg font-semibold text-white mb-2 leading-snug group-hover:text-[#A78BFA] transition-colors">
                       {resource.title}
                     </h3>
 
@@ -106,7 +106,7 @@ export function FreeResources() {
                     </p>
 
                     {/* CTA */}
-                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[#6366F1] group-hover:text-[#818CF8] transition-colors">
+                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[#A78BFA] group-hover:text-[#C4B5FD] transition-colors">
                       Read Free Guide
                       <span
                         aria-hidden="true"

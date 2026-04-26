@@ -31,12 +31,12 @@ export type BlogCategory =
 
 export const categoryMeta: Record<BlogCategory, { color: string; slug: string; description: string }> = {
   'Marketing Attribution': {
-    color: '#6366F1',
+    color: '#A78BFA',
     slug: 'marketing-attribution',
     description: 'Multi-touch attribution, tracking models, and measurement frameworks for modern marketers.',
   },
   'Paid Ads Benchmarks': {
-    color: '#6366F1',
+    color: '#A78BFA',
     slug: 'paid-ads-benchmarks',
     description: 'Industry benchmarks for CPC, CPM, CTR, ROAS, and conversion rates across ad platforms.',
   },
@@ -51,7 +51,7 @@ export const categoryMeta: Record<BlogCategory, { color: string; slug: string; d
     description: 'Dashboards, KPIs, data infrastructure, and analytics tools for growth teams.',
   },
   'Remote Workforce': {
-    color: '#818CF8',
+    color: '#C4B5FD',
     slug: 'remote-workforce',
     description: 'Building, managing, and scaling high-performance remote marketing teams.',
   },
@@ -151,15 +151,15 @@ export function markdownToHtml(content: string): string {
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
     // Links
-    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" class="text-[#6366F1] hover:text-[#818CF8] underline">$1</a>')
+    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" class="text-[#A78BFA] hover:text-[#C4B5FD] underline">$1</a>')
     // Unordered lists
     .replace(/^- (.+)$/gm, '<li>$1</li>')
     // Numbered lists
     .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
     // Horizontal rules
-    .replace(/^---$/gm, '<hr class="border-[rgba(99,102,241,0.15)] my-8" />')
+    .replace(/^---$/gm, '<hr class="border-[rgba(167,139,250,0.15)] my-8" />')
     // Code blocks
-    .replace(/`(.+?)`/g, '<code class="px-1.5 py-0.5 rounded bg-[rgba(99,102,241,0.15)] text-[#818CF8] text-sm font-mono">$1</code>');
+    .replace(/`(.+?)`/g, '<code class="px-1.5 py-0.5 rounded bg-[rgba(167,139,250,0.15)] text-[#C4B5FD] text-sm font-mono">$1</code>');
 
   // Wrap consecutive <li> in <ul>
   html = html.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul class="list-disc pl-6 space-y-2 text-[#D6D0C2]">$1</ul>');

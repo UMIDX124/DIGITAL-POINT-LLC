@@ -10,7 +10,7 @@ export default function NotFound() {
         <h1
           className="font-display text-8xl font-bold mb-4"
           style={{
-            background: 'linear-gradient(135deg, #A5B4FC 0%, #818CF8 50%, #6366F1 100%)',
+            background: 'linear-gradient(135deg, #A5B4FC 0%, #C4B5FD 50%, #A78BFA 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
           }}
@@ -27,7 +27,7 @@ export default function NotFound() {
           href="/"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all hover:scale-105"
           style={{
-            background: 'linear-gradient(135deg, #4F46E5 0%, #6366F1 50%, #818CF8 100%)',
+            background: 'linear-gradient(135deg, #7C3AED 0%, #A78BFA 50%, #C4B5FD 100%)',
           }}
         >
           Back to Home

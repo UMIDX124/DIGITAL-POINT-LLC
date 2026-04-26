@@ -262,7 +262,7 @@ export function ResultsPage() {
                     <div className="text-text-muted text-xs uppercase tracking-wider mb-2">
                       {selectedCase.category}
                     </div>
-                    <h2 className="font-display text-2xl font-bold text-text-primary">
+                    <h2 className="font-display text-2xl font-bold text-text-primary" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
                       {selectedCase.headline}
                     </h2>
                   </div>
@@ -348,7 +348,7 @@ export function ResultsPage() {
         <Container size="narrow">
           <FadeUp>
             <GlassCard className="p-8 md:p-12 text-center">
-              <h2 className="font-display text-3xl font-bold text-text-primary mb-4">
+              <h2 className="font-display text-3xl font-bold text-text-primary mb-4" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
                 Want results like these?
               </h2>
               <p className="text-text-secondary mb-6 max-w-lg mx-auto">

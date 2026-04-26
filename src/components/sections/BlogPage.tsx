@@ -60,8 +60,8 @@ const articles = [
 ];
 
 const categoryColors: Record<string, string> = {
-  'Performance Marketing': '#6366F1',
-  'Remote Workforce': '#6366F1',
+  'Performance Marketing': '#A78BFA',
+  'Remote Workforce': '#A78BFA',
   'Systems & Reporting': '#7dd3fc',
   'AI & Automation': '#a3e635',
 };
@@ -75,9 +75,9 @@ const BlogCard = memo(function BlogCard({ article }: { article: typeof articles[
         <span
           className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium"
           style={{
-            background: `${categoryColors[article.category] || '#6366F1'}15`,
-            border: `1px solid ${categoryColors[article.category] || '#6366F1'}30`,
-            color: categoryColors[article.category] || '#6366F1',
+            background: `${categoryColors[article.category] || '#A78BFA'}15`,
+            border: `1px solid ${categoryColors[article.category] || '#A78BFA'}30`,
+            color: categoryColors[article.category] || '#A78BFA',
           }}
         >
           <Tag className="w-3 h-3" />
@@ -86,7 +86,7 @@ const BlogCard = memo(function BlogCard({ article }: { article: typeof articles[
       </div>
 
       {/* Title */}
-      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#818CF8] transition-colors mb-3 leading-snug">
+      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#C4B5FD] transition-colors mb-3 leading-snug">
         {article.title}
       </h3>
 
@@ -96,7 +96,7 @@ const BlogCard = memo(function BlogCard({ article }: { article: typeof articles[
       </p>
 
       {/* Meta */}
-      <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(99,102,241, 0.1)' }}>
+      <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(167,139,250, 0.1)' }}>
         <div className="flex items-center gap-3 text-[#71717A] text-xs">
           <span>{article.date}</span>
           <span className="flex items-center gap-1">
@@ -104,7 +104,7 @@ const BlogCard = memo(function BlogCard({ article }: { article: typeof articles[
             {article.readTime}
           </span>
         </div>
-        <ArrowRight className="w-4 h-4 text-[#6366F1] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+        <ArrowRight className="w-4 h-4 text-[#A78BFA] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
       </div>
     </GlassCard>
   );
@@ -124,7 +124,7 @@ export function BlogPage() {
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
               Insights from the{' '}
-              <span className="bg-gradient-to-r from-[#818CF8] via-[#6366F1] to-[#6366F1] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#C4B5FD] via-[#A78BFA] to-[#A78BFA] bg-clip-text text-transparent">
                 growth trenches
               </span>
             </h1>
@@ -155,8 +155,8 @@ export function BlogPage() {
             <div
               className="max-w-2xl mx-auto text-center rounded-2xl p-8 md:p-12"
               style={{
-                background: 'linear-gradient(135deg, rgba(180,83,9, 0.15), rgba(99,102,241, 0.08))',
-                border: '1px solid rgba(129,140,248, 0.2)',
+                background: 'linear-gradient(135deg, rgba(180,83,9, 0.15), rgba(167,139,250, 0.08))',
+                border: '1px solid rgba(196,181,253, 0.2)',
               }}
             >
               <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-3">
@@ -169,7 +169,7 @@ export function BlogPage() {
                 <span
                   className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-xl transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98]"
                   style={{
-                    background: 'linear-gradient(135deg, #4338CA 0%, #4F46E5 100%)',
+                    background: 'linear-gradient(135deg, #4338CA 0%, #7C3AED 100%)',
                     boxShadow: '0 4px 16px rgba(180,83,9, 0.3)',
                   }}
                 >

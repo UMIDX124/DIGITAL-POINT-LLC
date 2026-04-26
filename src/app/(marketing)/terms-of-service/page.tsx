@@ -300,7 +300,7 @@ export default function TermsOfServicePage() {
                 Email:{' '}
                 <a
                   href="mailto:info@digitalpointllc.com"
-                  className="text-[#6366F1] hover:text-[#818CF8] transition-colors underline"
+                  className="text-[#A78BFA] hover:text-[#C4B5FD] transition-colors underline"
                 >
                   info@digitalpointllc.com
                 </a>
@@ -309,7 +309,7 @@ export default function TermsOfServicePage() {
                 Website:{' '}
                 <a
                   href="https://digitalpointllc.com"
-                  className="text-[#6366F1] hover:text-[#818CF8] transition-colors underline"
+                  className="text-[#A78BFA] hover:text-[#C4B5FD] transition-colors underline"
                 >
                   digitalpointllc.com
                 </a>

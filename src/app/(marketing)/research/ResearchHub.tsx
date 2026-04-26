@@ -32,7 +32,7 @@ const reports = [
     title: 'Average Customer Acquisition Cost by Industry',
     description: 'CAC benchmarks across 18 industries with breakdowns by company size, channel, and business model (B2B vs B2C).',
     icon: DollarSign,
-    color: '#818CF8',
+    color: '#C4B5FD',
     date: 'January 2026',
     readTime: '15 min read',
     stat: '18 Industries',
@@ -42,7 +42,7 @@ const reports = [
     title: 'Marketing Attribution Statistics 2026',
     description: 'Attribution model adoption rates, tracking accuracy post-iOS 17, and the real impact of privacy changes on marketing measurement.',
     icon: Eye,
-    color: '#6366F1',
+    color: '#A78BFA',
     date: 'March 2026',
     readTime: '11 min read',
     stat: '47 Data Points',
@@ -52,7 +52,7 @@ const reports = [
     title: 'Remote Workforce Cost Analysis',
     description: 'Comprehensive cost comparison of US in-house teams vs. managed remote teams across marketing, engineering, and operations roles.',
     icon: Users,
-    color: '#6366F1',
+    color: '#A78BFA',
     date: 'February 2026',
     readTime: '13 min read',
     stat: '8 Role Categories',
@@ -101,7 +101,7 @@ export function ResearchHub() {
                             <span className="text-[#71717A] text-xs">-</span>
                             <span className="text-[#71717A] text-xs">{report.readTime}</span>
                           </div>
-                          <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#818CF8] transition-colors mb-2">
+                          <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#C4B5FD] transition-colors mb-2">
                             {report.title}
                           </h3>
                           <p className="text-[#A1A1AA] text-sm leading-relaxed mb-3">
@@ -114,7 +114,7 @@ export function ResearchHub() {
                             >
                               {report.stat}
                             </span>
-                            <span className="flex items-center gap-1 text-[#6366F1] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span className="flex items-center gap-1 text-[#A78BFA] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                               Read Report <ArrowRight className="w-3.5 h-3.5" />
                             </span>
                           </div>

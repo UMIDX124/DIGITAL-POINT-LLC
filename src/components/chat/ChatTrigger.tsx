@@ -49,9 +49,9 @@ export default function ChatTrigger({ onClick, panelOpen }: Props) {
       className={[
         'fixed bottom-6 right-6 z-50',
         'h-16 w-16 rounded-full',
-        'bg-gradient-to-br from-[#818CF8] via-[#6366F1] to-[#4F46E5]',
-        'shadow-[0_0_24px_rgba(99,102,241,0.55),inset_0_1px_2px_rgba(255,255,255,0.4)]',
-        'hover:scale-110 hover:shadow-[0_0_32px_rgba(99,102,241,0.85)]',
+        'bg-gradient-to-br from-[#C4B5FD] via-[#A78BFA] to-[#7C3AED]',
+        'shadow-[0_0_24px_rgba(167,139,250,0.55),inset_0_1px_2px_rgba(255,255,255,0.4)]',
+        'hover:scale-110 hover:shadow-[0_0_32px_rgba(167,139,250,0.85)]',
         'active:scale-95',
         'transition-transform duration-200 ease-out',
         'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-bright)]',

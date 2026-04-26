@@ -15,7 +15,7 @@ const tools = [
     title: 'ROAS Calculator',
     description: 'Calculate your Return on Ad Spend instantly. Compare platform-reported vs. blended ROAS.',
     icon: TrendingUp,
-    color: '#6366F1',
+    color: '#A78BFA',
     tags: ['Paid Ads', 'ROI'],
   },
   {
@@ -23,7 +23,7 @@ const tools = [
     title: 'CAC Calculator',
     description: 'Calculate Customer Acquisition Cost across channels. Find your most efficient acquisition source.',
     icon: DollarSign,
-    color: '#6366F1',
+    color: '#A78BFA',
     tags: ['Unit Economics', 'Growth'],
   },
   {
@@ -47,7 +47,7 @@ const tools = [
     title: 'Dashboard Cost Calculator',
     description: 'Estimate the cost of building vs. buying a marketing analytics dashboard for your team.',
     icon: BarChart3,
-    color: '#818CF8',
+    color: '#C4B5FD',
     tags: ['Reporting', 'Systems'],
   },
 ];
@@ -66,7 +66,7 @@ export function ToolsHub() {
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
               Marketing{' '}
-              <span className="bg-gradient-to-r from-[#818CF8] via-[#6366F1] to-[#6366F1] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#C4B5FD] via-[#A78BFA] to-[#A78BFA] bg-clip-text text-transparent">
                 calculators
               </span>
               {' '}& tools
@@ -93,13 +93,13 @@ export function ToolsHub() {
                       >
                         <Icon className="w-6 h-6" style={{ color: tool.color }} />
                       </div>
-                      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#818CF8] transition-colors mb-2">
+                      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#C4B5FD] transition-colors mb-2">
                         {tool.title}
                       </h3>
                       <p className="text-[#71717A] text-sm leading-relaxed flex-1 mb-4">{tool.description}</p>
                       <div className="flex gap-2">
                         {tool.tags.map((tag) => (
-                          <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] text-[#71717A] bg-[rgba(99,102,241,0.1)]">
+                          <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] text-[#71717A] bg-[rgba(167,139,250,0.1)]">
                             {tag}
                           </span>
                         ))}

@@ -231,7 +231,7 @@ export function HeroSection() {
             style={{
               fontSize: 'var(--text-body)',
               color: 'var(--text-secondary)',
-              maxWidth: '46ch',
+              maxWidth: 'var(--maxw-body)',
               lineHeight: 1.55,
             }}
           >
@@ -262,6 +262,24 @@ export function HeroSection() {
                 <polyline points="7 7 17 7 17 17" />
               </svg>
             </Link>
+          </div>
+
+          {/* Phase 13 — operator-accountability trust signals.
+              CSS-only stagger fade-in (no GSAP, no JS), kicks in after the
+              hero word-reveal completes. prefers-reduced-motion in CSS. */}
+          <div className="hero-trust-signals" aria-label="Track record">
+            <span className="hero-trust-signal">
+              <span className="hero-trust-signal-bullet" aria-hidden="true" />
+              $50M ad spend operated
+            </span>
+            <span className="hero-trust-signal">
+              <span className="hero-trust-signal-bullet" aria-hidden="true" />
+              200+ audits shipped
+            </span>
+            <span className="hero-trust-signal">
+              <span className="hero-trust-signal-bullet" aria-hidden="true" />
+              8 years operating, not pitching
+            </span>
           </div>
         </div>
 

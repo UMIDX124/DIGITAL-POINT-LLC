@@ -144,7 +144,7 @@ export function BlogListPage({ posts, categories, categoryMeta }: Props) {
                     }}
                   >
                     {name}
-                    {count > 0 && <span className="opacity-60">({count})</span>}
+                    {count > 0 && <span className="opacity-80">({count})</span>}
                   </Link>
                 );
               })}

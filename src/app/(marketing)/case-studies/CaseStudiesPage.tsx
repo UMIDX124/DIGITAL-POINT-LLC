@@ -79,7 +79,7 @@ export function CaseStudiesPage() {
                   <div className="px-4 sm:px-6 md:px-8 py-6 space-y-6">
                     {/* Problem */}
                     <div>
-                      <h3 className="text-xs uppercase tracking-wider text-[#7C3AED] font-semibold mb-2">
+                      <h3 className="text-xs uppercase tracking-wider text-[#A78BFA] font-semibold mb-2">
                         The Problem
                       </h3>
                       <p className="text-[#D6D0C2] text-sm leading-relaxed">

@@ -90,7 +90,7 @@ export function RemoteWorkforcePage() {
             <div className="flex flex-wrap gap-4 mt-8">
               <Link href="/free-growth-audit">
                 <Button
-                  className="bg-plum hover:bg-plum-light text-white font-semibold px-6 group"
+                  className="bg-plum hover:bg-plum-light text-[#0A0A0B] font-semibold px-6 group"
                 >
                   Get Audit
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -125,7 +125,7 @@ export function RemoteWorkforcePage() {
               onClick={() => setActiveCategory(null)}
               className={`px-4 py-2 rounded-lg text-sm transition-all ${
                 activeCategory === null
-                  ? 'bg-plum text-white'
+                  ? 'bg-plum text-[#0A0A0B]'
                   : 'bg-surface-glass text-text-secondary hover:text-text-primary'
               }`}
             >
@@ -137,7 +137,7 @@ export function RemoteWorkforcePage() {
                 onClick={() => setActiveCategory(cat.category)}
                 className={`px-4 py-2 rounded-lg text-sm transition-all ${
                   activeCategory === cat.category
-                    ? 'bg-plum text-white'
+                    ? 'bg-plum text-[#0A0A0B]'
                     : 'bg-surface-glass text-text-secondary hover:text-text-primary'
                 }`}
               >
@@ -305,7 +305,7 @@ export function RemoteWorkforcePage() {
               </p>
               <Link href="/free-growth-audit">
                 <Button
-                  className="bg-plum hover:bg-plum-light text-white font-semibold px-8 py-6 group"
+                  className="bg-plum hover:bg-plum-light text-[#0A0A0B] font-semibold px-8 py-6 group"
                 >
                   Request Free Growth Audit
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />

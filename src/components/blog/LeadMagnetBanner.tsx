@@ -8,7 +8,7 @@ export function LeadMagnetBanner() {
     <section
       className="rounded-2xl p-8 md:p-12 text-center my-12"
       style={{
-        background: 'linear-gradient(135deg, rgba(180,83,9,0.18) 0%, rgba(13,8,21,0.9) 50%, rgba(167,139,250,0.12) 100%)',
+        background: 'linear-gradient(135deg, rgba(167, 139, 250,0.18) 0%, rgba(13,8,21,0.9) 50%, rgba(167,139,250,0.12) 100%)',
         border: '1px solid rgba(196,181,253, 0.2)',
       }}
     >
@@ -17,7 +17,7 @@ export function LeadMagnetBanner() {
           className="w-12 h-12 rounded-xl flex items-center justify-center"
           style={{
             background: 'linear-gradient(135deg, #4338CA 0%, #7C3AED 100%)',
-            boxShadow: '0 4px 24px rgba(180,83,9, 0.4)',
+            boxShadow: '0 4px 24px rgba(167, 139, 250, 0.4)',
           }}
         >
           <BarChart3 className="w-6 h-6 text-white" />
@@ -38,7 +38,7 @@ export function LeadMagnetBanner() {
           className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-xl transition-transform hover:scale-[1.02] active:scale-[0.98]"
           style={{
             background: 'linear-gradient(135deg, #4338CA 0%, #7C3AED 100%)',
-            boxShadow: '0 4px 16px rgba(180,83,9, 0.3)',
+            boxShadow: '0 4px 16px rgba(167, 139, 250, 0.3)',
           }}
         >
           Book Free Audit

@@ -23,14 +23,14 @@ const serviceLinks = [
     title: 'Systems & Reporting',
     description: 'Dashboards, data infrastructure, and RevOps.',
     icon: Settings,
-    color: '#7dd3fc',
+    color: '#A78BFA',
   },
   {
     slug: 'free-growth-audit',
     title: 'Free Growth Audit',
     description: 'Find what\'s broken in your marketing stack.',
     icon: FileText,
-    color: '#a3e635',
+    color: '#C4B5FD',
   },
 ];
 

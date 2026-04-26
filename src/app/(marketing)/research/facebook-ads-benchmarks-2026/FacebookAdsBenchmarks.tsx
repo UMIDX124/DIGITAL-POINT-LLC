@@ -32,9 +32,9 @@ const yearOverYear = [
 ];
 
 const keyStats = [
-  { value: '$1.72', label: 'Avg CPC', color: '#7dd3fc' },
+  { value: '$1.72', label: 'Avg CPC', color: '#A78BFA' },
   { value: '$12.47', label: 'Avg CPM', color: '#A78BFA' },
-  { value: '1.49%', label: 'Avg CTR', color: '#a3e635' },
+  { value: '1.49%', label: 'Avg CTR', color: '#C4B5FD' },
   { value: '2.87x', label: 'Avg ROAS', color: '#A78BFA' },
 ];
 
@@ -94,9 +94,9 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
                   <thead>
                     <tr className="border-b border-[rgba(167,139,250,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Industry</th>
-                      <th className="text-right py-3 px-4 text-[#7dd3fc] font-medium">CPC</th>
+                      <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">CPC</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">CPM</th>
-                      <th className="text-right py-3 px-4 text-[#a3e635] font-medium">CTR</th>
+                      <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">CTR</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">ROAS</th>
                     </tr>
                   </thead>
@@ -143,7 +143,7 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
                         <td className="py-3 px-4 text-right text-[#71717A]">{row.value2024}</td>
                         <td className="py-3 px-4 text-right text-[#71717A]">{row.value2025}</td>
                         <td className="py-3 px-4 text-right text-white font-medium">{row.value2026}</td>
-                        <td className="py-3 px-4 text-right" style={{ color: row.change.startsWith('+') ? '#A78BFA' : '#a3e635' }}>
+                        <td className="py-3 px-4 text-right" style={{ color: row.change.startsWith('+') ? '#A78BFA' : '#C4B5FD' }}>
                           {row.change}
                         </td>
                       </tr>

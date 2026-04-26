@@ -43,7 +43,7 @@ const trackingAccuracy = [
 const keyStats = [
   { value: '61%', label: 'Trackable Conversions', color: '#A78BFA' },
   { value: '41%', label: 'Still Use Last-Click', color: '#C4B5FD' },
-  { value: '52%', label: 'Hybrid Model Adoption', color: '#a3e635' },
+  { value: '52%', label: 'Hybrid Model Adoption', color: '#C4B5FD' },
   { value: '20-40%', label: 'Platform Over-Reporting', color: '#A78BFA' },
 ];
 
@@ -104,7 +104,7 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
                     <tr className="border-b border-[rgba(167,139,250,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Model</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">Adoption</th>
-                      <th className="text-right py-3 px-4 text-[#a3e635] font-medium">YoY Change</th>
+                      <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">YoY Change</th>
                       <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">Est. Accuracy</th>
                     </tr>
                   </thead>
@@ -113,7 +113,7 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
                       <tr key={row.model} className={i < modelAdoption.length - 1 ? 'border-b border-[rgba(167,139,250,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.model}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.adoption}</td>
-                        <td className="py-3 px-4 text-right" style={{ color: row.trend.startsWith('+') ? '#a3e635' : '#A78BFA' }}>
+                        <td className="py-3 px-4 text-right" style={{ color: row.trend.startsWith('+') ? '#C4B5FD' : '#A78BFA' }}>
                           {row.trend}
                         </td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.accuracy}</td>
@@ -171,7 +171,7 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
                     <tr className="border-b border-[rgba(167,139,250,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Platform</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">Reported</th>
-                      <th className="text-right py-3 px-4 text-[#a3e635] font-medium">Est. Actual</th>
+                      <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">Est. Actual</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">Gap</th>
                     </tr>
                   </thead>

@@ -62,8 +62,8 @@ function RelatedLinks({ links }: { links: Guide['relatedLinks'] }) {
     blog: 'Guide',
   };
   const typeColors: Record<string, string> = {
-    tool: '#a3e635',
-    research: '#7dd3fc',
+    tool: '#C4B5FD',
+    research: '#A78BFA',
     blog: '#A78BFA',
   };
 

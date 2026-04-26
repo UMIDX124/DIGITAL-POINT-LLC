@@ -45,7 +45,7 @@ export function NewsletterOptIn({
       <div
         className={`rounded-xl p-6 text-center ${className}`}
         style={{
-          background: 'rgba(180,83,9, 0.1)',
+          background: 'rgba(167, 139, 250, 0.1)',
           border: '1px solid rgba(196,181,253, 0.2)',
         }}
       >
@@ -62,7 +62,7 @@ export function NewsletterOptIn({
       style={{
         background: variant === 'sidebar'
           ? 'rgba(13, 8, 21, 0.6)'
-          : 'linear-gradient(135deg, rgba(180,83,9, 0.12), rgba(167,139,250, 0.06))',
+          : 'linear-gradient(135deg, rgba(167, 139, 250, 0.12), rgba(167,139,250, 0.06))',
         border: '1px solid rgba(196,181,253, 0.2)',
       }}
     >

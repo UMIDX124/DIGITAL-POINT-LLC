@@ -41,12 +41,12 @@ export const categoryMeta: Record<BlogCategory, { color: string; slug: string; d
     description: 'Industry benchmarks for CPC, CPM, CTR, ROAS, and conversion rates across ad platforms.',
   },
   'CAC ROAS Optimization': {
-    color: '#a3e635',
+    color: '#C4B5FD',
     slug: 'cac-roas-optimization',
     description: 'Strategies to reduce customer acquisition cost and maximize return on ad spend.',
   },
   'Marketing Analytics': {
-    color: '#7dd3fc',
+    color: '#A78BFA',
     slug: 'marketing-analytics',
     description: 'Dashboards, KPIs, data infrastructure, and analytics tools for growth teams.',
   },

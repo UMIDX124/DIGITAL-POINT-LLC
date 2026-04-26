@@ -204,7 +204,7 @@ export function AboutPage() {
                   className="inline-flex items-center gap-2 px-8 py-4 text-lg font-semibold text-white rounded-xl"
                   style={{
                     background: 'linear-gradient(135deg, #4338CA 0%, #7C3AED 50%, #A78BFA 100%)',
-                    boxShadow: '0 4px 20px rgba(180,83,9, 0.4)',
+                    boxShadow: '0 4px 20px rgba(167, 139, 250, 0.4)',
                   }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

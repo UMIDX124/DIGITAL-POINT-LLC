@@ -121,7 +121,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
                   >
                     <span
                       className="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                      style={{ background: '#a3e635' }}
+                      style={{ background: '#C4B5FD' }}
                     />
                     <span className="text-sm leading-snug">
                       <span className="group-hover:underline">{tool.title}</span>
@@ -151,7 +151,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
                   >
                     <span
                       className="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                      style={{ background: '#7dd3fc' }}
+                      style={{ background: '#A78BFA' }}
                     />
                     <span className="text-sm leading-snug">
                       <span className="group-hover:underline">{item.title}</span>

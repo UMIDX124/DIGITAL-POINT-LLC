@@ -131,7 +131,7 @@ export function CaseStudiesPage() {
                       <div
                         className="rounded-xl p-5"
                         style={{
-                          background: 'linear-gradient(135deg, rgba(180,83,9, 0.08), rgba(167,139,250, 0.05))',
+                          background: 'linear-gradient(135deg, rgba(167, 139, 250, 0.08), rgba(167,139,250, 0.05))',
                           border: '1px solid rgba(196,181,253, 0.12)',
                         }}
                       >

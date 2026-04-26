@@ -28,7 +28,7 @@ export function FounderSection() {
                   <div 
                     className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden flex items-center justify-center"
                     style={{
-                      background: 'linear-gradient(135deg, rgba(167,139,250, 0.4) 0%, rgba(180,83,9, 0.2) 100%)',
+                      background: 'linear-gradient(135deg, rgba(167,139,250, 0.4) 0%, rgba(167, 139, 250, 0.2) 100%)',
                       border: '2px solid rgba(196,181,253, 0.3)',
                     }}
                   >

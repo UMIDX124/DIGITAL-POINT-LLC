@@ -89,13 +89,13 @@ const fallbackArticles = [
 const categoryColors: Record<string, string> = {
   'Marketing Attribution': '#A78BFA',
   'Paid Ads Benchmarks': '#A78BFA',
-  'CAC ROAS Optimization': '#a3e635',
-  'Marketing Analytics': '#7dd3fc',
+  'CAC ROAS Optimization': '#C4B5FD',
+  'Marketing Analytics': '#A78BFA',
   'Remote Workforce': '#C4B5FD',
   'Growth Systems': '#f472b6',
   'Performance Marketing': '#A78BFA',
-  'AI & Automation': '#a3e635',
-  'Systems & Reporting': '#7dd3fc',
+  'AI & Automation': '#C4B5FD',
+  'Systems & Reporting': '#A78BFA',
 };
 
 export function BlogListPage({ posts, categories, categoryMeta }: Props) {

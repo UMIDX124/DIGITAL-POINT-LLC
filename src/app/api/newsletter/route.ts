@@ -60,7 +60,7 @@ export async function POST(req: Request) {
             <h1 style="color: #A78BFA; font-size: 24px; margin: 0;">Welcome to Digital Point</h1>
             <p style="color: #71717A; font-size: 14px; margin-top: 8px;">Growth insights from $50M+ in managed ad spend</p>
           </div>
-          <div style="background: rgba(180,83,9, 0.1); border: 1px solid rgba(196,181,253, 0.2); border-radius: 8px; padding: 24px; margin-bottom: 24px;">
+          <div style="background: rgba(167, 139, 250, 0.1); border: 1px solid rgba(196,181,253, 0.2); border-radius: 8px; padding: 24px; margin-bottom: 24px;">
             <p style="margin: 0 0 12px; font-size: 15px; color: #e0d6eb;">Hey there 👋</p>
             <p style="margin: 0 0 12px; font-size: 14px; color: #D6D0C2; line-height: 1.6;">
               Thanks for subscribing! You'll receive frameworks, benchmarks, and case studies that help performance marketers scale profitably.

@@ -29,7 +29,7 @@ export function ROASCalculator({ faqs }: Props) {
   const breakEvenSpend = rev - cost > 0 ? rev - cost : 0;
 
   const roasRating = roas >= 5 ? 'Excellent' : roas >= 3 ? 'Good' : roas >= 2 ? 'Average' : roas > 0 ? 'Below Average' : '';
-  const roasColor = roas >= 5 ? '#a3e635' : roas >= 3 ? '#A78BFA' : roas >= 2 ? '#C4B5FD' : '#A78BFA';
+  const roasColor = roas >= 5 ? '#C4B5FD' : roas >= 3 ? '#A78BFA' : roas >= 2 ? '#C4B5FD' : '#A78BFA';
 
   const handleShare = () => {
     const url = `${window.location.origin}/tools/roas-calculator?spend=${spend}&revenue=${rev}&cogs=${cost}`;
@@ -159,7 +159,7 @@ export function ROASCalculator({ faqs }: Props) {
                 </div>
 
                 {copied && (
-                  <p className="text-[#a3e635] text-xs mb-3">Link copied to clipboard!</p>
+                  <p className="text-[#C4B5FD] text-xs mb-3">Link copied to clipboard!</p>
                 )}
 
                 {showEmail && (
@@ -202,13 +202,13 @@ export function ROASCalculator({ faqs }: Props) {
                   <div className="grid grid-cols-2 gap-3">
                     <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(167,139,250, 0.15)' }}>
                       <span className="text-[#71717A] text-xs">Net Profit</span>
-                      <p className={`font-display text-xl font-bold mt-1 ${profit >= 0 ? 'text-[#a3e635]' : 'text-[#A78BFA]'}`}>
+                      <p className={`font-display text-xl font-bold mt-1 ${profit >= 0 ? 'text-[#C4B5FD]' : 'text-[#A78BFA]'}`}>
                         {spend > 0 ? `$${profit.toLocaleString()}` : '—'}
                       </p>
                     </div>
                     <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(167,139,250, 0.15)' }}>
                       <span className="text-[#71717A] text-xs">Profit Margin</span>
-                      <p className={`font-display text-xl font-bold mt-1 ${profitMargin >= 0 ? 'text-[#a3e635]' : 'text-[#A78BFA]'}`}>
+                      <p className={`font-display text-xl font-bold mt-1 ${profitMargin >= 0 ? 'text-[#C4B5FD]' : 'text-[#A78BFA]'}`}>
                         {rev > 0 ? `${profitMargin.toFixed(1)}%` : '—'}
                       </p>
                     </div>
@@ -273,7 +273,7 @@ export function ROASCalculator({ faqs }: Props) {
                           <tr key={industry} style={{ borderTop: '1px solid rgba(167,139,250, 0.1)' }}>
                             <td className="px-4 py-3">{industry}</td>
                             <td className="px-4 py-3 text-right font-mono">{avg}</td>
-                            <td className="px-4 py-3 text-right font-mono text-[#a3e635]">{top}</td>
+                            <td className="px-4 py-3 text-right font-mono text-[#C4B5FD]">{top}</td>
                           </tr>
                         ))}
                       </tbody>

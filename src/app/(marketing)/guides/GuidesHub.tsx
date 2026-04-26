@@ -13,8 +13,8 @@ const guideColors: Record<string, string> = {
   'marketing-attribution-complete-guide': '#A78BFA',
   'paid-ads-optimization-guide': '#A78BFA',
   'cac-roas-guide': '#C4B5FD',
-  'marketing-analytics-guide': '#7dd3fc',
-  'remote-marketing-team-guide': '#a3e635',
+  'marketing-analytics-guide': '#A78BFA',
+  'remote-marketing-team-guide': '#C4B5FD',
   'growth-systems-guide': '#C4B5FD',
 };
 

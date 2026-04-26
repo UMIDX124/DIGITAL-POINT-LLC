@@ -146,7 +146,7 @@ export function ContactPage() {
                 <div
                   className="p-5 rounded-xl mt-6"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(180,83,9, 0.15), rgba(167,139,250, 0.1))',
+                    background: 'linear-gradient(135deg, rgba(167, 139, 250, 0.15), rgba(167,139,250, 0.1))',
                     border: '1px solid rgba(196,181,253, 0.2)',
                   }}
                 >
@@ -228,7 +228,7 @@ export function ContactPage() {
                         className="w-full py-3.5 rounded-xl text-white font-semibold text-sm flex items-center justify-center gap-2 disabled:opacity-50 transition-transform duration-150 hover:scale-[1.01] active:scale-[0.99]"
                         style={{
                           background: 'linear-gradient(135deg, #4338CA 0%, #7C3AED 100%)',
-                          boxShadow: '0 4px 16px rgba(180,83,9, 0.3)',
+                          boxShadow: '0 4px 16px rgba(167, 139, 250, 0.3)',
                         }}
                       >
                         {status === 'submitting' ? (

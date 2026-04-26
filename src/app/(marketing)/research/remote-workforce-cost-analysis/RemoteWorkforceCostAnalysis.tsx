@@ -52,10 +52,10 @@ const qualityMetrics = [
 ];
 
 const keyStats = [
-  { value: '59%', label: 'Avg Cost Savings', color: '#a3e635' },
+  { value: '59%', label: 'Avg Cost Savings', color: '#C4B5FD' },
   { value: '$768K', label: 'Savings (10-person)', color: '#A78BFA' },
   { value: '4.3/5', label: 'Client Satisfaction', color: '#C4B5FD' },
-  { value: '91%', label: 'On-Time Delivery', color: '#7dd3fc' },
+  { value: '91%', label: 'On-Time Delivery', color: '#A78BFA' },
 ];
 
 const glassStyle = {
@@ -115,7 +115,7 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
                     <tr className="border-b border-[rgba(167,139,250,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Role</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">US Fully Loaded</th>
-                      <th className="text-right py-3 px-4 text-[#a3e635] font-medium">Managed Remote</th>
+                      <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">Managed Remote</th>
                       <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">Savings</th>
                     </tr>
                   </thead>
@@ -125,7 +125,7 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
                         <td className="py-3 px-4 text-white font-medium">{row.role}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.usFullyLoaded}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.remote}</td>
-                        <td className="py-3 px-4 text-right text-[#a3e635] font-medium">{row.savings}</td>
+                        <td className="py-3 px-4 text-right text-[#C4B5FD] font-medium">{row.savings}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -149,7 +149,7 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
                     <tr className="border-b border-[rgba(167,139,250,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Cost Item</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">Annual Cost</th>
-                      <th className="text-right py-3 px-4 text-[#7dd3fc] font-medium">% of Total</th>
+                      <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">% of Total</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -184,7 +184,7 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
                     <tr className="border-b border-[rgba(167,139,250,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Team Size</th>
                       <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">US Annual</th>
-                      <th className="text-right py-3 px-4 text-[#a3e635] font-medium">Remote Annual</th>
+                      <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">Remote Annual</th>
                       <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">Annual Savings</th>
                     </tr>
                   </thead>
@@ -194,7 +194,7 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
                         <td className="py-3 px-4 text-white font-medium">{row.teamSize}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.usAnnual}</td>
                         <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.remoteAnnual}</td>
-                        <td className="py-3 px-4 text-right text-[#a3e635] font-bold">{row.annualSavings}</td>
+                        <td className="py-3 px-4 text-right text-[#C4B5FD] font-bold">{row.annualSavings}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -216,9 +216,9 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
                   <thead>
                     <tr className="border-b border-[rgba(167,139,250,0.15)]">
                       <th className="text-left py-3 px-4 text-[#71717A] font-medium">Metric</th>
-                      <th className="text-right py-3 px-4 text-[#a3e635] font-medium">Managed Remote</th>
+                      <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">Managed Remote</th>
                       <th className="text-right py-3 px-4 text-[#C4B5FD] font-medium">Freelancers</th>
-                      <th className="text-right py-3 px-4 text-[#7dd3fc] font-medium">US In-House</th>
+                      <th className="text-right py-3 px-4 text-[#A78BFA] font-medium">US In-House</th>
                     </tr>
                   </thead>
                   <tbody>

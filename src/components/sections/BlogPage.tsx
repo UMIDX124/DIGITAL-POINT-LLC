@@ -64,8 +64,8 @@ const articles = [
 const categoryColors: Record<string, string> = {
   'Performance Marketing': '#A78BFA',
   'Remote Workforce': '#A78BFA',
-  'Systems & Reporting': '#7dd3fc',
-  'AI & Automation': '#a3e635',
+  'Systems & Reporting': '#A78BFA',
+  'AI & Automation': '#C4B5FD',
 };
 
 /** Memoized blog card to prevent re-renders in list */
@@ -157,7 +157,7 @@ export function BlogPage() {
             <div
               className="max-w-2xl mx-auto text-center rounded-2xl p-8 md:p-12"
               style={{
-                background: 'linear-gradient(135deg, rgba(180,83,9, 0.15), rgba(167,139,250, 0.08))',
+                background: 'linear-gradient(135deg, rgba(167, 139, 250, 0.15), rgba(167,139,250, 0.08))',
                 border: '1px solid rgba(196,181,253, 0.2)',
               }}
             >
@@ -172,7 +172,7 @@ export function BlogPage() {
                   className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-xl transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98]"
                   style={{
                     background: 'linear-gradient(135deg, #4338CA 0%, #7C3AED 100%)',
-                    boxShadow: '0 4px 16px rgba(180,83,9, 0.3)',
+                    boxShadow: '0 4px 16px rgba(167, 139, 250, 0.3)',
                   }}
                 >
                   Start with a Free Audit Instead

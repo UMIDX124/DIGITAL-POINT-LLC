@@ -50,7 +50,7 @@ export function AdSpendCalculator({ faqs }: Props) {
             <Breadcrumbs items={[{ label: 'Tools', href: '/tools' }, { label: 'Ad Spend Profit Calculator', href: '/tools/ad-spend-profit-calculator' }]} />
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mt-6">
               Ad Spend{' '}
-              <span className="bg-gradient-to-r from-[#a3e635] via-[#A78BFA] to-[#C4B5FD] bg-clip-text text-transparent">Profit</span>
+              <span className="bg-gradient-to-r from-[#C4B5FD] via-[#A78BFA] to-[#C4B5FD] bg-clip-text text-transparent">Profit</span>
               {' '}Calculator
             </h1>
             <p className="text-[#D6D0C2] text-lg mt-3 max-w-2xl">
@@ -118,7 +118,7 @@ export function AdSpendCalculator({ faqs }: Props) {
                     </div>
                     <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(167,139,250, 0.15)' }}>
                       <span className="text-[#71717A] text-xs">Monthly Profit</span>
-                      <p className={`font-display text-xl font-bold mt-1 ${profit >= 0 ? 'text-[#a3e635]' : 'text-[#A78BFA]'}`}>
+                      <p className={`font-display text-xl font-bold mt-1 ${profit >= 0 ? 'text-[#C4B5FD]' : 'text-[#A78BFA]'}`}>
                         {spend > 0 ? `$${profit.toLocaleString()}` : '—'}
                       </p>
                     </div>
@@ -132,7 +132,7 @@ export function AdSpendCalculator({ faqs }: Props) {
                     </div>
                     <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(167,139,250, 0.15)' }}>
                       <span className="text-[#71717A] text-xs">Annual Profit</span>
-                      <p className={`font-display text-xl font-bold mt-1 ${annualProfit >= 0 ? 'text-[#a3e635]' : 'text-[#A78BFA]'}`}>
+                      <p className={`font-display text-xl font-bold mt-1 ${annualProfit >= 0 ? 'text-[#C4B5FD]' : 'text-[#A78BFA]'}`}>
                         {spend > 0 ? `$${annualProfit.toLocaleString()}` : '—'}
                       </p>
                     </div>
@@ -146,7 +146,7 @@ export function AdSpendCalculator({ faqs }: Props) {
                         {scenarios.map((s) => (
                           <div key={s.label} className="flex items-center justify-between text-xs">
                             <span className="text-[#71717A]">{s.label} spend (${s.spend.toLocaleString()})</span>
-                            <span className={`font-mono ${s.profit >= 0 ? 'text-[#a3e635]' : 'text-[#A78BFA]'}`}>
+                            <span className={`font-mono ${s.profit >= 0 ? 'text-[#C4B5FD]' : 'text-[#A78BFA]'}`}>
                               ${s.profit.toLocaleString()} profit
                             </span>
                           </div>

@@ -27,7 +27,7 @@ export function CACCalculator({ faqs }: Props) {
   const paybackMonths = cac > 0 && customerLtv > 0 ? (cac / (customerLtv / 12)) : 0;
 
   const ratioRating = ltvCacRatio >= 5 ? 'Excellent' : ltvCacRatio >= 3 ? 'Healthy' : ltvCacRatio >= 1 ? 'Needs Work' : ltvCacRatio > 0 ? 'Danger' : '';
-  const ratioColor = ltvCacRatio >= 5 ? '#a3e635' : ltvCacRatio >= 3 ? '#A78BFA' : ltvCacRatio >= 1 ? '#C4B5FD' : '#A78BFA';
+  const ratioColor = ltvCacRatio >= 5 ? '#C4B5FD' : ltvCacRatio >= 3 ? '#A78BFA' : ltvCacRatio >= 1 ? '#C4B5FD' : '#A78BFA';
 
   const handleShare = () => {
     const url = `${window.location.origin}/tools/cac-calculator?ms=${marketingSpend}&ss=${salesSpend}&nc=${newCustomers}&ltv=${ltv}`;
@@ -109,7 +109,7 @@ export function CACCalculator({ faqs }: Props) {
                     <Share2 className="w-4 h-4" />
                   </button>
                 </div>
-                {copied && <p className="text-[#a3e635] text-xs mb-3">Link copied!</p>}
+                {copied && <p className="text-[#C4B5FD] text-xs mb-3">Link copied!</p>}
 
                 <div className="space-y-4">
                   <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(167,139,250, 0.15)' }}>
@@ -182,7 +182,7 @@ export function CACCalculator({ faqs }: Props) {
                           <tr key={industry} style={{ borderTop: '1px solid rgba(167,139,250, 0.1)' }}>
                             <td className="px-4 py-3">{industry}</td>
                             <td className="px-4 py-3 text-right font-mono">{cac}</td>
-                            <td className="px-4 py-3 text-right font-mono text-[#a3e635]">{ratio}</td>
+                            <td className="px-4 py-3 text-right font-mono text-[#C4B5FD]">{ratio}</td>
                           </tr>
                         ))}
                       </tbody>

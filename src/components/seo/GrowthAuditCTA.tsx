@@ -24,7 +24,7 @@ export function GrowthAuditCTA({
         className={`inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white rounded-xl transition-transform hover:scale-[1.02] active:scale-[0.98] ${className}`}
         style={{
           background: 'linear-gradient(135deg, #4338CA 0%, #7C3AED 100%)',
-          boxShadow: '0 4px 16px rgba(180,83,9, 0.3)',
+          boxShadow: '0 4px 16px rgba(167, 139, 250, 0.3)',
         }}
       >
         Get Your Growth Audit
@@ -38,7 +38,7 @@ export function GrowthAuditCTA({
       <div
         className={`rounded-xl p-5 flex items-center justify-between gap-4 flex-wrap ${className}`}
         style={{
-          background: 'linear-gradient(135deg, rgba(180,83,9, 0.12), rgba(167,139,250, 0.06))',
+          background: 'linear-gradient(135deg, rgba(167, 139, 250, 0.12), rgba(167,139,250, 0.06))',
           border: '1px solid rgba(196,181,253, 0.2)',
         }}
       >
@@ -64,7 +64,7 @@ export function GrowthAuditCTA({
     <div
       className={`rounded-2xl p-8 md:p-10 text-center ${className}`}
       style={{
-        background: 'linear-gradient(135deg, rgba(180,83,9, 0.15), rgba(167,139,250, 0.08))',
+        background: 'linear-gradient(135deg, rgba(167, 139, 250, 0.15), rgba(167,139,250, 0.08))',
         border: '1px solid rgba(196,181,253, 0.2)',
       }}
     >
@@ -75,7 +75,7 @@ export function GrowthAuditCTA({
           className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-xl"
           style={{
             background: 'linear-gradient(135deg, #4338CA 0%, #7C3AED 100%)',
-            boxShadow: '0 4px 16px rgba(180,83,9, 0.3)',
+            boxShadow: '0 4px 16px rgba(167, 139, 250, 0.3)',
           }}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}

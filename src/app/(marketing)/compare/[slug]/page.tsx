@@ -244,7 +244,7 @@ export default async function ComparisonPage({ params }: PageProps) {
           <div
             className="rounded-2xl p-6 md:p-8"
             style={{
-              background: 'linear-gradient(135deg, rgba(180,83,9, 0.12), rgba(167,139,250, 0.06))',
+              background: 'linear-gradient(135deg, rgba(167, 139, 250, 0.12), rgba(167,139,250, 0.06))',
               border: '1px solid rgba(196,181,253, 0.2)',
             }}
           >

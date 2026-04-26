@@ -31,7 +31,7 @@ const tools = [
     title: 'Ad Spend Profit Calculator',
     description: 'Model profitability at different ad spend levels. Find your optimal budget allocation.',
     icon: Calculator,
-    color: '#a3e635',
+    color: '#C4B5FD',
     tags: ['Budget', 'Profitability'],
   },
   {
@@ -39,7 +39,7 @@ const tools = [
     title: 'Attribution Model Visualizer',
     description: 'Compare first-click, last-click, linear, time-decay, and position-based attribution models side by side.',
     icon: PieChart,
-    color: '#7dd3fc',
+    color: '#A78BFA',
     tags: ['Attribution', 'Analytics'],
   },
   {

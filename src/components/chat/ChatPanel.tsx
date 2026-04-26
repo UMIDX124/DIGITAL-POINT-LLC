@@ -94,7 +94,7 @@ export default function ChatPanel({ open, onClose }: Props) {
     <div
       className="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] h-[520px] max-h-[calc(100vh-8rem)] flex flex-col rounded-2xl shadow-2xl chat-panel"
       style={{
-        background: 'rgba(13, 13, 13, 0.95)',
+        background: 'color-mix(in srgb, var(--bg-canvas) 95%, transparent)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
         border: '1px solid var(--border-default)',
@@ -137,9 +137,9 @@ export default function ChatPanel({ open, onClose }: Props) {
               style={
                 m.role === 'user'
                   ? {
-                      background: 'rgba(255, 168, 51, 0.15)',
+                      background: 'color-mix(in srgb, var(--accent-primary) 15%, transparent)',
                       color: 'var(--text-primary)',
-                      border: '1px solid rgba(255, 168, 51, 0.3)',
+                      border: '1px solid color-mix(in srgb, var(--accent-primary) 30%, transparent)',
                     }
                   : {
                       background: 'var(--bg-elevated)',
@@ -176,7 +176,7 @@ export default function ChatPanel({ open, onClose }: Props) {
           </div>
         )}
         {error && (
-          <div className="text-xs px-2" style={{ color: '#F87171' }}>
+          <div className="text-xs px-2" style={{ color: 'var(--text-error)' }}>
             {error}
           </div>
         )}
@@ -208,7 +208,7 @@ export default function ChatPanel({ open, onClose }: Props) {
             className="h-11 w-11 rounded-xl flex items-center justify-center transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             style={{
               background: 'var(--accent-bright)',
-              color: '#ffffff',
+              color: 'var(--cta-text-on-amber)',
             }}
           >
             <Send size={16} />

@@ -4,7 +4,8 @@ import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import MagneticCTA from '@/components/effects/MagneticCTA';
 import { AutomationOrbit } from '@/components/hero/AutomationOrbit';
-// Phase 16 A.1 — AutomationFlow kept on disk pending mockup ship-it.
+import { HeroDataTicker } from '@/components/hero/HeroDataTicker';
+// Phase 16 A.1 — AutomationFlow kept on disk pending replacement ship.
 // import { AutomationFlow } from '@/components/hero/AutomationFlow';
 
 /**
@@ -159,18 +160,9 @@ export function HeroSection() {
         paddingBottom: 'var(--section-main)',
       }}
     >
-      {/* Ambient purple glow — bottom-right corner */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        aria-hidden="true"
-        style={{
-          background:
-            'radial-gradient(ellipse 70% 55% at 85% 90%, var(--accent-glow-soft), transparent 60%)',
-        }}
-      />
-
-      {/* Conic ambient sweep (Phase 6 C.3) — desktop only, behind content */}
-      <div className="hero-ambient" aria-hidden="true" />
+      {/* Phase 16 C — Bloomberg Operator data substrate replaces the
+          Phase 6 conic ambient blur and the legacy radial glow. */}
+      <HeroDataTicker />
 
       <div
         className="relative mx-auto w-full max-w-[90rem] grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 items-center"

@@ -1068,13 +1068,18 @@ html[data-paused-global="true"] .chat-trigger-sparkle {
 }
 
 /* ============================================
-   PHASE 6 v2 — D.9 content-visibility
-   Below-fold sections render only when near viewport.
-   Saves layout cost on initial paint without affecting visuals.
+   PHASE 17b PILLAR 1 — content-visibility:auto removal.
+   Phase 6 v2 D.9 used content-visibility:auto for below-fold deferral,
+   but the property is the same one that produced the 0.196 CLS regression
+   in Phase 14 iter 1. Section 4 of the Phase 17a audit caught a single
+   r3 home-mobile run hitting the exact 0.196 magnitude — the rule still
+   manifests at full severity even when medians look bounded.
+   Replaced with `contain: layout paint style` (the kept-legitimate use
+   on .services-pin-frame, line ~1204). Drops contain-intrinsic-size since
+   it's only meaningful with content-visibility:auto.
    ============================================ */
 .section-deferred {
-  content-visibility: auto;
-  contain-intrinsic-size: 0 800px;
+  contain: layout paint style;
 }
 
 /* Phase 7: ScrambleText was removed (production hover-freeze regression);

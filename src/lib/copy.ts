@@ -174,47 +174,13 @@ export const copy = {
     ] as const,
   },
 
-  /* ------------------------------------------------------------------
-   * Phase 2: testimonials — same names as legacy (Sarah / Marcus / Jennifer)
-   * but new layout + no stock photos. Amber initial avatars, varied card
-   * sizes (one featured + two standard).
-   * ------------------------------------------------------------------ */
-  testimonials: {
-    eyebrow: 'OPERATORS WE RUN FOR',
-    headline: 'What clarity looks like.',
-    items: [
-      {
-        featured: true,
-        quote:
-          "We stopped trying to hire our way out of operational bottlenecks. The AI handles the volume, our team handles the judgment calls. That split is what we couldn't figure out on our own.",
-        author: 'Sarah Chen',
-        role: 'CEO, B2B SaaS',
-        metric: 'AI + Human',
-        metricLabel: 'Operating split',
-        initials: 'SC',
-      },
-      {
-        featured: false,
-        quote:
-          "What sold me wasn't the tech, it was the honesty about where AI breaks. They told us upfront which workflows would need human review. Two quarters in, that's exactly how it's running.",
-        author: 'Marcus Thompson',
-        role: 'Founder, E-commerce',
-        metric: '2 quarters',
-        metricLabel: 'In production',
-        initials: 'MT',
-      },
-      {
-        featured: false,
-        quote:
-          "I evaluated three agencies before this one. The other two pitched campaigns. This one mapped my org chart and asked which roles I wanted to stop hiring for. That's a different conversation.",
-        author: 'Jennifer Walsh',
-        role: 'COO, Services',
-        metric: '3 of 3',
-        metricLabel: 'Agencies compared',
-        initials: 'JW',
-      },
-    ] as const,
-  },
+  /* Phase 13 — testimonials block removed.
+     Reason: brand integrity. The Sarah / Marcus / Jennifer entries were
+     fabricated; DPL has live clients but none has published a testimonial
+     yet. When real testimonials land, restore the `testimonials` key with
+     the same shape (eyebrow, headline, items: [{ featured, quote, author,
+     role, metric, metricLabel, initials }]) and re-mount TestimonialsSection
+     in src/app/(marketing)/page.tsx. */
 
   trustStrip: [
     'AI AGENTS',

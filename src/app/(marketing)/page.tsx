@@ -4,8 +4,13 @@ import { LogoStripSection } from '@/components/sections/LogoStripSection';
 import { RecentWorkSection } from '@/components/sections/RecentWorkSection';
 import { PullQuoteSection } from '@/components/sections/PullQuoteSection';
 import { WorkflowSection } from '@/components/sections/WorkflowSection';
-import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { CTASection } from '@/components/sections/CTASection';
+
+/* Phase 13 — TestimonialsSection removed. Brand integrity: DPL has clients
+   but no published testimonials yet (newly onboarded). The fabricated
+   Sarah/Marcus/Jennifer quotes from Phase 2 came down with this commit.
+   The component file is preserved for Phase 14 re-enable when real
+   testimonials land. */
 
 export default function HomePage() {
   return (
@@ -16,7 +21,6 @@ export default function HomePage() {
       <RecentWorkSection />
       <PullQuoteSection />
       <WorkflowSection />
-      <TestimonialsSection />
       <CTASection />
     </>
   );

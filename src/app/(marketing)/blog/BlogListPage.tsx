@@ -1,5 +1,11 @@
-'use client';
-
+// Phase 17b Pillar 3 — converted to server component. Was gratuitously
+// `'use client'` despite zero client-only API (no useState/useEffect, no
+// event handlers, no window/document access). Audit §4 caught /blog mobile
+// LH median 64 (vs ≥90 floor). Root cause: the `'use client'` directive
+// was forcing the entire 9KB list tree + 100 post excerpts (1.5MB content
+// dir) to hydrate client-side. As a server component, the page renders to
+// HTML server-side; nested client islands (NewsletterOptIn) mount as their
+// own boundaries.
 import Link from 'next/link';
 import { ArrowRight, Clock, Tag } from 'lucide-react';
 import {

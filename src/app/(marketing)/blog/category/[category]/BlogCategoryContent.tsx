@@ -1,5 +1,6 @@
-'use client';
-
+// Phase 17b Pillar 3 — converted to server component (no client-only API).
+// Same pattern as BlogListPage: gratuitous 'use client' was forcing the
+// category list tree to hydrate.
 import Link from 'next/link';
 import { ArrowRight, Clock, Tag, ArrowLeft } from 'lucide-react';
 import { Section, Container, FadeUp, GlassCard, StaggerContainer, StaggerItem } from '@/components/ui-dp/AnimatedElements';

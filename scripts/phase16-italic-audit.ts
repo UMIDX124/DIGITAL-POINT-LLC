@@ -7,11 +7,13 @@ async function main() {
   const browser = await chromium.launch({ headless: true });
 
   for (const vp of [
-    { id: 'desktop', width: 1440, height: 900 },
-    { id: 'tablet', width: 1024, height: 768 },
+    { id: 'desktop-1440', width: 1440, height: 900 },
+    { id: 'tablet-1024', width: 1024, height: 768 },
+    { id: 'mobile-375', width: 375, height: 812, isMobile: true },
   ]) {
     const ctx = await browser.newContext({
       viewport: { width: vp.width, height: vp.height },
+      isMobile: vp.isMobile ?? false,
       deviceScaleFactor: 2,
     });
     const page = await ctx.newPage();
@@ -20,31 +22,36 @@ async function main() {
       try { sessionStorage.setItem('dpl_i', '1'); document.documentElement.dataset.iSeen = '1'; } catch {}
       const loader = document.querySelector('.dpl-intro-loader');
       if (loader) (loader as HTMLElement).style.display = 'none';
-      // Force-reveal hero — word-reveal uses inner spans with translate
-      // applied via GSAP. Reset ALL hero-scoped inline styles.
-      const heroSel = '[data-hero-eyebrow], [data-hero-sub], [data-hero-cta], [data-hero-orb], [data-word-reveal], .word, .word-inner';
-      document.querySelectorAll(heroSel).forEach((el) => {
+      // Force-reveal hero
+      document.querySelectorAll('[data-hero-eyebrow], [data-hero-sub], [data-hero-cta], [data-hero-orb], [data-word-reveal], .word, .word-inner, [data-reveal], [data-stagger-item], .pull-quote-text').forEach((el) => {
         const e = el as HTMLElement;
+        e.classList.add('is-revealed');
         e.style.opacity = '1';
         e.style.transform = 'none';
         e.style.visibility = 'visible';
       });
-      // Reveal sections that gate via opacity
-      document.querySelectorAll('[data-reveal], [data-stagger-item], [data-pillar-card], [data-case-strip] > a, [data-service-item], [data-work-card], [data-testimonial-card], .pull-quote-text').forEach((el) => {
-        const e = el as HTMLElement;
-        e.classList.add('is-revealed');
-        e.style.opacity = '';
-        e.style.transform = '';
-      });
     });
     await page.waitForTimeout(1500);
 
-    // Hero-only viewport screenshot (above the fold)
+    // Zoomed crop on the hero h1 (the AI)
+    const heroEm = await page.locator('.hero-em').first();
+    if (await heroEm.count() > 0) {
+      await heroEm.screenshot({ path: `${out}/D1-hero-em-${vp.id}.png` });
+    }
+
+    // Full hero viewport
     await page.screenshot({
-      path: `${out}/orbit-mockup-${vp.id}.png`,
-      fullPage: false,
+      path: `${out}/D1-hero-${vp.id}.png`,
       clip: { x: 0, y: 0, width: vp.width, height: vp.height },
     });
+
+    // Scroll to pull-quote
+    const pq = page.locator('.pull-quote-text').first();
+    if (await pq.count() > 0) {
+      await pq.scrollIntoViewIfNeeded();
+      await page.waitForTimeout(800);
+      await pq.screenshot({ path: `${out}/D1-pullquote-${vp.id}.png` });
+    }
     console.log(`captured ${vp.id}`);
     await ctx.close();
   }

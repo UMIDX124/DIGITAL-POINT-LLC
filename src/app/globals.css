@@ -432,6 +432,13 @@
   .font-italic-display {
     font-family: var(--font-instrument-serif), Georgia, serif;
     font-style: italic;
+    /* Phase 16 D.1 — Instrument Serif italic ascenders + descenders (i, j,
+       g, p, y, f) need vertical breathing room. Without these defaults
+       the italic 'i' tittle clips at the top and 'g/y/p' descenders clip
+       at the bottom inside hero h1 + pull-quote contexts where parent
+       line-height was tight. Components can still override per-instance. */
+    line-height: 1.18;
+    padding-block: 0.04em;
   }
 }
 
@@ -864,8 +871,18 @@ html[data-paused-global="true"] .grain-overlay {
   font-style: italic;
   color: var(--accent);
   letter-spacing: -0.01em;
-  padding-right: 0.05em;
+  /* Phase 16 D.1 — italic 'i' tittle in Instrument Serif extends above
+     normal cap-height. Tight line-height in the hero h1 was clipping it.
+     Padding-block adds vertical breathing room without changing the
+     baseline; padding-right preserves the inter-word gap before the
+     period. */
+  padding: 0.08em 0.05em 0.04em 0.02em;
 }
+/* Word-reveal slides .word-inner up from yPercent:110 to 0 inside .word
+   which has overflow:hidden. To accommodate italic ascenders without
+   breaking the slide reveal, give the .word container internal padding
+   so the resting state has slack at the top. */
+.hero-em .word { padding-top: 0.08em; }
 
 /* ============================================
    Phase 16 C — Hero data ticker (Bloomberg Operator substrate)

@@ -735,6 +735,22 @@ a.text-link:hover,
 }
 @media (min-width: 768px) { .service-row { gap: 2rem; } }
 
+/* Phase 18 reduced-scope C2.3 — base typography for service-row index +
+   name. Extracted from inline styles on the mobile services list. The
+   `.service-row:hover .service-name` accent-color rule above continues to
+   override base color on hover. */
+.service-index {
+  font-size: var(--text-micro);
+  letter-spacing: 0.12em;
+  color: var(--text-tertiary);
+}
+.service-name {
+  font-size: var(--text-service-row);
+  color: var(--text-primary);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+}
+
 /* Phase 7 — LetterHoverText (CSS-only per-character transitions).
    Each .letter-hover-char span is a child of [data-service-row]; the
    parent's :hover triggers a color + lift cascade. transition-delay
@@ -1395,16 +1411,50 @@ html[data-paused-global="true"] .logo-marquee-track {
    previous on scroll. Pure CSS pin — no GSAP, no JS.
    Mobile: pin disabled; mobile fallback list shows instead.
    ------------------------------------------------------------------- */
-.services-pin-section { position: relative; }
+.services-pin-section {
+  position: relative;
+  /* Phase 18 reduced-scope C2.3 — extracted from inline style on <section>. */
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+}
 .services-pin-stack { display: none; }
-.services-pin-mobile { display: block; }
+.services-pin-mobile {
+  display: block;
+  /* Phase 18 reduced-scope C2.3 — extracted from inline paddingBottom. */
+  padding-bottom: var(--section-space);
+}
 @media (min-width: 1024px) {
   .services-pin-stack { display: block; }
   .services-pin-mobile { display: none; }
 }
+/* Phase 18 reduced-scope C2.3 — header wrapper + header maxWidth +
+   section-eyebrow (amber per Pillar 4 P1.1) + section-headline. */
+.services-pin-header-wrap {
+  padding-top: var(--section-space);
+}
+.services-pin-header {
+  max-width: var(--maxw-heading-section);
+}
+.services-pin-section-eyebrow {
+  font-size: var(--text-mono-label);
+  letter-spacing: var(--ls-mono-wide);
+  /* Phase 17b Pillar 4 P1.1 — amber phosphor (not --text-tertiary).
+     Tertiary muted gray read as near-invisible on canvas despite
+     7.4:1 mathematical contrast. Canonical eyebrow accent. */
+  color: var(--accent-bright);
+}
+.services-pin-section-headline {
+  font-size: var(--text-h1);
+  color: var(--text-primary);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  max-width: var(--maxw-heading-section);
+}
 .services-pin-frame {
   position: sticky;
   top: 0;
+  /* Phase 18 reduced-scope C2.3 — extracted from per-article inline style. */
+  background: var(--bg-secondary);
   /* Phase 16 D.2 — reduced from 85vh to 60vh.
      User reported "3-4 scroll attempts before first frame releases."
      Root cause: CSS sticky requires scroll distance equal to the parent
@@ -1474,6 +1524,10 @@ html[data-paused-global="true"] .logo-marquee-track {
 .services-pin-eyebrow {
   display: block;
   margin-bottom: 1.25rem;
+  /* Phase 18 reduced-scope C2.3 — extracted from inline style on per-frame eyebrow. */
+  font-size: var(--text-micro);
+  letter-spacing: 0.18em;
+  color: var(--text-tertiary);
 }
 .services-pin-title {
   font-size: clamp(2.5rem, 5.5vw, 4.5rem);
@@ -1503,6 +1557,9 @@ html[data-paused-global="true"] .logo-marquee-track {
   align-items: center;
   justify-content: center;
   opacity: 0.85;
+  /* Phase 18 reduced-scope C2.3 — extracted from inline color on glyph wrapper.
+     SVG paths use stroke="currentColor" so this propagates to the geometry. */
+  color: var(--accent);
 }
 @media (prefers-reduced-motion: reduce) {
   .services-pin-frame {

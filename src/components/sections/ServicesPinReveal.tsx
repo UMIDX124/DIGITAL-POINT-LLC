@@ -78,45 +78,20 @@ export function ServicesPinReveal() {
   const { eyebrow, headline, items } = copy.servicesList;
 
   return (
-    <section
-      id="services"
-      className="services-pin-section section-deferred"
-      style={{
-        background: 'var(--bg-secondary)',
-        borderBottom: '1px solid var(--border-subtle)',
-      }}
-    >
-      <div className="container-wide" style={{ paddingTop: 'var(--section-space)' }}>
-        <header className="mb-12 lg:mb-16" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
+    <section id="services" className="services-pin-section section-deferred">
+      <div className="container-wide services-pin-header-wrap">
+        <header className="services-pin-header mb-12 lg:mb-16">
           {/* Phase 17b Pillar 4 P1.1 — eyebrow color migrated from
-              --text-tertiary (#9A9A9A muted gray) to --accent-bright
-              (#FFA833 phosphor amber). Production capture showed the
-              tertiary muted gray reading as near-invisible on canvas
-              despite a 7.4:1 mathematical contrast ratio — perceptual
-              hierarchy demands the canonical eyebrow amber accent here,
-              matching the .eyebrow utility class spec. */}
-          <p
-            className="font-mono uppercase mb-5"
-            data-reveal
-            style={{
-              fontSize: 'var(--text-mono-label)',
-              letterSpacing: 'var(--ls-mono-wide)',
-              color: 'var(--accent-bright)',
-            }}
-          >
+              --text-tertiary (muted gray) to --accent-bright (phosphor
+              amber). Production capture showed the tertiary muted gray
+              reading as near-invisible on canvas despite a 7.4:1
+              mathematical contrast ratio — perceptual hierarchy demands
+              the canonical eyebrow amber accent here. Style now lives in
+              .services-pin-section-eyebrow. */}
+          <p className="services-pin-section-eyebrow font-mono uppercase mb-5" data-reveal>
             {eyebrow}
           </p>
-          <h2
-            className="font-hero text-balance"
-            data-reveal
-            style={{
-              fontSize: 'var(--text-h1)',
-              color: 'var(--text-primary)',
-              lineHeight: 'var(--lh-tight)',
-              letterSpacing: 'var(--ls-tight)',
-              maxWidth: 'var(--maxw-heading-section)',
-            }}
-          >
+          <h2 className="services-pin-section-headline font-hero text-balance" data-reveal>
             {headline}
           </h2>
         </header>
@@ -130,21 +105,13 @@ export function ServicesPinReveal() {
             key={item.label}
             className="services-pin-frame"
             data-pin-index={i}
-            style={{ background: 'var(--bg-secondary)' }}
           >
             <div className="services-pin-frame-inner container-wide">
               <span className="services-pin-num font-italic-display" aria-hidden="true">
                 {String(i + 1).padStart(2, '0')}
               </span>
               <div className="services-pin-content">
-                <span
-                  className="font-mono uppercase services-pin-eyebrow"
-                  style={{
-                    fontSize: 'var(--text-micro)',
-                    letterSpacing: '0.18em',
-                    color: 'var(--text-tertiary)',
-                  }}
-                >
+                <span className="font-mono uppercase services-pin-eyebrow">
                   Service {String(i + 1).padStart(2, '0')} of 05
                 </span>
                 <h3 className="services-pin-title font-display">
@@ -160,7 +127,7 @@ export function ServicesPinReveal() {
                   <span aria-hidden="true">→</span>
                 </Link>
               </div>
-              <div className="services-pin-glyph" style={{ color: 'var(--accent)' }}>
+              <div className="services-pin-glyph">
                 {SERVICE_GLYPHS[i] ?? null}
               </div>
             </div>
@@ -169,7 +136,7 @@ export function ServicesPinReveal() {
       </div>
 
       {/* Mobile fallback: Phase 11 letter-hover list. */}
-      <div className="container-wide services-pin-mobile" style={{ paddingBottom: 'var(--section-space)' }}>
+      <div className="container-wide services-pin-mobile">
         <ul className="services-rows" data-services-list>
           {items.map((item, i) => (
             <li key={item.label} data-service-item>
@@ -181,23 +148,10 @@ export function ServicesPinReveal() {
                 <span
                   className="service-index font-mono uppercase"
                   aria-hidden="true"
-                  style={{
-                    fontSize: 'var(--text-micro)',
-                    letterSpacing: '0.12em',
-                    color: 'var(--text-tertiary)',
-                  }}
                 >
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <span
-                  className="service-name font-hero"
-                  style={{
-                    fontSize: 'var(--text-service-row)',
-                    color: 'var(--text-primary)',
-                    lineHeight: 'var(--lh-snug)',
-                    letterSpacing: 'var(--ls-tight)',
-                  }}
-                >
+                <span className="service-name font-hero">
                   <LetterHoverText text={`/ ${item.label}`} />
                 </span>
                 <span

@@ -209,11 +209,11 @@ export function HeroSection() {
               fontSize: 'var(--text-hero)',
               color: 'var(--text-primary)',
               maxWidth: 'var(--maxw-heading-display)',
-              /* Phase 17b 2A-REFIX — was --lh-display (1.02), too tight for
-                 italic descenders on .hero-em. Bumped to --lh-tight (1.10)
-                 to give the line box room for the italic 'I' tail without
-                 affecting headline visual weight materially. */
-              lineHeight: 'var(--lh-tight)',
+              /* Phase 17b 2A-REFIX → Pillar 5 R3. Was --lh-tight (1.10);
+                 Pillar 5 forensics F1.3 + R3 spec bumped to 1.15 for
+                 explicit typographic beat between the two sentences and
+                 additional line-box room for italic descenders. */
+              lineHeight: 1.15,
               letterSpacing: 'var(--ls-display)',
             }}
           >
@@ -319,9 +319,15 @@ export function HeroSection() {
           </div>
         </div>
 
+        {/* Phase 17b Pillar 5 R2 (Option A) — orbit bottom-anchored to
+            hero h1 baseline via align-self: end on the column-2 grid item.
+            Forensics F2 confirmed shared grid parent already in place
+            (grid-template-columns: 728px 520px). Single-property change:
+            align-self: end overrides the inherited items-center default.
+            Geometry preserved (Palette D rx/ry/r unchanged per K6). */}
         <div
           ref={orbWrapRef}
-          className="hero-pulse-wrap relative flex items-center justify-center"
+          className="hero-pulse-wrap relative flex items-center justify-center self-end"
           data-hero-orb
         >
           {/* Phase 16 A.1 — orbital system replacing Phase 14 2×2 grid.

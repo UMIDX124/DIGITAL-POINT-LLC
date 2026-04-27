@@ -933,12 +933,21 @@ html[data-paused-global="true"] .grain-overlay {
      italic em element at narrow viewports. */
   word-break: keep-all;
   hyphens: none;
-  /* Phase 16 D.1 → Phase 17b 2A → 17b Pillar 4 P0.1. Production capture
-     post-reversal showed the italic 'i' tittle re-clipping at the top
-     edge. Block-start padding bumped from 0.12em to 0.18em to give the
-     ascender explicit headroom that survives Instrument Serif's
-     italic-shifted glyph metrics. Block-end remains 0.16em. */
-  padding: 0.18em 0.05em 0.16em 0.02em;
+  /* Phase 16 D.1 → Phase 17b 2A → Phase 17b Pillar 4 P0.1 → Phase 18
+     reduced-scope C3 (Pillar 5 R1 re-ship per F1.3 forensics).
+     Forensics F1.3 (docs/REMEDIATION_AUDIT/raw/ + Pillar 5 forensics)
+     showed the italic descender / slant-tail clips ~3.5–4.6 px BELOW
+     the padding-box bottom at all 5 viewports. Pillars 2A-REFIX, 3R
+     iter 2, and 4 P0.1 all attacked the WRONG axis (block-start) while
+     block-start already had +33–44 px positive headroom.
+     Fix: viewport-adaptive block-end via clamp() with lh-unit.
+       At 1440 lh=152px → 0.05lh=7.6px (clears 4.6 px clip with margin)
+       At 1024 lh=116px → 0.05lh=5.8px (clears 3.5 px clip with margin)
+     Block-start trimmed back to 0.10em — was over-extending. */
+  padding-block-start: 0.10em;
+  padding-block-end: clamp(0.20em, 0.05lh, 0.34em);
+  padding-inline-end: 0.05em;
+  padding-inline-start: 0.02em;
   /* Phase 17b 2A — activate italic OT features so calt/liga ligatures
      and contextual alternates render at their designed metrics rather
      than fallback (which Instrument Serif italic ships with tighter
@@ -1016,8 +1025,15 @@ html[data-paused-global="true"] .grain-overlay {
    slide reveal. padding-bottom raised to 0.32em for deeper descender clearance
    given the inline h1 lineHeight constraint. */
 .hero-em .word {
-  padding-top: 0.20em;
-  padding-bottom: 0.32em;
+  /* Phase 18 reduced-scope C3 (Pillar 5 R1 re-ship). The .word
+     containers carry their own overflow:hidden via Tailwind utility
+     for the slide-reveal animation; their padding must independently
+     provide italic glyph clearance. Block-start trimmed (was 0.20em —
+     33+ px positive headroom on .hero-em didn't need this); block-end
+     bumped 0.32em → 0.40em for matching descender headroom inside
+     the word-reveal clip. */
+  padding-top: 0.12em;
+  padding-bottom: 0.40em;
 }
 
 /* ============================================
@@ -1222,7 +1238,11 @@ html[data-paused-global="true"] .chat-trigger-sparkle {
 .logo-marquee-track {
   display: flex;
   width: max-content;
-  will-change: transform;
+  /* Phase 18 reduced-scope C3 — will-change dropped. The entire
+     LogoStripSection returns null unless NEXT_PUBLIC_MARQUEE_ENABLED
+     === 'true' (Pillar 4 P0.3 invariant); the marquee never animates
+     in production. will-change on a never-rendered element is a dead
+     GPU-layer hint. Re-add if/when the marquee is re-enabled. */
 }
 
 .logo-marquee-track[data-direction="left"]  { animation: marquee-left  45s linear infinite; }

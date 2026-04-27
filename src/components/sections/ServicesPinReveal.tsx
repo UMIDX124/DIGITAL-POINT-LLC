@@ -88,13 +88,20 @@ export function ServicesPinReveal() {
     >
       <div className="container-wide" style={{ paddingTop: 'var(--section-space)' }}>
         <header className="mb-12 lg:mb-16" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
+          {/* Phase 17b Pillar 4 P1.1 — eyebrow color migrated from
+              --text-tertiary (#9A9A9A muted gray) to --accent-bright
+              (#FFA833 phosphor amber). Production capture showed the
+              tertiary muted gray reading as near-invisible on canvas
+              despite a 7.4:1 mathematical contrast ratio — perceptual
+              hierarchy demands the canonical eyebrow amber accent here,
+              matching the .eyebrow utility class spec. */}
           <p
             className="font-mono uppercase mb-5"
             data-reveal
             style={{
               fontSize: 'var(--text-mono-label)',
               letterSpacing: 'var(--ls-mono-wide)',
-              color: 'var(--text-tertiary)',
+              color: 'var(--accent-bright)',
             }}
           >
             {eyebrow}

@@ -62,7 +62,23 @@ export function CTASection() {
           {body}
         </p>
 
-        <div className="mt-12 flex flex-col sm:flex-row gap-3 justify-center items-center" data-reveal>
+        {/* Phase 17b 3-restructured D2 → Pillar 4 P1.3. Micro-copy now
+            renders ABOVE the dual-CTA buttons as an eyebrow-style
+            supporting line. Anchors the centered stack: micro-copy →
+            buttons reads as a single visual cluster instead of three
+            disconnected centered elements. */}
+        <p
+          className="mt-12 font-mono uppercase"
+          style={{
+            fontSize: '12px',
+            color: 'var(--text-muted)',
+            letterSpacing: '0.18em',
+          }}
+        >
+          Free · Written plan in 5 days · Co-founder reviews personally
+        </p>
+
+        <div className="mt-5 flex flex-col sm:flex-row gap-3 justify-center items-center" data-reveal>
           <MagneticCTA strength={0.3} radius={90}>
             <Link href={ctaPrimary.href} className="cta-primary" data-cta-primary>
               {ctaPrimary.label}
@@ -73,18 +89,6 @@ export function CTASection() {
             {ctaSecondary.label}
           </Link>
         </div>
-
-        {/* Phase 17b 3-restructured D2 — trust micro-copy under CTA. */}
-        <p
-          className="mt-6"
-          style={{
-            fontSize: '12px',
-            color: 'var(--text-muted)',
-            letterSpacing: '0.02em',
-          }}
-        >
-          Free · Written plan in 5 days · Co-founder reviews personally
-        </p>
       </div>
     </section>
   );

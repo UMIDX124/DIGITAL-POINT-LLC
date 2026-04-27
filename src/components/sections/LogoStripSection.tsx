@@ -2,23 +2,27 @@ import { copy } from '@/lib/copy';
 
 /**
  * Phase 9 — dual-row infinite marquee.
+ * Phase 17b Pillar 4 P0.3 — env-gated kill. Wordmarks are fabricated
+ * placeholder client names (Atlas Health / Northwind Capital / Lumen
+ * Logistics / Vertex AI / etc.). Per the same brand-integrity rule that
+ * killed the Sarah Chen / Marcus Thompson testimonials in Phase 13,
+ * fabricated client surface area must not ship. Component returns null
+ * unless NEXT_PUBLIC_MARQUEE_ENABLED === 'true'. Default unset → null.
+ * Re-enable only when 13 real client logos are sourced + legal-cleared
+ * for display.
  *
- * Two horizontal rows of wordmarks, scrolling in opposite directions
- * (Row 1: right→left, Row 2: left→right). ~45s per full loop. CSS-only
- * via @keyframes marquee-left / marquee-right (defined in globals.css).
- *
- * Each row renders its wordmark array TWICE so the translateX(-50%)
- * end-state seamlessly continues from the duplicate without a visible
- * jump. The duplicate is `aria-hidden` so screen readers don't repeat
- * the list.
- *
- * Pause-on-hover via `:hover { animation-play-state: paused }` and
- * disabled entirely under `prefers-reduced-motion: reduce`.
- *
- * Edges fade via mask-image linear-gradient (defined in globals.css)
- * so wordmarks fade in/out at viewport edges.
+ * Mechanics (preserved for re-enable):
+ *   Two horizontal rows of wordmarks, scrolling in opposite directions
+ *   (Row 1: right→left, Row 2: left→right). ~45s per full loop. CSS-only
+ *   via @keyframes marquee-left / marquee-right (defined in globals.css).
+ *   Each row renders its wordmark array TWICE so the translateX(-50%)
+ *   end-state seamlessly continues from the duplicate without a visible
+ *   jump. Pause-on-hover + prefers-reduced-motion gate preserved.
  */
 export function LogoStripSection() {
+  if (process.env.NEXT_PUBLIC_MARQUEE_ENABLED !== 'true') {
+    return null;
+  }
   const { label, marksRow1, marksRow2 } = copy.logoStrip;
 
   const renderRow = (

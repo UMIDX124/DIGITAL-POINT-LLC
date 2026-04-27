@@ -230,7 +230,14 @@ export function HeroSection() {
                 <span className="word-inner inline-block" data-word-reveal>AI</span>
               </span>
             </em>
-            <span aria-hidden="true">. </span>
+            <span aria-hidden="true">.</span>
+            {/* Phase 17b Pillar 4 P0.2 — explicit line break between the
+                two sentences. "Hire the AI." and "Skip the headcount." are
+                two distinct typographic beats per the locked hero copy
+                invariant. text-wrap: balance / pretty (if applied via the
+                browser default) was collapsing them onto a single shared
+                line at ≥1280px viewports. */}
+            <br aria-hidden="true" />
             <span className="word inline-block overflow-hidden align-top">
               <span className="word-inner inline-block" data-word-reveal>Skip</span>
             </span>
@@ -295,22 +302,17 @@ export function HeroSection() {
             Free · 30 min · No sales pitch · Co-founder reviews personally
           </p>
 
-          {/* Phase 13 — operator-accountability trust signals.
-              CSS-only stagger fade-in (no GSAP, no JS), kicks in after the
-              hero word-reveal completes. prefers-reduced-motion in CSS. */}
-          <div className="hero-trust-signals" aria-label="Track record">
-            <span className="hero-trust-signal">
-              <span className="hero-trust-signal-bullet" aria-hidden="true" />
-              $50M ad spend operated
-            </span>
-            <span className="hero-trust-signal">
-              <span className="hero-trust-signal-bullet" aria-hidden="true" />
-              200+ audits shipped
-            </span>
-            <span className="hero-trust-signal">
-              <span className="hero-trust-signal-bullet" aria-hidden="true" />
-              8 years operating, not pitching
-            </span>
+          {/* Phase 13 trust signals → Phase 17b Pillar 4 P0.4. The
+              Phase 13 amber-bullet circles read visually as plus-sign /
+              bullet-alternative noise. Replaced with inline middot
+              separators for a quieter, more standard rhythm. CSS-only
+              stagger fade-in preserved (animation classes in globals.css). */}
+          <div className="hero-trust-strip" aria-label="Track record">
+            <span className="hero-trust-signal">$50M ad spend operated</span>
+            <span className="dot-sep" aria-hidden="true">·</span>
+            <span className="hero-trust-signal">200+ audits shipped</span>
+            <span className="dot-sep" aria-hidden="true">·</span>
+            <span className="hero-trust-signal">8 years operating, not pitching</span>
           </div>
         </div>
 

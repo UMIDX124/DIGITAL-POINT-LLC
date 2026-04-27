@@ -21,17 +21,18 @@
   font-family: 'InstrumentSerifLocal';
   font-style: normal;
   font-weight: 400;
-  /* Phase 17b 3-restructured — was 'swap'; V6 LH gate caught 0.188 CLS
-     on r1/r3 sourced to font-swap reflowing the .hero-em box. With
-     'optional' the browser uses fallback (Georgia) for the entire page
-     session if Instrument Serif isn't ready within ~100ms; the font is
-     preloaded in <head> and is 10 KB latin-subset so it reliably arrives
-     in time on virtually all connections. Result: no swap, no CLS. */
+  /* Phase 17b 3-restructured iter 2 (CLS fix) → Phase 17b Pillar 4 P0.1.
+     'optional' display preserved (no swap, no CLS). Ascent/descent
+     overrides re-tuned per Pillar 4 spec (95% / 22% / 0%) — slightly
+     tighter than the iter-2 100% / 32% / 0% which was over-extending the
+     line box and clipping the italic 'i' tittle at the top edge of
+     .hero-em. The 95% ascent + 22% descent leaves room for italic
+     ascender extension without oversizing the line. */
   font-display: optional;
   src: url('/fonts/instrument-serif-regular.woff2') format('woff2');
   size-adjust: 100%;
-  ascent-override: 100%;
-  descent-override: 32%;
+  ascent-override: 95%;
+  descent-override: 22%;
   line-gap-override: 0%;
 }
 @font-face {
@@ -41,8 +42,8 @@
   font-display: optional;
   src: url('/fonts/instrument-serif-italic.woff2') format('woff2');
   size-adjust: 100%;
-  ascent-override: 100%;
-  descent-override: 32%;
+  ascent-override: 95%;
+  descent-override: 22%;
   line-gap-override: 0%;
 }
 
@@ -918,9 +919,12 @@ html[data-paused-global="true"] .grain-overlay {
      italic em element at narrow viewports. */
   word-break: keep-all;
   hyphens: none;
-  /* Phase 16 D.1 + Phase 17b 2A — vertical breathing room for both
-     ascender (i tittle) and descender / italic-slant bottom extent. */
-  padding: 0.12em 0.05em 0.16em 0.02em;
+  /* Phase 16 D.1 → Phase 17b 2A → 17b Pillar 4 P0.1. Production capture
+     post-reversal showed the italic 'i' tittle re-clipping at the top
+     edge. Block-start padding bumped from 0.12em to 0.18em to give the
+     ascender explicit headroom that survives Instrument Serif's
+     italic-shifted glyph metrics. Block-end remains 0.16em. */
+  padding: 0.18em 0.05em 0.16em 0.02em;
   /* Phase 17b 2A — activate italic OT features so calt/liga ligatures
      and contextual alternates render at their designed metrics rather
      than fallback (which Instrument Serif italic ships with tighter
@@ -1337,6 +1341,11 @@ html[data-paused-global="true"] .logo-marquee-track {
   max-width: 38rem;
   margin-left: clamp(0rem, 8vw, 8rem);
 }
+/* Phase 17b Pillar 4 P1.2 — service-internal vertical rhythm.
+   Eyebrow margin preserved (already at 1.25rem). Title shrinks slightly
+   (1.5rem → 1.25rem) per spec; description holds at 2rem. Explore link
+   gains explicit 1.5rem margin-top so the row stack reads as 4 distinct
+   beats: number → title → description → explore. */
 .services-pin-eyebrow {
   display: block;
   margin-bottom: 1.25rem;
@@ -1346,7 +1355,7 @@ html[data-paused-global="true"] .logo-marquee-track {
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--text-primary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   max-width: var(--maxw-heading-section);
 }
 .services-pin-desc {
@@ -1360,6 +1369,7 @@ html[data-paused-global="true"] .logo-marquee-track {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  margin-top: 1.5rem;
 }
 .services-pin-glyph {
   position: relative;
@@ -1559,16 +1569,19 @@ html[data-paused-global="true"] .logo-marquee-track {
    Static markup; staggered CSS fade-in after hero word-reveal lands.
    Zero GSAP, zero JS. Fixed delays small enough not to defer LCP.
    ------------------------------------------------------------------- */
-.hero-trust-signals {
+/* Phase 13 trust signals → Phase 17b Pillar 4 P0.4. Bullet circles
+   replaced by inline middot separators (.dot-sep). The amber bullets
+   read visually as plus-sign / bullet-alternative noise; middots are
+   the standard quieter rhythm. */
+.hero-trust-strip {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem 2rem;
+  align-items: baseline;
+  gap: 0.25rem;
   margin-top: 2.75rem;
 }
 .hero-trust-signal {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.625rem;
+  display: inline-block;
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: var(--text-micro);
   letter-spacing: 0.12em;
@@ -1578,16 +1591,16 @@ html[data-paused-global="true"] .logo-marquee-track {
   transform: translateY(8px);
   animation: dpl-hero-trust-in 0.55s cubic-bezier(0.33, 1, 0.68, 1) forwards;
 }
-.hero-trust-signal:nth-child(1) { animation-delay: 0.95s; }
-.hero-trust-signal:nth-child(2) { animation-delay: 1.05s; }
-.hero-trust-signal:nth-child(3) { animation-delay: 1.15s; }
-.hero-trust-signal-bullet {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 8px var(--accent-glow);
-  flex-shrink: 0;
+.hero-trust-strip > .hero-trust-signal:nth-of-type(1) { animation-delay: 0.95s; }
+.hero-trust-strip > .hero-trust-signal:nth-of-type(2) { animation-delay: 1.05s; }
+.hero-trust-strip > .hero-trust-signal:nth-of-type(3) { animation-delay: 1.15s; }
+.hero-trust-strip > .dot-sep {
+  display: inline-block;
+  color: var(--text-muted);
+  margin-inline: 0.5em;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-micro);
+  opacity: 0.6;
 }
 @keyframes dpl-hero-trust-in {
   to { opacity: 1; transform: translateY(0); }

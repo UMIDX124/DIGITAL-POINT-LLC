@@ -943,6 +943,42 @@ a.text-link:hover,
 }
 
 /* ============================================
+   PHASE 18 reduced-scope C2.4 — CTA SECTION SCAFFOLDING
+   Class extraction of 5 inline-style props on CTASection.tsx. Token
+   values unchanged. Italic h2 line-height 1.32 preserved (Pillar 5 italic
+   descender clearance pattern; same value as Faizan pull-quote section).
+   ============================================ */
+.cta-section-root {
+  background: var(--bg-canvas);
+  padding-top: var(--section-space);
+  padding-bottom: var(--section-space);
+}
+.cta-section-eyebrow {
+  font-size: var(--text-micro);
+  letter-spacing: 0.18em;
+  color: var(--text-tertiary);
+}
+.cta-section-headline {
+  font-size: var(--text-h1);
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.32;
+  letter-spacing: -0.02em;
+  max-width: 18ch;
+}
+.cta-section-body {
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+  line-height: 1.55;
+  max-width: 52ch;
+}
+.cta-section-microcopy {
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.18em;
+}
+
+/* ============================================
    PHASE 11 — HERO PULSE LINE
    Replaces the 5-layer SVG orb. Single 1px×200px vertical line at
    --accent 30% opacity, breathing scaleY + opacity. Near-zero perf cost,

@@ -14,51 +14,15 @@ export function CTASection() {
   const { eyebrow, headline, body, ctaPrimary, ctaSecondary } = copy.finalCta;
 
   return (
-    <section
-      id="cta"
-      className="relative section-deferred"
-      style={{
-        background: 'var(--bg-canvas)',
-        paddingTop: 'var(--section-space)',
-        paddingBottom: 'var(--section-space)',
-      }}
-    >
+    <section id="cta" className="cta-section-root relative section-deferred">
       <div className="container-narrow text-center relative">
-        <p
-          className="font-mono uppercase mb-6"
-          data-reveal
-          style={{
-            fontSize: 'var(--text-micro)',
-            letterSpacing: '0.18em',
-            color: 'var(--text-tertiary)',
-          }}
-        >
+        <p className="cta-section-eyebrow font-mono uppercase mb-6" data-reveal>
           {eyebrow}
         </p>
-        <h2
-          className="font-italic-display mx-auto"
-          data-reveal
-          style={{
-            fontSize: 'var(--text-h1)',
-            fontStyle: 'italic',
-            color: 'var(--text-primary)',
-            lineHeight: 1.32,
-            letterSpacing: '-0.02em',
-            maxWidth: '18ch',
-          }}
-        >
+        <h2 className="cta-section-headline font-italic-display mx-auto" data-reveal>
           {headline}
         </h2>
-        <p
-          className="mt-8 font-body mx-auto"
-          data-reveal
-          style={{
-            fontSize: 'var(--text-body)',
-            color: 'var(--text-secondary)',
-            lineHeight: 1.55,
-            maxWidth: '52ch',
-          }}
-        >
+        <p className="cta-section-body mt-8 font-body mx-auto" data-reveal>
           {body}
         </p>
 
@@ -67,14 +31,7 @@ export function CTASection() {
             supporting line. Anchors the centered stack: micro-copy →
             buttons reads as a single visual cluster instead of three
             disconnected centered elements. */}
-        <p
-          className="mt-12 font-mono uppercase"
-          style={{
-            fontSize: '12px',
-            color: 'var(--text-muted)',
-            letterSpacing: '0.18em',
-          }}
-        >
+        <p className="cta-section-microcopy mt-12 font-mono uppercase">
           Free · Written plan in 5 days · Co-founder reviews personally
         </p>
 

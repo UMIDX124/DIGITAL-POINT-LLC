@@ -836,6 +836,49 @@ a.text-link:hover,
 }
 
 /* ============================================
+   PHASE 18 reduced-scope C2.1 — HERO SECTION SCAFFOLDING
+   Class extraction of the 6 inline-style props that lived on the hero
+   <section>, grid wrapper, eyebrow, h1, sub paragraph, and trust
+   microcopy. Token values unchanged — pure inline-to-class migration.
+   ============================================ */
+.hero-section {
+  background: var(--bg-primary);
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding-top: var(--section-top);
+  padding-bottom: var(--section-main);
+}
+.hero-grid {
+  padding-inline: var(--container-gutter);
+}
+.hero-eyebrow {
+  font-size: var(--text-micro);
+  letter-spacing: 0.16em;
+  color: var(--text-tertiary);
+}
+.hero-headline {
+  font-size: var(--text-hero);
+  color: var(--text-primary);
+  max-width: var(--maxw-heading-display);
+  /* Phase 17b 2A-REFIX — bumped from --lh-display (1.02) to --lh-tight (1.10)
+     to give the line box room for italic descenders on .hero-em. */
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-display);
+}
+.hero-sub {
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+  max-width: var(--maxw-body);
+  line-height: 1.55;
+}
+.hero-trust-microcopy {
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* ============================================
    PHASE 11 — HERO PULSE LINE
    Replaces the 5-layer SVG orb. Single 1px×200px vertical line at
    --accent 30% opacity, breathing scaleY + opacity. Near-zero perf cost,

@@ -1,26 +1,22 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import Link from 'next/link';
-import MagneticCTA from '@/components/effects/MagneticCTA';
 import { AutomationOrbit } from '@/components/hero/AutomationOrbit';
 import { HeroDataTicker } from '@/components/hero/HeroDataTicker';
-// Phase 16 A.1 — AutomationFlow kept on disk pending replacement ship.
-// import { AutomationFlow } from '@/components/hero/AutomationFlow';
+import { HeroHeadline } from '@/components/hero/HeroHeadline';
+import { HeroCTA } from '@/components/hero/HeroCTA';
+import { HeroTrustStrip } from '@/components/hero/HeroTrustStrip';
 
 /**
  * Phase 6 v2 editorial hero — AI-first hybrid positioning.
+ * Phase 18 reduced-scope C4 — decomposed into orchestrator (this file) +
+ * 3 child components (HeroHeadline, HeroCTA, HeroTrustStrip). The
+ * orchestrator owns layout + GSAP timeline orchestration; children are
+ * presentational.
  *
  * Word-reveal animation is component-owned (no ScrollMotion dependency).
  * GSAP is lazy-imported in useEffect so it doesn't block first paint.
- * The headline is a flat token list with explicit space tokens between
- * HEAD_PARTS so adjacent inline-block .word elements render with visible
- * inter-word whitespace.
  */
-
-// Phase 11 addendum — hero brackets removed. Headline is now hardcoded JSX
-// (was a HEAD_PARTS array iteration with [ ] decorative spans). The italic
-// em wraps "the AI" only; the period attaches inline outside the em.
 
 const HERO_EYEBROW = 'DIGITAL POINT LLC · EST. 2017';
 const HERO_SUB =
@@ -74,13 +70,8 @@ export function HeroSection() {
 
       // Word reveal — direct fromTo (not chained inside a timeline). This
       // avoids the Phase 6 regression where `.to(innerEls, ...)` after a
-      // `gsap.set()` landed opacity but not yPercent. fromTo guarantees
-      // both FROM and TO states are explicit and the tween covers both
-      // properties cleanly. onComplete clears any stuck transform string.
-      // Phase 9 — animation timeline tightened. Last word lands ~780ms
-      // (was ~1.77s). delay 0.4 → 0.15, duration 0.95 → 0.45, stagger
-      // 0.07 → 0.035. Surrounding cascade (orb/eyebrow/sub/CTAs) shrunk
-      // proportionally so the entire hero settles in <1.2s.
+      // `gsap.set()` landed opacity but not yPercent. Phase 9 — animation
+      // tightened: last word lands ~780ms (was ~1.77s).
       gsap.fromTo(
         innerEls,
         { yPercent: 110, opacity: 0 },
@@ -107,12 +98,10 @@ export function HeroSection() {
         .fromTo('[data-hero-sub]', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45 }, 0.55)
         .fromTo('[data-hero-cta] > *', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.08 }, 0.7);
 
-      // Scroll-tied effects. Phase 17b 2A-REFIX (Scope C) — added
-      // anticipatePin + fastScrollEnd + invalidateOnRefresh to smooth
-      // pin engagement and resize behaviour. Snap y/scale to integer
-      // pixels via gsap snap so sub-pixel transform interpolation can't
-      // accumulate floating-point error during scrub — the symptom user
-      // reported as font vibration / jiggering on slow scroll.
+      // Scroll-tied effects. Phase 17b 2A-REFIX (Scope C) — anticipatePin +
+      // fastScrollEnd + invalidateOnRefresh smooth pin engagement and
+      // resize. Snap y/scale to integer pixels so sub-pixel transform
+      // interpolation can't accumulate floating-point error during scrub.
       const orbEl = orbWrapRef.current;
       const triggers: ScrollTrigger[] = [];
       if (orbEl) {
@@ -170,153 +159,27 @@ export function HeroSection() {
     <section
       ref={sectionRef}
       id="hero"
-      className="hero relative w-full overflow-hidden"
-      style={{
-        background: 'var(--bg-primary)',
-        minHeight: '100dvh',
-        display: 'flex',
-        alignItems: 'center',
-        paddingTop: 'var(--section-top)',
-        paddingBottom: 'var(--section-main)',
-      }}
+      className="hero hero-section relative w-full overflow-hidden"
     >
       {/* Phase 16 C — Bloomberg Operator data substrate replaces the
           Phase 6 conic ambient blur and the legacy radial glow. */}
       <HeroDataTicker />
 
-      <div
-        className="relative mx-auto w-full max-w-[90rem] grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 items-center"
-        style={{ paddingInline: 'var(--container-gutter)' }}
-      >
+      <div className="hero-grid relative mx-auto w-full max-w-[90rem] grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 items-center">
         <div className="hero-content">
-          <p
-            className="font-mono uppercase mb-8"
-            data-hero-eyebrow
-            style={{
-              fontSize: 'var(--text-micro)',
-              letterSpacing: '0.16em',
-              color: 'var(--text-tertiary)',
-            }}
-          >
+          <p className="hero-eyebrow font-mono uppercase mb-8" data-hero-eyebrow>
             {HERO_EYEBROW}
           </p>
 
-          <h1
-            ref={headlineRef}
-            className="font-hero mb-8"
-            data-hero-headline
-            style={{
-              fontSize: 'var(--text-hero)',
-              color: 'var(--text-primary)',
-              maxWidth: 'var(--maxw-heading-display)',
-              /* Phase 17b 2A-REFIX — was --lh-display (1.02), too tight for
-                 italic descenders on .hero-em. Bumped to --lh-tight (1.10)
-                 to give the line box room for the italic 'I' tail without
-                 affecting headline visual weight materially. */
-              lineHeight: 'var(--lh-tight)',
-              letterSpacing: 'var(--ls-display)',
-            }}
-          >
-            <span className="word inline-block overflow-hidden align-top">
-              <span className="word-inner inline-block" data-word-reveal>Hire</span>
-            </span>
-            <span aria-hidden="true">{' '}</span>
-            <em className="hero-em font-italic-display not-italic">
-              <span className="word inline-block overflow-hidden align-top">
-                <span className="word-inner inline-block" data-word-reveal>the</span>
-              </span>
-              <span aria-hidden="true">{' '}</span>
-              <span className="word inline-block overflow-hidden align-top">
-                <span className="word-inner inline-block" data-word-reveal>AI</span>
-              </span>
-            </em>
-            <span aria-hidden="true">.</span>
-            {/* Phase 17b Pillar 4 P0.2 — explicit line break between the
-                two sentences. "Hire the AI." and "Skip the headcount." are
-                two distinct typographic beats per the locked hero copy
-                invariant. The wrapper span around the second sentence
-                carries `white-space: nowrap` (via .hero-h1-line-2 CSS) so
-                "Skip the headcount." stays as a single visual line at
-                viewport widths ≥640px (mobile keeps natural wrap). */}
-            <br aria-hidden="true" />
-            <span className="hero-h1-line-2">
-              <span className="word inline-block overflow-hidden align-top">
-                <span className="word-inner inline-block" data-word-reveal>Skip</span>
-              </span>
-              <span aria-hidden="true">{' '}</span>
-              <span className="word inline-block overflow-hidden align-top">
-                <span className="word-inner inline-block" data-word-reveal>the</span>
-              </span>
-              <span aria-hidden="true">{' '}</span>
-              <span className="word inline-block overflow-hidden align-top">
-                <span className="word-inner inline-block" data-word-reveal>headcount.</span>
-              </span>
-            </span>
-          </h1>
+          <HeroHeadline ref={headlineRef} />
 
-          <p
-            className="font-body mb-10"
-            data-hero-sub
-            style={{
-              fontSize: 'var(--text-body)',
-              color: 'var(--text-secondary)',
-              maxWidth: 'var(--maxw-body)',
-              lineHeight: 1.55,
-            }}
-          >
+          <p className="hero-sub font-body mb-10" data-hero-sub>
             {HERO_SUB}
           </p>
 
-          <div className="flex flex-wrap items-center gap-6" data-hero-cta>
-            <MagneticCTA strength={0.3} radius={90}>
-              <Link href="/free-growth-audit" className="cta-primary" data-cta-primary>
-                Book a free 30-min audit
-                <span aria-hidden="true">→</span>
-              </Link>
-            </MagneticCTA>
-            <Link href="/case-studies" className="text-link inline-flex items-center gap-1.5">
-              See how it runs
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </Link>
-          </div>
+          <HeroCTA />
 
-          {/* Phase 17b 3-restructured D2 — trust micro-copy under primary CTA. */}
-          <p
-            className="hero-trust-microcopy mt-4"
-            style={{
-              fontSize: '12px',
-              color: 'var(--text-muted)',
-              letterSpacing: '0.02em',
-            }}
-          >
-            Free · 30 min · No sales pitch · Co-founder reviews personally
-          </p>
-
-          {/* Phase 13 trust signals → Phase 17b Pillar 4 P0.4. The
-              Phase 13 amber-bullet circles read visually as plus-sign /
-              bullet-alternative noise. Replaced with inline middot
-              separators for a quieter, more standard rhythm. CSS-only
-              stagger fade-in preserved (animation classes in globals.css). */}
-          <div className="hero-trust-strip" aria-label="Track record">
-            <span className="hero-trust-signal">$50M ad spend operated</span>
-            <span className="dot-sep" aria-hidden="true">·</span>
-            <span className="hero-trust-signal">200+ audits shipped</span>
-            <span className="dot-sep" aria-hidden="true">·</span>
-            <span className="hero-trust-signal">8 years operating, not pitching</span>
-          </div>
+          <HeroTrustStrip />
         </div>
 
         <div
@@ -326,8 +189,7 @@ export function HeroSection() {
         >
           {/* Phase 16 A.1 — orbital system replacing Phase 14 2×2 grid.
               Cosmo mascot at center as the "sun"; 4 process nodes on two
-              concentric rings; SVG light-cone arcs imply Lead → AI →
-              Operator → CRM signal flow. 90s GPU rotation, mobile-hidden,
+              concentric rings; 90s GPU rotation, mobile-hidden,
               reduced-motion static. */}
           <AutomationOrbit />
         </div>

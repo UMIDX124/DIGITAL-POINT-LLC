@@ -1,0 +1,41 @@
+{
+  "fontFaceList": [
+    {
+      "family": "InstrumentSerifLocal",
+      "style": "normal",
+      "weight": "400",
+      "status": "loaded",
+      "unicodeRange": "U+0-10FFFF",
+      "ascentOverride": "95%",
+      "descentOverride": "22%",
+      "lineGapOverride": "0%",
+      "sizeAdjust": "100%"
+    },
+    {
+      "family": "InstrumentSerifLocal",
+      "style": "italic",
+      "weight": "400",
+      "status": "loaded",
+      "unicodeRange": "U+0-10FFFF",
+      "ascentOverride": "95%",
+      "descentOverride": "22%",
+      "lineGapOverride": "0%",
+      "sizeAdjust": "100%"
+    }
+  ],
+  "runtimeMetrics": {
+    "fontFamily": "",
+    "fontStyle": "",
+    "probeRect": {
+      "width": 132.96875,
+      "height": 120
+    },
+    "textMetrics": {
+      "actualBoundingBoxAscent": 87.60000610351562,
+      "actualBoundingBoxDescent": 25.920005798339844,
+      "fontBoundingBoxAscent": 114,
+      "fontBoundingBoxDescent": 26,
+      "width": 132.95999145507812
+    }
+  }
+}

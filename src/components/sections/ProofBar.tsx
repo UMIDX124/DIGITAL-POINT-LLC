@@ -24,7 +24,7 @@ const Metric = memo(function Metric({ value, label }: { value: string; label: st
       >
         {value}
       </div>
-      <div className="text-[#8E8E96] text-sm">{label}</div>
+      <div className="text-[color:var(--text-muted)] text-sm">{label}</div>
     </div>
   );
 });

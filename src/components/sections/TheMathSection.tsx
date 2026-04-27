@@ -12,7 +12,7 @@ export function TheMathSection() {
   return (
     <section
       className="relative section-padding"
-      style={{ background: '#0A0A0B', borderBottom: '1px solid #27272A' }}
+      style={{ background: 'var(--bg-canvas)', borderBottom: '1px solid #27272A' }}
       id="math"
     >
       <div className="container-wide">

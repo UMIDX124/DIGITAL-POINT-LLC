@@ -60,13 +60,13 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
 
         {/* Author info */}
         <div className="flex-1 min-w-0">
-          <p className="text-xs uppercase tracking-wider text-[#8E8E96] mb-1">
+          <p className="text-xs uppercase tracking-wider text-[color:var(--text-muted)] mb-1">
             Written by
           </p>
           <h3 className="font-display text-lg font-semibold text-white">
             {author.name}
           </h3>
-          <p className="text-[#FF8800] text-xs mb-1">{author.title}, Digital Point LLC</p>
+          <p className="text-[color:var(--accent-primary)] text-xs mb-1">{author.title}, Digital Point LLC</p>
           {/* Expertise tags */}
           <div className="flex flex-wrap gap-2 mt-2">
             {author.expertise.map((tag) => (
@@ -84,7 +84,7 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
             ))}
           </div>
 
-          <p className="text-[#D6D0C2] text-sm leading-relaxed mt-3">
+          <p className="text-[color:var(--text-primary)] text-sm leading-relaxed mt-3">
             {author.bio}
           </p>
 
@@ -92,7 +92,7 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
           <div className="flex items-center gap-4 mt-4">
             <Link
               href="/about"
-              className="text-[#FF8800] hover:text-[#FFA833] text-sm font-medium transition-colors"
+              className="text-[color:var(--accent-primary)] hover:text-[color:var(--accent-bright)] text-sm font-medium transition-colors"
             >
               About Us
             </Link>
@@ -100,7 +100,7 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
               href="https://www.linkedin.com/company/digitalpointllc"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-[#FF8800] hover:text-[#FFA833] text-sm font-medium transition-colors"
+              className="inline-flex items-center gap-1.5 text-[color:var(--accent-primary)] hover:text-[color:var(--accent-bright)] text-sm font-medium transition-colors"
             >
               <svg
                 className="w-4 h-4"

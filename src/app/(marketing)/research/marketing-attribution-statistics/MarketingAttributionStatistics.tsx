@@ -63,11 +63,11 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
             { label: 'Marketing Attribution Statistics', href: '/research/marketing-attribution-statistics' },
           ]} />
           <div className="mt-8">
-            <span className="text-[#8E8E96] text-sm">March 2026 &middot; 11 min read</span>
+            <span className="text-[color:var(--text-muted)] text-sm">March 2026 &middot; 11 min read</span>
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 leading-tight">
               Marketing Attribution Statistics 2026
             </h1>
-            <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed max-w-2xl">
+            <p className="text-[color:var(--text-primary)] text-lg mt-4 leading-relaxed max-w-2xl">
               47 data points on attribution model adoption, tracking accuracy, privacy impact, and the state of marketing measurement in 2026. How much of your funnel can you actually see?
             </p>
           </div>
@@ -84,7 +84,7 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
                   <div className="font-display text-2xl md:text-3xl font-bold" style={{ color: stat.color }}>
                     {stat.value}
                   </div>
-                  <p className="text-[#8E8E96] text-sm mt-1">{stat.label}</p>
+                  <p className="text-[color:var(--text-muted)] text-sm mt-1">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -102,28 +102,28 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(255, 136, 0,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Model</th>
-                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">Adoption</th>
-                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">YoY Change</th>
-                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Est. Accuracy</th>
+                      <th className="text-left py-3 px-4 text-[color:var(--text-muted)] font-medium">Model</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-primary)] font-medium">Adoption</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-bright)] font-medium">YoY Change</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-bright)] font-medium">Est. Accuracy</th>
                     </tr>
                   </thead>
                   <tbody>
                     {modelAdoption.map((row, i) => (
                       <tr key={row.model} className={i < modelAdoption.length - 1 ? 'border-b border-[rgba(255, 136, 0,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.model}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.adoption}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.adoption}</td>
                         <td className="py-3 px-4 text-right" style={{ color: row.trend.startsWith('+') ? '#FFA833' : '#FF8800' }}>
                           {row.trend}
                         </td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.accuracy}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.accuracy}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             </div>
-            <p className="text-[#8E8E96] text-xs mt-3">Adoption rates exceed 100% because many organizations use multiple models simultaneously. Hybrid approaches are counted separately.</p>
+            <p className="text-[color:var(--text-muted)] text-xs mt-3">Adoption rates exceed 100% because many organizations use multiple models simultaneously. Hybrid approaches are counted separately.</p>
           </FadeUp>
         </Container>
       </Section>
@@ -138,9 +138,9 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(255, 136, 0,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Privacy Change</th>
-                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">Key Stat</th>
-                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Impact</th>
+                      <th className="text-left py-3 px-4 text-[color:var(--text-muted)] font-medium">Privacy Change</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-primary)] font-medium">Key Stat</th>
+                      <th className="text-left py-3 px-4 text-[color:var(--text-muted)] font-medium">Impact</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -148,7 +148,7 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
                       <tr key={row.change} className={i < privacyImpact.length - 1 ? 'border-b border-[rgba(255, 136, 0,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.change}</td>
                         <td className="py-3 px-4 text-right font-semibold" style={{ color: '#FF8800' }}>{row.stat}</td>
-                        <td className="py-3 px-4 text-[#D6D0C2] text-xs">{row.impact}</td>
+                        <td className="py-3 px-4 text-[color:var(--text-primary)] text-xs">{row.impact}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -169,26 +169,26 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(255, 136, 0,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Platform</th>
-                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">Reported</th>
-                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Est. Actual</th>
-                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">Gap</th>
+                      <th className="text-left py-3 px-4 text-[color:var(--text-muted)] font-medium">Platform</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-primary)] font-medium">Reported</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-bright)] font-medium">Est. Actual</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-primary)] font-medium">Gap</th>
                     </tr>
                   </thead>
                   <tbody>
                     {trackingAccuracy.map((row, i) => (
                       <tr key={row.platform} className={i < trackingAccuracy.length - 1 ? 'border-b border-[rgba(255, 136, 0,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.platform}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.reported}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.actual}</td>
-                        <td className="py-3 px-4 text-right text-[#FF8800]">{row.gap}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.reported}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.actual}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--accent-primary)]">{row.gap}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             </div>
-            <p className="text-[#8E8E96] text-xs mt-3">Accuracy estimates based on comparison of platform-reported data against server-side conversion data and incrementality tests.</p>
+            <p className="text-[color:var(--text-muted)] text-xs mt-3">Accuracy estimates based on comparison of platform-reported data against server-side conversion data and incrementality tests.</p>
           </FadeUp>
         </Container>
       </Section>
@@ -207,7 +207,7 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
               ].map((finding) => (
                 <div key={finding.title} className="rounded-xl p-5" style={glassStyle}>
                   <h3 className="font-display text-base font-semibold text-white mb-2">{finding.title}</h3>
-                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{finding.text}</p>
+                  <p className="text-[color:var(--text-primary)] text-sm leading-relaxed">{finding.text}</p>
                 </div>
               ))}
             </div>
@@ -224,7 +224,7 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
               {faqs.map((faq) => (
                 <div key={faq.question} className="rounded-xl p-5" style={glassStyle}>
                   <h3 className="font-display text-base font-semibold text-white mb-2">{faq.question}</h3>
-                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{faq.answer}</p>
+                  <p className="text-[color:var(--text-primary)] text-sm leading-relaxed">{faq.answer}</p>
                 </div>
               ))}
             </div>

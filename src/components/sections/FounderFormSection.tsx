@@ -128,7 +128,7 @@ function AuditForm() {
           <CheckCircle className="w-7 h-7 text-green-400" />
         </motion.div>
         <h3 className="font-display text-xl font-bold text-white mb-2">Audit Requested!</h3>
-        <p className="text-[#D6D0C2] text-sm">We&apos;ll review your setup and respond within 24–48 hours.</p>
+        <p className="text-[color:var(--text-primary)] text-sm">We&apos;ll review your setup and respond within 24–48 hours.</p>
       </div>
     );
   }
@@ -144,7 +144,7 @@ function AuditForm() {
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           placeholder="Your name"
-          className="bg-[#141416]/50 border-[#3A2D14] focus:border-[#FF8800] text-white placeholder:text-[#8E8E96]"
+          className="bg-[#141416]/50 border-[#3A2D14] focus:border-[color:var(--accent-primary)] text-white placeholder:text-[color:var(--text-muted)]"
         />
         {errors.name && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.name}</p>}
       </div>
@@ -159,7 +159,7 @@ function AuditForm() {
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           placeholder="you@company.com"
-          className="bg-[#141416]/50 border-[#3A2D14] focus:border-[#FF8800] text-white placeholder:text-[#8E8E96]"
+          className="bg-[#141416]/50 border-[#3A2D14] focus:border-[color:var(--accent-primary)] text-white placeholder:text-[color:var(--text-muted)]"
         />
         {errors.email && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.email}</p>}
       </div>
@@ -173,7 +173,7 @@ function AuditForm() {
           value={formData.company}
           onChange={(e) => setFormData({ ...formData, company: e.target.value })}
           placeholder="Company name (optional)"
-          className="bg-[#141416]/50 border-[#3A2D14] focus:border-[#FF8800] text-white placeholder:text-[#8E8E96]"
+          className="bg-[#141416]/50 border-[#3A2D14] focus:border-[color:var(--accent-primary)] text-white placeholder:text-[color:var(--text-muted)]"
         />
       </div>
 
@@ -310,7 +310,7 @@ function FounderContactForm() {
           <CheckCircle className="w-7 h-7 text-green-400" />
         </motion.div>
         <h3 className="font-display text-xl font-bold text-white mb-2">Message Sent!</h3>
-        <p className="text-[#D6D0C2] text-sm">A co-founder will get back to you within 24 hours.</p>
+        <p className="text-[color:var(--text-primary)] text-sm">A co-founder will get back to you within 24 hours.</p>
       </div>
     );
   }
@@ -326,7 +326,7 @@ function FounderContactForm() {
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           placeholder="Your name"
-          className="bg-[#141416]/50 border-[#3A2D14] focus:border-[#FF8800] text-white placeholder:text-[#8E8E96]"
+          className="bg-[#141416]/50 border-[#3A2D14] focus:border-[color:var(--accent-primary)] text-white placeholder:text-[color:var(--text-muted)]"
         />
         {errors.name && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.name}</p>}
       </div>
@@ -341,7 +341,7 @@ function FounderContactForm() {
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           placeholder="you@company.com"
-          className="bg-[#141416]/50 border-[#3A2D14] focus:border-[#FF8800] text-white placeholder:text-[#8E8E96]"
+          className="bg-[#141416]/50 border-[#3A2D14] focus:border-[color:var(--accent-primary)] text-white placeholder:text-[color:var(--text-muted)]"
         />
         {errors.email && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.email}</p>}
       </div>
@@ -356,7 +356,7 @@ function FounderContactForm() {
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           placeholder="What's on your mind?"
           rows={4}
-          className="bg-[#141416]/50 border-[#3A2D14] focus:border-[#FF8800] text-white resize-none placeholder:text-[#8E8E96]"
+          className="bg-[#141416]/50 border-[#3A2D14] focus:border-[color:var(--accent-primary)] text-white resize-none placeholder:text-[color:var(--text-muted)]"
         />
         {errors.message && <p aria-live="polite" className="text-red-400 text-xs mt-1">{errors.message}</p>}
       </div>
@@ -377,14 +377,14 @@ function FounderContactForm() {
       </Button>
 
       <div className="flex flex-col items-center justify-center gap-2 pt-2 text-center">
-        <p className="text-[#8E8E96] text-xs leading-relaxed" style={{ maxWidth: '32rem' }}>
+        <p className="text-[color:var(--text-muted)] text-xs leading-relaxed" style={{ maxWidth: '32rem' }}>
           Routed directly to the operator best matched to your stage — not a ticket pool. We answer from personal accounts.
         </p>
         <a
           href="https://linkedin.com/company/digitalpointllc"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 text-[#FF8800] hover:text-[#FFA833] transition-colors text-xs"
+          className="flex items-center gap-1.5 text-[color:var(--accent-primary)] hover:text-[color:var(--accent-bright)] transition-colors text-xs"
         >
           <Linkedin className="w-3.5 h-3.5" />
           LinkedIn
@@ -449,13 +449,13 @@ export function FounderFormSection() {
                       border: '1px solid rgba(255, 168, 51, 0.3)',
                     }}
                   >
-                    <Search className="w-5 h-5 text-[#FF8800]" />
+                    <Search className="w-5 h-5 text-[color:var(--accent-primary)]" />
                   </div>
                   <div>
                     <h3 className="font-display text-lg font-bold text-white">Free Growth Audit</h3>
                   </div>
                 </div>
-                <p className="text-[#D6D0C2] text-sm mb-5">
+                <p className="text-[color:var(--text-primary)] text-sm mb-5">
                   Get a clear picture of what&apos;s working and what to fix next.
                 </p>
 
@@ -518,13 +518,13 @@ export function FounderFormSection() {
                       border: '1px solid rgba(255, 168, 51, 0.3)',
                     }}
                   >
-                    <MessageSquare className="w-5 h-5 text-[#FF8800]" />
+                    <MessageSquare className="w-5 h-5 text-[color:var(--accent-primary)]" />
                   </div>
                   <div>
                     <h3 className="font-display text-lg font-bold text-white">Talk to Our Co-Founders</h3>
                   </div>
                 </div>
-                <p className="text-[#D6D0C2] text-sm mb-5">
+                <p className="text-[color:var(--text-primary)] text-sm mb-5">
                   No sales team. No handoffs. Just a direct conversation.
                 </p>
 

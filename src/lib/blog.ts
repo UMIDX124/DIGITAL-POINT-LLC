@@ -151,7 +151,7 @@ export function markdownToHtml(content: string): string {
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
     // Links
-    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" class="text-[#FF8800] hover:text-[#FFA833] underline">$1</a>')
+    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" class="text-[color:var(--accent-primary)] hover:text-[color:var(--accent-bright)] underline">$1</a>')
     // Unordered lists
     .replace(/^- (.+)$/gm, '<li>$1</li>')
     // Numbered lists
@@ -159,10 +159,10 @@ export function markdownToHtml(content: string): string {
     // Horizontal rules
     .replace(/^---$/gm, '<hr class="border-[rgba(255, 136, 0,0.15)] my-8" />')
     // Code blocks
-    .replace(/`(.+?)`/g, '<code class="px-1.5 py-0.5 rounded bg-[rgba(255, 136, 0,0.15)] text-[#FFA833] text-sm font-mono">$1</code>');
+    .replace(/`(.+?)`/g, '<code class="px-1.5 py-0.5 rounded bg-[rgba(255, 136, 0,0.15)] text-[color:var(--accent-bright)] text-sm font-mono">$1</code>');
 
   // Wrap consecutive <li> in <ul>
-  html = html.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul class="list-disc pl-6 space-y-2 text-[#D6D0C2]">$1</ul>');
+  html = html.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul class="list-disc pl-6 space-y-2 text-[color:var(--text-primary)]">$1</ul>');
 
   // Wrap remaining text lines in <p>
   html = html

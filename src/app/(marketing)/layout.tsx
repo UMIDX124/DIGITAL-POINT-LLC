@@ -18,7 +18,7 @@ export default function MarketingLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative min-h-screen flex flex-col" style={{ background: '#0A0A0B' }}>
+    <div className="relative min-h-screen flex flex-col" style={{ background: 'var(--bg-canvas)' }}>
       <ScrollMotion />
       <Navigation />
       <main className="flex-1">{children}</main>

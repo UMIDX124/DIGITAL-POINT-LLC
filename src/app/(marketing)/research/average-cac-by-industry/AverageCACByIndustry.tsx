@@ -66,11 +66,11 @@ export function AverageCACByIndustry({ faqs }: Props) {
             { label: 'Average CAC by Industry', href: '/research/average-cac-by-industry' },
           ]} />
           <div className="mt-8">
-            <span className="text-[#8E8E96] text-sm">January 2026 &middot; 15 min read</span>
+            <span className="text-[color:var(--text-muted)] text-sm">January 2026 &middot; 15 min read</span>
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 leading-tight">
               Average Customer Acquisition Cost by Industry
             </h1>
-            <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed max-w-2xl">
+            <p className="text-[color:var(--text-primary)] text-lg mt-4 leading-relaxed max-w-2xl">
               CAC benchmarks across 18 industries with breakdowns by company size, acquisition channel, and business model. Updated for 2026 with B2B and B2C comparisons.
             </p>
           </div>
@@ -87,7 +87,7 @@ export function AverageCACByIndustry({ faqs }: Props) {
                   <div className="font-display text-2xl md:text-3xl font-bold" style={{ color: stat.color }}>
                     {stat.value}
                   </div>
-                  <p className="text-[#8E8E96] text-sm mt-1">{stat.label}</p>
+                  <p className="text-[color:var(--text-muted)] text-sm mt-1">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -105,28 +105,28 @@ export function AverageCACByIndustry({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(255, 136, 0,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Industry</th>
-                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">B2B CAC</th>
-                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">B2C CAC</th>
-                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">LTV:CAC</th>
-                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">Payback</th>
+                      <th className="text-left py-3 px-4 text-[color:var(--text-muted)] font-medium">Industry</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-primary)] font-medium">B2B CAC</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-bright)] font-medium">B2C CAC</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-bright)] font-medium">LTV:CAC</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-primary)] font-medium">Payback</th>
                     </tr>
                   </thead>
                   <tbody>
                     {industryCAC.map((row, i) => (
                       <tr key={row.industry} className={i < industryCAC.length - 1 ? 'border-b border-[rgba(255, 136, 0,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.industry}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.b2bCac}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.b2cCac}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.ltvRatio}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.payback}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.b2bCac}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.b2cCac}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.ltvRatio}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.payback}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             </div>
-            <p className="text-[#8E8E96] text-xs mt-3">CAC includes all sales and marketing costs. Payback period assumes even revenue distribution. LTV:CAC ratios based on 3-year customer value.</p>
+            <p className="text-[color:var(--text-muted)] text-xs mt-3">CAC includes all sales and marketing costs. Payback period assumes even revenue distribution. LTV:CAC ratios based on 3-year customer value.</p>
           </FadeUp>
         </Container>
       </Section>
@@ -141,21 +141,21 @@ export function AverageCACByIndustry({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(255, 136, 0,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Channel</th>
-                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Avg CAC</th>
-                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">YoY Trend</th>
-                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Lead Quality</th>
+                      <th className="text-left py-3 px-4 text-[color:var(--text-muted)] font-medium">Channel</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-bright)] font-medium">Avg CAC</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-primary)] font-medium">YoY Trend</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-bright)] font-medium">Lead Quality</th>
                     </tr>
                   </thead>
                   <tbody>
                     {channelCAC.map((row, i) => (
                       <tr key={row.channel} className={i < channelCAC.length - 1 ? 'border-b border-[rgba(255, 136, 0,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.channel}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.avgCac}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.avgCac}</td>
                         <td className="py-3 px-4 text-right" style={{ color: row.trend.startsWith('-') ? '#FFA833' : '#FF8800' }}>
                           {row.trend}
                         </td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.quality}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.quality}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -180,7 +180,7 @@ export function AverageCACByIndustry({ faqs }: Props) {
               ].map((finding) => (
                 <div key={finding.title} className="rounded-xl p-5" style={glassStyle}>
                   <h3 className="font-display text-base font-semibold text-white mb-2">{finding.title}</h3>
-                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{finding.text}</p>
+                  <p className="text-[color:var(--text-primary)] text-sm leading-relaxed">{finding.text}</p>
                 </div>
               ))}
             </div>
@@ -197,7 +197,7 @@ export function AverageCACByIndustry({ faqs }: Props) {
               {faqs.map((faq) => (
                 <div key={faq.question} className="rounded-xl p-5" style={glassStyle}>
                   <h3 className="font-display text-base font-semibold text-white mb-2">{faq.question}</h3>
-                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{faq.answer}</p>
+                  <p className="text-[color:var(--text-primary)] text-sm leading-relaxed">{faq.answer}</p>
                 </div>
               ))}
             </div>

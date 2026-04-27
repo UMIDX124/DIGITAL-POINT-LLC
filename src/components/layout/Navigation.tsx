@@ -70,7 +70,7 @@ export function Navigation() {
         )}
         style={{
           background: scrolled ? 'rgba(10, 10, 11, 0.85)' : 'rgba(10, 10, 11, 0.55)',
-          borderBottom: `1px solid ${scrolled ? '#27272A' : 'transparent'}`,
+          borderBottom: `1px solid ${scrolled ? 'var(--border-default)' : 'transparent'}`,
         }}
       >
         <nav className="relative container-wide">
@@ -140,7 +140,7 @@ export function Navigation() {
                 {item.name}
               </Link>
             ))}
-            <div className="mt-2 pt-3 border-t" style={{ borderColor: '#27272A' }}>
+            <div className="mt-2 pt-3 border-t" style={{ borderColor: 'var(--border-default)' }}>
               <Link
                 href="/free-growth-audit"
                 className="block w-full py-3 rounded-md text-sm font-medium text-[#0A0A0B] text-center"

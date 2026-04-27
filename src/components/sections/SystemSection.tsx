@@ -68,10 +68,10 @@ export function SystemSection() {
                         border: '1px solid rgba(255, 168, 51, 0.2)',
                       }}
                     >
-                      <step.icon className="w-5 h-5 text-[#FF8800]" />
+                      <step.icon className="w-5 h-5 text-[color:var(--accent-primary)]" />
                     </div>
                     <h4 className="font-display font-bold text-white text-sm mb-1">{step.title}</h4>
-                    <p className="text-[#8E8E96] text-xs leading-relaxed">{step.description}</p>
+                    <p className="text-[color:var(--text-muted)] text-xs leading-relaxed">{step.description}</p>
                   </GlassCard>
                   
                   {/* Arrow */}
@@ -81,7 +81,7 @@ export function SystemSection() {
                         animate={{ x: [0, 4, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
                       >
-                        <ArrowRight className="w-4 h-4 text-[#FF8800] opacity-50" />
+                        <ArrowRight className="w-4 h-4 text-[color:var(--accent-primary)] opacity-50" />
                       </motion.div>
                     </div>
                   )}
@@ -93,7 +93,7 @@ export function SystemSection() {
                         animate={{ y: [0, 4, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut', delay: index * 0.2 }}
                       >
-                        <ArrowRight className="w-4 h-4 text-[#FF8800] opacity-50 rotate-90" />
+                        <ArrowRight className="w-4 h-4 text-[color:var(--accent-primary)] opacity-50 rotate-90" />
                       </motion.div>
                     </div>
                   )}

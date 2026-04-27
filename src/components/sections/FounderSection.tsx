@@ -65,14 +65,14 @@ export function FounderSection() {
                     Every engagement starts with a co-founder review.
                   </h2>
                   
-                  <p className="text-[#D6D0C2] leading-relaxed mb-6">
+                  <p className="text-[color:var(--text-primary)] leading-relaxed mb-6">
                     No sales team. No account handoffs. You work directly with people who've built and scaled businesses — because the best execution comes from people who understand what's at stake.
                   </p>
                   
                   <div className="flex items-center justify-center md:justify-start gap-4">
                     <a 
                       href="mailto:info@digitalpointllc.com"
-                      className="flex items-center gap-2 text-[#FF8800] hover:text-[#FFA833] transition-colors text-sm"
+                      className="flex items-center gap-2 text-[color:var(--accent-primary)] hover:text-[color:var(--accent-bright)] transition-colors text-sm"
                     >
                       <Mail className="w-4 h-4" />
                       info@digitalpointllc.com
@@ -81,7 +81,7 @@ export function FounderSection() {
                       href="https://linkedin.com/company/digitalpointllc"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-[#FF8800] hover:text-[#FFA833] transition-colors text-sm"
+                      className="flex items-center gap-2 text-[color:var(--accent-primary)] hover:text-[color:var(--accent-bright)] transition-colors text-sm"
                     >
                       <Linkedin className="w-4 h-4" />
                       LinkedIn

@@ -6,7 +6,7 @@ export function ProcessSection() {
   return (
     <section
       className="relative section-padding"
-      style={{ background: '#0A0A0B', borderBottom: '1px solid #27272A' }}
+      style={{ background: 'var(--bg-canvas)', borderBottom: '1px solid #27272A' }}
       id="process"
     >
       <div className="container-wide">
@@ -24,7 +24,7 @@ export function ProcessSection() {
                 <span className="font-mono text-[12px] text-[color:var(--accent)] tracking-widest">
                   {step.n}
                 </span>
-                <span className="flex-1 h-px" style={{ background: '#27272A' }} />
+                <span className="flex-1 h-px" style={{ background: 'var(--border-default)' }} />
               </div>
               <h3 className="font-display text-[26px] leading-tight text-[color:var(--ivory)]">
                 {step.title}

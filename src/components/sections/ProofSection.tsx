@@ -62,7 +62,7 @@ export function ProofSection() {
             <FadeUp key={study.company} delay={index * 0.1}>
               <GlassCard className="p-6 h-full">
                 <div className="flex items-start justify-between mb-4">
-                  <div className="text-xs font-medium text-[#FF8800] px-3 py-1 rounded-full"
+                  <div className="text-xs font-medium text-[color:var(--accent-primary)] px-3 py-1 rounded-full"
                     style={{
                       background: 'rgba(255, 136, 0, 0.15)',
                       border: '1px solid rgba(255, 168, 51, 0.2)',
@@ -81,22 +81,22 @@ export function ProofSection() {
                     >
                       {study.metric}
                     </div>
-                    <div className="text-[#8E8E96] text-xs">{study.metricLabel}</div>
+                    <div className="text-[color:var(--text-muted)] text-xs">{study.metricLabel}</div>
                   </div>
                 </div>
                 
                 <div className="space-y-3">
                   <div>
-                    <div className="text-[#8E8E96] text-xs uppercase tracking-wide mb-1">Situation</div>
+                    <div className="text-[color:var(--text-muted)] text-xs uppercase tracking-wide mb-1">Situation</div>
                     <p className="text-white/80 text-sm">{study.situation}</p>
                   </div>
                   <div>
-                    <div className="text-[#8E8E96] text-xs uppercase tracking-wide mb-1">What We Did</div>
+                    <div className="text-[color:var(--text-muted)] text-xs uppercase tracking-wide mb-1">What We Did</div>
                     <p className="text-white/80 text-sm">{study.action}</p>
                   </div>
                   <div>
-                    <div className="text-[#8E8E96] text-xs uppercase tracking-wide mb-1">Result</div>
-                    <p className="text-[#FF8800] text-sm font-medium">{study.result}</p>
+                    <div className="text-[color:var(--text-muted)] text-xs uppercase tracking-wide mb-1">Result</div>
+                    <p className="text-[color:var(--accent-primary)] text-sm font-medium">{study.result}</p>
                   </div>
                 </div>
               </GlassCard>

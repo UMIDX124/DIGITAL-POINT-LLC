@@ -18,7 +18,7 @@ export default function AutomationPage() {
       {/* Hero */}
       <section
         className="relative w-full overflow-hidden"
-        style={{ background: '#0A0A0B', paddingTop: '7rem', paddingBottom: '5rem', borderBottom: '1px solid #27272A' }}
+        style={{ background: 'var(--bg-canvas)', paddingTop: '7rem', paddingBottom: '5rem', borderBottom: '1px solid #27272A' }}
       >
         <div className="container-wide">
           <div className="max-w-4xl">
@@ -44,7 +44,7 @@ export default function AutomationPage() {
       </section>
 
       {/* What we automate */}
-      <section className="relative section-padding" style={{ background: '#0A0A0B', borderBottom: '1px solid #27272A' }}>
+      <section className="relative section-padding" style={{ background: 'var(--bg-canvas)', borderBottom: '1px solid #27272A' }}>
         <div className="container-wide">
           <header className="max-w-3xl mb-14">
             <p className="eyebrow mb-5">{whatWeAutomate.eyebrow}</p>
@@ -72,7 +72,7 @@ export default function AutomationPage() {
       </section>
 
       {/* How it's built */}
-      <section className="relative section-padding" style={{ background: '#0A0A0B', borderBottom: '1px solid #27272A' }}>
+      <section className="relative section-padding" style={{ background: 'var(--bg-canvas)', borderBottom: '1px solid #27272A' }}>
         <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-5">
@@ -103,7 +103,7 @@ export default function AutomationPage() {
       </section>
 
       {/* What you see */}
-      <section className="relative section-padding" style={{ background: '#0A0A0B', borderBottom: '1px solid #27272A' }}>
+      <section className="relative section-padding" style={{ background: 'var(--bg-canvas)', borderBottom: '1px solid #27272A' }}>
         <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5">
@@ -165,7 +165,7 @@ export default function AutomationPage() {
       </section>
 
       {/* Pricing */}
-      <section className="relative section-padding" style={{ background: '#0A0A0B', borderBottom: '1px solid #27272A' }}>
+      <section className="relative section-padding" style={{ background: 'var(--bg-canvas)', borderBottom: '1px solid #27272A' }}>
         <div className="container-wide">
           <header className="max-w-3xl mb-14">
             <p className="eyebrow mb-5">{pricing.eyebrow}</p>
@@ -205,7 +205,7 @@ export default function AutomationPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="relative section-padding" style={{ background: '#0A0A0B' }}>
+      <section className="relative section-padding" style={{ background: 'var(--bg-canvas)' }}>
         <div className="container-narrow text-center">
           <h2 className="font-display text-[36px] md:text-[48px] leading-[1.1] tracking-tight text-[color:var(--ivory)]">
             Start with one workflow.

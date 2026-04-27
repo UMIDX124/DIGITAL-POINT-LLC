@@ -22,7 +22,7 @@ export function CaseStudiesPage() {
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mt-6" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
               AI Deployments That Speak for Themselves
             </h1>
-            <p className="text-[#D6D0C2] text-lg mt-4 max-w-2xl">
+            <p className="text-[color:var(--text-primary)] text-lg mt-4 max-w-2xl">
               Real agent stacks. Measurable outcomes. See how we replaced
               operations headcount with AI + automation + operator backstop.
             </p>
@@ -55,7 +55,7 @@ export function CaseStudiesPage() {
                     }}
                   >
                     <div>
-                      <p className="text-[#8E8E96] text-xs uppercase tracking-wider mb-1">
+                      <p className="text-[color:var(--text-muted)] text-xs uppercase tracking-wider mb-1">
                         {study.industry}
                       </p>
                       <h2 className="font-display text-xl font-bold text-white">
@@ -69,7 +69,7 @@ export function CaseStudiesPage() {
                       >
                         {study.highlightMetric}
                       </p>
-                      <p className="text-[#8E8E96] text-xs">
+                      <p className="text-[color:var(--text-muted)] text-xs">
                         {study.highlightLabel}
                       </p>
                     </div>
@@ -79,27 +79,27 @@ export function CaseStudiesPage() {
                   <div className="px-4 sm:px-6 md:px-8 py-6 space-y-6">
                     {/* Problem */}
                     <div>
-                      <h3 className="text-xs uppercase tracking-wider text-[#FF8800] font-semibold mb-2">
+                      <h3 className="text-xs uppercase tracking-wider text-[color:var(--accent-primary)] font-semibold mb-2">
                         The Problem
                       </h3>
-                      <p className="text-[#D6D0C2] text-sm leading-relaxed">
+                      <p className="text-[color:var(--text-primary)] text-sm leading-relaxed">
                         {study.problem}
                       </p>
                     </div>
 
                     {/* Strategy */}
                     <div>
-                      <h3 className="text-xs uppercase tracking-wider text-[#FF8800] font-semibold mb-2">
+                      <h3 className="text-xs uppercase tracking-wider text-[color:var(--accent-primary)] font-semibold mb-2">
                         Our Strategy
                       </h3>
-                      <p className="text-[#D6D0C2] text-sm leading-relaxed">
+                      <p className="text-[color:var(--text-primary)] text-sm leading-relaxed">
                         {study.strategy}
                       </p>
                     </div>
 
                     {/* Results */}
                     <div>
-                      <h3 className="text-xs uppercase tracking-wider text-[#FF8800] font-semibold mb-3">
+                      <h3 className="text-xs uppercase tracking-wider text-[color:var(--accent-primary)] font-semibold mb-3">
                         Results
                       </h3>
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
@@ -118,7 +118,7 @@ export function CaseStudiesPage() {
                             >
                               {r.value}
                             </p>
-                            <p className="text-[#8E8E96] text-xs mt-1">
+                            <p className="text-[color:var(--text-muted)] text-xs mt-1">
                               {r.label}
                             </p>
                           </div>
@@ -135,10 +135,10 @@ export function CaseStudiesPage() {
                           border: '1px solid rgba(255, 168, 51, 0.12)',
                         }}
                       >
-                        <h3 className="text-xs uppercase tracking-wider text-[#FFA833] font-semibold mb-2">
+                        <h3 className="text-xs uppercase tracking-wider text-[color:var(--accent-bright)] font-semibold mb-2">
                           Behind the Scenes
                         </h3>
-                        <p className="text-[#D6D0C2] text-sm leading-relaxed italic">
+                        <p className="text-[color:var(--text-primary)] text-sm leading-relaxed italic">
                           {study.behindTheScenes}
                         </p>
                       </div>
@@ -152,7 +152,7 @@ export function CaseStudiesPage() {
           {/* CTA */}
           <FadeUp delay={0.3}>
             <div className="text-center mt-16">
-              <p className="text-[#D6D0C2] text-lg mb-6">
+              <p className="text-[color:var(--text-primary)] text-lg mb-6">
                 Ready to become the next success story?
               </p>
               <Link

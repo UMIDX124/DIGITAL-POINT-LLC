@@ -97,14 +97,14 @@ export function ResearchHub() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-1.5">
-                            <span className="text-[#8E8E96] text-xs">{report.date}</span>
-                            <span className="text-[#8E8E96] text-xs">-</span>
-                            <span className="text-[#8E8E96] text-xs">{report.readTime}</span>
+                            <span className="text-[color:var(--text-muted)] text-xs">{report.date}</span>
+                            <span className="text-[color:var(--text-muted)] text-xs">-</span>
+                            <span className="text-[color:var(--text-muted)] text-xs">{report.readTime}</span>
                           </div>
-                          <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#FFA833] transition-colors mb-2">
+                          <h3 className="font-display text-lg font-semibold text-white group-hover:text-[color:var(--accent-bright)] transition-colors mb-2">
                             {report.title}
                           </h3>
-                          <p className="text-[#A1A1AA] text-sm leading-relaxed mb-3">
+                          <p className="text-[color:var(--text-secondary)] text-sm leading-relaxed mb-3">
                             {report.description}
                           </p>
                           <div className="flex items-center justify-between">
@@ -114,7 +114,7 @@ export function ResearchHub() {
                             >
                               {report.stat}
                             </span>
-                            <span className="flex items-center gap-1 text-[#FF8800] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span className="flex items-center gap-1 text-[color:var(--accent-primary)] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                               Read Report <ArrowRight className="w-3.5 h-3.5" />
                             </span>
                           </div>

@@ -124,7 +124,7 @@ export function BlogListPage({ posts, categories, categoryMeta }: Props) {
                 AI in production
               </span>
             </h1>
-            <p className="text-[#D6D0C2] text-lg md:text-xl max-w-2xl leading-relaxed">
+            <p className="text-[color:var(--text-primary)] text-lg md:text-xl max-w-2xl leading-relaxed">
               What works, what breaks, and what we ship next. Agent stacks, automation engineering, operator workflows — from the team running them daily.
             </p>
           </FadeUp>
@@ -180,19 +180,19 @@ export function BlogListPage({ posts, categories, categoryMeta }: Props) {
                         {article.category}
                       </span>
                     </div>
-                    <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#FFA833] transition-colors mb-3 leading-snug">
+                    <h3 className="font-display text-lg font-semibold text-white group-hover:text-[color:var(--accent-bright)] transition-colors mb-3 leading-snug">
                       {article.title}
                     </h3>
-                    <p className="text-[#8E8E96] text-sm leading-relaxed flex-1 mb-4">{article.excerpt}</p>
+                    <p className="text-[color:var(--text-muted)] text-sm leading-relaxed flex-1 mb-4">{article.excerpt}</p>
                     <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(255, 136, 0, 0.1)' }}>
-                      <div className="flex items-center gap-3 text-[#8E8E96] text-xs">
+                      <div className="flex items-center gap-3 text-[color:var(--text-muted)] text-xs">
                         <span>{new Date(article.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
                         <span className="flex items-center gap-1">
                           <Clock className="w-3 h-3" />
                           {article.readTime}
                         </span>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-[#FF8800] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                      <ArrowRight className="w-4 h-4 text-[color:var(--accent-primary)] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                     </div>
                   </GlassCard>
                 </Link>

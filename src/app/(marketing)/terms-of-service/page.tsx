@@ -15,9 +15,9 @@ export const metadata: Metadata = {
 const sectionHeadingClass =
   'font-display text-2xl md:text-3xl font-bold text-white mt-12 mb-4';
 
-const bodyTextClass = 'text-[#D6D0C2] leading-relaxed mb-4';
+const bodyTextClass = 'text-[color:var(--text-primary)] leading-relaxed mb-4';
 
-const secondaryTextClass = 'text-[#8E8E96] leading-relaxed mb-4';
+const secondaryTextClass = 'text-[color:var(--text-muted)] leading-relaxed mb-4';
 
 export default function TermsOfServicePage() {
   return (
@@ -65,7 +65,7 @@ export default function TermsOfServicePage() {
               website and direct engagements, we offer the following services
               and resources:
             </p>
-            <ul className="list-disc list-inside text-[#D6D0C2] leading-relaxed mb-4 space-y-2 pl-2">
+            <ul className="list-disc list-inside text-[color:var(--text-primary)] leading-relaxed mb-4 space-y-2 pl-2">
               <li>
                 <span className="text-white font-medium">
                   Performance Marketing
@@ -129,7 +129,7 @@ export default function TermsOfServicePage() {
             </p>
             <p className="text-white font-medium mb-2">Prohibited Conduct</p>
             <p className={bodyTextClass}>You agree not to:</p>
-            <ul className="list-disc list-inside text-[#D6D0C2] leading-relaxed mb-4 space-y-2 pl-2">
+            <ul className="list-disc list-inside text-[color:var(--text-primary)] leading-relaxed mb-4 space-y-2 pl-2">
               <li>
                 Use the website in any way that violates applicable local,
                 state, national, or international law or regulation.
@@ -300,7 +300,7 @@ export default function TermsOfServicePage() {
                 Reach us through{' '}
                 <a
                   href="/#contact-philosophy"
-                  className="text-[#FF8800] hover:text-[#FFA833] transition-colors underline"
+                  className="text-[color:var(--accent-primary)] hover:text-[color:var(--accent-bright)] transition-colors underline"
                 >
                   our on-site routes
                 </a>
@@ -312,7 +312,7 @@ export default function TermsOfServicePage() {
                 Website:{' '}
                 <a
                   href="https://digitalpointllc.com"
-                  className="text-[#FF8800] hover:text-[#FFA833] transition-colors underline"
+                  className="text-[color:var(--accent-primary)] hover:text-[color:var(--accent-bright)] transition-colors underline"
                 >
                   digitalpointllc.com
                 </a>

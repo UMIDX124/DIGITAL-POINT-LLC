@@ -49,7 +49,7 @@ export function InContentCTA({ category }: InContentCTAProps) {
       <p className="text-white font-display font-semibold text-lg leading-snug mb-1">
         {variant.heading}
       </p>
-      <p className="text-[#D6D0C2] text-sm mb-4">
+      <p className="text-[color:var(--text-primary)] text-sm mb-4">
         {variant.hook}
       </p>
       <Link

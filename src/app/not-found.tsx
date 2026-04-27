@@ -76,7 +76,7 @@ export default function NotFound() {
             className="inline-flex items-center gap-2 px-6 py-3 rounded-md font-medium text-sm transition-colors"
             style={{
               background: 'var(--accent)',
-              color: '#0A0A0B',
+              color: 'var(--bg-canvas)',
             }}
           >
             Back to home

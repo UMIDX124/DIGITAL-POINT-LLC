@@ -53,7 +53,7 @@ export function ExitIntentModal() {
           <DialogTitle className="font-display text-2xl text-white text-center">
             Before you go&hellip;
           </DialogTitle>
-          <DialogDescription className="text-[#D6D0C2] text-center text-base mt-2">
+          <DialogDescription className="text-[color:var(--text-primary)] text-center text-base mt-2">
             Get a free growth audit — we&apos;ll review your setup and show you exactly what&apos;s blocking growth. No pitch, just clarity.
           </DialogDescription>
         </DialogHeader>
@@ -74,7 +74,7 @@ export function ExitIntentModal() {
 
           <button
             onClick={() => setOpen(false)}
-            className="w-full py-2.5 text-sm text-[#8E8E96] hover:text-white transition-colors text-center"
+            className="w-full py-2.5 text-sm text-[color:var(--text-muted)] hover:text-white transition-colors text-center"
           >
             Maybe later
           </button>

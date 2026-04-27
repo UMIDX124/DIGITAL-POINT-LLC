@@ -83,7 +83,7 @@ export function ContactPage() {
                 read every message
               </span>
             </h1>
-            <p className="text-[#D6D0C2] text-lg md:text-xl max-w-2xl leading-relaxed">
+            <p className="text-[color:var(--text-primary)] text-lg md:text-xl max-w-2xl leading-relaxed">
               We don&apos;t list a generic support inbox. Most agencies hide behind a hello@ queue where your message lines up with everyone else&apos;s. We don&apos;t run that way. Reach out through Cosmo or the audit form — your inquiry routes directly to the operator best matched to your stage, not a ticket pool. We answer from our personal accounts because we&apos;re personally accountable for what we ship.
             </p>
           </FadeUp>
@@ -115,14 +115,14 @@ export function ContactPage() {
                       <GlassCard className="p-5 group cursor-pointer">
                         <div className="flex items-start gap-4">
                           <div className="p-2 rounded-lg" style={{ background: 'rgba(255, 168, 51, 0.15)' }}>
-                            <method.icon className="w-5 h-5 text-[#FF8800]" />
+                            <method.icon className="w-5 h-5 text-[color:var(--accent-primary)]" />
                           </div>
                           <div>
-                            <h3 className="font-display font-semibold text-white group-hover:text-[#FFA833] transition-colors">
+                            <h3 className="font-display font-semibold text-white group-hover:text-[color:var(--accent-bright)] transition-colors">
                               {method.title}
                             </h3>
-                            <p className="text-[#FF8800] text-sm mt-0.5">{method.value}</p>
-                            <p className="text-[#8E8E96] text-xs mt-1">{method.description}</p>
+                            <p className="text-[color:var(--accent-primary)] text-sm mt-0.5">{method.value}</p>
+                            <p className="text-[color:var(--text-muted)] text-xs mt-1">{method.description}</p>
                           </div>
                         </div>
                       </GlassCard>
@@ -134,9 +134,9 @@ export function ContactPage() {
               <div className="space-y-3 pt-4">
                 {officeDetails.map((detail) => (
                   <div key={detail.label} className="flex items-center gap-3 text-sm">
-                    <detail.icon className="w-4 h-4 text-[#8E8E96]" />
-                    <span className="text-[#8E8E96]">{detail.label}:</span>
-                    <span className="text-[#D6D0C2]">{detail.value}</span>
+                    <detail.icon className="w-4 h-4 text-[color:var(--text-muted)]" />
+                    <span className="text-[color:var(--text-muted)]">{detail.label}:</span>
+                    <span className="text-[color:var(--text-primary)]">{detail.value}</span>
                   </div>
                 ))}
               </div>
@@ -151,8 +151,8 @@ export function ContactPage() {
                   }}
                 >
                   <p className="text-white font-display font-semibold mb-2">Want a free growth audit instead?</p>
-                  <p className="text-[#D6D0C2] text-sm mb-3">Get a structured review of your marketing, systems, and team — in under 48 hours.</p>
-                  <Link href="/free-growth-audit" className="inline-flex items-center gap-1 text-[#FF8800] hover:text-[#FFA833] text-sm font-medium transition-colors">
+                  <p className="text-[color:var(--text-primary)] text-sm mb-3">Get a structured review of your marketing, systems, and team — in under 48 hours.</p>
+                  <Link href="/free-growth-audit" className="inline-flex items-center gap-1 text-[color:var(--accent-primary)] hover:text-[color:var(--accent-bright)] text-sm font-medium transition-colors">
                     Start your audit <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
@@ -170,53 +170,53 @@ export function ContactPage() {
                         animate={{ scale: 1 }}
                         transition={{ type: 'spring', stiffness: 200, damping: 15 }}
                       >
-                        <CheckCircle className="w-16 h-16 text-[#FF8800] mx-auto mb-4" />
+                        <CheckCircle className="w-16 h-16 text-[color:var(--accent-primary)] mx-auto mb-4" />
                       </motion.div>
                       <h3 className="font-display text-2xl font-bold text-white mb-2">Got it! We&apos;re on it.</h3>
-                      <p className="text-[#D6D0C2]">One of us (the founders, not a bot) will reply within 24 hours. Usually much sooner.</p>
+                      <p className="text-[color:var(--text-primary)]">One of us (the founders, not a bot) will reply within 24 hours. Usually much sooner.</p>
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-5">
                       <h3 className="font-display text-xl font-semibold text-white mb-2">Drop us a line</h3>
-                      <p className="text-[#8E8E96] text-sm mb-6">No form letters, no auto-replies. A real human (probably Faizan, let&apos;s be honest) will get back to you within 24 hours.</p>
+                      <p className="text-[color:var(--text-muted)] text-sm mb-6">No form letters, no auto-replies. A real human (probably Faizan, let&apos;s be honest) will get back to you within 24 hours.</p>
 
                       <div>
-                        <label htmlFor="contact-name" className="block text-sm text-[#D6D0C2] mb-1.5">Name</label>
+                        <label htmlFor="contact-name" className="block text-sm text-[color:var(--text-primary)] mb-1.5">Name</label>
                         <input
                           id="contact-name"
                           type="text"
                           required
                           value={form.name}
                           onChange={(e) => setForm(f => ({ ...f, name: e.target.value }))}
-                          className="w-full px-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                          className="w-full px-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
                           style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}
                           placeholder="Your name"
                         />
                       </div>
 
                       <div>
-                        <label htmlFor="contact-email" className="block text-sm text-[#D6D0C2] mb-1.5">Email</label>
+                        <label htmlFor="contact-email" className="block text-sm text-[color:var(--text-primary)] mb-1.5">Email</label>
                         <input
                           id="contact-email"
                           type="email"
                           required
                           value={form.email}
                           onChange={(e) => setForm(f => ({ ...f, email: e.target.value }))}
-                          className="w-full px-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                          className="w-full px-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
                           style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}
                           placeholder="you@company.com"
                         />
                       </div>
 
                       <div>
-                        <label htmlFor="contact-message" className="block text-sm text-[#D6D0C2] mb-1.5">Message</label>
+                        <label htmlFor="contact-message" className="block text-sm text-[color:var(--text-primary)] mb-1.5">Message</label>
                         <textarea
                           id="contact-message"
                           required
                           rows={5}
                           value={form.message}
                           onChange={(e) => setForm(f => ({ ...f, message: e.target.value }))}
-                          className="w-full px-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50 resize-none"
+                          className="w-full px-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50 resize-none"
                           style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}
                           placeholder="Tell us about your project, challenges, or what you need help with..."
                         />
@@ -247,7 +247,7 @@ export function ContactPage() {
                       </button>
 
                       {status === 'error' && (
-                        <p className="text-[#FF8800] text-sm text-center">Something went wrong. Please try again or email us directly.</p>
+                        <p className="text-[color:var(--accent-primary)] text-sm text-center">Something went wrong. Please try again or email us directly.</p>
                       )}
                     </form>
                   )}

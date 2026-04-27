@@ -44,7 +44,7 @@ export function GrowthAuditCTA({
       >
         <div>
           <p className="text-white font-medium text-sm">{title}</p>
-          <p className="text-[#8E8E96] text-xs mt-0.5">{description}</p>
+          <p className="text-[color:var(--text-muted)] text-xs mt-0.5">{description}</p>
         </div>
         <Link
           href="/free-growth-audit"
@@ -69,7 +69,7 @@ export function GrowthAuditCTA({
       }}
     >
       <h3 className="font-display text-xl md:text-2xl font-bold text-white mb-3">{title}</h3>
-      <p className="text-[#D6D0C2] text-sm mb-6 max-w-lg mx-auto">{description}</p>
+      <p className="text-[color:var(--text-primary)] text-sm mb-6 max-w-lg mx-auto">{description}</p>
       <Link href="/free-growth-audit">
         <motion.span
           className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-xl"

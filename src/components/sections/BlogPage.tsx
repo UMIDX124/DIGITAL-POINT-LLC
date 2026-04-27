@@ -88,25 +88,25 @@ const BlogCard = memo(function BlogCard({ article }: { article: typeof articles[
       </div>
 
       {/* Title */}
-      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#FFA833] transition-colors mb-3 leading-snug">
+      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[color:var(--accent-bright)] transition-colors mb-3 leading-snug">
         {article.title}
       </h3>
 
       {/* Excerpt */}
-      <p className="text-[#8E8E96] text-sm leading-relaxed flex-1 mb-4">
+      <p className="text-[color:var(--text-muted)] text-sm leading-relaxed flex-1 mb-4">
         {article.excerpt}
       </p>
 
       {/* Meta */}
       <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(255, 136, 0, 0.1)' }}>
-        <div className="flex items-center gap-3 text-[#8E8E96] text-xs">
+        <div className="flex items-center gap-3 text-[color:var(--text-muted)] text-xs">
           <span>{article.date}</span>
           <span className="flex items-center gap-1">
             <Clock className="w-3 h-3" />
             {article.readTime}
           </span>
         </div>
-        <ArrowRight className="w-4 h-4 text-[#FF8800] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+        <ArrowRight className="w-4 h-4 text-[color:var(--accent-primary)] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
       </div>
     </GlassCard>
   );
@@ -130,7 +130,7 @@ export function BlogPage() {
                 growth trenches
               </span>
             </h1>
-            <p className="text-[#D6D0C2] text-lg md:text-xl max-w-2xl leading-relaxed">
+            <p className="text-[color:var(--text-primary)] text-lg md:text-xl max-w-2xl leading-relaxed">
               Frameworks, case studies, and hard-won lessons from managing $50M+ in ad spend and building remote teams across the globe.
             </p>
           </FadeUp>
@@ -164,7 +164,7 @@ export function BlogPage() {
               <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-3">
                 Want growth insights in your inbox?
               </h2>
-              <p className="text-[#D6D0C2] text-sm mb-6">
+              <p className="text-[color:var(--text-primary)] text-sm mb-6">
                 No spam. Just real frameworks and case studies we use with our clients. Unsubscribe anytime.
               </p>
               <Link href="/free-growth-audit">

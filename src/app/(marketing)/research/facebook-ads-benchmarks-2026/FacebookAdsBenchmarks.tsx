@@ -54,11 +54,11 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
             { label: 'Facebook Ads Benchmarks 2026', href: '/research/facebook-ads-benchmarks-2026' },
           ]} />
           <div className="mt-8">
-            <span className="text-[#8E8E96] text-sm">March 2026 &middot; 12 min read</span>
+            <span className="text-[color:var(--text-muted)] text-sm">March 2026 &middot; 12 min read</span>
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 leading-tight">
               Facebook Ads Benchmarks 2026
             </h1>
-            <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed max-w-2xl">
+            <p className="text-[color:var(--text-primary)] text-lg mt-4 leading-relaxed max-w-2xl">
               CPC, CPM, CTR, and ROAS benchmarks across 12 industries. Based on analysis of $48M+ in tracked Meta ad spend from Q4 2025 through Q1 2026.
             </p>
           </div>
@@ -75,7 +75,7 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
                   <div className="font-display text-2xl md:text-3xl font-bold" style={{ color: stat.color }}>
                     {stat.value}
                   </div>
-                  <p className="text-[#8E8E96] text-sm mt-1">{stat.label}</p>
+                  <p className="text-[color:var(--text-muted)] text-sm mt-1">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -93,28 +93,28 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(255, 136, 0,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Industry</th>
-                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">CPC</th>
-                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">CPM</th>
-                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">CTR</th>
-                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">ROAS</th>
+                      <th className="text-left py-3 px-4 text-[color:var(--text-muted)] font-medium">Industry</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-primary)] font-medium">CPC</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-primary)] font-medium">CPM</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-bright)] font-medium">CTR</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-primary)] font-medium">ROAS</th>
                     </tr>
                   </thead>
                   <tbody>
                     {industryBenchmarks.map((row, i) => (
                       <tr key={row.industry} className={i < industryBenchmarks.length - 1 ? 'border-b border-[rgba(255, 136, 0,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.industry}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.cpc}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.cpm}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.ctr}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.roas}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.cpc}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.cpm}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.ctr}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.roas}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             </div>
-            <p className="text-[#8E8E96] text-xs mt-3">Data based on analysis of $48M+ in Meta Ads spend across 340+ accounts, Q4 2025 - Q1 2026.</p>
+            <p className="text-[color:var(--text-muted)] text-xs mt-3">Data based on analysis of $48M+ in Meta Ads spend across 340+ accounts, Q4 2025 - Q1 2026.</p>
           </FadeUp>
         </Container>
       </Section>
@@ -129,19 +129,19 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(255, 136, 0,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Metric</th>
-                      <th className="text-right py-3 px-4 text-[#8E8E96] font-medium">2024</th>
-                      <th className="text-right py-3 px-4 text-[#8E8E96] font-medium">2025</th>
-                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">2026</th>
-                      <th className="text-right py-3 px-4 text-[#8E8E96] font-medium">YoY</th>
+                      <th className="text-left py-3 px-4 text-[color:var(--text-muted)] font-medium">Metric</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--text-muted)] font-medium">2024</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--text-muted)] font-medium">2025</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-primary)] font-medium">2026</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--text-muted)] font-medium">YoY</th>
                     </tr>
                   </thead>
                   <tbody>
                     {yearOverYear.map((row, i) => (
                       <tr key={row.metric} className={i < yearOverYear.length - 1 ? 'border-b border-[rgba(255, 136, 0,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.metric}</td>
-                        <td className="py-3 px-4 text-right text-[#8E8E96]">{row.value2024}</td>
-                        <td className="py-3 px-4 text-right text-[#8E8E96]">{row.value2025}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-muted)]">{row.value2024}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-muted)]">{row.value2025}</td>
                         <td className="py-3 px-4 text-right text-white font-medium">{row.value2026}</td>
                         <td className="py-3 px-4 text-right" style={{ color: row.change.startsWith('+') ? '#FF8800' : '#FFA833' }}>
                           {row.change}
@@ -170,7 +170,7 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
               ].map((finding) => (
                 <div key={finding.title} className="rounded-xl p-5" style={glassStyle}>
                   <h3 className="font-display text-base font-semibold text-white mb-2">{finding.title}</h3>
-                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{finding.text}</p>
+                  <p className="text-[color:var(--text-primary)] text-sm leading-relaxed">{finding.text}</p>
                 </div>
               ))}
             </div>
@@ -187,7 +187,7 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
               {faqs.map((faq) => (
                 <div key={faq.question} className="rounded-xl p-5" style={glassStyle}>
                   <h3 className="font-display text-base font-semibold text-white mb-2">{faq.question}</h3>
-                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{faq.answer}</p>
+                  <p className="text-[color:var(--text-primary)] text-sm leading-relaxed">{faq.answer}</p>
                 </div>
               ))}
             </div>

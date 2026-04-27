@@ -44,7 +44,7 @@ export function FreeResources() {
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
             Guides &amp; Frameworks
           </h2>
-          <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed">
+          <p className="text-[color:var(--text-primary)] text-lg mt-4 leading-relaxed">
             Actionable playbooks you can implement today — no email required
           </p>
         </div>
@@ -92,21 +92,21 @@ export function FreeResources() {
                         border: '1px solid rgba(255, 168, 51, 0.2)',
                       }}
                     >
-                      <Icon className="w-5 h-5 text-[#FF8800]" />
+                      <Icon className="w-5 h-5 text-[color:var(--accent-primary)]" />
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-display text-lg font-semibold text-white mb-2 leading-snug group-hover:text-[#FF8800] transition-colors">
+                    <h3 className="font-display text-lg font-semibold text-white mb-2 leading-snug group-hover:text-[color:var(--accent-primary)] transition-colors">
                       {resource.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-[#8E8E96] text-sm leading-relaxed flex-1 mb-5">
+                    <p className="text-[color:var(--text-muted)] text-sm leading-relaxed flex-1 mb-5">
                       {resource.description}
                     </p>
 
                     {/* CTA */}
-                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[#FF8800] group-hover:text-[#FFA833] transition-colors">
+                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[color:var(--accent-primary)] group-hover:text-[color:var(--accent-bright)] transition-colors">
                       Read Free Guide
                       <span
                         aria-hidden="true"

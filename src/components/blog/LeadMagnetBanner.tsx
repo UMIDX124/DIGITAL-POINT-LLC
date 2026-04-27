@@ -27,7 +27,7 @@ export function LeadMagnetBanner() {
       <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-3">
         Get Your Free Growth Audit
       </h3>
-      <p className="text-[#D6D0C2] text-sm md:text-base mb-8 max-w-xl mx-auto leading-relaxed">
+      <p className="text-[color:var(--text-primary)] text-sm md:text-base mb-8 max-w-xl mx-auto leading-relaxed">
         We&apos;ll analyze your ad accounts, attribution setup, and conversion funnels.
         No sales pitch&nbsp;&mdash; just clear next steps.
       </p>

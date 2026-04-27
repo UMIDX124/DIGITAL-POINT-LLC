@@ -11,7 +11,7 @@ export function PillarsSection() {
     <section
       id="pillars"
       className="relative section-padding"
-      style={{ background: '#0A0A0B', borderBottom: '1px solid #27272A' }}
+      style={{ background: 'var(--bg-canvas)', borderBottom: '1px solid #27272A' }}
     >
       <div className="container-wide">
         <header className="max-w-3xl mb-16">

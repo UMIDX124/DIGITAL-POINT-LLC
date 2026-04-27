@@ -74,11 +74,11 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
             { label: 'Remote Workforce Cost Analysis', href: '/research/remote-workforce-cost-analysis' },
           ]} />
           <div className="mt-8">
-            <span className="text-[#8E8E96] text-sm">February 2026 &middot; 13 min read</span>
+            <span className="text-[color:var(--text-muted)] text-sm">February 2026 &middot; 13 min read</span>
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 leading-tight">
               Remote Workforce Cost Analysis
             </h1>
-            <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed max-w-2xl">
+            <p className="text-[color:var(--text-primary)] text-lg mt-4 leading-relaxed max-w-2xl">
               Comprehensive cost comparison of US in-house teams vs. managed remote teams across 12 roles in marketing, engineering, and operations. Includes overhead breakdown and quality benchmarks.
             </p>
           </div>
@@ -95,7 +95,7 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
                   <div className="font-display text-2xl md:text-3xl font-bold" style={{ color: stat.color }}>
                     {stat.value}
                   </div>
-                  <p className="text-[#8E8E96] text-sm mt-1">{stat.label}</p>
+                  <p className="text-[color:var(--text-muted)] text-sm mt-1">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -113,26 +113,26 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(255, 136, 0,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Role</th>
-                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">US Fully Loaded</th>
-                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Managed Remote</th>
-                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Savings</th>
+                      <th className="text-left py-3 px-4 text-[color:var(--text-muted)] font-medium">Role</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-primary)] font-medium">US Fully Loaded</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-bright)] font-medium">Managed Remote</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-bright)] font-medium">Savings</th>
                     </tr>
                   </thead>
                   <tbody>
                     {roleCostComparison.map((row, i) => (
                       <tr key={row.role} className={i < roleCostComparison.length - 1 ? 'border-b border-[rgba(255, 136, 0,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.role}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.usFullyLoaded}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.remote}</td>
-                        <td className="py-3 px-4 text-right text-[#FFA833] font-medium">{row.savings}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.usFullyLoaded}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.remote}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--accent-bright)] font-medium">{row.savings}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             </div>
-            <p className="text-[#8E8E96] text-xs mt-3">US costs include salary, benefits, payroll taxes, equipment, and allocated office space. Remote costs include salary, management overhead, tools, and quality assurance.</p>
+            <p className="text-[color:var(--text-muted)] text-xs mt-3">US costs include salary, benefits, payroll taxes, equipment, and allocated office space. Remote costs include salary, management overhead, tools, and quality assurance.</p>
           </FadeUp>
         </Container>
       </Section>
@@ -147,21 +147,21 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(255, 136, 0,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Cost Item</th>
-                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">Annual Cost</th>
-                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">% of Total</th>
+                      <th className="text-left py-3 px-4 text-[color:var(--text-muted)] font-medium">Cost Item</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-primary)] font-medium">Annual Cost</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-primary)] font-medium">% of Total</th>
                     </tr>
                   </thead>
                   <tbody>
                     {usOverheadBreakdown.map((row, i) => (
                       <tr key={row.item} className={i < usOverheadBreakdown.length - 1 ? 'border-b border-[rgba(255, 136, 0,0.08)]' : ''}>
-                        <td className={`py-3 px-4 font-medium ${i === usOverheadBreakdown.length - 1 ? 'text-white' : 'text-[#D6D0C2]'}`}>
+                        <td className={`py-3 px-4 font-medium ${i === usOverheadBreakdown.length - 1 ? 'text-white' : 'text-[color:var(--text-primary)]'}`}>
                           {row.item}
                         </td>
-                        <td className={`py-3 px-4 text-right ${i === usOverheadBreakdown.length - 1 ? 'text-white font-bold' : 'text-[#D6D0C2]'}`}>
+                        <td className={`py-3 px-4 text-right ${i === usOverheadBreakdown.length - 1 ? 'text-white font-bold' : 'text-[color:var(--text-primary)]'}`}>
                           {row.cost}
                         </td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.pctOfTotal}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.pctOfTotal}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -182,19 +182,19 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(255, 136, 0,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Team Size</th>
-                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">US Annual</th>
-                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Remote Annual</th>
-                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Annual Savings</th>
+                      <th className="text-left py-3 px-4 text-[color:var(--text-muted)] font-medium">Team Size</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-primary)] font-medium">US Annual</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-bright)] font-medium">Remote Annual</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-bright)] font-medium">Annual Savings</th>
                     </tr>
                   </thead>
                   <tbody>
                     {teamScaleComparison.map((row, i) => (
                       <tr key={row.teamSize} className={i < teamScaleComparison.length - 1 ? 'border-b border-[rgba(255, 136, 0,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.teamSize}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.usAnnual}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.remoteAnnual}</td>
-                        <td className="py-3 px-4 text-right text-[#FFA833] font-bold">{row.annualSavings}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.usAnnual}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.remoteAnnual}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--accent-bright)] font-bold">{row.annualSavings}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -215,26 +215,26 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-[rgba(255, 136, 0,0.15)]">
-                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Metric</th>
-                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Managed Remote</th>
-                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Freelancers</th>
-                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">US In-House</th>
+                      <th className="text-left py-3 px-4 text-[color:var(--text-muted)] font-medium">Metric</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-bright)] font-medium">Managed Remote</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-bright)] font-medium">Freelancers</th>
+                      <th className="text-right py-3 px-4 text-[color:var(--accent-primary)] font-medium">US In-House</th>
                     </tr>
                   </thead>
                   <tbody>
                     {qualityMetrics.map((row, i) => (
                       <tr key={row.metric} className={i < qualityMetrics.length - 1 ? 'border-b border-[rgba(255, 136, 0,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.metric}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.managed}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.freelancer}</td>
-                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.inHouse}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.managed}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.freelancer}</td>
+                        <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.inHouse}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             </div>
-            <p className="text-[#8E8E96] text-xs mt-3">Quality metrics based on internal data from managed remote team engagements across 120+ client accounts, 2024-2026.</p>
+            <p className="text-[color:var(--text-muted)] text-xs mt-3">Quality metrics based on internal data from managed remote team engagements across 120+ client accounts, 2024-2026.</p>
           </FadeUp>
         </Container>
       </Section>
@@ -253,7 +253,7 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
               ].map((finding) => (
                 <div key={finding.title} className="rounded-xl p-5" style={glassStyle}>
                   <h3 className="font-display text-base font-semibold text-white mb-2">{finding.title}</h3>
-                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{finding.text}</p>
+                  <p className="text-[color:var(--text-primary)] text-sm leading-relaxed">{finding.text}</p>
                 </div>
               ))}
             </div>
@@ -270,7 +270,7 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
               {faqs.map((faq) => (
                 <div key={faq.question} className="rounded-xl p-5" style={glassStyle}>
                   <h3 className="font-display text-base font-semibold text-white mb-2">{faq.question}</h3>
-                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{faq.answer}</p>
+                  <p className="text-[color:var(--text-primary)] text-sm leading-relaxed">{faq.answer}</p>
                 </div>
               ))}
             </div>

@@ -88,7 +88,7 @@ export function ProblemSection() {
             </h2>
 
             {/* Description */}
-            <p className="text-[#D6D0C2] text-lg md:text-xl leading-relaxed">
+            <p className="text-[color:var(--text-primary)] text-lg md:text-xl leading-relaxed">
               Most founders are running on instinct because their systems don&apos;t tell them the truth.
             </p>
           </div>
@@ -106,13 +106,13 @@ export function ProblemSection() {
                       border: '1px solid rgba(255, 168, 51, 0.2)',
                     }}
                   >
-                    <problem.icon className="w-6 h-6 text-[#FF8800]" />
+                    <problem.icon className="w-6 h-6 text-[color:var(--accent-primary)]" />
                   </div>
                   <div>
                     <h3 className="font-display font-semibold text-white mb-2">
                       {problem.title}
                     </h3>
-                    <p className="text-[#D6D0C2] text-sm leading-relaxed">
+                    <p className="text-[color:var(--text-primary)] text-sm leading-relaxed">
                       {problem.description}
                     </p>
                   </div>

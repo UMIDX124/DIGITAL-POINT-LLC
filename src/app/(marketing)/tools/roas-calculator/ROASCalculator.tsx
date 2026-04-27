@@ -70,7 +70,7 @@ export function ROASCalculator({ faqs }: Props) {
                 Calculator
               </span>
             </h1>
-            <p className="text-[#D6D0C2] text-lg mt-3 max-w-2xl">
+            <p className="text-[color:var(--text-primary)] text-lg mt-3 max-w-2xl">
               Calculate your true Return on Ad Spend and understand your advertising profitability.
             </p>
           </FadeUp>
@@ -86,45 +86,45 @@ export function ROASCalculator({ faqs }: Props) {
                 <h2 className="font-display text-xl font-semibold text-white mb-6">Enter Your Numbers</h2>
                 <div className="space-y-5">
                   <div>
-                    <label className="block text-sm text-[#D6D0C2] mb-1.5">Total Ad Spend ($)</label>
+                    <label className="block text-sm text-[color:var(--text-primary)] mb-1.5">Total Ad Spend ($)</label>
                     <div className="relative">
-                      <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8E96]" />
+                      <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[color:var(--text-muted)]" />
                       <input
                         type="number"
                         value={adSpend}
                         onChange={(e) => setAdSpend(e.target.value)}
                         placeholder="10,000"
-                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
                         style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm text-[#D6D0C2] mb-1.5">Revenue from Ads ($)</label>
+                    <label className="block text-sm text-[color:var(--text-primary)] mb-1.5">Revenue from Ads ($)</label>
                     <div className="relative">
-                      <TrendingUp className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8E96]" />
+                      <TrendingUp className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[color:var(--text-muted)]" />
                       <input
                         type="number"
                         value={revenue}
                         onChange={(e) => setRevenue(e.target.value)}
                         placeholder="40,000"
-                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
                         style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm text-[#D6D0C2] mb-1.5">Cost of Goods Sold ($) <span className="text-[#8E8E96]">optional</span></label>
+                    <label className="block text-sm text-[color:var(--text-primary)] mb-1.5">Cost of Goods Sold ($) <span className="text-[color:var(--text-muted)]">optional</span></label>
                     <div className="relative">
-                      <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8E96]" />
+                      <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[color:var(--text-muted)]" />
                       <input
                         type="number"
                         value={cogs}
                         onChange={(e) => setCogs(e.target.value)}
                         placeholder="15,000"
-                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
                         style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}
                       />
                     </div>
@@ -141,7 +141,7 @@ export function ROASCalculator({ faqs }: Props) {
                   <div className="flex gap-2">
                     <button
                       onClick={handleShare}
-                      className="p-2 rounded-lg text-[#8E8E96] hover:text-[#FF8800] transition-colors"
+                      className="p-2 rounded-lg text-[color:var(--text-muted)] hover:text-[color:var(--accent-primary)] transition-colors"
                       style={{ background: 'rgba(255, 136, 0, 0.1)' }}
                       title="Copy shareable link"
                     >
@@ -149,7 +149,7 @@ export function ROASCalculator({ faqs }: Props) {
                     </button>
                     <button
                       onClick={() => setShowEmail(!showEmail)}
-                      className="p-2 rounded-lg text-[#8E8E96] hover:text-[#FF8800] transition-colors"
+                      className="p-2 rounded-lg text-[color:var(--text-muted)] hover:text-[color:var(--accent-primary)] transition-colors"
                       style={{ background: 'rgba(255, 136, 0, 0.1)' }}
                       title="Save results"
                     >
@@ -159,7 +159,7 @@ export function ROASCalculator({ faqs }: Props) {
                 </div>
 
                 {copied && (
-                  <p className="text-[#FFA833] text-xs mb-3">Link copied to clipboard!</p>
+                  <p className="text-[color:var(--accent-bright)] text-xs mb-3">Link copied to clipboard!</p>
                 )}
 
                 {showEmail && (
@@ -169,7 +169,7 @@ export function ROASCalculator({ faqs }: Props) {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="you@company.com"
-                      className="flex-1 px-3 py-2 rounded-lg text-white text-sm placeholder:text-[#8E8E96] focus:outline-none"
+                      className="flex-1 px-3 py-2 rounded-lg text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none"
                       style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}
                     />
                     <button
@@ -186,7 +186,7 @@ export function ROASCalculator({ faqs }: Props) {
                   {/* ROAS */}
                   <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
                     <div className="flex items-center justify-between">
-                      <span className="text-[#8E8E96] text-sm">ROAS</span>
+                      <span className="text-[color:var(--text-muted)] text-sm">ROAS</span>
                       {roasRating && (
                         <span className="text-xs px-2 py-0.5 rounded-full" style={{ color: roasColor, background: `${roasColor}15` }}>
                           {roasRating}
@@ -201,14 +201,14 @@ export function ROASCalculator({ faqs }: Props) {
                   {/* Profit */}
                   <div className="grid grid-cols-2 gap-3">
                     <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
-                      <span className="text-[#8E8E96] text-xs">Net Profit</span>
-                      <p className={`font-display text-xl font-bold mt-1 ${profit >= 0 ? 'text-[#FFA833]' : 'text-[#FF8800]'}`}>
+                      <span className="text-[color:var(--text-muted)] text-xs">Net Profit</span>
+                      <p className={`font-display text-xl font-bold mt-1 ${profit >= 0 ? 'text-[color:var(--accent-bright)]' : 'text-[color:var(--accent-primary)]'}`}>
                         {spend > 0 ? `$${profit.toLocaleString()}` : '—'}
                       </p>
                     </div>
                     <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
-                      <span className="text-[#8E8E96] text-xs">Profit Margin</span>
-                      <p className={`font-display text-xl font-bold mt-1 ${profitMargin >= 0 ? 'text-[#FFA833]' : 'text-[#FF8800]'}`}>
+                      <span className="text-[color:var(--text-muted)] text-xs">Profit Margin</span>
+                      <p className={`font-display text-xl font-bold mt-1 ${profitMargin >= 0 ? 'text-[color:var(--accent-bright)]' : 'text-[color:var(--accent-primary)]'}`}>
                         {rev > 0 ? `${profitMargin.toFixed(1)}%` : '—'}
                       </p>
                     </div>
@@ -217,7 +217,7 @@ export function ROASCalculator({ faqs }: Props) {
                   {/* ROAS visual bar */}
                   {roas > 0 && (
                     <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
-                      <span className="text-[#8E8E96] text-xs">ROAS Scale</span>
+                      <span className="text-[color:var(--text-muted)] text-xs">ROAS Scale</span>
                       <div className="mt-2 h-3 rounded-full bg-[rgba(255, 136, 0,0.1)] overflow-hidden">
                         <div
                           className="h-full rounded-full transition-all duration-500"
@@ -227,7 +227,7 @@ export function ROASCalculator({ faqs }: Props) {
                           }}
                         />
                       </div>
-                      <div className="flex justify-between text-[10px] text-[#8E8E96] mt-1">
+                      <div className="flex justify-between text-[10px] text-[color:var(--text-muted)] mt-1">
                         <span>0x</span><span>2x</span><span>5x</span><span>10x+</span>
                       </div>
                     </div>
@@ -243,10 +243,10 @@ export function ROASCalculator({ faqs }: Props) {
               <div className="space-y-8">
                 <div>
                   <h2 className="font-display text-2xl font-bold text-white mb-4">How to Calculate ROAS</h2>
-                  <p className="text-[#D6D0C2] text-sm leading-relaxed mb-3">
+                  <p className="text-[color:var(--text-primary)] text-sm leading-relaxed mb-3">
                     ROAS (Return on Ad Spend) is calculated by dividing the revenue generated from advertising by the total ad spend. The formula is simple:
                   </p>
-                  <div className="rounded-xl p-4 text-center font-mono text-[#FF8800]" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
+                  <div className="rounded-xl p-4 text-center font-mono text-[color:var(--accent-primary)]" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
                     ROAS = Revenue from Ads / Ad Spend
                   </div>
                 </div>
@@ -257,12 +257,12 @@ export function ROASCalculator({ faqs }: Props) {
                     <table className="w-full text-sm min-w-[400px]">
                       <thead>
                         <tr style={{ background: 'rgba(255, 136, 0, 0.1)' }}>
-                          <th className="text-left px-4 py-3 text-[#FF8800] font-medium">Industry</th>
-                          <th className="text-right px-4 py-3 text-[#FF8800] font-medium">Avg ROAS</th>
-                          <th className="text-right px-4 py-3 text-[#FF8800] font-medium">Top Performers</th>
+                          <th className="text-left px-4 py-3 text-[color:var(--accent-primary)] font-medium">Industry</th>
+                          <th className="text-right px-4 py-3 text-[color:var(--accent-primary)] font-medium">Avg ROAS</th>
+                          <th className="text-right px-4 py-3 text-[color:var(--accent-primary)] font-medium">Top Performers</th>
                         </tr>
                       </thead>
-                      <tbody className="text-[#D6D0C2]">
+                      <tbody className="text-[color:var(--text-primary)]">
                         {[
                           ['E-commerce', '4.0x', '8-12x'],
                           ['SaaS / B2B', '5.0x', '10-15x'],
@@ -273,7 +273,7 @@ export function ROASCalculator({ faqs }: Props) {
                           <tr key={industry} style={{ borderTop: '1px solid rgba(255, 136, 0, 0.1)' }}>
                             <td className="px-4 py-3">{industry}</td>
                             <td className="px-4 py-3 text-right font-mono">{avg}</td>
-                            <td className="px-4 py-3 text-right font-mono text-[#FFA833]">{top}</td>
+                            <td className="px-4 py-3 text-right font-mono text-[color:var(--accent-bright)]">{top}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -288,7 +288,7 @@ export function ROASCalculator({ faqs }: Props) {
                     {faqs.map((faq, i) => (
                       <div key={i} className="rounded-xl p-5" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
                         <h3 className="text-white font-medium text-sm mb-2">{faq.question}</h3>
-                        <p className="text-[#8E8E96] text-sm">{faq.answer}</p>
+                        <p className="text-[color:var(--text-muted)] text-sm">{faq.answer}</p>
                       </div>
                     ))}
                   </div>

@@ -71,7 +71,7 @@ export function ToolsHub() {
               </span>
               {' '}& tools
             </h1>
-            <p className="text-[#D6D0C2] text-lg md:text-xl max-w-2xl leading-relaxed">
+            <p className="text-[color:var(--text-primary)] text-lg md:text-xl max-w-2xl leading-relaxed">
               Free interactive tools to analyze your marketing performance, calculate ROI, and find optimization opportunities.
             </p>
           </FadeUp>
@@ -93,13 +93,13 @@ export function ToolsHub() {
                       >
                         <Icon className="w-6 h-6" style={{ color: tool.color }} />
                       </div>
-                      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#FFA833] transition-colors mb-2">
+                      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[color:var(--accent-bright)] transition-colors mb-2">
                         {tool.title}
                       </h3>
-                      <p className="text-[#8E8E96] text-sm leading-relaxed flex-1 mb-4">{tool.description}</p>
+                      <p className="text-[color:var(--text-muted)] text-sm leading-relaxed flex-1 mb-4">{tool.description}</p>
                       <div className="flex gap-2">
                         {tool.tags.map((tag) => (
-                          <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] text-[#8E8E96] bg-[rgba(255, 136, 0,0.1)]">
+                          <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] text-[color:var(--text-muted)] bg-[rgba(255, 136, 0,0.1)]">
                             {tag}
                           </span>
                         ))}

@@ -21,16 +21,16 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
           url: `${baseUrl}${item.href}`,
         }))}
       />
-      <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-[#8E8E96]">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-[color:var(--text-muted)]">
         {allItems.map((item, index) => (
           <span key={item.href} className="flex items-center gap-1.5">
             {index > 0 && <ChevronRight className="w-3 h-3" />}
             {index === allItems.length - 1 ? (
-              <span className="text-[#D6D0C2]">{item.label}</span>
+              <span className="text-[color:var(--text-primary)]">{item.label}</span>
             ) : (
               <Link
                 href={item.href}
-                className="hover:text-[#FF8800] transition-colors"
+                className="hover:text-[color:var(--accent-primary)] transition-colors"
               >
                 {item.label}
               </Link>

@@ -55,7 +55,7 @@ export default async function ComparisonPage({ params }: PageProps) {
             {comparison.metaTitle}
           </h1>
 
-          <p className="text-[#D6D0C2] text-lg leading-relaxed">
+          <p className="text-[color:var(--text-primary)] text-lg leading-relaxed">
             {comparison.intro}
           </p>
         </Container>
@@ -72,7 +72,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               <thead>
                 <tr>
                   <th
-                    className="text-left text-xs uppercase tracking-wider text-[#8E8E96] py-3 px-4 border-b"
+                    className="text-left text-xs uppercase tracking-wider text-[color:var(--text-muted)] py-3 px-4 border-b"
                     style={{ borderColor: 'rgba(255, 136, 0, 0.2)' }}
                   >
                     Category
@@ -107,13 +107,13 @@ export default async function ComparisonPage({ params }: PageProps) {
                       {row.category}
                     </td>
                     <td
-                      className="text-sm text-[#D6D0C2] py-3 px-4 border-b"
+                      className="text-sm text-[color:var(--text-primary)] py-3 px-4 border-b"
                       style={{ borderColor: 'rgba(255, 136, 0, 0.1)' }}
                     >
                       {row.optionA}
                     </td>
                     <td
-                      className="text-sm text-[#D6D0C2] py-3 px-4 border-b"
+                      className="text-sm text-[color:var(--text-primary)] py-3 px-4 border-b"
                       style={{ borderColor: 'rgba(255, 136, 0, 0.1)' }}
                     >
                       {row.optionB}
@@ -152,7 +152,7 @@ export default async function ComparisonPage({ params }: PageProps) {
                   {comparison.optionA.pros.map((pro, index) => (
                     <li
                       key={index}
-                      className="flex items-start gap-2 text-sm text-[#D6D0C2] leading-relaxed"
+                      className="flex items-start gap-2 text-sm text-[color:var(--text-primary)] leading-relaxed"
                     >
                       <span className="text-green-400 mt-0.5 shrink-0">+</span>
                       {pro}
@@ -171,7 +171,7 @@ export default async function ComparisonPage({ params }: PageProps) {
                   {comparison.optionA.cons.map((con, index) => (
                     <li
                       key={index}
-                      className="flex items-start gap-2 text-sm text-[#D6D0C2] leading-relaxed"
+                      className="flex items-start gap-2 text-sm text-[color:var(--text-primary)] leading-relaxed"
                     >
                       <span className="text-red-400 mt-0.5 shrink-0">-</span>
                       {con}
@@ -203,7 +203,7 @@ export default async function ComparisonPage({ params }: PageProps) {
                   {comparison.optionB.pros.map((pro, index) => (
                     <li
                       key={index}
-                      className="flex items-start gap-2 text-sm text-[#D6D0C2] leading-relaxed"
+                      className="flex items-start gap-2 text-sm text-[color:var(--text-primary)] leading-relaxed"
                     >
                       <span className="text-green-400 mt-0.5 shrink-0">+</span>
                       {pro}
@@ -222,7 +222,7 @@ export default async function ComparisonPage({ params }: PageProps) {
                   {comparison.optionB.cons.map((con, index) => (
                     <li
                       key={index}
-                      className="flex items-start gap-2 text-sm text-[#D6D0C2] leading-relaxed"
+                      className="flex items-start gap-2 text-sm text-[color:var(--text-primary)] leading-relaxed"
                     >
                       <span className="text-red-400 mt-0.5 shrink-0">-</span>
                       {con}
@@ -248,7 +248,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               border: '1px solid rgba(255, 168, 51, 0.2)',
             }}
           >
-            <p className="text-[#D6D0C2] text-base leading-relaxed">
+            <p className="text-[color:var(--text-primary)] text-base leading-relaxed">
               {comparison.recommendation}
             </p>
           </div>

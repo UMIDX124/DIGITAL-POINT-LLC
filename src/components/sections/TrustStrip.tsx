@@ -4,7 +4,7 @@ export function TrustStrip() {
   return (
     <section
       className="relative py-10 border-b"
-      style={{ background: '#0A0A0B', borderColor: '#27272A', borderTopWidth: 0 }}
+      style={{ background: 'var(--bg-canvas)', borderColor: 'var(--border-default)', borderTopWidth: 0 }}
       aria-label="Practices"
     >
       <div className="container-wide">

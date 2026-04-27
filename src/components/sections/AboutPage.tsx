@@ -68,7 +68,7 @@ export function AboutPage() {
               </span>
               , not reports about growth.
             </h1>
-            <p className="text-[#D6D0C2] text-lg md:text-xl max-w-2xl leading-relaxed">
+            <p className="text-[color:var(--text-primary)] text-lg md:text-xl max-w-2xl leading-relaxed">
               We&apos;ve been in your shoes — staring at dashboards that don&apos;t add up, wondering which campaigns actually drive revenue. We built Digital Point to fix that, for ourselves first, then for everyone else.
             </p>
           </FadeUp>
@@ -113,13 +113,13 @@ export function AboutPage() {
                 border: '1px solid rgba(255, 136, 0, 0.15)',
               }}
             >
-              <p className="text-[#D6D0C2] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
+              <p className="text-[color:var(--text-primary)] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
                 Here&apos;s the honest version: back in 2017, Faizan was managing ad accounts and kept seeing the same thing — businesses pouring money into campaigns with no idea what was actually driving revenue. Anwaar, on the other hand, was deep in the data side, building dashboards that nobody used because they answered the wrong questions.
               </p>
-              <p className="text-[#D6D0C2] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
+              <p className="text-[color:var(--text-primary)] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
                 We met, argued about attribution models over too much coffee, and realized we were solving two halves of the same problem. Faizan knew how to make ads perform. Anwaar knew how to prove it. Together, we figured — why not just do both?
               </p>
-              <p className="text-[#D6D0C2] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
+              <p className="text-[color:var(--text-primary)] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
                 Digital Point started in a spare room with one client who took a chance on us. Eight years later, we&apos;ve managed over $50M in ad spend, built remote teams across continents, and helped businesses go from &ldquo;we think our ads work&rdquo; to &ldquo;we know exactly what&apos;s driving revenue.&rdquo;
               </p>
               <p className="text-white text-base leading-relaxed font-medium" style={{ maxWidth: 'var(--maxw-body)' }}>
@@ -128,13 +128,13 @@ export function AboutPage() {
               <div className="flex flex-wrap gap-6 mt-6 pt-6" style={{ borderTop: '1px solid rgba(255, 136, 0, 0.15)' }}>
                 <div>
                   <p className="text-white font-display font-semibold">M. Faizan Rafiq</p>
-                  <p className="text-[#FF8800] text-sm">Co-Founder &middot; The Ads Guy</p>
-                  <p className="text-[#8E8E96] text-xs mt-1">Secretly competitive about ROAS the way some people are about fantasy football.</p>
+                  <p className="text-[color:var(--accent-primary)] text-sm">Co-Founder &middot; The Ads Guy</p>
+                  <p className="text-[color:var(--text-muted)] text-xs mt-1">Secretly competitive about ROAS the way some people are about fantasy football.</p>
                 </div>
                 <div>
                   <p className="text-white font-display font-semibold">Anwaar Tayyab</p>
-                  <p className="text-[#FF8800] text-sm">Co-Founder &middot; The Data Guy</p>
-                  <p className="text-[#8E8E96] text-xs mt-1">Will redesign your entire dashboard if one chart is slightly misleading. You&apos;ve been warned.</p>
+                  <p className="text-[color:var(--accent-primary)] text-sm">Co-Founder &middot; The Data Guy</p>
+                  <p className="text-[color:var(--text-muted)] text-xs mt-1">Will redesign your entire dashboard if one chart is slightly misleading. You&apos;ve been warned.</p>
                 </div>
               </div>
             </div>
@@ -149,14 +149,14 @@ export function AboutPage() {
                 <StaggerItem key={item.year}>
                   <div className={`relative flex items-start gap-8 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                     {/* Dot */}
-                    <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#FF8800] z-10"
+                    <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[color:var(--accent-primary)] z-10"
                       style={{ boxShadow: '0 0 12px rgba(255, 168, 51, 0.6)' }}
                     />
 
                     <div className={`ml-12 md:ml-0 md:w-[calc(50%-2rem)] ${i % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8'}`}>
-                      <span className="text-[#FF8800] font-mono text-sm">{item.year}</span>
+                      <span className="text-[color:var(--accent-primary)] font-mono text-sm">{item.year}</span>
                       <h3 className="font-display text-xl font-semibold text-white mt-1">{item.title}</h3>
-                      <p className="text-[#D6D0C2] text-sm mt-2 leading-relaxed">{item.description}</p>
+                      <p className="text-[color:var(--text-primary)] text-sm mt-2 leading-relaxed">{item.description}</p>
                     </div>
                   </div>
                 </StaggerItem>
@@ -178,9 +178,9 @@ export function AboutPage() {
             {values.map((value) => (
               <StaggerItem key={value.title}>
                 <GlassCard className="p-6 h-full">
-                  <value.icon className="w-8 h-8 text-[#FF8800] mb-4" />
+                  <value.icon className="w-8 h-8 text-[color:var(--accent-primary)] mb-4" />
                   <h3 className="font-display text-lg font-semibold text-white mb-2">{value.title}</h3>
-                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{value.description}</p>
+                  <p className="text-[color:var(--text-primary)] text-sm leading-relaxed">{value.description}</p>
                 </GlassCard>
               </StaggerItem>
             ))}
@@ -196,7 +196,7 @@ export function AboutPage() {
               <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
                 Ready to see what we can do for you?
               </h2>
-              <p className="text-[#D6D0C2] text-lg mb-8">
+              <p className="text-[color:var(--text-primary)] text-lg mb-8">
                 Start with a free growth audit. No pitch, no pressure — just clarity on what&apos;s working and what isn&apos;t.
               </p>
               <Link href="/free-growth-audit">

@@ -49,9 +49,9 @@ export function NewsletterOptIn({
           border: '1px solid rgba(255, 168, 51, 0.2)',
         }}
       >
-        <CheckCircle className="w-8 h-8 text-[#FF8800] mx-auto mb-2" />
+        <CheckCircle className="w-8 h-8 text-[color:var(--accent-primary)] mx-auto mb-2" />
         <p className="text-white font-medium text-sm">You&apos;re in!</p>
-        <p className="text-[#8E8E96] text-xs mt-1">Watch your inbox for growth insights.</p>
+        <p className="text-[color:var(--text-muted)] text-xs mt-1">Watch your inbox for growth insights.</p>
       </div>
     );
   }
@@ -67,10 +67,10 @@ export function NewsletterOptIn({
       }}
     >
       <div className="flex items-center gap-2 mb-3">
-        <Mail className="w-4 h-4 text-[#FF8800]" />
+        <Mail className="w-4 h-4 text-[color:var(--accent-primary)]" />
         <h3 className="text-white font-medium text-sm">{title}</h3>
       </div>
-      <p className="text-[#8E8E96] text-xs mb-4">{description}</p>
+      <p className="text-[color:var(--text-muted)] text-xs mb-4">{description}</p>
       <form onSubmit={handleSubmit} className="flex gap-2">
         <input
           type="email"
@@ -78,7 +78,7 @@ export function NewsletterOptIn({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@company.com"
-          className="flex-1 px-3 py-2 rounded-lg text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+          className="flex-1 px-3 py-2 rounded-lg text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
           style={{
             background: 'rgba(13, 8, 21, 0.6)',
             border: '1px solid rgba(255, 136, 0, 0.2)',
@@ -97,7 +97,7 @@ export function NewsletterOptIn({
         </button>
       </form>
       {status === 'error' && (
-        <p className="text-[#FF8800] text-xs mt-2">Something went wrong. Try again.</p>
+        <p className="text-[color:var(--accent-primary)] text-xs mt-2">Something went wrong. Try again.</p>
       )}
     </div>
   );

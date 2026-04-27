@@ -50,7 +50,7 @@ function CollapsibleTOC({ toc }: { toc: { id: string; text: string; level: numbe
       >
         <h4 className="text-white font-medium text-sm">Contents</h4>
         <ChevronDown
-          className={`w-4 h-4 text-[#8E8E96] lg:hidden transition-transform duration-200 ${
+          className={`w-4 h-4 text-[color:var(--text-muted)] lg:hidden transition-transform duration-200 ${
             isOpen ? 'rotate-180' : ''
           }`}
         />
@@ -60,7 +60,7 @@ function CollapsibleTOC({ toc }: { toc: { id: string; text: string; level: numbe
           <a
             key={item.id}
             href={`#${item.id}`}
-            className={`block text-xs text-[#8E8E96] hover:text-[#FF8800] transition-colors py-0.5 ${
+            className={`block text-xs text-[color:var(--text-muted)] hover:text-[color:var(--accent-primary)] transition-colors py-0.5 ${
               item.level === 3 ? 'pl-4' : ''
             }`}
           >
@@ -86,11 +86,11 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
   const proseClasses = `prose prose-invert max-w-none
                   [&_h2]:font-display [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-white [&_h2]:mt-10 [&_h2]:mb-4
                   [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-white [&_h3]:mt-8 [&_h3]:mb-3
-                  [&_p]:text-[#D6D0C2] [&_p]:leading-relaxed [&_p]:mb-4
+                  [&_p]:text-[color:var(--text-primary)] [&_p]:leading-relaxed [&_p]:mb-4
                   [&_strong]:text-white
-                  [&_ul]:my-4 [&_li]:text-[#D6D0C2] [&_li]:mb-1
-                  [&_code]:text-[#FFA833]
-                  [&_a]:text-[#FF8800] [&_a]:hover:text-[#FFA833]
+                  [&_ul]:my-4 [&_li]:text-[color:var(--text-primary)] [&_li]:mb-1
+                  [&_code]:text-[color:var(--accent-bright)]
+                  [&_a]:text-[color:var(--accent-primary)] [&_a]:hover:text-[color:var(--accent-bright)]
                   [&_hr]:border-[rgba(255, 136, 0,0.15)] [&_hr]:my-8`;
 
   return (
@@ -120,16 +120,16 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
                 <Tag className="w-3 h-3" />
                 {post.category}
               </span>
-              <span className="flex items-center gap-1 text-[#8E8E96] text-xs">
+              <span className="flex items-center gap-1 text-[color:var(--text-muted)] text-xs">
                 <Calendar className="w-3 h-3" />
                 {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
               </span>
-              <span className="flex items-center gap-1 text-[#8E8E96] text-xs">
+              <span className="flex items-center gap-1 text-[color:var(--text-muted)] text-xs">
                 <Clock className="w-3 h-3" />
                 {post.readTime}
               </span>
               {post.lastModified && post.lastModified !== post.date && (
-                <span className="flex items-center gap-1 text-[#8E8E96] text-xs">
+                <span className="flex items-center gap-1 text-[color:var(--text-muted)] text-xs">
                   <Calendar className="w-3 h-3" />
                   Updated: {new Date(post.lastModified).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                 </span>
@@ -139,9 +139,9 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mt-4 max-w-4xl">
               {post.title}
             </h1>
-            <p className="text-[#D6D0C2] text-lg mt-4 max-w-2xl">{post.excerpt}</p>
-            <p className="text-[#8E8E96] text-sm mt-3">
-              By <span className="text-[#FF8800]">{post.author}</span>
+            <p className="text-[color:var(--text-primary)] text-lg mt-4 max-w-2xl">{post.excerpt}</p>
+            <p className="text-[color:var(--text-muted)] text-sm mt-3">
+              By <span className="text-[color:var(--accent-primary)]">{post.author}</span>
             </p>
           </FadeUp>
         </Container>
@@ -177,7 +177,7 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
                     {post.faqs.map((faq, i) => (
                       <div key={i} className="rounded-xl p-5" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
                         <h3 className="text-white font-medium text-sm mb-2">{faq.question}</h3>
-                        <p className="text-[#8E8E96] text-sm">{faq.answer}</p>
+                        <p className="text-[color:var(--text-muted)] text-sm">{faq.answer}</p>
                       </div>
                     ))}
                   </div>
@@ -207,10 +207,10 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
                         className="group rounded-xl p-4 transition-all hover:scale-[1.01]"
                         style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}
                       >
-                        <h4 className="text-white text-sm font-medium group-hover:text-[#FFA833] transition-colors leading-snug">
+                        <h4 className="text-white text-sm font-medium group-hover:text-[color:var(--accent-bright)] transition-colors leading-snug">
                           {rp.title}
                         </h4>
-                        <p className="text-[#8E8E96] text-xs mt-2">{rp.readTime}</p>
+                        <p className="text-[color:var(--text-muted)] text-xs mt-2">{rp.readTime}</p>
                       </Link>
                     ))}
                   </div>
@@ -231,7 +231,7 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
               {/* Back to blog */}
               <Link
                 href="/blog"
-                className="flex items-center gap-2 text-[#8E8E96] hover:text-[#FF8800] transition-colors text-xs"
+                className="flex items-center gap-2 text-[color:var(--text-muted)] hover:text-[color:var(--accent-primary)] transition-colors text-xs"
               >
                 <ArrowLeft className="w-3 h-3" />
                 All articles

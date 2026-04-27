@@ -24,7 +24,7 @@ export default function Error({
         <h2 className="font-display text-2xl font-bold text-white mb-4">
           Something went wrong
         </h2>
-        <p style={{ color: '#A1A1AA' }} className="mb-8">
+        <p style={{ color: 'var(--text-secondary)' }} className="mb-8">
           An unexpected error occurred. Please try again.
         </p>
         <button

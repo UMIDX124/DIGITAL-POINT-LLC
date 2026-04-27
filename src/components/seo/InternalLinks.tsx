@@ -98,12 +98,12 @@ export function InternalLinks({
             >
               <div className="flex items-center gap-2 mb-2">
                 <Icon className="w-4 h-4" style={{ color: service.color }} />
-                <span className="text-white text-sm font-medium group-hover:text-[#FFA833] transition-colors">
+                <span className="text-white text-sm font-medium group-hover:text-[color:var(--accent-bright)] transition-colors">
                   {service.title}
                 </span>
-                <ArrowRight className="w-3 h-3 text-[#8E8E96] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                <ArrowRight className="w-3 h-3 text-[color:var(--text-muted)] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-              <p className="text-[#8E8E96] text-xs">{service.description}</p>
+              <p className="text-[color:var(--text-muted)] text-xs">{service.description}</p>
             </Link>
           );
         })}

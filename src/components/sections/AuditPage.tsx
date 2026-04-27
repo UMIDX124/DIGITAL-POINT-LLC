@@ -167,7 +167,7 @@ export function AuditPage() {
           </FadeUp>
 
           <FadeUp delay={0.2}>
-            <p className="text-[#D6D0C2] text-lg mt-4 max-w-2xl">
+            <p className="text-[color:var(--text-primary)] text-lg mt-4 max-w-2xl">
               Forty-five minutes. We map where AI agents could be running your repeatable work, where automation could remove handoffs, and where operators are still earning their seat. You leave with a deployment-ready blueprint — no agency retainer attached.
             </p>
           </FadeUp>
@@ -185,11 +185,11 @@ export function AuditPage() {
                 {step < 4 && (
                   <div className="mb-8">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[#D6D0C2] text-sm">Step {step} of 3</span>
+                      <span className="text-[color:var(--text-primary)] text-sm">Step {step} of 3</span>
                       {step > 1 && (
                         <button
                           onClick={goBack}
-                          className="flex items-center gap-1 text-[#FF8800] hover:text-[#FFA833] text-sm transition-colors"
+                          className="flex items-center gap-1 text-[color:var(--accent-primary)] hover:text-[color:var(--accent-bright)] text-sm transition-colors"
                         >
                           <ArrowLeft className="w-3 h-3" />
                           Back
@@ -221,7 +221,7 @@ export function AuditPage() {
                       <h2 className="font-display text-xl font-bold text-white mb-2" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
                         What&apos;s your biggest challenge?
                       </h2>
-                      <p className="text-[#D6D0C2] text-sm mb-6">
+                      <p className="text-[color:var(--text-primary)] text-sm mb-6">
                         Pick the one that resonates most. We&apos;ll tailor your audit around it.
                       </p>
 
@@ -247,13 +247,13 @@ export function AuditPage() {
                                 border: '1px solid rgba(255, 168, 51, 0.2)',
                               }}
                             >
-                              <challenge.icon className="w-5 h-5 text-[#FF8800]" />
+                              <challenge.icon className="w-5 h-5 text-[color:var(--accent-primary)]" />
                             </div>
                             <div>
                               <div className="text-white font-medium text-sm">{challenge.label}</div>
-                              <div className="text-[#8E8E96] text-xs mt-0.5">{challenge.description}</div>
+                              <div className="text-[color:var(--text-muted)] text-xs mt-0.5">{challenge.description}</div>
                             </div>
-                            <ArrowRight className="w-4 h-4 text-[#FF8800] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <ArrowRight className="w-4 h-4 text-[color:var(--accent-primary)] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
                           </button>
                         ))}
                       </div>
@@ -272,7 +272,7 @@ export function AuditPage() {
                       <h2 className="font-display text-xl font-bold text-white mb-2" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
                         Monthly ops budget?
                       </h2>
-                      <p className="text-[#D6D0C2] text-sm mb-6">
+                      <p className="text-[color:var(--text-primary)] text-sm mb-6">
                         This helps us calibrate our recommendations to your scale.
                       </p>
 
@@ -291,7 +291,7 @@ export function AuditPage() {
                                 : '1px solid rgba(255, 168, 51, 0.1)',
                             }}
                           >
-                            <div className="text-white font-medium text-sm group-hover:text-[#FFA833] transition-colors">
+                            <div className="text-white font-medium text-sm group-hover:text-[color:var(--accent-bright)] transition-colors">
                               {range.label}
                             </div>
                           </button>
@@ -312,7 +312,7 @@ export function AuditPage() {
                       <h2 className="font-display text-xl font-bold text-white mb-2" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
                         Where should we send your audit?
                       </h2>
-                      <p className="text-[#D6D0C2] text-sm mb-6">
+                      <p className="text-[color:var(--text-primary)] text-sm mb-6">
                         A co-founder will personally review your setup.
                       </p>
 
@@ -326,7 +326,7 @@ export function AuditPage() {
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             placeholder="Your name"
-                            className="bg-[#141416]/50 border-[#3A2D14] focus:border-[#FF8800] text-white"
+                            className="bg-[#141416]/50 border-[#3A2D14] focus:border-[color:var(--accent-primary)] text-white"
                           />
                           {errors.name && (
                             <p className="text-red-400 text-xs mt-1">{errors.name}</p>
@@ -343,7 +343,7 @@ export function AuditPage() {
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             placeholder="you@company.com"
-                            className="bg-[#141416]/50 border-[#3A2D14] focus:border-[#FF8800] text-white"
+                            className="bg-[#141416]/50 border-[#3A2D14] focus:border-[color:var(--accent-primary)] text-white"
                           />
                           {errors.email && (
                             <p className="text-red-400 text-xs mt-1">{errors.email}</p>
@@ -359,7 +359,7 @@ export function AuditPage() {
                             value={formData.company}
                             onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                             placeholder="Company name (optional)"
-                            className="bg-[#141416]/50 border-[#3A2D14] focus:border-[#FF8800] text-white"
+                            className="bg-[#141416]/50 border-[#3A2D14] focus:border-[color:var(--accent-primary)] text-white"
                           />
                         </div>
 
@@ -404,7 +404,7 @@ export function AuditPage() {
                         Request Received!
                       </h2>
 
-                      <p className="text-[#D6D0C2] mb-6 max-w-sm mx-auto">
+                      <p className="text-[color:var(--text-primary)] mb-6 max-w-sm mx-auto">
                         Thank you, {formData.name.split(' ')[0]}! A co-founder will review your submission and reach out within 24-48 hours.
                       </p>
 
@@ -412,7 +412,7 @@ export function AuditPage() {
                         <button
                           type="button"
                           onClick={() => window.dispatchEvent(new Event('cosmo:open'))}
-                          className="flex items-center gap-2 text-[#FF8800] hover:text-[#FFA833] transition-colors"
+                          className="flex items-center gap-2 text-[color:var(--accent-primary)] hover:text-[color:var(--accent-bright)] transition-colors"
                         >
                           Need a faster reply? Talk to Cosmo
                           <span aria-hidden="true">→</span>
@@ -437,7 +437,7 @@ export function AuditPage() {
                     'Clear next steps',
                     'No sales pressure',
                   ].map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-[#D6D0C2] text-sm">
+                    <li key={item} className="flex items-center gap-3 text-[color:var(--text-primary)] text-sm">
                       <CheckCircle className="w-4 h-4 text-green-400 shrink-0" />
                       {item}
                     </li>
@@ -447,30 +447,30 @@ export function AuditPage() {
 
               <GlassCard className="p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <Clock className="w-5 h-5 text-[#FF8800]" />
+                  <Clock className="w-5 h-5 text-[color:var(--accent-primary)]" />
                   <h3 className="font-display font-semibold text-white">
                     Response Time
                   </h3>
                 </div>
-                <p className="text-[#D6D0C2] text-sm">
+                <p className="text-[color:var(--text-primary)] text-sm">
                   Co-Founder review within 24-48 hours.
                 </p>
               </GlassCard>
 
               <GlassCard className="p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <User className="w-5 h-5 text-[#FF8800]" />
+                  <User className="w-5 h-5 text-[color:var(--accent-primary)]" />
                   <h3 className="font-display font-semibold text-white">
                     Co-Founder Led
                   </h3>
                 </div>
-                <p className="text-[#D6D0C2] text-sm mb-4">
+                <p className="text-[color:var(--text-primary)] text-sm mb-4">
                   Every audit is reviewed by a co-founder.
                 </p>
                 <button
                   type="button"
                   onClick={() => window.dispatchEvent(new Event('cosmo:open'))}
-                  className="flex items-center gap-2 text-[#FF8800] hover:text-[#FFA833] transition-colors text-sm"
+                  className="flex items-center gap-2 text-[color:var(--accent-primary)] hover:text-[color:var(--accent-bright)] transition-colors text-sm"
                 >
                   Talk to Cosmo &rarr;
                 </button>

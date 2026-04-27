@@ -33,7 +33,7 @@ export function LatestInsights() {
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
             Latest Insights
           </h2>
-          <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed">
+          <p className="text-[color:var(--text-primary)] text-lg mt-4 leading-relaxed">
             Expert analysis on paid acquisition, attribution, and growth systems
           </p>
         </div>
@@ -75,19 +75,19 @@ export function LatestInsights() {
                   </span>
 
                   {/* Title */}
-                  <h3 className="font-display text-lg font-semibold text-white mb-2 leading-snug group-hover:text-[#FF8800] transition-colors">
+                  <h3 className="font-display text-lg font-semibold text-white mb-2 leading-snug group-hover:text-[color:var(--accent-primary)] transition-colors">
                     <Link href={`/blog/${post.slug}`} className="after:absolute after:inset-0">
                       {post.title}
                     </Link>
                   </h3>
 
                   {/* Excerpt */}
-                  <p className="text-[#8E8E96] text-sm leading-relaxed line-clamp-3 mb-4 flex-1">
+                  <p className="text-[color:var(--text-muted)] text-sm leading-relaxed line-clamp-3 mb-4 flex-1">
                     {post.excerpt}
                   </p>
 
                   {/* Meta */}
-                  <div className="flex items-center gap-3 text-xs text-[#8E8E96]">
+                  <div className="flex items-center gap-3 text-xs text-[color:var(--text-muted)]">
                     <time dateTime={post.date}>
                       {new Date(post.date).toLocaleDateString('en-US', {
                         month: 'short',
@@ -95,7 +95,7 @@ export function LatestInsights() {
                         year: 'numeric',
                       })}
                     </time>
-                    <span className="w-1 h-1 rounded-full bg-[#8E8E96]" />
+                    <span className="w-1 h-1 rounded-full bg-[color:var(--text-muted)]" />
                     <span>{post.readTime}</span>
                   </div>
                 </div>
@@ -108,7 +108,7 @@ export function LatestInsights() {
         <div className="text-center mt-10">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1.5 text-[#FF8800] hover:text-[#FFA833] font-medium transition-colors"
+            className="inline-flex items-center gap-1.5 text-[color:var(--accent-primary)] hover:text-[color:var(--accent-bright)] font-medium transition-colors"
           >
             View All Articles
             <span aria-hidden="true">&rarr;</span>

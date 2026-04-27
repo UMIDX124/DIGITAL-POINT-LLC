@@ -879,6 +879,54 @@ a.text-link:hover,
 }
 
 /* ============================================
+   PHASE 18 reduced-scope C2.2 — FOOTER SCAFFOLDING
+   Class extraction of 12 inline-style props on Footer.tsx. Token values
+   unchanged — pure inline-to-class migration. Pillar 4 R7 directive-locked
+   philosophy-block typography hierarchy preserved verbatim. Compliance-strip
+   rule extracted but row itself unchanged (V8 removal pending Phase 3 spec).
+   ============================================ */
+.footer-root {
+  background: var(--bg-canvas);
+  border-top: 1px solid var(--accent);
+}
+.footer-logo-img {
+  width: 80px;
+  height: auto;
+}
+.footer-philosophy {
+  max-width: 56ch;
+}
+.footer-philosophy-heading {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+.footer-philosophy-body {
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+.footer-philosophy-code {
+  background: var(--ring-stroke);
+  color: var(--text-primary);
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 12px;
+}
+.footer-location {
+  margin-top: 1.25rem;
+}
+.footer-cta-amber {
+  background: var(--accent-bright);
+}
+.footer-trust-row {
+  border-top: 1px solid var(--border-default);
+  color: var(--text-muted);
+}
+.footer-bottom-bar {
+  border-top: 1px solid var(--border-default);
+}
+
+/* ============================================
    PHASE 11 — HERO PULSE LINE
    Replaces the 5-layer SVG orb. Single 1px×200px vertical line at
    --accent 30% opacity, breathing scaleY + opacity. Near-zero perf cost,

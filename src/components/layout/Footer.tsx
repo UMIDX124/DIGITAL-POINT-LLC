@@ -26,7 +26,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-auto" style={{ background: 'var(--bg-canvas)', borderTop: '1px solid var(--accent)' }}>
+    <footer className="footer-root relative mt-auto">
       <div className="container-wide">
         <div className="py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="lg:col-span-1">
@@ -36,7 +36,7 @@ export function Footer() {
                 alt="Digital Point"
                 width={160}
                 height={160}
-                style={{ width: '80px', height: 'auto' }}
+                className="footer-logo-img"
               />
               <div className="flex flex-col leading-none">
                 <span className="font-display text-xl text-[color:var(--ivory)]">Digital Point LLC</span>
@@ -79,49 +79,22 @@ export function Footer() {
             {/* Phase 17b 3-reversal E1 — generic email surface removed.
                 Per Phase 12 contact strategy: pure-AI route (Cosmo) + audit
                 form, no `hello@` queue. Verbatim brand copy block below. */}
-            <div
-              id="contact-philosophy"
-              className="space-y-4"
-              style={{ maxWidth: '56ch' }}
-            >
-              <p
-                className="text-sm font-medium"
-                style={{ color: 'var(--text-primary)', fontWeight: 500 }}
-              >
+            <div id="contact-philosophy" className="footer-philosophy space-y-4">
+              <p className="footer-philosophy-heading text-sm font-medium">
                 Why we don&apos;t list a generic support inbox.
               </p>
-              <p
-                className="text-sm"
-                style={{ color: 'var(--text-muted)', lineHeight: 1.65 }}
-              >
+              <p className="footer-philosophy-body text-sm">
                 Most agencies hide behind a{' '}
-                <code
-                  style={{
-                    background: 'var(--ring-stroke)',
-                    color: 'var(--text-primary)',
-                    padding: '1px 6px',
-                    borderRadius: '3px',
-                    fontFamily: 'var(--font-mono), ui-monospace, monospace',
-                    fontSize: '12px',
-                  }}
-                >
-                  hello@
-                </code>{' '}
+                <code className="footer-philosophy-code">hello@</code>{' '}
                 queue where your message lines up with everyone else&apos;s. We don&apos;t run that way.
               </p>
-              <p
-                className="text-sm"
-                style={{ color: 'var(--text-muted)', lineHeight: 1.65 }}
-              >
+              <p className="footer-philosophy-body text-sm">
                 When you reach out through Cosmo or our audit form, your inquiry goes directly to the operator best matched to your stage — not a ticket pool. We answer from our personal accounts because we&apos;re personally accountable for what we ship.
               </p>
-              <p
-                className="text-sm"
-                style={{ color: 'var(--text-muted)', lineHeight: 1.65 }}
-              >
+              <p className="footer-philosophy-body text-sm">
                 If you&apos;d rather talk to a human first, just tell Cosmo. We&apos;ll route the conversation to the right operator within one business day.
               </p>
-              <p className="text-[color:var(--muted)] text-sm" style={{ marginTop: '1.25rem' }}>
+              <p className="footer-location text-[color:var(--muted)] text-sm">
                 Lahore, PK · UTC+5
               </p>
               <a
@@ -135,8 +108,7 @@ export function Footer() {
               </a>
               <Link
                 href="/free-growth-audit"
-                className="inline-block mt-2 px-4 py-2 text-[13px] font-medium text-[#0A0A0B] rounded-md"
-                style={{ background: 'var(--accent-bright)' }}
+                className="footer-cta-amber inline-block mt-2 px-4 py-2 text-[13px] font-medium text-[#0A0A0B] rounded-md"
               >
                 Talk to a co-founder
               </Link>
@@ -148,16 +120,13 @@ export function Footer() {
             per K5 substantiation gap. GDPR Compliant ships post-A3 cookie
             banner. 5-day plan ships per existing CTA copy ("Written plan
             within 5 business days"). */}
-        <div
-          className="py-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.18em]"
-          style={{ borderTop: '1px solid #27272A', color: 'var(--text-muted)' }}
-        >
+        <div className="footer-trust-row py-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.18em]">
           <span>GDPR Compliant</span>
           <span aria-hidden="true">·</span>
           <span>5-Day Written Plan Guaranteed</span>
         </div>
 
-        <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4" style={{ borderTop: '1px solid #27272A' }}>
+        <div className="footer-bottom-bar py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[color:var(--muted)] text-xs">
             &copy; {currentYear} Digital Point LLC. All rights reserved.
           </p>

@@ -234,20 +234,23 @@ export function HeroSection() {
             {/* Phase 17b Pillar 4 P0.2 — explicit line break between the
                 two sentences. "Hire the AI." and "Skip the headcount." are
                 two distinct typographic beats per the locked hero copy
-                invariant. text-wrap: balance / pretty (if applied via the
-                browser default) was collapsing them onto a single shared
-                line at ≥1280px viewports. */}
+                invariant. The wrapper span around the second sentence
+                carries `white-space: nowrap` (via .hero-h1-line-2 CSS) so
+                "Skip the headcount." stays as a single visual line at
+                viewport widths ≥640px (mobile keeps natural wrap). */}
             <br aria-hidden="true" />
-            <span className="word inline-block overflow-hidden align-top">
-              <span className="word-inner inline-block" data-word-reveal>Skip</span>
-            </span>
-            <span aria-hidden="true">{' '}</span>
-            <span className="word inline-block overflow-hidden align-top">
-              <span className="word-inner inline-block" data-word-reveal>the</span>
-            </span>
-            <span aria-hidden="true">{' '}</span>
-            <span className="word inline-block overflow-hidden align-top">
-              <span className="word-inner inline-block" data-word-reveal>headcount.</span>
+            <span className="hero-h1-line-2">
+              <span className="word inline-block overflow-hidden align-top">
+                <span className="word-inner inline-block" data-word-reveal>Skip</span>
+              </span>
+              <span aria-hidden="true">{' '}</span>
+              <span className="word inline-block overflow-hidden align-top">
+                <span className="word-inner inline-block" data-word-reveal>the</span>
+              </span>
+              <span aria-hidden="true">{' '}</span>
+              <span className="word inline-block overflow-hidden align-top">
+                <span className="word-inner inline-block" data-word-reveal>headcount.</span>
+              </span>
             </span>
           </h1>
 

@@ -911,6 +911,20 @@ html[data-paused-global="true"] .grain-overlay {
    the clip to stay; fix expands the .word box vertically + activates
    OpenType features for proper italic glyph metrics.
    ============================================ */
+/* Phase 17b Pillar 4 P0.2 — nowrap wrapper for hero h1 line 2.
+   Keeps "Skip the headcount." as a single visual line at viewports
+   ≥640px so the explicit <br> produces exactly two lines. Below 640px
+   natural wrap is allowed so the line doesn't overflow narrow mobile
+   viewports. */
+.hero-h1-line-2 {
+  display: inline;
+}
+@media (min-width: 640px) {
+  .hero-h1-line-2 {
+    white-space: nowrap;
+  }
+}
+
 .hero-em {
   font-style: italic;
   color: var(--accent);

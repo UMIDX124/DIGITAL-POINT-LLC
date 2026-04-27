@@ -1,0 +1,8 @@
+src/app/api/founder/route.ts:105:              <tr><td style="padding: 8px 0; color: #D6D0C2;">Email</td><td style="padding: 8px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #FF8800;">${escapeHtml(email)}</a></td></tr>
+src/app/api/audit/route.ts:114:              <tr><td style="padding: 8px 0; color: #D6D0C2;">Email</td><td style="padding: 8px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #FF8800;">${escapeHtml(email)}</a></td></tr>
+src/app/api/leads/route.ts:65:                  <a href="mailto:${escapeHtml(email)}" style="color: #FF8800; text-decoration: none;">${escapeHtml(email)}</a>
+src/app/api/ticket/route.ts:136:                  <a href="mailto:${escapeHtml(email)}" style="color: #FF8800; text-decoration: none;">${escapeHtml(email)}</a>
+src/components/layout/Footer.tsx:81:                form, no `hello@` queue. Verbatim brand copy block below. */}
+src/components/layout/Footer.tsx:108:                  hello@
+src/components/sections/FounderSection.tsx:74:                      href="mailto:info@digitalpointllc.com"
+src/components/sections/ContactPage.tsx:87:              We don&apos;t list a generic support inbox. Most agencies hide behind a hello@ queue where your message lines up with everyone else&apos;s. We don&apos;t run that way. Reach out through Cosmo or the audit form — your inquiry routes directly to the operator best matched to your stage, not a ticket pool. We answer from our personal accounts because we&apos;re personally accountable for what we ship.

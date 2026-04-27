@@ -1,0 +1,9 @@
+src/app/globals.css:651:.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+src/app/globals.css:652:.stagger-children > *:nth-child(2) { animation-delay: 80ms; }
+src/app/globals.css:653:.stagger-children > *:nth-child(3) { animation-delay: 160ms; }
+src/app/globals.css:654:.stagger-children > *:nth-child(4) { animation-delay: 240ms; }
+src/app/globals.css:655:.stagger-children > *:nth-child(5) { animation-delay: 320ms; }
+src/app/globals.css:656:.stagger-children > *:nth-child(6) { animation-delay: 400ms; }
+src/app/globals.css:1608:.hero-trust-strip > .hero-trust-signal:nth-of-type(1) { animation-delay: 0.95s; }
+src/app/globals.css:1609:.hero-trust-strip > .hero-trust-signal:nth-of-type(2) { animation-delay: 1.05s; }
+src/app/globals.css:1610:.hero-trust-strip > .hero-trust-signal:nth-of-type(3) { animation-delay: 1.15s; }

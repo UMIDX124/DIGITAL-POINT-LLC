@@ -1,0 +1,77 @@
+src/app/not-found.tsx:98:            onClick={() => window.dispatchEvent(new Event('cosmo:open'))}
+src/app/layout.tsx:234:              "try{if(sessionStorage.getItem('dpl_i')==='1')document.documentElement.dataset.iSeen='1';else sessionStorage.setItem('dpl_i','1')}catch(e){}",
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:100:    const url = `${window.location.origin}/tools/attribution-model-visualizer?model=${selectedModel.replace(' ', '-')}&tp=${touchpoints.length}`;
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:35:    const url = `${window.location.origin}/tools/roas-calculator?spend=${spend}&revenue=${rev}&cogs=${cost}`;
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:33:    const url = `${window.location.origin}/tools/cac-calculator?ms=${marketingSpend}&ss=${salesSpend}&nc=${newCustomers}&ltv=${ltv}`;
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:55:    const url = `${window.location.origin}/tools/dashboard-cost-calculator`;
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:160:      const el = document.getElementById(section.id);
+src/components/background/GrainOverlay.tsx:32:    const t = window.setTimeout(() => setMounted(true), 1000);
+src/components/background/GrainOverlay.tsx:33:    return () => window.clearTimeout(t);
+src/components/background/CursorBloom.tsx:22:    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+src/components/background/CursorBloom.tsx:23:    if (window.matchMedia('(max-width: 767px)').matches) return;
+src/components/background/CursorBloom.tsx:26:    window.addEventListener('mousemove', onFirstMove, { once: true, passive: true });
+src/components/background/CursorBloom.tsx:27:    return () => window.removeEventListener('mousemove', onFirstMove);
+src/components/background/CursorBloom.tsx:38:      const px = ((state.sx + 1) / 2) * window.innerWidth - 200;
+src/components/background/CursorBloom.tsx:39:      const py = ((state.sy + 1) / 2) * window.innerHeight - 200;
+src/components/ui/sidebar.tsx:86:      document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
+src/components/ui/sidebar.tsx:108:    window.addEventListener("keydown", handleKeyDown)
+src/components/ui/sidebar.tsx:109:    return () => window.removeEventListener("keydown", handleKeyDown)
+src/components/sections/FounderFormSection.tsx:53:    const p = new URLSearchParams(window.location.search);
+src/components/sections/FounderFormSection.tsx:234:    const p = new URLSearchParams(window.location.search);
+src/components/chat/ChatWidget.tsx:19:    window.addEventListener('cosmo:open', onOpen);
+src/components/chat/ChatWidget.tsx:20:    return () => window.removeEventListener('cosmo:open', onOpen);
+src/components/motion/VisibilityPause.tsx:15:      if (document.hidden) {
+src/components/motion/VisibilityPause.tsx:16:        document.documentElement.dataset.pausedGlobal = 'true';
+src/components/motion/VisibilityPause.tsx:18:        delete document.documentElement.dataset.pausedGlobal;
+src/components/motion/VisibilityPause.tsx:21:    document.addEventListener('visibilitychange', onChange);
+src/components/motion/VisibilityPause.tsx:23:    return () => document.removeEventListener('visibilitychange', onChange);
+src/components/ads/AdUnit.tsx:27:      (window.adsbygoogle = window.adsbygoogle || []).push({});
+src/components/sections/ContactPage.tsx:110:                              window.dispatchEvent(new Event('cosmo:open'));
+src/components/sections/AuditPage.tsx:53:    const p = new URLSearchParams(window.location.search);
+src/components/sections/AuditPage.tsx:414:                          onClick={() => window.dispatchEvent(new Event('cosmo:open'))}
+src/components/sections/AuditPage.tsx:472:                  onClick={() => window.dispatchEvent(new Event('cosmo:open'))}
+src/components/compliance/CookieConsent.tsx:30:  const v = window.localStorage.getItem(STORAGE_KEY);
+src/components/compliance/CookieConsent.tsx:41:      window.localStorage.removeItem(STORAGE_KEY);
+src/components/compliance/CookieConsent.tsx:44:    document.addEventListener('dpl:open-cookie-prefs', onOpen);
+src/components/compliance/CookieConsent.tsx:45:    return () => document.removeEventListener('dpl:open-cookie-prefs', onOpen);
+src/components/compliance/CookieConsent.tsx:49:    window.localStorage.setItem(STORAGE_KEY, v);
+src/components/compliance/CookieConsent.tsx:52:    document.dispatchEvent(new CustomEvent('dpl:consent-changed', { detail: v }));
+src/components/sections/HeroSection.tsx:36:    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+src/components/sections/HeroSection.tsx:65:    const safetyId = window.setTimeout(forceVisible, 1500);
+src/components/sections/HeroSection.tsx:99:            window.clearTimeout(safetyId);
+src/components/sections/HeroSection.tsx:164:      window.clearTimeout(safetyId);
+src/components/compliance/CookiePrefsLink.tsx:24:      document.dispatchEvent(new Event('dpl:open-cookie-prefs'));
+src/components/ui-dp/ExitIntentModal.tsx:25:    if (window.matchMedia('(pointer: coarse)').matches) return;
+src/components/ui-dp/ExitIntentModal.tsx:37:    document.documentElement.addEventListener('mouseleave', handleMouseLeave);
+src/components/ui-dp/ExitIntentModal.tsx:38:    return () => document.documentElement.removeEventListener('mouseleave', handleMouseLeave);
+src/components/chat/ChatPanel.tsx:57:    window.addEventListener('keydown', onKey);
+src/components/chat/ChatPanel.tsx:58:    return () => window.removeEventListener('keydown', onKey);
+src/components/layout/Navigation.tsx:45:          setScrolled(window.scrollY > 20);
+src/components/layout/Navigation.tsx:50:    window.addEventListener('scroll', handleScroll, { passive: true });
+src/components/layout/Navigation.tsx:51:    return () => window.removeEventListener('scroll', handleScroll);
+src/components/compliance/AnalyticsGate.tsx:26:    document.addEventListener('dpl:consent-changed', handler);
+src/components/compliance/AnalyticsGate.tsx:27:    return () => document.removeEventListener('dpl:consent-changed', handler);
+src/components/motion/ScrollMotion.tsx:59:    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+src/components/motion/ScrollMotion.tsx:65:    const targets = document.querySelectorAll<HTMLElement>(REVEAL_SELECTORS.join(','));
+src/components/motion/ScrollMotion.tsx:66:    const vh = window.innerHeight;
+src/components/motion/ScrollMotion.tsx:97:    const cssFallback = window.setTimeout(() => {
+src/components/motion/ScrollMotion.tsx:107:    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+src/components/motion/ScrollMotion.tsx:109:      (!isMobile && document.querySelector('[data-work-grid]')) ||
+src/components/motion/ScrollMotion.tsx:110:      (!isMobile && document.querySelector('[data-workflow]'));
+src/components/motion/ScrollMotion.tsx:122:          const workGrid = document.querySelector('[data-work-grid]');
+src/components/motion/ScrollMotion.tsx:170:        window.addEventListener('load', onLoad);
+src/components/motion/ScrollMotion.tsx:172:        const gsapFallback = window.setTimeout(() => {
+src/components/motion/ScrollMotion.tsx:189:          window.clearTimeout(gsapFallback);
+src/components/motion/ScrollMotion.tsx:190:          window.removeEventListener('load', onLoad);
+src/components/motion/ScrollMotion.tsx:199:      window.clearTimeout(cssFallback);
+src/components/chat/ChatTrigger.tsx:47:    const footer = document.querySelector('footer');
+src/components/hero/HeroDataTicker.tsx:57:    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+src/components/ui-dp/StickyCTABar.tsx:23:          setVisible(window.scrollY > 300);
+src/components/ui-dp/StickyCTABar.tsx:29:    window.addEventListener('scroll', handleScroll, { passive: true });
+src/components/ui-dp/StickyCTABar.tsx:30:    return () => window.removeEventListener('scroll', handleScroll);
+src/components/effects/MagneticCTA.tsx:33:    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+src/components/effects/MagneticCTA.tsx:34:    if (window.matchMedia('(hover: none)').matches) return;
+src/components/effects/MagneticCTA.tsx:99:    window.addEventListener('mousemove', onMove, { passive: true });
+src/components/effects/MagneticCTA.tsx:100:    window.addEventListener('mouseleave', onLeave);
+src/components/effects/MagneticCTA.tsx:103:      window.removeEventListener('mousemove', onMove);
+src/components/effects/MagneticCTA.tsx:104:      window.removeEventListener('mouseleave', onLeave);

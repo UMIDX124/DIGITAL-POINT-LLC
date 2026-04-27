@@ -1,0 +1,104 @@
+src/app/(conversion)/layout.tsx:26:              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5)) drop-shadow(0 8px 16px rgba(255, 136, 0,0.3))',
+src/app/globals.css:466:       was insufficient because the actual clip surface was `contain: paint`
+src/app/globals.css:509:    text-transform: uppercase;
+src/app/globals.css:591:    backdrop-filter: none;
+src/app/globals.css:592:    -webkit-backdrop-filter: none;
+src/app/globals.css:612:    transform: none;
+src/app/globals.css:638:  from { opacity: 0; transform: translateY(16px); }
+src/app/globals.css:639:  to   { opacity: 1; transform: translateY(0); }
+src/app/globals.css:642:  from { opacity: 0; transform: scale(0.98); }
+src/app/globals.css:643:  to   { opacity: 1; transform: scale(1); }
+src/app/globals.css:663:  will-change: transform;
+src/app/globals.css:665:.nav-logo-wrap:hover .nav-logo { transform: rotate(3deg); }
+src/app/globals.css:695:  transform: translateY(-2px);
+src/app/globals.css:713:  transform: translateY(-2px);
+src/app/globals.css:750:  will-change: transform;
+src/app/globals.css:754:  transform: translateY(-2px);
+src/app/globals.css:762:    transform: none !important;
+src/app/globals.css:769:  transform: translateX(-8px);
+src/app/globals.css:777:  transform: translateX(0);
+src/app/globals.css:795:.word-inner { display: inline-block; transform: translateY(110%); will-change: transform; }
+src/app/globals.css:816:  transform: translateY(-2px);
+src/app/globals.css:819:.cta-primary:active { transform: translateY(0); }
+src/app/globals.css:869:  will-change: transform, opacity;
+src/app/globals.css:872:  0%, 100% { transform: scaleY(1); opacity: 0.55; }
+src/app/globals.css:873:  50%      { transform: scaleY(1.1); opacity: 0.85; }
+src/app/globals.css:965:  will-change: transform;
+src/app/globals.css:968:  transform: scale(1.08);
+src/app/globals.css:973:.cosmo-fab:active { transform: scale(0.95); }
+src/app/globals.css:976:  will-change: transform;
+src/app/globals.css:979:  filter: brightness(1.15);
+src/app/globals.css:982:  0%, 100% { transform: scale(1); }
+src/app/globals.css:983:  50%      { transform: scale(1.04); }
+src/app/globals.css:991:  from { transform: translateY(20px); opacity: 0; }
+src/app/globals.css:992:  to   { transform: translateY(0);    opacity: 1; }
+src/app/globals.css:1103:  0%, 100% { transform: translateY(0); }
+src/app/globals.css:1104:  50%      { transform: translateY(-4px); }
+src/app/globals.css:1113:  0%, 96%, 100% { opacity: 0; transform: scaleY(1); }
+src/app/globals.css:1114:  98%           { opacity: 0.4; transform: scaleY(0.1); }
+src/app/globals.css:1123:  0%, 100% { transform: translateY(0) rotate(0); }
+src/app/globals.css:1124:  20%      { transform: translateY(-6px) rotate(-8deg); }
+src/app/globals.css:1125:  40%      { transform: translateY(-6px) rotate(8deg); }
+src/app/globals.css:1126:  60%      { transform: translateY(-6px) rotate(-6deg); }
+src/app/globals.css:1127:  80%      { transform: translateY(-6px) rotate(6deg); }
+src/app/globals.css:1132:  0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+src/app/globals.css:1133:  50%      { opacity: 1; transform: scale(1.2) rotate(180deg); }
+src/app/globals.css:1137:.chat-trigger-open { animation: none; transform: scale(0.9); }
+src/app/globals.css:1158:  0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+src/app/globals.css:1159:  40%           { opacity: 1;   transform: scale(1); }
+src/app/globals.css:1164:  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+src/app/globals.css:1165:  to   { opacity: 1; transform: translateY(0) scale(1); }
+src/app/globals.css:1170:  will-change: transform, opacity;
+src/app/globals.css:1178:   with `contain: layout paint style`, which dropped CLS but kept `paint`
+src/app/globals.css:1181:   precisely because `contain: paint` was clipping italic descenders on
+src/app/globals.css:1188:  contain: layout style;
+src/app/globals.css:1225:  will-change: transform;
+src/app/globals.css:1246:  text-transform: uppercase;
+src/app/globals.css:1256:  from { transform: translateX(0); }
+src/app/globals.css:1257:  to   { transform: translateX(-50%); }
+src/app/globals.css:1261:  from { transform: translateX(-50%); }
+src/app/globals.css:1262:  to   { transform: translateX(0); }
+src/app/globals.css:1269:    transform: none;
+src/app/globals.css:1312:  /* Phase 14 lag fix → 2A-REFIX. Originally `contain: layout paint style`
+src/app/globals.css:1318:  contain: layout style;
+src/app/globals.css:1338:  transform: translate3d(0, -50%, 0);
+src/app/globals.css:1429:  will-change: transform;
+src/app/globals.css:1435:  will-change: transform;
+src/app/globals.css:1438:  from { transform: rotate(0deg); }
+src/app/globals.css:1439:  to   { transform: rotate(360deg); }
+src/app/globals.css:1442:  from { transform: rotate(0deg); }
+src/app/globals.css:1443:  to   { transform: rotate(-360deg); }
+src/app/globals.css:1518:  transform: translateY(8px);
+src/app/globals.css:1524:  transform: translateY(-2px);
+src/app/globals.css:1547:  text-transform: uppercase;
+src/app/globals.css:1564:  to { opacity: 1; transform: translateY(0); }
+src/app/globals.css:1567:  0%, 80%, 100% { opacity: 0; transform: scale(1); }
+src/app/globals.css:1568:  10% { opacity: 0.45; transform: scale(1); }
+src/app/globals.css:1569:  40% { opacity: 0; transform: scale(1.04); }
+src/app/globals.css:1574:    transform: none !important;
+src/app/globals.css:1602:  text-transform: uppercase;
+src/app/globals.css:1605:  transform: translateY(8px);
+src/app/globals.css:1620:  to { opacity: 1; transform: translateY(0); }
+src/app/globals.css:1625:    transform: none !important;
+src/app/globals.css:1664:  from { transform: translate3d(0, 40px, 0); opacity: 0; }
+src/app/globals.css:1665:  to   { transform: translate3d(0, 0, 0); opacity: 1; }
+src/app/globals.css:1668:  from { transform: translate3d(0, 36px, 0); opacity: 0; }
+src/app/globals.css:1669:  to   { transform: translate3d(0, 0, 0); opacity: 1; }
+src/app/globals.css:1672:  from { transform: translate3d(0, 30px, 0); opacity: 0; }
+src/app/globals.css:1673:  to   { transform: translate3d(0, 0, 0); opacity: 1; }
+src/app/globals.css:1676:  from { transform: translate3d(0, 24px, 0); opacity: 0; }
+src/app/globals.css:1677:  to   { transform: translate3d(0, 0, 0); opacity: 1; }
+src/app/globals.css:1680:  from { transform: translate3d(40px, 0, 0); opacity: 0; }
+src/app/globals.css:1681:  to   { transform: translate3d(0, 0, 0); opacity: 1; }
+src/app/globals.css:1684:  from { transform: scale(0.98); opacity: 0; }
+src/app/globals.css:1685:  to   { transform: scale(1); opacity: 1; }
+src/app/globals.css:1698:    transform: none !important;
+src/app/globals.css:1746:  0%   { opacity: 1; transform: translateY(0); }
+src/app/globals.css:1747:  64%  { opacity: 1; transform: translateY(0); }
+src/app/globals.css:1748:  100% { opacity: 0; transform: translateY(-100px); visibility: hidden; }
+src/components/background/GrainOverlay.tsx:46:        transform: 'translateZ(0)',
+src/components/background/CursorBloom.tsx:69:        transform: 'translate3d(-9999px, -9999px, 0)',
+src/components/ui/progress.tsx:25:        style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
+src/components/sections/FAQSection.tsx:89:                      transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)',
+src/components/chat/ChatTrigger.tsx:69:        transform: footerVisible ? 'translateY(120%)' : 'translateY(0)',
+src/components/ui-dp/SectionDivider.tsx:27:        transform: flip ? 'scaleY(-1)' : undefined,

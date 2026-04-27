@@ -1,0 +1,28 @@
+src/app/layout.tsx:125:              logo: "https://www.digitalpointllc.com/Dp-logo1.png",
+src/app/(conversion)/layout.tsx:14:      {/* Minimal header — logo + back link */}
+src/app/(conversion)/layout.tsx:18:            src="/Dp-logo1.png"
+src/app/(marketing)/terms-of-service/page.tsx:163:              text, graphics, logos, images, audio, video, software, tools,
+src/components/sections/LogoStripSection.tsx:11: * Re-enable only when 13 real client logos are sourced + legal-cleared
+src/components/sections/LogoStripSection.tsx:26:  const { label, marksRow1, marksRow2 } = copy.logoStrip;
+src/components/sections/LogoStripSection.tsx:33:    <div className="logo-marquee-track" data-direction={direction}>
+src/components/sections/LogoStripSection.tsx:34:      <ul className="logo-marquee-list" aria-hidden={false}>
+src/components/sections/LogoStripSection.tsx:36:          <li key={`${rowKey}-${mark}`} className="logo-mark">
+src/components/sections/LogoStripSection.tsx:41:      <ul className="logo-marquee-list" aria-hidden="true">
+src/components/sections/LogoStripSection.tsx:43:          <li key={`${rowKey}-dup-${mark}`} className="logo-mark">
+src/components/sections/LogoStripSection.tsx:76:      <div className="logo-marquee" aria-hidden={false}>
+src/components/layout/Footer.tsx:35:                src="/Dp-logo1.png"
+src/components/chat/ChatTrigger.tsx:12: * Phase 16 D.5 — Cosmo chat trigger with DP mascot embed.
+src/components/chat/ChatTrigger.tsx:15: * The mini button embeds /Dp-logo1.png (mascot). Idle 'breathe' (4s
+src/components/chat/ChatTrigger.tsx:96:          src="/Dp-logo1.png"
+src/components/chat/ChatTrigger.tsx:100:          className="cosmo-mascot object-contain p-1"
+src/components/sections/HeroSection.tsx:328:              Cosmo mascot at center as the "sun"; 4 process nodes on two
+src/components/seo/FAQSchema.tsx:63:      logo: {
+src/components/seo/FAQSchema.tsx:65:        url: 'https://www.digitalpointllc.com/Dp-logo1.png',
+src/components/layout/Navigation.tsx:78:            <Link href="/" className="flex items-center gap-3 shrink-0 group nav-logo-wrap">
+src/components/layout/Navigation.tsx:80:                src="/Dp-logo1.png"
+src/components/layout/Navigation.tsx:86:                className="nav-logo transition-opacity duration-200 group-hover:opacity-90"
+src/lib/copy.ts:73:   * Phase 2: illustrative logo strip. Wordmarks are invented company-type
+src/lib/copy.ts:74:   * placeholders, NOT real client logos. Label must make the illustrative
+src/lib/copy.ts:77:  logoStrip: {
+src/lib/copy.ts:81:    // logos). Each row is rendered twice in the component for seamless
+src/lib/guides.ts:262:<p>Beyond message match, focus on speed and clarity. Paid traffic visitors are impatient, they have been interrupted (social ads) or are comparison shopping (search ads). Your landing page should load in under 2 seconds, communicate the value proposition within the first viewport, and have a clear single call-to-action above the fold. Remove navigation menus, sidebars, and anything that distracts from the conversion action. Every element on the page should either build trust (testimonials, logos, case studies) or move the visitor toward conversion (benefit statements, social proof, CTA). Test one variable at a time: headline, CTA text, form length, social proof placement. Small changes compound into significant performance gains over time.</p>`,

@@ -1,0 +1,625 @@
+src/app/(marketing)/research/ResearchHub.tsx:100:                            <span className="text-[#8E8E96] text-xs">{report.date}</span>
+src/app/(marketing)/research/ResearchHub.tsx:101:                            <span className="text-[#8E8E96] text-xs">-</span>
+src/app/(marketing)/research/ResearchHub.tsx:102:                            <span className="text-[#8E8E96] text-xs">{report.readTime}</span>
+src/app/(marketing)/research/ResearchHub.tsx:104:                          <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#FFA833] transition-colors mb-2">
+src/app/(marketing)/research/ResearchHub.tsx:107:                          <p className="text-[#A1A1AA] text-sm leading-relaxed mb-3">
+src/app/(marketing)/research/ResearchHub.tsx:117:                            <span className="flex items-center gap-1 text-[#FF8800] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:77:            <span className="text-[#8E8E96] text-sm">February 2026 &middot; 13 min read</span>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:81:            <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed max-w-2xl">
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:98:                  <p className="text-[#8E8E96] text-sm mt-1">{stat.label}</p>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:116:                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Role</th>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:117:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">US Fully Loaded</th>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:118:                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Managed Remote</th>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:119:                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Savings</th>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:126:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.usFullyLoaded}</td>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:127:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.remote}</td>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:128:                        <td className="py-3 px-4 text-right text-[#FFA833] font-medium">{row.savings}</td>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:135:            <p className="text-[#8E8E96] text-xs mt-3">US costs include salary, benefits, payroll taxes, equipment, and allocated office space. Remote costs include salary, management overhead, tools, and quality assurance.</p>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:150:                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Cost Item</th>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:151:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">Annual Cost</th>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:152:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">% of Total</th>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:158:                        <td className={`py-3 px-4 font-medium ${i === usOverheadBreakdown.length - 1 ? 'text-white' : 'text-[#D6D0C2]'}`}>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:161:                        <td className={`py-3 px-4 text-right ${i === usOverheadBreakdown.length - 1 ? 'text-white font-bold' : 'text-[#D6D0C2]'}`}>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:164:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.pctOfTotal}</td>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:185:                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Team Size</th>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:186:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">US Annual</th>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:187:                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Remote Annual</th>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:188:                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Annual Savings</th>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:195:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.usAnnual}</td>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:196:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.remoteAnnual}</td>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:197:                        <td className="py-3 px-4 text-right text-[#FFA833] font-bold">{row.annualSavings}</td>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:218:                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Metric</th>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:219:                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Managed Remote</th>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:220:                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Freelancers</th>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:221:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">US In-House</th>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:228:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.managed}</td>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:229:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.freelancer}</td>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:230:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.inHouse}</td>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:237:            <p className="text-[#8E8E96] text-xs mt-3">Quality metrics based on internal data from managed remote team engagements across 120+ client accounts, 2024-2026.</p>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:256:                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{finding.text}</p>
+src/app/(marketing)/research/remote-workforce-cost-analysis/RemoteWorkforceCostAnalysis.tsx:273:                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{faq.answer}</p>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:57:            <span className="text-[#8E8E96] text-sm">March 2026 &middot; 12 min read</span>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:61:            <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed max-w-2xl">
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:78:                  <p className="text-[#8E8E96] text-sm mt-1">{stat.label}</p>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:96:                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Industry</th>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:97:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">CPC</th>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:98:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">CPM</th>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:99:                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">CTR</th>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:100:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">ROAS</th>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:107:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.cpc}</td>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:108:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.cpm}</td>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:109:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.ctr}</td>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:110:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.roas}</td>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:117:            <p className="text-[#8E8E96] text-xs mt-3">Data based on analysis of $48M+ in Meta Ads spend across 340+ accounts, Q4 2025 - Q1 2026.</p>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:132:                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Metric</th>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:133:                      <th className="text-right py-3 px-4 text-[#8E8E96] font-medium">2024</th>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:134:                      <th className="text-right py-3 px-4 text-[#8E8E96] font-medium">2025</th>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:135:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">2026</th>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:136:                      <th className="text-right py-3 px-4 text-[#8E8E96] font-medium">YoY</th>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:143:                        <td className="py-3 px-4 text-right text-[#8E8E96]">{row.value2024}</td>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:144:                        <td className="py-3 px-4 text-right text-[#8E8E96]">{row.value2025}</td>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:173:                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{finding.text}</p>
+src/app/(marketing)/research/facebook-ads-benchmarks-2026/FacebookAdsBenchmarks.tsx:190:                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{faq.answer}</p>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:59:            <span className="text-[#8E8E96] text-sm">February 2026 &middot; 14 min read</span>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:63:            <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed max-w-2xl">
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:80:                  <p className="text-[#8E8E96] text-sm mt-1">{stat.label}</p>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:98:                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Campaign Type</th>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:99:                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Avg ROAS</th>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:100:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">Avg CPC</th>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:101:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">Conv Rate</th>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:102:                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Best For</th>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:109:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.avgRoas}</td>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:110:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.avgCpc}</td>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:111:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.avgConvRate}</td>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:112:                        <td className="py-3 px-4 text-[#8E8E96] text-xs">{row.bestFor}</td>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:133:                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Industry</th>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:134:                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Search ROAS</th>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:135:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">Avg CPC</th>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:136:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">Conv Rate</th>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:143:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.roas}</td>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:144:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.cpc}</td>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:145:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.convRate}</td>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:152:            <p className="text-[#8E8E96] text-xs mt-3">Data based on analysis of $62M in Google Ads spend across 420+ accounts, 2025-2026.</p>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:171:                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{finding.text}</p>
+src/app/(marketing)/research/google-ads-roas-benchmarks/GoogleAdsROASBenchmarks.tsx:188:                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{faq.answer}</p>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:69:            <span className="text-[#8E8E96] text-sm">January 2026 &middot; 15 min read</span>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:73:            <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed max-w-2xl">
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:90:                  <p className="text-[#8E8E96] text-sm mt-1">{stat.label}</p>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:108:                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Industry</th>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:109:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">B2B CAC</th>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:110:                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">B2C CAC</th>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:111:                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">LTV:CAC</th>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:112:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">Payback</th>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:119:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.b2bCac}</td>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:120:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.b2cCac}</td>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:121:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.ltvRatio}</td>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:122:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.payback}</td>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:129:            <p className="text-[#8E8E96] text-xs mt-3">CAC includes all sales and marketing costs. Payback period assumes even revenue distribution. LTV:CAC ratios based on 3-year customer value.</p>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:144:                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Channel</th>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:145:                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Avg CAC</th>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:146:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">YoY Trend</th>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:147:                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Lead Quality</th>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:154:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.avgCac}</td>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:158:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.quality}</td>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:183:                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{finding.text}</p>
+src/app/(marketing)/research/average-cac-by-industry/AverageCACByIndustry.tsx:200:                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{faq.answer}</p>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:66:            <span className="text-[#8E8E96] text-sm">March 2026 &middot; 11 min read</span>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:70:            <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed max-w-2xl">
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:87:                  <p className="text-[#8E8E96] text-sm mt-1">{stat.label}</p>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:105:                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Model</th>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:106:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">Adoption</th>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:107:                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">YoY Change</th>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:108:                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Est. Accuracy</th>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:115:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.adoption}</td>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:119:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.accuracy}</td>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:126:            <p className="text-[#8E8E96] text-xs mt-3">Adoption rates exceed 100% because many organizations use multiple models simultaneously. Hybrid approaches are counted separately.</p>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:141:                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Privacy Change</th>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:142:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">Key Stat</th>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:143:                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Impact</th>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:151:                        <td className="py-3 px-4 text-[#D6D0C2] text-xs">{row.impact}</td>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:172:                      <th className="text-left py-3 px-4 text-[#8E8E96] font-medium">Platform</th>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:173:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">Reported</th>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:174:                      <th className="text-right py-3 px-4 text-[#FFA833] font-medium">Est. Actual</th>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:175:                      <th className="text-right py-3 px-4 text-[#FF8800] font-medium">Gap</th>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:182:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.reported}</td>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:183:                        <td className="py-3 px-4 text-right text-[#D6D0C2]">{row.actual}</td>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:184:                        <td className="py-3 px-4 text-right text-[#FF8800]">{row.gap}</td>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:191:            <p className="text-[#8E8E96] text-xs mt-3">Accuracy estimates based on comparison of platform-reported data against server-side conversion data and incrementality tests.</p>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:210:                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{finding.text}</p>
+src/app/(marketing)/research/marketing-attribution-statistics/MarketingAttributionStatistics.tsx:227:                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{faq.answer}</p>
+src/app/(marketing)/tools/ToolsHub.tsx:69:              <span className="bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FF8800] bg-clip-text text-transparent">
+src/app/(marketing)/tools/ToolsHub.tsx:74:            <p className="text-[#D6D0C2] text-lg md:text-xl max-w-2xl leading-relaxed">
+src/app/(marketing)/tools/ToolsHub.tsx:96:                      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#FFA833] transition-colors mb-2">
+src/app/(marketing)/tools/ToolsHub.tsx:99:                      <p className="text-[#8E8E96] text-sm leading-relaxed flex-1 mb-4">{tool.description}</p>
+src/app/(marketing)/tools/ToolsHub.tsx:102:                          <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] text-[#8E8E96] bg-[rgba(255, 136, 0,0.1)]">
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:137:                <BarChart3 className="w-4 h-4 text-[#FF8800]" />
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:138:                <span className="text-[#FF8800]">Free Attribution Tool</span>
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:141:                Marketing Attribution Model <span className="text-[#FF8800]">Visualizer</span>
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:143:              <p className="text-lg text-[#D6D0C2] max-w-2xl mx-auto">
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:161:                        {tp.name} <span className="text-[#8E8E96]">({tp.channel})</span>
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:164:                        <button onClick={() => handleRemoveTouchpoint(i)} className="text-[#8E8E96] hover:text-[#FF8800] transition-colors text-lg">×</button>
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:176:                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:187:                <label className="block text-sm text-[#D6D0C2] mb-1.5">Conversion Value ($)</label>
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:192:                  className="w-full max-w-xs px-4 py-2.5 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:228:                          <span className="text-[#D6D0C2]">{tp.name}</span>
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:254:                      <tr className="border-b border-[#2a1a3a]">
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:255:                        <th className="text-left py-3 px-2 text-[#D6D0C2]">Touchpoint</th>
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:257:                          <th key={m} className={`text-right py-3 px-2 ${selectedModel === m ? 'text-[#FF8800]' : 'text-[#8E8E96]'}`}>{m}</th>
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:263:                        <tr key={i} className="border-b border-[#1a0f2a]">
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:266:                            <td key={m} className={`text-right py-3 px-2 ${selectedModel === m ? 'text-white font-medium' : 'text-[#8E8E96]'}`}>
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:280:                  <Info className="w-5 h-5 text-[#FF8800] mt-0.5 shrink-0" />
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:281:                  <div className="text-sm text-[#D6D0C2]">
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:293:                <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-[#D6D0C2] hover:text-white transition-colors" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}>
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:297:                <button onClick={() => setShowEmail(true)} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-[#D6D0C2] hover:text-white transition-colors" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}>
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:310:                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:325:              <div className="space-y-4 text-[#D6D0C2]">
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:351:                      <span className="text-[#FF8800] text-lg">{openFaq === i ? '−' : '+'}</span>
+src/app/(marketing)/tools/attribution-model-visualizer/AttributionVisualizer.tsx:354:                      <div className="px-5 pb-4 text-sm text-[#D6D0C2]">{faq.answer}</div>
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:69:              <span className="bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FF8800] bg-clip-text text-transparent">
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:73:            <p className="text-[#D6D0C2] text-lg mt-3 max-w-2xl">
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:89:                    <label className="block text-sm text-[#D6D0C2] mb-1.5">Total Ad Spend ($)</label>
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:91:                      <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8E96]" />
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:97:                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:104:                    <label className="block text-sm text-[#D6D0C2] mb-1.5">Revenue from Ads ($)</label>
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:106:                      <TrendingUp className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8E96]" />
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:112:                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:119:                    <label className="block text-sm text-[#D6D0C2] mb-1.5">Cost of Goods Sold ($) <span className="text-[#8E8E96]">optional</span></label>
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:121:                      <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8E96]" />
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:127:                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:144:                      className="p-2 rounded-lg text-[#8E8E96] hover:text-[#FF8800] transition-colors"
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:152:                      className="p-2 rounded-lg text-[#8E8E96] hover:text-[#FF8800] transition-colors"
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:162:                  <p className="text-[#FFA833] text-xs mb-3">Link copied to clipboard!</p>
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:172:                      className="flex-1 px-3 py-2 rounded-lg text-white text-sm placeholder:text-[#8E8E96] focus:outline-none"
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:189:                      <span className="text-[#8E8E96] text-sm">ROAS</span>
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:204:                      <span className="text-[#8E8E96] text-xs">Net Profit</span>
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:205:                      <p className={`font-display text-xl font-bold mt-1 ${profit >= 0 ? 'text-[#FFA833]' : 'text-[#FF8800]'}`}>
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:210:                      <span className="text-[#8E8E96] text-xs">Profit Margin</span>
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:211:                      <p className={`font-display text-xl font-bold mt-1 ${profitMargin >= 0 ? 'text-[#FFA833]' : 'text-[#FF8800]'}`}>
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:220:                      <span className="text-[#8E8E96] text-xs">ROAS Scale</span>
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:230:                      <div className="flex justify-between text-[10px] text-[#8E8E96] mt-1">
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:246:                  <p className="text-[#D6D0C2] text-sm leading-relaxed mb-3">
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:249:                  <div className="rounded-xl p-4 text-center font-mono text-[#FF8800]" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:257:                    <table className="w-full text-sm min-w-[400px]">
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:260:                          <th className="text-left px-4 py-3 text-[#FF8800] font-medium">Industry</th>
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:261:                          <th className="text-right px-4 py-3 text-[#FF8800] font-medium">Avg ROAS</th>
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:262:                          <th className="text-right px-4 py-3 text-[#FF8800] font-medium">Top Performers</th>
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:265:                      <tbody className="text-[#D6D0C2]">
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:276:                            <td className="px-4 py-3 text-right font-mono text-[#FFA833]">{top}</td>
+src/app/(marketing)/tools/roas-calculator/ROASCalculator.tsx:291:                        <p className="text-[#8E8E96] text-sm">{faq.answer}</p>
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:48:              <span className="bg-gradient-to-r from-[#FF8800] via-[#FF8800] to-[#FFA833] bg-clip-text text-transparent">Calculator</span>
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:50:            <p className="text-[#D6D0C2] text-lg mt-3 max-w-2xl">
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:65:                    <label className="block text-sm text-[#D6D0C2] mb-1.5">Monthly Marketing Spend ($)</label>
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:67:                      <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8E96]" />
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:69:                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:74:                    <label className="block text-sm text-[#D6D0C2] mb-1.5">Monthly Sales Spend ($) <span className="text-[#8E8E96]">optional</span></label>
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:76:                      <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8E96]" />
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:78:                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:83:                    <label className="block text-sm text-[#D6D0C2] mb-1.5">New Customers Acquired</label>
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:85:                      <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8E96]" />
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:87:                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:92:                    <label className="block text-sm text-[#D6D0C2] mb-1.5">Customer Lifetime Value ($) <span className="text-[#8E8E96]">optional</span></label>
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:94:                      <TrendingUp className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8E96]" />
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:96:                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:108:                  <button onClick={handleShare} className="p-2 rounded-lg text-[#8E8E96] hover:text-[#FF8800] transition-colors" style={{ background: 'rgba(255, 136, 0, 0.1)' }}>
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:112:                {copied && <p className="text-[#FFA833] text-xs mb-3">Link copied!</p>}
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:116:                    <span className="text-[#8E8E96] text-sm">Customer Acquisition Cost</span>
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:117:                    <p className="font-display text-3xl font-bold text-[#FF8800] mt-1">
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:125:                        <span className="text-[#8E8E96] text-sm">LTV:CAC Ratio</span>
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:136:                      <span className="text-[#8E8E96] text-xs">Total Spend</span>
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:140:                      <span className="text-[#8E8E96] text-xs">Payback Period</span>
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:155:                  <p className="text-[#D6D0C2] text-sm leading-relaxed mb-3">
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:158:                  <div className="rounded-xl p-4 text-center font-mono text-[#FF8800]" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:169:                          <th className="text-left px-4 py-3 text-[#FF8800] font-medium">Industry</th>
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:170:                          <th className="text-right px-4 py-3 text-[#FF8800] font-medium">Avg CAC</th>
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:171:                          <th className="text-right px-4 py-3 text-[#FF8800] font-medium">Avg LTV:CAC</th>
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:174:                      <tbody className="text-[#D6D0C2]">
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:185:                            <td className="px-4 py-3 text-right font-mono text-[#FFA833]">{ratio}</td>
+src/app/(marketing)/tools/cac-calculator/CACCalculator.tsx:199:                        <p className="text-[#8E8E96] text-sm">{faq.answer}</p>
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:53:              <span className="bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FFA833] bg-clip-text text-transparent">Profit</span>
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:56:            <p className="text-[#D6D0C2] text-lg mt-3 max-w-2xl">
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:71:                    <label className="block text-sm text-[#D6D0C2] mb-1.5">Monthly Ad Spend ($)</label>
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:73:                      <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8E96]" />
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:75:                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:80:                    <label className="block text-sm text-[#D6D0C2] mb-1.5">Current ROAS</label>
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:82:                      <TrendingUp className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8E96]" />
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:84:                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:89:                    <label className="block text-sm text-[#D6D0C2] mb-1.5">COGS (% of revenue)</label>
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:91:                      <Percent className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8E96]" />
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:93:                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:98:                    <label className="block text-sm text-[#D6D0C2] mb-1.5">Overhead (% of revenue) <span className="text-[#8E8E96]">optional</span></label>
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:100:                      <Percent className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8E8E96]" />
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:102:                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:116:                      <span className="text-[#8E8E96] text-xs">Monthly Revenue</span>
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:120:                      <span className="text-[#8E8E96] text-xs">Monthly Profit</span>
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:121:                      <p className={`font-display text-xl font-bold mt-1 ${profit >= 0 ? 'text-[#FFA833]' : 'text-[#FF8800]'}`}>
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:128:                      <span className="text-[#8E8E96] text-xs">Profit Margin</span>
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:129:                      <p className={`font-display text-xl font-bold mt-1 ${profitMargin >= 0 ? 'text-[#FF8800]' : 'text-[#FF8800]'}`}>
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:134:                      <span className="text-[#8E8E96] text-xs">Annual Profit</span>
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:135:                      <p className={`font-display text-xl font-bold mt-1 ${annualProfit >= 0 ? 'text-[#FFA833]' : 'text-[#FF8800]'}`}>
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:144:                      <span className="text-[#8E8E96] text-xs mb-3 block">Scaling Scenarios (with diminishing returns)</span>
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:148:                            <span className="text-[#8E8E96]">{s.label} spend (${s.spend.toLocaleString()})</span>
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:149:                            <span className={`font-mono ${s.profit >= 0 ? 'text-[#FFA833]' : 'text-[#FF8800]'}`}>
+src/app/(marketing)/tools/ad-spend-profit-calculator/AdSpendCalculator.tsx:171:                        <p className="text-[#8E8E96] text-sm">{faq.answer}</p>
+src/app/(marketing)/privacy-policy/page.tsx:35:            <p className="text-[#8E8E96] text-sm mb-12">
+src/app/(marketing)/privacy-policy/page.tsx:39:            <div className="space-y-10 text-[#D6D0C2] leading-relaxed">
+src/app/(marketing)/privacy-policy/page.tsx:103:                    className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
+src/app/(marketing)/privacy-policy/page.tsx:112:                    className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
+src/app/(marketing)/privacy-policy/page.tsx:166:                      className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
+src/app/(marketing)/privacy-policy/page.tsx:180:                      className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
+src/app/(marketing)/privacy-policy/page.tsx:195:                      className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
+src/app/(marketing)/privacy-policy/page.tsx:271:                      className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
+src/app/(marketing)/privacy-policy/page.tsx:307:                    className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
+src/app/(marketing)/privacy-policy/page.tsx:346:                      className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
+src/app/(marketing)/privacy-policy/page.tsx:357:                      className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:92:                <LayoutDashboard className="w-4 h-4 text-[#FF8800]" />
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:93:                <span className="text-[#FF8800]">Free Dashboard Tool</span>
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:96:                Marketing Dashboard <span className="text-[#FF8800]">Cost Calculator</span>
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:98:              <p className="text-lg text-[#D6D0C2] max-w-2xl mx-auto">
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:131:                  <label className="block text-sm text-[#D6D0C2] mb-1.5">Number of Users</label>
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:137:                    className="w-full px-4 py-2.5 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:142:                  <label className="block text-sm text-[#D6D0C2] mb-1.5">Dashboard Complexity</label>
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:179:                      <div className={`w-4 h-4 rounded border ${item.value ? 'bg-[#C26800] border-[#C26800]' : 'border-[#8E8E96]'} flex items-center justify-center`}>
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:184:                    <p className="text-xs text-[#8E8E96] ml-6">{item.desc}</p>
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:194:                    <tr className="border-b border-[#2a1a3a]">
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:195:                      <th className="text-left py-3 px-3 text-[#D6D0C2]">Solution</th>
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:196:                      <th className="text-right py-3 px-3 text-[#D6D0C2]">Setup Cost</th>
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:197:                      <th className="text-right py-3 px-3 text-[#D6D0C2]">Monthly Cost</th>
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:198:                      <th className="text-right py-3 px-3 text-[#D6D0C2]">Year 1 Total</th>
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:214:                        <tr key={tool.name} className="border-b border-[#1a0f2a]">
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:217:                            <span className="text-xs text-[#8E8E96] ml-2">{tool.tier}</span>
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:219:                          <td className="text-right py-3 px-3 text-[#D6D0C2]">${setupCost.toLocaleString()}</td>
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:220:                          <td className="text-right py-3 px-3 text-[#D6D0C2]">${totalMonthly.toLocaleString()}/mo</td>
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:229:              <p className="text-xs text-[#8E8E96] mb-6">
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:235:                <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-[#D6D0C2] hover:text-white transition-colors" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}>
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:239:                <button onClick={() => setShowEmail(true)} className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-[#D6D0C2] hover:text-white transition-colors" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}>
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:252:                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:267:              <div className="space-y-4 text-[#D6D0C2]">
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:292:                      <span className="text-[#FF8800] text-lg">{openFaq === i ? '−' : '+'}</span>
+src/app/(marketing)/tools/dashboard-cost-calculator/DashboardCostCalculator.tsx:295:                      <div className="px-5 pb-4 text-sm text-[#D6D0C2]">{faq.answer}</div>
+src/app/(marketing)/blog/BlogListPage.tsx:123:              <span className="bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FF8800] bg-clip-text text-transparent">
+src/app/(marketing)/blog/BlogListPage.tsx:127:            <p className="text-[#D6D0C2] text-lg md:text-xl max-w-2xl leading-relaxed">
+src/app/(marketing)/blog/BlogListPage.tsx:183:                    <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#FFA833] transition-colors mb-3 leading-snug">
+src/app/(marketing)/blog/BlogListPage.tsx:186:                    <p className="text-[#8E8E96] text-sm leading-relaxed flex-1 mb-4">{article.excerpt}</p>
+src/app/(marketing)/blog/BlogListPage.tsx:188:                      <div className="flex items-center gap-3 text-[#8E8E96] text-xs">
+src/app/(marketing)/blog/BlogListPage.tsx:195:                      <ArrowRight className="w-4 h-4 text-[#FF8800] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+src/app/(marketing)/blog/category/[category]/BlogCategoryContent.tsx:28:            <p className="text-[#D6D0C2] text-lg mt-4 max-w-2xl">{meta.description}</p>
+src/app/(marketing)/blog/category/[category]/BlogCategoryContent.tsx:29:            <p className="text-[#8E8E96] text-sm mt-2">{posts.length} article{posts.length !== 1 ? 's' : ''}</p>
+src/app/(marketing)/blog/category/[category]/BlogCategoryContent.tsx:39:                <p className="text-[#8E8E96] text-lg">No articles in this category yet.</p>
+src/app/(marketing)/blog/category/[category]/BlogCategoryContent.tsx:40:                <Link href="/blog" className="inline-flex items-center gap-2 text-[#FF8800] hover:text-[#FFA833] mt-4 text-sm">
+src/app/(marketing)/blog/category/[category]/BlogCategoryContent.tsx:60:                      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#FFA833] transition-colors mb-3 leading-snug">
+src/app/(marketing)/blog/category/[category]/BlogCategoryContent.tsx:63:                      <p className="text-[#8E8E96] text-sm leading-relaxed flex-1 mb-4">{post.excerpt}</p>
+src/app/(marketing)/blog/category/[category]/BlogCategoryContent.tsx:65:                        <div className="flex items-center gap-3 text-[#8E8E96] text-xs">
+src/app/(marketing)/blog/category/[category]/BlogCategoryContent.tsx:69:                        <ArrowRight className="w-4 h-4 text-[#FF8800] opacity-0 group-hover:opacity-100 transition-all" />
+src/app/(marketing)/case-studies/CaseStudiesPage.tsx:25:            <p className="text-[#D6D0C2] text-lg mt-4 max-w-2xl">
+src/app/(marketing)/case-studies/CaseStudiesPage.tsx:58:                      <p className="text-[#8E8E96] text-xs uppercase tracking-wider mb-1">
+src/app/(marketing)/case-studies/CaseStudiesPage.tsx:72:                      <p className="text-[#8E8E96] text-xs">
+src/app/(marketing)/case-studies/CaseStudiesPage.tsx:82:                      <h3 className="text-xs uppercase tracking-wider text-[#FF8800] font-semibold mb-2">
+src/app/(marketing)/case-studies/CaseStudiesPage.tsx:85:                      <p className="text-[#D6D0C2] text-sm leading-relaxed">
+src/app/(marketing)/case-studies/CaseStudiesPage.tsx:92:                      <h3 className="text-xs uppercase tracking-wider text-[#FF8800] font-semibold mb-2">
+src/app/(marketing)/case-studies/CaseStudiesPage.tsx:95:                      <p className="text-[#D6D0C2] text-sm leading-relaxed">
+src/app/(marketing)/case-studies/CaseStudiesPage.tsx:102:                      <h3 className="text-xs uppercase tracking-wider text-[#FF8800] font-semibold mb-3">
+src/app/(marketing)/case-studies/CaseStudiesPage.tsx:121:                            <p className="text-[#8E8E96] text-xs mt-1">
+src/app/(marketing)/case-studies/CaseStudiesPage.tsx:138:                        <h3 className="text-xs uppercase tracking-wider text-[#FFA833] font-semibold mb-2">
+src/app/(marketing)/case-studies/CaseStudiesPage.tsx:141:                        <p className="text-[#D6D0C2] text-sm leading-relaxed italic">
+src/app/(marketing)/case-studies/CaseStudiesPage.tsx:155:              <p className="text-[#D6D0C2] text-lg mb-6">
+src/app/(marketing)/blog/[slug]/BlogPostContent.tsx:53:          className={`w-4 h-4 text-[#8E8E96] lg:hidden transition-transform duration-200 ${
+src/app/(marketing)/blog/[slug]/BlogPostContent.tsx:63:            className={`block text-xs text-[#8E8E96] hover:text-[#FF8800] transition-colors py-0.5 ${
+src/app/(marketing)/blog/[slug]/BlogPostContent.tsx:89:                  [&_p]:text-[#D6D0C2] [&_p]:leading-relaxed [&_p]:mb-4
+src/app/(marketing)/blog/[slug]/BlogPostContent.tsx:91:                  [&_ul]:my-4 [&_li]:text-[#D6D0C2] [&_li]:mb-1
+src/app/(marketing)/blog/[slug]/BlogPostContent.tsx:92:                  [&_code]:text-[#FFA833]
+src/app/(marketing)/blog/[slug]/BlogPostContent.tsx:93:                  [&_a]:text-[#FF8800] [&_a]:hover:text-[#FFA833]
+src/app/(marketing)/blog/[slug]/BlogPostContent.tsx:123:              <span className="flex items-center gap-1 text-[#8E8E96] text-xs">
+src/app/(marketing)/blog/[slug]/BlogPostContent.tsx:127:              <span className="flex items-center gap-1 text-[#8E8E96] text-xs">
+src/app/(marketing)/blog/[slug]/BlogPostContent.tsx:132:                <span className="flex items-center gap-1 text-[#8E8E96] text-xs">
+src/app/(marketing)/blog/[slug]/BlogPostContent.tsx:142:            <p className="text-[#D6D0C2] text-lg mt-4 max-w-2xl">{post.excerpt}</p>
+src/app/(marketing)/blog/[slug]/BlogPostContent.tsx:143:            <p className="text-[#8E8E96] text-sm mt-3">
+src/app/(marketing)/blog/[slug]/BlogPostContent.tsx:144:              By <span className="text-[#FF8800]">{post.author}</span>
+src/app/(marketing)/blog/[slug]/BlogPostContent.tsx:180:                        <p className="text-[#8E8E96] text-sm">{faq.answer}</p>
+src/app/(marketing)/blog/[slug]/BlogPostContent.tsx:210:                        <h4 className="text-white text-sm font-medium group-hover:text-[#FFA833] transition-colors leading-snug">
+src/app/(marketing)/blog/[slug]/BlogPostContent.tsx:213:                        <p className="text-[#8E8E96] text-xs mt-2">{rp.readTime}</p>
+src/app/(marketing)/blog/[slug]/BlogPostContent.tsx:234:                className="flex items-center gap-2 text-[#8E8E96] hover:text-[#FF8800] transition-colors text-xs"
+src/app/(marketing)/guides/GuidesHub.tsx:59:                            <span className="flex items-center gap-1 text-[#8E8E96] text-xs">
+src/app/(marketing)/guides/GuidesHub.tsx:63:                            <span className="text-[#8E8E96] text-xs">-</span>
+src/app/(marketing)/guides/GuidesHub.tsx:64:                            <span className="text-[#8E8E96] text-xs">
+src/app/(marketing)/guides/GuidesHub.tsx:68:                          <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#FFA833] transition-colors mb-2">
+src/app/(marketing)/guides/GuidesHub.tsx:71:                          <p className="text-[#D6D0C2] text-sm leading-relaxed mb-3">
+src/app/(marketing)/guides/GuidesHub.tsx:81:                            <span className="flex items-center gap-1 text-[#FF8800] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:16:      <p className="text-xs font-semibold uppercase tracking-wider text-[#8E8E96] mb-3">
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:25:              ? 'text-white bg-[rgba(255, 168, 51,0.12)] border-l-2 border-[#FF8800]'
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:26:              : 'text-[#8E8E96] hover:text-[#D6D0C2] hover:bg-[rgba(255, 168, 51,0.06)]'
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:46:        <Lightbulb className="w-5 h-5 text-[#FF8800] shrink-0 mt-0.5" />
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:48:          <p className="text-xs font-semibold uppercase tracking-wider text-[#FF8800] mb-1.5">
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:51:          <p className="text-[#D6D0C2] text-sm leading-relaxed">{text}</p>
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:84:              className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0"
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:92:            <span className="text-sm text-[#D6D0C2] group-hover:text-white transition-colors flex-1 min-w-0 truncate">
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:95:            <ExternalLink className="w-3.5 h-3.5 text-[#8E8E96] group-hover:text-[#FF8800] transition-colors shrink-0" />
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:126:                className={`w-4 h-4 text-[#FF8800] shrink-0 mt-1 transition-transform duration-200 ${
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:134:                <p className="text-[#D6D0C2] text-sm leading-relaxed">{faq.answer}</p>
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:182:              <span className="flex items-center gap-1.5 text-[#8E8E96] text-xs">
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:186:              <span className="text-[#8E8E96] text-xs">-</span>
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:187:              <span className="flex items-center gap-1.5 text-[#8E8E96] text-xs">
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:191:              <span className="text-[#8E8E96] text-xs">-</span>
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:192:              <span className="text-[#8E8E96] text-xs">{guide.sections.length} sections</span>
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:197:            <p className="text-[#D6D0C2] text-lg leading-relaxed max-w-2xl">
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:223:                  <p className="text-xs font-semibold uppercase tracking-wider text-[#8E8E96] mb-2">
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:231:                          className="flex items-center gap-2 text-sm text-[#D6D0C2] hover:text-white transition-colors py-1"
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:233:                          <span className="text-[#FF8800] text-xs font-mono w-5 text-right shrink-0">
+src/app/(marketing)/guides/[slug]/GuideContent.tsx:250:                        <span className="text-[#FF8800] text-sm font-mono">
+src/app/(marketing)/compare/[slug]/page.tsx:58:          <p className="text-[#D6D0C2] text-lg leading-relaxed">
+src/app/(marketing)/compare/[slug]/page.tsx:71:            <table className="w-full border-collapse min-w-[500px]">
+src/app/(marketing)/compare/[slug]/page.tsx:75:                    className="text-left text-xs uppercase tracking-wider text-[#8E8E96] py-3 px-4 border-b"
+src/app/(marketing)/compare/[slug]/page.tsx:110:                      className="text-sm text-[#D6D0C2] py-3 px-4 border-b"
+src/app/(marketing)/compare/[slug]/page.tsx:116:                      className="text-sm text-[#D6D0C2] py-3 px-4 border-b"
+src/app/(marketing)/compare/[slug]/page.tsx:155:                      className="flex items-start gap-2 text-sm text-[#D6D0C2] leading-relaxed"
+src/app/(marketing)/compare/[slug]/page.tsx:174:                      className="flex items-start gap-2 text-sm text-[#D6D0C2] leading-relaxed"
+src/app/(marketing)/compare/[slug]/page.tsx:206:                      className="flex items-start gap-2 text-sm text-[#D6D0C2] leading-relaxed"
+src/app/(marketing)/compare/[slug]/page.tsx:225:                      className="flex items-start gap-2 text-sm text-[#D6D0C2] leading-relaxed"
+src/app/(marketing)/compare/[slug]/page.tsx:251:            <p className="text-[#D6D0C2] text-base leading-relaxed">
+src/app/(marketing)/automation/page.tsx:26:            <h1 className="font-display text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px] leading-[0.98] tracking-tight text-[color:var(--ivory)]">
+src/app/(marketing)/automation/page.tsx:29:            <p className="mt-8 max-w-2xl text-[17px] md:text-[18px] leading-[1.55] text-[color:var(--ivory-dim)]">
+src/app/(marketing)/automation/page.tsx:35:                className="inline-flex items-center gap-2 px-6 py-3.5 text-[14px] font-medium rounded-md text-[#0A0A0B] focus-ring"
+src/app/(marketing)/automation/page.tsx:51:            <h2 className="font-display text-[36px] md:text-[52px] leading-[1.05] tracking-tight text-[color:var(--ivory)]">
+src/app/(marketing)/automation/page.tsx:59:                <h3 className="font-display text-[22px] leading-tight text-[color:var(--ivory)]">
+src/app/(marketing)/automation/page.tsx:65:                <p className="mt-auto pt-6 font-mono text-[12px] text-[color:var(--accent)] tracking-wide">
+src/app/(marketing)/automation/page.tsx:80:              <h2 className="font-display text-[32px] md:text-[44px] leading-[1.1] tracking-tight text-[color:var(--ivory)]">
+src/app/(marketing)/automation/page.tsx:85:              <p className="text-[16px] leading-[1.65] text-[color:var(--ivory-dim)]">
+src/app/(marketing)/automation/page.tsx:88:              <ul className="mt-8 grid grid-cols-2 gap-4 font-mono text-[12px] text-[color:var(--muted)]">
+src/app/(marketing)/automation/page.tsx:111:              <h2 className="font-display text-[32px] md:text-[44px] leading-[1.1] tracking-tight text-[color:var(--ivory)]">
+src/app/(marketing)/automation/page.tsx:123:                  <span className="font-mono text-[11px] text-[color:var(--muted)]">auto-refresh 60s</span>
+src/app/(marketing)/automation/page.tsx:133:                      <div className="font-mono text-[22px] md:text-[28px] text-[color:var(--ivory)] tabular-nums">
+src/app/(marketing)/automation/page.tsx:136:                      <div className="text-[11px] text-[color:var(--muted)] mt-1 tracking-wide">
+src/app/(marketing)/automation/page.tsx:152:                      <span className="text-[14px] text-[color:var(--ivory-dim)]">{row.name}</span>
+src/app/(marketing)/automation/page.tsx:153:                      <span className="font-mono text-[12px] text-[color:var(--muted)]">
+src/app/(marketing)/automation/page.tsx:160:                <p className="mt-6 text-[11px] text-[color:var(--muted)] tracking-wide">Representative data</p>
+src/app/(marketing)/automation/page.tsx:172:            <h2 className="font-display text-[36px] md:text-[52px] leading-[1.05] tracking-tight text-[color:var(--ivory)]">
+src/app/(marketing)/automation/page.tsx:187:                  <div className="font-display text-[36px] text-[color:var(--ivory)] leading-none">
+src/app/(marketing)/automation/page.tsx:195:                    className="mt-auto pt-8 inline-flex items-center gap-2 text-[13px] font-medium text-[color:var(--accent)] focus-ring"
+src/app/(marketing)/automation/page.tsx:210:          <h2 className="font-display text-[36px] md:text-[48px] leading-[1.1] tracking-tight text-[color:var(--ivory)]">
+src/app/(marketing)/automation/page.tsx:218:            className="mt-8 inline-flex items-center gap-2 px-6 py-3.5 text-[14px] font-medium rounded-md text-[#0A0A0B]"
+src/app/(marketing)/terms-of-service/page.tsx:18:const bodyTextClass = 'text-[#D6D0C2] leading-relaxed mb-4';
+src/app/(marketing)/terms-of-service/page.tsx:20:const secondaryTextClass = 'text-[#8E8E96] leading-relaxed mb-4';
+src/app/(marketing)/terms-of-service/page.tsx:68:            <ul className="list-disc list-inside text-[#D6D0C2] leading-relaxed mb-4 space-y-2 pl-2">
+src/app/(marketing)/terms-of-service/page.tsx:132:            <ul className="list-disc list-inside text-[#D6D0C2] leading-relaxed mb-4 space-y-2 pl-2">
+src/app/(marketing)/terms-of-service/page.tsx:303:                  className="text-[#FF8800] hover:text-[#FFA833] transition-colors underline"
+src/app/(marketing)/terms-of-service/page.tsx:315:                  className="text-[#FF8800] hover:text-[#FFA833] transition-colors underline"
+src/app/(marketing)/services/[service]/[industry]/page.tsx:75:          <div className="space-y-6 text-[#D6D0C2] text-lg leading-relaxed">
+src/app/(marketing)/services/[service]/[industry]/page.tsx:93:                className="flex items-start gap-3 text-[#D6D0C2] text-base leading-relaxed"
+src/app/(marketing)/services/[service]/[industry]/page.tsx:125:                <p className="text-[#D6D0C2] text-base leading-relaxed pt-1">
+src/app/(marketing)/services/[service]/near/[city]/page.tsx:75:          <div className="space-y-6 text-[#D6D0C2] text-lg leading-relaxed">
+src/app/(marketing)/services/[service]/near/[city]/page.tsx:93:                className="flex items-start gap-3 text-[#D6D0C2] text-base leading-relaxed"
+src/app/(marketing)/services/[service]/near/[city]/page.tsx:111:          <div className="space-y-6 text-[#D6D0C2] text-base leading-relaxed">
+src/components/ui/scroll-area.tsx:21:        className="focus-visible:ring-ring/50 size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline-1"
+src/components/ui/tabs.tsx:29:        "bg-muted text-muted-foreground inline-flex h-9 w-fit items-center justify-center rounded-lg p-[3px]",
+src/components/ui/tabs.tsx:45:        "data-[state=active]:bg-background dark:data-[state=active]:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 text-foreground dark:text-muted-foreground inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+src/components/ui/badge.tsx:8:  "inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden",
+src/components/ui/navigation-menu.tsx:62:  "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1"
+src/components/ui/navigation-menu.tsx:78:        className="relative top-[1px] ml-1 size-3 transition duration-300 group-data-[state=open]:rotate-180"
+src/components/ui/navigation-menu.tsx:132:        "data-[active=true]:focus:bg-accent data-[active=true]:hover:bg-accent data-[active=true]:bg-accent/50 data-[active=true]:text-accent-foreground hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm p-2 text-sm transition-all outline-none focus-visible:ring-[3px] focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4",
+src/components/ui/dropdown-menu.tsx:45:          "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border p-1 shadow-md",
+src/components/ui/dropdown-menu.tsx:233:        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-hidden rounded-md border p-1 shadow-lg",
+src/components/ui/input.tsx:12:        "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+src/components/ui/menubar.tsx:82:          "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[12rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-md border p-1 shadow-md",
+src/components/ui/menubar.tsx:251:        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-md border p-1 shadow-lg",
+src/components/ui/button.tsx:8:  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+src/components/sections/AboutPage.tsx:66:              <span className="bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FF8800] bg-clip-text text-transparent">
+src/components/sections/AboutPage.tsx:71:            <p className="text-[#D6D0C2] text-lg md:text-xl max-w-2xl leading-relaxed">
+src/components/sections/AboutPage.tsx:116:              <p className="text-[#D6D0C2] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
+src/components/sections/AboutPage.tsx:119:              <p className="text-[#D6D0C2] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
+src/components/sections/AboutPage.tsx:122:              <p className="text-[#D6D0C2] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
+src/components/sections/AboutPage.tsx:131:                  <p className="text-[#FF8800] text-sm">Co-Founder &middot; The Ads Guy</p>
+src/components/sections/AboutPage.tsx:132:                  <p className="text-[#8E8E96] text-xs mt-1">Secretly competitive about ROAS the way some people are about fantasy football.</p>
+src/components/sections/AboutPage.tsx:136:                  <p className="text-[#FF8800] text-sm">Co-Founder &middot; The Data Guy</p>
+src/components/sections/AboutPage.tsx:137:                  <p className="text-[#8E8E96] text-xs mt-1">Will redesign your entire dashboard if one chart is slightly misleading. You&apos;ve been warned.</p>
+src/components/sections/AboutPage.tsx:145:            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#FF8800] via-[#C26800] to-transparent" />
+src/components/sections/AboutPage.tsx:152:                    <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#FF8800] z-10"
+src/components/sections/AboutPage.tsx:157:                      <span className="text-[#FF8800] font-mono text-sm">{item.year}</span>
+src/components/sections/AboutPage.tsx:159:                      <p className="text-[#D6D0C2] text-sm mt-2 leading-relaxed">{item.description}</p>
+src/components/sections/AboutPage.tsx:181:                  <value.icon className="w-8 h-8 text-[#FF8800] mb-4" />
+src/components/sections/AboutPage.tsx:183:                  <p className="text-[#D6D0C2] text-sm leading-relaxed">{value.description}</p>
+src/components/sections/AboutPage.tsx:199:              <p className="text-[#D6D0C2] text-lg mb-8">
+src/components/ui/tooltip.tsx:55:        <TooltipPrimitive.Arrow className="bg-primary fill-primary z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]" />
+src/components/ui/select.tsx:40:        "border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex w-fit items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+src/components/ui/select.tsx:64:          "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 relative z-50 max-h-(--radix-select-content-available-height) min-w-[8rem] origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border shadow-md",
+src/components/sections/PillarsSection.tsx:19:          <h2 className="font-display text-[36px] md:text-[52px] leading-[1.05] tracking-tight text-[color:var(--ivory)]">
+src/components/sections/PillarsSection.tsx:22:          <p className="mt-6 text-[16px] md:text-[17px] leading-[1.6] text-[color:var(--ivory-dim)] max-w-2xl">
+src/components/sections/PillarsSection.tsx:32:              className="group relative flex flex-col card-flat p-8 min-h-[340px] focus-ring"
+src/components/sections/PillarsSection.tsx:37:              <h3 className="font-display text-[26px] md:text-[30px] leading-[1.1] tracking-tight text-[color:var(--ivory)]">
+src/components/sections/PillarsSection.tsx:49:                    className="py-2.5 font-mono text-[12px] text-[color:var(--muted)] tracking-wide"
+src/components/sections/TrustStrip.tsx:11:        <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-[11px] tracking-[0.22em] uppercase text-[color:var(--muted)] font-mono">
+src/components/ui/toast.tsx:19:      "fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]",
+src/components/ui/sidebar.tsx:294:        "hover:after:bg-sidebar-border absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear group-data-[side=left]:-right-4 group-data-[side=right]:left-0 after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] sm:flex",
+src/components/ui/radio-group.tsx:30:        "border-input text-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 aspect-square size-4 shrink-0 rounded-full border shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+src/components/chat/ChatPanel.tsx:114:      className="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] h-[520px] max-h-[calc(100vh-8rem)] flex flex-col rounded-2xl shadow-2xl chat-panel chat-panel-enter"
+src/components/sections/FounderSection.tsx:11:      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0B] via-[#141416] to-[#141416]" />
+src/components/sections/FounderSection.tsx:15:        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl opacity-10"
+src/components/sections/FounderSection.tsx:68:                  <p className="text-[#D6D0C2] leading-relaxed mb-6">
+src/components/sections/FounderSection.tsx:75:                      className="flex items-center gap-2 text-[#FF8800] hover:text-[#FFA833] transition-colors text-sm"
+src/components/sections/FounderSection.tsx:84:                      className="flex items-center gap-2 text-[#FF8800] hover:text-[#FFA833] transition-colors text-sm"
+src/components/ui/accordion.tsx:38:          "focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180",
+src/components/sections/FreeResources.tsx:47:          <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed">
+src/components/sections/FreeResources.tsx:95:                      <Icon className="w-5 h-5 text-[#FF8800]" />
+src/components/sections/FreeResources.tsx:99:                    <h3 className="font-display text-lg font-semibold text-white mb-2 leading-snug group-hover:text-[#FF8800] transition-colors">
+src/components/sections/FreeResources.tsx:104:                    <p className="text-[#8E8E96] text-sm leading-relaxed flex-1 mb-5">
+src/components/sections/FreeResources.tsx:109:                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[#FF8800] group-hover:text-[#FFA833] transition-colors">
+src/components/ui/table.tsx:73:        "text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+src/components/ui/table.tsx:86:        "p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+src/components/seo/EnhancedInternalLinks.tsx:85:            <h3 className="text-sm font-medium uppercase tracking-wider text-[#8E8E96] mb-3">
+src/components/seo/EnhancedInternalLinks.tsx:93:                    className="group flex items-start gap-2 text-[#D6D0C2] hover:text-[#FF8800] transition-colors"
+src/components/seo/EnhancedInternalLinks.tsx:112:            <h3 className="text-sm font-medium uppercase tracking-wider text-[#8E8E96] mb-3">
+src/components/seo/EnhancedInternalLinks.tsx:120:                    className="group flex items-start gap-2 text-[#D6D0C2] hover:text-[#FF8800] transition-colors"
+src/components/seo/EnhancedInternalLinks.tsx:128:                      <span className="block text-xs text-[#8E8E96] mt-0.5">
+src/components/seo/EnhancedInternalLinks.tsx:142:            <h3 className="text-sm font-medium uppercase tracking-wider text-[#8E8E96] mb-3">
+src/components/seo/EnhancedInternalLinks.tsx:150:                    className="group flex items-start gap-2 text-[#D6D0C2] hover:text-[#FF8800] transition-colors"
+src/components/seo/EnhancedInternalLinks.tsx:158:                      <span className="block text-xs text-[#8E8E96] mt-0.5">
+src/components/seo/EnhancedInternalLinks.tsx:172:            <h3 className="text-sm font-medium uppercase tracking-wider text-[#8E8E96] mb-3">
+src/components/seo/EnhancedInternalLinks.tsx:180:                    className="group flex items-start gap-2 text-[#D6D0C2] hover:text-[#FF8800] transition-colors"
+src/components/sections/TheMathSection.tsx:23:            <h2 className="font-display text-[32px] sm:text-[40px] lg:text-[52px] leading-[1.05] tracking-tight text-[color:var(--ivory)] max-w-[16ch]">
+src/components/sections/TheMathSection.tsx:26:            <p className="mt-8 max-w-xl text-[16px] md:text-[17px] leading-[1.6] text-[color:var(--ivory-dim)]">
+src/components/sections/TheMathSection.tsx:31:              className="mt-10 pl-5 font-display italic text-[22px] md:text-[26px] leading-snug text-[color:var(--ivory)]"
+src/components/sections/TheMathSection.tsx:46:              <div className="font-mono text-[48px] md:text-[64px] lg:text-[72px] leading-none tracking-tight text-[color:var(--accent)]">
+src/components/sections/TheMathSection.tsx:49:              <p className="mt-3 text-[13px] text-[color:var(--muted)]">{anchor.label}</p>
+src/components/sections/TheMathSection.tsx:54:                    <span className="text-[14px] text-[color:var(--ivory-dim)]">{item.role}</span>
+src/components/sections/TheMathSection.tsx:55:                    <span className="font-mono text-[14px] text-[color:var(--ivory)] tabular-nums">
+src/components/sections/TheMathSection.tsx:62:                  <span className="font-mono text-[16px] text-[color:var(--accent)] tabular-nums">
+src/components/compliance/CookieConsent.tsx:94:            className="px-4 py-2 rounded-md text-[13px] font-medium transition-colors"
+src/components/compliance/CookieConsent.tsx:106:            className="px-4 py-2 rounded-md text-[13px] font-medium transition-opacity hover:opacity-90"
+src/components/ui/switch.tsx:16:        "peer data-[state=checked]:bg-primary data-[state=unchecked]:bg-input focus-visible:border-ring focus-visible:ring-ring/50 dark:data-[state=unchecked]:bg-input/80 inline-flex h-[1.15rem] w-8 shrink-0 items-center rounded-full border border-transparent shadow-xs transition-all outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+src/components/sections/ResultsPage.tsx:184:                    ? 'bg-plum text-[#0A0A0B]'
+src/components/sections/ResultsPage.tsx:359:                  className="bg-plum hover:bg-plum-light text-[#0A0A0B] font-semibold px-8 py-6 group"
+src/components/ui/toggle.tsx:10:  "inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium hover:bg-muted hover:text-muted-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none transition-[color,box-shadow] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive whitespace-nowrap",
+src/components/ui/checkbox.tsx:17:        "peer border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+src/components/sections/ProofBar.tsx:27:      <div className="text-[#8E8E96] text-sm">{label}</div>
+src/components/ui/textarea.tsx:10:        "border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 flex field-sizing-content min-h-16 w-full rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+src/components/sections/ProcessSection.tsx:15:          <h2 className="font-display text-[36px] md:text-[52px] leading-[1.05] tracking-tight text-[color:var(--ivory)]">
+src/components/sections/ProcessSection.tsx:24:                <span className="font-mono text-[12px] text-[color:var(--accent)] tracking-widest">
+src/components/sections/ProcessSection.tsx:29:              <h3 className="font-display text-[26px] leading-tight text-[color:var(--ivory)]">
+src/components/sections/LatestInsights.tsx:13:        className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[450px] pointer-events-none"
+src/components/sections/LatestInsights.tsx:36:          <p className="text-[#D6D0C2] text-lg mt-4 leading-relaxed">
+src/components/sections/LatestInsights.tsx:78:                  <h3 className="font-display text-lg font-semibold text-white mb-2 leading-snug group-hover:text-[#FF8800] transition-colors">
+src/components/sections/LatestInsights.tsx:85:                  <p className="text-[#8E8E96] text-sm leading-relaxed line-clamp-3 mb-4 flex-1">
+src/components/sections/LatestInsights.tsx:90:                  <div className="flex items-center gap-3 text-xs text-[#8E8E96]">
+src/components/sections/LatestInsights.tsx:98:                    <span className="w-1 h-1 rounded-full bg-[#8E8E96]" />
+src/components/sections/LatestInsights.tsx:111:            className="inline-flex items-center gap-1.5 text-[#FF8800] hover:text-[#FFA833] font-medium transition-colors"
+src/components/layout/Footer.tsx:43:                <span className="text-[color:var(--muted)] text-[10px] tracking-[0.2em] uppercase mt-1.5">Est. 2017</span>
+src/components/layout/Footer.tsx:138:                className="inline-block mt-2 px-4 py-2 text-[13px] font-medium text-[#0A0A0B] rounded-md"
+src/components/layout/Footer.tsx:152:          className="py-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.18em]"
+src/components/blog/AuthorBox.tsx:63:          <p className="text-xs uppercase tracking-wider text-[#8E8E96] mb-1">
+src/components/blog/AuthorBox.tsx:69:          <p className="text-[#FF8800] text-xs mb-1">{author.title}, Digital Point LLC</p>
+src/components/blog/AuthorBox.tsx:75:                className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full"
+src/components/blog/AuthorBox.tsx:87:          <p className="text-[#D6D0C2] text-sm leading-relaxed mt-3">
+src/components/blog/AuthorBox.tsx:95:              className="text-[#FF8800] hover:text-[#FFA833] text-sm font-medium transition-colors"
+src/components/blog/AuthorBox.tsx:103:              className="inline-flex items-center gap-1.5 text-[#FF8800] hover:text-[#FFA833] text-sm font-medium transition-colors"
+src/components/seo/InternalLinks.tsx:101:                <span className="text-white text-sm font-medium group-hover:text-[#FFA833] transition-colors">
+src/components/seo/InternalLinks.tsx:104:                <ArrowRight className="w-3 h-3 text-[#8E8E96] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+src/components/seo/InternalLinks.tsx:106:              <p className="text-[#8E8E96] text-xs">{service.description}</p>
+src/components/seo/NewsletterOptIn.tsx:52:        <CheckCircle className="w-8 h-8 text-[#FF8800] mx-auto mb-2" />
+src/components/seo/NewsletterOptIn.tsx:54:        <p className="text-[#8E8E96] text-xs mt-1">Watch your inbox for growth insights.</p>
+src/components/seo/NewsletterOptIn.tsx:70:        <Mail className="w-4 h-4 text-[#FF8800]" />
+src/components/seo/NewsletterOptIn.tsx:73:      <p className="text-[#8E8E96] text-xs mb-4">{description}</p>
+src/components/seo/NewsletterOptIn.tsx:81:          className="flex-1 px-3 py-2 rounded-lg text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/components/seo/NewsletterOptIn.tsx:100:        <p className="text-[#FF8800] text-xs mt-2">Something went wrong. Try again.</p>
+src/components/blog/InContentCTA.tsx:52:      <p className="text-[#D6D0C2] text-sm mb-4">
+src/components/sections/SystemsReportingPage.tsx:123:                  className="bg-plum hover:bg-plum-light text-[#0A0A0B] font-semibold px-6 group"
+src/components/sections/SystemsReportingPage.tsx:272:                  className="bg-plum hover:bg-plum-light text-[#0A0A0B] font-semibold px-8 py-6 group"
+src/components/sections/ContactPage.tsx:82:              <span className="bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FF8800] bg-clip-text text-transparent">
+src/components/sections/ContactPage.tsx:86:            <p className="text-[#D6D0C2] text-lg md:text-xl max-w-2xl leading-relaxed">
+src/components/sections/ContactPage.tsx:118:                            <method.icon className="w-5 h-5 text-[#FF8800]" />
+src/components/sections/ContactPage.tsx:121:                            <h3 className="font-display font-semibold text-white group-hover:text-[#FFA833] transition-colors">
+src/components/sections/ContactPage.tsx:124:                            <p className="text-[#FF8800] text-sm mt-0.5">{method.value}</p>
+src/components/sections/ContactPage.tsx:125:                            <p className="text-[#8E8E96] text-xs mt-1">{method.description}</p>
+src/components/sections/ContactPage.tsx:137:                    <detail.icon className="w-4 h-4 text-[#8E8E96]" />
+src/components/sections/ContactPage.tsx:138:                    <span className="text-[#8E8E96]">{detail.label}:</span>
+src/components/sections/ContactPage.tsx:139:                    <span className="text-[#D6D0C2]">{detail.value}</span>
+src/components/sections/ContactPage.tsx:154:                  <p className="text-[#D6D0C2] text-sm mb-3">Get a structured review of your marketing, systems, and team — in under 48 hours.</p>
+src/components/sections/ContactPage.tsx:155:                  <Link href="/free-growth-audit" className="inline-flex items-center gap-1 text-[#FF8800] hover:text-[#FFA833] text-sm font-medium transition-colors">
+src/components/sections/ContactPage.tsx:173:                        <CheckCircle className="w-16 h-16 text-[#FF8800] mx-auto mb-4" />
+src/components/sections/ContactPage.tsx:176:                      <p className="text-[#D6D0C2]">One of us (the founders, not a bot) will reply within 24 hours. Usually much sooner.</p>
+src/components/sections/ContactPage.tsx:181:                      <p className="text-[#8E8E96] text-sm mb-6">No form letters, no auto-replies. A real human (probably Faizan, let&apos;s be honest) will get back to you within 24 hours.</p>
+src/components/sections/ContactPage.tsx:184:                        <label htmlFor="contact-name" className="block text-sm text-[#D6D0C2] mb-1.5">Name</label>
+src/components/sections/ContactPage.tsx:191:                          className="w-full px-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/components/sections/ContactPage.tsx:198:                        <label htmlFor="contact-email" className="block text-sm text-[#D6D0C2] mb-1.5">Email</label>
+src/components/sections/ContactPage.tsx:205:                          className="w-full px-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+src/components/sections/ContactPage.tsx:212:                        <label htmlFor="contact-message" className="block text-sm text-[#D6D0C2] mb-1.5">Message</label>
+src/components/sections/ContactPage.tsx:219:                          className="w-full px-4 py-3 rounded-xl text-white text-sm placeholder:text-[#8E8E96] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50 resize-none"
+src/components/sections/ContactPage.tsx:250:                        <p className="text-[#FF8800] text-sm text-center">Something went wrong. Please try again or email us directly.</p>
+src/components/sections/PullQuoteSection.tsx:23:      <div className="relative mx-auto max-w-[88rem]" style={{ paddingInline: 'var(--container-gutter)' }}>
+src/components/sections/BlogPage.tsx:91:      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[#FFA833] transition-colors mb-3 leading-snug">
+src/components/sections/BlogPage.tsx:96:      <p className="text-[#8E8E96] text-sm leading-relaxed flex-1 mb-4">
+src/components/sections/BlogPage.tsx:102:        <div className="flex items-center gap-3 text-[#8E8E96] text-xs">
+src/components/sections/BlogPage.tsx:109:        <ArrowRight className="w-4 h-4 text-[#FF8800] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+src/components/sections/BlogPage.tsx:129:              <span className="bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FF8800] bg-clip-text text-transparent">
+src/components/sections/BlogPage.tsx:133:            <p className="text-[#D6D0C2] text-lg md:text-xl max-w-2xl leading-relaxed">
+src/components/sections/BlogPage.tsx:167:              <p className="text-[#D6D0C2] text-sm mb-6">
+src/components/sections/CaseStudiesPreview.tsx:18:          <h2 className="font-display text-[36px] md:text-[52px] leading-[1.05] tracking-tight text-[color:var(--ivory)]">
+src/components/sections/CaseStudiesPreview.tsx:21:          <p className="mt-6 text-[15px] text-[color:var(--muted)]">{body}</p>
+src/components/sections/CaseStudiesPreview.tsx:29:              className="group card-flat p-8 flex flex-col min-h-[320px] focus-ring"
+src/components/sections/CaseStudiesPreview.tsx:32:              <h3 className="font-display text-[24px] leading-tight text-[color:var(--ivory)]">
+src/components/sections/CaseStudiesPreview.tsx:35:              <p className="mt-3 text-[14px] leading-[1.55] text-[color:var(--ivory-dim)]">
+src/components/sections/CaseStudiesPreview.tsx:41:                  <span className="font-mono text-[36px] text-[color:var(--accent)] tabular-nums">
+src/components/ui/context-menu.tsx:88:        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] origin-(--radix-context-menu-content-transform-origin) overflow-hidden rounded-md border p-1 shadow-lg",
+src/components/ui/context-menu.tsx:105:          "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-h-(--radix-context-menu-content-available-height) min-w-[8rem] origin-(--radix-context-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border p-1 shadow-md",
+src/components/seo/GrowthAuditCTA.tsx:47:          <p className="text-[#8E8E96] text-xs mt-0.5">{description}</p>
+src/components/seo/GrowthAuditCTA.tsx:72:      <p className="text-[#D6D0C2] text-sm mb-6 max-w-lg mx-auto">{description}</p>
+src/components/sections/RemoteWorkforcePage.tsx:93:                  className="bg-plum hover:bg-plum-light text-[#0A0A0B] font-semibold px-6 group"
+src/components/sections/RemoteWorkforcePage.tsx:128:                  ? 'bg-plum text-[#0A0A0B]'
+src/components/sections/RemoteWorkforcePage.tsx:140:                    ? 'bg-plum text-[#0A0A0B]'
+src/components/sections/RemoteWorkforcePage.tsx:308:                  className="bg-plum hover:bg-plum-light text-[#0A0A0B] font-semibold px-8 py-6 group"
+src/components/sections/ProblemSection.tsx:48:      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0B] via-[#141416] to-[#141416]" />
+src/components/sections/ProblemSection.tsx:85:              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FF8800]">
+src/components/sections/ProblemSection.tsx:91:            <p className="text-[#D6D0C2] text-lg md:text-xl leading-relaxed">
+src/components/sections/ProblemSection.tsx:109:                    <problem.icon className="w-6 h-6 text-[#FF8800]" />
+src/components/sections/ProblemSection.tsx:115:                    <p className="text-[#D6D0C2] text-sm leading-relaxed">
+src/components/ui-dp/AnimatedElements.tsx:223:      <div className="font-mono text-[32px] md:text-[40px] leading-none text-[color:var(--ivory)] tabular-nums">
+src/components/ui-dp/AnimatedElements.tsx:226:        {suffix && <span className="text-[color:var(--ivory-dim)] text-[20px]">{suffix}</span>}
+src/components/sections/FounderFormSection.tsx:131:        <p className="text-[#D6D0C2] text-sm">We&apos;ll review your setup and respond within 24–48 hours.</p>
+src/components/sections/FounderFormSection.tsx:147:          className="bg-[#141416]/50 border-[#3A2D14] focus:border-[#FF8800] text-white placeholder:text-[#8E8E96]"
+src/components/sections/FounderFormSection.tsx:162:          className="bg-[#141416]/50 border-[#3A2D14] focus:border-[#FF8800] text-white placeholder:text-[#8E8E96]"
+src/components/sections/FounderFormSection.tsx:176:          className="bg-[#141416]/50 border-[#3A2D14] focus:border-[#FF8800] text-white placeholder:text-[#8E8E96]"
+src/components/sections/FounderFormSection.tsx:188:          <SelectTrigger className="bg-[#141416]/50 border-[#3A2D14] text-white">
+src/components/sections/FounderFormSection.tsx:313:        <p className="text-[#D6D0C2] text-sm">A co-founder will get back to you within 24 hours.</p>
+src/components/sections/FounderFormSection.tsx:329:          className="bg-[#141416]/50 border-[#3A2D14] focus:border-[#FF8800] text-white placeholder:text-[#8E8E96]"
+src/components/sections/FounderFormSection.tsx:344:          className="bg-[#141416]/50 border-[#3A2D14] focus:border-[#FF8800] text-white placeholder:text-[#8E8E96]"
+src/components/sections/FounderFormSection.tsx:359:          className="bg-[#141416]/50 border-[#3A2D14] focus:border-[#FF8800] text-white resize-none placeholder:text-[#8E8E96]"
+src/components/sections/FounderFormSection.tsx:380:        <p className="text-[#8E8E96] text-xs leading-relaxed" style={{ maxWidth: '32rem' }}>
+src/components/sections/FounderFormSection.tsx:387:          className="flex items-center gap-1.5 text-[#FF8800] hover:text-[#FFA833] transition-colors text-xs"
+src/components/sections/FounderFormSection.tsx:403:      <div className="absolute inset-0 bg-gradient-to-b from-[#141416] via-[#141416] to-[#0A0A0B]" />
+src/components/sections/FounderFormSection.tsx:409:        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full blur-3xl pointer-events-none"
+src/components/sections/FounderFormSection.tsx:452:                    <Search className="w-5 h-5 text-[#FF8800]" />
+src/components/sections/FounderFormSection.tsx:458:                <p className="text-[#D6D0C2] text-sm mb-5">
+src/components/sections/FounderFormSection.tsx:521:                    <MessageSquare className="w-5 h-5 text-[#FF8800]" />
+src/components/sections/FounderFormSection.tsx:527:                <p className="text-[#D6D0C2] text-sm mb-5">
+src/components/seo/Breadcrumbs.tsx:24:      <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-[#8E8E96]">
+src/components/seo/Breadcrumbs.tsx:29:              <span className="text-[#D6D0C2]">{item.label}</span>
+src/components/seo/Breadcrumbs.tsx:33:                className="hover:text-[#FF8800] transition-colors"
+src/components/sections/PerformanceMarketingPage.tsx:100:                  className="bg-plum hover:bg-plum-light text-[#0A0A0B] font-semibold px-6 group"
+src/components/sections/PerformanceMarketingPage.tsx:158:              <GlassCard className="p-8 h-full flex items-center justify-center min-h-[300px]">
+src/components/sections/PerformanceMarketingPage.tsx:243:                  className="bg-plum hover:bg-plum-light text-[#0A0A0B] font-semibold px-8 py-6 group"
+src/components/sections/SystemSection.tsx:39:      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0B] via-[#141416] to-[#141416]" />
+src/components/sections/SystemSection.tsx:43:        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[400px] rounded-full blur-3xl opacity-10"
+src/components/sections/SystemSection.tsx:63:                  <GlassCard className="p-4 lg:p-5 text-center min-w-[160px] lg:min-w-[140px]">
+src/components/sections/SystemSection.tsx:71:                      <step.icon className="w-5 h-5 text-[#FF8800]" />
+src/components/sections/SystemSection.tsx:74:                    <p className="text-[#8E8E96] text-xs leading-relaxed">{step.description}</p>
+src/components/sections/SystemSection.tsx:84:                        <ArrowRight className="w-4 h-4 text-[#FF8800] opacity-50" />
+src/components/sections/SystemSection.tsx:96:                        <ArrowRight className="w-4 h-4 text-[#FF8800] opacity-50 rotate-90" />
+src/components/blog/LeadMagnetBanner.tsx:30:      <p className="text-[#D6D0C2] text-sm md:text-base mb-8 max-w-xl mx-auto leading-relaxed">
+src/components/sections/AuditPage.tsx:147:        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0B] via-[#141416] to-[#141416]" />
+src/components/sections/AuditPage.tsx:165:              Get a <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFA833] to-[#FF8800]">free growth audit</span>
+src/components/sections/AuditPage.tsx:170:            <p className="text-[#D6D0C2] text-lg mt-4 max-w-2xl">
+src/components/sections/AuditPage.tsx:188:                      <span className="text-[#D6D0C2] text-sm">Step {step} of 3</span>
+src/components/sections/AuditPage.tsx:192:                          className="flex items-center gap-1 text-[#FF8800] hover:text-[#FFA833] text-sm transition-colors"
+src/components/sections/AuditPage.tsx:199:                    <div className="h-1 bg-[#141416] rounded-full overflow-hidden">
+src/components/sections/AuditPage.tsx:224:                      <p className="text-[#D6D0C2] text-sm mb-6">
+src/components/sections/AuditPage.tsx:250:                              <challenge.icon className="w-5 h-5 text-[#FF8800]" />
+src/components/sections/AuditPage.tsx:254:                              <div className="text-[#8E8E96] text-xs mt-0.5">{challenge.description}</div>
+src/components/sections/AuditPage.tsx:256:                            <ArrowRight className="w-4 h-4 text-[#FF8800] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+src/components/sections/AuditPage.tsx:275:                      <p className="text-[#D6D0C2] text-sm mb-6">
+src/components/sections/AuditPage.tsx:294:                            <div className="text-white font-medium text-sm group-hover:text-[#FFA833] transition-colors">
+src/components/sections/AuditPage.tsx:315:                      <p className="text-[#D6D0C2] text-sm mb-6">
+src/components/sections/AuditPage.tsx:329:                            className="bg-[#141416]/50 border-[#3A2D14] focus:border-[#FF8800] text-white"
+src/components/sections/AuditPage.tsx:346:                            className="bg-[#141416]/50 border-[#3A2D14] focus:border-[#FF8800] text-white"
+src/components/sections/AuditPage.tsx:362:                            className="bg-[#141416]/50 border-[#3A2D14] focus:border-[#FF8800] text-white"
+src/components/sections/AuditPage.tsx:407:                      <p className="text-[#D6D0C2] mb-6 max-w-sm mx-auto">
+src/components/sections/AuditPage.tsx:415:                          className="flex items-center gap-2 text-[#FF8800] hover:text-[#FFA833] transition-colors"
+src/components/sections/AuditPage.tsx:440:                    <li key={item} className="flex items-center gap-3 text-[#D6D0C2] text-sm">
+src/components/sections/AuditPage.tsx:450:                  <Clock className="w-5 h-5 text-[#FF8800]" />
+src/components/sections/AuditPage.tsx:455:                <p className="text-[#D6D0C2] text-sm">
+src/components/sections/AuditPage.tsx:462:                  <User className="w-5 h-5 text-[#FF8800]" />
+src/components/sections/AuditPage.tsx:467:                <p className="text-[#D6D0C2] text-sm mb-4">
+src/components/sections/AuditPage.tsx:473:                  className="flex items-center gap-2 text-[#FF8800] hover:text-[#FFA833] transition-colors text-sm"
+src/components/ui-dp/ExitIntentModal.tsx:56:          <DialogDescription className="text-[#D6D0C2] text-center text-base mt-2">
+src/components/ui-dp/ExitIntentModal.tsx:77:            className="w-full py-2.5 text-sm text-[#8E8E96] hover:text-white transition-colors text-center"
+src/components/sections/ProofSection.tsx:42:      <div className="absolute inset-0 bg-gradient-to-b from-[#141416] via-[#0A0A0B] to-[#0a0510]" />
+src/components/sections/ProofSection.tsx:46:        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-3xl animate-glow-pulse"
+src/components/sections/ProofSection.tsx:65:                  <div className="text-xs font-medium text-[#FF8800] px-3 py-1 rounded-full"
+src/components/sections/ProofSection.tsx:84:                    <div className="text-[#8E8E96] text-xs">{study.metricLabel}</div>
+src/components/sections/ProofSection.tsx:90:                    <div className="text-[#8E8E96] text-xs uppercase tracking-wide mb-1">Situation</div>
+src/components/sections/ProofSection.tsx:94:                    <div className="text-[#8E8E96] text-xs uppercase tracking-wide mb-1">What We Did</div>
+src/components/sections/ProofSection.tsx:98:                    <div className="text-[#8E8E96] text-xs uppercase tracking-wide mb-1">Result</div>
+src/components/sections/ProofSection.tsx:99:                    <p className="text-[#FF8800] text-sm font-medium">{study.result}</p>
+src/components/sections/HeroSection.tsx:188:        className="relative mx-auto w-full max-w-[90rem] grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 items-center"
+src/components/layout/Navigation.tsx:25:        'px-3 py-2 text-[13px] font-medium transition-colors duration-200 whitespace-nowrap',
+src/components/layout/Navigation.tsx:88:              <span className="hidden sm:block font-display text-[19px] tracking-tight text-[color:var(--ivory)] leading-none">
+src/components/layout/Navigation.tsx:102:                className="px-4 py-2 text-[13px] font-medium text-[#0A0A0B] rounded-md whitespace-nowrap inline-block transition-colors duration-150 hover:opacity-90"
+src/components/layout/Navigation.tsx:110:              className="lg:hidden min-w-[44px] min-h-[44px] p-2.5 rounded-md text-[color:var(--ivory-dim)] hover:text-[color:var(--ivory)] transition-colors flex items-center justify-center border-hairline"
+src/components/layout/Navigation.tsx:134:                  'px-4 py-3 min-h-[44px] text-sm font-medium transition-colors',
+src/components/layout/Navigation.tsx:146:                className="block w-full py-3 rounded-md text-sm font-medium text-[#0A0A0B] text-center"

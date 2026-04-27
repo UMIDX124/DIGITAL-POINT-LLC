@@ -297,13 +297,16 @@ export default function TermsOfServicePage() {
             <div className="mt-2 mb-8">
               <p className="text-white font-medium">Digital Point LLC</p>
               <p className={secondaryTextClass}>
-                Email:{' '}
+                Reach us through{' '}
                 <a
-                  href="mailto:info@digitalpointllc.com"
+                  href="/#contact-philosophy"
                   className="text-[#FF8800] hover:text-[#FFA833] transition-colors underline"
                 >
-                  info@digitalpointllc.com
+                  our on-site routes
                 </a>
+                {' '}(Cosmo chat or the free growth audit form). We don&apos;t run a
+                shared inbox — your inquiry routes directly to the operator
+                best matched to your stage.
               </p>
               <p className={secondaryTextClass}>
                 Website:{' '}

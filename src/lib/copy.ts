@@ -36,41 +36,35 @@ export const copy = {
     // are operated by the AI + human stack.
     eyebrow: 'HOW WE RUN OPS',
     headline: 'AI agents lead. Operators back the loop.',
-    /* Phase 17b 3-restructured C2 — metric per service. Substantiation:
-       01 numbers from HeroDataTicker readouts (142ms p95); 02 number from
-       RecentWork case study ("14,400 operator-hours replaced"); 03/04/05
-       use generic capability framing per K7 (no fabricated numbers where
-       substantiation is incomplete). */
+    /* Phase 17b 3-reversal R4 — metric field removed. Service rhythm
+       restored to pre-Pillar-3 cadence (number + title + description +
+       explore link). The mini outcome-metric row was conversion-density
+       drift inconsistent with Bloomberg Operator restraint. */
     items: [
       {
         label: 'AI Agents',
         href: '/automation#ai-agents',
         description: 'Custom-trained agents handling lead routing, sales follow-up, reporting, QA — 24/7.',
-        metric: '24/7 lead routing · 142ms p95 latency',
       },
       {
         label: 'Workflow Automation',
         href: '/automation',
         description: 'Multi-step automations across CRM, email, ads, fulfillment that replace manual ops.',
-        metric: '14.4K operator-hours replaced/yr (case study)',
       },
       {
         label: 'Remote Operators',
         href: '/remote-workforce',
         description: "Trained humans handling exception cases AI can't resolve. Trust + scale.",
-        metric: 'Trained operators · audit visibility on every action',
       },
       {
         label: 'Performance Marketing',
         href: '/performance-marketing',
         description: "Ad campaigns and growth experiments — operated by the AI + human stack above. We don't sell agency hours; we sell campaign execution that AI runs and operators audit.",
-        metric: 'Performance ad ops with ROI accountability',
       },
       {
         label: 'Systems & Reporting',
         href: '/systems-reporting',
         description: 'Live dashboards, weekly reports, attribution truth — automated assembly, human review.',
-        metric: 'Live dashboards · automated assembly · human review',
       },
     ] as const,
   },

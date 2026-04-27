@@ -128,12 +128,16 @@ export default function RootLayout({
               sameAs: [
                 "https://www.linkedin.com/company/digitalpointllc",
               ],
+              /* Phase 17b 3-reversal E1 — URL-based ContactPoint, no email.
+                 Cosmo on-site chat + audit form are the canonical routes;
+                 the deep-anchor URL points at the footer philosophy block
+                 explaining the policy. */
               contactPoint: {
                 "@type": "ContactPoint",
                 contactType: "customer service",
                 description:
-                  "Reach out via the on-site Cosmo chat or the free growth audit form. Direct operator routing — no shared inbox.",
-                url: "https://www.digitalpointllc.com/contact",
+                  "Reach us through Cosmo (on-site chat) or the free growth audit form. Direct operator routing — no shared inbox.",
+                url: "https://www.digitalpointllc.com/#contact-philosophy",
               },
               address: {
                 "@type": "PostalAddress",

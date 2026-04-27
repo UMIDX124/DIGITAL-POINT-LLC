@@ -301,14 +301,15 @@ export default function PrivacyPolicyPage() {
                   collected personal data from a child under 13, we will take
                   steps to delete that information as quickly as possible. If you
                   believe a child under 13 has provided us with personal
-                  information, please contact us at{' '}
+                  information, please reach out through{' '}
                   <a
-                    href="mailto:info@digitalpointllc.com"
+                    href="/#contact-philosophy"
                     className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
                   >
-                    info@digitalpointllc.com
+                    our on-site routes
                   </a>
-                  .
+                  {' '}(Cosmo chat or the free growth audit form). We answer from
+                  our personal accounts within one business day.
                 </p>
               </div>
 
@@ -339,13 +340,15 @@ export default function PrivacyPolicyPage() {
                 <div className="mt-4 p-4 sm:p-6 rounded-xl border border-white/10 bg-white/[0.02] break-words">
                   <p className="font-medium text-white">Digital Point LLC</p>
                   <p className="mt-1">
-                    Email:{' '}
+                    Reach us through{' '}
                     <a
-                      href="mailto:info@digitalpointllc.com"
+                      href="/#contact-philosophy"
                       className="text-white underline underline-offset-2 hover:text-[#D6D0C2] transition-colors"
                     >
-                      info@digitalpointllc.com
+                      our on-site routes
                     </a>
+                    {' '}(Cosmo chat or the free growth audit form) — your inquiry
+                    routes directly to the operator best matched to your stage.
                   </p>
                   <p className="mt-1">
                     Website:{' '}

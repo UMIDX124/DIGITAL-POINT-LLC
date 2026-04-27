@@ -14,7 +14,11 @@ const footerLinks = {
     { name: 'Results', href: '/results' },
     { name: 'Case Studies', href: '/case-studies' },
     { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'FAQ', href: '/faq' },
+    /* Phase 17b 3-reversal E1 — Contact link replaced by "How we work"
+       anchored to the footer's #contact-philosophy block (no `/contact`
+       page, no email, Cosmo + audit form are the official routes). */
+    { name: 'How we work', href: '/#contact-philosophy' },
   ],
 };
 
@@ -72,26 +76,54 @@ export function Footer() {
 
           <div>
             <h4 className="eyebrow mb-5">Connect</h4>
-            <div className="space-y-4">
-              <p className="text-[color:var(--ivory-dim)] text-sm leading-relaxed" style={{ maxWidth: '24rem' }}>
-                Reach out directly. Your inquiry routes to the operator best
-                matched to your stage — not a ticket pool — because we&apos;re
-                personally accountable for what we ship.
+            {/* Phase 17b 3-reversal E1 — generic email surface removed.
+                Per Phase 12 contact strategy: pure-AI route (Cosmo) + audit
+                form, no `hello@` queue. Verbatim brand copy block below. */}
+            <div
+              id="contact-philosophy"
+              className="space-y-4"
+              style={{ maxWidth: '56ch' }}
+            >
+              <p
+                className="text-sm font-medium"
+                style={{ color: 'var(--text-primary)', fontWeight: 500 }}
+              >
+                Why we don&apos;t list a generic support inbox.
               </p>
-              {/* Phase 17b 3-restructured E1+E2+E3 — direct mailto, location +
-                  timezone, response-time commitment. */}
-              <ul className="text-[color:var(--ivory-dim)] text-sm space-y-2 leading-relaxed">
-                <li>
-                  <a
-                    href="mailto:hello@digitalpointllc.com"
-                    className="text-link hover:text-[color:var(--accent)] transition-colors"
-                  >
-                    hello@digitalpointllc.com
-                  </a>
-                </li>
-                <li className="text-[color:var(--muted)]">Lahore, PK · UTC+5</li>
-                <li className="text-[color:var(--muted)]">We reply within 24h on weekdays</li>
-              </ul>
+              <p
+                className="text-sm"
+                style={{ color: 'var(--text-muted)', lineHeight: 1.65 }}
+              >
+                Most agencies hide behind a{' '}
+                <code
+                  style={{
+                    background: 'var(--ring-stroke)',
+                    color: 'var(--text-primary)',
+                    padding: '1px 6px',
+                    borderRadius: '3px',
+                    fontFamily: 'var(--font-mono), ui-monospace, monospace',
+                    fontSize: '12px',
+                  }}
+                >
+                  hello@
+                </code>{' '}
+                queue where your message lines up with everyone else&apos;s. We don&apos;t run that way.
+              </p>
+              <p
+                className="text-sm"
+                style={{ color: 'var(--text-muted)', lineHeight: 1.65 }}
+              >
+                When you reach out through Cosmo or our audit form, your inquiry goes directly to the operator best matched to your stage — not a ticket pool. We answer from our personal accounts because we&apos;re personally accountable for what we ship.
+              </p>
+              <p
+                className="text-sm"
+                style={{ color: 'var(--text-muted)', lineHeight: 1.65 }}
+              >
+                If you&apos;d rather talk to a human first, just tell Cosmo. We&apos;ll route the conversation to the right operator within one business day.
+              </p>
+              <p className="text-[color:var(--muted)] text-sm" style={{ marginTop: '1.25rem' }}>
+                Lahore, PK · UTC+5
+              </p>
               <a
                 href="https://linkedin.com/company/digitalpointllc"
                 target="_blank"
@@ -140,7 +172,7 @@ export function Footer() {
             >
               Cookies
             </CookiePrefsLink>
-            <Link href="/#cta" className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors">Contact</Link>
+            <Link href="/#contact-philosophy" className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors">How we work</Link>
           </div>
         </div>
       </div>

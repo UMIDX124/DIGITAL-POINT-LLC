@@ -1322,9 +1322,10 @@ html[data-paused-global="true"] .logo-marquee-track {
   font-style: italic;
   line-height: 0.9;
   color: var(--accent);
-  /* Phase 17b 3-restructured B3 — was 0.15, dropped to 0.08 per audit:
-     numerals were distracting during scroll past services frames. */
-  opacity: 0.08;
+  /* Phase 17b 3-restructured B3 → 3-reversal R5. 0.15 (original) was
+     distracting; 0.08 killed structural anchor visibility; 0.12 restores
+     the big-number cue while staying restrained. */
+  opacity: 0.12;
   pointer-events: none;
   user-select: none;
   letter-spacing: -0.04em;

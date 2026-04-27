@@ -111,33 +111,23 @@ export default function ChatPanel({ open, onClose }: Props) {
 
   return (
     <div
-      className="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] h-[520px] max-h-[calc(100vh-8rem)] flex flex-col rounded-2xl shadow-2xl chat-panel chat-panel-enter"
-      style={{
-        background: 'color-mix(in srgb, var(--bg-canvas) 95%, transparent)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        border: '1px solid var(--border-default)',
-      }}
+      className="chat-panel-shell fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] h-[520px] max-h-[calc(100vh-8rem)] flex flex-col rounded-2xl shadow-2xl chat-panel chat-panel-enter"
       role="dialog"
       aria-label="DPL AI chat"
     >
-      <div
-        className="flex items-center justify-between px-5 py-4"
-        style={{ borderBottom: '1px solid var(--border-default)' }}
-      >
+      <div className="chat-panel-header flex items-center justify-between px-5 py-4">
         <div>
-          <div className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
+          <div className="chat-panel-title text-sm font-medium">
             DPL AI Agent
           </div>
-          <div className="text-xs mt-0.5" style={{ color: 'var(--text-tertiary)' }}>
+          <div className="chat-panel-subtitle text-xs mt-0.5">
             DPL AI Agent · Cosmo
           </div>
         </div>
         <button
           onClick={onClose}
           aria-label="Close chat"
-          className="p-1 transition-colors"
-          style={{ color: 'var(--text-tertiary)' }}
+          className="chat-panel-close p-1 transition-colors"
         >
           <X size={18} />
         </button>
@@ -152,13 +142,8 @@ export default function ChatPanel({ open, onClose }: Props) {
             {[0, 1, 2].map((i) => (
               <div key={i} className="flex justify-start">
                 <div
-                  className="px-4 py-2.5 rounded-2xl chat-skeleton-pulse"
-                  style={{
-                    background: 'var(--bg-elevated)',
-                    border: '1px solid var(--border-default)',
-                    width: ['72%', '60%', '48%'][i],
-                    height: '32px',
-                  }}
+                  className="chat-skeleton-bubble px-4 py-2.5 rounded-2xl chat-skeleton-pulse"
+                  data-w={i + 1}
                 />
               </div>
             ))}
@@ -171,22 +156,7 @@ export default function ChatPanel({ open, onClose }: Props) {
             data-role={m.role}
             className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
           >
-            <div
-              className="max-w-[85%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed"
-              style={
-                m.role === 'user'
-                  ? {
-                      background: 'color-mix(in srgb, var(--accent-primary) 15%, transparent)',
-                      color: 'var(--text-primary)',
-                      border: '1px solid color-mix(in srgb, var(--accent-primary) 30%, transparent)',
-                    }
-                  : {
-                      background: 'var(--bg-elevated)',
-                      color: 'var(--text-primary)',
-                      border: '1px solid var(--border-default)',
-                    }
-              }
-            >
+            <div className="chat-bubble max-w-[85%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed">
               {m.content}
             </div>
           </div>
@@ -199,12 +169,7 @@ export default function ChatPanel({ open, onClose }: Props) {
                 key={q}
                 type="button"
                 onClick={() => send(q)}
-                className="px-3 py-1.5 text-xs rounded-full transition-colors"
-                style={{
-                  background: 'transparent',
-                  border: '1px solid var(--ring-stroke)',
-                  color: 'var(--text-primary)',
-                }}
+                className="chat-quick-reply px-3 py-1.5 text-xs rounded-full transition-colors"
               >
                 {q}
               </button>
@@ -213,35 +178,23 @@ export default function ChatPanel({ open, onClose }: Props) {
         )}
         {loading && (
           <div className="flex justify-start">
-            <div
-              className="px-4 py-2.5 rounded-2xl"
-              style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border-default)' }}
-            >
+            <div className="chat-loading-bubble px-4 py-2.5 rounded-2xl">
               <span className="inline-flex gap-1">
-                <span
-                  className="h-1.5 w-1.5 rounded-full chat-dot"
-                  style={{ background: 'var(--text-tertiary)' }}
-                />
-                <span
-                  className="h-1.5 w-1.5 rounded-full chat-dot"
-                  style={{ background: 'var(--text-tertiary)', animationDelay: '0.15s' }}
-                />
-                <span
-                  className="h-1.5 w-1.5 rounded-full chat-dot"
-                  style={{ background: 'var(--text-tertiary)', animationDelay: '0.3s' }}
-                />
+                <span className="h-1.5 w-1.5 rounded-full chat-dot" />
+                <span className="h-1.5 w-1.5 rounded-full chat-dot" />
+                <span className="h-1.5 w-1.5 rounded-full chat-dot" />
               </span>
             </div>
           </div>
         )}
         {error && (
-          <div className="text-xs px-2" style={{ color: 'var(--text-error)' }}>
+          <div className="chat-error text-xs px-2">
             {error}
           </div>
         )}
       </div>
 
-      <div className="p-3" style={{ borderTop: '1px solid var(--border-default)' }}>
+      <div className="chat-input-bar p-3">
         <div className="flex gap-2">
           <input
             ref={inputRef}
@@ -251,12 +204,7 @@ export default function ChatPanel({ open, onClose }: Props) {
             onKeyDown={handleKey}
             placeholder="Ask anything about DPL..."
             disabled={loading}
-            className="flex-1 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none disabled:opacity-50"
-            style={{
-              background: 'var(--bg-elevated)',
-              border: '1px solid var(--border-default)',
-              color: 'var(--text-primary)',
-            }}
+            className="chat-input flex-1 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none disabled:opacity-50"
             maxLength={500}
           />
           <button
@@ -264,11 +212,7 @@ export default function ChatPanel({ open, onClose }: Props) {
             onClick={() => send()}
             disabled={!input.trim() || loading}
             aria-label="Send message"
-            className="h-11 w-11 rounded-xl flex items-center justify-center transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-            style={{
-              background: 'var(--accent-bright)',
-              color: 'var(--cta-text-on-amber)',
-            }}
+            className="chat-send-btn h-11 w-11 rounded-xl flex items-center justify-center transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <Send size={16} />
           </button>

@@ -727,17 +727,11 @@ a.text-link:hover,
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 1.25rem;
-  /* Phase 11 → Phase 17b Pillar 5 R5. Restore architectural cadence
-     between rows: padding-block-end scales to clamp(2rem, 4vw, 4rem) so
-     desktop gets the directive's 4rem minimum while mobile stays
-     comfortable. Border color switched to ring-stroke for stronger
-     terminus. last-of-type drops border per existing pattern. */
-  padding-block-start: 1.25rem;
-  padding-block-end: clamp(2rem, 4vw, 4rem);
-  border-bottom: 1px solid var(--ring-stroke);
-}
-.services-rows > li:last-of-type .service-row {
-  border-bottom: none;
+  /* Phase 11 — py-5 equivalent (20px each side, 40px total per row).
+     With 5 rows + heading + section padding, fits comfortably in 80%
+     of 900px viewport at 1440 desktop. */
+  padding-block: 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
 }
 @media (min-width: 768px) { .service-row { gap: 2rem; } }
 
@@ -917,32 +911,17 @@ html[data-paused-global="true"] .grain-overlay {
    the clip to stay; fix expands the .word box vertically + activates
    OpenType features for proper italic glyph metrics.
    ============================================ */
-/* Phase 17b Pillar 4 P0.2 → Pillar 5 R3. Nowrap wrapper for hero h1
-   line 2 + explicit margin-block-start beat. Keeps "Skip the headcount."
-   as a single visual line at viewports ≥640px so the <br> produces
-   exactly two lines; below 640px natural wrap allowed (mobile-overflow
-   avoidance — see Pillar 4 P0.2 mobile compromise). The 0.25em margin
-   creates an explicit typographic beat between line 1 and line 2,
-   reinforcing the two distinct sentences. inline-block required for
-   margin to apply to an inline-by-default span. */
+/* Phase 17b Pillar 4 P0.2 — nowrap wrapper for hero h1 line 2.
+   Keeps "Skip the headcount." as a single visual line at viewports
+   ≥640px so the explicit <br> produces exactly two lines. Below 640px
+   natural wrap is allowed so the line doesn't overflow narrow mobile
+   viewports. */
 .hero-h1-line-2 {
-  display: inline-block;
-  margin-block-start: 0.25em;
+  display: inline;
 }
 @media (min-width: 640px) {
   .hero-h1-line-2 {
     white-space: nowrap;
-  }
-}
-
-/* Phase 17b Pillar 5 R6 — stat-strip flex gap. Mobile <640px vertical
-   stack with 1.5rem gap; ≥640px horizontal row with clamp(2rem,4vw,4rem). */
-.stat-strip-list {
-  gap: 1.5rem;
-}
-@media (min-width: 640px) {
-  .stat-strip-list {
-    gap: clamp(2rem, 4vw, 4rem);
   }
 }
 
@@ -954,24 +933,12 @@ html[data-paused-global="true"] .grain-overlay {
      italic em element at narrow viewports. */
   word-break: keep-all;
   hyphens: none;
-  /* Phase 17b Pillar 5 R1 — EVIDENCE-DRIVEN root-cause fix.
-     Forensics F1.3 (docs/PILLAR_5_FORENSICS/bbox-probe.json) shows the
-     italic descender / slant-tail clips ~3.5–4.6 px BELOW the padding-
-     box bottom at all 5 viewports. Pillar 2A-REFIX, Pillar 3R iter 2,
-     Pillar 4 P0.1 all attacked the WRONG AXIS — block-start padding
-     was raised while block-start already had 33–44 px positive
-     headroom. Block-end was the actual shortfall.
-     Fix: viewport-adaptive block-end via clamp(0.16em, 0.05lh, 0.3em).
-       At 1440 lh=152px → 0.05lh=7.6px (clears 4.6 px clip with 3 px margin)
-       At 1024 lh=116px → 0.05lh=5.8px (clears 3.5 px clip with 2.3 margin)
-       At 375  lh=116px → 5.8px (same).
-     Block-start trimmed back to 0.10em (was 0.18em over-extending an
-     axis with 33+ px positive headroom). Validation gate: post-patch
-     bbox probe must show ≥4 px positive Δbottom. */
-  padding-block-start: 0.10em;
-  padding-block-end: clamp(0.20em, 0.05lh, 0.34em);
-  padding-inline-end: 0.05em;
-  padding-inline-start: 0.02em;
+  /* Phase 16 D.1 → Phase 17b 2A → 17b Pillar 4 P0.1. Production capture
+     post-reversal showed the italic 'i' tittle re-clipping at the top
+     edge. Block-start padding bumped from 0.12em to 0.18em to give the
+     ascender explicit headroom that survives Instrument Serif's
+     italic-shifted glyph metrics. Block-end remains 0.16em. */
+  padding: 0.18em 0.05em 0.16em 0.02em;
   /* Phase 17b 2A — activate italic OT features so calt/liga ligatures
      and contextual alternates render at their designed metrics rather
      than fallback (which Instrument Serif italic ships with tighter
@@ -1044,16 +1011,13 @@ html[data-paused-global="true"] .grain-overlay {
 }
 /* Word-reveal slides .word-inner up from yPercent:110 to 0 inside .word
    which has overflow:hidden (Tailwind utility on the span). Phase 17b 2A
-   → 2A-REFIX → Pillar 5 R1. The .word containers carry their own
-   overflow:hidden via Tailwind utility for the slide-reveal animation;
-   their padding must independently provide italic glyph clearance.
-   Pillar 5 forensics F1.3 confirmed bottom-axis clip — bumped padding-
-   bottom from 0.32em to 0.40em for matching headroom inside the
-   word-reveal clip. Top trimmed (.word top doesn't need 0.20em given
-   33+ px positive headroom on .hero-em). */
+   → 2A-REFIX expands both axes of the .word container so italic ascenders
+   + descenders + slant-extent all fit inside the clip without breaking the
+   slide reveal. padding-bottom raised to 0.32em for deeper descender clearance
+   given the inline h1 lineHeight constraint. */
 .hero-em .word {
-  padding-top: 0.12em;
-  padding-bottom: 0.40em;
+  padding-top: 0.20em;
+  padding-bottom: 0.32em;
 }
 
 /* ============================================

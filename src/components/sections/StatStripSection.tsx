@@ -32,10 +32,8 @@ export function StatStripSection() {
       }}
     >
       <div className="container-wide" style={{ paddingInline: 'var(--container-gutter)' }}>
-        {/* Phase 17b Pillar 5 R6 — flex gap scales clamp(2rem, 4vw, 4rem)
-            at ≥640px; mobile <640px stacks vertically with 1.5rem gap. */}
         <ul
-          className="stat-strip-list flex flex-col sm:flex-row flex-wrap items-start sm:items-baseline justify-center"
+          className="flex flex-col sm:flex-row flex-wrap items-start sm:items-baseline justify-center gap-x-10 gap-y-4 sm:gap-x-16"
           style={{ listStyle: 'none', margin: 0, padding: 0 }}
         >
           {STATS.map((s, i) => (

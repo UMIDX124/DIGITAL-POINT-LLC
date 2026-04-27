@@ -28,13 +28,7 @@ export function Footer() {
   return (
     <footer className="relative mt-auto" style={{ background: '#0A0A0B', borderTop: '1px solid var(--accent)' }}>
       <div className="container-wide">
-        {/* Phase 17b Pillar 5 R8 — footer link column grid hardening.
-            min-w-0 on every column prevents content overflow (the
-            philosophy block in the Connect column was the largest
-            content block and could push grid sizing). At ≥1024px the
-            existing 4-col layout (brand / Practices / Company / Connect)
-            preserved per existing footer architecture. */}
-        <div className="py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 [&>*]:min-w-0">
+        <div className="py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
               <Image
@@ -85,37 +79,20 @@ export function Footer() {
             {/* Phase 17b 3-reversal E1 — generic email surface removed.
                 Per Phase 12 contact strategy: pure-AI route (Cosmo) + audit
                 form, no `hello@` queue. Verbatim brand copy block below. */}
-            {/* Phase 17b Pillar 5 R7 — typography hierarchy lock.
-                Canonical class hooks: .philosophy-heading (1rem, weight
-                500, --text-primary, 0.75rem block-end margin) and
-                .philosophy-body (0.875rem, weight 400, --text-muted,
-                line-height 1.65). Inline styles preserved as defensive
-                duplication (also satisfy the lock without depending on
-                Tailwind class resolution order). */}
             <div
               id="contact-philosophy"
               className="space-y-4"
               style={{ maxWidth: '56ch' }}
             >
               <p
-                className="philosophy-heading"
-                style={{
-                  fontSize: '1rem',
-                  fontWeight: 500,
-                  color: 'var(--text-primary)',
-                  marginBlockEnd: '0.75rem',
-                }}
+                className="text-sm font-medium"
+                style={{ color: 'var(--text-primary)', fontWeight: 500 }}
               >
                 Why we don&apos;t list a generic support inbox.
               </p>
               <p
-                className="philosophy-body"
-                style={{
-                  fontSize: '0.875rem',
-                  fontWeight: 400,
-                  color: 'var(--text-muted)',
-                  lineHeight: 1.65,
-                }}
+                className="text-sm"
+                style={{ color: 'var(--text-muted)', lineHeight: 1.65 }}
               >
                 Most agencies hide behind a{' '}
                 <code
@@ -133,24 +110,14 @@ export function Footer() {
                 queue where your message lines up with everyone else&apos;s. We don&apos;t run that way.
               </p>
               <p
-                className="philosophy-body"
-                style={{
-                  fontSize: '0.875rem',
-                  fontWeight: 400,
-                  color: 'var(--text-muted)',
-                  lineHeight: 1.65,
-                }}
+                className="text-sm"
+                style={{ color: 'var(--text-muted)', lineHeight: 1.65 }}
               >
                 When you reach out through Cosmo or our audit form, your inquiry goes directly to the operator best matched to your stage — not a ticket pool. We answer from our personal accounts because we&apos;re personally accountable for what we ship.
               </p>
               <p
-                className="philosophy-body"
-                style={{
-                  fontSize: '0.875rem',
-                  fontWeight: 400,
-                  color: 'var(--text-muted)',
-                  lineHeight: 1.65,
-                }}
+                className="text-sm"
+                style={{ color: 'var(--text-muted)', lineHeight: 1.65 }}
               >
                 If you&apos;d rather talk to a human first, just tell Cosmo. We&apos;ll route the conversation to the right operator within one business day.
               </p>
@@ -177,10 +144,18 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Phase 17b Pillar 5 R9 — Pillar 4 P1.4 Option B compliance.
-            Footer compliance strip ("GDPR COMPLIANT · 5-DAY WRITTEN PLAN
-            GUARANTEED") removed entirely. Footer terminus is the
-            copyright + Privacy/Terms/Cookies/How-we-work links row only. */}
+        {/* Phase 17b 3-restructured E4 — trust badges. SOC 2 Ready halted
+            per K5 substantiation gap. GDPR Compliant ships post-A3 cookie
+            banner. 5-day plan ships per existing CTA copy ("Written plan
+            within 5 business days"). */}
+        <div
+          className="py-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.18em]"
+          style={{ borderTop: '1px solid #27272A', color: 'var(--text-muted)' }}
+        >
+          <span>GDPR Compliant</span>
+          <span aria-hidden="true">·</span>
+          <span>5-Day Written Plan Guaranteed</span>
+        </div>
 
         <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4" style={{ borderTop: '1px solid #27272A' }}>
           <p className="text-[color:var(--muted)] text-xs">

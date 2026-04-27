@@ -1,4 +1,0 @@
-=== F1.4 stacking-context map ===
-Nodes in ancestor chain that create a new stacking context.
-Most likely descender-clip culprits.
-

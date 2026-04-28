@@ -1004,19 +1004,17 @@ a.text-link:hover,
 }
 .hero-grid {
   padding-inline: var(--container-gutter);
-  /* Phase 18 V4 → Phase 18.6 P1 amendment — orbit + copy column anchoring.
-     minmax(0,1fr) lets copy column flex from 0 to 1fr (overflow-safe
-     inside flex parent); auto sizes the orbit column to its own max-width
-     clamp. align-items: center vertical-centers orbit alongside copy.
-     PRIOR: align-items: end bottom-aligned both columns inside grid row.
-     Combined with .hero-section min-height: 100dvh + section flex-center,
-     that produced visual collapse: orbit floated at copy-bottom mid-low
-     of viewport, atmosphere dominated empty space above + below. center
-     pulls orbit into vertical mid-row alongside copy mass for the
-     intended side-by-side composition. */
+  /* Phase 18 V4 → Phase 18.6 P1 second-pass amendment — orbit + copy
+     column anchoring. Switched from `minmax(0,1fr) auto` to proportional
+     `1.4fr 1fr` (closer to pre-V4 Tailwind setup) so copy column gets
+     ~58% of grid width and orbit column gets ~42%. Combined with reduced
+     gap (clamp 2rem→1rem min, 4vw→2vw, 6rem→3rem max), this brings the
+     orbit visually adjacent to copy instead of hugging the viewport
+     right edge. align-items: center retained from prior P1 fix —
+     orbit vertical-centers in the row alongside copy mass. */
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: clamp(2rem, 4vw, 6rem);
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(1rem, 2vw, 3rem);
   align-items: center;
 }
 @media (max-width: 1024px) {
@@ -1255,16 +1253,14 @@ html[data-paused-global="true"] .grain-overlay {
   }
 }
 
-/* Phase 18 V3 — italic descender STRUCTURAL fix supersedes Pillar 5 R1
-   parametric padding-block clamp. The .hero-em-inner inline-block child
-   creates a new block formatting context inside the em: the italic slant
-   tail / descender extends into the inline-block's own line-box leading
-   instead of leaking past ancestor `contain` and `overflow` properties.
-   Six prior iterations (Pillar 2A-REFIX, 3R iter 2, P0.1, P0.4, P5 R1,
-   C3 re-ship) operated on cascade properties on .hero-em itself; V3 is
-   the formatting-context boundary fix.
-   Validation: Playwright bbox probe at 5 viewports, .hero-em-inner
-   element bbox vs inner glyph bbox shows ≥ 4 px positive delta. */
+/* Phase 18 V3 → Phase 18.6 P1 REVERT — .hero-em-inner inline-block
+   wrapper removed. The inline-block + padding-block-start: 0.25em was
+   inflating the h1 line box, producing a ~300px gap between sentence
+   beats at production viewport scale. V3 structural BFC theory was
+   incorrect for the geometry; Pillar 5 R1 parametric padding-block-end
+   clamp re-applied directly on .hero-em — that fix was empirically
+   verified at all 5 viewports in Pillar 5 forensics F1.3 and is the
+   correct approach. */
 .hero-em {
   font-style: italic;
   color: var(--accent-primary);
@@ -1273,6 +1269,17 @@ html[data-paused-global="true"] .grain-overlay {
      italic em element at narrow viewports. */
   word-break: keep-all;
   hyphens: none;
+  /* Phase 18.6 P1 — Pillar 5 R1 padding-block re-applied directly on
+     .hero-em (V3 .hero-em-inner wrapper removed). Block-end clamp gives
+     viewport-adaptive descender clearance via lh-unit: at 1440 lh=152px
+     → 0.05lh=7.6px clears 4.6px clip with margin; at 1024 lh=116px →
+     0.05lh=5.8px clears 3.5px clip with margin. Block-start trimmed to
+     0.10em — was over-extending in prior iterations with +33-44px
+     positive headroom. */
+  padding-block-start: 0.10em;
+  padding-block-end: clamp(0.20em, 0.05lh, 0.34em);
+  padding-inline-end: 0.05em;
+  padding-inline-start: 0.02em;
   /* Phase 17b 2A — activate italic OT features so calt/liga ligatures
      and contextual alternates render at their designed metrics rather
      than fallback (which Instrument Serif italic ships with tighter
@@ -1282,15 +1289,6 @@ html[data-paused-global="true"] .grain-overlay {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-}
-.hero-em-inner {
-  /* Phase 18 V3 — inline-block establishes new block formatting context.
-     padding-block-start: 0.25em accommodates italic ascender (i tittle);
-     descender clearance comes from the inline-block's own line-box
-     leading (no explicit block-end padding needed per V3 theory). */
-  display: inline-block;
-  padding-block-start: 0.25em;
-  vertical-align: baseline;
 }
 
 /* ============================================

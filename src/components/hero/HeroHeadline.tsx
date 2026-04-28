@@ -21,22 +21,19 @@ export const HeroHeadline = forwardRef<HTMLHeadingElement>(function HeroHeadline
         <span className="word-inner inline-block" data-word-reveal>Hire</span>
       </span>
       <span aria-hidden="true">{' '}</span>
-      {/* Phase 18 V3 — italic descender structural fix: .hero-em-inner
-          inline-block child establishes a new block formatting context
-          inside the em, so the descender / italic slant-tail extends into
-          the inline-block's own padding instead of leaking past ancestor
-          containment. The word-reveal .word > .word-inner clip pair
-          still nests inside, preserving the GSAP yPercent:110 → 0
-          animation. */}
+      {/* Phase 18.6 P1 — V3 .hero-em-inner inline-block wrapper REMOVED.
+          The inline-block + padding-block-start: 0.25em was inflating the
+          h1 line box, producing a ~300px gap between sentence beats. V3
+          structural theory (BFC for descender clearance) is now superseded
+          by Pillar 5 R1 padding-block-end clamp re-applied directly on
+          .hero-em (see globals.css). Word-reveal animation chain unchanged. */}
       <em className="hero-em font-italic-display not-italic">
-        <span className="hero-em-inner">
-          <span className="word inline-block overflow-hidden align-top">
-            <span className="word-inner inline-block" data-word-reveal>the</span>
-          </span>
-          <span aria-hidden="true">{' '}</span>
-          <span className="word inline-block overflow-hidden align-top">
-            <span className="word-inner inline-block" data-word-reveal>AI</span>
-          </span>
+        <span className="word inline-block overflow-hidden align-top">
+          <span className="word-inner inline-block" data-word-reveal>the</span>
+        </span>
+        <span aria-hidden="true">{' '}</span>
+        <span className="word inline-block overflow-hidden align-top">
+          <span className="word-inner inline-block" data-word-reveal>AI</span>
         </span>
       </em>
       <span aria-hidden="true">.</span>

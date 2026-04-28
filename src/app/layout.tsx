@@ -209,20 +209,13 @@ export default function RootLayout({
           }}
         />
 
-        <link
-          rel="preload"
-          href="/fonts/instrument-serif-regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/instrument-serif-italic.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
+        {/* Phase 18.6 P7 perf-pass — Instrument Serif preload tags removed.
+            Browser console warning on production: "preloaded but not used
+            within a few seconds from window load event" — the preload was
+            wasted bandwidth + parse cost. @font-face in globals.css uses
+            font-display: optional so fonts load on-demand and visible-paint
+            uses fallback until ready (Pillar 3R iter 2 CLS fix). Net: drop
+            ~20KB of eager font fetch, paint stays stable. */}
 
         {/* Phase 12 — CSS-only intro loader sessionStorage gate. Inline
             script runs synchronously before paint to mark <html> if the

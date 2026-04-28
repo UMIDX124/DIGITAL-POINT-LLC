@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import dynamic from 'next/dynamic';
+import { useEffect, useRef } from 'react';
 import { AutomationOrbit } from '@/components/hero/AutomationOrbit';
 import { HeroDataTicker } from '@/components/hero/HeroDataTicker';
 import { HeroHeadline } from '@/components/hero/HeroHeadline';
@@ -9,12 +8,11 @@ import { HeroCTA } from '@/components/hero/HeroCTA';
 import { HeroTrustStrip } from '@/components/hero/HeroTrustStrip';
 import { HeroAtmosphereFallback } from '@/components/hero/HeroAtmosphereFallback';
 
-// Phase 18.5.D — Three.js sphere layer. Imperative renderer (no
-// react-three-fiber). { ssr: false } so the canvas only mounts client-
-// side; CSS atmosphere + fallback render server-side immediately.
-const HeroAtmosphere = dynamic(() => import('@/components/hero/HeroAtmosphere'), {
-  ssr: false,
-});
+// Phase 18.6 P7 perf-pass — Three.js dynamic import REMOVED so the
+// ~129KB gzipped Three.js chunk no longer ships. HeroAtmosphereFallback
+// (CSS-only) renders for everyone. HeroAtmosphere.tsx kept on disk
+// pending future optimization (would need WebGL renderer perf rewrite
+// before re-enabling).
 
 /**
  * Phase 6 v2 editorial hero — AI-first hybrid positioning.
@@ -36,26 +34,17 @@ export function HeroSection() {
   const headlineRef = useRef<HTMLHeadingElement | null>(null);
   const orbWrapRef = useRef<HTMLDivElement | null>(null);
 
-  // Phase 18.5.D — viewport + reduced-motion guards for HeroAtmosphere
-  // mount. Default false so SSR + first paint render the CSS-only
-  // fallback path; effect resolves the real value client-side.
-  const [useThreeJS, setUseThreeJS] = useState(false);
-  useEffect(() => {
-    const evaluate = () => {
-      const wide = window.matchMedia('(min-width: 1024px)').matches;
-      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      setUseThreeJS(wide && !reducedMotion);
-    };
-    evaluate();
-    const mqWidth = window.matchMedia('(min-width: 1024px)');
-    const mqMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    mqWidth.addEventListener('change', evaluate);
-    mqMotion.addEventListener('change', evaluate);
-    return () => {
-      mqWidth.removeEventListener('change', evaluate);
-      mqMotion.removeEventListener('change', evaluate);
-    };
-  }, []);
+  // Phase 18.5.D → Phase 18.6 P7 perf-pass — Three.js path DISABLED for
+  // all users. Playwright audit on production showed Three.js renderer
+  // causing GPU stalls (ReadPixels) + dropping site to 9 fps avg + 119/120
+  // slow frames. CSS HeroAtmosphereFallback path delivers visually-similar
+  // sphere blur effect with zero JS runtime cost. Three.js component
+  // retained on disk (HeroAtmosphere.tsx) for a future optimization pass
+  // — imports are commented out so the chunk no longer code-splits into
+  // the bundle.
+  // const [useThreeJS, setUseThreeJS] = useState(false);
+  // useEffect(() => { ... matchMedia gates ... }, []);
+  const useThreeJS = false;
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -191,12 +180,11 @@ export function HeroSection() {
       id="hero"
       className="hero hero-section relative w-full overflow-hidden"
     >
-      {/* Phase 18.5.D — Three.js sphere layer above CSS atmosphere,
-          below content (z-index 1; .hero-grid carve-out at z-index 2).
-          Mobile <1024px and prefers-reduced-motion render the
-          HeroAtmosphereFallback (CSS-only). dynamic { ssr: false } so
-          the canvas init is fully client-side and never blocks SSR. */}
-      {useThreeJS ? <HeroAtmosphere /> : <HeroAtmosphereFallback />}
+      {/* Phase 18.6 P7 perf-pass — CSS-only sphere fallback for everyone.
+          Three.js path disabled site-wide (was causing GPU stalls + 9fps
+          render). Visual outcome similar (3 blurred amber/blue radial
+          divs at sphere positions). */}
+      <HeroAtmosphereFallback />
 
       {/* Phase 16 C — Bloomberg Operator data substrate replaces the
           Phase 6 conic ambient blur and the legacy radial glow.

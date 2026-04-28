@@ -428,18 +428,13 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  /* Phase 18.6 P5 — fixed-position atmosphere overlay also doubled.
-     amber 0.08 → 0.16, blue 0.06 → 0.12. */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background:
-      radial-gradient(ellipse 60% 50% at 12% 15%, rgba(255, 136, 0, 0.16) 0%, transparent 70%),
-      radial-gradient(ellipse 60% 50% at 88% 85%, rgba(42, 143, 189, 0.12) 0%, transparent 70%);
-  }
+  /* Phase 18.6 P5 → P7 perf-pass — body::before fixed-position overlay
+     REMOVED. Combined with body's own background-attachment: fixed +
+     hero's atmosphere stack, this 6th composite layer was producing
+     compositor thrashing (Playwright audit on prod showed avg 9fps,
+     119/120 frames > 16ms). Body's main background-image radial
+     gradients (P5 doubled values) deliver the atmospheric depth on
+     their own. */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-instrument-serif), Georgia, serif;
     font-weight: 400;

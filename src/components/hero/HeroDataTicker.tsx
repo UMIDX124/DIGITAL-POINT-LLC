@@ -51,9 +51,19 @@ function formatDate(d: Date) {
 
 export function HeroDataTicker() {
   const [c, setC] = useState<Counters>(INITIAL);
-  const [now, setNow] = useState<Date>(() => new Date());
+  // Phase 18.6 P7 — hydration mismatch fix. Was: useState(() => new Date())
+  // which produces a server-time value during SSR that NEVER matches the
+  // client-time value at hydration → React error #418 hydration mismatch
+  // → cascade re-render. Now: null on SSR + first client render, populated
+  // on client mount. The "+random" delta in the leads.scored row was also
+  // randomizing per-render server-vs-client; now seeded once on mount.
+  const [now, setNow] = useState<Date | null>(null);
+  const [randomDelta, setRandomDelta] = useState<number | null>(null);
 
   useEffect(() => {
+    setNow(new Date());
+    setRandomDelta(Math.floor(Math.random() * 8) + 8);
+
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce) return;
 
@@ -79,7 +89,11 @@ export function HeroDataTicker() {
     };
   }, []);
 
-  const t = formatTime(now);
+  // Render stable placeholders on SSR / first client render so server and
+  // client agree, then re-render with live values on mount.
+  const t = now ? formatTime(now) : '--:--:--';
+  const dateStr = now ? formatDate(now) : '----.--.--';
+  const delta = randomDelta ?? 12;
 
   return (
     <div className="hero-ticker" aria-hidden="true">
@@ -94,7 +108,7 @@ export function HeroDataTicker() {
         <div className="hero-ticker-row">
           <span>leads.scored</span>
           <span>{c.leadsScored.toLocaleString()}</span>
-          <span>+{Math.floor(Math.random() * 8) + 8}</span>
+          <span>+{delta}</span>
           <span>{t}</span>
         </div>
         <div className="hero-ticker-row">
@@ -125,7 +139,7 @@ export function HeroDataTicker() {
 
       {/* Bottom strip metadata. */}
       <div className="hero-ticker-strip">
-        {formatDate(now)} {t} UTC | dpl-prod-us-east | uplink ok | sync {c.latencyP95}ms | err {c.errRate.toFixed(2)}%
+        {dateStr} {t} UTC | dpl-prod-us-east | uplink ok | sync {c.latencyP95}ms | err {c.errRate.toFixed(2)}%
       </div>
     </div>
   );

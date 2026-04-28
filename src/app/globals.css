@@ -880,18 +880,53 @@ a.text-link:hover,
 }
 
 /* ============================================
-   PHASE 18 reduced-scope C2.1 — HERO SECTION SCAFFOLDING
+   PHASE 18 reduced-scope C2.1 — HERO SECTION SCAFFOLDING (amended Phase 18.B)
    Class extraction of the 6 inline-style props that lived on the hero
-   <section>, grid wrapper, eyebrow, h1, sub paragraph, and trust
-   microcopy. Token values unchanged — pure inline-to-class migration.
+   <section>, grid wrapper, eyebrow, h1, sub paragraph, and trust microcopy.
+   Phase 18.B atmospheric exception (authorized 2026-04-28, Path 3 reduced
+   scope, mockup A4): background: var(--bg-primary) replaced by amber +
+   blue glow zones + warm vignette per locked configuration. The radial
+   gradient stack terminates at #000 at 78% — visual edge state matches
+   prior Bloomberg Operator black canvas; warm-tone center #14100a is the
+   intentional Phase 18 atmospheric amendment. position: relative +
+   isolation: isolate establish a new stacking context so the ::before
+   grain layer + .hero-grid z-index 2 carve-out compose cleanly without
+   leaking into ancestor stacking.
+   Ambiguity #2 carve-out: spec called for `.hero-section > * { z-index: 2 }`
+   but that would promote <HeroDataTicker /> (substrate; locked invariant
+   K9 with 0.18/0.12/0.18 opacities) above content. Carve-out targets only
+   the .hero-grid content wrapper.
    ============================================ */
 .hero-section {
-  background: var(--bg-primary);
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(255, 136, 0, 0.13) 0%, transparent 38%),
+    radial-gradient(circle at 85% 75%, rgba(42, 143, 189, 0.08) 0%, transparent 38%),
+    radial-gradient(ellipse 90% 80% at 50% 50%, #14100a 0%, #000 78%);
   min-height: 100dvh;
   display: flex;
   align-items: center;
   padding-top: var(--section-top);
   padding-bottom: var(--section-main);
+}
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' seed='1'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.5'/></svg>");
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+}
+/* Ambiguity #2 carve-out — content grid promotes above atmosphere +
+   grain (z-index: 2). HeroDataTicker substrate (sibling of .hero-grid
+   inside .hero-section) inherits default stacking and stays between
+   atmosphere and content per K9 locked invariant. */
+.hero-section > .hero-grid {
+  position: relative;
+  z-index: 2;
 }
 .hero-grid {
   padding-inline: var(--container-gutter);

@@ -934,10 +934,8 @@ a.text-link:hover,
 .footer-cta-amber {
   background: var(--accent-bright);
 }
-.footer-trust-row {
-  border-top: 1px solid var(--border-default);
-  color: var(--text-muted);
-}
+/* .footer-trust-row removed per Phase 18 V8 (footer compliance strip
+   removal). Class definition deleted alongside its sole consumer. */
 .footer-bottom-bar {
   border-top: 1px solid var(--border-default);
 }

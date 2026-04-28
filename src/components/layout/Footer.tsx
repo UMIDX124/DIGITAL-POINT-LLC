@@ -116,15 +116,11 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Phase 17b 3-restructured E4 — trust badges. SOC 2 Ready halted
-            per K5 substantiation gap. GDPR Compliant ships post-A3 cookie
-            banner. 5-day plan ships per existing CTA copy ("Written plan
-            within 5 business days"). */}
-        <div className="footer-trust-row py-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.18em]">
-          <span>GDPR Compliant</span>
-          <span aria-hidden="true">·</span>
-          <span>5-Day Written Plan Guaranteed</span>
-        </div>
+        {/* Phase 18 V8 — compliance trust strip removed per Phase 3 spec.
+            Footer terminus is now copyright row + legal links + LinkedIn,
+            nothing else. The compliance assertions had K5 substantiation
+            gap (SOC 2 was halted, GDPR + 5-day plan lacked the audit
+            documentation infrastructure to back the claims publicly). */}
 
         <div className="footer-bottom-bar py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[color:var(--muted)] text-xs">

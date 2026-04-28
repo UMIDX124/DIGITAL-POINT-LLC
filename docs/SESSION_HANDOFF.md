@@ -119,6 +119,8 @@ Full Phase 1 audit + Phase 2 closure context lives in:
 - **Process timeline** — Lead Trigger → AI Score → Operator Route → CRM Updated (AutomationOrbit narrative)
 - **Faizan pull-quote section** — italic blockquote on pure black (post Pillar 3-reversal: gradient stripped, padding 1.32 line-height)
 - **Phase 12 contact strategy** — zero generic email surfaces, brand-justified philosophy block in footer (`#contact-philosophy` anchor), Cosmo-only routing, JSON-LD ContactPoint URL-based not email-based
+- **Phase 18 atmospheric exception (authorized 2026-04-28)** — Amber `#FF8800` may render at ≤13% opacity in hero background atmosphere layer; blue `#2A8FBD` at ≤8% opacity in same context. Applies ONLY to background layers behind hero content; content surfaces stay at full Bloomberg Operator palette discipline. Currently shipped (commit `835c8e9`): `.hero-section` 3 stacked radial-gradients (amber 13% + blue 8% + warm-tone vignette `#14100a` → `#000` 78%) + `.hero-section::before` SVG turbulence noise grain at 6% opacity overlay-blend. Zero violet/indigo/purple anywhere remains absolute (K1 unchanged).
+- **Phase 18 hero stacking carve-out (authorized 2026-04-28)** — Phase 18 directive locked configuration `.hero-section > * { z-index: 2 }` carved to `.hero-section > .hero-grid` only. HeroDataTicker substrate (sibling) keeps default stacking, preserves K9 substrate-position invariant.
 
 ---
 

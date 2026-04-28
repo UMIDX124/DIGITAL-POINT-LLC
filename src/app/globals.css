@@ -408,18 +408,19 @@
   }
   html { scroll-behavior: smooth; }
   body {
-    /* Phase 18.6 P4 — site-wide atmospheric lift, intensity bumped per
-       repo-owner request "its too dark atleast add gradients to the
-       page some depth". Amber 0.05 → 0.12, blue 0.04 → 0.10, added 3rd
-       layer (warm center fill) for additional depth. Still well under
-       hero's full 0.28/0.20 intensity so hero remains focal lit zone.
-       background-attachment: fixed so gradient stays viewport-anchored
-       and applies consistently across scroll. */
+    /* Phase 18.6 P5 — atmosphere intensity doubled per repo-owner
+       "make it twice as lit." All values 2× P4:
+         Layer 1 amber: 0.12 → 0.24
+         Layer 2 blue:  0.10 → 0.20
+         Layer 3 warm center fill: 0.04 → 0.08
+       Still under K17 amended caps (≤30% amber / ≤22% blue). Hero
+       atmosphere stack remains visually distinct — hero is denser
+       multi-layer + grain whereas body is broad ambient wash. */
     background-color: var(--bg-canvas);
     background-image:
-      radial-gradient(ellipse at 15% 18%, rgba(255, 136, 0, 0.12) 0%, transparent 50%),
-      radial-gradient(ellipse at 85% 82%, rgba(42, 143, 189, 0.10) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, rgba(255, 136, 0, 0.04) 0%, transparent 70%);
+      radial-gradient(ellipse at 15% 18%, rgba(255, 136, 0, 0.24) 0%, transparent 50%),
+      radial-gradient(ellipse at 85% 82%, rgba(42, 143, 189, 0.20) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(255, 136, 0, 0.08) 0%, transparent 70%);
     background-attachment: fixed;
     color: var(--text-primary);
     font-family: var(--font-geist-sans), var(--font-sans), system-ui, sans-serif;
@@ -427,10 +428,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  /* Phase 18.6 P4 — fixed-position atmosphere overlay that sits BEHIND
-     all content (z-index: -1) but ABOVE body bg. Guarantees a viewport-
-     locked warm wash even if some section sits opaque on top of body.
-     pointer-events: none so it never intercepts clicks. */
+  /* Phase 18.6 P5 — fixed-position atmosphere overlay also doubled.
+     amber 0.08 → 0.16, blue 0.06 → 0.12. */
   body::before {
     content: '';
     position: fixed;
@@ -438,8 +437,8 @@
     z-index: -1;
     pointer-events: none;
     background:
-      radial-gradient(ellipse 60% 50% at 12% 15%, rgba(255, 136, 0, 0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 60% 50% at 88% 85%, rgba(42, 143, 189, 0.06) 0%, transparent 70%);
+      radial-gradient(ellipse 60% 50% at 12% 15%, rgba(255, 136, 0, 0.16) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 88% 85%, rgba(42, 143, 189, 0.12) 0%, transparent 70%);
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-instrument-serif), Georgia, serif;

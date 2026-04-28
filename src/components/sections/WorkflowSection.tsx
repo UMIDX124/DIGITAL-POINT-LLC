@@ -14,8 +14,9 @@ export function WorkflowSection() {
   return (
     <section
       className="relative section-deferred"
+      // Phase 18.6 P2 — opaque var(--bg-primary) removed so site-wide
+      // body atmosphere shows through. Border + padding tokens retained.
       style={{
-        background: 'var(--bg-primary)',
         borderBottom: '1px solid var(--border-subtle)',
         paddingTop: 'var(--section-space)',
         paddingBottom: 'var(--section-space)',

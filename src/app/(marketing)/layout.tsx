@@ -17,8 +17,14 @@ export default function MarketingLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Phase 18.6 P2 — wrapper background changed from opaque
+  // var(--bg-canvas) to transparent so the body-level site-wide
+  // subtle atmosphere (radial-gradient overlays in globals.css body
+  // rule) shows through every section. Sections that need their own
+  // opaque background still set it (e.g. .services-pin-frame for the
+  // sticky-pin mechanic).
   return (
-    <div className="relative min-h-screen flex flex-col" style={{ background: 'var(--bg-canvas)' }}>
+    <div className="relative min-h-screen flex flex-col">
       <ScrollMotion />
       <Navigation />
       <main className="flex-1">{children}</main>

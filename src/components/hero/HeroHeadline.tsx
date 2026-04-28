@@ -27,12 +27,12 @@ export const HeroHeadline = forwardRef<HTMLHeadingElement>(function HeroHeadline
           structural theory (BFC for descender clearance) is now superseded
           by Pillar 5 R1 padding-block-end clamp re-applied directly on
           .hero-em (see globals.css). Word-reveal animation chain unchanged. */}
-      {/* Phase 18.6 P2 — em font swapped from .font-italic-display
-          (Instrument Serif italic) to .font-display (Geist Sans 500)
-          to match workforce-page hero typography per repo-owner request.
+      {/* Phase 18.6 P2 — em font swapped from .font-italic-display to
+          .font-display (Geist Sans). font-bold (700 weight) matches the
+          workforce-page hero h1 styling exactly (font-display + font-bold).
           Em element retained for semantic emphasis; visual treatment is
-          now amber-accent sans-serif (not italic serif). */}
-      <em className="hero-em font-display not-italic">
+          amber-accent bold sans-serif. */}
+      <em className="hero-em font-display font-bold not-italic">
         <span className="word inline-block overflow-hidden align-top">
           <span className="word-inner inline-block" data-word-reveal>the</span>
         </span>

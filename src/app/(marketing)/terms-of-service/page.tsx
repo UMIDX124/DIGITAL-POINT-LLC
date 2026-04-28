@@ -208,7 +208,9 @@ export default function TermsOfServicePage() {
               emails from Digital Point LLC, including marketing communications,
               industry insights, and company updates. You may unsubscribe at any
               time by clicking the unsubscribe link included in every email or
-              by contacting us directly at info@digitalpointllc.com.
+              by opening Cosmo (on-site chat) and requesting &quot;newsletter
+              unsubscribe&quot; — we route the request to the right operator
+              within one business day.
             </p>
             <p className={bodyTextClass}>
               We will handle your personal information in accordance with our

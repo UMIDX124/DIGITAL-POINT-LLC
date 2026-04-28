@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from '@/lib/framer-compat';
-import { Linkedin, Mail } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 import { Section, Container, FadeUp, GlassCard } from '@/components/ui-dp/AnimatedElements';
 
 export function FounderSection() {
@@ -69,15 +69,12 @@ export function FounderSection() {
                     No sales team. No account handoffs. You work directly with people who've built and scaled businesses — because the best execution comes from people who understand what's at stake.
                   </p>
                   
+                  {/* Phase 18 N1 — mailto:info@digitalpointllc.com chip
+                      removed per Phase 12 contact strategy (zero generic
+                      email surfaces; Cosmo on-site chat + audit form are
+                      the canonical routes). LinkedIn anchor preserved. */}
                   <div className="flex items-center justify-center md:justify-start gap-4">
-                    <a 
-                      href="mailto:info@digitalpointllc.com"
-                      className="flex items-center gap-2 text-[color:var(--accent-primary)] hover:text-[color:var(--accent-bright)] transition-colors text-sm"
-                    >
-                      <Mail className="w-4 h-4" />
-                      info@digitalpointllc.com
-                    </a>
-                    <a 
+                    <a
                       href="https://linkedin.com/company/digitalpointllc"
                       target="_blank"
                       rel="noopener noreferrer"

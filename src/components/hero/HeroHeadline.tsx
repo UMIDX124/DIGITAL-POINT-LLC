@@ -37,10 +37,13 @@ export const HeroHeadline = forwardRef<HTMLHeadingElement>(function HeroHeadline
         </span>
       </em>
       <span aria-hidden="true">.</span>
-      {/* Phase 17b Pillar 4 P0.2 — explicit line break between the two
-          sentences. Wrapper carries `white-space: nowrap` (.hero-h1-line-2)
-          so "Skip the headcount." stays single-line at ≥640px. */}
-      <br aria-hidden="true" />
+      {/* Phase 18.6 P1 fourth pass — <br> REMOVED. With .hero-h1-line-2
+          now display: block (P1 third pass), the <br> was producing an
+          EXTRA empty line in the anonymous inline block BEFORE the new
+          block-display sentence 2 started. That empty <br> line was the
+          ~250px gap visible in production. Block-display alone gives
+          the line break; <br> redundant + harmful. nowrap @ ≥640px on
+          .hero-h1-line-2 still preserved. */}
       <span className="hero-h1-line-2">
         <span className="word inline-block overflow-hidden align-top">
           <span className="word-inner inline-block" data-word-reveal>Skip</span>

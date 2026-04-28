@@ -21,13 +21,22 @@ export const HeroHeadline = forwardRef<HTMLHeadingElement>(function HeroHeadline
         <span className="word-inner inline-block" data-word-reveal>Hire</span>
       </span>
       <span aria-hidden="true">{' '}</span>
+      {/* Phase 18 V3 — italic descender structural fix: .hero-em-inner
+          inline-block child establishes a new block formatting context
+          inside the em, so the descender / italic slant-tail extends into
+          the inline-block's own padding instead of leaking past ancestor
+          containment. The word-reveal .word > .word-inner clip pair
+          still nests inside, preserving the GSAP yPercent:110 → 0
+          animation. */}
       <em className="hero-em font-italic-display not-italic">
-        <span className="word inline-block overflow-hidden align-top">
-          <span className="word-inner inline-block" data-word-reveal>the</span>
-        </span>
-        <span aria-hidden="true">{' '}</span>
-        <span className="word inline-block overflow-hidden align-top">
-          <span className="word-inner inline-block" data-word-reveal>AI</span>
+        <span className="hero-em-inner">
+          <span className="word inline-block overflow-hidden align-top">
+            <span className="word-inner inline-block" data-word-reveal>the</span>
+          </span>
+          <span aria-hidden="true">{' '}</span>
+          <span className="word inline-block overflow-hidden align-top">
+            <span className="word-inner inline-block" data-word-reveal>AI</span>
+          </span>
         </span>
       </em>
       <span aria-hidden="true">.</span>

@@ -61,3 +61,4 @@ server.log
 .agents/
 skills-lock.json
 .claude/skills/
+.lighthouseci

@@ -75,19 +75,20 @@ export function Navigation() {
       >
         <nav className="relative container-wide">
           <div className="flex items-center justify-between gap-6 h-20">
-            <Link href="/" className="flex items-center gap-3 shrink-0 group nav-logo-wrap">
+            <Link href="/" className="flex items-center shrink-0 group nav-logo-wrap" aria-label="Digital Point — home">
+              {/* Phase 18.6 P3 — header mascot enlarged 60px → 88px and
+                  "Digital Point" text wordmark removed per repo-owner
+                  request. Mascot is now the primary brand mark in the
+                  navigation; aria-label preserves accessibility. */}
               <Image
                 src="/Dp-logo1.png"
                 alt="Digital Point"
-                width={128}
-                height={128}
+                width={176}
+                height={176}
                 priority
-                style={{ width: '60px', height: 'auto' }}
+                style={{ width: '88px', height: 'auto' }}
                 className="nav-logo transition-opacity duration-200 group-hover:opacity-90"
               />
-              <span className="hidden sm:block font-display text-[19px] tracking-tight text-[color:var(--ivory)] leading-none">
-                Digital Point
-              </span>
             </Link>
 
             <div className="hidden lg:flex items-center gap-1 flex-1 justify-center">

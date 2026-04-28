@@ -240,10 +240,23 @@ export default function RootLayout({
       </head>
       <body
         className="font-sans antialiased"
-        style={{ background: "#000000", color: "#F5F5F7" }}
+        style={{ color: "#F5F5F7" }}
       >
+        {/* Phase 18.6 P5/P6 — inline style background:#000000 REMOVED so
+            body's globals.css background (subtle radial atmosphere) takes
+            effect. Color retained inline so unstyled fallback is readable. */}
         <div className="dpl-intro-loader" aria-hidden="true">
-          <span className="dpl-intro-wordmark">Digital Point</span>
+          {/* Phase 18.6 P6 — intro loader content swapped from
+              "Digital Point" italic text wordmark to the mascot image
+              per repo-owner request. Larger than nav-logo (96px vs 60px)
+              so it reads as a focal pre-paint moment. */}
+          <img
+            src="/Dp-logo1.png"
+            alt="Digital Point"
+            width="96"
+            height="96"
+            className="dpl-intro-mascot"
+          />
           <span className="dpl-intro-line" />
         </div>
         <GrainOverlay />

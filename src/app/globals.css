@@ -1241,11 +1241,16 @@ html[data-paused-global="true"] .grain-overlay {
    natural wrap is allowed so the line doesn't overflow narrow mobile
    viewports. */
 .hero-h1-line-2 {
-  display: inline;
-  /* Phase 18 V2 — explicit margin-block-start replaces implicit
-     line-height-only spacing between the two sentence beats. 0.15em
-     scales with font-size, holds the pause crisp at every viewport. */
-  margin-block-start: 0.15em;
+  /* Phase 18.6 P1 third pass — display: inline → block so sentence 2
+     becomes its own block-level beat under sentence 1 instead of inline-
+     flowing past the <br>. Inline display + <br> was inheriting the
+     inflated line box of sentence 1 (where .hero-em padding-block-end
+     for italic descender clearance extends the line height). Block
+     gives sentence 2 its own line box, isolated from sentence 1's
+     em-inflation. The implicit line-height-driven spacing alone gives
+     the right beat; margin-block-start dropped to 0 (was 0.15em). */
+  display: block;
+  margin-block-start: 0;
 }
 @media (min-width: 640px) {
   .hero-h1-line-2 {

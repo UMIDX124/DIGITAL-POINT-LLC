@@ -501,13 +501,35 @@
   .border-hairline { border: 1px solid var(--border-default); }
   .divide-hairline > * + * { border-top: 1px solid var(--border-default); }
 
+  /* Phase 18 V7 — eyebrow contrast site-wide normalization. Color
+     migrated from var(--accent-bright) (#FFA833 amber) to
+     var(--text-muted) (#9A9A9A muted gray) — uniform contrast against
+     canvas (7.4:1 vs canvas, exceeds WCAG AAA threshold). font-weight
+     500 added explicitly per V7 envelope. font-size + letter-spacing
+     retained at the existing typographic register (changing those is
+     out of contrast-axis scope).
+
+     V7 CARVE-OUT — Pillar 4 P1.1 locked invariant: the services-section
+     eyebrow retains var(--accent-bright) amber via its own dedicated
+     class rule .services-pin-section-eyebrow (defined separately at
+     line ~1614). That JSX uses className="services-pin-section-eyebrow"
+     NOT className="eyebrow", so this V7 utility migration does not
+     affect P1.1. The carve-out is automatic via class isolation; no
+     selector override required here.
+
+     P1.1 substantiation (preserved across 4 audit iterations): the
+     muted gray reads as near-invisible on canvas at the services
+     section's display-size eyebrow despite the same 7.4:1 mathematical
+     contrast — perceptual hierarchy demands the canonical eyebrow amber
+     accent specifically there. */
   .eyebrow {
     font-family: var(--font-geist-mono), var(--font-mono);
     font-size: 11px;
     line-height: 1;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--accent-bright);
+    font-weight: 500;
+    color: var(--text-muted);
   }
 
   .data {

@@ -867,6 +867,37 @@ a.text-link:hover,
 }
 .hero-grid {
   padding-inline: var(--container-gutter);
+  /* Phase 18 V4 — orbit + copy column anchoring. minmax(0,1fr) lets
+     copy column flex from 0 to 1fr (overflow-safe inside flex parent);
+     auto sizes the orbit column to its own max-width clamp. align-items:
+     end bottom-aligns the orbit's lower edge with copy's lower edge,
+     killing the "floating" feel. clamp(2rem, 4vw, 6rem) gap fluid-scales
+     between viewports. */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(2rem, 4vw, 6rem);
+  align-items: end;
+}
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* Phase 18 V4 — AutomationOrbit dimensional bounds. Replaces
+   .hero-pulse-wrap (which had max-width: 32rem and no font-scale guard);
+   font-size: 14px isolates orbit-internal text from cascade. */
+.automation-orbit-container {
+  width: 100%;
+  max-width: clamp(280px, 32vw, 480px);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 1024px) {
+  .automation-orbit-container {
+    max-height: 320px;
+  }
 }
 .hero-eyebrow {
   font-size: var(--text-micro);

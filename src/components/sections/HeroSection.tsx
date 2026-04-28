@@ -165,7 +165,7 @@ export function HeroSection() {
           Phase 6 conic ambient blur and the legacy radial glow. */}
       <HeroDataTicker />
 
-      <div className="hero-grid relative mx-auto w-full max-w-[90rem] grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 items-center">
+      <div className="hero-grid relative mx-auto w-full max-w-[90rem]">
         <div className="hero-content">
           <p className="hero-eyebrow font-mono uppercase mb-8" data-hero-eyebrow>
             {HERO_EYEBROW}
@@ -184,7 +184,7 @@ export function HeroSection() {
 
         <div
           ref={orbWrapRef}
-          className="hero-pulse-wrap relative flex items-center justify-center"
+          className="automation-orbit-container relative"
           data-hero-orb
         >
           {/* Phase 16 A.1 — orbital system replacing Phase 14 2×2 grid.

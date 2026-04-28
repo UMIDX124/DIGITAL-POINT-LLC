@@ -37,11 +37,11 @@ import {
  * no scale, no orbital motion. requestAnimationFrame, paused via
  * IntersectionObserver when canvas is out of viewport (threshold 0).
  *
- * Phase 18.5.E (separate commit — NOT yet wired in this 18.5.D ship):
- * scroll-linked translateY per sphere with factors A:0.05 / B:0.08 /
- * C:0.03, clamped ±24px, rAF-throttled passive listener, disabled on
- * prefers-reduced-motion. The parallaxFactor field on each sphere spec
- * is reserved for that commit; this 18.5.D ship is rotation-only.
+ * Phase 18.5.E (this commit) wires the parallax: scroll-linked translateY
+ * per sphere with factors A:0.05 / B:0.08 / C:0.03 (parallaxFactor field
+ * on each sphere spec), clamped ±24px (MAX_PARALLAX_TRANSLATE_PX),
+ * rAF-throttled via single in-flight scrollRafId, passive scroll listener,
+ * disabled on prefers-reduced-motion (window.matchMedia gate at mount).
  *
  * Mounted via next/dynamic with { ssr: false } from the parent
  * HeroSection. Canvas init deferred via requestIdleCallback (fallback
@@ -91,11 +91,18 @@ export default function HeroAtmosphere() {
     const geometries: SphereGeometry[] = [];
     const materials: MeshStandardMaterial[] = [];
     let rafId = 0;
+    let scrollRafId = 0;
     let intersectObserver: IntersectionObserver | null = null;
     let resizeObserver: ResizeObserver | null = null;
     let inViewport = true;
     let initStartTime = 0;
+    let lastScrollY = 0;
+    let pendingScrollY = 0;
     let cancelled = false;
+    // Phase 18.5.E parallax — per-sphere accumulated translateY offset,
+    // updated in scroll handler, applied in tick. Initialized to 0 so
+    // first tick before first scroll is identical to 18.5.D behavior.
+    const parallaxYOffsets: number[] = SPHERES.map(() => 0);
 
     // Phase 18.5.D — defer canvas init until after first paint to avoid
     // blocking LCP. requestIdleCallback with setTimeout fallback per spec.
@@ -190,11 +197,13 @@ export default function HeroAtmosphere() {
           materials[i].opacity = SPHERES[i].opacity * fadeProgress;
         }
 
-        // Phase 18.5.D — sphere y-position derived from canvas height
-        // each frame so resize is reflected. Phase 18.5.E will subtract
-        // a parallaxYOffsets[i] term here.
+        // Phase 18.5.D baseline + 18.5.E parallax offset. baseline Y
+        // re-derived from canvas height each frame so resize is
+        // reflected; parallaxYOffsets[i] is set by the scroll handler
+        // and is 0 when prefers-reduced-motion (handler not bound).
         for (let i = 0; i < meshes.length; i++) {
-          meshes[i].position.y = (0.5 - SPHERES[i].posYFrac) * canvas.clientHeight;
+          const baselineY = (0.5 - SPHERES[i].posYFrac) * canvas.clientHeight;
+          meshes[i].position.y = baselineY - parallaxYOffsets[i];
         }
 
         renderer.render(scene, camera);
@@ -231,12 +240,42 @@ export default function HeroAtmosphere() {
       resizeObserver.observe(canvas);
     });
 
+    // Phase 18.5.E parallax — passive scroll listener, rAF-throttled
+    // via single in-flight scrollRafId. Disabled when reduced-motion
+    // (handler never bound). Per-sphere translateY = scrollY × factor,
+    // hard-clamped to ±MAX_PARALLAX_TRANSLATE_PX (24px).
+    const onScroll = () => {
+      pendingScrollY = window.scrollY;
+      if (scrollRafId) return;
+      scrollRafId = requestAnimationFrame(() => {
+        scrollRafId = 0;
+        const scrollY = pendingScrollY;
+        if (scrollY === lastScrollY) return;
+        lastScrollY = scrollY;
+        for (let i = 0; i < SPHERES.length; i++) {
+          const raw = scrollY * SPHERES[i].parallaxFactor;
+          parallaxYOffsets[i] =
+            raw > MAX_PARALLAX_TRANSLATE_PX
+              ? MAX_PARALLAX_TRANSLATE_PX
+              : raw < -MAX_PARALLAX_TRANSLATE_PX
+                ? -MAX_PARALLAX_TRANSLATE_PX
+                : raw;
+        }
+      });
+    };
+
+    if (!reduced) {
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+
     return () => {
       cancelled = true;
       if (rafId) cancelAnimationFrame(rafId);
+      if (scrollRafId) cancelAnimationFrame(scrollRafId);
       if (initId && 'cancelIdleCallback' in window) {
         window.cancelIdleCallback(initId);
       }
+      window.removeEventListener('scroll', onScroll);
       intersectObserver?.disconnect();
       resizeObserver?.disconnect();
       // Three.js cleanup

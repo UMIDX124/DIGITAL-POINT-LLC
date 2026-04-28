@@ -57,22 +57,51 @@ listed here are FATAL halt conditions if violated.**
   perceptual hierarchy demands amber). All other site-wide
   `.eyebrow`-class consumers use `var(--text-muted)`.
 
-### Phase 18 atmospheric exception (authorized 2026-04-28)
+### Phase 18 atmospheric exception (authorized 2026-04-28; amended Phase 18.5 2026-04-28)
 
-**Atmospheric exception (Phase 18, repo-owner authorized):** Amber
-`#FF8800` may render at ≤13% opacity in hero background atmosphere
-layer (CSS radial-gradient or, if Phase 18.C/D ship later, Three.js
-sphere material emissive). Blue `#2A8FBD` may render at ≤8% opacity
-in same context. Exception applies ONLY to background layers behind
-hero content; content surfaces (text, buttons, borders, icons) remain
-at full Bloomberg Operator palette discipline. Zero violet/indigo/purple
-anywhere remains absolute (K1 unchanged).
+**K17 amended threshold (Phase 18.5, repo-owner authorized):** Amber
+`#FF8800` may render at ≤30% opacity in hero background atmosphere
+layer (CSS radial-gradient OR Three.js sphere material). Blue `#2A8FBD`
+may render at ≤22% opacity in same context. Exception applies ONLY to
+background layers behind hero content; content surfaces (text, buttons,
+borders, icons) remain at full Bloomberg Operator palette discipline.
+Zero violet/indigo/purple anywhere remains absolute (K1 unchanged).
+K17 violation thresholds updated accordingly.
 
-Currently shipped (Phase 18.B, commit `835c8e9`):
-- `.hero-section` background: 3 stacked radial-gradients (amber 13% +
-  blue 8% + warm-tone vignette `#14100a` → `#000` 78%).
-- `.hero-section::before` grain: SVG turbulence noise data-URI at 6%
-  opacity, mix-blend-mode overlay.
+Currently shipped:
+- Phase 18.B (`835c8e9`) initial CSS atmosphere → SUPERSEDED by 18.5.C
+- Phase 18.5.C (`5afb9ff`) atmosphere intensity bump:
+  `.hero-section` background — 4 stacked radial-gradients:
+    L1 amber primary glow @ 12% 22% — 0.28 opacity / 55% falloff
+    L2 blue secondary glow @ 88% 78% — 0.20 opacity / 55% falloff
+    L3 soft amber center fill @ 50% 50% — 0.06 opacity / 70% falloff
+    L4 vignette ellipse 70%×60% — `#1a130a` → `#000` at 80%
+  `.hero-section::before` grain — SVG turbulence noise (240×240 tile,
+    baseFrequency 0.85, seed 5), 0.10 layer opacity, mix-blend-mode overlay
+- Phase 18.5.D (`612fdf1`) Three.js sphere layer:
+  Sphere A radius 380px @ #FF8800, opacity 0.27, emissive 0.05, drift 45s
+  Sphere B radius 260px @ #2A8FBD, opacity 0.25, emissive 0.04, drift 38s
+  Sphere C radius 200px @ #FF8800, opacity 0.17, emissive 0.03, drift 52s
+  All buffered ≤K17 caps (max amber 0.28 < 0.30; max blue 0.20 < 0.22).
+- Phase 18.5.E (`6f5f17c`) parallax: scrollY × {0.05, 0.08, 0.03} per
+  sphere, hard-clamped ±24px, passive rAF-throttled, K13 reduced-motion
+  guards (handler-bind + rotation guard inside tick).
+
+### Phase 18 K14 amended (initial-bundle interpretation, Phase 18.5 2026-04-28)
+
+**K14 amended (Phase 18.5, repo-owner authorized Path 1):** "Bundle
+delta budget ≤95KB gzipped" applies to **initial-page-load bundle delta**
+only. Lazy-loaded chunks (`next/dynamic` with `{ ssr: false }`) are
+EXCLUDED from this measurement, since they do not affect initial paint,
+LCP, or mobile/reduced-motion users by design. Total chunk bytes still
+tracked in summary deliverable for transparency. **K11 Lighthouse mobile
+median ≥92 is the authoritative ship-readiness gate** (measured at every
+gate: D-GATE, E-GATE, G-GATE production).
+
+Currently shipped Three.js chunk: ~520KB raw / ~129KB gzipped. Lazy-
+loaded only on desktop without reduced-motion, AFTER first paint via
+`requestIdleCallback`. Initial-page-load delta from Phase 17b baseline:
+~+2KB (CSS atmosphere rules + dynamic-import shim only).
 
 ### Phase 18 Ambiguity #2 carve-out (authorized 2026-04-28)
 
@@ -84,6 +113,14 @@ between atmosphere and content) above content, regressing the K9
 substrate-position invariant. **Carve-out: rule applies to
 `.hero-section > .hero-grid` only** (the content wrapper). HeroDataTicker
 keeps default stacking and remains between atmosphere and content.
+
+Phase 18.5.D ships an additional `.hero-section` direct-child element:
+the `<canvas class="hero-atmosphere-canvas">` (or
+`<div class="hero-atmosphere-fallback">` for mobile / reduced-motion).
+These sit at `z-index: 1` (above CSS atmosphere bg + ::before grain at
+`z-index: 0`, below `.hero-grid` content at `z-index: 2`). HeroDataTicker
+DOM order is preserved (renders AFTER atmosphere/fallback, BEFORE grid),
+so it stacks visually between Three.js spheres and content per K9.
 
 ---
 

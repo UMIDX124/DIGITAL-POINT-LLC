@@ -727,11 +727,17 @@ a.text-link:hover,
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 1.25rem;
-  /* Phase 11 — py-5 equivalent (20px each side, 40px total per row).
-     With 5 rows + heading + section padding, fits comfortably in 80%
-     of 900px viewport at 1440 desktop. */
-  padding-block: 1.25rem;
-  border-bottom: 1px solid var(--border-subtle);
+  /* Phase 18 V6 — visual row termination. Architectural cadence between
+     rows via 4rem block-end + ring-stroke hairline (was 1.25rem block
+     symmetric padding + --border-subtle). The asymmetric padding gives
+     each row breathing room before the divider; ring-stroke registers
+     as a quieter divider than border-subtle. */
+  padding-block-start: 1.25rem;
+  padding-block-end: 4rem;
+  border-block-end: 1px solid var(--ring-stroke);
+}
+.service-row:last-of-type {
+  border-block-end: none;
 }
 @media (min-width: 768px) { .service-row { gap: 2rem; } }
 

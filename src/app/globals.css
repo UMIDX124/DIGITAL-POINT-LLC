@@ -873,13 +873,23 @@ a.text-link:hover,
   letter-spacing: 0.16em;
   color: var(--text-tertiary);
 }
-.hero-headline {
-  font-size: var(--text-hero);
+.hero-h1 {
+  /* Phase 18 V2 — explicit clamp envelope replaces token reference.
+     Upper bound 7rem (112px) prevents viewport-unit runaway at ultra-wide
+     viewports; lower bound 3.5rem holds mobile typographic weight. */
+  font-size: clamp(3.5rem, 7.5vw, 7rem);
+  /* Phase 18 V2 — explicit line-height + font-weight per spec; was
+     line-height: var(--lh-tight) (1.10), font-weight inherited.
+     1.05 holds the two-sentence beats tighter; weight 400 matches the
+     editorial Bloomberg Operator non-bold display register. */
+  line-height: 1.05;
+  font-weight: 400;
+  /* Phase 18 V2 — text-wrap: pretty replaces text-balance / no rule.
+     Pretty avoids orphan-line breaks without the centering side-effect
+     of balance. Modern browser support: Chrome 117+ / Firefox 121+. */
+  text-wrap: pretty;
   color: var(--text-primary);
   max-width: var(--maxw-heading-display);
-  /* Phase 17b 2A-REFIX — bumped from --lh-display (1.02) to --lh-tight (1.10)
-     to give the line box room for italic descenders on .hero-em. */
-  line-height: var(--lh-tight);
   letter-spacing: var(--ls-display);
 }
 .hero-sub {
@@ -1059,6 +1069,10 @@ html[data-paused-global="true"] .grain-overlay {
    viewports. */
 .hero-h1-line-2 {
   display: inline;
+  /* Phase 18 V2 — explicit margin-block-start replaces implicit
+     line-height-only spacing between the two sentence beats. 0.15em
+     scales with font-size, holds the pause crisp at every viewport. */
+  margin-block-start: 0.15em;
 }
 @media (min-width: 640px) {
   .hero-h1-line-2 {

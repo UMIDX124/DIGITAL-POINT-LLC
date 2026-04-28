@@ -25,7 +25,7 @@ listed here are FATAL halt conditions if violated.**
 - **HeroDataTicker substrate** — top-right with current opacities
   (0.18 amber / 0.12 UTC / 0.18 instrument-blue). Substrate stacking
   position (between atmosphere and content) is locked per K9.
-- **Logo SHA** — `Dp-logo1.png` `589f799b69d277e08ab1011faf7a80fd8cf4143ac610e3b1282f8b24d2195600`.
+- **Logo SHA** — `Dp-logo1.png` `ed31936ca7a0f13a20170f68a6faad27b06afe30a4f4d2a825480def9e78bc2f`.
   Mascot file at `public/Dp-logo1.png` unchanged.
 
 ### Architecture + Behavior

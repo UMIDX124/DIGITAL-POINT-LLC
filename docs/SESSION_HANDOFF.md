@@ -17,7 +17,7 @@
 | **Hero italic descender status** | **Verified clean** — `.hero-em` deployed with `padding-block: .1em clamp(.2em,.05lh,.34em)` (C3 Pillar 5 R1 fix). Pillar 5 forensics F1.3 evidence shows Δbottom +7–9 px clear at all 5 viewports with this rule. |
 | **Footer email surface status** | **Zero** — production HTML grep: 0 `mailto:`, 0 `hello@digitalpointllc.com` (the 1 inline `<code>hello@</code>` literal in the philosophy block is directive-locked per Pillar 4 R7) |
 | **Marquee fabricated client status** | **Null-returned** — `LogoStripSection` returns `null` unless `NEXT_PUBLIC_MARQUEE_ENABLED === 'true'` (env unset). Production HTML: 0 `Atlas Health` / `Northwind Capital` / `Vertex AI` / `logo-marquee` |
-| **Logo asset rendering** | `/Dp-logo1.png` (SHA `589f799b69d277e08ab1011faf7a80fd8cf4143ac610e3b1282f8b24d2195600`) — 12 references in production HTML, 0 legacy violet/cartoon mascot residue |
+| **Logo asset rendering** | `/Dp-logo1.png` (SHA `ed31936ca7a0f13a20170f68a6faad27b06afe30a4f4d2a825480def9e78bc2f`) — 12 references in production HTML, 0 legacy violet/cartoon mascot residue |
 | **Production URL** | `https://www.digitalpointllc.com/` |
 | **Last verified** | 2026-04-27 (this session, post-deploy probe) |
 
@@ -111,7 +111,7 @@ Full Phase 1 audit + Phase 2 closure context lives in:
 - **5-service order** — AI Agents → Workflow Automation → Remote Operators → Performance Marketing → Systems & Reporting
 - **AutomationOrbit Palette D geometry** — outer rx=138 ry=98, inner rx=62 ry=42, 4 cardinal nodes (Lead Trigger / AI Score / Operator Route / CRM Updated), Cosmo center r=30, 90s rotation, prefers-reduced-motion killswitch
 - **HeroDataTicker substrate opacities** — 0.18 amber / 0.12 UTC / 0.18 instrument-blue (≥1024 px only; mobile hidden)
-- **Logo SHA** — `Dp-logo1.png` `589f799b69d277e08ab1011faf7a80fd8cf4143ac610e3b1282f8b24d2195600`
+- **Logo SHA** — `Dp-logo1.png` `ed31936ca7a0f13a20170f68a6faad27b06afe30a4f4d2a825480def9e78bc2f`
 - **`TestimonialsSection.tsx` returns null** — fabricated Sarah Chen / Marcus Thompson / Jennifer Walsh removed; stub preserved
 - **Marquee env-flag null return** — `LogoStripSection` returns null unless `NEXT_PUBLIC_MARQUEE_ENABLED === 'true'`
 - **`font-display: optional` + size-adjust descriptors** on `InstrumentSerifLocal` regular + italic (Pillar 3R iter 2 CLS fix invariant: `ascent-override: 95%`, `descent-override: 22%`, `line-gap-override: 0%`, `size-adjust: 100%`)

@@ -76,34 +76,21 @@ export const copy = {
    * ------------------------------------------------------------------ */
   logoStrip: {
     label: 'Operators behind 200+ growth engagements',
-    // Phase 9 — dual-row infinite marquee, opposite directions. Wordmarks are
-    // representative B2B SaaS / agency client archetypes (not real licensed
-    // logos). Each row is rendered twice in the component for seamless
-    // CSS-only translateX loop.
-    marksRow1: [
-      'Atlas Health',
-      'Northwind Capital',
-      'Lumen Logistics',
-      'Vertex AI',
-      'Halcyon Studio',
-      'Meridian Bank',
-      'Solstice',
-      'Pinnacle SaaS',
-      'Quanta Labs',
-      'Kinetic Group',
-    ] as const,
-    marksRow2: [
-      'Aurora Apps',
-      'Bedrock Holdings',
-      'Civic Health',
-      'Drift Aerospace',
-      'Echo Systems',
-      'Forge Industries',
-      'Glide Mobility',
-      'Helix Data',
-      'Ion Studios',
-      'Juno Ventures',
-    ] as const,
+    // Phase 18 N2 — fabricated wordmark arrays emptied. The 20 prior
+    // entries (Atlas Health / Northwind Capital / Lumen Logistics / Vertex
+    // AI / Halcyon Studio / Meridian Bank / Solstice / Pinnacle SaaS /
+    // Quanta Labs / Kinetic Group / Aurora Apps / Bedrock Holdings /
+    // Civic Health / Drift Aerospace / Echo Systems / Forge Industries /
+    // Glide Mobility / Helix Data / Ion Studios / Juno Ventures) were
+    // representative B2B SaaS / agency archetypes, not real licensed
+    // client logos. Component is env-gated null
+    // (NEXT_PUBLIC_MARQUEE_ENABLED), so no production HTML render
+    // already; this purges the strings from the JS bundle as well so a
+    // future env-flip can't accidentally surface fabricated names. Real
+    // client wordmarks ship via separate phase pending legal signoff +
+    // asset sourcing (out of N2 scope).
+    marksRow1: [] as const,
+    marksRow2: [] as const,
   },
 
   /* ------------------------------------------------------------------

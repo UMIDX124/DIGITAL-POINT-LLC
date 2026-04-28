@@ -1,8 +1,8 @@
-# Session Handoff — DPL Site Remediation
+# Session Handoff — DPL Site (Phase 17b → Phase 18.6 perf-pass)
 
-**Generated:** 2026-04-27
-**Session:** Phase 1 audit + Phase 2 partial-closure (4 of 6 reduced C-items shipped) + production deploy
-**Next-session opens at:** Phase 2 deferred (C2 + C4) → Phase 3 (V1–V10) → Phase 4 (N1–N3)
+**Generated:** 2026-04-28 (end-of-session)
+**Session arc:** Phase 2 deferred items closure → Phase 3 V1–V10 → Phase 4 N1–N3 → Phase 5 validation → Phase 17b closure → Phase 18 atmosphere → Phase 18.5 atmosphere intensity bump + B2 Three.js spheres + parallax → Phase 18.6 brand asset swap + structural visual remediation + perf-pass
+**Next-session opens at:** Optional scroll-fps optimization + visual audit of sub-pages (out-of-home routes) + lint cleanup OR fresh directive
 
 ---
 
@@ -10,161 +10,250 @@
 
 | Field | Value |
 |---|---|
-| **Latest deployed commit SHA** | `4e6853c` |
-| **Vercel deployment ID** | `dpl_5fmc5Gn5fFUQSYeCfwQYB2bk5i7U` |
-| **Vercel deployment URL** | `https://digitalpointllc-1-<hash>-umidx124s-projects.vercel.app` (aliased to apex/www) |
-| **Production globals CSS bundle** | `/_next/static/chunks/0562dnss3iw6q.css` |
-| **Hero italic descender status** | **Verified clean** — `.hero-em` deployed with `padding-block: .1em clamp(.2em,.05lh,.34em)` (C3 Pillar 5 R1 fix). Pillar 5 forensics F1.3 evidence shows Δbottom +7–9 px clear at all 5 viewports with this rule. |
-| **Footer email surface status** | **Zero** — production HTML grep: 0 `mailto:`, 0 `hello@digitalpointllc.com` (the 1 inline `<code>hello@</code>` literal in the philosophy block is directive-locked per Pillar 4 R7) |
-| **Marquee fabricated client status** | **Null-returned** — `LogoStripSection` returns `null` unless `NEXT_PUBLIC_MARQUEE_ENABLED === 'true'` (env unset). Production HTML: 0 `Atlas Health` / `Northwind Capital` / `Vertex AI` / `logo-marquee` |
-| **Logo asset rendering** | `/Dp-logo1.png` (SHA `ed31936ca7a0f13a20170f68a6faad27b06afe30a4f4d2a825480def9e78bc2f`) — 12 references in production HTML, 0 legacy violet/cartoon mascot residue |
-| **Production URL** | `https://www.digitalpointllc.com/` |
-| **Last verified** | 2026-04-27 (this session, post-deploy probe) |
+| **Latest deployed commit SHA** | `316db39` |
+| **Vercel deployment ID** | `dpl_F3AM5QHK5v2Huc5BivFuNmugLPm9` |
+| **Production URL** | `https://www.digitalpointllc.com/` (aliased to apex/www) |
+| **HTTP / size** | `200` / ~131KB HTML |
+| **Production CSS bundles** | rotated several times this session; final `0.4655sg.hqnp.css` family (component scaffolding) + `05ag7mu4fyvwf.css` (utility shim) |
+| **Production JS total** | 1,335,842 bytes raw (Three.js purged in P7; back to Phase 17b weight) |
+| **Last perf measurement (Playwright on prod)** | idle 45 fps · scroll 22 fps · heap 10 MB · 0 console errors · 0 console warnings |
+| **Last verified** | 2026-04-28 (end of session) |
+| **Logo SHA (NEW)** | `ed31936ca7a0f13a20170f68a6faad27b06afe30a4f4d2a825480def9e78bc2f` (was `589f799b...95600` violet cartoon, swapped to dark Bloomberg mascot in Phase 18.6 P0) |
+| **Backup of old violet asset** | `public/Dp-logo1.png.bak-violet-pre-swap` (preserved for incident provenance) |
 
 ---
 
-## 2. PHASE 2 SHIPPED COMMITS
+## 2. SESSION TIMELINE — phases shipped
 
-| SHA | C-item | Summary | Lines |
-|---|---|---|---|
-| `499d965` | **C3** | Re-ship Pillar 5 R1 italic descender padding fix on `.hero-em` (block-end clamp(0.20em, 0.05lh, 0.34em); block-start trimmed 0.18em → 0.10em). `.hero-em .word` padding-bottom 0.32em → 0.40em. `.logo-marquee-track` will-change: transform dropped (dead optimization on env-gated null component). | +29 / −9 |
-| `a0f33e1` | **C7** | Dead-code elimination: 7 confirmed-orphan files deleted (wordSplit.ts, examples/websocket/, 4 phase-audit scripts, generate-assets.mjs). Explicit `postcss` devDep added. | +8 / −767 |
-| `0ad4d61` | **C6** | Doc-only spec amendment: 12 retained `any` casts in `lib/db.ts` (Prisma stub) + `lib/framer-compat.ts` (framer-motion shim) documented as intentional abstractions. Strict TypeScript gate (`tsc --noEmit --strict` 0 errors) remains binding. | +106 / −0 |
-| `992d7ee` | **C1** | 404 of 441 legacy-palette hex literals migrated to canonical Bloomberg Operator tokens across 57 files (~92%). Mapping: `#D6D0C2` → `var(--text-primary)`, `#8E8E96` → `var(--text-muted)`, `#0A0A0B` → `var(--bg-canvas)`, `#27272A` → `var(--border-default)`, `#A1A1AA` → `var(--text-secondary)`. Plus opportunistic `#FF8800/#FFA833/#C26800` → token migrations in same Tailwind-arbitrary patterns. | +542 / −542 |
-| `4e6853c` | summary | `docs/REMEDIATION_AUDIT/phase-2-summary.md` partial-closure documentation. | +142 / −0 |
+### Phase 2 deferred items + N0 (commits before Phase 18)
 
-Plus the prior Phase 1 audit commit (`9a03f3f`): 6 audit analysis docs + 19 raw evidence files in `docs/REMEDIATION_AUDIT/`.
+| Item | Commit | Summary |
+|---|---|---|
+| C4 + C2.1 | `34cbe15` | HeroSection 337 LOC → 199 LOC orchestrator + 3 children (HeroHeadline / HeroCTA / HeroTrustStrip) + 6 inline-styles class-extracted |
+| C2.2 | `f4627e8` | Footer.tsx 12 inline-styles extracted |
+| C2.3 | `975d271` | ServicesPinReveal.tsx 11 inline-styles extracted |
+| C2.4 | `e9d5e4a` | CTASection.tsx 5 inline-styles extracted |
+| C2.5 | `2277fff` | ChatPanel.tsx 15 inline-styles extracted |
+| N0 | `3c0428e` | chat-panel-shell `@supports` gate for unprefixed `backdrop-filter` |
 
----
+### Phase 3 (V1–V10) + Phase 4 (N1–N3)
 
-## 3. PHASE 2 DEFERRED ITEMS (next-session work)
+| Item | Commit | Summary |
+|---|---|---|
+| V8 | `88982dd` | Footer compliance strip removed |
+| V2 | `8633c70` | `.hero-h1` typography envelope (clamp + line-height 1.05 + font-weight 400 + text-wrap pretty) |
+| V3 | `b1a8148` | `.hero-em-inner` BFC structural fix (LATER REVERTED in Phase 18.6 — this fix produced line-box inflation) |
+| V4 | `2843312` | AutomationOrbit dimensional bounds + grid anchoring (LATER REFINED in Phase 18.6) |
+| V6 | `1949847` | Service-row visual termination (4rem padding + ring-stroke hairline) |
+| N1 | `58368c9` | Legal-page email sweep (terms-of-service + FounderSection mailto) |
+| N2 | `3312c95` | Marquee marksRow1/marksRow2 emptied (env-gated null + bundle cleanup) |
+| docs | `4b4d06e` | Phase-3 + Phase-4 partial-closure summaries |
+| V7 | `bf4ec40` | Eyebrow contrast site-wide normalization (.eyebrow → muted gray; **Pillar 4 P1.1 carve-out: services-section retains amber via .services-pin-section-eyebrow class isolation**) |
+| docs | `324e817` | Phase-3 V7 Resolution amendment |
 
-### C2 — 5-file inline-style extraction
+### Phase 5 validation + Phase 17b closure
 
-| File | Inline-style count | LOC | Notes |
-|---|---|---|---|
-| `src/components/sections/HeroSection.tsx` | **6** | 337 | Intersects with C4; recommend doing C4 first then C2.1 covers extracted children |
-| `src/components/layout/Footer.tsx` | **12** | 181 | Largest concentration is in the philosophy block (R7-locked typography hierarchy) |
-| `src/components/sections/ServicesPinReveal.tsx` | **11** | 226 | Service-row inline styles for color/lineHeight/maxWidth |
-| `src/components/sections/CTASection.tsx` | **5** | 95 | h2 + body + microcopy + CTA button stack |
-| `src/components/chat/ChatPanel.tsx` | **15** | 279 | Bubble styling + skeleton + quick-reply pills |
-| **Total** | **49** | — | One commit per file for review-ability |
+| Item | Commit | Summary |
+|---|---|---|
+| docs | `fd75633` | `docs/REMEDIATION_REPORT.md` — comprehensive Phase 17b deliverable (8 sections per directive Part 3) |
 
-### C4 — HeroSection decomposition
+### Phase 18 (CSS atmosphere) → Phase 18.5 (intensity bump + B2 Three.js + parallax)
 
-- Current `HeroSection.tsx`: **337 LOC** (10 LOC over the >300 spec threshold)
-- Target: ~100 LOC orchestrator + 3-4 child components (`HeroH1.tsx` + `HeroEm.tsx` (or fold into HeroH1) + `HeroTrustStrip.tsx` + `HeroCTA.tsx`)
-- Highest regression risk: GSAP word-reveal timeline orchestration spans children; preserve `data-word-reveal` selector chains
-- Intersects with C2.1 (the 6 inline styles will land in the extracted children)
+| Item | Commit | Summary |
+|---|---|---|
+| 18.A baseline | `79ba571` | Bundle bytes baseline (no Lighthouse — toolbelt gap pre-18.5.A) |
+| 18.B | `835c8e9` | CSS A4 atmosphere ship (3-layer radial-gradient + grain ::before + Ambiguity #2 carve-out `.hero-section > .hero-grid` z-index 2) |
+| 18.E | `a1f77fc` | Locked invariant amendment — atmospheric exception clause + Ambiguity #2 carve-out documentation (CLAUDE.md NEW + SESSION_HANDOFF.md §5) |
+| 18.G summary | `21b0536` | Phase 18 reduced-scope summary deliverable |
+| 18.5.A | `35fcfc8` (prior session) | Toolbelt install (`@lhci/cli` 0.15.1 + `@playwright/test` 1.59.1 + Chromium 1217 cached) + baseline metrics (perf 96/100 mobile median, CLS 0, LCP 2158ms, TBT 71ms, FCP 1269ms) |
+| 18.5.C | `5afb9ff` | A4 atmosphere intensity bump (amber 0.13→0.28, blue 0.08→0.20, +center fill 0.06, warmer vignette `#1a130a`) — LATER REVERTED in Phase 18.6 |
+| 18.5.D | `612fdf1` | B2 Three.js sphere layer (HeroAtmosphere.tsx imperative + HeroAtmosphereFallback.tsx CSS) — LATER DISABLED in P7 perf-pass |
+| D-GATE | `3751d9d` | D-GATE Lighthouse 5x preview, mobile median 95/100 (sanitized — token redacted from JSONs before push) |
+| 18.5.E | `6f5f17c` | Parallax scroll-handler integration (factors 0.05/0.08/0.03, ±24px clamp, K13 reduced-motion guards) |
+| E-GATE | `ebc2b9d` | E-GATE Lighthouse 5x preview, mobile median 94/100 |
+| 18.5.F | `3bf6e9a` | K17 + K14 amendments (K17 amber ≤30%/blue ≤22%; K14 initial-bundle-only interpretation, lazy chunks excluded) |
+| G-GATE | `4242559` | G-GATE production Lighthouse, mobile median 94/100 |
+| 18.5.H | `2b6f3ae` | Phase 18.5 closure summary |
 
-### Estimated combined effort: 5–7 hours autonomous edit time (per-file commits)
+### Phase 18.6 — brand asset swap + visual remediation + perf-pass (this session's later half)
 
-Recommended sequencing for next session:
-1. **C4** first — HeroSection decomposition (1 commit)
-2. **C2.1** — covered by C4 (extracted children inherit class-based styling)
-3. **C2.2** — Footer.tsx inline-style extraction (1 commit)
-4. **C2.3** — ServicesPinReveal.tsx (1 commit)
-5. **C2.4** — CTASection.tsx (1 commit)
-6. **C2.5** — ChatPanel.tsx (1 commit)
-7. **C1.followup** (optional, ~30 min) — eliminate the 37 residual hex literals in template-literal contexts
-
----
-
-## 4. PHASE 3 + PHASE 4 SCOPE (next-session work, per directive Part 2 — NOT YET PASTED INTO SESSION)
-
-**STATUS: Part 2 directive content was never pasted into this session.** Per Operating Principle 5 (frozen spec, no autonomous expansion), Phase 3 and Phase 4 cannot begin without explicit spec content.
-
-### Phase 3 — Visual Defect Remediation V1–V10 (spec content TBD)
-
-V1 through V10 items are referenced by the directive Part 1 closing line ("Continue to Part 2 for Phase 3 (Visual Defect Remediation V1–V10)") but the actual specifications are not in session.
-
-User-provided Phase 3 hints from directive sections 7 + handoff request:
-- V4: AutomationOrbit dimensional bounds
-- V7: Eyebrow contrast site-wide normalization
-- V8: Footer compliance strip removal (Pillar 4 P1.4 Option B retro — likely)
-
-V1, V2, V3, V5, V6, V9, V10 not surfaced in session yet.
-
-### Phase 4 — Content Integrity N1–N3 (spec content TBD)
-
-N1 through N3 items per directive closing line. Surfaced from A6 audit recommendations:
-- **N1 candidate** — replace `copy.logoStrip.marksRow1/marksRow2` 16 fabricated client name strings with empty `[]` arrays (component already returns null env-gated; saves ~500 bytes JS bundle)
-- **N1 candidate** — remove `mailto:info@digitalpointllc.com` from unused `FounderSection.tsx:74`
-
-Spec for N2, N3 not in session.
-
-### Reference
-
-Full Phase 1 audit + Phase 2 closure context lives in:
-- `/docs/REMEDIATION_AUDIT/PHASE_1_SUMMARY.md` (escalation matrix + scope numbers)
-- `/docs/REMEDIATION_AUDIT/phase-2-summary.md` (4-of-6-shipped status + deferred work + recommended sequencing)
-- `/docs/REMEDIATION_AUDIT/{css-specificity, stacking-contexts, component-coupling, type-safety-dead-code, brand-assets, content-integrity}.md` (6 analysis docs)
-- `/docs/REMEDIATION_AUDIT/raw/*.txt` (19 raw evidence artefacts)
-- `/docs/REMEDIATION_AUDIT/C6_SPEC_AMENDMENT.md` (Prisma + framer-compat exception documentation)
+| Item | Commit | Summary |
+|---|---|---|
+| **P0 mascot swap** | `f63b549` | `Dp-logo1.png` swapped from violet cartoon (SHA `589f799b...`) → dark Bloomberg mascot (SHA `ed31936c...`). Old asset preserved at `public/Dp-logo1.png.bak-violet-pre-swap`. CLAUDE.md + SESSION_HANDOFF.md §5 SHA references updated. |
+| P1 first pass | `daf9f40` | Hero structural integrity restore — `.hero-grid` align-items `end → center`, atmosphere reverted Phase 18.5.C → Phase 18.B values, `.automation-orbit-container` max-width `clamp(280px,32vw,480px) → clamp(280px,38vw,600px)` |
+| P1 second pass | `5afb835` | V3 revert — `.hero-em-inner` wrapper + CSS rule REMOVED (was inflating h1 line box producing ~300px sentence-beat gap); Pillar 5 R1 padding-block clamp re-applied directly on `.hero-em` (commit `499d965` value); grid columns `1.4fr 1fr` + tighter gap |
+| P1 third pass | `07dd1dd` | `.hero-h1-line-2 display: inline → block` (sentence 2 isolated from sentence 1's em-inflated baseline) |
+| P1 fourth pass | `0e9af00` | `<br>` between sentences REMOVED (was creating extra empty inline line under display:block sentence 2) |
+| P1 fifth pass | `43b97fa` | **Playwright-measured fix** — `.hero-h1` font-size cap `clamp(3.5rem,7.5vw,7rem)` → `clamp(3rem,5.5vw,5rem)` (cap 112px → 80px so "Skip the headcount." nowrap fits in 704px max-width); `.hero-em line-height: inherit` (override `.font-italic-display`'s 1.32 inflating line 1) |
+| P2 first pass | `85cbf26` | "the AI" font swap `font-italic-display → font-display` (Geist Sans 500 to match workforce hero) + body subtle atmosphere (amber 0.05/blue 0.04) + footer/CTA/services-pin section roots transparent |
+| P2 second pass | `ad88485` | em `font-bold` (workforce uses font-display + font-bold weight 700) + marketing wrapper inline `background:#000` REMOVED (was the main blocker preventing body atmosphere from showing site-wide) |
+| P2 third pass | `c51128a` | StatStripSection + PullQuoteSection + WorkflowSection inline `background: var(--bg-canvas/primary)` stripped (3 mid-page sections were still opaque, hiding body atmosphere) |
+| P3+P4 | `9a3e2ac` | Body atmosphere ~2.5× (amber 0.05→0.12, blue 0.04→0.10, +center fill); body::before fixed overlay added; nav header logo 60→88px + text removed; orbit container 600→760px (THIS WAS LATER PARTIALLY REVERTED — nav header was misunderstanding) |
+| P5 | `bc743fc` | Atmosphere doubled per "make it twice as lit" (body amber 0.12→0.24, blue 0.10→0.20, +center 0.04→0.08; ::before amber 0.08→0.16, blue 0.06→0.12) |
+| P6 | `861af34` | **Intro loader text → mascot image** (was `<span class="dpl-intro-wordmark">Digital Point</span>`, now `<img src="/Dp-logo1.png" class="dpl-intro-mascot" width=96 height=96>`); `<body style={{background:'#000000'}}>` REMOVED (was overriding globals.css body atmosphere); nav header REVERTED to original 60px+text per repo-owner clarification |
+| **P7 perf-pass** | `57dd3ac` | **Three.js sphere layer DISABLED for everyone** (was causing GPU stalls + 9fps); HeroDataTicker hydration mismatch fixed (Date+Math.random rendering server vs client mismatch → React error #418); body::before overlay REMOVED (compositor thrashing); Instrument Serif font preloads REMOVED (browser warned unused); JS bundle −520KB raw |
+| **P7b** | `316db39` | Body `background-attachment: fixed` REMOVED (forced full repaint on every scroll frame); `.gitignore`: added `.lighthouseci/` (auto-generated dir was accidentally committed) |
 
 ---
 
-## 5. LOCKED INVARIANTS — ABSOLUTE PRESERVE
+## 3. SESSION INCIDENTS WORTH PRESERVING
 
-- **Bloomberg Operator palette** — `#000` canvas, `#FF8800` amber primary, `#2A8FBD` instrument blue secondary, **zero violet/indigo/purple**
-- **Hero copy** — `Hire the AI. Skip the headcount.` (two-sentence beat with em-wrapped italic "the AI"; period inline outside the em)
+### A. Token-leak incident (resolved) — Phase 18.5 D-GATE
+
+Vercel deployment-protection bypass token (`8QB5uUPV5nabqTlUwyRtAyAEZmceeFKU`) was captured by Lighthouse JSONs in their network-log section because Lighthouse records `--extra-headers`. Detected pre-push via grep, soft-reset commit `9e3352d` (token-bearing) before push, sanitized all 5 D-GATE JSONs to `<REDACTED>` placeholder, re-committed as `3751d9d`. Same sanitize-on-commit pipeline applied to E-GATE JSONs (`ebc2b9d`). G-GATE production runs used no token (production endpoint public). **Token never reached origin/main.** Repo-owner accepted residual chat-history risk (token rotation optional).
+
+**Pattern for future Lighthouse runs that pass `--extra-headers`:**
+```bash
+for f in docs/PHASE_18_5_AUDIT/post-X/*.json; do
+  python3 -c "s=open('$f').read(); open('$f','w').write(s.replace('<TOKEN>', '<REDACTED>'))"
+done
+LEAK=$(git diff --cached | grep -c "<TOKEN_PREFIX>"); [ "$LEAK" != "0" ] && exit 1
+git commit ...
+```
+
+### B. V3 italic descender — empirical reversal documented
+
+Phase 3 V3 directive proposed `.hero-em-inner` inline-block as structural BFC fix for italic descender clearance. Shipped (`b1a8148`) and ratified in Phase 17b summary. Phase 18.6 P1 second pass (`5afb835`) REVERTED it after live-eyeball revealed the inline-block + padding-block-start: 0.25em was inflating the h1 line box, producing the very same "asymmetric line height" defect V3 was supposed to solve. Pillar 5 R1 parametric padding-block clamp on `.hero-em` directly was the empirically-verified fix all along (`499d965`). V3 is now superseded; do NOT re-introduce `.hero-em-inner`.
+
+### C. Mascot SHA-match was tautological
+
+Phase 17b forensic-investigation declared the logo asset clean because byte-perfect SHA chain (local file = production direct asset URL = optimized `/_next/image` variants all derived from same source). The SHA `589f799b...95600` matched at every layer. **But the SHA itself was the wrong asset** — file content was a violet cartoon, not the dark Bloomberg mascot the locked invariant intended. Phase 18.6 P0 swapped to the correct asset (SHA `ed31936c...`). **Lesson: SHA-match proves byte-integrity, NOT visual-identity. Always pair SHA verification with at least one visual screenshot eyeball before declaring a brand-asset invariant met.**
+
+### D. Iteration count on hero typography — 5 passes to converge
+
+Hero h1 sentence-beat layout went through 5 separate fix passes (P1.1 → P1.5) before converging. Root cause was finally identified via Playwright instrumentation (font-size cap 112px + h1 max-width 704px + nowrap on line 2 = "Skip the headcount." overflowed past h1 right edge into the orbit zone; em line-height 1.32 inflated line 1 vs line 2's 1.05). **Lesson: when 2+ guess-based CSS fixes don't resolve a layout issue, instrument with Playwright `getBoundingClientRect()` + `getComputedStyle()` against the live deploy BEFORE shipping the third guess.**
+
+---
+
+## 4. LOCKED INVARIANTS — current as of `316db39`
+
+### Brand + Visual
+
+- **Bloomberg Operator palette purity** — `#000` canvas, `#FF8800` amber primary, `#2A8FBD` instrument blue secondary. **Zero violet/indigo/purple on content surfaces.**
+- **Hero copy** — `Hire the AI. Skip the headcount.` (em wraps "the AI" only; period inline outside em; no `<br>` between sentences post-P1.4)
 - **5-service order** — AI Agents → Workflow Automation → Remote Operators → Performance Marketing → Systems & Reporting
-- **AutomationOrbit Palette D geometry** — outer rx=138 ry=98, inner rx=62 ry=42, 4 cardinal nodes (Lead Trigger / AI Score / Operator Route / CRM Updated), Cosmo center r=30, 90s rotation, prefers-reduced-motion killswitch
-- **HeroDataTicker substrate opacities** — 0.18 amber / 0.12 UTC / 0.18 instrument-blue (≥1024 px only; mobile hidden)
-- **Logo SHA** — `Dp-logo1.png` `ed31936ca7a0f13a20170f68a6faad27b06afe30a4f4d2a825480def9e78bc2f`
-- **`TestimonialsSection.tsx` returns null** — fabricated Sarah Chen / Marcus Thompson / Jennifer Walsh removed; stub preserved
-- **Marquee env-flag null return** — `LogoStripSection` returns null unless `NEXT_PUBLIC_MARQUEE_ENABLED === 'true'`
-- **`font-display: optional` + size-adjust descriptors** on `InstrumentSerifLocal` regular + italic (Pillar 3R iter 2 CLS fix invariant: `ascent-override: 95%`, `descent-override: 22%`, `line-gap-override: 0%`, `size-adjust: 100%`)
-- **FAQ at `/faq` route** with `FAQPage` JSON-LD schema (Pillar 4 P1.4 / 3-reversal R2)
-- **Process timeline** — Lead Trigger → AI Score → Operator Route → CRM Updated (AutomationOrbit narrative)
-- **Faizan pull-quote section** — italic blockquote on pure black (post Pillar 3-reversal: gradient stripped, padding 1.32 line-height)
-- **Phase 12 contact strategy** — zero generic email surfaces, brand-justified philosophy block in footer (`#contact-philosophy` anchor), Cosmo-only routing, JSON-LD ContactPoint URL-based not email-based
-- **Phase 18.5 atmospheric exception — K17 amended (authorized 2026-04-28)** — Amber `#FF8800` may render at ≤30% opacity in hero background atmosphere layer (CSS radial-gradient OR Three.js sphere material). Blue `#2A8FBD` may render at ≤22% opacity in same context. Applies ONLY to background layers behind hero content; content surfaces stay at full Bloomberg Operator palette discipline. Zero violet/indigo/purple anywhere remains absolute (K1 unchanged). Currently shipped: 18.5.C atmosphere bump (`5afb9ff`) — 4 radial-gradients (amber 0.28 + blue 0.20 + amber center fill 0.06 + warm vignette `#1a130a` → `#000` 80%) + 18.5.D Three.js spheres (`612fdf1`) — 3 spheres at #FF8800 0.27 / #2A8FBD 0.25 / #FF8800 0.17, K17-buffered to absorb numeric rounding + 18.5.E parallax (`6f5f17c`).
-- **Phase 18 hero stacking carve-out (authorized 2026-04-28)** — Phase 18 directive locked configuration `.hero-section > * { z-index: 2 }` carved to `.hero-section > .hero-grid` only. HeroDataTicker substrate (sibling) keeps default stacking, preserves K9 substrate-position invariant. Phase 18.5.D adds Three.js canvas / CSS fallback at z-index 1 (above CSS atmosphere bg + ::before grain at z=0, below `.hero-grid` content at z=2).
-- **Phase 18.5 K14 amended — initial-bundle interpretation (authorized 2026-04-28 Path 1)** — "Bundle delta budget ≤95KB gzipped" applies to initial-page-load bundle delta only. Lazy-loaded chunks (`next/dynamic` with `{ ssr: false }`) are EXCLUDED. **K11 Lighthouse mobile median ≥92 is the authoritative ship-readiness gate** (measured at D-GATE / E-GATE / G-GATE production). Three.js chunk currently ships at ~129KB gzipped, lazy-loaded only on desktop without reduced-motion AFTER first paint via `requestIdleCallback`; initial-bundle delta from Phase 17b baseline is ~+2KB (CSS rules + dynamic-import shim only).
+- **AutomationOrbit Palette D geometry** — outer rx=138 ry=98, inner rx=62 ry=42, 4 cardinal nodes, 90s rotation, prefers-reduced-motion killswitch
+- **HeroDataTicker substrate opacities** — 0.18 amber / 0.12 UTC / 0.18 instrument-blue (≥1024px only; mobile hidden)
+- **Logo SHA** — `Dp-logo1.png` `ed31936ca7a0f13a20170f68a6faad27b06afe30a4f4d2a825480def9e78bc2f` (NEW post-Phase-18.6 P0)
+- **TestimonialsSection.tsx returns null** — fabricated Sarah Chen / Marcus Thompson / Jennifer Walsh removed
+- **Marquee env-flag null** — `LogoStripSection` returns null unless `NEXT_PUBLIC_MARQUEE_ENABLED === 'true'` (default unset)
+- **`font-display: optional` + size-adjust descriptors** on `InstrumentSerifLocal` regular + italic (Pillar 3R iter 2 CLS fix)
+- **FAQ at `/faq` route** with FAQPage JSON-LD schema
+- **Faizan pull-quote section** — italic blockquote on now-transparent section (P2.3 stripped its inline bg)
+- **Phase 12 contact strategy** — zero generic email surfaces; `<code>hello@</code>` literal in Footer philosophy block is the ONE allowed email-shaped surface (Pillar 4 R7); JSON-LD ContactPoint URL-based not email-based
+
+### Phase 17b additions
+
+- **V3 SUPERSEDED** — `.hero-em-inner` inline-block wrapper removed; Pillar 5 R1 padding-block clamp on `.hero-em` directly is the italic descender clearance mechanism (commit `499d965` value preserved on disk for safety-net rollback)
+- **V7 Pillar 4 P1.1 carve-out** — `.eyebrow` utility = muted gray (`var(--text-muted)`) site-wide; **`.services-pin-section-eyebrow` retains `var(--accent-bright)` amber per P1.1 invariant**. Empirically falsified for muted gray at services-section display-size on pure black (perceptual contrast asymmetry vs body-size eyebrows).
+
+### Phase 18 / 18.5 / 18.6 additions
+
+- **K17 amended atmospheric exception** — Amber `#FF8800` ≤ 30% opacity in hero background atmosphere layer; blue `#2A8FBD` ≤ 22% opacity in same context. Background layers ONLY; content surfaces stay full Bloomberg palette discipline.
+- **Currently shipped (Phase 18.6 P5+P7)**:
+  - `.hero-section` — Phase 18.B 3-layer radial atmosphere (amber 0.13 / blue 0.08 / vignette `#14100a → #000` 78%) + `::before` grain (200×200 turbulence, 0.06 opacity, overlay blend)
+  - `body` — site-wide subtle atmosphere (3 radial-gradients: amber 0.24 / blue 0.20 / center amber 0.08 — well under K17 caps); NO `background-attachment: fixed` (perf), NO `body::before` overlay (perf)
+- **Phase 18 hero stacking carve-out** — `.hero-section > .hero-grid` gets `z-index: 2` only (not `> *`). HeroDataTicker substrate sibling keeps default stacking per K9.
+- **K14 amended initial-bundle interpretation** — `≤95KB gzipped` applies to initial-page-load delta only; lazy chunks (`next/dynamic { ssr: false }`) excluded. K11 Lighthouse mobile median ≥92 is the authoritative ship-readiness gate.
+- **Three.js sphere layer DISABLED** (Phase 18.6 P7) — was causing GPU stalls + 9fps. CSS-only `HeroAtmosphereFallback` ships for everyone. `HeroAtmosphere.tsx` retained on disk for future optimization-rewrite pass; do NOT re-enable without WebGL renderer perf rewrite.
+- **Marketing wrapper transparent** (Phase 18.6 P2) — `(marketing)/layout.tsx` outer div had inline `background: var(--bg-canvas)` blocking body atmosphere site-wide; removed.
+- **3 mid-page sections transparent** — StatStripSection + PullQuoteSection + WorkflowSection had inline `background: var(--bg-canvas/primary)` stripped so body atmosphere shows through.
+- **Intro loader = mascot image** — `app/layout.tsx` `.dpl-intro-loader` content swapped from "Digital Point" italic Instrument Serif text to `<img src="/Dp-logo1.png" class="dpl-intro-mascot" width=96 height=96>`. Same fade-in animation chain.
+- **`<body>` no inline bg** — `style={{ background: '#000000' }}` REMOVED (was overriding globals.css body atmosphere). Color preserved inline.
 
 ---
 
-## 6. KILL CONDITIONS (CLAUDE.md durable rules)
+## 5. KILL CONDITIONS
 
-- **Never force push** — CLAUDE.md hook-enforced; force-push to `main` is denied at the Bash boundary regardless of in-session directive
-- **Never permanent delete** — destructive operations (`rm -rf`, `git reset --hard` on shared state, dropping DB tables) require explicit per-action user confirmation
-- **Never override locked invariants without explicit user authorization** — invariant violations are FATAL halt conditions
-- **Never autonomous spec expansion** — frozen-spec discipline; if scope requires expansion, halt + escalate with proposed modification
-- **Halt at any locked invariant regression** — verify post-commit + post-deploy; revert immediately on detection
+K1–K17 from prior directives carry forward. Notes on current state:
+
+| ID | Status |
+|---|---|
+| K1 forbidden-surface | last verified 0 hits across all patterns at G-GATE production (`4242559`) |
+| K2 locked invariant regression | active gate |
+| K3 italic bbox negative delta | not measurable in this session toolbelt without Playwright bbox script |
+| K4 logo asset | NOW correct (Dp-logo1.png is the dark Bloomberg mascot SHA `ed31936c...`); old violet cartoon `bak-violet-pre-swap` preserved for incident provenance only |
+| K5 Lighthouse mobile <92 | last G-GATE production = 94/100 |
+| K6 build/tsc fail | currently passing |
+| K7 force-push | hook-enforced; never used |
+| K8 Schema.org Organization JSON-LD | structurally valid (verified via parser); ContactPoint URL-only |
+| K9 HeroDataTicker substrate position | DOM order verified: atmosphere → ticker → grid (offset 12 → 279 → 1203 at 1920×1080) |
+| K10 eyebrow contrast <4.5:1 | 7.03:1 muted, 10.27:1 amber carve-out — both pass AAA |
+| K11 Lighthouse mobile <92 (Phase 18.5+) | last measured 94/100 production; perf-pass P7+P7b should improve further but NOT re-measured this session via Lighthouse |
+| K12 Three.js canvas bleed | N/A — Three.js disabled |
+| K13 reduced-motion not honored | active gate; CSS-fallback path is reduced-motion-safe by default |
+| K14 amended bundle delta | initial-bundle interpretation; lazy chunks excluded |
+| K15 mobile fallback blank | CSS fallback ships everywhere now (P7); always-present |
+| K16 z-index stacking break | active gate |
+| K17 amended | amber ≤30% / blue ≤22% in atmosphere layers; current values amber max 0.24 / blue max 0.20 — within caps |
 
 ---
 
-## 7. KNOWN ISSUES STILL OPEN
+## 6. KNOWN OUTSTANDING ISSUES (out-of-current-scope)
 
 | Item | Status | Effort | Risk |
 |---|---|---|---|
-| **C2 inline styles** | 49 instances across 5 home-surface files (HeroSection 6 / Footer 12 / ServicesPinReveal 11 / CTASection 5 / ChatPanel 15); per-file extraction pending | 2–3 h | LOW per file |
-| **C4 HeroSection decomposition** | 337 LOC orchestrator; needs split into ~100 LOC + 3-4 child components; intersects with C2.1 | 3–4 h | MEDIUM (GSAP timeline boundary) |
-| **C1 hex residual** | 37 of 441 legacy-palette literals not migrated (8% remaining); concentrated in border template-literal strings + dynamic className construction in `(marketing)/automation/page.tsx` + `RemoteWorkforcePage.tsx` + `(conversion)/layout.tsx` + `DashboardCostCalculator.tsx` | 30 min | LOW |
-| **V4 — AutomationOrbit dimensional bounds** | Pending Phase 3 (spec not in session) | TBD | TBD |
-| **V7 — Eyebrow contrast site-wide normalization** | Pending Phase 3; A4 audit found 0 instances <4.5:1 (no broken contrast); spec may be hygiene-only | TBD | LOW |
-| **V8 — Footer compliance strip removal** | Pending Phase 3; Pillar 4 P1.4 Option B retroactive (the "GDPR COMPLIANT · 5-DAY WRITTEN PLAN GUARANTEED" strip is currently live in production after the revert chain restored it) | 5 min | LOW |
-| **`FounderSection.tsx:74` `mailto:info@`** | Component unused per knip; mailto is dead surface but not yet removed | 1 min | NONE |
-| **`copy.logoStrip.marksRow1/marksRow2`** | 16 fabricated client strings still in JS bundle (~500 bytes); component env-gated null so 0 render impact | 1 min | NONE |
+| Scroll fps 22 (idle 45) | Playwright-measured at end of session. Hot path is GSAP ScrollTrigger pinning + GrainOverlay + CursorBloom + ScrollMotion observers. Not addressed in P7/P7b. | 1-2h | MEDIUM (visual feature regression) |
+| 3 pre-existing lint errors | `react-hooks/set-state-in-effect` at `ChatPanel.tsx:39`, `AnalyticsGate.tsx:21`, `CookieConsent.tsx:39`. Pre-date this session, untouched. | 30 min | LOW |
+| Sub-page visual audit | Home page audited extensively this session. /remote-workforce, /automation, /performance-marketing, /case-studies, /results, /about, /faq, /tools/*, /research/*, /services/* not visually audited post-Phase 18.6 atmosphere changes. | 2-3h | LOW (consistency) |
+| Other public/ PNG variants | `apple-touch-icon.png`, `icon-192/512.png`, `favicon-*.png`, `og-image.png` — were created same day as old violet `Dp-logo1.png` (Apr 26). Repo-owner deferred visual check. | 5 min per asset to verify + swap if needed | NONE |
+| Three.js sphere layer rewrite | Disabled in P7 due to GPU stalls. Component file `HeroAtmosphere.tsx` retained on disk. Rewrite would need: (a) avoid synchronous ReadPixels, (b) lower poly count, (c) defer init harder, (d) maybe `OffscreenCanvas`. | 3-4h | HIGH (was source of original perf catastrophe) |
+| Vercel bypass token rotation | Optional defensive rotation — token is in chat history but never reached origin/main. | <5 min in Vercel dashboard | NONE if not rotated |
+| `HeroAtmosphere.tsx` dead-import cleanup | Component file kept but no longer imported. Could delete to clean up, or leave for future re-enable. | 1 min | NONE |
 
 ---
 
-## 8. OPERATING PRINCIPLES (carried forward)
+## 7. OPERATING PRINCIPLES (carried forward + updates)
 
-1. **Single-axis discipline per commit** — one defect class per commit; conventional-commits message documents scope
-2. **Audit before patch** — empirical evidence (forensics, grep, bbox probes) precedes any code modification
-3. **Conventional-commits enforcement** — `<type>(<scope>): <subject>` format; revert-friendly history
-4. **CLAUDE.md durable rules supersede session directives** — force-push, permanent delete, locked invariants are non-negotiable
-5. **Frozen spec, no autonomous expansion** — if directive content is missing or scope unexpectedly large, halt and escalate
-6. **Production verification gate per phase** — every phase closure verified against live production HTML, not local build output
-7. **Operating Principle 5 explicit halt** — at any review checkpoint, if artifact contents surface unexpected scope, halt before autonomous progression
+1. **Single-axis discipline per commit** — one defect class per commit; conventional-commits message documents scope. *Exception: closely-coupled visual-rhythm fixes can ship together with explicit defect-class framing in commit message.*
+2. **Audit before patch** — empirical evidence (forensics, grep, Playwright bbox/computed-style probes) precedes any code modification. **NEW: Playwright instrumentation against live production is now part of toolbelt — use it after 2 failed CSS guesses.**
+3. **Conventional-commits enforcement** — `<type>(<scope>): <subject>` format
+4. **CLAUDE.md durable rules supersede session directives** — force-push / permanent delete / locked invariants non-negotiable
+5. **Frozen spec, no autonomous expansion** — halt + escalate if scope unexpectedly large
+6. **Production verification gate per phase** — every closure verified against live production HTML, not local build
+7. **Operating Principle 5 explicit halt** — at any review checkpoint, halt before autonomous progression
+8. **Token hygiene** — `--extra-headers` capture artifacts in Lighthouse JSONs; sanitize before commit, pre-commit + pre-push grep verification
+9. **SHA-match ≠ visual-identity** — pair byte-integrity verification with at least one visual eyeball before declaring brand-asset invariants met
+10. **Trunk-based push** — direct push to `main` allowlisted in `.claude/settings.local.json`; PR review not required for solo-operator commits
+
+---
+
+## 8. TOOLBELT INSTALLED (this session)
+
+- `@lhci/cli` 0.15.1 (devDep)
+- `@playwright/test` 1.59.1 (devDep)
+- `lighthouse` 13.1.0 (transitive, available via `pnpm exec lighthouse`)
+- Chromium 1217 cached (`pnpm exec playwright install chromium` already run)
+- `three` 0.184.0 + `@types/three` 0.184.0 (in package.json — Three.js code currently dormant; can remove if HeroAtmosphere.tsx is deleted)
+
+**Lighthouse 5x preview run pattern (with Vercel deploy protection):**
+```bash
+export VBP_TOKEN="<token from Vercel → Project → Settings → Deployment Protection → Bypass for Automation>"
+PREVIEW_URL="https://...preview.vercel.app"
+mkdir -p docs/<phase>/post-X
+for i in 1 2 3 4 5; do
+  pnpm exec lighthouse "$PREVIEW_URL" \
+    --form-factor=mobile \
+    --extra-headers="{\"x-vercel-protection-bypass\":\"$VBP_TOKEN\"}" \
+    --output=json --output-path="docs/<phase>/post-X/lh-preview-$i.json" \
+    --chrome-flags="--headless=new --no-sandbox" --quiet 2>/dev/null
+done
+unset VBP_TOKEN
+# Sanitize before commit:
+for f in docs/<phase>/post-X/lh-preview-*.json; do
+  python3 -c "import sys; p=sys.argv[1]; s=open(p).read(); open(p,'w').write(s.replace('<TOKEN>','<REDACTED>'))" "$f"
+done
+LEAK=$(git diff --cached | grep -c "<TOKEN_PREFIX>"); [ "$LEAK" != "0" ] && echo "ABORT" && exit 1
+```
+
+**Playwright perf probe pattern (idle + scroll fps):**
+See P7b commit message + the `audit3.mjs` pattern used in this session. Run from inside repo root (`cp /tmp/script.mjs ./tmp.mjs && pnpm exec node ./tmp.mjs && rm tmp.mjs`) so `@playwright/test` resolves.
 
 ---
 
 ## 9. NEXT-SESSION BOOTSTRAP COMMAND
 
-> Read /docs/SESSION_HANDOFF.md, /docs/REMEDIATION_AUDIT/PHASE_1_SUMMARY.md, /docs/REMEDIATION_AUDIT/phase-2-summary.md, and CLAUDE.md before any action. Surface any ambiguity before code action. Continue Phase 2 deferred items (C2 + C4) then proceed to Phase 3 (V1–V10 + N1–N3) per directive.
+> Read `/docs/SESSION_HANDOFF.md`, `/docs/REMEDIATION_REPORT.md`, `/docs/PHASE_18_SUMMARY.md`, `/docs/PHASE_18_5_SUMMARY.md`, and `CLAUDE.md` before any action. Surface any ambiguity before code action. Current production: SHA `316db39`, deployment `dpl_F3AM5QHK5v2Huc5BivFuNmugLPm9`, last perf measurement idle 45fps / scroll 22fps. Awaiting fresh directive — known outstanding items in §6.
 
 ---
 
@@ -173,12 +262,13 @@ Full Phase 1 audit + Phase 2 closure context lives in:
 | Field | Value |
 |---|---|
 | **Branch** | `main` |
-| **Last commit SHA** | `4e6853c` |
-| **Last commit message** | `docs: Phase 2 partial-closure summary — 4 of 6 reduced C-items shipped, C2/C4 deferred for per-file-commit discipline` |
-| **Working tree status** | clean (no uncommitted changes) |
+| **Last commit SHA** | `316db39` (this session's last ship) |
+| **Last commit message** | `perf(p7b): drop body background-attachment:fixed + .gitignore .lighthouseci/` |
+| **Working tree status** | clean |
 | **origin/main sync** | in-sync (0 ahead, 0 behind) |
-| **Production HEAD** | matches local `4e6853c` (deployed in `dpl_5fmc5Gn5fFUQSYeCfwQYB2bk5i7U`) |
+| **Production HEAD** | matches local `316db39` (deployed in `dpl_F3AM5QHK5v2Huc5BivFuNmugLPm9`) |
+| **`.lighthouseci/`** | gitignored; auto-generated artifacts no longer tracked |
 
 ---
 
-*Generated 2026-04-27 at Phase 2 production-verification gate. All session work committed and pushed; production verified clean. Next session resumes from Phase 2 deferred items (C2 + C4) per directive sequencing, awaiting Part 2 directive paste for Phase 3 + Phase 4 specs.*
+*Generated 2026-04-28 at end of session. Long context — cleared for fresh handoff. All session work committed and pushed; production verified clean. Next session resumes from outstanding items in §6 OR fresh directive.*

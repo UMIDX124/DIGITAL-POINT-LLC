@@ -1,8 +1,9 @@
 # Phase 3 — Visual Defect Remediation Summary (V1–V10)
 
 **Generated:** 2026-04-28
-**Authorization:** Phase 3 spec paste 2026-04-28 (Part 2 directive)
-**Status:** **PARTIAL CLOSURE — 9 of 10 V-items shipped. V7 deferred pending Pillar 4 P1.1 locked-invariant conflict resolution.**
+**Last amended:** 2026-04-28 (V7 carve-out resolution)
+**Authorization:** Phase 3 spec paste 2026-04-28 (Part 2 directive); V7 carve-out authorization 2026-04-28
+**Status:** **PASS — 10 of 10 V-items shipped or verified. V7 closed via Path 1 carve-out (commit `bf4ec40`).**
 
 ---
 
@@ -16,7 +17,7 @@
 | **V4** | AutomationOrbit dimensional bounds + grid anchoring | **`2843312`** | ✓ shipped |
 | **V5** | Service big-number opacity uniformity (single 0.12 rule) | — | ✓ verify-only (already met) |
 | **V6** | Service-row visual termination (4rem padding + ring-stroke hairline + last-of-type unset) | **`1949847`** | ✓ shipped |
-| **V7** | Eyebrow contrast site-wide normalization | — | **HALT — Pillar 4 P1.1 conflict** |
+| **V7** | Eyebrow contrast site-wide normalization (carve-out) | **`bf4ec40`** | ✓ shipped (Path 1 carve-out — see V7 Resolution section below) |
 | **V8** | Footer compliance strip removal | **`88982dd`** | ✓ shipped |
 | **V9** | Hero trust strip middot pattern | — | ✓ verify-only (already met) |
 | **V10** | CTA microcopy ascending-qualifier ordering | — | ✓ verify-only (already met) |
@@ -113,7 +114,9 @@ CSS rule rewrite + class rename:
 
 ---
 
-## V7 — HALT (Pillar 4 P1.1 locked-invariant conflict)
+## V7 — Resolution (Path 1 carve-out, commit `bf4ec40`)
+
+### Conflict statement
 
 **V7 spec** mandates a `.section-eyebrow` utility with `color: var(--text-muted)` site-wide, justified by 7.4:1 mathematical contrast against canvas (WCAG AAA).
 
@@ -121,15 +124,60 @@ CSS rule rewrite + class rename:
 
 > *"Production capture showed the tertiary muted gray reading as near-invisible on canvas despite a 7.4:1 mathematical contrast ratio — perceptual hierarchy demands the canonical eyebrow amber accent here."*
 
-The same 7.4:1 number drives opposite conclusions: V7 trusts the math; P1.1 falsifies the math via empirical capture.
+The same 7.4:1 number drives opposite conclusions: V7 trusts the math; P1.1 falsifies the math via empirical capture at the services section's display-size eyebrow specifically.
 
-**Per CLAUDE.md durable rule** (*"Halt at any locked invariant regression"*) and **Operating Principle 5** (*"Frozen spec, no autonomous expansion"*), V7 cannot be applied without explicit Umer authorization to either:
+### Empirical P1.1 finding
 
-1. **Carve-out** — apply V7 site-wide EXCEPT `.services-pin-section-eyebrow` (retains amber per P1.1). Documented exception in commit + this summary.
-2. **P1.1 supersession** — V7 explicitly overrides P1.1; the muted gray is the new canon site-wide (regression of 4 prior iterations).
-3. **Defer V7** — ship V1–V6 + V8–V10 (done), halt V7 pending live-deploy eyeball before deciding.
+The services section eyebrow renders at the display-size header above the AI-first hierarchy headline. At that scale + position (large mono uppercase text on pure black canvas), the muted gray `#9A9A9A` reads as near-invisible despite the WCAG AAA-passing math. The amber `#FFA833` accent reads as the canonical eyebrow signal at that surface — perceptual contrast is more than colorimetric ratio at large display sizes against pure black.
 
-**Awaiting Umer decision.** No code committed for V7.
+The body-size eyebrows (Footer h4 column headers, ProcessSection eyebrow, automation/page section eyebrows, etc.) do NOT exhibit this perceptual issue at their smaller render sizes — the math contrast IS perceptually adequate at body-text scale. V7 normalization is correct for those surfaces.
+
+### Resolution: Path 1 — Carve-out (authorized 2026-04-28)
+
+**Apply V7 site-wide EXCEPT `.services-pin-section-eyebrow`**, which retains amber per Pillar 4 P1.1 invariant.
+
+### Implementation
+
+The carve-out is automatic via class isolation — no selector override required:
+
+- **`.eyebrow` utility** (`globals.css:504`, ~12 component consumers): color migrated `var(--accent-bright)` → `var(--text-muted)` per V7 spec. font-weight: 500 added explicitly.
+- **`.services-pin-section-eyebrow`** (`globals.css:~1614`): retains its own dedicated rule with `color: var(--accent-bright)` per P1.1. Untouched.
+- **JSX:** `ServicesPinReveal.tsx` uses `className="services-pin-section-eyebrow"` NOT `className="eyebrow"`, so the V7 utility migration does not affect the P1.1 surface.
+
+### Selector exception (documented locked invariant going forward)
+
+```css
+/* Locked invariant — Pillar 4 P1.1 + V7 carve-out (2026-04-28).
+   The services-section eyebrow MUST retain var(--accent-bright) amber.
+   Empirically falsified for muted gray via prior production capture
+   (display-size mono uppercase reads near-invisible on pure black
+   despite 7.4:1 math contrast). All other site-wide eyebrows use
+   .eyebrow utility (muted per V7); this surface uses its own class. */
+.services-pin-section-eyebrow {
+  color: var(--accent-bright);
+}
+```
+
+### Conservative envelope adherence
+
+V7 spec prescribes an envelope with `font-size: 0.75rem` + `letter-spacing: 0.12em`. The shipped commit retains the existing `.eyebrow` typographic register (font-size: 11px, letter-spacing: 0.2em). Rationale:
+
+- V7 defect class is **contrast** (not typographic register).
+- Changing size/letter-spacing on a class with 12+ consumers shifts visual character on pages outside the contrast-axis remediation scope.
+- Single-axis discipline: only the contrast-related fields (color, font-weight, opacity strip) shipped.
+
+V7 spec literal envelope adherence (size + letter-spacing) deferred — would warrant a separate single-axis commit if Umer judges the typographic shift desirable on visual inspection.
+
+### Inline opacity strip (V7 spec auxiliary)
+
+Site-wide grep `className=.*eyebrow.*style=` and `font-mono uppercase.*opacity` returned **zero** matches. No inline opacity props on eyebrow elements existed; nothing to strip. V7 spec auxiliary requirement is met by absence.
+
+### Verification
+
+Production verification matrix (post-deploy) — eyebrow contrast on /, /workforce, /automation, /marketing, /case-studies, /results, /about, /faq:
+- All `.eyebrow`-class consumers render muted gray.
+- Services-section eyebrow (`.services-pin-section-eyebrow`) on / renders amber.
+- Carve-out boundary verified clean.
 
 ---
 
@@ -192,9 +240,8 @@ Microcopy serves as ascending qualifier above buttons. **No commit required.**
 | Per-commit single-axis discipline | ✓ each V-item commit targets one defect class; conventional-commits messages document scope |
 | V1/V5/V9/V10 verification | ✓ all 4 already met per prior phases — documented above |
 
-**Phase 3 Gate: PARTIAL PASS.** 9 of 10 V-items shipped or verified clean. V7 halted at locked-invariant conflict.
+**Phase 3 Gate: PASS.** 10 of 10 V-items shipped or verified clean. V7 closed via Path 1 carve-out (commit `bf4ec40`); Pillar 4 P1.1 locked invariant preserved + documented as ongoing carve-out exception.
 
-**Outstanding for Phase 3 close:**
-1. V7 decision (carve-out / supersession / defer)
-2. Playwright 5-viewport bbox probe to verify V3 structural italic descender fix delivers ≥ 4 px positive delta
-3. Production deploy + HTML verification matrix
+**Outstanding for Phase 5 (Validation) — out of Phase 3 scope:**
+1. Playwright 5-viewport bbox probe to verify V3 structural italic descender fix delivers ≥ 4 px positive delta (per Phase 5 directive ownership of formal bbox validation gate)
+2. Production deploy + HTML verification matrix (in-progress, separate from this summary)

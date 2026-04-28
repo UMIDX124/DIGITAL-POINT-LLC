@@ -940,6 +940,60 @@ a.text-link:hover,
   position: relative;
   z-index: 2;
 }
+/* Phase 18.5.D — Three.js canvas. Sits at z-index 1: above CSS atmosphere
+   background (auto stacking) + grain (::before z=0), below .hero-grid
+   content (z=2). pointer-events: none so it never intercepts clicks /
+   focus on hero CTAs or copy. */
+.hero-atmosphere-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  display: block;
+}
+/* Phase 18.5.D — CSS-only fallback for mobile (<1024px) and
+   prefers-reduced-motion: reduce. Mirrors the Three.js sphere positions
+   + base colors with radial-gradient + filter blur. K17-buffered
+   opacities (A 0.27 / B 0.25 / C 0.17). */
+.hero-atmosphere-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero-atmosphere-sphere {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-atmosphere-sphere--a {
+  width: 760px;
+  height: 760px;
+  top: -8%;
+  left: -10%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 136, 0, 0.27) 0%, transparent 70%);
+  filter: blur(28px);
+}
+.hero-atmosphere-sphere--b {
+  width: 520px;
+  height: 520px;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle at 50% 50%, rgba(42, 143, 189, 0.25) 0%, transparent 70%);
+  filter: blur(22px);
+}
+.hero-atmosphere-sphere--c {
+  width: 400px;
+  height: 400px;
+  top: 30%;
+  right: 6%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 136, 0, 0.17) 0%, transparent 70%);
+  filter: blur(18px);
+}
 .hero-grid {
   padding-inline: var(--container-gutter);
   /* Phase 18 V4 — orbit + copy column anchoring. minmax(0,1fr) lets

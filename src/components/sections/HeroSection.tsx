@@ -1,11 +1,20 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { AutomationOrbit } from '@/components/hero/AutomationOrbit';
 import { HeroDataTicker } from '@/components/hero/HeroDataTicker';
 import { HeroHeadline } from '@/components/hero/HeroHeadline';
 import { HeroCTA } from '@/components/hero/HeroCTA';
 import { HeroTrustStrip } from '@/components/hero/HeroTrustStrip';
+import { HeroAtmosphereFallback } from '@/components/hero/HeroAtmosphereFallback';
+
+// Phase 18.5.D — Three.js sphere layer. Imperative renderer (no
+// react-three-fiber). { ssr: false } so the canvas only mounts client-
+// side; CSS atmosphere + fallback render server-side immediately.
+const HeroAtmosphere = dynamic(() => import('@/components/hero/HeroAtmosphere'), {
+  ssr: false,
+});
 
 /**
  * Phase 6 v2 editorial hero — AI-first hybrid positioning.
@@ -26,6 +35,27 @@ export function HeroSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const headlineRef = useRef<HTMLHeadingElement | null>(null);
   const orbWrapRef = useRef<HTMLDivElement | null>(null);
+
+  // Phase 18.5.D — viewport + reduced-motion guards for HeroAtmosphere
+  // mount. Default false so SSR + first paint render the CSS-only
+  // fallback path; effect resolves the real value client-side.
+  const [useThreeJS, setUseThreeJS] = useState(false);
+  useEffect(() => {
+    const evaluate = () => {
+      const wide = window.matchMedia('(min-width: 1024px)').matches;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      setUseThreeJS(wide && !reducedMotion);
+    };
+    evaluate();
+    const mqWidth = window.matchMedia('(min-width: 1024px)');
+    const mqMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    mqWidth.addEventListener('change', evaluate);
+    mqMotion.addEventListener('change', evaluate);
+    return () => {
+      mqWidth.removeEventListener('change', evaluate);
+      mqMotion.removeEventListener('change', evaluate);
+    };
+  }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -161,8 +191,18 @@ export function HeroSection() {
       id="hero"
       className="hero hero-section relative w-full overflow-hidden"
     >
+      {/* Phase 18.5.D — Three.js sphere layer above CSS atmosphere,
+          below content (z-index 1; .hero-grid carve-out at z-index 2).
+          Mobile <1024px and prefers-reduced-motion render the
+          HeroAtmosphereFallback (CSS-only). dynamic { ssr: false } so
+          the canvas init is fully client-side and never blocks SSR. */}
+      {useThreeJS ? <HeroAtmosphere /> : <HeroAtmosphereFallback />}
+
       {/* Phase 16 C — Bloomberg Operator data substrate replaces the
-          Phase 6 conic ambient blur and the legacy radial glow. */}
+          Phase 6 conic ambient blur and the legacy radial glow.
+          K9 invariant: substrate sits between atmosphere and content
+          (default stacking; .hero-grid carve-out z=2 keeps content
+          above ticker; ticker above CSS atmosphere via DOM order). */}
       <HeroDataTicker />
 
       <div className="hero-grid relative mx-auto w-full max-w-[90rem]">

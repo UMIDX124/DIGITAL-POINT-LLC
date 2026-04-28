@@ -408,7 +408,20 @@
   }
   html { scroll-behavior: smooth; }
   body {
-    background: var(--bg-primary);
+    /* Phase 18.6 P2 — site-wide subtle atmospheric lift. Same radial-
+       gradient family as .hero-section but at MUCH lower opacity (amber
+       0.05 vs hero 0.13; blue 0.04 vs hero 0.08) so the warm undertone
+       reads consistently across all sections without dominating. The
+       hero's own .hero-section background layers (3 radial-gradients +
+       grain ::before) stack on top and remain the focal lit zone.
+       background-attachment: fixed so the gradient stays in viewport
+       coordinates as user scrolls — every section gets the same warm
+       wash regardless of scroll depth. */
+    background-color: var(--bg-canvas);
+    background-image:
+      radial-gradient(ellipse at 18% 20%, rgba(255, 136, 0, 0.05) 0%, transparent 45%),
+      radial-gradient(ellipse at 82% 80%, rgba(42, 143, 189, 0.04) 0%, transparent 45%);
+    background-attachment: fixed;
     color: var(--text-primary);
     font-family: var(--font-geist-sans), var(--font-sans), system-ui, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
@@ -1083,7 +1096,11 @@ a.text-link:hover,
    rule extracted but row itself unchanged (V8 removal pending Phase 3 spec).
    ============================================ */
 .footer-root {
-  background: var(--bg-canvas);
+  /* Phase 18.6 P2 — background changed from var(--bg-canvas) (opaque
+     #000) to transparent so body's site-wide subtle atmosphere shows
+     through. Footer terminus retains amber border-top + the existing
+     stacking. */
+  background: transparent;
   border-top: 1px solid var(--accent);
 }
 .footer-logo-img {
@@ -1128,7 +1145,8 @@ a.text-link:hover,
    descender clearance pattern; same value as Faizan pull-quote section).
    ============================================ */
 .cta-section-root {
-  background: var(--bg-canvas);
+  /* Phase 18.6 P2 — transparent so body atmosphere shows through. */
+  background: transparent;
   padding-top: var(--section-space);
   padding-bottom: var(--section-space);
 }
@@ -1265,38 +1283,17 @@ html[data-paused-global="true"] .grain-overlay {
    verified at all 5 viewports in Pillar 5 forensics F1.3 and is the
    correct approach. */
 .hero-em {
-  font-style: italic;
+  /* Phase 18.6 P2 — em treatment changed from italic Instrument Serif
+     (.font-italic-display) to .font-display (Geist Sans 500) per repo-
+     owner request to match workforce-page hero typography. Italic +
+     descender clearance machinery removed (no descenders in sans).
+     Amber color retained for semantic accent; line-height inherits from
+     h1's 1.05 so em participates cleanly in the line box. */
   color: var(--accent-primary);
-  letter-spacing: -0.01em;
-  /* Phase 18.6 P1 fifth pass — override .font-italic-display's
-     line-height: 1.32 with inherit so the em participates in h1's
-     1.05 line box. Without this override, the em's 1.32 line-height
-     made line 1 ~30px taller than line 2, producing the visible
-     asymmetry the user reported as "no alignment whatsoever."
-     Italic descender clearance handled by padding-block-end clamp
-     below (Pillar 5 R1). */
+  font-style: normal;
   line-height: inherit;
-  /* Phase 17b 3-restructured F3 — prevent ugly mid-word breaks on the
-     italic em element at narrow viewports. */
   word-break: keep-all;
   hyphens: none;
-  /* Phase 18.6 P1 — Pillar 5 R1 padding-block re-applied directly on
-     .hero-em (V3 .hero-em-inner wrapper removed). Block-end clamp gives
-     viewport-adaptive descender clearance via lh-unit: at 1440 lh=152px
-     → 0.05lh=7.6px clears 4.6px clip with margin; at 1024 lh=116px →
-     0.05lh=5.8px clears 3.5px clip with margin. Block-start trimmed to
-     0.10em — was over-extending in prior iterations with +33-44px
-     positive headroom. */
-  padding-block-start: 0.10em;
-  padding-block-end: clamp(0.20em, 0.05lh, 0.34em);
-  padding-inline-end: 0.05em;
-  padding-inline-start: 0.02em;
-  /* Phase 17b 2A — activate italic OT features so calt/liga ligatures
-     and contextual alternates render at their designed metrics rather
-     than fallback (which Instrument Serif italic ships with tighter
-     bounds). */
-  font-feature-settings: "calt" 1, "liga" 1;
-  /* Sharper italic glyph rendering on macOS subpixel pipelines. */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -1736,8 +1733,11 @@ html[data-paused-global="true"] .logo-marquee-track {
    ------------------------------------------------------------------- */
 .services-pin-section {
   position: relative;
-  /* Phase 18 reduced-scope C2.3 — extracted from inline style on <section>. */
-  background: var(--bg-secondary);
+  /* Phase 18.6 P2 — transparent so body atmosphere shows through.
+     Individual .services-pin-frame children remain opaque (required
+     for CSS-sticky pin-stack mechanic — each frame must visually cover
+     the previous on scroll). */
+  background: transparent;
   border-bottom: 1px solid var(--border-subtle);
 }
 .services-pin-stack { display: none; }

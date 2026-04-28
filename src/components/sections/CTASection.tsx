@@ -14,7 +14,7 @@ export function CTASection() {
   const { eyebrow, headline, body, ctaPrimary, ctaSecondary } = copy.finalCta;
 
   return (
-    <section id="cta" className="cta-section-root relative section-deferred">
+    <section id="cta" className="cta-section-root relative section-deferred section-defer-paint">
       <div className="container-narrow text-center relative">
         <p className="cta-section-eyebrow font-mono uppercase mb-6" data-reveal>
           {eyebrow}

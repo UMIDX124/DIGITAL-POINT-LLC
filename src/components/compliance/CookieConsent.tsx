@@ -59,57 +59,59 @@ export default function CookieConsent() {
       role="dialog"
       aria-label="Cookie preferences"
       aria-live="polite"
-      className="fixed left-4 right-4 bottom-4 z-[60] max-w-3xl mx-auto rounded-2xl"
+      className="fixed left-3 right-3 bottom-3 z-[60] max-w-3xl mx-auto rounded-xl"
       style={{
-        background: '#0A0A0A',
+        background: 'rgba(10, 10, 10, 0.92)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
         border: '1px solid var(--border-default)',
-        boxShadow: '0 12px 40px rgba(0, 0, 0, 0.5)',
+        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.45)',
       }}
     >
-      <div className="p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-        <div className="flex-1 min-w-0">
-          <p
-            className="text-sm leading-relaxed"
-            style={{ color: 'var(--text-primary)' }}
-          >
-            We use minimal analytics (Vercel Speed Insights + Vercel Analytics)
-            to understand how the site performs and what visitors find useful.
-            No third-party trackers, no ad pixels, no profiling.
-          </p>
-          <p
-            className="text-xs mt-2"
+      <div className="px-3 py-2.5 sm:px-4 sm:py-3 flex items-center gap-3">
+        <p
+          className="text-[12px] sm:text-[13px] leading-snug flex-1 min-w-0"
+          style={{ color: 'var(--text-secondary)' }}
+        >
+          <span className="hidden sm:inline" style={{ color: 'var(--text-primary)' }}>
+            Minimal analytics — no trackers, no ad pixels.
+          </span>
+          <span className="sm:hidden" style={{ color: 'var(--text-primary)' }}>
+            Minimal analytics only.
+          </span>
+          {' '}
+          <a
+            href="/cookies"
+            className="underline whitespace-nowrap"
             style={{ color: 'var(--text-tertiary)' }}
           >
-            Read more in our{' '}
-            <a href="/cookies" className="underline" style={{ color: 'var(--text-secondary)' }}>
-              cookie policy
-            </a>
-            .
-          </p>
-        </div>
-        <div className="flex items-center gap-2 shrink-0 flex-wrap">
+            Details
+          </a>
+        </p>
+        <div className="flex items-center gap-1.5 shrink-0">
           <button
             type="button"
             onClick={() => set('necessary')}
-            className="px-4 py-2 rounded-md text-[13px] font-medium transition-colors"
+            className="px-2.5 py-1.5 rounded-md text-[12px] font-medium transition-colors whitespace-nowrap"
             style={{
               background: 'transparent',
               border: '1px solid var(--ring-stroke)',
-              color: 'var(--text-primary)',
+              color: 'var(--text-secondary)',
             }}
+            aria-label="Necessary cookies only"
           >
-            Necessary only
+            Necessary
           </button>
           <button
             type="button"
             onClick={() => set('accepted')}
-            className="px-4 py-2 rounded-md text-[13px] font-medium transition-opacity hover:opacity-90"
+            className="px-3 py-1.5 rounded-md text-[12px] font-semibold transition-opacity hover:opacity-90 whitespace-nowrap"
             style={{
               background: 'var(--accent-bright)',
               color: 'var(--cta-text-on-amber)',
             }}
           >
-            Accept all
+            Accept
           </button>
         </div>
       </div>

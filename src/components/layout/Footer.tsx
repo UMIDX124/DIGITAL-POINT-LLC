@@ -49,7 +49,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="eyebrow mb-5">Practices</h4>
+            <h3 className="eyebrow mb-5">Practices</h3>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
@@ -62,7 +62,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="eyebrow mb-5">Company</h4>
+            <h3 className="eyebrow mb-5">Company</h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
@@ -75,7 +75,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="eyebrow mb-5">Connect</h4>
+            <h3 className="eyebrow mb-5">Connect</h3>
             {/* Phase 17b 3-reversal E1 — generic email surface removed.
                 Per Phase 12 contact strategy: pure-AI route (Cosmo) + audit
                 form, no `hello@` queue. Verbatim brand copy block below. */}

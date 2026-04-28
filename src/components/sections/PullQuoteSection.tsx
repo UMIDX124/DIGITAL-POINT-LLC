@@ -11,7 +11,7 @@ export function PullQuoteSection() {
 
   return (
     <section
-      className="relative section-deferred"
+      className="relative section-deferred section-defer-paint"
       // Phase 18.6 P2 — opaque var(--bg-canvas) removed so site-wide
       // body atmosphere shows through. Border + padding tokens retained.
       style={{

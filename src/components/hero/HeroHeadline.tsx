@@ -14,7 +14,7 @@ export const HeroHeadline = forwardRef<HTMLHeadingElement>(function HeroHeadline
   return (
     <h1
       ref={ref}
-      className="hero-h1 font-hero mb-8"
+      className="hero-h1 font-display mb-8"
       data-hero-headline
     >
       <span className="word inline-block overflow-hidden align-top">

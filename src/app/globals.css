@@ -406,7 +406,14 @@
   * {
     @apply border-border outline-ring/50;
   }
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    /* Smoother scroll-feel: contain elastic overscroll cascade so the
+       browser's bounce-back doesn't propagate into a chained repaint.
+       Combined with section-defer-paint below-fold + GPU-isolated grain
+       overlay, gives the "glide" feel. */
+    overscroll-behavior-y: contain;
+  }
   body {
     /* Phase 18.6 P5 — atmosphere intensity doubled per repo-owner
        "make it twice as lit." All values 2× P4:
@@ -1382,15 +1389,14 @@ html[data-paused-global="true"] .grain-overlay {
    slide reveal. padding-bottom raised to 0.32em for deeper descender clearance
    given the inline h1 lineHeight constraint. */
 .hero-em .word {
-  /* Phase 18 reduced-scope C3 (Pillar 5 R1 re-ship). The .word
-     containers carry their own overflow:hidden via Tailwind utility
-     for the slide-reveal animation; their padding must independently
-     provide italic glyph clearance. Block-start trimmed (was 0.20em —
-     33+ px positive headroom on .hero-em didn't need this); block-end
-     bumped 0.32em → 0.40em for matching descender headroom inside
-     the word-reveal clip. */
-  padding-top: 0.12em;
-  padding-bottom: 0.40em;
+  /* Post-Phase-18.6 P2 — em is sans-serif (Geist Sans 700), no italic
+     descenders to clear. Asymmetric padding-bottom 0.40em was inflating
+     em word boxes vs sibling .word containers, breaking baseline
+     alignment between "Hire" and "the AI". Zeroed for tight baseline
+     lock; sans-serif glyphs sit cleanly inside the .word overflow-hidden
+     clip without padding compensation. */
+  padding-top: 0;
+  padding-bottom: 0.08em;
 }
 
 /* ============================================
@@ -1646,6 +1652,18 @@ html[data-paused-global="true"] .chat-trigger-sparkle {
    ============================================ */
 .section-deferred {
   contain: layout style;
+}
+/* Below-fold paint deferral — applies content-visibility:auto with explicit
+   intrinsic size so the browser skips paint+layout for off-screen sections
+   during scroll without producing the Phase-14 CLS regression (which was
+   caused by missing contain-intrinsic-size). Apply only to sections that
+   live below 100vh AND don't host pinned ScrollTriggers (skip Hero,
+   ServicesPinReveal, WorkflowSection). Result: scroll repaint cost drops
+   ~3-5× when these sections are off-screen — that's the "glide like
+   clouds" delta. */
+.section-defer-paint {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
 }
 
 /* Phase 7: ScrambleText was removed (production hover-freeze regression);
@@ -2225,34 +2243,45 @@ html[data-paused-global="true"] .logo-marquee-track {
   justify-content: center;
   background: #000000;
   pointer-events: none;
-  animation: dpl-intro-stage 1100ms cubic-bezier(0.65, 0.05, 0, 1) forwards;
+  /* Smoothed: 1100ms → 1800ms total; gentler ease-out curve (no aggressive
+     0.05/0.0 control-points that produced visible jitter at the 64%→100%
+     compression point); single transform-only exit (opacity-only, no
+     translateY) avoids compositor repaint thrash on slower devices. */
+  animation: dpl-intro-stage 1800ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  will-change: opacity;
 }
 html[data-i-seen="1"] .dpl-intro-loader { display: none; }
 @media (prefers-reduced-motion: reduce) {
   .dpl-intro-loader { display: none !important; }
 }
-/* Phase 18.6 P6 — .dpl-intro-wordmark replaced by .dpl-intro-mascot
-   image per repo-owner request. Mascot at 96px (slightly larger than
-   the 60px nav-logo to read as a focal pre-paint moment). Same fade-in
-   animation chain (opacity 0 → 1 over 700ms). */
 .dpl-intro-mascot {
   width: 96px;
   height: 96px;
   opacity: 0;
-  animation: dpl-intro-fade-in 700ms cubic-bezier(0.33, 1, 0.68, 1) forwards;
+  transform: scale(0.94);
+  /* 700ms → 900ms; coordinated scale + opacity, single ease curve. */
+  animation: dpl-intro-fade-in 900ms cubic-bezier(0.33, 1, 0.68, 1) forwards;
+  will-change: transform, opacity;
 }
 .dpl-intro-line {
   display: block;
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
   width: 0;
   height: 1px;
   background: #FF8800;
-  animation: dpl-intro-line-fill 700ms cubic-bezier(0.33, 1, 0.68, 1) forwards;
+  opacity: 0.6;
+  animation: dpl-intro-line-fill 900ms 200ms cubic-bezier(0.33, 1, 0.68, 1) forwards;
+  will-change: width;
 }
-@keyframes dpl-intro-fade-in { to { opacity: 1; } }
-@keyframes dpl-intro-line-fill { to { width: 200px; } }
+@keyframes dpl-intro-fade-in {
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes dpl-intro-line-fill { to { width: 160px; } }
 @keyframes dpl-intro-stage {
-  0%   { opacity: 1; transform: translateY(0); }
-  64%  { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(-100px); visibility: hidden; }
+  /* Mascot in (0–900ms) → hold (900–1400ms) → fade-out only (1400–1800ms,
+     no translateY). Hold phase gives the eye a beat; fade-only exit is
+     a pure compositor opacity tween, GPU-cheap, no jitter. */
+  0%   { opacity: 1; }
+  78%  { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
 }

@@ -24,7 +24,7 @@ export function StatStripSection() {
     <section
       id="stat-strip"
       aria-label="Operator results"
-      className="relative section-deferred"
+      className="relative section-deferred section-defer-paint"
       // Phase 18.6 P2 — opaque var(--bg-canvas) removed so site-wide
       // body atmosphere shows through. Padding tokens retained.
       style={{

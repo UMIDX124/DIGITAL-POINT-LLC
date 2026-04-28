@@ -1345,9 +1345,20 @@ html[data-paused-global="true"] .chat-trigger-sparkle {
    ============================================ */
 .chat-panel-shell {
   background: color-mix(in srgb, var(--bg-canvas) 95%, transparent);
-  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-default);
+}
+/* Phase 18 N0 — Lightning CSS / Next.js optimizeCss strips an
+   unprefixed `backdrop-filter` declaration that sits adjacent to
+   `-webkit-backdrop-filter` in the same rule (verified in production
+   bundle 0dztqj2c1jknv.css after C2.5 ship). Wrapping the standard
+   property in @supports forces the optimizer to keep it as a separate
+   feature-gated declaration, restoring the blur on Chrome/Firefox/Edge
+   while preserving Safari's webkit-prefixed rendering. */
+@supports (backdrop-filter: blur(1px)) {
+  .chat-panel-shell {
+    backdrop-filter: blur(16px);
+  }
 }
 .chat-panel-header {
   border-bottom: 1px solid var(--border-default);

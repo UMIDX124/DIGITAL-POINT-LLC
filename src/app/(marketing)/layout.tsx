@@ -2,14 +2,21 @@ import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';
 import { StickyCTABar } from '@/components/ui-dp/StickyCTABar';
 import { ScrollMotion } from '@/components/motion/ScrollMotion';
+import { ScrollProgressBar } from '@/components/effects/ScrollProgressBar';
+import { SmoothScrollProvider } from '@/components/motion/SmoothScrollProvider';
 
 /**
- * Phase 8: LenisProvider fully removed. Native scroll is the design choice
- * for marketing — felt smoother on macOS/iOS native momentum than a
- * RAF-throttled wrapper.
+ * Phase 19 — repo-owner authorized supersedure of the Phase 8 "no Lenis"
+ * lock. SmoothScrollProvider mounts Lenis with the official GSAP
+ * ScrollTrigger bridge (lenis ticker drives gsap.ticker; ScrollTrigger
+ * uses lenis as scroller proxy). prefers-reduced-motion: Lenis skipped
+ * (native scroll). Anchor links: intercepted globally; lenis.scrollTo
+ * handles hash navigation so #services / #stat-strip behave correctly.
  *
- * Groq AI chatbot is mounted at the root layout (src/app/layout.tsx) so
- * it persists across all routes including marketing.
+ * ScrollProgressBar (2px amber top-of-viewport) sits above all content.
+ *
+ * Groq AI chatbot is mounted at the root layout so it persists across
+ * routes including marketing.
  */
 
 export default function MarketingLayout({
@@ -17,19 +24,16 @@ export default function MarketingLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Phase 18.6 P2 — wrapper background changed from opaque
-  // var(--bg-canvas) to transparent so the body-level site-wide
-  // subtle atmosphere (radial-gradient overlays in globals.css body
-  // rule) shows through every section. Sections that need their own
-  // opaque background still set it (e.g. .services-pin-frame for the
-  // sticky-pin mechanic).
   return (
-    <div className="relative min-h-screen flex flex-col">
-      <ScrollMotion />
-      <Navigation />
-      <main className="flex-1">{children}</main>
-      <Footer />
-      <StickyCTABar />
-    </div>
+    <SmoothScrollProvider>
+      <div className="relative min-h-screen flex flex-col">
+        <ScrollProgressBar />
+        <ScrollMotion />
+        <Navigation />
+        <main className="flex-1">{children}</main>
+        <Footer />
+        <StickyCTABar />
+      </div>
+    </SmoothScrollProvider>
   );
 }

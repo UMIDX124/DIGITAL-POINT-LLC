@@ -50,7 +50,7 @@ Em wraps "the AI" only. Period inline outside em. `.hero-h1-line-2` nowrap wrapp
 - **Show, don't pitch.** The orbit, the data ticker, the atmosphere are the demo. Visual evidence > bullet lists.
 - **One accountable surface.** Every contact route lands in the same inbox; no generic email surfaces (Phase 12 contact strategy). The single allowed email-shaped surface is the literal `hello@` token in the footer philosophy block.
 - **Editorial, not glassy.** The site feels like a publication, not a SaaS dashboard. Instrument Serif italic carries the headline; Geist Sans does the rest.
-- **Native scroll.** No Lenis, no scroll-jacking. Motion happens inside sections, not by hijacking page scroll.
+- **Smooth scroll (Phase 19, supersedes prior lock).** Lenis re-introduced for butter wheel feel, bridged to GSAP ScrollTrigger so all pin/scrub cinematic transitions stay in sync. Anchor links intercepted and routed through `lenis.scrollTo`. `prefers-reduced-motion` users get native scroll. Cinematic frame transitions (Apple/Stripe-style) are GSAP `pin: true, scrub: true` — these were always allowed; the prior "no Lenis" lock applied only to the smooth-wheel layer, which is now authorized.
 - **Reduced-motion is first-class.** Every animation has a `prefers-reduced-motion` killswitch. The site must not flicker, drift, or spin for users who opt out.
 
 ## Anti-references (what DPL is NOT)

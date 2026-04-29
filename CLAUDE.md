@@ -35,7 +35,15 @@ listed here are FATAL halt conditions if violated.**
 
 ### Architecture + Behavior
 
-- Native scroll (no Lenis introduction).
+- **Phase 19 supersedure (repo-owner authorized 2026-04-30):** Lenis
+  smooth-scroll RE-INTRODUCED with proper GSAP ScrollTrigger bridge.
+  Mounted via `SmoothScrollProvider` in marketing layout. Bridge
+  contract: lenis ticker drives gsap.ticker; ScrollTrigger.update fires
+  on every lenis scroll event; anchor-link clicks (`a[href^="#"]`)
+  intercepted globally and routed through `lenis.scrollTo` so hash
+  navigation lands precisely. `prefers-reduced-motion: reduce` skips
+  Lenis init (native scroll preserved). Bundle cost ~7kb gzipped.
+  Supersedes the Phase 8 "no Lenis" lock.
 - Marquee logo strip null-returned (env-gated `NEXT_PUBLIC_MARQUEE_ENABLED`).
 - `TestimonialsSection.tsx` returns null.
 - `font-display: optional` + size-adjust descriptors preserved on

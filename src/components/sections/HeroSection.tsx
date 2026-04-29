@@ -6,6 +6,7 @@ import { HeroDataTicker } from '@/components/hero/HeroDataTicker';
 import { HeroHeadline } from '@/components/hero/HeroHeadline';
 import { HeroCTA } from '@/components/hero/HeroCTA';
 import { HeroAtmosphereFallback } from '@/components/hero/HeroAtmosphereFallback';
+import { HeroNeuralField } from '@/components/hero/HeroNeuralField';
 import { copy } from '@/lib/copy';
 
 // Phase 18.6 P7 perf-pass — Three.js dynamic import REMOVED so the
@@ -186,6 +187,11 @@ export function HeroSection() {
           render). Visual outcome similar (3 blurred amber/blue radial
           divs at sphere positions). */}
       <HeroAtmosphereFallback />
+
+      {/* Phase 19 — Animated neural network field (SVG particles + proximity
+          lines). Communicates AI/automation register visually behind the
+          ticker substrate. Desktop only, prefers-reduced-motion safe. */}
+      <HeroNeuralField />
 
       {/* Phase 16 C — Bloomberg Operator data substrate replaces the
           Phase 6 conic ambient blur and the legacy radial glow.

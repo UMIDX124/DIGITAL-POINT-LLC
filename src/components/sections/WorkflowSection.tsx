@@ -65,6 +65,7 @@ export function WorkflowSection() {
           {/* Desktop horizontal diagram */}
           <div className="hidden md:block">
             <svg viewBox="0 0 1200 220" preserveAspectRatio="xMidYMid meet" className="w-full h-auto" aria-hidden="true">
+              {/* Phase 19 — Static base path (faint amber). */}
               {[
                 { id: 'a', d: 'M 180 110 L 420 110' },
                 { id: 'b', d: 'M 480 110 L 720 110' },
@@ -77,11 +78,45 @@ export function WorkflowSection() {
                   strokeWidth="2"
                   fill="none"
                   strokeLinecap="round"
+                  opacity="0.18"
                   data-workflow-path
+                />
+              ))}
+              {/* Phase 19 — Signal-flow overlay. Bright amber stroke-dash
+                  packet animates left-to-right along each segment with a
+                  staggered delay, giving the diagram a "live data flowing"
+                  feel. CSS animation only (no JS). Reduced-motion off via
+                  CSS @media. */}
+              {[
+                { id: 'a', d: 'M 180 110 L 420 110' },
+                { id: 'b', d: 'M 480 110 L 720 110' },
+                { id: 'c', d: 'M 780 110 L 1020 110' },
+              ].map((p, i) => (
+                <path
+                  key={`signal-${p.id}`}
+                  d={p.d}
+                  stroke="var(--accent-bright)"
+                  strokeWidth="2.2"
+                  fill="none"
+                  strokeLinecap="round"
+                  className="workflow-signal-flow"
+                  style={{ animationDelay: `${i * 0.6}s` }}
                 />
               ))}
               {[150, 450, 750, 1050].map((cx, i) => (
                 <g key={cx} data-workflow-node>
+                  {/* Pulse ring — emanates outward from each node on a
+                      staggered loop, signaling "live agent". */}
+                  <circle
+                    cx={cx}
+                    cy="110"
+                    r="28"
+                    fill="none"
+                    stroke="var(--accent-bright)"
+                    strokeWidth="1.2"
+                    className="workflow-node-pulse"
+                    style={{ animationDelay: `${i * 0.45}s` }}
+                  />
                   <circle cx={cx} cy="110" r="28" fill="var(--bg-primary)" stroke="var(--accent)" strokeWidth="1.5" />
                   <circle cx={cx} cy="110" r="6" fill="var(--accent-bright)" />
                   <text

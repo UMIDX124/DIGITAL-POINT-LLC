@@ -1036,6 +1036,100 @@ a.text-link:hover,
   background: radial-gradient(circle at 50% 50%, rgba(255, 136, 0, 0.17) 0%, transparent 70%);
   filter: blur(18px);
 }
+
+/* Phase 19 — Scroll progress indicator. 2px amber strip at top of
+   viewport, scaleX(0..1) with scroll. Above all content. */
+.scroll-progress-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 100;
+  pointer-events: none;
+  background: transparent;
+}
+.scroll-progress-bar {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-bright) 100%);
+  transform-origin: left center;
+  transform: scaleX(0);
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress-track { display: none; }
+}
+
+/* Phase 19 — WorkflowSection signal-flow + node pulse animations.
+   Communicates the AI/automation register: data packets continuously
+   travel along each path segment, nodes emit a slow pulse ring like
+   live agents on standby. SVG-only, GPU-accelerated stroke-dashoffset +
+   stroke transform. Skipped under prefers-reduced-motion. */
+@keyframes workflow-signal-flow {
+  0% {
+    stroke-dashoffset: 240;
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% {
+    stroke-dashoffset: -240;
+    opacity: 0;
+  }
+}
+.workflow-signal-flow {
+  stroke-dasharray: 36 204;
+  stroke-dashoffset: 240;
+  animation: workflow-signal-flow 3.6s cubic-bezier(0.65, 0.05, 0, 1) infinite;
+  will-change: stroke-dashoffset, opacity;
+}
+@keyframes workflow-node-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+}
+.workflow-node-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: workflow-node-pulse 2.6s cubic-bezier(0.33, 1, 0.68, 1) infinite;
+  will-change: transform, opacity;
+}
+@media (prefers-reduced-motion: reduce) {
+  .workflow-signal-flow,
+  .workflow-node-pulse {
+    animation: none;
+  }
+  .workflow-signal-flow { opacity: 0.6; stroke-dashoffset: 0; }
+  .workflow-node-pulse { opacity: 0; }
+}
+
+/* Phase 19 — Animated SVG neural-field overlay. Sits between atmosphere
+   spheres (z=1) and HeroDataTicker substrate. K17 atmospheric-exception
+   compliant: amber strokes capped at 0.45 opacity (line) and 0.55
+   opacity (node) with auto-distance falloff in JS — visible peak 0.27,
+   under the 0.30 K17 amber ceiling. Suppressed on <1024px and on
+   prefers-reduced-motion. */
+.hero-neural-field {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+@media (max-width: 1023px) {
+  .hero-neural-field { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-neural-field { opacity: 0.4; }
+}
 .hero-grid {
   padding-inline: var(--container-gutter);
   /* Phase 18 V4 → Phase 18.6 P1 second-pass amendment — orbit + copy
@@ -1808,37 +1902,41 @@ html[data-paused-global="true"] .logo-marquee-track {
   letter-spacing: var(--ls-tight);
   max-width: var(--maxw-heading-section);
 }
+/* Phase 19 — GSAP-pinned frame stack. Frames overlap (absolute positioning)
+   so the GSAP timeline can cross-fade them. The stack itself becomes a
+   100vh viewport that ScrollTrigger pins for ~5 viewport-heights of
+   scroll distance. Reduced-motion / no-JS / mobile users fall back to
+   the Phase 13 CSS-sticky behavior via the layered selectors below. */
+.services-pin-stack {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
 .services-pin-frame {
-  position: sticky;
-  top: 0;
-  /* Phase 18 reduced-scope C2.3 — extracted from per-article inline style. */
+  position: absolute;
+  inset: 0;
   background: var(--bg-secondary);
-  /* Phase 16 D.2 — reduced from 85vh to 60vh.
-     User reported "3-4 scroll attempts before first frame releases."
-     Root cause: CSS sticky requires scroll distance equal to the parent
-     section's content height past the sticky element before it unsticks.
-     With 5 frames at 85vh each, the first-frame release needed ~85vh of
-     scroll = ~700px on desktop = many wheel ticks. 60vh cuts that to
-     ~480px on desktop, ~360px on tablet — first wheel tick now visibly
-     advances pin progression. Total section height drops from 425vh to
-     300vh. Spec note: ServicesPinReveal is CSS-sticky-based, not GSAP
-     ScrollTrigger — refresh-post-fonts/anticipatePin from spec D.2 don't
-     apply here. */
-  min-height: 60vh;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--border-subtle);
-  /* Phase 14 lag fix → 2A-REFIX. Originally `contain: layout paint style`
-     for composite-storm prevention on stacked sticky frames. The `paint`
-     value clips the giant 22vw italic numeral's descender at the frame
-     content box (Instrument Serif italic numerals have slight slant tail).
-     Drop `paint`; keep `layout style` for layout-cost isolation without
-     paint-region clipping. */
   contain: layout style;
+  will-change: transform, opacity;
 }
-/* Phase 14 visual polish — last frame's hairline produced a double border
-   against the next section. Drop it. */
 .services-pin-frame:last-child { border-bottom: none; }
+/* Reduced-motion fallback: revert to vertical-stack sticky behavior so
+   the section is still scannable when GSAP doesn't run. */
+@media (prefers-reduced-motion: reduce) {
+  .services-pin-stack {
+    height: auto;
+    overflow: visible;
+  }
+  .services-pin-frame {
+    position: sticky;
+    top: 0;
+    inset: auto;
+    min-height: 60vh;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+}
 .services-pin-frame-inner {
   display: block;
   width: 100%;

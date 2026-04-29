@@ -2,7 +2,6 @@ import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';
 import { StickyCTABar } from '@/components/ui-dp/StickyCTABar';
 import { ScrollMotion } from '@/components/motion/ScrollMotion';
-import { ScrollProgressBar } from '@/components/effects/ScrollProgressBar';
 import { SmoothScrollProvider } from '@/components/motion/SmoothScrollProvider';
 
 /**
@@ -27,7 +26,6 @@ export default function MarketingLayout({
   return (
     <SmoothScrollProvider>
       <div className="relative min-h-screen flex flex-col">
-        <ScrollProgressBar />
         <ScrollMotion />
         <Navigation />
         <main className="flex-1">{children}</main>

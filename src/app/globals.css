@@ -203,9 +203,14 @@
   --fs-5xl:  4.5rem;       /* 72px  — section h2 desktop */
   --fs-6xl:  5.5rem;       /* 88px  — hero h1 mobile */
   --fs-7xl:  7.5rem;       /* 120px — hero h1 desktop */
+  --fs-8xl:  9rem;         /* 144px — hero h1 desktop wide (Phase 19 Path 3) */
 
-  /* Hero h1 — clamps from 6xl to 7xl across viewport. */
-  --text-hero: clamp(var(--fs-6xl), 8vw, var(--fs-7xl));
+  /* Hero h1 — clamps from 6xl to 8xl across viewport. Phase 19 Path 3
+     pushed the desktop ceiling from 120px to 144px to commit harder
+     typographically, narrowing the perceptual gap to premium agency
+     comparators (Linear, Stripe, innowise). The 8vw mid-range stays;
+     ceiling moves up. */
+  --text-hero: clamp(var(--fs-6xl), 9vw, var(--fs-8xl));
 
   /* Service rows — clamps from 2xl to 4xl. */
   --text-service-row: clamp(var(--fs-2xl), 4vw, var(--fs-4xl));
@@ -390,9 +395,12 @@
   --section-lg: clamp(5.5rem, 4.2143rem + 6.4286vw, 10rem);
   --section-top: clamp(7rem, 5rem + 10vw, 14rem);
 
-  /* Divyansh primary section rhythm (100 → 174 px). */
-  --section-space: clamp(6.25rem, 12.5vh, 10.9rem);
-  --section-space-tight: clamp(4rem, 8vh, 6rem);
+  /* Phase 19 Path 3 — section rhythm widened. Premium service sites
+     (Linear, Stripe, innowise) ship section gaps in the 160-220px range
+     on desktop. Old: 100-174px. New: 128-208px. Adds breathing room
+     without pushing fold visibility off-screen. */
+  --section-space: clamp(8rem, 14vh, 13rem);
+  --section-space-tight: clamp(5rem, 9vh, 7rem);
 
   --site-margin: clamp(1rem, 0.4286rem + 2.8571vw, 3rem);
   --container-gutter: clamp(1.5rem, 5vw, 4rem);
@@ -1035,6 +1043,193 @@ a.text-link:hover,
   right: 6%;
   background: radial-gradient(circle at 50% 50%, rgba(255, 136, 0, 0.17) 0%, transparent 70%);
   filter: blur(18px);
+}
+
+/* ===================================================================
+   Phase 19 Path 3 — FounderSection (real-photo-ready), CredentialsWall,
+   RecentWorkInline. Editorial Bloomberg-Operator restraint, hairline
+   separators, generous whitespace, no glassmorphism.
+   ------------------------------------------------------------------- */
+
+/* FounderSection */
+.founder-section-header {
+  margin-bottom: clamp(3rem, 6vh, 5rem);
+  max-width: var(--maxw-heading-section);
+}
+.founder-grid {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 8vh, 5.5rem);
+}
+.founder-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding-block: clamp(2rem, 5vh, 3.5rem);
+  border-top: 1px solid var(--border-subtle);
+}
+@media (min-width: 1024px) {
+  .founder-row {
+    grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: center;
+  }
+  .founder-row[data-orient='right'] {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
+  }
+  .founder-row[data-orient='right'] .founder-portrait { order: 2; }
+}
+.founder-portrait {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  max-width: 360px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-default);
+  overflow: hidden;
+}
+.founder-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.15) contrast(1.04);
+}
+.founder-monogram {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-elevated) 100%);
+  position: relative;
+}
+.founder-monogram::before {
+  content: '';
+  position: absolute;
+  inset: 1.5rem;
+  border: 1px dashed var(--border-default);
+  pointer-events: none;
+}
+.founder-monogram-initials {
+  font-size: clamp(4rem, 8vw, 6.5rem);
+  color: var(--text-tertiary);
+  line-height: 1;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+.founder-monogram-meta {
+  font-size: var(--text-micro);
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  opacity: 0.55;
+}
+.founder-body {
+  max-width: var(--maxw-body);
+}
+
+/* CredentialsWall */
+.credentials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vh, 3.5rem);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: clamp(2rem, 5vh, 3.5rem);
+}
+@media (min-width: 720px) {
+  .credentials-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1024px) {
+  .credentials-grid {
+    grid-template-columns: 1.4fr 0.8fr 0.8fr;
+    gap: clamp(2.5rem, 4vw, 5rem);
+  }
+}
+.credentials-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.credentials-group-eyebrow {
+  margin-bottom: 0.5rem;
+}
+.credentials-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.credentials-item {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-subtle);
+}
+.credentials-item:nth-child(odd) {
+  border-right: 1px solid var(--border-subtle);
+  padding-right: 1rem;
+}
+.credentials-item:nth-child(even) {
+  padding-left: 1rem;
+}
+.credentials-value {
+  font-size: var(--text-md);
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+.credentials-label {
+  font-size: var(--text-micro);
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+}
+
+/* RecentWorkInline */
+.recent-work-header {
+  margin-bottom: clamp(3rem, 7vh, 5rem);
+  max-width: var(--maxw-heading-section);
+}
+.recent-work-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vh, 3rem);
+}
+@media (min-width: 720px) {
+  .recent-work-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1024px) {
+  .recent-work-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: clamp(2rem, 3vw, 3.5rem);
+  }
+}
+.recent-work-card {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+.recent-work-viz-frame {
+  background: var(--bg-secondary);
+  padding: 1rem;
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 0.5rem;
+}
+.recent-work-viz {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.recent-work-metric {
+  display: flex;
+  align-items: baseline;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
 }
 
 /* Phase 19 — Scroll progress indicator. 2px amber strip at top of

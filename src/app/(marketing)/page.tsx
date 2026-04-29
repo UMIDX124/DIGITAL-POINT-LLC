@@ -5,12 +5,14 @@ import { StatStripSection } from '@/components/sections/StatStripSection';
 import { PullQuoteSection } from '@/components/sections/PullQuoteSection';
 import { WorkflowSection } from '@/components/sections/WorkflowSection';
 import { CTASection } from '@/components/sections/CTASection';
+import { CredentialsWall } from '@/components/sections/CredentialsWall';
+import { RecentWorkInline } from '@/components/sections/RecentWorkInline';
+import { FounderSection } from '@/components/sections/FounderSection';
 
-/* Phase 17b 3-reversal — Bloomberg Operator restraint pass.
-   Removed from home: ComparisonTable (R1, deleted), FAQSection (R2,
-   moved to /faq), RecentWorkSection chart+cards (R3, replaced by
-   compact StatStripSection — instrument-panel telemetry, not case-study
-   marketing). Phase 13 TestimonialsSection.tsx returns null preserved. */
+/* Phase 19 Path 3 — homepage composition. Adds RecentWorkInline,
+   CredentialsWall, FounderSection to give the page real-feeling
+   substance without breaking integrity rules. LogoStripSection still
+   ships (env-gated null until real logos land). */
 
 export default function HomePage() {
   return (
@@ -18,9 +20,12 @@ export default function HomePage() {
       <HeroSection />
       <ServicesPinReveal />
       <StatStripSection />
-      <LogoStripSection />
-      <PullQuoteSection />
+      <RecentWorkInline />
       <WorkflowSection />
+      <PullQuoteSection />
+      <CredentialsWall />
+      <FounderSection />
+      <LogoStripSection />
       <CTASection />
     </>
   );

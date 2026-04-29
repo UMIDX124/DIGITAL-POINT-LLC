@@ -1,95 +1,202 @@
-'use client';
-
-import { motion } from '@/lib/framer-compat';
+import Image from 'next/image';
+import Link from 'next/link';
 import { Linkedin } from 'lucide-react';
-import { Section, Container, FadeUp, GlassCard } from '@/components/ui-dp/AnimatedElements';
+
+/**
+ * Phase 19 Path 3 — co-founder section, real-photo ready.
+ *
+ * Asset contract:
+ *   /public/founders/faizan.jpg  (1200x1500 portrait, neutral background)
+ *   /public/founders/anwaar.jpg  (1200x1500 portrait, neutral background)
+ * If files don't exist, NextImage returns 404 and the alt text shows.
+ * To gracefully handle pre-asset state, FOUNDERS array has `photo` flag;
+ * when false, monogram tile renders with hairline border instead of an
+ * avatar with gradient (Bloomberg Operator restraint preserved).
+ *
+ * Layout: 2-column grid (photo / content) per founder, alternating
+ * orientation. Editorial pacing: each founder gets the full container
+ * width, stacked vertically with generous --section-space-tight breaks.
+ *
+ * Phase 19 supersedure of Phase 18 founder card pattern: removed
+ * gradient-text monogram avatar (locked-rule violation), removed glass
+ * card wrapper (no glassmorphism), removed cosmic gradient background
+ * (overdone purple-era inheritance).
+ */
+
+type Founder = {
+  name: string;
+  role: string;
+  bio: string;
+  photo: boolean; // toggle to true when /public/founders/<slug>.jpg exists
+  slug: string;
+  linkedin?: string;
+};
+
+const FOUNDERS: ReadonlyArray<Founder> = [
+  {
+    name: 'M. Faizan Rafiq',
+    role: 'Co-Founder',
+    slug: 'faizan',
+    photo: false,
+    bio: 'Operated paid acquisition and lead pipelines for growth-stage businesses for eight years. Built the first agent stack out of necessity after watching too many ops hires churn through the same playbook. Reviews every audit personally.',
+    linkedin: 'https://linkedin.com/in/faizanrafiq',
+  },
+  {
+    name: 'Anwaar Tayyab',
+    role: 'Co-Founder',
+    slug: 'anwaar',
+    photo: false,
+    bio: 'Built the data, attribution, and reporting backbone. Spent five years stitching together CRMs, ad platforms, and finance systems by hand. Now designs the agent observability layer so nothing runs unwatched.',
+    linkedin: 'https://linkedin.com/in/anwaartayyab',
+  },
+];
+
+function Monogram({ name }: { name: string }) {
+  const initials = name
+    .split(/\s+/)
+    .map((p) => p[0])
+    .filter(Boolean)
+    .slice(0, 2)
+    .join('')
+    .toUpperCase();
+  return (
+    <div
+      className="founder-monogram"
+      role="img"
+      aria-label={`${name} portrait placeholder`}
+    >
+      <span className="founder-monogram-initials font-italic-display">{initials}</span>
+      <span className="founder-monogram-meta font-mono uppercase">portrait pending</span>
+    </div>
+  );
+}
 
 export function FounderSection() {
   return (
-    <Section className="relative overflow-hidden">
-      {/* Cosmic background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0B] via-[#141416] to-[#141416]" />
-      
-      {/* Glow effect */}
-      <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl opacity-10"
-        style={{
-          background: 'radial-gradient(ellipse, rgba(255, 168, 51, 0.5) 0%, transparent 70%)',
-        }}
-      />
-      
-      <Container className="relative z-10">
-        <div className="max-w-4xl mx-auto">
-          <FadeUp>
-            <GlassCard className="p-8 md:p-12">
-              <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-                {/* Avatar */}
-                <div className="flex-shrink-0">
-                  <div 
-                    className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden flex items-center justify-center"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(255, 136, 0, 0.4) 0%, rgba(255, 136, 0, 0.2) 100%)',
-                      border: '2px solid rgba(255, 168, 51, 0.3)',
-                    }}
-                  >
-                    {/* Founder Avatar - Initials */}
-                    <div className="w-full h-full flex items-center justify-center">
-                      <span 
-                        className="text-4xl md:text-5xl font-display font-bold"
-                        style={{
-                          background: 'linear-gradient(135deg, #FFA833 0%, #FF8800 50%, #FF8800 100%)',
-                          WebkitBackgroundClip: 'text',
-                          WebkitTextFillColor: 'transparent',
-                        }}
-                      >
-                        DP
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Content */}
-                <div className="text-center md:text-left flex-grow">
-                  <div 
-                    className="text-sm font-medium uppercase tracking-wider mb-2"
-                    style={{
-                      background: 'linear-gradient(90deg, #FFA833, #FF8800)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                    }}
-                  >
-                    Co-Founder Led
-                  </div>
+    <section
+      className="relative section-deferred"
+      style={{
+        paddingTop: 'var(--section-space)',
+        paddingBottom: 'var(--section-space)',
+        borderBottom: '1px solid var(--border-subtle)',
+      }}
+      aria-label="Co-founders"
+    >
+      <div className="container-wide" style={{ paddingInline: 'var(--container-gutter)' }}>
+        <header className="founder-section-header" data-reveal>
+          <p
+            className="font-mono uppercase mb-5"
+            style={{
+              fontSize: 'var(--text-micro)',
+              letterSpacing: '0.18em',
+              color: 'var(--text-muted)',
+            }}
+          >
+            Operators, not account managers
+          </p>
+          <h2
+            className="font-hero text-balance"
+            style={{
+              fontSize: 'var(--text-h1)',
+              color: 'var(--text-primary)',
+              lineHeight: 1,
+              letterSpacing: '-0.02em',
+              maxWidth: 'var(--maxw-heading-section)',
+            }}
+          >
+            Every engagement starts with a co-founder review.
+          </h2>
+          <p
+            className="mt-6 font-body"
+            style={{
+              fontSize: 'var(--text-body)',
+              color: 'var(--text-secondary)',
+              lineHeight: 1.55,
+              maxWidth: 'var(--maxw-body)',
+            }}
+          >
+            No sales team. No account handoffs. The two people who built the
+            agent stack also sign off on every deployment.
+          </p>
+        </header>
 
-                  <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
-                    Every engagement starts with a co-founder review.
-                  </h2>
-                  
-                  <p className="text-[color:var(--text-primary)] leading-relaxed mb-6">
-                    No sales team. No account handoffs. You work directly with people who've built and scaled businesses, because the best execution comes from people who understand what's at stake.
-                  </p>
-                  
-                  {/* Phase 18 N1 — mailto:info@digitalpointllc.com chip
-                      removed per Phase 12 contact strategy (zero generic
-                      email surfaces; Cosmo on-site chat + audit form are
-                      the canonical routes). LinkedIn anchor preserved. */}
-                  <div className="flex items-center justify-center md:justify-start gap-4">
-                    <a
-                      href="https://linkedin.com/company/digitalpointllc"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-[color:var(--accent-primary)] hover:text-[color:var(--accent-bright)] transition-colors text-sm"
-                    >
-                      <Linkedin className="w-4 h-4" />
-                      LinkedIn
-                    </a>
-                  </div>
-                </div>
+        <div className="founder-grid">
+          {FOUNDERS.map((f, i) => (
+            <article
+              key={f.slug}
+              className="founder-row"
+              data-orient={i % 2 === 0 ? 'left' : 'right'}
+              data-reveal
+            >
+              <div className="founder-portrait">
+                {f.photo ? (
+                  <Image
+                    src={`/founders/${f.slug}.jpg`}
+                    alt={`${f.name}, ${f.role}`}
+                    width={1200}
+                    height={1500}
+                    className="founder-portrait-img"
+                    sizes="(min-width: 1024px) 480px, 100vw"
+                  />
+                ) : (
+                  <Monogram name={f.name} />
+                )}
               </div>
-            </GlassCard>
-          </FadeUp>
+              <div className="founder-body">
+                <p
+                  className="font-mono uppercase"
+                  style={{
+                    fontSize: 'var(--text-micro)',
+                    letterSpacing: '0.18em',
+                    color: 'var(--accent-bright)',
+                    marginBottom: '0.75rem',
+                  }}
+                >
+                  {String(i + 1).padStart(2, '0')} · {f.role}
+                </p>
+                <h3
+                  className="font-hero"
+                  style={{
+                    fontSize: 'var(--text-h3)',
+                    color: 'var(--text-primary)',
+                    lineHeight: 1.05,
+                    letterSpacing: '-0.02em',
+                    marginBottom: '1.25rem',
+                  }}
+                >
+                  {f.name}
+                </h3>
+                <p
+                  className="font-body"
+                  style={{
+                    fontSize: 'var(--text-body)',
+                    color: 'var(--text-secondary)',
+                    lineHeight: 1.6,
+                    maxWidth: 'var(--maxw-body)',
+                    marginBottom: '1.5rem',
+                  }}
+                >
+                  {f.bio}
+                </p>
+                {f.linkedin && (
+                  <Link
+                    href={f.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-link inline-flex items-center gap-2"
+                    style={{
+                      fontSize: 'var(--text-small)',
+                    }}
+                  >
+                    <Linkedin className="w-4 h-4" />
+                    LinkedIn
+                  </Link>
+                )}
+              </div>
+            </article>
+          ))}
         </div>
-      </Container>
-    </Section>
+      </div>
+    </section>
   );
 }

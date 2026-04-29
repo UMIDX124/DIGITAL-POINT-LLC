@@ -66,7 +66,7 @@ export function FounderSection() {
                   </h2>
                   
                   <p className="text-[color:var(--text-primary)] leading-relaxed mb-6">
-                    No sales team. No account handoffs. You work directly with people who've built and scaled businesses — because the best execution comes from people who understand what's at stake.
+                    No sales team. No account handoffs. You work directly with people who've built and scaled businesses, because the best execution comes from people who understand what's at stake.
                   </p>
                   
                   {/* Phase 18 N1 — mailto:info@digitalpointllc.com chip

@@ -27,7 +27,7 @@ const caseStudies = [
     ],
     timeline: '4 months',
     quote: {
-      text: "For the first time, we could see exactly which campaigns were driving revenue. The clarity was immediate—and so was the impact on our bottom line.",
+      text: "For the first time, we could see exactly which campaigns were driving revenue. The clarity was immediate, and so was the impact on our bottom line.",
       author: 'Founder',
       company: 'B2B Service Company',
     },
@@ -322,7 +322,7 @@ export function ResultsPage() {
                     "{selectedCase.quote.text}"
                   </p>
                   <p className="text-text-muted text-xs">
-                    — {selectedCase.quote.author}, {selectedCase.quote.company}
+                    {selectedCase.quote.author}, {selectedCase.quote.company}
                   </p>
                 </div>
 

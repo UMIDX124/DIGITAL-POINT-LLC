@@ -22,7 +22,7 @@ const articles = [
   {
     slug: 'remote-team-playbook',
     title: 'The Remote Team Playbook: How We Build High-Output Teams Across Time Zones',
-    excerpt: 'Building a remote workforce isn\'t about finding cheap labor — it\'s about creating systems that let distributed teams operate at enterprise speed.',
+    excerpt: 'Building a remote workforce isn\'t about finding cheap labor. It\'s about creating systems that let distributed teams operate at enterprise speed.',
     category: 'Remote Workforce',
     readTime: '8 min read',
     date: 'Feb 2025',
@@ -46,7 +46,7 @@ const articles = [
   {
     slug: 'ai-powered-lead-qualification',
     title: 'AI-Powered Lead Qualification: What Works and What Doesn\'t',
-    excerpt: 'We integrated AI agents into our client\'s lead pipeline. The results were surprising — both good and bad.',
+    excerpt: 'We integrated AI agents into our client\'s lead pipeline. The results were surprising, both good and bad.',
     category: 'AI & Automation',
     readTime: '6 min read',
     date: 'Nov 2024',
@@ -126,9 +126,7 @@ export function BlogPage() {
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
               Insights from the{' '}
-              <span className="bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FF8800] bg-clip-text text-transparent">
-                growth trenches
-              </span>
+              <span style={{ color: 'var(--accent-bright)' }}>growth trenches</span>
             </h1>
             <p className="text-[color:var(--text-primary)] text-lg md:text-xl max-w-2xl leading-relaxed">
               Frameworks, case studies, and hard-won lessons from managing $50M+ in ad spend and building remote teams across the globe.

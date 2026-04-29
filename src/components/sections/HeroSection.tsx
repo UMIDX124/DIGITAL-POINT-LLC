@@ -5,8 +5,8 @@ import { AutomationOrbit } from '@/components/hero/AutomationOrbit';
 import { HeroDataTicker } from '@/components/hero/HeroDataTicker';
 import { HeroHeadline } from '@/components/hero/HeroHeadline';
 import { HeroCTA } from '@/components/hero/HeroCTA';
-import { HeroTrustStrip } from '@/components/hero/HeroTrustStrip';
 import { HeroAtmosphereFallback } from '@/components/hero/HeroAtmosphereFallback';
+import { copy } from '@/lib/copy';
 
 // Phase 18.6 P7 perf-pass — Three.js dynamic import REMOVED so the
 // ~129KB gzipped Three.js chunk no longer ships. HeroAtmosphereFallback
@@ -15,19 +15,20 @@ import { HeroAtmosphereFallback } from '@/components/hero/HeroAtmosphereFallback
 // before re-enabling).
 
 /**
- * Phase 6 v2 editorial hero — AI-first hybrid positioning.
- * Phase 18 reduced-scope C4 — decomposed into orchestrator (this file) +
- * 3 child components (HeroHeadline, HeroCTA, HeroTrustStrip). The
- * orchestrator owns layout + GSAP timeline orchestration; children are
- * presentational.
+ * Phase 6 v2 editorial hero, AI-first hybrid positioning.
+ * Phase 18 reduced-scope C4 decomposed this into an orchestrator (this
+ * file) plus child components (HeroHeadline, HeroCTA, HeroDataTicker).
+ * The orchestrator owns layout + GSAP timeline; children are presentational.
+ * Eyebrow + subhead source from copy.ts (single source of truth, matches
+ * the HeroCTA contract pattern). HeroTrustStrip removed from the hero
+ * render: StatStripSection (the next section) is the canonical outcome
+ * evidence; doubling up created the cognitive-load failure flagged in
+ * the Bloomberg Operator critique. Component file kept on disk for
+ * potential reuse on About / Footer surfaces.
  *
  * Word-reveal animation is component-owned (no ScrollMotion dependency).
  * GSAP is lazy-imported in useEffect so it doesn't block first paint.
  */
-
-const HERO_EYEBROW = 'DIGITAL POINT LLC · EST. 2017';
-const HERO_SUB =
-  'AI agents lead. Automation handles the repeat. Trained operators back the loop. Together they run your CRM, ops, reporting, and growth workflows — so you scale without scaling headcount.';
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -196,18 +197,16 @@ export function HeroSection() {
       <div className="hero-grid relative mx-auto w-full max-w-[90rem]">
         <div className="hero-content">
           <p className="hero-eyebrow font-mono uppercase mb-8" data-hero-eyebrow>
-            {HERO_EYEBROW}
+            {copy.hero.eyebrow}
           </p>
 
           <HeroHeadline ref={headlineRef} />
 
           <p className="hero-sub font-body mb-10" data-hero-sub>
-            {HERO_SUB}
+            {copy.hero.subhead}
           </p>
 
           <HeroCTA />
-
-          <HeroTrustStrip />
         </div>
 
         <div

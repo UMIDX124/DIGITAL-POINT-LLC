@@ -54,7 +54,7 @@ export function ExitIntentModal() {
             Before you go&hellip;
           </DialogTitle>
           <DialogDescription className="text-[color:var(--text-primary)] text-center text-base mt-2">
-            Get a free growth audit — we&apos;ll review your setup and show you exactly what&apos;s blocking growth. No pitch, just clarity.
+            Get a free growth audit. We&apos;ll review your setup and show you exactly what&apos;s blocking growth. No pitch, just clarity.
           </DialogDescription>
         </DialogHeader>
 

@@ -162,13 +162,13 @@ export function AuditPage() {
 
           <FadeUp delay={0.1}>
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-white leading-[1.1] tracking-tight" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
-              Get a <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFA833] to-[#FF8800]">free growth audit</span>
+              Get a <span style={{ color: 'var(--accent-bright)' }}>free growth audit</span>
             </h1>
           </FadeUp>
 
           <FadeUp delay={0.2}>
             <p className="text-[color:var(--text-primary)] text-lg mt-4 max-w-2xl">
-              Forty-five minutes. We map where AI agents could be running your repeatable work, where automation could remove handoffs, and where operators are still earning their seat. You leave with a deployment-ready blueprint — no agency retainer attached.
+              Forty-five minutes. We map where AI agents could be running your repeatable work, where automation could remove handoffs, and where operators are still earning their seat. You leave with a deployment-ready blueprint, no agency retainer attached.
             </p>
           </FadeUp>
         </Container>

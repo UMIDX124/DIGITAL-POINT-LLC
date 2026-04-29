@@ -17,10 +17,10 @@ export const copy = {
   },
 
   hero: {
-    eyebrow: 'AI AGENTS · AUTOMATION · OPERATORS · SINCE 2017',
+    eyebrow: 'AUTOMATION · OPERATORS · SINCE 2017',
     headline: 'Hire the AI. Skip the headcount.',
     subhead:
-      'AI agents lead. Automation handles the repeat. Trained operators back the loop. Together they run your CRM, ops, reporting, and growth workflows — so you scale without scaling headcount.',
+      'AI agents run your CRM, ops, reporting, and growth workflows. Trained operators audit the edges. Headcount stays flat while output compounds.',
     ctaPrimary: { label: 'Book a free audit', href: '/free-growth-audit' },
     ctaSecondary: { label: 'See what we run', href: '#services' },
   },
@@ -44,7 +44,7 @@ export const copy = {
       {
         label: 'AI Agents',
         href: '/automation#ai-agents',
-        description: 'Custom-trained agents handling lead routing, sales follow-up, reporting, QA — 24/7.',
+        description: 'Custom-trained agents handling lead routing, sales follow-up, reporting, and QA, 24/7.',
       },
       {
         label: 'Workflow Automation',
@@ -59,12 +59,12 @@ export const copy = {
       {
         label: 'Performance Marketing',
         href: '/performance-marketing',
-        description: "Ad campaigns and growth experiments — operated by the AI + human stack above. We don't sell agency hours; we sell campaign execution that AI runs and operators audit.",
+        description: "Ad campaigns and growth experiments, operated by the AI plus human stack above. We don't sell agency hours; we sell campaign execution that AI runs and operators audit.",
       },
       {
         label: 'Systems & Reporting',
         href: '/systems-reporting',
-        description: 'Live dashboards, weekly reports, attribution truth — automated assembly, human review.',
+        description: 'Live dashboards, weekly reports, attribution truth: automated assembly, human review.',
       },
     ] as const,
   },
@@ -155,7 +155,7 @@ export const copy = {
    * ------------------------------------------------------------------ */
   workflow: {
     eyebrow: 'HOW IT RUNS',
-    headline: 'Lead in, report out — instrumented end to end.',
+    headline: 'Lead in, report out, instrumented end to end.',
     body: 'Every inbound signal enters the same pipeline. Scoring + routing run in seconds; a human operator signs off on the report that lands in your inbox.',
     steps: [
       { n: '01', label: 'Lead', detail: 'Captured from every source, enriched, deduplicated.' },
@@ -187,7 +187,7 @@ export const copy = {
     headline:
       'A four-person ops team costs $400,000 a year. An AI stack costs a fraction of that, and it shows up at 6am.',
     body:
-      "An operations manager is $95K. A reporting analyst is $85K. A lead-routing coordinator is $70K. A QA reviewer is $65K. Plus benefits, tools, turnover. Most growing businesses can't justify that. DPL runs all four functions as an AI agent stack — operators only audit exceptions and edge cases. You pay for outcomes, not headcount.",
+      "An operations manager is $95K. A reporting analyst is $85K. A lead-routing coordinator is $70K. A QA reviewer is $65K. Plus benefits, tools, turnover. Most growing businesses can't justify that. DPL runs all four functions as an AI agent stack; operators only audit exceptions and edge cases. You pay for outcomes, not headcount.",
     anchor: { value: 400000, label: 'Fully-loaded in-house ops team (annual)', format: 'usd0' as const },
     pullQuote: 'Hire the output. Not the desk.',
     lineItems: [
@@ -203,7 +203,7 @@ export const copy = {
     eyebrow: 'WHAT WE RUN',
     headline: 'AI agents lead. Automation handles the repeat. Operators back the loop.',
     body:
-      "We don't sell agency hours or seats. We deploy AI agent stacks that run the function — operators audit exceptions, automation handles the repeat work, you watch the outputs.",
+      "We don't sell agency hours or seats. We deploy AI agent stacks that run the function. Operators audit exceptions, automation handles the repeat work, you watch the outputs.",
     cards: [
       {
         order: 1,
@@ -246,7 +246,7 @@ export const copy = {
         n: '01',
         title: 'Audit',
         body:
-          'A co-founder personally reviews your setup — stack, attribution, team, funnel. No junior associate. Delivered within 5 business days.',
+          'A co-founder personally reviews your setup: stack, attribution, team, funnel. No junior associate. Delivered within 5 business days.',
       },
       {
         n: '02',
@@ -281,17 +281,17 @@ export const copy = {
       {
         q: 'How is this different from hiring an agency?',
         a:
-          "Most agencies sell hours and hand you a deck. We deploy AI agents and automation that run your work 24/7, with trained operators auditing exception cases. You pay for outcomes that scale — not staff time that doesn't.",
+          "Most agencies sell hours and hand you a deck. We deploy AI agents and automation that run your work 24/7, with trained operators auditing exception cases. You pay for outcomes that scale, not staff time that doesn't.",
       },
       {
         q: 'Do I need to replace my existing team?',
         a:
-          "No. Most engagements augment an existing team — AI agents take the repeat work, operators handle exceptions, and your people focus on judgment + strategy. We map what's replaceable vs. what stays human in the audit.",
+          "No. Most engagements augment an existing team: AI agents take the repeat work, operators handle exceptions, and your people focus on judgment plus strategy. We map what's replaceable vs. what stays human in the audit.",
       },
       {
         q: 'What if the AI gets something wrong?',
         a:
-          "Every agent action is logged and auditable. Trained operators review exception cases AI can't resolve, and we tune the agent before re-deploying. Errors stay observable — never silent.",
+          "Every agent action is logged and auditable. Trained operators review exception cases AI can't resolve, and we tune the agent before re-deploying. Errors stay observable, never silent.",
       },
       {
         q: "What's the typical onboarding timeline?",
@@ -301,7 +301,7 @@ export const copy = {
       {
         q: 'Can you integrate with our existing CRM?',
         a:
-          'Yes — we build against the systems you already run (HubSpot, Salesforce, Pipedrive, Airtable, Notion, custom Postgres, etc.). The audit phase confirms integration shape before any commitment.',
+          'Yes. We build against the systems you already run (HubSpot, Salesforce, Pipedrive, Airtable, Notion, custom Postgres, etc.). The audit phase confirms integration shape before any commitment.',
       },
       {
         q: 'How do you ensure data security?',
@@ -311,12 +311,12 @@ export const copy = {
       {
         q: 'What happens if we want to cancel?',
         a:
-          'Engagements are scoped at the deployment level — you keep the AI agents, automation, and runbooks we ship. We document everything for handoff so cancellation never means starting over. Specific terms are agreed in the deployment contract.',
+          'Engagements are scoped at the deployment level. You keep the AI agents, automation, and runbooks we ship. We document everything for handoff so cancellation never means starting over. Specific terms are agreed in the deployment contract.',
       },
       {
         q: 'Do you sign NDAs?',
         a:
-          'Yes — mutual NDAs are standard before reviewing live data or strategic context. We can sign yours, or use a standard mutual NDA we provide.',
+          'Yes. Mutual NDAs are standard before reviewing live data or strategic context. We can sign yours, or use a standard mutual NDA we provide.',
       },
     ],
   },
@@ -325,7 +325,7 @@ export const copy = {
     eyebrow: 'ABOUT',
     headline: 'We started running operations. We evolved into running them with AI.',
     body:
-      "Digital Point LLC was founded in 2017 by M. Faizan Rafiq and Anwaar Tayyab. We spent five years operating campaigns, lead pipelines, and reporting stacks for growth-stage businesses by hand. Along the way we realized the bigger unlock was never the human heroics — it was building agents and automation that ran the work, with operators auditing the edges. Today we deploy AI agent stacks for companies that want to scale without scaling team, and our founders still sign off on every engagement personally.",
+      "Digital Point LLC was founded in 2017 by M. Faizan Rafiq and Anwaar Tayyab. We spent five years operating campaigns, lead pipelines, and reporting stacks for growth-stage businesses by hand. Along the way we realized the bigger unlock was never the human heroics. It was building agents and automation that ran the work, with operators auditing the edges. Today we deploy AI agent stacks for companies that want to scale without scaling team, and our founders still sign off on every engagement personally.",
     founders: [
       { name: 'M. Faizan Rafiq', role: 'Co-Founder' },
       { name: 'Anwaar Tayyab', role: 'Co-Founder' },
@@ -336,7 +336,7 @@ export const copy = {
     eyebrow: "LET'S WORK",
     headline: "Let's map where AI could be running your repeatable work.",
     body:
-      "A co-founder reviews your setup personally. Free. Written plan within 5 business days — what AI can run, what automation can stitch, where operators stay. If we can't help, we'll tell you.",
+      "A co-founder reviews your setup personally. Free. Written plan within 5 business days: what AI can run, what automation can stitch, where operators stay. If we can't help, we'll tell you.",
     ctaPrimary: { label: 'Talk to a co-founder', href: '/free-growth-audit' },
     ctaSecondary: { label: 'See case studies', href: '/case-studies' },
   },
@@ -401,7 +401,7 @@ export const copy = {
       eyebrow: 'WHAT YOU SEE',
       headline: 'Read-only dashboard. No config required on your end.',
       body:
-        'You get a client portal that shows what ran, what succeeded, what failed, and what moved a number. No access to the plumbing — because you should not have to be an engineer to understand the output.',
+        'You get a client portal that shows what ran, what succeeded, what failed, and what moved a number. No access to the plumbing, because you should not have to be an engineer to understand the output.',
     },
     pricing: {
       eyebrow: 'PRICING',

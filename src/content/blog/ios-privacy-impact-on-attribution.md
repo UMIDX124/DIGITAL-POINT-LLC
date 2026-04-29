@@ -16,7 +16,7 @@ faqs:
 
 ## The Day Attribution Changed Forever
 
-On April 26, 2021, Apple released iOS 14.5 with **App Tracking Transparency (ATT)**—a framework requiring apps to ask permission before tracking users across other apps and websites. The opt-in rate landed around **25%**, meaning roughly 75% of iOS users effectively disappeared from cross-app tracking.
+On April 26, 2021, Apple released iOS 14.5 with **App Tracking Transparency (ATT)**,a framework requiring apps to ask permission before tracking users across other apps and websites. The opt-in rate landed around **25%**, meaning roughly 75% of iOS users effectively disappeared from cross-app tracking.
 
 For marketers who had built their entire measurement strategy on pixel-based tracking, the impact was immediate and severe:
 
@@ -32,7 +32,7 @@ But ATT was just one change in a broader privacy overhaul. Let's map the full pi
 
 ### App Tracking Transparency (ATT)
 
-**What it does:** Requires a pop-up prompt before any app can access the IDFA (Identifier for Advertisers)—the unique device ID that enabled cross-app tracking.
+**What it does:** Requires a pop-up prompt before any app can access the IDFA (Identifier for Advertisers),the unique device ID that enabled cross-app tracking.
 
 **Impact on attribution:**
 - Cross-app conversion tracking became opt-in only
@@ -56,7 +56,7 @@ But ATT was just one change in a broader privacy overhaul. Let's map the full pi
 **Impact on attribution:**
 - Only 8 bits of campaign data (256 possible values) and 4 bits of conversion data
 - Reports are delayed 24-48 hours with random noise
-- No user-level data—completely aggregated
+- No user-level data,completely aggregated
 
 ### SKAdNetwork (SKAN)
 
@@ -124,26 +124,26 @@ Server-side tracking is the single most impactful fix. Meta's Conversions API an
 
 ### Fix 2: Build a First-Party Data Strategy
 
-First-party data—information you collect directly from your customers—is the foundation of privacy-era marketing.
+First-party data,information you collect directly from your customers,is the foundation of privacy-era marketing.
 
 **Tactical steps:**
 
-- **Capture emails early** — Use lead magnets, newsletters, and account creation to build your first-party data before users need to convert
-- **Build customer match audiences** — Upload hashed customer lists to ad platforms for targeting and measurement
-- **Implement enhanced matching** — Pass user identifiers (email, phone) with all conversion events
-- **Create server-side audiences** — Build audience segments from your own data rather than relying on platform pixels
+- **Capture emails early** , Use lead magnets, newsletters, and account creation to build your first-party data before users need to convert
+- **Build customer match audiences** , Upload hashed customer lists to ad platforms for targeting and measurement
+- **Implement enhanced matching** , Pass user identifiers (email, phone) with all conversion events
+- **Create server-side audiences** , Build audience segments from your own data rather than relying on platform pixels
 
 ### Fix 3: Adopt Conversion Modeling
 
-All major ad platforms now use **modeled conversions**—statistical estimates of conversions that couldn't be directly observed.
+All major ad platforms now use **modeled conversions**,statistical estimates of conversions that couldn't be directly observed.
 
 **Meta's modeled conversions** use aggregated data patterns to estimate conversions for users who opted out of tracking. These appear alongside observed conversions in your reporting.
 
 **Google's consent mode modeling** fills gaps when users don't consent to cookies. Google claims conversion modeling recovers an average of 70% of ad-click-to-conversion journeys.
 
 **How to use modeled conversions:**
-- Don't reject them entirely—they represent real conversions you can't directly observe
-- Don't trust them blindly—validate against actual revenue regularly
+- Don't reject them entirely,they represent real conversions you can't directly observe
+- Don't trust them blindly,validate against actual revenue regularly
 - Track the ratio of modeled vs. observed conversions; a shift may indicate tracking issues
 - Use incrementality tests to calibrate how accurate modeled conversions are for your account
 
@@ -211,11 +211,11 @@ While limited, Apple's measurement frameworks provide some data:
 
 ### Google's Privacy Sandbox
 
-While Google reversed its decision to fully deprecate third-party cookies in Chrome, they're continuing to develop the Privacy Sandbox—a set of APIs for advertising without individual tracking. Key APIs include:
+While Google reversed its decision to fully deprecate third-party cookies in Chrome, they're continuing to develop the Privacy Sandbox,a set of APIs for advertising without individual tracking. Key APIs include:
 
-- **Topics API** — Interest-based targeting without cookies
-- **Attribution Reporting API** — Privacy-preserving conversion measurement
-- **Protected Audiences** — Remarketing without third-party cookies
+- **Topics API** , Interest-based targeting without cookies
+- **Attribution Reporting API** , Privacy-preserving conversion measurement
+- **Protected Audiences** , Remarketing without third-party cookies
 
 ### State-Level Privacy Laws
 

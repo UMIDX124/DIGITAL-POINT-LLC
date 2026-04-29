@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
     try {
       await sendEmail({
         to: 'info@digitalpointllc.com',
-        subject: `New Free Growth Audit Request — ${escapeHtml(name)}`,
+        subject: `New Free Growth Audit Request: ${escapeHtml(name)}`,
         replyTo: email,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0B; color: #F5F1E8; padding: 32px; border-radius: 12px;">

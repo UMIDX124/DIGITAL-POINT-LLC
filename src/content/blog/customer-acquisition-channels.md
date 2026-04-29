@@ -24,7 +24,7 @@ The challenge is that every channel looks attractive in a vendor pitch deck. Goo
 
 What matters is matching channels to your specific business model, customer profile, average deal value, and growth stage. And the most reliable way to evaluate that match is through the metric that cuts through all the noise: **customer acquisition cost (CAC).**
 
-This guide ranks every major acquisition channel by CAC, conversion efficiency, scalability, and suitability—giving you a data-driven framework for channel selection.
+This guide ranks every major acquisition channel by CAC, conversion efficiency, scalability, and suitability,giving you a data-driven framework for channel selection.
 
 ## Customer Acquisition Channels Ranked by CAC
 
@@ -93,7 +93,7 @@ Meta's massive audience and advanced targeting make it the go-to channel for dem
 **Time to impact:** 3-9 months
 **Scalability:** High (compounds over time)
 
-Content marketing generates leads through valuable resources—blog posts, guides, webinars, tools, and videos. It feeds both organic search and paid campaigns.
+Content marketing generates leads through valuable resources,blog posts, guides, webinars, tools, and videos. It feeds both organic search and paid campaigns.
 
 **Best for:** B2B companies, thought leadership positioning, complex products that require education
 **ROI consideration:** [Content marketing ROI](/blog/content-marketing-roi) is often underestimated because it contributes to multiple channels simultaneously
@@ -245,17 +245,17 @@ Expand to 3-4 channels. Diversify between paid and organic. Begin [measuring att
 
 Platform-reported CAC only includes ad spend. True CAC includes:
 
-- **Ad spend** — Direct campaign costs
-- **Creative production** — Design, video, copywriting
-- **Tool costs** — Attribution tools, analytics, A/B testing
-- **Team costs** — Salaries, freelancers, agency fees
-- **Overhead** — Proportional share of marketing infrastructure
+- **Ad spend** , Direct campaign costs
+- **Creative production** , Design, video, copywriting
+- **Tool costs** , Attribution tools, analytics, A/B testing
+- **Team costs** , Salaries, freelancers, agency fees
+- **Overhead** , Proportional share of marketing infrastructure
 
 See our [complete guide to CAC optimization](/blog/complete-guide-cac-optimization) for detailed methodology.
 
 ### Marginal CAC Analysis
 
-Don't look at average CAC. Look at **marginal CAC**—the cost of acquiring the next customer. Channels often have diminishing returns: the first $10k in Google Ads might produce $50 CAC, but scaling to $50k might push CAC to $120.
+Don't look at average CAC. Look at **marginal CAC**,the cost of acquiring the next customer. Channels often have diminishing returns: the first $10k in Google Ads might produce $50 CAC, but scaling to $50k might push CAC to $120.
 
 Plot CAC against spend for each channel to find the efficient frontier where additional spend stops being profitable.
 

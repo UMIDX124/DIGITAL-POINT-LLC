@@ -13,9 +13,14 @@ listed here are FATAL halt conditions if violated.**
 - **Bloomberg Operator palette purity** — `#000` canvas, `#FF8800` amber primary,
   `#2A8FBD` instrument blue secondary. Zero violet, indigo, or purple
   anywhere on content surfaces. (See atmospheric exception below.)
-- **Hero copy** — `Hire the AI. Skip the headcount.` (italic em wraps
-  "the AI" only; period inline outside em; explicit `<br>` between
-  sentences; `.hero-h1-line-2` nowrap wrapper at ≥640px).
+- **Hero copy** — `Hire the AI. Skip the headcount.` (em wraps
+  "the AI" only; period inline outside em; `.hero-h1-line-2` nowrap
+  wrapper at ≥640px). Phase 18.6 P2: em renders as `font-display
+  font-bold not-italic` (Geist Sans bold, amber-accent), superseding
+  the prior italic-display treatment to fix the `.hero-em` descender
+  clearance regression. Phase 18.6 P1 (fourth pass): `<br>` between
+  sentences removed; `.hero-h1-line-2` `display: block` provides the
+  break.
 - **5-service order** — AI Agents → Workflow Automation → Remote
   Operators → Performance Marketing → Systems & Reporting.
 - **AutomationOrbit Palette D geometry** — outer rx=138 ry=98, inner

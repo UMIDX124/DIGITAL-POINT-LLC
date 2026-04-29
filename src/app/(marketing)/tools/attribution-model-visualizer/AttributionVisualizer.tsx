@@ -217,7 +217,7 @@ export function AttributionVisualizer({ faqs }: Props) {
 
               {/* Visualization */}
               <div className="mb-8">
-                <h2 className="text-xl font-semibold text-white mb-4">Credit Distribution — {selectedModel}</h2>
+                <h2 className="text-xl font-semibold text-white mb-4">Credit Distribution: {selectedModel}</h2>
                 <div className="space-y-4">
                   {touchpoints.map((tp, i) => {
                     const credit = currentCredits[i] || 0;
@@ -226,7 +226,7 @@ export function AttributionVisualizer({ faqs }: Props) {
                       <div key={i}>
                         <div className="flex justify-between text-sm mb-1.5">
                           <span className="text-[color:var(--text-primary)]">{tp.name}</span>
-                          <span className="text-white font-medium">{credit.toFixed(1)}% — ${creditValue.toFixed(0)}</span>
+                          <span className="text-white font-medium">{credit.toFixed(1)}% · ${creditValue.toFixed(0)}</span>
                         </div>
                         <div className="h-8 rounded-lg overflow-hidden" style={{ background: 'rgba(13, 8, 21, 0.6)' }}>
                           <div

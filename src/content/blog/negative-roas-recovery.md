@@ -7,11 +7,11 @@ date: "2026-01-10"
 author: "Anwaar Tayyab"
 faqs:
   - question: "Should I pause unprofitable campaigns immediately?"
-    answer: "Not always. First, verify your tracking is accurate — many 'unprofitable' campaigns are actually converting but the conversions aren't being tracked properly. Second, check the attribution window — some campaigns need a longer lookback period to capture delayed conversions. Third, evaluate the campaign's role in your funnel — a prospecting campaign may look unprofitable on last-click but is driving revenue that shows up in your retargeting and brand campaigns. If after these checks the campaign is genuinely unprofitable, pause it or restructure it rather than letting it continue to bleed money."
+    answer: "Not always. First, verify your tracking is accurate , many 'unprofitable' campaigns are actually converting but the conversions aren't being tracked properly. Second, check the attribution window , some campaigns need a longer lookback period to capture delayed conversions. Third, evaluate the campaign's role in your funnel , a prospecting campaign may look unprofitable on last-click but is driving revenue that shows up in your retargeting and brand campaigns. If after these checks the campaign is genuinely unprofitable, pause it or restructure it rather than letting it continue to bleed money."
   - question: "How long should I wait before declaring a campaign unprofitable?"
-    answer: "You need statistical significance before making decisions. As a rule of thumb, wait until a campaign has spent at least 3-5x your target CPA before evaluating. For campaigns with a $100 CPA target, that means at least $300-500 in spend. For lower-volume campaigns, wait at least 2 weeks and 1,000+ clicks. Shorter evaluation windows lead to premature kills — some campaigns need time for the algorithm to learn and optimize. However, if a campaign has spent 10x your target CPA with zero conversions, you have enough data to take action."
+    answer: "You need statistical significance before making decisions. As a rule of thumb, wait until a campaign has spent at least 3-5x your target CPA before evaluating. For campaigns with a $100 CPA target, that means at least $300-500 in spend. For lower-volume campaigns, wait at least 2 weeks and 1,000+ clicks. Shorter evaluation windows lead to premature kills , some campaigns need time for the algorithm to learn and optimize. However, if a campaign has spent 10x your target CPA with zero conversions, you have enough data to take action."
   - question: "What is the most common cause of unprofitable ad campaigns?"
-    answer: "In our experience at Digital Point LLC, the most common cause is a mismatch between the ad promise and the landing page experience. The ad gets the click (often at a reasonable CPC), but the landing page fails to convert because it doesn't match the expectation set by the ad, loads too slowly, has too much friction, or doesn't build enough trust. The second most common cause is targeting too broad an audience, resulting in clicks from people who were never likely to buy. The third is creative fatigue — ads that have been running too long lose their effectiveness but continue spending."
+    answer: "In our experience at Digital Point LLC, the most common cause is a mismatch between the ad promise and the landing page experience. The ad gets the click (often at a reasonable CPC), but the landing page fails to convert because it doesn't match the expectation set by the ad, loads too slowly, has too much friction, or doesn't build enough trust. The second most common cause is targeting too broad an audience, resulting in clicks from people who were never likely to buy. The third is creative fatigue , ads that have been running too long lose their effectiveness but continue spending."
 ---
 
 ## When Your Ads Are Losing Money
@@ -40,7 +40,7 @@ Check before anything else. Common tracking issues that make campaigns appear wo
 - Cross-domain tracking gaps losing conversions on checkout redirects
 - Google Analytics and ad platform showing wildly different numbers
 
-If your tracking is broken, fix it first. Many "unprofitable" campaigns are actually profitable — the conversions just aren't being counted.
+If your tracking is broken, fix it first. Many "unprofitable" campaigns are actually profitable , the conversions just aren't being counted.
 
 **Question 2: Is the problem traffic quality or conversion rate?**
 
@@ -60,7 +60,7 @@ Some campaigns are efficient but have too little volume. Others have volume but 
 
 **Question 4: How long has this been unprofitable?**
 
-- Suddenly unprofitable (last 1-2 weeks): Look for what changed — algorithm update, seasonal shift, competitor action, tracking change
+- Suddenly unprofitable (last 1-2 weeks): Look for what changed , algorithm update, seasonal shift, competitor action, tracking change
 - Gradually declining (over months): Likely audience fatigue, creative fatigue, or increasing competition
 - Always unprofitable: Fundamental setup, targeting, or offer problem
 
@@ -72,21 +72,21 @@ A prospecting campaign shouldn't be evaluated on the same ROAS as a retargeting 
 
 ### Pause the Worst Offenders
 
-Sort all campaigns by cost per acquisition. Anything with CAC more than 3x your target and at least $500 in spend — pause it immediately. You can always reactivate later after fixing the underlying issues.
+Sort all campaigns by cost per acquisition. Anything with CAC more than 3x your target and at least $500 in spend , pause it immediately. You can always reactivate later after fixing the underlying issues.
 
 ### Cut Wasted Spend
 
 **Google Ads quick cuts:**
-- Download search term report — add irrelevant terms as negatives
-- Check placement report for Display/YouTube — exclude junk placements
-- Review geographic performance — exclude unprofitable regions
-- Check device performance — adjust bids on underperforming devices
-- Review audience performance — exclude non-converting audiences
+- Download search term report , add irrelevant terms as negatives
+- Check placement report for Display/YouTube , exclude junk placements
+- Review geographic performance , exclude unprofitable regions
+- Check device performance , adjust bids on underperforming devices
+- Review audience performance , exclude non-converting audiences
 
 **Meta Ads quick cuts:**
-- Check frequency — anything above 3 on prospecting is likely fatigued
-- Review placement performance — exclude Audience Network if underperforming
-- Check age and gender breakdown — exclude demographics that aren't converting
+- Check frequency , anything above 3 on prospecting is likely fatigued
+- Review placement performance , exclude Audience Network if underperforming
+- Check age and gender breakdown , exclude demographics that aren't converting
 - Pause any ad with more than $200 spend and zero conversions
 - Reduce budget on ad sets with high CPM but low CTR
 
@@ -121,13 +121,13 @@ Fixing these issues alone can improve conversion rates by 20-50%.
 
 **Refresh all creative.** If your top ads have been running for more than 4-6 weeks, they're likely fatigued even if frequency metrics look okay. Launch entirely new creative concepts.
 
-**Reset the learning phase.** Sometimes the best fix is to turn off the underperforming campaign and launch a new one with a clean structure. Meta's algorithm can get stuck in local optimums — a fresh start forces it to re-learn.
+**Reset the learning phase.** Sometimes the best fix is to turn off the underperforming campaign and launch a new one with a clean structure. Meta's algorithm can get stuck in local optimums , a fresh start forces it to re-learn.
 
 **Check your optimization event.** Are you optimizing for the right action? Optimizing for landing page views when you want purchases will generate cheap traffic that doesn't buy. Always optimize for the action closest to revenue that still has enough volume (50+ events per week per ad set).
 
 ## Step 4: Improve Your Offer (Days 14-21)
 
-Sometimes the problem isn't the campaign — it's the offer. If your product, pricing, or value proposition isn't competitive, no amount of campaign optimization will fix it.
+Sometimes the problem isn't the campaign , it's the offer. If your product, pricing, or value proposition isn't competitive, no amount of campaign optimization will fix it.
 
 ### Signs Your Offer Needs Work
 
@@ -218,11 +218,11 @@ Here's what a typical turnaround looks like:
 
 | Timeframe | Expected Result |
 |---|---|
-| Days 1-7 | Stop the bleeding — cut 20-30% of wasted spend |
-| Days 8-14 | Stabilize — ROAS begins improving from structural fixes |
-| Days 15-21 | Rebuild — new creative and offers start generating better results |
-| Days 22-30 | Optimize — systematic testing drives further improvements |
-| Days 30-60 | Scale — proven winners get more budget, losers are replaced |
+| Days 1-7 | Stop the bleeding , cut 20-30% of wasted spend |
+| Days 8-14 | Stabilize , ROAS begins improving from structural fixes |
+| Days 15-21 | Rebuild , new creative and offers start generating better results |
+| Days 22-30 | Optimize , systematic testing drives further improvements |
+| Days 30-60 | Scale , proven winners get more budget, losers are replaced |
 
 Most accounts go from unprofitable to breakeven within 2-3 weeks and from breakeven to profitable within 4-6 weeks.
 

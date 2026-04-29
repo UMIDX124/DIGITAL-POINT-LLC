@@ -3,7 +3,7 @@ import { ToolSchema, FAQSchema } from '@/components/seo/FAQSchema';
 import { AdSpendCalculator } from './AdSpendCalculator';
 
 export const metadata: Metadata = {
-  title: 'Ad Spend Profit Calculator — Model Your Advertising ROI',
+  title: 'Ad Spend Profit Calculator: Model Your Advertising ROI',
   description: 'Model profitability at different ad spend levels. Find your optimal budget and maximize advertising profit.',
   keywords: ['ad spend calculator', 'advertising profit', 'ad budget calculator', 'marketing roi', 'ad spend optimization'],
   alternates: { canonical: 'https://digitalpointllc.com/tools/ad-spend-profit-calculator' },

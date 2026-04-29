@@ -18,7 +18,7 @@ faqs:
 
 ## The Email Attribution Problem
 
-Email marketing has an attribution problem that cuts both ways. On one hand, email is consistently rated as having the **highest ROI of any marketing channel** at 36:1 on average. On the other hand, much of that attributed revenue would have happened anyway—the customer was already going to buy, and the email just happened to be the last thing they clicked.
+Email marketing has an attribution problem that cuts both ways. On one hand, email is consistently rated as having the **highest ROI of any marketing channel** at 36:1 on average. On the other hand, much of that attributed revenue would have happened anyway,the customer was already going to buy, and the email just happened to be the last thing they clicked.
 
 This over-attribution problem means many marketing teams are making budget decisions based on inflated email numbers. They under-invest in acquisition channels (the ads and content that actually brought customers in the first place) and over-invest in email volume, leading to higher unsubscribe rates and email fatigue without genuine revenue lift.
 
@@ -51,7 +51,7 @@ Consider this common scenario:
 5. Customer receives a welcome email, clicks through
 6. Customer receives a promotional email 3 days later, clicks, and purchases
 
-In last-click attribution, **email gets 100% of the credit.** But would this customer have purchased without the Google Ad that introduced them? Almost certainly not. Would they have purchased without the email? Possibly—they were already engaged enough to browse twice.
+In last-click attribution, **email gets 100% of the credit.** But would this customer have purchased without the Google Ad that introduced them? Almost certainly not. Would they have purchased without the email? Possibly,they were already engaged enough to browse twice.
 
 Proper [multi-touch attribution](/blog/multi-touch-attribution-models-explained) would distribute credit across the Google Ad, retargeting, and email touchpoints proportionally.
 
@@ -132,7 +132,7 @@ The gold standard for measuring email's real contribution is incrementality test
 
 **Typical findings:** Most incrementality tests reveal that email drives **15-35% of the revenue** that last-click attribution credits to it. The rest would have happened through other channels.
 
-This doesn't mean email is unimportant—a 20% incremental lift on a large customer base represents significant revenue. It just means the 36:1 ROI headline needs context.
+This doesn't mean email is unimportant,a 20% incremental lift on a large customer base represents significant revenue. It just means the 36:1 ROI headline needs context.
 
 ### Email Revenue Categories
 

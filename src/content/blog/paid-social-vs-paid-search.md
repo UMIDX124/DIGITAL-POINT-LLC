@@ -11,7 +11,7 @@ faqs:
   - question: "Which has better ROAS: paid social or paid search?"
     answer: "Paid search typically shows higher ROAS in last-click attribution (4-8x) because it captures high-intent users. Paid social ROAS (2-5x) looks lower but often drives the awareness that feeds search. Multi-touch attribution usually reveals a more balanced picture."
   - question: "What is the average CPC for paid search vs paid social?"
-    answer: "In 2026, the average Google Search CPC is $2.69 across industries, while Meta averages $1.72 and LinkedIn averages $5.26. However, CPCs vary dramatically by industry—legal search CPCs can exceed $50, while e-commerce social CPCs may be under $1."
+    answer: "In 2026, the average Google Search CPC is $2.69 across industries, while Meta averages $1.72 and LinkedIn averages $5.26. However, CPCs vary dramatically by industry,legal search CPCs can exceed $50, while e-commerce social CPCs may be under $1."
   - question: "Can I run only paid social without paid search?"
     answer: "You can, but it's rarely optimal. Paid social generates awareness and interest, but many of those prospects will Google your brand or product before converting. Without paid search to capture that demand, you're paying to create interest that competitors capture."
 ---
@@ -20,7 +20,7 @@ faqs:
 
 Every marketing team faces the same question at budget planning time: **How much should we spend on paid social versus paid search?** It's a question that sparks debates, generates conflicting opinions, and often gets answered based on gut instinct rather than data.
 
-The honest answer is that the right split depends on your business model, sales cycle, product type, and current market position. But that doesn't mean we can't establish frameworks and benchmarks that guide the decision. In this guide, we'll compare paid social and paid search across every metric that matters—ROAS, CAC, conversion rates, scalability, and attribution—so you can make an informed allocation decision.
+The honest answer is that the right split depends on your business model, sales cycle, product type, and current market position. But that doesn't mean we can't establish frameworks and benchmarks that guide the decision. In this guide, we'll compare paid social and paid search across every metric that matters,ROAS, CAC, conversion rates, scalability, and attribution,so you can make an informed allocation decision.
 
 Understanding where each channel fits in your [marketing attribution model](/blog/complete-guide-marketing-attribution) is the key to getting this right.
 
@@ -98,7 +98,7 @@ Source: Compiled from industry benchmarks. See our detailed [Google Ads benchmar
 
 Here's where it gets complicated. Paid search almost always looks better in **last-click attribution** because it captures demand at the moment of intent. But that demand often originated from paid social exposure days or weeks earlier.
 
-When companies switch from last-click to [multi-touch attribution](/blog/multi-touch-attribution-models-explained), paid social's contribution typically increases by **30-50%**, while paid search's contribution decreases by **15-25%**. Neither number is wrong—they're just measuring different things.
+When companies switch from last-click to [multi-touch attribution](/blog/multi-touch-attribution-models-explained), paid social's contribution typically increases by **30-50%**, while paid search's contribution decreases by **15-25%**. Neither number is wrong,they're just measuring different things.
 
 The real question isn't which channel performs better in isolation, but how they work together.
 
@@ -165,19 +165,19 @@ This is the gold standard but requires:
 
 ### Paid Search Optimization Priorities
 
-1. **Keyword structure** — Separate branded and non-branded campaigns for accurate ROAS measurement
-2. **[Bid strategy optimization](/blog/bid-strategy-guide)** — Match automated bidding to your funnel stage
-3. **[Quality Score improvement](/blog/google-ads-quality-score-guide)** — Higher scores mean lower CPCs
-4. **Negative keywords** — Eliminate wasted spend on irrelevant queries
-5. **[Landing page optimization](/blog/landing-page-optimization-paid-ads)** — Match landing pages to search intent
+1. **Keyword structure** , Separate branded and non-branded campaigns for accurate ROAS measurement
+2. **[Bid strategy optimization](/blog/bid-strategy-guide)** , Match automated bidding to your funnel stage
+3. **[Quality Score improvement](/blog/google-ads-quality-score-guide)** , Higher scores mean lower CPCs
+4. **Negative keywords** , Eliminate wasted spend on irrelevant queries
+5. **[Landing page optimization](/blog/landing-page-optimization-paid-ads)** , Match landing pages to search intent
 
 ### Paid Social Optimization Priorities
 
-1. **Creative testing** — [Systematic creative testing](/blog/creative-testing-framework) is the #1 lever for social performance
-2. **Audience strategy** — Balance prospecting and retargeting spend (typically 70/30)
-3. **Platform selection** — Match your audience to the right platform
-4. **[Lookalike audiences](/blog/lookalike-audiences-guide)** — Use your best customers as seeds
-5. **Frequency management** — Monitor [ad fatigue](/blog/ad-fatigue-prevention) and refresh creative regularly
+1. **Creative testing** , [Systematic creative testing](/blog/creative-testing-framework) is the #1 lever for social performance
+2. **Audience strategy** , Balance prospecting and retargeting spend (typically 70/30)
+3. **Platform selection** , Match your audience to the right platform
+4. **[Lookalike audiences](/blog/lookalike-audiences-guide)** , Use your best customers as seeds
+5. **Frequency management** , Monitor [ad fatigue](/blog/ad-fatigue-prevention) and refresh creative regularly
 
 ## Industry-Specific Recommendations
 
@@ -217,11 +217,11 @@ This is the gold standard but requires:
 
 Track these metrics to evaluate whether your budget split is optimal:
 
-- **Blended ROAS** — Total revenue divided by total ad spend across all channels
-- **Branded search volume trends** — Is social investment driving more branded searches?
-- **[Incrementality by channel](/blog/incrementality-testing-guide)** — What's the true lift of each channel?
-- **New customer percentage** — Is social bringing in new audiences or recycling existing ones?
-- **Marginal ROAS** — What return does the last dollar in each channel produce?
+- **Blended ROAS** , Total revenue divided by total ad spend across all channels
+- **Branded search volume trends** , Is social investment driving more branded searches?
+- **[Incrementality by channel](/blog/incrementality-testing-guide)** , What's the true lift of each channel?
+- **New customer percentage** , Is social bringing in new audiences or recycling existing ones?
+- **Marginal ROAS** , What return does the last dollar in each channel produce?
 
 The [Performance Marketing](/performance-marketing) team at Digital Point LLC specializes in building cross-channel strategies that maximize the synergy between paid search and social.
 
@@ -237,7 +237,7 @@ Paid search typically shows higher ROAS in last-click attribution (4-8x) because
 
 ### What is the average CPC for paid search vs paid social?
 
-In 2026, the average Google Search CPC is $2.69 across industries, while Meta averages $1.72 and LinkedIn averages $5.26. However, CPCs vary dramatically by industry—legal search CPCs can exceed $50, while e-commerce social CPCs may be under $1.
+In 2026, the average Google Search CPC is $2.69 across industries, while Meta averages $1.72 and LinkedIn averages $5.26. However, CPCs vary dramatically by industry,legal search CPCs can exceed $50, while e-commerce social CPCs may be under $1.
 
 ### Can I run only paid social without paid search?
 

@@ -151,7 +151,7 @@ Your bidding strategy directly controls the balance between ROAS and volume.
 
 ### Pillar 5: Post-Click Optimization
 
-Everything after the click either builds or destroys ROAS. A 1% improvement in conversion rate has the same ROAS impact as a 1% reduction in CPC — but is often easier to achieve.
+Everything after the click either builds or destroys ROAS. A 1% improvement in conversion rate has the same ROAS impact as a 1% reduction in CPC , but is often easier to achieve.
 
 **Landing page optimization for ROAS:**
 
@@ -159,7 +159,7 @@ Everything after the click either builds or destroys ROAS. A 1% improvement in c
 - Remove all navigation on paid traffic landing pages
 - Show the product or offer above the fold
 - Include trust signals: reviews, security badges, guarantee
-- Optimize for mobile first — over 60% of paid traffic is mobile
+- Optimize for mobile first , over 60% of paid traffic is mobile
 
 **Checkout and conversion optimization:**
 
@@ -197,7 +197,7 @@ Shopping campaigns are the backbone of e-commerce ROAS. Optimize by:
 - Optimize product titles with search terms customers actually use
 - Include key attributes in titles: brand, product type, color, size, material
 - Use high-quality product images (white background, multiple angles)
-- Ensure pricing is competitive — Google shows competitor prices
+- Ensure pricing is competitive , Google shows competitor prices
 - Segment products by margin and performance into separate campaigns
 - Use custom labels to bid differently on sale items, bestsellers, and new arrivals
 
@@ -209,7 +209,7 @@ Meta drives volume but requires constant creative iteration for strong ROAS. Opt
 - Use dynamic product ads for retargeting with product catalog
 - Test video creative (15-30 seconds) against static images
 - Implement Conversions API alongside the pixel for better tracking
-- Use broad targeting with strong creative — let the algorithm find buyers
+- Use broad targeting with strong creative , let the algorithm find buyers
 - Refresh creative every 2-3 weeks to prevent fatigue
 
 ### YouTube Ads
@@ -245,11 +245,11 @@ Not all ROAS is real. Some conversions would have happened anyway. Run increment
 
 ### Marginal ROAS Analysis
 
-Your blended ROAS is an average. Your marginal ROAS — the return on your last dollar spent — is what determines if you should spend more or less. If blended ROAS is 5:1 but marginal ROAS on incremental spend is 1.5:1, scaling further destroys profitability.
+Your blended ROAS is an average. Your marginal ROAS , the return on your last dollar spent , is what determines if you should spend more or less. If blended ROAS is 5:1 but marginal ROAS on incremental spend is 1.5:1, scaling further destroys profitability.
 
 ### Cross-Channel ROAS Optimization
 
-Optimize ROAS across your entire media mix, not per channel. Google Search might have 8:1 ROAS but limited volume. Meta might have 3:1 ROAS but unlimited scale. The optimal allocation isn't all-in on Google — it's the mix that maximizes total profit.
+Optimize ROAS across your entire media mix, not per channel. Google Search might have 8:1 ROAS but limited volume. Meta might have 3:1 ROAS but unlimited scale. The optimal allocation isn't all-in on Google , it's the mix that maximizes total profit.
 
 ## Get Expert ROAS Optimization
 

@@ -1,23 +1,26 @@
 import Link from 'next/link';
 import MagneticCTA from '@/components/effects/MagneticCTA';
+import { copy } from '@/lib/copy';
 
 /**
- * Hero CTA stack — primary audit booking + secondary case-studies link +
- * trust microcopy. Extracted from HeroSection (Phase 18 reduced-scope C4).
- * GSAP cascade targets `[data-hero-cta] > *` — wrapper preserved.
+ * Hero CTA stack: primary audit booking, secondary in-page services anchor,
+ * trust microcopy. Labels and hrefs sourced from copy.ts (single source of truth).
+ * GSAP cascade targets `[data-hero-cta] > *`.
  */
 export function HeroCTA() {
+  const { ctaPrimary, ctaSecondary } = copy.hero;
+
   return (
     <>
       <div className="flex flex-wrap items-center gap-6" data-hero-cta>
         <MagneticCTA strength={0.3} radius={90}>
-          <Link href="/free-growth-audit" className="cta-primary" data-cta-primary>
-            Book a free 30-min audit
+          <Link href={ctaPrimary.href} className="cta-primary" data-cta-primary>
+            {ctaPrimary.label}
             <span aria-hidden="true">→</span>
           </Link>
         </MagneticCTA>
-        <Link href="/case-studies" className="text-link inline-flex items-center gap-1.5">
-          See how it runs
+        <Link href={ctaSecondary.href} className="text-link inline-flex items-center gap-1.5">
+          {ctaSecondary.label}
           <svg
             width="14"
             height="14"
@@ -35,7 +38,6 @@ export function HeroCTA() {
         </Link>
       </div>
 
-      {/* Phase 17b 3-restructured D2 — trust micro-copy under primary CTA. */}
       <p className="hero-trust-microcopy mt-4">
         Free · 30 min · No sales pitch · Co-founder reviews personally
       </p>

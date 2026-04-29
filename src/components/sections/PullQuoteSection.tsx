@@ -53,7 +53,7 @@ export function PullQuoteSection() {
             color: 'var(--text-tertiary)',
           }}
         >
-          — {attribution}
+          {attribution}
         </p>
       </div>
     </section>

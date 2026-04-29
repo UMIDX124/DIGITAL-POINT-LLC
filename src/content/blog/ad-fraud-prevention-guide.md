@@ -31,10 +31,10 @@ The impact goes beyond wasted spend. Ad fraud corrupts your data, inflates your 
 The most common and well-known form of ad fraud. Click fraud occurs when bots, click farms, or competitors repeatedly click your ads to drain your budget without any purchase intent.
 
 **How it works:**
-- **Bot networks** — Automated programs that simulate human clicks
-- **Click farms** — Warehouses of low-paid workers manually clicking ads
-- **Competitor clicking** — Rivals clicking your ads to exhaust your daily budget
-- **Publisher fraud** — Website owners clicking ads on their own sites to earn revenue
+- **Bot networks** , Automated programs that simulate human clicks
+- **Click farms** , Warehouses of low-paid workers manually clicking ads
+- **Competitor clicking** , Rivals clicking your ads to exhaust your daily budget
+- **Publisher fraud** , Website owners clicking ads on their own sites to earn revenue
 
 **Impact:** Inflated CPCs, depleted daily budgets, and skewed campaign data. Click fraud is most prevalent in **competitive industries** like legal ($50+ CPCs), insurance, and home services.
 
@@ -43,10 +43,10 @@ The most common and well-known form of ad fraud. Click fraud occurs when bots, c
 Fake impressions that are never actually seen by real humans.
 
 **Common techniques:**
-- **Ad stacking** — Multiple ads layered on top of each other, only the top one visible
-- **Pixel stuffing** — Serving ads in 1x1 pixel iframes invisible to users
-- **Background tab loading** — Generating ad impressions in hidden browser tabs
-- **Pop-under windows** — Loading ads in windows behind the main browser
+- **Ad stacking** , Multiple ads layered on top of each other, only the top one visible
+- **Pixel stuffing** , Serving ads in 1x1 pixel iframes invisible to users
+- **Background tab loading** , Generating ad impressions in hidden browser tabs
+- **Pop-under windows** , Loading ads in windows behind the main browser
 
 **Impact:** Wasted CPM budgets, inflated reach metrics, and false awareness data. Display and [programmatic advertising](/blog/programmatic-advertising-guide) are most affected.
 
@@ -55,10 +55,10 @@ Fake impressions that are never actually seen by real humans.
 Fake leads, form submissions, app installs, or purchases designed to earn affiliate commissions or inflate campaign performance.
 
 **Common techniques:**
-- **Fake form submissions** — Bots filling out lead forms with generated data
-- **Install fraud** — Simulated app installs to earn CPI payouts
-- **Cookie stuffing** — Dropping conversion cookies without user interaction
-- **Attribution manipulation** — Claiming credit for conversions that would have happened organically
+- **Fake form submissions** , Bots filling out lead forms with generated data
+- **Install fraud** , Simulated app installs to earn CPI payouts
+- **Cookie stuffing** , Dropping conversion cookies without user interaction
+- **Attribution manipulation** , Claiming credit for conversions that would have happened organically
 
 **Impact:** Inflated conversion rates that mask true performance, polluted CRM data, and wasted sales team time following up on fake leads.
 
@@ -171,18 +171,18 @@ Your campaign setup can minimize fraud exposure:
 
 Implement server-side checks to catch fraud that client-side tools miss:
 
-- **CAPTCHA on lead forms** — Stops basic bot submissions
-- **Hidden form fields (honeypots)** — Bots fill hidden fields that humans can't see
-- **Email verification** — Require email confirmation before counting a lead
-- **Phone verification** — SMS confirmation for high-value conversions
-- **[Server-side tracking](/blog/server-side-tracking-guide)** — Validate conversions server-side before sending to ad platforms
+- **CAPTCHA on lead forms** , Stops basic bot submissions
+- **Hidden form fields (honeypots)** , Bots fill hidden fields that humans can't see
+- **Email verification** , Require email confirmation before counting a lead
+- **Phone verification** , SMS confirmation for high-value conversions
+- **[Server-side tracking](/blog/server-side-tracking-guide)** , Validate conversions server-side before sending to ad platforms
 
 ### Strategy 5: Contractual and Financial Protection
 
-- **Request refunds** — Google Ads provides invalid click refunds; file claims for suspected fraud
-- **Programmatic contracts** — Include fraud clauses in publisher agreements
-- **Payment terms** — Use CPA or CPL pricing models to shift fraud risk to publishers
-- **Audit rights** — Negotiate the right to audit traffic quality from partners
+- **Request refunds** , Google Ads provides invalid click refunds; file claims for suspected fraud
+- **Programmatic contracts** , Include fraud clauses in publisher agreements
+- **Payment terms** , Use CPA or CPL pricing models to shift fraud risk to publishers
+- **Audit rights** , Negotiate the right to audit traffic quality from partners
 
 ## Building a Fraud Prevention Framework
 
@@ -224,11 +224,11 @@ Before implementing prevention measures, understand your current fraud exposure:
 
 After implementing fraud prevention, track these metrics:
 
-- **Invalid traffic rate** — Percentage of clicks/impressions flagged as fraudulent
-- **CAC improvement** — True customer acquisition cost after removing fake conversions
-- **Lead quality improvement** — Lead-to-opportunity conversion rate increase
-- **Budget efficiency** — Effective CPM/CPC after fraud removal
-- **ROAS accuracy** — How much ROAS changes when fraud is excluded
+- **Invalid traffic rate** , Percentage of clicks/impressions flagged as fraudulent
+- **CAC improvement** , True customer acquisition cost after removing fake conversions
+- **Lead quality improvement** , Lead-to-opportunity conversion rate increase
+- **Budget efficiency** , Effective CPM/CPC after fraud removal
+- **ROAS accuracy** , How much ROAS changes when fraud is excluded
 
 Most companies that implement comprehensive fraud prevention see a **12-25% improvement in effective ROAS** simply by stopping money from flowing to fraudsters.
 

@@ -90,7 +90,7 @@ CTV advertising is growing rapidly with CPMs of $25-$45. As more advertisers add
 
 ### 6. AI-Driven Auction Efficiency
 
-Google and Meta's AI bidding systems are increasingly efficient at extracting maximum value from each auction. Automated bidding tends to push CPMs higher because algorithms bid to the exact value each impression is worth — eliminating the "bargains" that existed with manual bidding.
+Google and Meta's AI bidding systems are increasingly efficient at extracting maximum value from each auction. Automated bidding tends to push CPMs higher because algorithms bid to the exact value each impression is worth , eliminating the "bargains" that existed with manual bidding.
 
 ## CPM Trends by Quarter
 
@@ -123,9 +123,9 @@ CPMs fluctuate significantly throughout the year:
 Platforms reward engaging creative with lower CPMs. A high-engagement ad can earn 20-40% lower CPM than a low-engagement ad targeting the same audience.
 
 **How creative quality affects CPM:**
-- High CTR signals relevance — platforms show your ad to more people at lower cost
-- High engagement (likes, shares, saves) signals value — platforms reduce your effective CPM
-- Video completion rates above 25% signal quality content — lower CPMs for future delivery
+- High CTR signals relevance , platforms show your ad to more people at lower cost
+- High engagement (likes, shares, saves) signals value , platforms reduce your effective CPM
+- Video completion rates above 25% signal quality content , lower CPMs for future delivery
 
 **Action:** Invest in creative production. The ROI on better creative comes in the form of lower CPMs, higher conversion rates, and better ROAS. Even a 15% CPM reduction from better creative saves thousands monthly at scale.
 
@@ -197,11 +197,11 @@ Based on current trends, here are our CPM projections:
 
 Rising CPMs aren't something you can control. But you can control:
 
-1. **Creative quality** — earn lower CPMs through better engagement
-2. **Conversion efficiency** — extract more value from every impression
-3. **Targeting precision** — waste fewer impressions on non-buyers
-4. **Channel diversification** — capture value from emerging, lower-cost platforms
-5. **Measurement accuracy** — ensure you're counting all conversions so you know your true ROAS
+1. **Creative quality** , earn lower CPMs through better engagement
+2. **Conversion efficiency** , extract more value from every impression
+3. **Targeting precision** , waste fewer impressions on non-buyers
+4. **Channel diversification** , capture value from emerging, lower-cost platforms
+5. **Measurement accuracy** , ensure you're counting all conversions so you know your true ROAS
 
 The advertisers who thrive in a rising-CPM environment are those who continuously improve their end-to-end efficiency. A 15% CPM increase is irrelevant if your conversion rate improved 20%.
 

@@ -7,9 +7,9 @@ date: "2026-01-20"
 author: "Anwaar Tayyab"
 faqs:
   - question: "What percentage of my ad budget should go to Google vs. Meta?"
-    answer: "There's no universal split. The right allocation depends on your business model, audience, and goals. As a starting point, e-commerce brands typically allocate 40-50% to Google (Search + Shopping) and 30-40% to Meta. B2B companies often allocate 50-60% to Google Search and 15-25% to LinkedIn. Start with a hypothesis based on these benchmarks, run for 30-60 days, then reallocate based on performance data. The key isn't to set a split and forget it — review and adjust monthly based on each channel's marginal ROAS."
+    answer: "There's no universal split. The right allocation depends on your business model, audience, and goals. As a starting point, e-commerce brands typically allocate 40-50% to Google (Search + Shopping) and 30-40% to Meta. B2B companies often allocate 50-60% to Google Search and 15-25% to LinkedIn. Start with a hypothesis based on these benchmarks, run for 30-60 days, then reallocate based on performance data. The key isn't to set a split and forget it , review and adjust monthly based on each channel's marginal ROAS."
   - question: "How should I split budget between prospecting and retargeting?"
-    answer: "A healthy split is typically 65-80% prospecting and 20-35% retargeting. Many advertisers over-invest in retargeting because it has better ROAS, but retargeting audiences are limited by the number of people entering your funnel. If you shift too much to retargeting, you exhaust the audience and frequency climbs, which actually increases costs. The prospecting budget feeds the retargeting pool. Monitor your retargeting frequency — if it exceeds 3-4 per week, you're likely overspending on retargeting."
+    answer: "A healthy split is typically 65-80% prospecting and 20-35% retargeting. Many advertisers over-invest in retargeting because it has better ROAS, but retargeting audiences are limited by the number of people entering your funnel. If you shift too much to retargeting, you exhaust the audience and frequency climbs, which actually increases costs. The prospecting budget feeds the retargeting pool. Monitor your retargeting frequency , if it exceeds 3-4 per week, you're likely overspending on retargeting."
   - question: "Should I diversify across many channels or concentrate on a few?"
     answer: "For budgets under $25k per month, concentrate on 1-2 channels where you have the strongest product-market fit. Spreading thin across many channels means none gets enough budget for the algorithms to optimize effectively. At $25k-$75k per month, test 3-4 channels with enough budget in each to be meaningful. Above $75k per month, diversification across 4-6 channels reduces risk and captures demand across different touchpoints. Always maintain a minimum budget of $3,000-$5,000 per channel to generate useful data."
 ---
@@ -18,7 +18,7 @@ faqs:
 
 You have a fixed advertising budget and dozens of places to spend it. Every dollar in Google Search is a dollar not in Meta. Every dollar in prospecting is a dollar not in retargeting. How do you decide?
 
-Most companies set their allocation based on gut feel or historical inertia — "we have always spent 60% on Google." This approach leaves money on the table because it doesn't account for changing channel performance, audience behavior, or competitive dynamics.
+Most companies set their allocation based on gut feel or historical inertia , "we have always spent 60% on Google." This approach leaves money on the table because it doesn't account for changing channel performance, audience behavior, or competitive dynamics.
 
 At Digital Point LLC, we use a data-driven framework to allocate and continuously reallocate budgets across channels. This guide shares that framework.
 
@@ -103,7 +103,7 @@ Within each channel, allocate by funnel stage:
 
 ### Step 4: Apply the Marginal ROAS Test
 
-The key principle of budget allocation is **marginal ROAS** — what return does the next dollar spent on each channel generate?
+The key principle of budget allocation is **marginal ROAS** , what return does the next dollar spent on each channel generate?
 
 Every channel has diminishing returns. The first $10,000 on Google Search captures high-intent demand with strong ROAS. The next $10,000 pushes into broader keywords with lower ROAS. At some point, the marginal ROAS on Google drops below the marginal ROAS on Meta, signaling that the next dollar should go to Meta instead.
 
@@ -122,12 +122,12 @@ Every month, conduct a budget allocation review:
 
 1. **Pull channel-level performance data** for the past 30 days
 2. **Calculate ROAS and CPA by channel** (using consistent attribution)
-3. **Compare to previous month** — which channels improved? Which declined?
+3. **Compare to previous month** , which channels improved? Which declined?
 4. **Identify reallocation opportunities:**
    - Channels with improving ROAS deserve more budget
    - Channels with declining ROAS need investigation (and possibly less budget)
    - Channels approaching saturation (high frequency, declining marginal returns) should be capped
-5. **Make 10-20% adjustments** — avoid large swings that disrupt algorithm learning
+5. **Make 10-20% adjustments** , avoid large swings that disrupt algorithm learning
 
 ### Signals to Increase Channel Budget
 
@@ -180,11 +180,11 @@ Allocate 5-10% of budget specifically for competitive targeting:
 
 ### Mistake 1: Over-Investing in Brand Search
 
-Brand search typically has the highest ROAS of any campaign type (10-25x). But much of that ROAS is inflated — these searchers already know your brand and might have found you anyway. Limit brand search to 5-10% of total budget unless you have evidence competitors are stealing significant brand traffic.
+Brand search typically has the highest ROAS of any campaign type (10-25x). But much of that ROAS is inflated , these searchers already know your brand and might have found you anyway. Limit brand search to 5-10% of total budget unless you have evidence competitors are stealing significant brand traffic.
 
 ### Mistake 2: Under-Investing in Prospecting
 
-High-ROAS retargeting only works if prospecting campaigns feed the funnel. Cutting prospecting to boost short-term ROAS is a death spiral — eventually your retargeting pool shrinks and overall performance declines.
+High-ROAS retargeting only works if prospecting campaigns feed the funnel. Cutting prospecting to boost short-term ROAS is a death spiral , eventually your retargeting pool shrinks and overall performance declines.
 
 ### Mistake 3: Equal Budget Across All Channels
 

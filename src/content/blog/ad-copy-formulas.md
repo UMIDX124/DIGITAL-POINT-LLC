@@ -9,14 +9,14 @@ faqs:
   - question: "What makes ad copy convert?"
     answer: "High-converting ad copy does four things: it grabs attention with a relevant hook (addressing the reader's specific pain or desire), it communicates a clear value proposition (what they get and why it matters), it builds credibility (social proof, specifics, authority), and it drives action with a clear CTA (telling them exactly what to do next). The best ads feel like they were written for one specific person, not a broad audience."
   - question: "How many ad copy variations should I test?"
-    answer: "Test 3-5 variations per ad group or ad set at minimum. Start with variations that test different angles (pain vs. aspiration, feature vs. benefit, social proof vs. urgency) rather than minor word swaps. Let each variation get at least 1,000 impressions and 10+ clicks before judging. On Meta, Advantage+ creative and dynamic creative testing can automate this. On Google, responsive search ads test combinations automatically — provide 10-15 headlines and 4 descriptions for maximum combinations."
+    answer: "Test 3-5 variations per ad group or ad set at minimum. Start with variations that test different angles (pain vs. aspiration, feature vs. benefit, social proof vs. urgency) rather than minor word swaps. Let each variation get at least 1,000 impressions and 10+ clicks before judging. On Meta, Advantage+ creative and dynamic creative testing can automate this. On Google, responsive search ads test combinations automatically , provide 10-15 headlines and 4 descriptions for maximum combinations."
   - question: "Should I use AI to write ad copy?"
     answer: "AI is excellent for generating first drafts and variations, but human editing is essential. Use AI to brainstorm angles, generate headline options, and create variations of proven formulas. Then edit for brand voice, accuracy, and specificity. AI-generated copy that's not edited tends to be generic and lacks the specific details that drive performance. The best approach: AI generates 80% of the volume, humans refine for quality and add real data points."
 ---
 
 ## Why Ad Copy Formulas Work
 
-Every year, advertisers collectively spend billions of dollars on ad copy that doesn't convert. The problem isn't budget or targeting — it's the words. Weak copy wastes even the best targeting.
+Every year, advertisers collectively spend billions of dollars on ad copy that doesn't convert. The problem isn't budget or targeting , it's the words. Weak copy wastes even the best targeting.
 
 The good news: you don't need to be a creative genius to write high-converting ads. The best-performing ad copy follows proven structural formulas. These formulas work because they align with how people process information and make decisions.
 
@@ -36,7 +36,7 @@ Headline: "Wasting Ad Spend? Fix Your Attribution"
 Description: "Most brands lose 20-30% of their budget to bad attribution. Stop guessing which channels work. Get data-driven insights that scale your ROAS."
 
 **Meta Ads example:**
-"Tired of ad platforms telling you different stories? You're probably wasting 25% of your budget on channels that don't actually convert. Our attribution framework shows you exactly where your money works — and where it doesn't."
+"Tired of ad platforms telling you different stories? You're probably wasting 25% of your budget on channels that don't actually convert. Our attribution framework shows you exactly where your money works , and where it doesn't."
 
 **Best for:** B2B, SaaS, professional services. Works when your audience has an existing pain point they recognize.
 
@@ -96,7 +96,7 @@ Headline: "Spending $10K+/Mo on Ads?"
 Description: "If your ROAS is below 4x, there's likely $3K-$5K in monthly savings hiding in your attribution data. Free audit reveals exactly where."
 
 **Meta Ads example:**
-"Are you running ads on 3+ platforms but can't tell which one actually drives sales? You're not alone — and you're probably losing 20-30% of your budget to misattribution."
+"Are you running ads on 3+ platforms but can't tell which one actually drives sales? You're not alone , and you're probably losing 20-30% of your budget to misattribution."
 
 **Best for:** Qualifying your ideal customer while hooking attention. Great for lead gen.
 
@@ -108,10 +108,10 @@ Description: "If your ROAS is below 4x, there's likely $3K-$5K in monthly saving
 - Back it with evidence
 
 **Meta Ads example:**
-"Stop optimizing for CPA. Seriously. The brands scaling fastest in 2026 are optimizing for incrementality — and their blended ROAS is 2x higher than CPA-obsessed competitors."
+"Stop optimizing for CPA. Seriously. The brands scaling fastest in 2026 are optimizing for incrementality , and their blended ROAS is 2x higher than CPA-obsessed competitors."
 
 **LinkedIn example:**
-"Controversial take: Your marketing attribution is lying to you. Here's why the numbers your platforms report add up to 200% of your actual revenue — and what to do about it."
+"Controversial take: Your marketing attribution is lying to you. Here's why the numbers your platforms report add up to 200% of your actual revenue , and what to do about it."
 
 **Best for:** Thought leadership, B2B, expert audiences. Creates engagement through debate.
 
@@ -126,7 +126,7 @@ Headline: "47% Lower CPA in 63 Days"
 Description: "Our 4-phase attribution system identified $14,200/month in wasted spend for the average client. Free audit shows your specific savings potential."
 
 **Meta Ads example:**
-"In Q4 2025, our clients averaged: 4.2x ROAS on Meta, 5.8x on Google, and 3.1x on TikTok. The secret isn't more spend — it's knowing exactly which dollars drive revenue."
+"In Q4 2025, our clients averaged: 4.2x ROAS on Meta, 5.8x on Google, and 3.1x on TikTok. The secret isn't more spend , it's knowing exactly which dollars drive revenue."
 
 **Best for:** Performance-focused audiences who respond to data. E-commerce, SaaS, professional services.
 
@@ -192,7 +192,7 @@ Description: "Our dedicated team costs less than one analyst but delivers cross-
 ## Formula 13: The Direct Benefit Lead
 
 **Structure:**
-- Lead with the primary benefit — no preamble
+- Lead with the primary benefit , no preamble
 - Support with proof
 - CTA
 
@@ -222,8 +222,8 @@ Description: "Our attribution and optimization framework consistently delivers 2
 - CTA
 
 **Google Ads example:**
-Headline: "Free Growth Audit — No Commitment"
-Description: "Not sure if your attribution is costing you money? Our free audit identifies exactly where your budget leaks. No obligation, no sales pitch — just data."
+Headline: "Free Growth Audit , No Commitment"
+Description: "Not sure if your attribution is costing you money? Our free audit identifies exactly where your budget leaks. No obligation, no sales pitch , just data."
 
 **Best for:** Reducing friction for high-consideration purchases. Lead gen and service businesses.
 
@@ -234,7 +234,7 @@ Description: "Not sure if your attribution is costing you money? Our free audit 
 - Focus on formulas 1, 3, 5, 9, 13 (problem-aware, high-intent users)
 - Use responsive search ads with 10-15 headlines mixing different formulas
 - Pin your best-performing headline to position 1
-- Include numbers and specifics — search users scan quickly
+- Include numbers and specifics , search users scan quickly
 
 ### Meta/Instagram Ads
 
@@ -253,7 +253,7 @@ Description: "Not sure if your attribution is costing you money? Our free audit 
 ### TikTok Ads
 
 - Focus on formulas 6, 11, 12 (contrarian, story, aspirational)
-- First 2 seconds must hook — lead with the most surprising element
+- First 2 seconds must hook , lead with the most surprising element
 - Conversational, informal tone
 - Script video content using these formulas
 
@@ -264,8 +264,8 @@ Description: "Not sure if your attribution is costing you money? Our free audit 
 1. **Test angles first** (which formula resonates), not word choices
 2. **Give each variation enough data** (1,000+ impressions, 10+ clicks minimum)
 3. **Measure the right metric** (CTR for awareness, CPA for conversion, ROAS for revenue)
-4. **Scale winners, kill losers** — reallocate budget from bottom 20% to top 20%
-5. **Refresh every 4-8 weeks** — even winning copy fatigues over time
+4. **Scale winners, kill losers** , reallocate budget from bottom 20% to top 20%
+5. **Refresh every 4-8 weeks** , even winning copy fatigues over time
 
 ### What to Measure
 

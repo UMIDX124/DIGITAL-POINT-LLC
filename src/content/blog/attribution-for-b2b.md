@@ -31,7 +31,7 @@ Here's what a real B2B buying journey looks like:
 5. **Week 6:** SDR reaches out via email, books a demo
 6. **Week 8:** VP and CMO attend the demo
 7. **Week 10:** CFO reviews the pricing page
-8. **Week 14:** Contract is signed — $120,000 annual deal
+8. **Week 14:** Contract is signed , $120,000 annual deal
 
 Which marketing touchpoint gets credit for that $120,000? The LinkedIn ad that started it? The whitepaper that deepened interest? The webinar that built trust? The SDR outreach that initiated the sales process?
 
@@ -114,10 +114,10 @@ Each stage transition gets attributed separately. This lets you understand which
 
 W-shaped attribution gives significant credit to three key moments:
 
-- **First touch** (30%) — What brought the account to your awareness
-- **Lead creation** (30%) — What converted the account from anonymous to known
-- **Opportunity creation** (30%) — What moved the account into the sales pipeline
-- **Remaining touchpoints** (10%) — Everything else in between
+- **First touch** (30%) , What brought the account to your awareness
+- **Lead creation** (30%) , What converted the account from anonymous to known
+- **Opportunity creation** (30%) , What moved the account into the sales pipeline
+- **Remaining touchpoints** (10%) , Everything else in between
 
 This model is particularly well-suited for B2B because it highlights the three most important transition points in the funnel.
 
@@ -150,12 +150,12 @@ Integration options:
 
 Map out your funnel stages and define clear, measurable conversion points:
 
-1. **Anonymous visit** — Someone from the target account visits your site
-2. **Known contact** — Someone fills a form, downloads content, or signs up
-3. **MQL** — Contact meets your marketing qualification criteria
-4. **SQL** — Sales accepts the lead
-5. **Opportunity** — A deal is created in CRM
-6. **Closed-Won** — Revenue is realized
+1. **Anonymous visit** , Someone from the target account visits your site
+2. **Known contact** , Someone fills a form, downloads content, or signs up
+3. **MQL** , Contact meets your marketing qualification criteria
+4. **SQL** , Sales accepts the lead
+5. **Opportunity** , A deal is created in CRM
+6. **Closed-Won** , Revenue is realized
 
 Track timestamps for each transition. This creates the backbone of your attribution data.
 
@@ -193,7 +193,7 @@ Build a custom attribution model in your data warehouse that joins marketing tou
 
 Build dashboards that answer these questions:
 
-- **Which channels generate the most pipeline?** (Not leads — pipeline.)
+- **Which channels generate the most pipeline?** (Not leads , pipeline.)
 - **Which channels influence the highest-value deals?**
 - **What is the average number of touchpoints before a deal closes?**
 - **Which content pieces appear most frequently in winning deal journeys?**
@@ -267,7 +267,7 @@ Marketing attribution that stops at the MQL stage misses the entire bottom half 
 
 ### Mistake 3: Using B2C Attribution Tools for B2B
 
-Many attribution tools are built for e-commerce — they track individual users and credit online purchases. B2B needs account-level grouping, CRM integration, and offline touch tracking.
+Many attribution tools are built for e-commerce , they track individual users and credit online purchases. B2B needs account-level grouping, CRM integration, and offline touch tracking.
 
 ### Mistake 4: Expecting Precision
 
@@ -285,4 +285,4 @@ For most B2B companies spending $10K-$200K+/month on marketing, we recommend thi
 6. **B2B attribution tool** (Dreamdata, HockeyStack, or Bizible) for account-level multi-touch attribution
 7. **Dashboard** (Looker, Tableau, or HubSpot Reports) for unified reporting
 
-If your B2B marketing feels like a black box — you're spending on ads but can't connect that spend to pipeline and revenue — it's time to fix your attribution foundation. **[Get a free growth audit](/free-growth-audit)** from Digital Point LLC, and we will map your full funnel, identify attribution gaps, and build a measurement plan that connects marketing spend to real revenue.
+If your B2B marketing feels like a black box , you're spending on ads but can't connect that spend to pipeline and revenue , it's time to fix your attribution foundation. **[Get a free growth audit](/free-growth-audit)** from Digital Point LLC, and we will map your full funnel, identify attribution gaps, and build a measurement plan that connects marketing spend to real revenue.

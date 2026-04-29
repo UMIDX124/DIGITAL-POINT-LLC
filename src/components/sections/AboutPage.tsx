@@ -25,7 +25,7 @@ const values = [
   {
     icon: TrendingUp,
     title: 'Outcomes, Not Activity',
-    description: 'We measure what matters — operator-hours replaced, workflows automated, headcount avoided. Not vanity metrics.',
+    description: 'We measure what matters: operator-hours replaced, workflows automated, headcount avoided. Not vanity metrics.',
   },
   {
     icon: Shield,
@@ -63,13 +63,11 @@ export function AboutPage() {
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
               Built for businesses that need{' '}
-              <span className="bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FF8800] bg-clip-text text-transparent">
-                real growth
-              </span>
+              <span style={{ color: 'var(--accent-bright)' }}>real growth</span>
               , not reports about growth.
             </h1>
             <p className="text-[color:var(--text-primary)] text-lg md:text-xl max-w-2xl leading-relaxed">
-              We&apos;ve been in your shoes — staring at dashboards that don&apos;t add up, wondering which campaigns actually drive revenue. We built Digital Point to fix that, for ourselves first, then for everyone else.
+              We&apos;ve been in your shoes, staring at dashboards that don&apos;t add up, wondering which campaigns actually drive revenue. We built Digital Point to fix that, for ourselves first, then for everyone else.
             </p>
           </FadeUp>
         </Container>
@@ -114,16 +112,16 @@ export function AboutPage() {
               }}
             >
               <p className="text-[color:var(--text-primary)] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
-                Here&apos;s the honest version: back in 2017, Faizan was managing ad accounts and kept seeing the same thing — businesses pouring money into campaigns with no idea what was actually driving revenue. Anwaar, on the other hand, was deep in the data side, building dashboards that nobody used because they answered the wrong questions.
+                Here&apos;s the honest version: back in 2017, Faizan was managing ad accounts and kept seeing the same thing. Businesses pouring money into campaigns with no idea what was actually driving revenue. Anwaar, on the other hand, was deep in the data side, building dashboards that nobody used because they answered the wrong questions.
               </p>
               <p className="text-[color:var(--text-primary)] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
-                We met, argued about attribution models over too much coffee, and realized we were solving two halves of the same problem. Faizan knew how to make ads perform. Anwaar knew how to prove it. Together, we figured — why not just do both?
+                We met, argued about attribution models over too much coffee, and realized we were solving two halves of the same problem. Faizan knew how to make ads perform. Anwaar knew how to prove it. Together, we figured: why not just do both?
               </p>
               <p className="text-[color:var(--text-primary)] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
                 Digital Point started in a spare room with one client who took a chance on us. Eight years later, we&apos;ve managed over $50M in ad spend, built remote teams across continents, and helped businesses go from &ldquo;we think our ads work&rdquo; to &ldquo;we know exactly what&apos;s driving revenue.&rdquo;
               </p>
               <p className="text-white text-base leading-relaxed font-medium" style={{ maxWidth: 'var(--maxw-body)' }}>
-                We&apos;re still those two guys who argue about attribution over coffee. We just have a bigger team now — and better coffee.
+                We&apos;re still those two guys who argue about attribution over coffee. We just have a bigger team now, and better coffee.
               </p>
               <div className="flex flex-wrap gap-6 mt-6 pt-6" style={{ borderTop: '1px solid rgba(255, 136, 0, 0.15)' }}>
                 <div>
@@ -197,7 +195,7 @@ export function AboutPage() {
                 Ready to see what we can do for you?
               </h2>
               <p className="text-[color:var(--text-primary)] text-lg mb-8">
-                Start with a free growth audit. No pitch, no pressure — just clarity on what&apos;s working and what isn&apos;t.
+                Start with a free growth audit. No pitch, no pressure: just clarity on what&apos;s working and what isn&apos;t.
               </p>
               <Link href="/free-growth-audit">
                 <motion.span

@@ -70,7 +70,7 @@ export default function TermsOfServicePage() {
                 <span className="text-white font-medium">
                   Performance Marketing
                 </span>{' '}
-                — Paid media management, campaign strategy, and data-driven
+                · Paid media management, campaign strategy, and data-driven
                 advertising across search, social, display, and shopping
                 channels.
               </li>
@@ -78,32 +78,32 @@ export default function TermsOfServicePage() {
                 <span className="text-white font-medium">
                   Remote Workforce Solutions
                 </span>{' '}
-                — Dedicated remote marketing teams and operational support
+                · Dedicated remote marketing teams and operational support
                 tailored to your business needs.
               </li>
               <li>
                 <span className="text-white font-medium">
                   Systems &amp; Reporting
                 </span>{' '}
-                — Custom dashboards, analytics implementation, and reporting
+                · Custom dashboards, analytics implementation, and reporting
                 infrastructure to track and optimize performance.
               </li>
               <li>
                 <span className="text-white font-medium">
                   Free Growth Audits
                 </span>{' '}
-                — Complimentary assessments of your current marketing
+                · Complimentary assessments of your current marketing
                 performance with actionable recommendations.
               </li>
               <li>
                 <span className="text-white font-medium">
                   Interactive Tools &amp; Calculators
                 </span>{' '}
-                — Free browser-based marketing tools and calculators available
+                · Free browser-based marketing tools and calculators available
                 on our website for informational and estimation purposes.
               </li>
               <li>
-                <span className="text-white font-medium">Blog Content</span> —
+                <span className="text-white font-medium">Blog Content</span> ·
                 Educational articles, guides, and industry insights published
                 on our blog to help marketers and business owners make informed
                 decisions.
@@ -209,7 +209,7 @@ export default function TermsOfServicePage() {
               industry insights, and company updates. You may unsubscribe at any
               time by clicking the unsubscribe link included in every email or
               by opening Cosmo (on-site chat) and requesting &quot;newsletter
-              unsubscribe&quot; — we route the request to the right operator
+              unsubscribe&quot;. We route the request to the right operator
               within one business day.
             </p>
             <p className={bodyTextClass}>
@@ -307,7 +307,7 @@ export default function TermsOfServicePage() {
                   our on-site routes
                 </a>
                 {' '}(Cosmo chat or the free growth audit form). We don&apos;t run a
-                shared inbox — your inquiry routes directly to the operator
+                shared inbox; your inquiry routes directly to the operator
                 best matched to your stage.
               </p>
               <p className={secondaryTextClass}>

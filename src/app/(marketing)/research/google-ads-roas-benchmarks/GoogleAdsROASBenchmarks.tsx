@@ -163,7 +163,7 @@ export function GoogleAdsROASBenchmarks({ faqs }: Props) {
               {[
                 { title: 'Search still delivers highest intent', text: 'Search campaigns maintain the highest ROAS for bottom-funnel conversions at 4.2x average. Legal services lead at 7.1x due to high case values, while home services benefit from strong local intent at 5.8x.' },
                 { title: 'Performance Max is closing the gap', text: 'PMax ROAS improved 18% year-over-year to 3.1x, narrowing the gap with Search. Advertisers using PMax alongside Search see 12% higher total conversion volume with only a 7% decrease in blended ROAS.' },
-                { title: 'Shopping dominates e-commerce efficiency', text: 'Shopping campaigns deliver 5.6x average ROAS — the highest of any campaign type for product-based businesses. Feed optimization and merchant center quality directly correlate with ROAS (r=0.72).' },
+                { title: 'Shopping dominates e-commerce efficiency', text: 'Shopping campaigns deliver 5.6x average ROAS, the highest of any campaign type for product-based businesses. Feed optimization and merchant center quality directly correlate with ROAS (r=0.72).' },
                 { title: 'YouTube as a measurement challenge', text: 'YouTube direct-click ROAS averages 1.9x, but brands running YouTube alongside Search see a 22% lift in branded search volume, suggesting significant unmeasured impact.' },
               ].map((finding) => (
                 <div key={finding.title} className="rounded-xl p-5" style={glassStyle}>

@@ -7,7 +7,7 @@ date: "2026-02-22"
 author: "Anwaar Tayyab"
 faqs:
   - question: "Can you have a positive ROAS but negative ROI?"
-    answer: "Yes, and this is one of the most common and dangerous situations in digital advertising. If your ROAS is 2.5x but your gross margin is 40%, your breakeven ROAS is 2.5x — so you're barely breaking even on product costs alone. Once you factor in operating expenses, shipping, returns, and overhead, you're losing money. A positive ROAS only means you generated more revenue than you spent on ads. A positive ROI means you actually made a profit after all costs. Always know your breakeven ROAS and ensure you're comfortably above it."
+    answer: "Yes, and this is one of the most common and dangerous situations in digital advertising. If your ROAS is 2.5x but your gross margin is 40%, your breakeven ROAS is 2.5x , so you're barely breaking even on product costs alone. Once you factor in operating expenses, shipping, returns, and overhead, you're losing money. A positive ROAS only means you generated more revenue than you spent on ads. A positive ROI means you actually made a profit after all costs. Always know your breakeven ROAS and ensure you're comfortably above it."
   - question: "Which metric should I report to my CEO or board?"
     answer: "Report both, but lead with ROI for strategic decisions and use ROAS for tactical optimization. Your CEO cares about profitability and growth, which ROI captures. Your media team needs ROAS for day-to-day campaign management. Present ROI at the business level (marketing investment vs. profit generated) and ROAS at the channel and campaign level. Include context: explain what is and isn't included in each calculation, and show trends over time rather than single-period snapshots."
   - question: "How do I calculate ROI for campaigns where the customer doesn't buy immediately?"
@@ -16,7 +16,7 @@ faqs:
 
 ## ROAS and ROI: Two Metrics, Very Different Stories
 
-ROAS and ROI are both measures of advertising effectiveness, but they tell different stories about your marketing performance. Confusing the two — or using the wrong one for the wrong purpose — leads to bad decisions.
+ROAS and ROI are both measures of advertising effectiveness, but they tell different stories about your marketing performance. Confusing the two , or using the wrong one for the wrong purpose , leads to bad decisions.
 
 This guide clarifies the difference, explains when to use each, and shows you how to avoid the measurement traps that mislead many marketing teams.
 
@@ -44,7 +44,7 @@ Example: You invested $10,000 in marketing (including ad spend, agency fees, and
 
 **What ROI includes:** All costs and all profit (not just revenue).
 
-**What ROI excludes:** Nothing — when calculated correctly, ROI captures the complete economic picture.
+**What ROI excludes:** Nothing , when calculated correctly, ROI captures the complete economic picture.
 
 ## The Critical Difference Illustrated
 
@@ -57,7 +57,7 @@ Here's where the distinction matters most:
 | $10k ad spend, $25k revenue, 40% margin | 2.5x | 0% (breakeven) |
 | $10k ad spend, $20k revenue, 40% margin | 2.0x | -20% (losing money) |
 
-Notice: At 2.0x ROAS, you're generating double your ad spend in revenue. That looks healthy at first glance. But with 40% gross margin, you only earn $8,000 in gross profit on $20,000 revenue — less than the $10,000 you spent on ads. You're losing $2,000.
+Notice: At 2.0x ROAS, you're generating double your ad spend in revenue. That looks healthy at first glance. But with 40% gross margin, you only earn $8,000 in gross profit on $20,000 revenue , less than the $10,000 you spent on ads. You're losing $2,000.
 
 **This is why ROAS alone is misleading.** Without considering margins, a positive ROAS can disguise an unprofitable marketing operation.
 
@@ -148,7 +148,7 @@ A mid-size e-commerce brand's monthly numbers:
 | **Net marketing profit** | $37,500 |
 | **Marketing ROI** | 60% |
 
-The ROAS here is 4.0x ($200k / $50k). The fully loaded ROAS is 3.2x ($200k / $62.5k). The ROI is 60%. All three numbers tell a different — and important — story.
+The ROAS here is 4.0x ($200k / $50k). The fully loaded ROAS is 3.2x ($200k / $62.5k). The ROI is 60%. All three numbers tell a different , and important , story.
 
 ## Common Mistakes in ROAS and ROI Calculation
 
@@ -162,11 +162,11 @@ If a customer clicks a Google Ad and then later a Meta ad before buying, both pl
 
 ### Mistake 3: Excluding Non-Ad Marketing Costs from ROI
 
-Your ROI calculation must include all marketing costs — not just ad spend. Agency fees, tools, team time, and creative production are real costs that affect profitability.
+Your ROI calculation must include all marketing costs , not just ad spend. Agency fees, tools, team time, and creative production are real costs that affect profitability.
 
 ### Mistake 4: Using Revenue Instead of Profit for ROI
 
-ROI calculated on revenue instead of profit isn't ROI — it's ROAS with extra steps. Always use gross profit (or contribution margin) in your ROI calculations.
+ROI calculated on revenue instead of profit isn't ROI , it's ROAS with extra steps. Always use gross profit (or contribution margin) in your ROI calculations.
 
 ### Mistake 5: Inconsistent Attribution Windows
 
@@ -186,7 +186,7 @@ The most sophisticated advertisers track both ROAS and ROI at multiple levels:
 | Campaign level | ROAS | CPA, conversion rate | Daily/Weekly |
 | Channel level | Fully loaded ROAS | Channel ROI | Weekly |
 | Total marketing | Blended ROAS | Marketing ROI | Monthly |
-| Business level | — | Total business ROI | Quarterly |
+| Business level | , | Total business ROI | Quarterly |
 
 ### Setting ROAS Targets Based on ROI Goals
 

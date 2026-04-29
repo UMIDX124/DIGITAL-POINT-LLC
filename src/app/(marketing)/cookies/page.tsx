@@ -27,7 +27,7 @@ const COOKIES = [
     type: 'First-party · Vercel-hosted',
     purpose:
       'Real-user performance measurements (LCP, INP, CLS) so we can fix actual page-speed issues. Aggregate only, no personal identifiers.',
-    optOut: 'Same as Vercel Analytics — disable JS or block the analytics endpoint.',
+    optOut: 'Same as Vercel Analytics: disable JS or block the analytics endpoint.',
   },
   {
     name: 'sessionStorage: dpl_i',
@@ -69,7 +69,7 @@ export default function CookiesPage() {
           >
             Honest disclosure of every cookie and browser-storage entry the
             Digital Point marketing site sets. We deliberately keep this list
-            short — no third-party advertising cookies, no cross-site
+            short. No third-party advertising cookies, no cross-site
             trackers, no fingerprinting. If anything below changes, this page
             updates with it.
           </p>

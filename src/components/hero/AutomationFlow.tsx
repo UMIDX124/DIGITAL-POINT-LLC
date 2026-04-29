@@ -75,7 +75,7 @@ export function AutomationFlow() {
     <div
       className="automation-flow"
       role="img"
-      aria-label="Digital Point operating loop — Lead trigger feeds the AI score, which routes to a trained operator, which updates the CRM as state of truth."
+      aria-label="Digital Point operating loop. Lead trigger feeds the AI score, which routes to a trained operator, which updates the CRM as state of truth."
     >
       {/* Connection paths layer (decorative). 2x2 grid; arrows form a Z. */}
       <svg

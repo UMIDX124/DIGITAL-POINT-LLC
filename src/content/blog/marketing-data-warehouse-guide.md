@@ -63,14 +63,14 @@ SQL-based transformations that create reporting-ready tables, plus dashboards an
 ### Essential Data Sources (Start Here)
 
 **Advertising platforms:**
-- Google Ads — campaigns, ad groups, keywords, spend, conversions
-- [Meta Ads](/blog/meta-ads-benchmarks-2026) — campaigns, ad sets, ads, spend, conversions
-- [LinkedIn Ads](/blog/linkedin-ads-guide-b2b) — campaigns, spend, leads
-- [TikTok Ads](/blog/tiktok-ads-guide-2026) — campaigns, spend, conversions
+- Google Ads , campaigns, ad groups, keywords, spend, conversions
+- [Meta Ads](/blog/meta-ads-benchmarks-2026) , campaigns, ad sets, ads, spend, conversions
+- [LinkedIn Ads](/blog/linkedin-ads-guide-b2b) , campaigns, spend, leads
+- [TikTok Ads](/blog/tiktok-ads-guide-2026) , campaigns, spend, conversions
 
 **Analytics:**
-- GA4 — sessions, users, events, conversions, traffic sources
-- [UTM parameters](/blog/utm-tracking-best-practices) — campaign tracking data
+- GA4 , sessions, users, events, conversions, traffic sources
+- [UTM parameters](/blog/utm-tracking-best-practices) , campaign tracking data
 
 **CRM:**
 - Leads, contacts, opportunities, deals
@@ -145,11 +145,11 @@ Organize your warehouse into layers:
 
 **Marts layer:** Business-ready tables designed for specific use cases:
 
-- **`mart_channel_performance`** — Daily channel-level metrics across all platforms
-- **`mart_campaign_attribution`** — Multi-touch attributed conversions by campaign
-- **`mart_customer_acquisition`** — Customer-level acquisition data with CAC
-- **`mart_funnel_metrics`** — Conversion rates at each funnel stage
-- **`mart_blended_performance`** — Cross-channel blended metrics
+- **`mart_channel_performance`** , Daily channel-level metrics across all platforms
+- **`mart_campaign_attribution`** , Multi-touch attributed conversions by campaign
+- **`mart_customer_acquisition`** , Customer-level acquisition data with CAC
+- **`mart_funnel_metrics`** , Conversion rates at each funnel stage
+- **`mart_blended_performance`** , Cross-channel blended metrics
 
 ### Step 4: Build Transformations with dbt
 
@@ -161,7 +161,7 @@ Organize your warehouse into layers:
 - Version control your transformations in Git
 - Schedule automatic refreshes
 
-**Example transformation — Blended daily performance:**
+**Example transformation , Blended daily performance:**
 
 This model would join Google Ads, Meta Ads, and CRM data to create a single daily performance view with standardized metrics across all channels: spend, revenue, CAC, and ROAS calculated consistently regardless of source platform.
 
@@ -169,11 +169,11 @@ This model would join Google Ads, Meta Ads, and CRM data to create a single dail
 
 Once your transformed data is ready, connect your BI tool:
 
-- **Looker Studio** — Free, connects directly to BigQuery
-- **Tableau** — Enterprise-grade visualization
-- **Metabase** — Open-source, self-hosted option
-- **Preset (Apache Superset)** — Modern, SQL-friendly
-- **[Marketing dashboards](/blog/marketing-dashboard-kpis)** — See our KPI guide for what to visualize
+- **Looker Studio** , Free, connects directly to BigQuery
+- **Tableau** , Enterprise-grade visualization
+- **Metabase** , Open-source, self-hosted option
+- **Preset (Apache Superset)** , Modern, SQL-friendly
+- **[Marketing dashboards](/blog/marketing-dashboard-kpis)** , See our KPI guide for what to visualize
 
 ## Data Modeling Best Practices
 
@@ -205,11 +205,11 @@ Don't reprocess your entire data history every day. Use incremental models that 
 
 Automated tests prevent bad data from corrupting your reports:
 
-- **Freshness tests** — Alert if data hasn't been updated in expected timeframe
-- **Volume tests** — Alert if row counts are outside expected ranges
-- **Uniqueness tests** — Prevent duplicate records
-- **Null tests** — Catch missing values in critical fields
-- **Referential integrity** — Ensure foreign keys point to valid records
+- **Freshness tests** , Alert if data hasn't been updated in expected timeframe
+- **Volume tests** , Alert if row counts are outside expected ranges
+- **Uniqueness tests** , Prevent duplicate records
+- **Null tests** , Catch missing values in critical fields
+- **Referential integrity** , Ensure foreign keys point to valid records
 
 ## Common Warehouse Use Cases
 

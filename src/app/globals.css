@@ -1840,10 +1840,7 @@ html[data-paused-global="true"] .logo-marquee-track {
    against the next section. Drop it. */
 .services-pin-frame:last-child { border-bottom: none; }
 .services-pin-frame-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 140px;
-  gap: 4rem;
-  align-items: center;
+  display: block;
   width: 100%;
   padding-block: clamp(3rem, 8vh, 6rem);
 }
@@ -1907,17 +1904,6 @@ html[data-paused-global="true"] .logo-marquee-track {
   align-items: center;
   gap: 0.5rem;
   margin-top: 1.5rem;
-}
-.services-pin-glyph {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.85;
-  /* Phase 18 reduced-scope C2.3 — extracted from inline color on glyph wrapper.
-     SVG paths use stroke="currentColor" so this propagates to the geometry. */
-  color: var(--accent);
 }
 @media (prefers-reduced-motion: reduce) {
   .services-pin-frame {

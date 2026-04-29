@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
     if (qualityScore >= 70 && email) {
       await sendEmail({
         to: 'admin@digitalpointllc.com',
-        subject: `High-Intent Lead from Chatbot — ${escapeHtml(name || 'Unknown')}`,
+        subject: `High-Intent Lead from Chatbot: ${escapeHtml(name || 'Unknown')}`,
         replyTo: email,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0B; color: #F5F1E8; padding: 32px; border-radius: 12px;">

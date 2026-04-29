@@ -4,12 +4,12 @@ import { FAQSchema } from '@/components/seo/FAQSchema';
 import { ROASCalculator } from './ROASCalculator';
 
 export const metadata: Metadata = {
-  title: 'Free ROAS Calculator — Calculate Return on Ad Spend',
+  title: 'Free ROAS Calculator: Calculate Return on Ad Spend',
   description: 'Calculate your ROAS (Return on Ad Spend) instantly. Compare platform-reported vs. blended ROAS and find your true advertising ROI.',
   keywords: ['roas calculator', 'return on ad spend', 'advertising roi', 'roas formula', 'ad spend calculator'],
   alternates: { canonical: 'https://digitalpointllc.com/tools/roas-calculator' },
   openGraph: {
-    title: 'Free ROAS Calculator — Digital Point LLC',
+    title: 'Free ROAS Calculator · Digital Point LLC',
     description: 'Calculate your true Return on Ad Spend. Compare platform-reported vs. blended ROAS.',
   },
 };

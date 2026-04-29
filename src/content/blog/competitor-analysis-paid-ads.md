@@ -9,14 +9,14 @@ faqs:
   - question: "How can I see what ads my competitors are running?"
     answer: "There are several free and paid tools for competitor ad research. Free options: Meta Ad Library (ads.facebook.com) shows all active Meta ads for any brand; Google Ads Transparency Center shows active Google ads; LinkedIn Ad Library shows sponsored content. Paid tools: SEMrush, SpyFu, and iSpionage show search ad history, keywords, and estimated spend for Google Ads. SimilarWeb provides traffic estimates and ad channel breakdowns. Pathmatics/Sensor Tower shows display and social ad creative libraries."
   - question: "How much are my competitors spending on ads?"
-    answer: "You can estimate competitor ad spend using tools like SEMrush (provides estimated Google Ads spend based on keyword data), SimilarWeb (estimates total paid traffic and ad budgets), and Pathmatics (estimates display and social spend). These are estimates, not exact numbers — typically accurate within 30-50% for larger advertisers. For more precise data in specific verticals, auction insights in Google Ads shows your impression share relative to competitors, giving you a ratio-based estimate."
+    answer: "You can estimate competitor ad spend using tools like SEMrush (provides estimated Google Ads spend based on keyword data), SimilarWeb (estimates total paid traffic and ad budgets), and Pathmatics (estimates display and social spend). These are estimates, not exact numbers , typically accurate within 30-50% for larger advertisers. For more precise data in specific verticals, auction insights in Google Ads shows your impression share relative to competitors, giving you a ratio-based estimate."
   - question: "Should I target my competitors' brand names in Google Ads?"
     answer: "Competitor brand bidding can be effective but comes with trade-offs. Pros: high commercial intent, often cheaper CPCs than generic keywords, captures users comparison shopping. Cons: lower quality scores (your ad is less relevant to the search), potential retaliation (they bid on your brand), and lower conversion rates. We recommend testing competitor brand bidding with a small budget, using ad copy that highlights your differentiators rather than mentioning the competitor by name, and monitoring whether competitors retaliate."
 ---
 
 ## Why Competitor Analysis Matters for Paid Ads
 
-Your competitors are spending money on ads. Some of that money is well spent and some is wasted. If you can figure out which is which, you gain a massive advantage — you can replicate their wins and avoid their mistakes without spending a dollar of your own budget on testing.
+Your competitors are spending money on ads. Some of that money is well spent and some is wasted. If you can figure out which is which, you gain a massive advantage , you can replicate their wins and avoid their mistakes without spending a dollar of your own budget on testing.
 
 Competitor analysis for paid ads isn't about copying. It's about intelligence gathering. Understanding what competitors are doing helps you:
 
@@ -36,9 +36,9 @@ Your paid ad competitors aren't always your business competitors. In paid advert
 
 **Three types of ad competitors:**
 
-1. **Direct competitors** — Same product/service for the same market
-2. **Indirect competitors** — Different product, same customer problem
-3. **Auction competitors** — Any advertiser bidding on your keywords (may include review sites, affiliates, aggregators)
+1. **Direct competitors** , Same product/service for the same market
+2. **Indirect competitors** , Different product, same customer problem
+3. **Auction competitors** , Any advertiser bidding on your keywords (may include review sites, affiliates, aggregators)
 
 **How to find them:**
 - Google your target keywords and note who is advertising
@@ -82,7 +82,7 @@ Your paid ad competitors aren't always your business competitors. In paid advert
 **Estimated spend:** How much are they investing?
 - SEMrush provides monthly estimated spend
 - Cross-reference with auction impression share for validation
-- Higher spend doesn't mean better performance — they might be wasting money
+- Higher spend doesn't mean better performance , they might be wasting money
 
 ### Step 3: Analyze Their Social Ad Strategy
 
@@ -248,7 +248,7 @@ Use competitor audience data to inform your targeting:
 
 **Mistake 3: Over-indexing on one competitor.** Analyze 3-5 competitors to get a balanced view. Focusing on just one gives you a skewed picture.
 
-**Mistake 4: Ignoring indirect competitors.** The biggest threat to your ad performance might not be a direct competitor — it could be a content platform, marketplace, or aggregator that's absorbing your audience's attention.
+**Mistake 4: Ignoring indirect competitors.** The biggest threat to your ad performance might not be a direct competitor , it could be a content platform, marketplace, or aggregator that's absorbing your audience's attention.
 
 **Mistake 5: Analysis without action.** Competitive intelligence is only valuable if it changes your strategy. Set specific action items after every competitive review.
 

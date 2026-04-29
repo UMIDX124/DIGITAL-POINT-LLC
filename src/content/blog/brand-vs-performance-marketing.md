@@ -18,7 +18,7 @@ faqs:
 
 ## The False Choice Between Brand and Performance
 
-Marketing has split into two camps. On one side, brand marketers argue for long-term investment in awareness, emotional connection, and market positioning. On the other, performance marketers obsess over ROAS, CAC, and this week's conversion numbers. Each camp views the other with skepticism—brand people think performance marketers are short-sighted, and performance people think brand marketers can't prove their value.
+Marketing has split into two camps. On one side, brand marketers argue for long-term investment in awareness, emotional connection, and market positioning. On the other, performance marketers obsess over ROAS, CAC, and this week's conversion numbers. Each camp views the other with skepticism,brand people think performance marketers are short-sighted, and performance people think brand marketers can't prove their value.
 
 Both are wrong. And both are right.
 
@@ -44,11 +44,11 @@ People who will eventually need your solution but aren't actively searching toda
 
 Strong brands make performance marketing more efficient:
 
-- **Higher CTRs** — People click on brands they recognize. Branded search CTRs average **35-50%** vs. **3-6%** for non-branded.
-- **Lower CPCs** — Brand familiarity improves Quality Scores and relevance scores, reducing costs.
-- **Higher conversion rates** — Trust built through brand exposure reduces friction at conversion.
-- **Lower [CAC](/blog/complete-guide-cac-optimization)** — All of the above combine to reduce acquisition costs over time.
-- **Higher LTV** — Brand-loyal customers retain longer and spend more, improving [LTV:CAC ratios](/blog/cac-ltv-ratio-guide).
+- **Higher CTRs** , People click on brands they recognize. Branded search CTRs average **35-50%** vs. **3-6%** for non-branded.
+- **Lower CPCs** , Brand familiarity improves Quality Scores and relevance scores, reducing costs.
+- **Higher conversion rates** , Trust built through brand exposure reduces friction at conversion.
+- **Lower [CAC](/blog/complete-guide-cac-optimization)** , All of the above combine to reduce acquisition costs over time.
+- **Higher LTV** , Brand-loyal customers retain longer and spend more, improving [LTV:CAC ratios](/blog/cac-ltv-ratio-guide).
 
 Research from Google shows that **brand awareness doubles the effectiveness of performance campaigns.** A user who has seen brand advertising before encountering a performance ad is 2x more likely to convert.
 
@@ -172,18 +172,18 @@ The bridge between ad click and conversion:
 
 ### Leading Indicators (Track Monthly)
 
-- **Branded search volume** — The single best proxy for brand awareness
-- **Direct traffic** — People typing your URL directly
-- **Share of voice** — Your visibility relative to competitors
-- **Social mentions** — Organic brand conversations
-- **Unprompted awareness** — Survey-based (quarterly)
+- **Branded search volume** , The single best proxy for brand awareness
+- **Direct traffic** , People typing your URL directly
+- **Share of voice** , Your visibility relative to competitors
+- **Social mentions** , Organic brand conversations
+- **Unprompted awareness** , Survey-based (quarterly)
 
 ### Lagging Indicators (Track Quarterly)
 
-- **Organic traffic growth** — Brand awareness drives more organic visits
-- **Blended CAC trend** — Strong brands lower acquisition costs over time
-- **Customer acquisition diversity** — Less dependence on any single paid channel
-- **[ROAS trend](/blog/roas-benchmarks-by-industry-2026)** — Brand investment should improve performance ROAS
+- **Organic traffic growth** , Brand awareness drives more organic visits
+- **Blended CAC trend** , Strong brands lower acquisition costs over time
+- **Customer acquisition diversity** , Less dependence on any single paid channel
+- **[ROAS trend](/blog/roas-benchmarks-by-industry-2026)** , Brand investment should improve performance ROAS
 
 ### Marketing Mix Modeling
 

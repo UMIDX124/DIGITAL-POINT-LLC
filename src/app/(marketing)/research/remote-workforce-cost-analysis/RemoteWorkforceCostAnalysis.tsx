@@ -247,7 +247,7 @@ export function RemoteWorkforceCostAnalysis({ faqs }: Props) {
             <div className="space-y-4">
               {[
                 { title: 'Average savings of 59-66% per role', text: 'Managed remote teams cost 59-66% less than equivalent US in-house hires when factoring in total employment cost. The largest savings are in video editing (66%), development (63%), and data analysis (63%).' },
-                { title: 'Quality gap is narrower than expected', text: 'Managed remote teams score 4.3/5 on client satisfaction vs. 4.4/5 for in-house teams — a 2% difference. However, the gap with freelancers is substantial (3.6/5), highlighting the importance of management infrastructure.' },
+                { title: 'Quality gap is narrower than expected', text: 'Managed remote teams score 4.3/5 on client satisfaction vs. 4.4/5 for in-house teams: a 2% difference. However, the gap with freelancers is substantial (3.6/5), highlighting the importance of management infrastructure.' },
                 { title: 'A 10-person remote team saves $768K/year', text: 'Scaling to 10 remote team members saves approximately $768,000 annually compared to US in-house equivalents. This capital can be redirected to ad spend, tools, or additional headcount.' },
                 { title: 'Ramp-up is 2-3x faster with managed teams', text: 'Managed remote teams onboard in 2-3 weeks on average, compared to 4-8 weeks for US in-house hires. Pre-trained specialists and established processes enable faster time-to-productivity.' },
               ].map((finding) => (

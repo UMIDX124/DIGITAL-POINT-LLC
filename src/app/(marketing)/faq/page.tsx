@@ -10,12 +10,12 @@ import type { Metadata } from 'next';
 import { FAQSection } from '@/components/sections/FAQSection';
 
 export const metadata: Metadata = {
-  title: 'FAQ — Digital Point LLC',
+  title: 'FAQ · Digital Point LLC',
   description:
     'Common questions about how Digital Point deploys AI agents, automation, and trained operators that replace operations headcount.',
   alternates: { canonical: 'https://digitalpointllc.com/faq' },
   openGraph: {
-    title: 'FAQ — Digital Point LLC',
+    title: 'FAQ · Digital Point LLC',
     description:
       'Common questions about how Digital Point deploys AI agents, automation, and trained operators that replace operations headcount.',
     url: 'https://digitalpointllc.com/faq',

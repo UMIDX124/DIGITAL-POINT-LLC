@@ -29,7 +29,7 @@ Google Analytics 4 fundamentally changed how attribution works compared to Unive
 | Lookback window | Fixed by model | Configurable (30-90 days) |
 | Conversion counting | One per session | Configurable (once or each) |
 
-The shift from session-based to event-based tracking is particularly important. In UA, a "session" was the unit of analysis — a user visits your site, and the session gets attributed to a source. In GA4, each **event** (page view, form fill, purchase) can have its own attribution, allowing more granular analysis.
+The shift from session-based to event-based tracking is particularly important. In UA, a "session" was the unit of analysis , a user visits your site, and the session gets attributed to a source. In GA4, each **event** (page view, form fill, purchase) can have its own attribution, allowing more granular analysis.
 
 For businesses with **significant paid media budgets** on paid media, understanding GA4's attribution is critical because it directly impacts how you evaluate channel performance and make budget decisions.
 
@@ -53,7 +53,7 @@ Data-driven attribution (DDA) uses machine learning to analyze your actual conve
 - You don't have strong opinions about which model "should" be used
 
 **Limitations of DDA:**
-- It's a black box — you can't see the exact calculation behind credit distribution
+- It's a black box , you can't see the exact calculation behind credit distribution
 - Results change as your data changes (not always consistent month-to-month)
 - It can be biased toward channels with more data points
 - Small conversion volumes produce unreliable results
@@ -123,8 +123,8 @@ GA4 lets you configure two lookback windows:
 
 For each conversion event, decide whether to count:
 
-- **Once per session** — Counts a maximum of one conversion per session (better for lead generation forms where a duplicate submission isn't a new lead)
-- **Every event** — Counts each conversion event separately (better for e-commerce purchases where each transaction is real revenue)
+- **Once per session** , Counts a maximum of one conversion per session (better for lead generation forms where a duplicate submission isn't a new lead)
+- **Every event** , Counts each conversion event separately (better for e-commerce purchases where each transaction is real revenue)
 
 ## Reading GA4 Attribution Reports
 
@@ -159,9 +159,9 @@ Location: **Advertising > Attribution > Conversion paths**
 
 This report shows the actual paths users take before converting. Use it to understand:
 
-- **Average path length** — How many touchpoints does a typical customer interact with before converting?
-- **Common sequences** — Do most customers start with social and end with search? Start with display and end with direct?
-- **Time to conversion** — How many days between first touch and conversion?
+- **Average path length** , How many touchpoints does a typical customer interact with before converting?
+- **Common sequences** , Do most customers start with social and end with search? Start with display and end with direct?
+- **Time to conversion** , How many days between first touch and conversion?
 
 ### The Advertising Snapshot
 
@@ -194,9 +194,9 @@ If you have implemented consent mode (required in the EU and increasingly common
 ### Pitfall 3: Cross-Device Gaps
 
 GA4 offers three identity methods for cross-device tracking:
-- **User-ID** — You provide a logged-in user identifier (most accurate)
-- **Google Signals** — Uses Google account data for signed-in users
-- **Device-ID** — Falls back to client-side IDs (least accurate)
+- **User-ID** , You provide a logged-in user identifier (most accurate)
+- **Google Signals** , Uses Google account data for signed-in users
+- **Device-ID** , Falls back to client-side IDs (least accurate)
 
 If most of your users aren't logged in, GA4 can't accurately track cross-device journeys. A user who clicks an ad on mobile and converts on desktop looks like two separate users.
 
@@ -210,7 +210,7 @@ If your UTM tagging is inconsistent, GA4 categorizes traffic as "(not set)" or p
 
 ### Pitfall 5: Comparing GA4 to Platform Data
 
-GA4 will almost always show fewer conversions per channel than the ad platform itself reports. This isn't a GA4 error — it's a feature. GA4 deduplicates conversions and distributes credit, while platforms claim full credit.
+GA4 will almost always show fewer conversions per channel than the ad platform itself reports. This isn't a GA4 error , it's a feature. GA4 deduplicates conversions and distributes credit, while platforms claim full credit.
 
 **Typical discrepancy ranges:**
 
@@ -264,12 +264,12 @@ Use GA4 Explorations to analyze attribution by user segment:
 
 Attribution data is only valuable if it changes decisions. Here's how to act on GA4 attribution insights:
 
-1. **Quarterly model comparison reviews** — Compare DDA to last-click every quarter. Identify channels that are systematically over or undervalued.
+1. **Quarterly model comparison reviews** , Compare DDA to last-click every quarter. Identify channels that are systematically over or undervalued.
 
-2. **Budget reallocation** — If DDA shows that paid social drives 30% more credited conversions than last-click indicates, test increasing social budget by 10-15%.
+2. **Budget reallocation** , If DDA shows that paid social drives 30% more credited conversions than last-click indicates, test increasing social budget by 10-15%.
 
-3. **Path analysis for creative strategy** — If most conversion paths start with social video, invest in better video creative for the awareness stage.
+3. **Path analysis for creative strategy** , If most conversion paths start with social video, invest in better video creative for the awareness stage.
 
-4. **Funnel optimization** — If paths show a common drop-off point (e.g., users click social ads but don't return from email), optimize that stage.
+4. **Funnel optimization** , If paths show a common drop-off point (e.g., users click social ads but don't return from email), optimize that stage.
 
 If your GA4 attribution data is confusing, inconsistent, or not matching what you see in your ad platforms, your setup may need tuning. **[Get a free growth audit](/free-growth-audit)** from Digital Point LLC, and we will review your GA4 configuration, attribution settings, and tracking implementation to make sure you're getting accurate, actionable data.

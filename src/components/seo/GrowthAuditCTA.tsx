@@ -14,7 +14,7 @@ interface GrowthAuditCTAProps {
 export function GrowthAuditCTA({
   variant = 'banner',
   title = 'Want to find what\'s broken?',
-  description = 'Get a free growth audit. No pitch, no commitment — just clarity on what to fix next.',
+  description = 'Get a free growth audit. No pitch, no commitment: just clarity on what to fix next.',
   className = '',
 }: GrowthAuditCTAProps) {
   if (variant === 'compact') {

@@ -36,6 +36,11 @@ export default function ChatPanel({ open, onClose }: Props) {
 
   useEffect(() => {
     if (!open) return;
+    // 350ms skeleton flash, then auto-focus the input. This is a
+    // panel-open side-effect-driven animation, not derived state, so the
+    // initial setShowSkeleton(true) is intentional rather than a
+    // cascading-render anti-pattern.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setShowSkeleton(true);
     const t1 = setTimeout(() => setShowSkeleton(false), 350);
     const t2 = setTimeout(() => inputRef.current?.focus(), 450);

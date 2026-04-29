@@ -11,7 +11,7 @@ faqs:
   - question: "How do you calculate customer lifetime value?"
     answer: "The simplest LTV formula is: Average Revenue Per Customer x Average Customer Lifespan. For subscription businesses, it is: Average Monthly Revenue Per Customer x Average Customer Lifespan in Months. For more accuracy, factor in gross margin: LTV = (Average Revenue Per Customer x Gross Margin %) x Average Customer Lifespan. Advanced calculations also include expansion revenue (upsells, cross-sells), referral value, and apply a discount rate for the time value of money. Start with the simple formula and add complexity as your data matures."
   - question: "Should I optimize for lower CAC or higher LTV?"
-    answer: "Both, but the order matters. First, ensure your CAC is reasonable relative to your industry benchmarks — eliminate obvious waste and inefficiency. Then shift focus to LTV, which has no upper limit. A company with $100 CAC and $1,000 LTV (10:1 ratio) is in a much stronger position than one with $10 CAC and $30 LTV (3:1 ratio). The highest-growth companies focus primarily on LTV through better retention, upselling, and customer experience, while maintaining CAC discipline through systematic optimization."
+    answer: "Both, but the order matters. First, ensure your CAC is reasonable relative to your industry benchmarks , eliminate obvious waste and inefficiency. Then shift focus to LTV, which has no upper limit. A company with $100 CAC and $1,000 LTV (10:1 ratio) is in a much stronger position than one with $10 CAC and $30 LTV (3:1 ratio). The highest-growth companies focus primarily on LTV through better retention, upselling, and customer experience, while maintaining CAC discipline through systematic optimization."
 ---
 
 ## Why CAC-to-LTV Ratio Is the Metric That Matters Most
@@ -61,10 +61,10 @@ Example: If your LTV is $900 and your CAC is $300, your ratio is 3:1.
 | Ratio | What It Means | Action Required |
 |---|---|---|
 | Less than 1:1 | Losing money on every customer | Stop spending and fix fundamentals |
-| 1:1 to 2:1 | Breaking even or barely profitable | Optimize urgently — reduce CAC and/or increase LTV |
+| 1:1 to 2:1 | Breaking even or barely profitable | Optimize urgently , reduce CAC and/or increase LTV |
 | 2:1 to 3:1 | Healthy but room for improvement | Continue optimizing, consider scaling |
 | 3:1 to 5:1 | Strong unit economics | Scale aggressively while maintaining ratio |
-| Above 5:1 | Excellent — but possibly underinvesting | You can likely afford to spend more on acquisition |
+| Above 5:1 | Excellent , but possibly underinvesting | You can likely afford to spend more on acquisition |
 
 **Important nuance:** A ratio above 5:1 isn't always better. It may indicate you're being too conservative with marketing spend and leaving growth on the table. In competitive markets, the company with the higher CAC tolerance often wins because they can outbid and outspend competitors.
 
@@ -92,11 +92,11 @@ Example: If your CAC is $300 and your monthly gross profit per customer is $50, 
 
 | Payback Period | Assessment |
 |---|---|
-| Under 6 months | Excellent — scale aggressively |
-| 6-12 months | Good — healthy business |
+| Under 6 months | Excellent , scale aggressively |
+| 6-12 months | Good , healthy business |
 | 12-18 months | Acceptable for high-LTV businesses |
-| 18-24 months | Risky — need strong retention |
-| Over 24 months | Dangerous — cash flow risk is high |
+| 18-24 months | Risky , need strong retention |
+| Over 24 months | Dangerous , cash flow risk is high |
 
 The payback period matters because a 5:1 LTV:CAC ratio is meaningless if it takes 5 years to realize that value and your customers churn at 30% per year. Cash flow matters.
 
@@ -104,7 +104,7 @@ The payback period matters because a 5:1 LTV:CAC ratio is meaningless if it take
 
 ### Mistake 1: Using Revenue Instead of Gross Profit
 
-If your product has a 50% gross margin, using revenue-based LTV inflates your ratio by 2x. A 4:1 revenue ratio is really a 2:1 profit ratio — barely sustainable.
+If your product has a 50% gross margin, using revenue-based LTV inflates your ratio by 2x. A 4:1 revenue ratio is really a 2:1 profit ratio , barely sustainable.
 
 ### Mistake 2: Overestimating Customer Lifespan
 
@@ -220,12 +220,12 @@ This shows the Starter plan may not be sustainable at current CAC levels, sugges
 
 Track these metrics on a monthly basis:
 
-1. **Blended LTV:CAC ratio** — overall health check
-2. **Channel-specific LTV:CAC** — for budget allocation
-3. **Cohort LTV curves** — track how each month's customers generate value over time
-4. **CAC payback period** — for cash flow management
-5. **Gross margin adjusted ratio** — the true economic picture
-6. **Ratio trend** — 3-month rolling average, is it improving or degrading?
+1. **Blended LTV:CAC ratio** , overall health check
+2. **Channel-specific LTV:CAC** , for budget allocation
+3. **Cohort LTV curves** , track how each month's customers generate value over time
+4. **CAC payback period** , for cash flow management
+5. **Gross margin adjusted ratio** , the true economic picture
+6. **Ratio trend** , 3-month rolling average, is it improving or degrading?
 
 Set alerts for when your ratio drops below your minimum acceptable threshold (typically 2:1).
 

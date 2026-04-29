@@ -38,7 +38,7 @@ const fallbackArticles = [
   {
     slug: 'remote-team-playbook',
     title: 'The Remote Team Playbook: How We Build High-Output Teams Across Time Zones',
-    excerpt: 'Building a remote workforce isn\'t about finding cheap labor — it\'s about creating systems that let distributed teams operate at enterprise speed.',
+    excerpt: 'Building a remote workforce isn\'t about finding cheap labor. It\'s about creating systems that let distributed teams operate at enterprise speed.',
     category: 'Remote Workforce' as BlogCategory,
     readTime: '8 min read',
     date: '2025-02-20',
@@ -71,7 +71,7 @@ const fallbackArticles = [
   {
     slug: 'ai-powered-lead-qualification',
     title: 'AI-Powered Lead Qualification: What Works and What Doesn\'t',
-    excerpt: 'We integrated AI agents into our client\'s lead pipeline. The results were surprising — both good and bad.',
+    excerpt: 'We integrated AI agents into our client\'s lead pipeline. The results were surprising, both good and bad.',
     category: 'Growth Systems' as BlogCategory,
     readTime: '6 min read',
     date: '2024-11-20',
@@ -120,12 +120,10 @@ export function BlogListPage({ posts, categories, categoryMeta }: Props) {
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
               Field notes from running{' '}
-              <span className="bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FF8800] bg-clip-text text-transparent">
-                AI in production
-              </span>
+              <span style={{ color: 'var(--accent-bright)' }}>AI in production</span>
             </h1>
             <p className="text-[color:var(--text-primary)] text-lg md:text-xl max-w-2xl leading-relaxed">
-              What works, what breaks, and what we ship next. Agent stacks, automation engineering, operator workflows — from the team running them daily.
+              What works, what breaks, and what we ship next. Agent stacks, automation engineering, operator workflows, from the team running them daily.
             </p>
           </FadeUp>
         </Container>

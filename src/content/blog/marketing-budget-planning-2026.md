@@ -20,7 +20,7 @@ faqs:
 
 Marketing budget planning is where strategy meets financial reality. The best marketing strategy in the world fails without adequate funding, and the largest budget in the world fails without strategic allocation. Getting both right is what separates companies that grow efficiently from those that either stall or burn cash.
 
-In 2026, budget planning is more complex than ever. Channel costs are rising—[CPMs are up 12-18%](/blog/cpm-trends-2026) across major platforms. Privacy changes continue to impact targeting and measurement. AI tools are reshaping creative production costs. And the proliferation of channels means more allocation decisions than any previous year.
+In 2026, budget planning is more complex than ever. Channel costs are rising,[CPMs are up 12-18%](/blog/cpm-trends-2026) across major platforms. Privacy changes continue to impact targeting and measurement. AI tools are reshaping creative production costs. And the proliferation of channels means more allocation decisions than any previous year.
 
 This guide provides a data-driven framework for planning your 2026 marketing budget, from total spend calculation through channel allocation and ongoing optimization.
 
@@ -238,7 +238,7 @@ Track these metrics to ensure your budget is working hard:
 
 **Mistake 1: Copying last year's budget.** Markets change. What worked last year may not work this year. Start with current data, not historical allocations.
 
-**Mistake 2: Cutting brand during downturns.** Companies that maintain or increase marketing spend during recessions gain market share that compounds for years after. Cut wisely—reduce inefficient spend, not all spend.
+**Mistake 2: Cutting brand during downturns.** Companies that maintain or increase marketing spend during recessions gain market share that compounds for years after. Cut wisely,reduce inefficient spend, not all spend.
 
 **Mistake 3: No testing budget.** Without dedicated experimental budget, teams optimize within known channels and miss breakthrough opportunities on emerging platforms.
 

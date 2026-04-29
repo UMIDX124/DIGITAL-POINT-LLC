@@ -16,7 +16,7 @@ faqs:
 
 ## Why Client-Side Tracking Is No Longer Enough
 
-For over a decade, marketers relied on JavaScript pixels—small code snippets that fire in the user's browser—to track conversions. This approach worked well when browsers were cooperative and users didn't block tracking.
+For over a decade, marketers relied on JavaScript pixels,small code snippets that fire in the user's browser,to track conversions. This approach worked well when browsers were cooperative and users didn't block tracking.
 
 Those days are over.
 
@@ -28,7 +28,7 @@ Today, **30-40% of marketing events are lost** before they reach your analytics 
 - **Cookie consent banners** delay or prevent pixel fires in GDPR jurisdictions
 - **Browser crashes and slow connections** cause pixels to fail silently
 
-The result? Your attribution data is a partial picture at best. And partial data leads to bad decisions—cutting channels that actually work, overinvesting in channels that look good but deliver less than reported.
+The result? Your attribution data is a partial picture at best. And partial data leads to bad decisions,cutting channels that actually work, overinvesting in channels that look good but deliver less than reported.
 
 **Server-side tracking solves this** by moving data collection from the browser to your server, where ad blockers and privacy features can't interfere.
 
@@ -86,10 +86,10 @@ Meta's Conversions API is the highest-impact server-side implementation for most
 
 **Critical CAPI implementation details:**
 
-- **Event deduplication is essential** — Use matching `event_id` values between browser pixel and CAPI events so Meta doesn't double-count
-- **User data parameters improve match rates** — Pass hashed email, phone number, and external ID for better user matching
-- **Event Match Quality (EMQ) score** — Aim for 6.0 or higher in Events Manager; below 4.0 indicates poor user matching
-- **Test events before going live** — Use Meta's Test Events tool to verify events are received correctly
+- **Event deduplication is essential** , Use matching `event_id` values between browser pixel and CAPI events so Meta doesn't double-count
+- **User data parameters improve match rates** , Pass hashed email, phone number, and external ID for better user matching
+- **Event Match Quality (EMQ) score** , Aim for 6.0 or higher in Events Manager; below 4.0 indicates poor user matching
+- **Test events before going live** , Use Meta's Test Events tool to verify events are received correctly
 
 ### Priority 2: Google Enhanced Conversions
 
@@ -113,7 +113,7 @@ Google's Enhanced Conversions is a simpler form of server-side enrichment that s
 
 Server-side GTM provides a centralized server-side tracking infrastructure that can serve all your platforms from one container.
 
-**Expected impact:** Comprehensive—improves tracking across all platforms simultaneously
+**Expected impact:** Comprehensive,improves tracking across all platforms simultaneously
 
 **Architecture:**
 
@@ -131,10 +131,10 @@ Server-side GTM provides a centralized server-side tracking infrastructure that 
 
 **Benefits beyond attribution:**
 
-- **Faster page loads** — Fewer scripts running in the browser
-- **Better data control** — You see and control all data leaving your server
-- **Privacy compliance** — Easier to manage consent and data processing
-- **Unified tracking** — One server-side container handles all platforms
+- **Faster page loads** , Fewer scripts running in the browser
+- **Better data control** , You see and control all data leaving your server
+- **Privacy compliance** , Easier to manage consent and data processing
+- **Unified tracking** , One server-side container handles all platforms
 
 ### Priority 4: TikTok Events API
 
@@ -189,18 +189,18 @@ If you send events both client-side (pixel) and server-side (API), you must dedu
 3. The platform matches events by `event_id` and counts them once
 4. If the pixel fires but the API fails, the pixel event counts (and vice versa)
 
-**Without deduplication,** you'll see conversion counts roughly double—which inflates your ROAS and leads to bad optimization decisions.
+**Without deduplication,** you'll see conversion counts roughly double,which inflates your ROAS and leads to bad optimization decisions.
 
 ### Maximize User Match Rates
 
 Server-side events are only useful if the platform can match them to the right user. Improve match rates by passing:
 
-- **Hashed email address** — The single most important matching parameter
-- **Hashed phone number** — Secondary matching, especially valuable for mobile-first audiences
-- **Client IP address** — For probabilistic matching
-- **User agent string** — For device-level matching
-- **Click IDs** (fbclid, gclid, ttclid) — For deterministic click attribution
-- **External/customer ID** — For CRM-based matching
+- **Hashed email address** , The single most important matching parameter
+- **Hashed phone number** , Secondary matching, especially valuable for mobile-first audiences
+- **Client IP address** , For probabilistic matching
+- **User agent string** , For device-level matching
+- **Click IDs** (fbclid, gclid, ttclid) , For deterministic click attribution
+- **External/customer ID** , For CRM-based matching
 
 All personal data should be **SHA-256 hashed** before transmission (most platform SDKs handle this automatically).
 
@@ -209,9 +209,9 @@ All personal data should be **SHA-256 hashed** before transmission (most platfor
 Server-side tracking introduces complexity. Validate everything:
 
 1. **Use platform test/debug tools** to verify events arrive correctly
-2. **Compare client-side vs. server-side event counts** — Server-side should show 15-30% more events
-3. **Check deduplication** — Total events should NOT be the sum of client + server
-4. **Verify revenue values** — Ensure purchase events pass correct amounts
+2. **Compare client-side vs. server-side event counts** , Server-side should show 15-30% more events
+3. **Check deduplication** , Total events should NOT be the sum of client + server
+4. **Verify revenue values** , Ensure purchase events pass correct amounts
 5. **Monitor for 30 days** before adjusting budgets based on new data
 
 ### Plan for Consent Compliance
@@ -229,10 +229,10 @@ After implementing server-side tracking, measure the improvement:
 
 ### Metrics to Track
 
-- **Conversion recovery rate** — How many additional conversions are captured server-side vs. client-side only?
-- **Event Match Quality** — Meta's score for CAPI user matching (target 6.0+)
-- **Attribution accuracy** — How closely do attributed conversions match actual revenue?
-- **Ad platform optimization** — Are campaigns optimizing better with more conversion data?
+- **Conversion recovery rate** , How many additional conversions are captured server-side vs. client-side only?
+- **Event Match Quality** , Meta's score for CAPI user matching (target 6.0+)
+- **Attribution accuracy** , How closely do attributed conversions match actual revenue?
+- **Ad platform optimization** , Are campaigns optimizing better with more conversion data?
 
 ### Expected Timeline
 
@@ -245,10 +245,10 @@ Most companies see the biggest impact on **Meta campaigns**, where the combinati
 
 ## Common Implementation Mistakes
 
-1. **Forgetting deduplication** — This is the number one mistake and it completely distorts your data
-2. **Not passing enough user parameters** — Low match rates mean server-side events get dropped
-3. **Implementing for one platform only** — If you track Meta server-side but not Google, your cross-platform attribution is still skewed
-4. **Ignoring event naming consistency** — Server-side events must use the same naming as client-side for deduplication to work
-5. **Not monitoring after launch** — Server-side tracking can break silently; build monitoring alerts
+1. **Forgetting deduplication** , This is the number one mistake and it completely distorts your data
+2. **Not passing enough user parameters** , Low match rates mean server-side events get dropped
+3. **Implementing for one platform only** , If you track Meta server-side but not Google, your cross-platform attribution is still skewed
+4. **Ignoring event naming consistency** , Server-side events must use the same naming as client-side for deduplication to work
+5. **Not monitoring after launch** , Server-side tracking can break silently; build monitoring alerts
 
-Server-side tracking is no longer an advanced technique—it's a baseline requirement for accurate marketing measurement. The investment in implementation pays for itself through better data, smarter optimization, and more accurate ROAS calculations that let you scale with confidence.
+Server-side tracking is no longer an advanced technique,it's a baseline requirement for accurate marketing measurement. The investment in implementation pays for itself through better data, smarter optimization, and more accurate ROAS calculations that let you scale with confidence.

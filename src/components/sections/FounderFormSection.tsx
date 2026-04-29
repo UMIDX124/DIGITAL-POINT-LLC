@@ -378,7 +378,7 @@ function FounderContactForm() {
 
       <div className="flex flex-col items-center justify-center gap-2 pt-2 text-center">
         <p className="text-[color:var(--text-muted)] text-xs leading-relaxed" style={{ maxWidth: '32rem' }}>
-          Routed directly to the operator best matched to your stage — not a ticket pool. We answer from personal accounts.
+          Routed directly to the operator best matched to your stage, not a ticket pool. We answer from personal accounts.
         </p>
         <a
           href="https://linkedin.com/company/digitalpointllc"
@@ -416,7 +416,7 @@ export function FounderFormSection() {
         <SectionHeader
           eyebrow="Get Started"
           title="Two ways to connect"
-          description="Whether you want a structured audit or a direct conversation — we're here."
+          description="Whether you want a structured audit or a direct conversation, we're here."
         />
 
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">

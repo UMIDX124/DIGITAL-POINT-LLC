@@ -11,7 +11,7 @@ faqs:
   - question: "What is the minimum budget for TikTok Ads?"
     answer: "TikTok's minimum campaign budget is $50/day and minimum ad group budget is $20/day. However, to get meaningful data for optimization, we recommend at least $100-$150 per day per ad group, which translates to roughly $3,000-$4,500 per month for a single campaign. For proper testing across multiple audiences and creative variations, plan for $5,000-$10,000 per month. Below these levels, you don't generate enough data for TikTok's algorithm to optimize effectively."
   - question: "How is TikTok Ads creative different from Meta Ads creative?"
-    answer: "TikTok requires native-feeling content that blends with organic posts. Polished, branded video ads that work on Meta typically underperform on TikTok. Key differences: TikTok videos should be vertical (9:16), feel authentic and unscripted, feature real people (not stock footage), use trending audio when relevant, hook viewers in the first 1-2 seconds, and keep the pace fast with scene changes every 2-3 seconds. The TikTok mantra is 'Don't make ads, make TikToks' — this isn't just marketing speak, it genuinely reflects what performs on the platform."
+    answer: "TikTok requires native-feeling content that blends with organic posts. Polished, branded video ads that work on Meta typically underperform on TikTok. Key differences: TikTok videos should be vertical (9:16), feel authentic and unscripted, feature real people (not stock footage), use trending audio when relevant, hook viewers in the first 1-2 seconds, and keep the pace fast with scene changes every 2-3 seconds. The TikTok mantra is 'Don't make ads, make TikToks' , this isn't just marketing speak, it genuinely reflects what performs on the platform."
 ---
 
 ## TikTok Advertising in 2026: The Opportunity
@@ -94,8 +94,8 @@ TikTok is a creative-first platform. The quality and relevance of your video con
 **The hook (first 1-2 seconds):**
 - Open with motion, sound, or a provocative statement
 - Address the viewer directly: "Hey, did you know..."
-- Start mid-action — don't ease in
-- Use on-screen text immediately — many users browse without sound initially
+- Start mid-action , don't ease in
+- Use on-screen text immediately , many users browse without sound initially
 
 **The body (3-20 seconds):**
 - Show the product in use, not just the product itself
@@ -158,7 +158,7 @@ Budget $500-$5,000 per creator depending on their reach and production quality.
 
 TikTok's algorithm needs approximately 50 conversions per ad group to complete the learning phase. During learning:
 
-- Performance will be volatile — don't make changes
+- Performance will be volatile , don't make changes
 - CPAs will be higher than your eventual steady state
 - Avoid editing ad groups, which resets learning
 - Budget at least $100-$150/day per ad group to exit learning within 1-2 weeks
@@ -176,7 +176,7 @@ TikTok's algorithm needs approximately 50 conversions per ad group to complete t
 - Replace creative with declining engagement (CTR dropping week over week)
 
 **Iterate constantly:**
-- Analyze your top performers — what makes them work?
+- Analyze your top performers , what makes them work?
 - Create variations of winning concepts (different hooks, different CTAs)
 - Test new formats every month (static vs. video, UGC vs. produced)
 
@@ -192,7 +192,7 @@ TikTok Shop has transformed e-commerce advertising on the platform in 2026:
 **TikTok Shop best practices:**
 - Optimize product listings with keyword-rich titles and descriptions
 - Use high-quality product images and demonstration videos
-- Set competitive pricing — TikTok users are comparison shoppers
+- Set competitive pricing , TikTok users are comparison shoppers
 - Leverage flash sales and limited-time offers for urgency
 - Encourage creator partnerships to drive organic product visibility
 

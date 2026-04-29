@@ -20,7 +20,7 @@ faqs:
 
 Here's an uncomfortable truth: **78% of marketing dashboards go unused within 90 days of creation.** They get built with enthusiasm, presented once in a meeting, and then slowly fade into irrelevance as teams revert to pulling data manually from individual platforms.
 
-The problem isn't the tools. The problem is that most dashboards are built to display data rather than drive decisions. A wall of charts showing impressions, clicks, and sessions might look impressive, but if it doesn't answer the questions your leadership team actually asks, it's decoration—not a decision-making tool.
+The problem isn't the tools. The problem is that most dashboards are built to display data rather than drive decisions. A wall of charts showing impressions, clicks, and sessions might look impressive, but if it doesn't answer the questions your leadership team actually asks, it's decoration,not a decision-making tool.
 
 The CMO dashboards that survive and actually influence strategy share a common trait: they're built around specific business questions, not available metrics. This guide breaks down exactly which KPIs belong on your dashboard, how to organize them, and how to build a reporting system that people actually use.
 
@@ -54,13 +54,13 @@ This dashboard helps marketing directors and channel leads optimize performance 
 **Essential channel KPIs:**
 
 - **Cost Per Lead (CPL)** by channel and campaign
-- **[ROAS by channel](/blog/roas-benchmarks-by-industry-2026)** — including Google, Meta, LinkedIn, TikTok
+- **[ROAS by channel](/blog/roas-benchmarks-by-industry-2026)** , including Google, Meta, LinkedIn, TikTok
 - **Conversion rate by channel** at each funnel stage
 - **Impression share and SOV** (share of voice)
 - **Click-through rates** relative to benchmarks
 - **[Quality Score](/blog/google-ads-quality-score-guide)** for search campaigns
-- **Attribution-adjusted performance** — not just last-click
-- **Channel-specific CAC** — the true cost including creative, management, and tools
+- **Attribution-adjusted performance** , not just last-click
+- **Channel-specific CAC** , the true cost including creative, management, and tools
 
 This level is where [cross-channel attribution](/blog/cross-channel-attribution) becomes critical. Without it, you're comparing channels on different playing fields.
 
@@ -111,7 +111,7 @@ MER is gaining popularity as a complement to ROAS because it accounts for organi
 
 **Formula:** (Number of Opportunities × Average Deal Value × Win Rate) / Sales Cycle Length
 
-Pipeline velocity tells you how fast money moves through your funnel. It's particularly valuable because improving any of the four variables improves velocity—giving you multiple levers to pull.
+Pipeline velocity tells you how fast money moves through your funnel. It's particularly valuable because improving any of the four variables improves velocity,giving you multiple levers to pull.
 
 ### 6. CAC Payback Period
 
@@ -162,7 +162,7 @@ Measure not just pageviews, but meaningful engagement: time on page, scroll dept
 
 ### 15. Attribution Model Comparison
 
-Track how different attribution models score the same channels. Large discrepancies between [first-click and last-click](/blog/first-click-vs-last-click-attribution) credit indicate channels that play different roles in the funnel—and opportunities for optimization.
+Track how different attribution models score the same channels. Large discrepancies between [first-click and last-click](/blog/first-click-vs-last-click-attribution) credit indicate channels that play different roles in the funnel,and opportunities for optimization.
 
 ## Building Your Dashboard: Technical Architecture
 
@@ -170,22 +170,22 @@ Track how different attribution models score the same channels. Large discrepanc
 
 A functional marketing dashboard pulls from multiple sources:
 
-- **Ad platforms** — Google Ads, Meta Ads, LinkedIn, TikTok
-- **Analytics** — GA4, Mixpanel, or Amplitude
-- **CRM** — Salesforce, HubSpot, Pipedrive
-- **Marketing automation** — Marketo, Pardot, HubSpot
-- **Attribution platform** — Northbeam, Triple Whale, HockeyStack
-- **Financial data** — For accurate CAC calculations
+- **Ad platforms** , Google Ads, Meta Ads, LinkedIn, TikTok
+- **Analytics** , GA4, Mixpanel, or Amplitude
+- **CRM** , Salesforce, HubSpot, Pipedrive
+- **Marketing automation** , Marketo, Pardot, HubSpot
+- **Attribution platform** , Northbeam, Triple Whale, HockeyStack
+- **Financial data** , For accurate CAC calculations
 
 ### Dashboard Tool Selection
 
 **For most teams, these tools work well:**
 
-- **Looker Studio (free)** — Good for GA4 and Google Ads integration
-- **Tableau** — Enterprise-grade with excellent visualization
-- **Databox** — Purpose-built for marketing dashboards
-- **Klipfolio/PowerMetrics** — Solid mid-market option
-- **dbt + Looker** — For teams with engineering resources wanting a [data warehouse approach](/blog/marketing-data-warehouse-guide)
+- **Looker Studio (free)** , Good for GA4 and Google Ads integration
+- **Tableau** , Enterprise-grade with excellent visualization
+- **Databox** , Purpose-built for marketing dashboards
+- **Klipfolio/PowerMetrics** , Solid mid-market option
+- **dbt + Looker** , For teams with engineering resources wanting a [data warehouse approach](/blog/marketing-data-warehouse-guide)
 
 ### Refresh Frequency Best Practices
 
@@ -233,11 +233,11 @@ Lagging indicators (revenue, CAC, ROAS) tell you what already happened. Leading 
 
 The best dashboard in the world is useless if nobody looks at it. Build a culture of data-driven decision-making:
 
-1. **Start every meeting with the dashboard** — make it the first thing reviewed
-2. **Assign metric owners** — every KPI should have one person accountable
-3. **Create escalation triggers** — define thresholds that require action
-4. **Review and iterate** — remove KPIs nobody acts on, add ones people keep asking about
-5. **Invest in [reporting automation](/blog/marketing-reporting-automation)** — reduce manual work so the team focuses on analysis
+1. **Start every meeting with the dashboard** , make it the first thing reviewed
+2. **Assign metric owners** , every KPI should have one person accountable
+3. **Create escalation triggers** , define thresholds that require action
+4. **Review and iterate** , remove KPIs nobody acts on, add ones people keep asking about
+5. **Invest in [reporting automation](/blog/marketing-reporting-automation)** , reduce manual work so the team focuses on analysis
 
 The Digital Point LLC [Systems & Reporting](/systems-reporting) team builds custom dashboards for marketing teams that connect all data sources and surface the metrics that actually drive decisions.
 

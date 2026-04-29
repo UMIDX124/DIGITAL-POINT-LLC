@@ -18,7 +18,7 @@ faqs:
 
 ## What Is Dynamic Creative Optimization?
 
-Dynamic Creative Optimization (DCO) is the technology that enables advertisers to serve personalized ad creatives to individual users in real-time, without manually creating thousands of ad variations. Instead of building one ad and showing it to everyone, DCO assembles the optimal combination of creative elements—headline, image, body copy, CTA, offer—based on who's viewing the ad and what context they're in.
+Dynamic Creative Optimization (DCO) is the technology that enables advertisers to serve personalized ad creatives to individual users in real-time, without manually creating thousands of ad variations. Instead of building one ad and showing it to everyone, DCO assembles the optimal combination of creative elements,headline, image, body copy, CTA, offer,based on who's viewing the ad and what context they're in.
 
 Think of it as modular advertising. You provide the building blocks (10 headlines, 8 images, 5 CTAs, 4 offers), and the DCO engine assembles and tests every possible combination to find what works best for each audience segment. With those numbers, that's **1,600 unique ad variations** generated automatically from just 27 creative elements.
 

@@ -20,7 +20,7 @@ faqs:
 
 The agency vs. in-house debate is one of the most consequential decisions a growing company makes. Choose wrong and you either overpay for mediocre results or under-invest in critical capabilities. Yet most companies make this decision based on assumptions rather than data.
 
-The playing field has also changed dramatically. The rise of [remote marketing teams](/remote-workforce) has created a third option that combines the talent depth of agencies with the integration and cost structure of in-house teams. In 2026, the decision isn't binary—it's a spectrum of models, each with distinct cost structures and tradeoffs.
+The playing field has also changed dramatically. The rise of [remote marketing teams](/remote-workforce) has created a third option that combines the talent depth of agencies with the integration and cost structure of in-house teams. In 2026, the decision isn't binary,it's a spectrum of models, each with distinct cost structures and tradeoffs.
 
 This guide provides a transparent, numbers-based comparison across all three models: traditional agency, US-based in-house, and remote workforce. We'll break down costs, capabilities, and outcomes so you can make a decision grounded in financial reality.
 
@@ -37,7 +37,7 @@ This guide provides a transparent, numbers-based comparison across all three mod
 | Enterprise | $25,000-$100,000+ | Full-service, dedicated team, advanced analytics |
 
 **Percentage-of-spend pricing:**
-Some agencies charge 10-20% of ad spend as management fees. For a company spending $50,000/month on ads, that's $5,000-$10,000 in management fees alone—before creative, strategy, or reporting.
+Some agencies charge 10-20% of ad spend as management fees. For a company spending $50,000/month on ads, that's $5,000-$10,000 in management fees alone,before creative, strategy, or reporting.
 
 ### Hidden Agency Costs
 
@@ -91,7 +91,7 @@ The retainer is rarely the full picture:
 | Content Writer/Strategist | $65,000-$100,000 | $84,000-$130,000 |
 | Marketing Operations | $80,000-$120,000 | $104,000-$156,000 |
 
-**Fully loaded cost multiplier:** Add 30% to base salary for benefits, taxes, equipment, office space, and overhead. This multiplier is conservative—some analyses put it at 40-50%.
+**Fully loaded cost multiplier:** Add 30% to base salary for benefits, taxes, equipment, office space, and overhead. This multiplier is conservative,some analyses put it at 40-50%.
 
 **Minimum viable team example:**
 - Director of Marketing: $220,000 fully loaded
@@ -175,7 +175,7 @@ This represents a **60% savings** versus the full US in-house team while maintai
 - Requires strong management systems and processes
 - Less spontaneous collaboration than co-located teams
 - Need reliable onboarding and training programs
-- Quality varies—requires careful vetting and [hiring practices](/blog/hiring-remote-marketing-team)
+- Quality varies,requires careful vetting and [hiring practices](/blog/hiring-remote-marketing-team)
 
 ## Side-by-Side Cost Comparison
 

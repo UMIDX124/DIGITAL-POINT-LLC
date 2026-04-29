@@ -9,7 +9,7 @@ faqs:
   - question: "What is the average ROAS across all industries?"
     answer: "The overall average ROAS across all industries and channels in 2026 is approximately 2.5-3.5x. However, this number varies enormously by industry, channel, and campaign type. Brand search campaigns often achieve 10-20x ROAS, while prospecting campaigns on social may deliver 1.5-3x. E-commerce tends to have higher measurable ROAS because purchases happen online and are easily tracked. B2B companies often see lower apparent ROAS because their conversion events (leads, demos) require additional steps before revenue is generated."
   - question: "Why is my ROAS lower than industry benchmarks?"
-    answer: "Common reasons for below-benchmark ROAS include: tracking and attribution issues (you may be underreporting conversions), poor campaign structure that doesn't separate brand from non-brand performance, creative fatigue from running the same ads too long, landing pages that don't match ad messaging, targeting that's too broad, bidding strategies that aren't optimized for value, and insufficient conversion data for algorithmic bidding to work effectively. Start by auditing your tracking setup — many companies are simply not capturing all their conversions."
+    answer: "Common reasons for below-benchmark ROAS include: tracking and attribution issues (you may be underreporting conversions), poor campaign structure that doesn't separate brand from non-brand performance, creative fatigue from running the same ads too long, landing pages that don't match ad messaging, targeting that's too broad, bidding strategies that aren't optimized for value, and insufficient conversion data for algorithmic bidding to work effectively. Start by auditing your tracking setup , many companies are simply not capturing all their conversions."
   - question: "How do ROAS benchmarks differ between prospecting and retargeting?"
     answer: "Retargeting ROAS is typically 3-5x higher than prospecting ROAS. This is expected because retargeting reaches people who already know your brand. The mistake many advertisers make is shifting too much budget to retargeting because of its high ROAS, which shrinks the retargeting audience pool over time and eventually decreases overall performance. A healthy split is typically 60-80% prospecting and 20-40% retargeting, depending on your sales cycle length. Judge prospecting on its own benchmarks, not against retargeting numbers."
 ---
@@ -117,7 +117,7 @@ At Digital Point LLC, we manage millions in ad spend across dozens of industries
 | Recruiting | 5-10x | 15x+ | Precise targeting drives efficiency |
 | Education (B2B) | 3-6x | 10x+ | Content-first approach works best |
 
-**Key insight:** LinkedIn's high CPCs ($8-15) are justified for B2B companies with high average contract values. A $15 CPC converting at 3% yields a $500 cost per lead — which is excellent for a company selling $50k+ contracts.
+**Key insight:** LinkedIn's high CPCs ($8-15) are justified for B2B companies with high average contract values. A $15 CPC converting at 3% yields a $500 cost per lead , which is excellent for a company selling $50k+ contracts.
 
 ### YouTube Ads ROAS
 
@@ -210,7 +210,7 @@ Improving conversion rate is the single best ROAS improvement. Test landing page
 
 ### Step 5: Use Data to Allocate Budget
 
-Shift budget toward campaigns and channels with the highest marginal ROAS. Not the highest average ROAS — the highest return on the next dollar spent.
+Shift budget toward campaigns and channels with the highest marginal ROAS. Not the highest average ROAS , the highest return on the next dollar spent.
 
 ## Get Your ROAS Benchmarked
 

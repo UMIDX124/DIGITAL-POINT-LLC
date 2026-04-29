@@ -45,7 +45,7 @@ export function CACCalculator({ faqs }: Props) {
             <Breadcrumbs items={[{ label: 'Tools', href: '/tools' }, { label: 'CAC Calculator', href: '/tools/cac-calculator' }]} />
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mt-6">
               CAC{' '}
-              <span className="bg-gradient-to-r from-[#FF8800] via-[#FF8800] to-[#FFA833] bg-clip-text text-transparent">Calculator</span>
+              <span style={{ color: 'var(--accent-bright)' }}>Calculator</span>
             </h1>
             <p className="text-[color:var(--text-primary)] text-lg mt-3 max-w-2xl">
               Calculate your Customer Acquisition Cost and LTV:CAC ratio to measure growth efficiency.
@@ -115,7 +115,7 @@ export function CACCalculator({ faqs }: Props) {
                   <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
                     <span className="text-[color:var(--text-muted)] text-sm">Customer Acquisition Cost</span>
                     <p className="font-display text-3xl font-bold text-[color:var(--accent-primary)] mt-1">
-                      {cac > 0 ? `$${cac.toFixed(0)}` : '—'}
+                      {cac > 0 ? `$${cac.toFixed(0)}` : '·'}
                     </p>
                   </div>
 
@@ -134,11 +134,11 @@ export function CACCalculator({ faqs }: Props) {
                   <div className="grid grid-cols-2 gap-3">
                     <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
                       <span className="text-[color:var(--text-muted)] text-xs">Total Spend</span>
-                      <p className="font-display text-lg font-bold text-white mt-1">{totalSpend > 0 ? `$${totalSpend.toLocaleString()}` : '—'}</p>
+                      <p className="font-display text-lg font-bold text-white mt-1">{totalSpend > 0 ? `$${totalSpend.toLocaleString()}` : '·'}</p>
                     </div>
                     <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
                       <span className="text-[color:var(--text-muted)] text-xs">Payback Period</span>
-                      <p className="font-display text-lg font-bold text-white mt-1">{paybackMonths > 0 ? `${paybackMonths.toFixed(1)} mo` : '—'}</p>
+                      <p className="font-display text-lg font-bold text-white mt-1">{paybackMonths > 0 ? `${paybackMonths.toFixed(1)} mo` : '·'}</p>
                     </div>
                   </div>
                 </div>

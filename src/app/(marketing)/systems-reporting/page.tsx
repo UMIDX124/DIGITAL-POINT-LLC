@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     'Attribution, dashboards, CRM structure, and marketing automation. The infrastructure that lets you make decisions with confidence.',
   openGraph: {
-    title: 'Systems & Reporting — Digital Point LLC',
+    title: 'Systems & Reporting · Digital Point LLC',
     description:
       'Attribution, dashboards, CRM structure, and marketing automation for growth companies.',
     url: 'https://digitalpointllc.com/systems-reporting',

@@ -15,7 +15,7 @@ const contactMethods = [
     title: 'Talk to Cosmo',
     value: 'Open the chat',
     href: '#cosmo-open',
-    description: 'Cosmo routes your inquiry to the operator best matched to your stage. Not a ticket pool — a direct line.',
+    description: 'Cosmo routes your inquiry to the operator best matched to your stage. Not a ticket pool: a direct line.',
     isCosmo: true,
   },
   {
@@ -37,7 +37,7 @@ const contactMethods = [
 ];
 
 const officeDetails = [
-  { icon: MapPin, label: 'Location', value: 'United States — Global Remote Operations' },
+  { icon: MapPin, label: 'Location', value: 'United States, global remote operations' },
   { icon: Clock, label: 'Response Time', value: 'One business day, from a personal account' },
 ];
 
@@ -79,12 +79,10 @@ export function ContactPage() {
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
               We actually{' '}
-              <span className="bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FF8800] bg-clip-text text-transparent">
-                read every message
-              </span>
+              <span style={{ color: 'var(--accent-bright)' }}>read every message</span>
             </h1>
             <p className="text-[color:var(--text-primary)] text-lg md:text-xl max-w-2xl leading-relaxed">
-              We don&apos;t list a generic support inbox. Most agencies hide behind a hello@ queue where your message lines up with everyone else&apos;s. We don&apos;t run that way. Reach out through Cosmo or the audit form — your inquiry routes directly to the operator best matched to your stage, not a ticket pool. We answer from our personal accounts because we&apos;re personally accountable for what we ship.
+              We don&apos;t list a generic support inbox. Most agencies hide behind a hello@ queue where your message lines up with everyone else&apos;s. We don&apos;t run that way. Reach out through Cosmo or the audit form. Your inquiry routes directly to the operator best matched to your stage, not a ticket pool. We answer from our personal accounts because we&apos;re personally accountable for what we ship.
             </p>
           </FadeUp>
         </Container>
@@ -151,7 +149,7 @@ export function ContactPage() {
                   }}
                 >
                   <p className="text-white font-display font-semibold mb-2">Want a free growth audit instead?</p>
-                  <p className="text-[color:var(--text-primary)] text-sm mb-3">Get a structured review of your marketing, systems, and team — in under 48 hours.</p>
+                  <p className="text-[color:var(--text-primary)] text-sm mb-3">Get a structured review of your marketing, systems, and team, in under 48 hours.</p>
                   <Link href="/free-growth-audit" className="inline-flex items-center gap-1 text-[color:var(--accent-primary)] hover:text-[color:var(--accent-bright)] text-sm font-medium transition-colors">
                     Start your audit <ArrowRight className="w-4 h-4" />
                   </Link>

@@ -4,12 +4,12 @@ import { FAQSchema } from '@/components/seo/FAQSchema';
 import { DashboardCostCalculator } from './DashboardCostCalculator';
 
 export const metadata: Metadata = {
-  title: 'Marketing Dashboard Cost Calculator — Estimate Build vs Buy Costs',
+  title: 'Marketing Dashboard Cost Calculator: Estimate Build vs Buy Costs',
   description: 'Calculate the true cost of building a custom marketing dashboard vs buying off-the-shelf. Compare tools like Looker, Tableau, Power BI, and custom solutions.',
   keywords: ['marketing dashboard cost', 'dashboard calculator', 'looker cost', 'tableau pricing', 'custom dashboard cost', 'marketing reporting cost'],
   alternates: { canonical: 'https://digitalpointllc.com/tools/dashboard-cost-calculator' },
   openGraph: {
-    title: 'Marketing Dashboard Cost Calculator — Digital Point LLC',
+    title: 'Marketing Dashboard Cost Calculator · Digital Point LLC',
     description: 'Estimate the true cost of your marketing dashboard: build vs buy, team costs, and tool licensing.',
   },
 };

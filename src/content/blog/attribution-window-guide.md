@@ -18,7 +18,7 @@ faqs:
 
 An **attribution window** (sometimes called a lookback window or conversion window) defines the time period after someone interacts with your ad during which any resulting conversion gets credited to that ad. It's one of the most important settings in your ad accounts, yet most marketers never change the defaults.
 
-Here's why that matters. If your attribution window is set to 7 days and a customer clicks your ad, browses your site, thinks about it for 10 days, and then buys — that sale never shows up in your ad reporting. As far as the platform is concerned, the ad didn't work. But it did.
+Here's why that matters. If your attribution window is set to 7 days and a customer clicks your ad, browses your site, thinks about it for 10 days, and then buys , that sale never shows up in your ad reporting. As far as the platform is concerned, the ad didn't work. But it did.
 
 For businesses with **meaningful paid media budgets** on paid media, misconfigured attribution windows can hide millions in revenue and lead to catastrophically wrong optimization decisions.
 
@@ -38,13 +38,13 @@ Every major ad platform has its own default attribution settings, and they're no
 | Snapchat | 28 days | 1 day | 28 days |
 | Microsoft Ads | 30 days | N/A | 90 days |
 
-Notice the inconsistency. If you're comparing Meta performance to Google Ads performance using default settings, you're comparing a 7-day click window against a 30-day click window. Google will naturally report more conversions — not because it performs better, but because it has a longer period to claim credit.
+Notice the inconsistency. If you're comparing Meta performance to Google Ads performance using default settings, you're comparing a 7-day click window against a 30-day click window. Google will naturally report more conversions , not because it performs better, but because it has a longer period to claim credit.
 
 ### Click-Through vs. View-Through Windows
 
 Attribution windows typically have two components:
 
-**Click-through attribution** credits conversions that happen after someone clicks your ad. This is the more straightforward measurement — someone clicked, then they converted.
+**Click-through attribution** credits conversions that happen after someone clicks your ad. This is the more straightforward measurement , someone clicked, then they converted.
 
 **View-through attribution** credits conversions that happen after someone sees your ad but doesn't click it. The user saw your display ad, didn't click, but later visited your site and converted. The ad gets partial credit.
 
@@ -56,7 +56,7 @@ The default attribution window on any platform is set to benefit the platform, n
 
 ### The Undercounting Problem
 
-After Meta shortened its default window from 28-day click to 7-day click, many advertisers saw reported conversions drop by 20-40% overnight — even though actual sales hadn't changed. The ads were still working; the reporting window was just too short to capture the full impact.
+After Meta shortened its default window from 28-day click to 7-day click, many advertisers saw reported conversions drop by 20-40% overnight , even though actual sales hadn't changed. The ads were still working; the reporting window was just too short to capture the full impact.
 
 This is particularly damaging for:
 
@@ -217,13 +217,13 @@ The combination you choose should reflect your business goals. If you need to ju
 
 No attribution window captures everything. Here are supplementary measurement approaches:
 
-**Incrementality testing** — Run holdout tests to measure the true lift of your ads, independent of attribution window settings.
+**Incrementality testing** , Run holdout tests to measure the true lift of your ads, independent of attribution window settings.
 
-**Marketing mix modeling (MMM)** — Use statistical models that correlate marketing spend with business outcomes at an aggregate level, bypassing window limitations entirely.
+**Marketing mix modeling (MMM)** , Use statistical models that correlate marketing spend with business outcomes at an aggregate level, bypassing window limitations entirely.
 
-**Post-purchase surveys** — Ask customers how they heard about you. This qualitative data fills gaps that pixel-based attribution misses.
+**Post-purchase surveys** , Ask customers how they heard about you. This qualitative data fills gaps that pixel-based attribution misses.
 
-**Matched market tests** — Compare performance in markets where you run ads versus similar markets where you don't.
+**Matched market tests** , Compare performance in markets where you run ads versus similar markets where you don't.
 
 ## Getting Your Attribution Windows Right
 

@@ -88,7 +88,7 @@ export function AutomationOrbit() {
     <div
       className="automation-orbit"
       role="img"
-      aria-label="Digital Point operating loop — Cosmo coordinates four nodes: Lead Trigger feeds AI Score, which routes to Operator, which updates CRM as state of truth."
+      aria-label="Digital Point operating loop. Cosmo coordinates four nodes: Lead Trigger feeds AI Score, which routes to Operator, which updates CRM as state of truth."
     >
       <svg
         className="automation-orbit-svg"
@@ -169,7 +169,7 @@ export function AutomationOrbit() {
               role="img"
               aria-label={`${n.label}: ${n.tip}`}
             >
-              <title>{`${n.label} — ${n.tip}`}</title>
+              <title>{`${n.label}: ${n.tip}`}</title>
             </circle>
           ))}
 
@@ -224,7 +224,7 @@ export function AutomationOrbit() {
           role="img"
           aria-label="Cosmo: AI orchestrator coordinating the loop"
         >
-          <title>Cosmo — AI orchestrator coordinating the loop</title>
+          <title>Cosmo: AI orchestrator coordinating the loop</title>
         </circle>
         <text
           x={CX}

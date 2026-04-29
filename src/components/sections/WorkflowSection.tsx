@@ -83,7 +83,6 @@ export function WorkflowSection() {
               {[150, 450, 750, 1050].map((cx, i) => (
                 <g key={cx} data-workflow-node>
                   <circle cx={cx} cy="110" r="28" fill="var(--bg-primary)" stroke="var(--accent)" strokeWidth="1.5" />
-                  <circle cx={cx} cy="110" r="10" fill="var(--accent-bright)" opacity="0.25" />
                   <circle cx={cx} cy="110" r="6" fill="var(--accent-bright)" />
                   <text
                     x={cx}

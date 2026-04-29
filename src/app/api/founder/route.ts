@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
     try {
       await sendEmail({
         to: 'ADMIN@DIGITALPOINTLLC.COM',
-        subject: `Founder Contact — ${escapeHtml(name)}`,
+        subject: `Founder Contact: ${escapeHtml(name)}`,
         replyTo: email,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0B; color: #F5F1E8; padding: 32px; border-radius: 12px;">

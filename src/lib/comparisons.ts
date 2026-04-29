@@ -58,7 +58,7 @@ export const comparisons: Comparison[] = [
       ],
     },
     comparisonRows: [
-      { category: 'User Intent', optionA: 'High — users are actively searching', optionB: 'Low to medium — users are browsing' },
+      { category: 'User Intent', optionA: 'High , users are actively searching', optionB: 'Low to medium , users are browsing' },
       { category: 'Best For', optionA: 'Capturing existing demand', optionB: 'Generating new demand' },
       { category: 'Average CPC', optionA: '$1-$5+ (varies widely by industry)', optionB: '$0.50-$2 (generally lower)' },
       { category: 'Targeting Method', optionA: 'Keywords, audiences, demographics', optionB: 'Audiences, interests, behaviors, lookalikes' },
@@ -66,7 +66,7 @@ export const comparisons: Comparison[] = [
       { category: 'Attribution', optionA: 'Strong for last-click', optionB: 'Weakened by iOS privacy changes' },
     ],
     recommendation:
-      'For most businesses, the answer isn\'t either/or — it\'s both, with budget allocation driven by data. Here\'s the thing: Google Ads should be your priority when you\'ve got strong search demand and need bottom-of-funnel conversions. Facebook Ads should lead when you need to build awareness, reach new audiences, or when your product benefits from visual storytelling. We help clients build cross-platform strategies where both channels reinforce each other.',
+      'For most businesses, the answer isn\'t either/or , it\'s both, with budget allocation driven by data. Here\'s the thing: Google Ads should be your priority when you\'ve got strong search demand and need bottom-of-funnel conversions. Facebook Ads should lead when you need to build awareness, reach new audiences, or when your product benefits from visual storytelling. We help clients build cross-platform strategies where both channels reinforce each other.',
   },
   {
     slug: 'first-click-vs-last-click-attribution',
@@ -114,7 +114,7 @@ export const comparisons: Comparison[] = [
       { category: 'Platform Default', optionA: 'Rarely used as default', optionB: 'Default for most ad platforms' },
     ],
     recommendation:
-      'The truth is, neither first-click nor last-click attribution tells the full story. We recommend moving to a multi-touch attribution model that distributes credit across the entire customer journey. If you must choose between these two, use last-click for short sales cycles and first-click for longer consideration periods — but recognize that both are oversimplifications. Our attribution services help clients implement data-driven models that reflect how customers actually convert.',
+      'The truth is, neither first-click nor last-click attribution tells the full story. We recommend moving to a multi-touch attribution model that distributes credit across the entire customer journey. If you must choose between these two, use last-click for short sales cycles and first-click for longer consideration periods , but recognize that both are oversimplifications. Our attribution services help clients implement data-driven models that reflect how customers actually convert.',
   },
   {
     slug: 'in-house-vs-agency-marketing',
@@ -144,7 +144,7 @@ export const comparisons: Comparison[] = [
       pros: [
         'Access to specialized expertise across multiple platforms and verticals',
         'Lower total cost than equivalent in-house headcount for most companies',
-        'Scalable — ramp up or down without hiring and firing cycles',
+        'Scalable , ramp up or down without hiring and firing cycles',
         'Cross-client insights and benchmarks that inform better strategy',
         'Established processes, tools, and playbooks from day one',
       ],
@@ -163,7 +163,7 @@ export const comparisons: Comparison[] = [
       { category: 'Brand Knowledge', optionA: 'Deep and inherent', optionB: 'Requires onboarding and ongoing alignment' },
     ],
     recommendation:
-      'The best approach for most growth-stage companies is a hybrid model: maintain core marketing leadership in-house while partnering with an agency for specialized execution and platform expertise. This gives you strategic control with tactical excellence. As a remote-first agency, Digital Point LLC integrates closely with in-house teams — providing the expertise of an agency with the responsiveness of an internal partner.',
+      'The best approach for most growth-stage companies is a hybrid model: maintain core marketing leadership in-house while partnering with an agency for specialized execution and platform expertise. This gives you strategic control with tactical excellence. As a remote-first agency, Digital Point LLC integrates closely with in-house teams , providing the expertise of an agency with the responsiveness of an internal partner.',
   },
   {
     slug: 'google-analytics-vs-custom-dashboards',
@@ -212,7 +212,7 @@ export const comparisons: Comparison[] = [
       { category: 'Ease of Use', optionA: 'Moderate (GA4 has a learning curve)', optionB: 'High once built (designed for your team)' },
     ],
     recommendation:
-      'Use Google Analytics as a foundational data source, but don\'t rely on it as your primary reporting tool. Custom dashboards that pull from GA, ad platforms, CRM, and revenue data give you the complete picture you need to make budget and strategy decisions. Our marketing dashboard service builds exactly this — unified views that turn scattered data into actionable intelligence.',
+      'Use Google Analytics as a foundational data source, but don\'t rely on it as your primary reporting tool. Custom dashboards that pull from GA, ad platforms, CRM, and revenue data give you the complete picture you need to make budget and strategy decisions. Our marketing dashboard service builds exactly this , unified views that turn scattered data into actionable intelligence.',
   },
   {
     slug: 'manual-vs-automated-bidding',
@@ -228,7 +228,7 @@ export const comparisons: Comparison[] = [
         'Complete control over bid amounts at the keyword and placement level',
         'No reliance on algorithms that may not understand your business context',
         'Useful for small accounts or campaigns with limited conversion data',
-        'Transparent — you know exactly what you\'re bidding and why',
+        'Transparent , you know exactly what you\'re bidding and why',
       ],
       cons: [
         'Extremely time-intensive to manage at scale',
@@ -250,18 +250,18 @@ export const comparisons: Comparison[] = [
         'Requires sufficient conversion data to function well (typically 30+ conversions per month)',
         'Less transparency into why specific bid decisions are made',
         'Learning periods can cause performance volatility during transitions',
-        'Garbage in, garbage out — poor conversion tracking undermines automation',
+        'Garbage in, garbage out , poor conversion tracking undermines automation',
       ],
     },
     comparisonRows: [
       { category: 'Control', optionA: 'Full manual control', optionB: 'Algorithm-driven with guardrails' },
       { category: 'Scalability', optionA: 'Limited by human capacity', optionB: 'Handles any account size' },
       { category: 'Data Requirement', optionA: 'Works with any data volume', optionB: 'Needs 30+ conversions/month minimum' },
-      { category: 'Reaction Speed', optionA: 'Delayed — requires manual review', optionB: 'Real-time auction-level adjustments' },
+      { category: 'Reaction Speed', optionA: 'Delayed , requires manual review', optionB: 'Real-time auction-level adjustments' },
       { category: 'Best For', optionA: 'Small accounts, limited data', optionB: 'Mature accounts with good conversion tracking' },
     ],
     recommendation:
-      'For most accounts spending over $5,000/month with reliable conversion tracking, automated bidding outperforms manual management. The key is ensuring your conversion tracking is accurate and your goals are properly configured — automated bidding amplifies whatever signal you feed it. We help clients transition to automated strategies with proper guardrails, monitoring, and the clean data foundation these algorithms need to succeed.',
+      'For most accounts spending over $5,000/month with reliable conversion tracking, automated bidding outperforms manual management. The key is ensuring your conversion tracking is accurate and your goals are properly configured , automated bidding amplifies whatever signal you feed it. We help clients transition to automated strategies with proper guardrails, monitoring, and the clean data foundation these algorithms need to succeed.',
   },
   {
     slug: 'brand-vs-performance-marketing',
@@ -270,7 +270,7 @@ export const comparisons: Comparison[] = [
     description:
       'Understand the differences between brand marketing and performance marketing and learn how to balance both for sustainable business growth.',
     intro:
-      'Brand marketing builds long-term awareness, trust, and preference. Performance marketing drives measurable, attributable actions like clicks, leads, and purchases. The tension between these two approaches is one of the oldest debates in marketing — and the answer has never been more nuanced than it is today.',
+      'Brand marketing builds long-term awareness, trust, and preference. Performance marketing drives measurable, attributable actions like clicks, leads, and purchases. The tension between these two approaches is one of the oldest debates in marketing , and the answer has never been more nuanced than it is today.',
     optionA: {
       name: 'Brand Marketing',
       pros: [
@@ -291,7 +291,7 @@ export const comparisons: Comparison[] = [
       pros: [
         'Directly measurable ROI on every dollar spent',
         'Immediate results and fast feedback loops',
-        'Scalable — invest more when it works, pull back when it doesn\'t',
+        'Scalable , invest more when it works, pull back when it doesn\'t',
         'Clear accountability with transparent cost-per-acquisition metrics',
       ],
       cons: [
@@ -303,13 +303,13 @@ export const comparisons: Comparison[] = [
     },
     comparisonRows: [
       { category: 'Time to Impact', optionA: 'Months to years', optionB: 'Days to weeks' },
-      { category: 'Measurability', optionA: 'Indirect — brand lift studies, surveys', optionB: 'Direct — CPA, ROAS, conversion rate' },
+      { category: 'Measurability', optionA: 'Indirect , brand lift studies, surveys', optionB: 'Direct , CPA, ROAS, conversion rate' },
       { category: 'Sustainability', optionA: 'Compounds over time', optionB: 'Stops when spend stops' },
       { category: 'Budget Flexibility', optionA: 'Requires consistent investment', optionB: 'Can scale up or down quickly' },
       { category: 'Risk', optionA: 'Slow payback period', optionB: 'Platform dependency and rising costs' },
     ],
     recommendation:
-      'The most resilient growth strategies combine both. Performance marketing delivers the near-term results and cash flow that fund brand building, while brand marketing reduces long-term acquisition costs and creates organic demand. We focus primarily on performance marketing but always advocate for balanced investment — because the brands that win long-term are the ones that invest in both.',
+      'The most resilient growth strategies combine both. Performance marketing delivers the near-term results and cash flow that fund brand building, while brand marketing reduces long-term acquisition costs and creates organic demand. We focus primarily on performance marketing but always advocate for balanced investment , because the brands that win long-term are the ones that invest in both.',
   },
   {
     slug: 'seo-vs-ppc',
@@ -322,13 +322,13 @@ export const comparisons: Comparison[] = [
     optionA: {
       name: 'SEO',
       pros: [
-        'Compounding returns — content assets continue driving traffic without ongoing ad spend',
+        'Compounding returns , content assets continue driving traffic without ongoing ad spend',
         'Higher trust and click-through rates for organic results',
         'No per-click costs once rankings are established',
         'Builds domain authority that benefits all pages over time',
       ],
       cons: [
-        'Slow to produce results — typically 3-12 months for meaningful traffic',
+        'Slow to produce results , typically 3-12 months for meaningful traffic',
         'Requires ongoing content creation, technical maintenance, and link building',
         'Algorithm updates can cause sudden ranking drops',
         'Difficult to target specific conversion actions with precision',
@@ -352,9 +352,9 @@ export const comparisons: Comparison[] = [
     comparisonRows: [
       { category: 'Time to Results', optionA: '3-12 months', optionB: 'Immediate' },
       { category: 'Ongoing Cost', optionA: 'Content and maintenance costs', optionB: 'Per-click costs plus management fees' },
-      { category: 'Long-Term Value', optionA: 'High — compounding traffic asset', optionB: 'None — stops when spend stops' },
-      { category: 'Targeting Precision', optionA: 'Moderate — keyword and topic based', optionB: 'High — keyword, audience, location, device' },
-      { category: 'Conversion Control', optionA: 'Limited — depends on organic landing page', optionB: 'Full — custom landing pages per campaign' },
+      { category: 'Long-Term Value', optionA: 'High , compounding traffic asset', optionB: 'None , stops when spend stops' },
+      { category: 'Targeting Precision', optionA: 'Moderate , keyword and topic based', optionB: 'High , keyword, audience, location, device' },
+      { category: 'Conversion Control', optionA: 'Limited , depends on organic landing page', optionB: 'Full , custom landing pages per campaign' },
     ],
     recommendation:
       'Invest in PPC for immediate results and revenue while building SEO as a long-term asset. The ideal approach uses PPC data (high-converting keywords, top-performing messaging) to inform your SEO content strategy, creating a flywheel where both channels strengthen each other. As a performance marketing agency, we manage PPC campaigns while helping clients understand which search terms warrant organic investment.',
@@ -399,14 +399,14 @@ export const comparisons: Comparison[] = [
       ],
     },
     comparisonRows: [
-      { category: 'Accuracy', optionA: 'Low — only one touchpoint credited', optionB: 'High — full journey visibility' },
+      { category: 'Accuracy', optionA: 'Low , only one touchpoint credited', optionB: 'High , full journey visibility' },
       { category: 'Implementation Complexity', optionA: 'Low', optionB: 'Moderate to high' },
       { category: 'Data Requirement', optionA: 'Minimal', optionB: 'Cross-channel tracking and identity resolution' },
-      { category: 'Budget Allocation Quality', optionA: 'Poor — biased toward one stage', optionB: 'Strong — informed by full journey' },
-      { category: 'Stakeholder Clarity', optionA: 'High — easy to understand', optionB: 'Moderate — requires education' },
+      { category: 'Budget Allocation Quality', optionA: 'Poor , biased toward one stage', optionB: 'Strong , informed by full journey' },
+      { category: 'Stakeholder Clarity', optionA: 'High , easy to understand', optionB: 'Moderate , requires education' },
     ],
     recommendation:
-      'Honestly, multi-touch attribution is the clear winner for any business serious about optimizing marketing spend. Single-touch models are acceptable only as a temporary starting point. We help clients implement multi-touch attribution systems that connect ad platform data, CRM records, and revenue outcomes — giving you the full picture of what\'s working and what isn\'t.',
+      'Honestly, multi-touch attribution is the clear winner for any business serious about optimizing marketing spend. Single-touch models are acceptable only as a temporary starting point. We help clients implement multi-touch attribution systems that connect ad platform data, CRM records, and revenue outcomes , giving you the full picture of what\'s working and what isn\'t.',
   },
   {
     slug: 'google-ads-vs-microsoft-ads',
@@ -419,7 +419,7 @@ export const comparisons: Comparison[] = [
     optionA: {
       name: 'Google Ads',
       pros: [
-        'Massive reach — over 90% of global search volume',
+        'Massive reach , over 90% of global search volume',
         'Most advanced machine learning and automated bidding capabilities',
         'Extensive ad formats including Shopping, Performance Max, and YouTube',
         'Largest keyword inventory and audience targeting options',
@@ -434,14 +434,14 @@ export const comparisons: Comparison[] = [
     optionB: {
       name: 'Microsoft Ads',
       pros: [
-        'Lower CPCs — often 20-40% less than Google for the same keywords',
+        'Lower CPCs , often 20-40% less than Google for the same keywords',
         'Older, higher-income demographic skew that benefits many B2B and premium brands',
         'LinkedIn profile targeting integration for B2B campaigns',
         'Easy campaign import from Google Ads for fast setup',
         'Less competition means better ad positions at lower cost',
       ],
       cons: [
-        'Significantly smaller search volume — roughly 6-8% of global search',
+        'Significantly smaller search volume , roughly 6-8% of global search',
         'Fewer ad formats and automation features compared to Google',
         'Smaller audience limits scaling potential',
         'Platform updates and features lag behind Google by months or years',
@@ -450,12 +450,12 @@ export const comparisons: Comparison[] = [
     comparisonRows: [
       { category: 'Search Market Share', optionA: '~90% globally', optionB: '~6-8% globally' },
       { category: 'Average CPC', optionA: 'Higher (more competitive)', optionB: '20-40% lower on average' },
-      { category: 'Audience Demographics', optionA: 'Broad — all demographics', optionB: 'Skews older, higher income' },
+      { category: 'Audience Demographics', optionA: 'Broad , all demographics', optionB: 'Skews older, higher income' },
       { category: 'B2B Targeting', optionA: 'Audience-based targeting', optionB: 'LinkedIn profile targeting available' },
       { category: 'Automation', optionA: 'Industry-leading AI and automation', optionB: 'Improving but still behind Google' },
     ],
     recommendation:
-      'Run both — seriously. Google Ads should be your primary search advertising platform given its reach and capabilities, but Microsoft Ads offers incremental conversions at lower CPCs that improve your blended efficiency. We typically recommend allocating 10-20% of search budget to Microsoft Ads once Google campaigns are optimized, using campaign import to minimize additional management overhead.',
+      'Run both , seriously. Google Ads should be your primary search advertising platform given its reach and capabilities, but Microsoft Ads offers incremental conversions at lower CPCs that improve your blended efficiency. We typically recommend allocating 10-20% of search budget to Microsoft Ads once Google campaigns are optimized, using campaign import to minimize additional management overhead.',
   },
   {
     slug: 'remote-vs-in-house-marketing-team',
@@ -464,12 +464,12 @@ export const comparisons: Comparison[] = [
     description:
       'Compare the effectiveness, cost, and operational trade-offs of remote marketing teams versus traditional in-house marketing departments.',
     intro:
-      'The shift to remote work has fundamentally changed how companies build marketing teams. A remote marketing team — whether internal employees working remotely or an outsourced partner — offers access to global talent and cost advantages. An in-house team co-located in your office provides proximity and cultural integration. Here\'s how to think about the trade-offs.',
+      'The shift to remote work has fundamentally changed how companies build marketing teams. A remote marketing team , whether internal employees working remotely or an outsourced partner , offers access to global talent and cost advantages. An in-house team co-located in your office provides proximity and cultural integration. Here\'s how to think about the trade-offs.',
     optionA: {
       name: 'Remote Marketing Team',
       pros: [
         'Access to global talent not limited by geographic proximity',
-        'Significantly lower costs — especially when leveraging international expertise',
+        'Significantly lower costs , especially when leveraging international expertise',
         'Flexible scaling without the overhead of office space and local hiring',
         'Asynchronous workflows that can increase productivity and output',
         'Diverse perspectives from team members across different markets',
@@ -490,21 +490,21 @@ export const comparisons: Comparison[] = [
         'Physical presence enables spontaneous strategic discussions',
       ],
       cons: [
-        'Limited to local talent pool — especially challenging in smaller markets',
+        'Limited to local talent pool , especially challenging in smaller markets',
         'Higher fully-loaded costs including office space, benefits, and equipment',
         'Less flexibility to scale up or down based on business needs',
         'Risk of echo chamber without exposure to external best practices',
       ],
     },
     comparisonRows: [
-      { category: 'Talent Pool', optionA: 'Global — access to top talent anywhere', optionB: 'Local — limited by geography' },
-      { category: 'Cost', optionA: 'Lower — no office overhead, global rates', optionB: 'Higher — salary, benefits, office, equipment' },
+      { category: 'Talent Pool', optionA: 'Global , access to top talent anywhere', optionB: 'Local , limited by geography' },
+      { category: 'Cost', optionA: 'Lower , no office overhead, global rates', optionB: 'Higher , salary, benefits, office, equipment' },
       { category: 'Communication', optionA: 'Async-first with structured check-ins', optionB: 'Real-time and informal' },
-      { category: 'Scalability', optionA: 'High — add or reduce capacity quickly', optionB: 'Low — hiring and firing cycles' },
+      { category: 'Scalability', optionA: 'High , add or reduce capacity quickly', optionB: 'Low , hiring and firing cycles' },
       { category: 'Cultural Integration', optionA: 'Requires intentional effort', optionB: 'Natural through proximity' },
     ],
     recommendation:
-      'In our experience, remote marketing teams deliver equal or better results than co-located teams when supported by clear communication structures, documented processes, and the right collaboration tools. As a remote-first performance marketing agency, Digital Point LLC has built its entire operating model around this approach — delivering enterprise-level paid media management and marketing intelligence to US-based clients through a highly skilled, globally distributed team.',
+      'In our experience, remote marketing teams deliver equal or better results than co-located teams when supported by clear communication structures, documented processes, and the right collaboration tools. As a remote-first performance marketing agency, Digital Point LLC has built its entire operating model around this approach , delivering enterprise-level paid media management and marketing intelligence to US-based clients through a highly skilled, globally distributed team.',
   },
 ];
 

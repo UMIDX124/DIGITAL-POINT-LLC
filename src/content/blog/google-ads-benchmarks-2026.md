@@ -1,6 +1,6 @@
 ---
 title: "Google Ads Benchmarks 2026: CPC, CTR, and Conversion Rates by Industry"
-excerpt: "The most comprehensive Google Ads benchmarks for 2026 — CPC, CTR, conversion rate, and cost per conversion data across 15+ industries for Search, Shopping, Display, and YouTube."
+excerpt: "The most comprehensive Google Ads benchmarks for 2026 , CPC, CTR, conversion rate, and cost per conversion data across 15+ industries for Search, Shopping, Display, and YouTube."
 category: "Paid Ads Benchmarks"
 tags: ["Google Ads benchmarks", "CPC benchmarks", "CTR benchmarks", "conversion rate benchmarks", "2026 benchmarks"]
 date: "2025-11-03"
@@ -80,7 +80,7 @@ These benchmarks are compiled from Digital Point LLC client data and industry re
 | Travel | 2.5% | 4.5%+ | Booking |
 | Technology | 2.5% | 4.5%+ | Lead form, download |
 | Retail | 3.5% | 6%+ | Purchase |
-| Overall Average | 3.8% | 6.5%+ | — |
+| Overall Average | 3.8% | 6.5%+ | , |
 
 ### Cost Per Conversion by Industry
 
@@ -112,7 +112,7 @@ These benchmarks are compiled from Digital Point LLC client data and industry re
 | Pet Products | $0.45-$0.85 | 1.0-1.8% | 2.5-4.0% | 4.0-6.5x |
 | Jewelry | $0.70-$1.40 | 0.7-1.2% | 1.0-2.0% | 3.0-5.5x |
 
-**Key insight:** Google Shopping CPCs remain the most cost-effective way to drive e-commerce purchases. Product feed optimization — particularly titles, images, and pricing — has the biggest impact on Shopping performance.
+**Key insight:** Google Shopping CPCs remain the most cost-effective way to drive e-commerce purchases. Product feed optimization , particularly titles, images, and pricing , has the biggest impact on Shopping performance.
 
 ## Google Display Network Benchmarks 2026
 
@@ -164,11 +164,11 @@ Compare your account metrics against the benchmarks for your industry. Focus on 
 
 ### Step 2: Find Your Biggest Gaps
 
-If your CTR is average but your CVR is below average, the opportunity is in conversion rate optimization — landing pages, offers, and post-click experience. If your CPC is above average but CVR is strong, the opportunity is in Quality Score and bidding optimization.
+If your CTR is average but your CVR is below average, the opportunity is in conversion rate optimization , landing pages, offers, and post-click experience. If your CPC is above average but CVR is strong, the opportunity is in Quality Score and bidding optimization.
 
 ### Step 3: Set Targets
 
-Use the top quartile as your 90-day target. Moving from average to top quartile typically requires improvement in ad copy, landing pages, targeting, and bidding — but every improvement compounds.
+Use the top quartile as your 90-day target. Moving from average to top quartile typically requires improvement in ad copy, landing pages, targeting, and bidding , but every improvement compounds.
 
 ### Step 4: Prioritize by Impact
 
@@ -188,7 +188,7 @@ Google's automated bidding and targeting features (Performance Max, Broad Match 
 
 ### Rising CPCs
 
-CPCs are increasing across every industry, driven by more competition and reduced ad inventory on some queries. The response is better efficiency — higher Quality Scores, better conversion rates, and tighter targeting.
+CPCs are increasing across every industry, driven by more competition and reduced ad inventory on some queries. The response is better efficiency , higher Quality Scores, better conversion rates, and tighter targeting.
 
 ### Privacy and Measurement
 

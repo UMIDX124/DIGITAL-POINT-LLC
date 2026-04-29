@@ -25,7 +25,7 @@ The numbers are stark:
 - **Conversion rates** increase 20-50% during peak buying seasons
 - **The top 25% of seasonal planners** generate 40-60% of annual revenue during peak periods
 
-The brands that win seasonal peaks aren't the ones that spend the most — they're the ones that plan the best.
+The brands that win seasonal peaks aren't the ones that spend the most , they're the ones that plan the best.
 
 ## The Seasonal Marketing Calendar
 
@@ -211,9 +211,9 @@ Allocate your annual ad budget with seasonality in mind:
 
 ### Meta Ads
 
-- **Build audiences 4-6 weeks early** — warm audiences convert 2-3x better during peak
+- **Build audiences 4-6 weeks early** , warm audiences convert 2-3x better during peak
 - **Increase prospecting budget before peak** when CPMs are 30-50% lower
-- **Prepare 5x more creative than usual** — frequency burns through creative faster during peak
+- **Prepare 5x more creative than usual** , frequency burns through creative faster during peak
 - **Use Advantage+ Shopping campaigns** for e-commerce seasonal pushes
 - **Set cost caps** to protect against CPM spikes
 
@@ -247,12 +247,12 @@ The most meaningful seasonal benchmark is your own performance last year:
 
 | Metric | This Year | Last Year | Change |
 |--------|----------|----------|--------|
-| Total seasonal revenue | — | — | — |
-| Total seasonal spend | — | — | — |
-| Blended ROAS | — | — | — |
-| Peak period CPA | — | — | — |
-| New customers acquired | — | — | — |
-| Email list growth | — | — | — |
+| Total seasonal revenue | , | , | , |
+| Total seasonal spend | , | , | , |
+| Blended ROAS | , | , | , |
+| Peak period CPA | , | , | , |
+| New customers acquired | , | , | , |
+| Email list growth | , | , | , |
 
 ### Customer Lifetime Value Consideration
 

@@ -7,7 +7,7 @@ date: "2025-11-19"
 author: "Anwaar Tayyab"
 faqs:
   - question: "What is a good ROAS for Google Ads?"
-    answer: "For Google Search non-brand campaigns, a good ROAS is 3-5x for e-commerce and 4-8x pipeline value for B2B. Google Shopping typically delivers 3-7x. Brand campaigns often achieve 10-25x. Your target depends on your margins — calculate your breakeven ROAS (1 divided by gross margin percentage) and aim for 50-100% above that. At Digital Point LLC, we consider anything above 4x blended ROAS on Google Ads to be strong performance for most industries."
+    answer: "For Google Search non-brand campaigns, a good ROAS is 3-5x for e-commerce and 4-8x pipeline value for B2B. Google Shopping typically delivers 3-7x. Brand campaigns often achieve 10-25x. Your target depends on your margins , calculate your breakeven ROAS (1 divided by gross margin percentage) and aim for 50-100% above that. At Digital Point LLC, we consider anything above 4x blended ROAS on Google Ads to be strong performance for most industries."
   - question: "Should I use Target ROAS or Target CPA bidding on Google Ads?"
     answer: "Use Target ROAS if you sell products with varying prices and want to optimize for revenue. Use Target CPA if your conversion values are roughly equal (like lead generation where each lead has similar value). Both require at least 30 conversions per month per campaign to work effectively. If you have fewer conversions, start with Maximize Conversions or Maximize Conversion Value to build up data, then switch to target-based strategies once you have enough volume."
   - question: "How quickly can I improve my Google Ads ROAS?"
@@ -22,11 +22,11 @@ The difference between a 2x and a 6x ROAS on Google Ads comes down to optimizati
 
 ## Strategy 1: Ruthlessly Manage Your Search Term Report
 
-The search term report is where money goes to die — or to thrive. Every week, you should:
+The search term report is where money goes to die , or to thrive. Every week, you should:
 
 - Download search terms for the past 7 days
 - Add irrelevant terms as negative keywords (exact match negatives for specific terms, phrase match for patterns)
-- Identify high-converting terms that aren't in your keyword list — add them as dedicated keywords
+- Identify high-converting terms that aren't in your keyword list , add them as dedicated keywords
 - Flag terms with high spend and no conversions for exclusion
 
 **Benchmark:** Top-performing Google Ads accounts typically have 500-2,000 negative keywords. If you have fewer than 200, there's waste hiding in your search terms.
@@ -54,12 +54,12 @@ Loose keyword groupings lead to generic ad copy that doesn't match search intent
 - Keywords: marketing automation, email marketing tool, marketing analytics platform, CRM software
 
 **After (optimized structure):**
-- Ad Group 1: "Marketing Automation" — keywords and ads focused on automation
-- Ad Group 2: "Email Marketing Tool" — keywords and ads focused on email
-- Ad Group 3: "Marketing Analytics" — keywords and ads focused on analytics
-- Ad Group 4: "CRM Software" — keywords and ads focused on CRM
+- Ad Group 1: "Marketing Automation" , keywords and ads focused on automation
+- Ad Group 2: "Email Marketing Tool" , keywords and ads focused on email
+- Ad Group 3: "Marketing Analytics" , keywords and ads focused on analytics
+- Ad Group 4: "CRM Software" , keywords and ads focused on CRM
 
-Tighter ad groups mean higher ad relevance, higher Quality Score, lower CPCs, and higher conversion rates — all of which improve ROAS.
+Tighter ad groups mean higher ad relevance, higher Quality Score, lower CPCs, and higher conversion rates , all of which improve ROAS.
 
 ## Strategy 4: Optimize Your Quality Score
 
@@ -91,7 +91,7 @@ Quality Score is determined by three factors:
 
 **Important bidding tips:**
 - When setting a Target ROAS, start 10-20% below your goal to give the algorithm room
-- Never change your target by more than 15-20% at once — large changes reset learning
+- Never change your target by more than 15-20% at once , large changes reset learning
 - Use portfolio bid strategies across similar campaigns to pool conversion data
 - Set bid limits on expensive keywords if using Target ROAS
 - Allow 2 weeks of learning period after any bid strategy change
@@ -112,18 +112,18 @@ Audiences on Google Search are underutilized. Layer these audiences on top of yo
 
 ## Strategy 7: Optimize Ad Extensions
 
-Ad extensions increase your ad's real estate, improve CTR, and provide additional conversion paths — all improving ROAS.
+Ad extensions increase your ad's real estate, improve CTR, and provide additional conversion paths , all improving ROAS.
 
 | Extension Type | ROAS Impact | Priority |
 |---|---|---|
-| Sitelink Extensions | High — direct links to key pages | Must-have |
-| Callout Extensions | Medium — highlight key benefits | Must-have |
-| Structured Snippets | Medium — showcase product features | Must-have |
-| Call Extensions | High for B2B — direct phone conversions | High for lead gen |
-| Price Extensions | High — pre-qualifies clicks by price | High for e-commerce |
-| Promotion Extensions | High during sales — highlights offers | Seasonal priority |
-| Image Extensions | Medium-High — visual differentiation | Recommended |
-| Lead Form Extensions | High — captures leads without click | Test for lead gen |
+| Sitelink Extensions | High , direct links to key pages | Must-have |
+| Callout Extensions | Medium , highlight key benefits | Must-have |
+| Structured Snippets | Medium , showcase product features | Must-have |
+| Call Extensions | High for B2B , direct phone conversions | High for lead gen |
+| Price Extensions | High , pre-qualifies clicks by price | High for e-commerce |
+| Promotion Extensions | High during sales , highlights offers | Seasonal priority |
+| Image Extensions | Medium-High , visual differentiation | Recommended |
+| Lead Form Extensions | High , captures leads without click | Test for lead gen |
 
 Use all applicable extensions. Google selects which to show based on predicted performance.
 
@@ -167,13 +167,13 @@ Performance Max (PMax) campaigns use Google's AI to run ads across Search, Shopp
 - Feed high-quality product data through your Merchant Center feed
 - Upload a variety of creative assets (images, videos, headlines, descriptions)
 - Set up audience signals using your best customer data
-- Use URL expansion carefully — restrict to relevant landing pages
+- Use URL expansion carefully , restrict to relevant landing pages
 - Run PMax alongside standard Search campaigns (PMax doesn't cannibalize exact match)
 - Monitor asset group performance and replace low-performing assets
 
 **PMax pitfalls to avoid:**
 - Don't combine wildly different products in one asset group
-- Don't set ROAS targets too aggressively at launch — start 20% below your goal
+- Don't set ROAS targets too aggressively at launch , start 20% below your goal
 - Monitor what PMax is doing through the Insights tab and search term report
 - Exclude brand terms if you want clean non-brand PMax performance data
 

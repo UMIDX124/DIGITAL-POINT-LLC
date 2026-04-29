@@ -23,7 +23,7 @@ const guarantees = [
   {
     icon: Shield,
     title: 'Quality Assurance',
-    description: 'Every deliverable goes through QA. Not blind trust — structured verification.',
+    description: 'Every deliverable goes through QA. Not blind trust: structured verification.',
   },
   {
     icon: Clock,
@@ -43,7 +43,7 @@ const guarantees = [
 ];
 
 const painPoints = [
-  'Remote hiring feels risky — how do you know they\'ll deliver?',
+  'Remote hiring feels risky. How do you know they\'ll deliver?',
   'Previous remote teams had communication issues',
   'Quality control was non-existent with past providers',
   'No visibility into what remote staff actually do',
@@ -180,7 +180,7 @@ export function RemoteWorkforcePage() {
           <SectionHeader
             eyebrow="The Pod Model"
             title="Not individuals. Integrated teams."
-            description="We build pods — small, focused teams with clear roles, shared context, and collective accountability."
+            description="We build pods: small, focused teams with clear roles, shared context, and collective accountability."
             align="center"
           />
 
@@ -273,7 +273,7 @@ export function RemoteWorkforcePage() {
           <SectionHeader
             eyebrow="Common Concerns"
             title="We've heard every remote hiring nightmare."
-            description="Here's why they happen — and how we prevent them."
+            description="Here's why they happen, and how we prevent them."
             align="center"
           />
 

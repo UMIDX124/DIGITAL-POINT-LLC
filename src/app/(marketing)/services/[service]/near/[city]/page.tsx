@@ -112,7 +112,7 @@ export default async function ServiceCityPage({ params }: PageProps) {
             <p>
               As a remote-first performance marketing agency, we work with businesses in {content.city.name} and
               across the United States. Our team delivers the same level of strategic depth and hands-on
-              execution as a local agency — without the geographic limitations that restrict your talent
+              execution as a local agency, without the geographic limitations that restrict your talent
               options.
             </p>
             <p>

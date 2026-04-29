@@ -56,7 +56,7 @@ const capabilities = [
 const problems = [
   'Ad spend is increasing but leads aren\'t improving',
   'Creative is stale but you don\'t have capacity to test',
-  'Attribution is broken — you can\'t tell what works',
+  'Attribution is broken; you can\'t tell what works',
   'Agencies send reports but no one explains them',
   'CAC is climbing and you don\'t know why',
   'Budget is scattered across platforms without strategy',

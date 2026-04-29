@@ -23,7 +23,7 @@ export default function NotFound() {
             color: 'var(--text-tertiary)',
           }}
         >
-          DIGITAL POINT — 404
+          DIGITAL POINT · 404
         </p>
 
         <h1

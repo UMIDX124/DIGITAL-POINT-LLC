@@ -7,18 +7,18 @@ date: "2025-10-17"
 author: "Anwaar Tayyab"
 faqs:
   - question: "Is display advertising still effective in 2026?"
-    answer: "Yes, but with important caveats. Display advertising is highly effective for retargeting (generating 3-8x ROAS) and brand awareness campaigns. For prospecting and direct response, display is less effective than search or social advertising because users aren't actively looking for your product. The key is using display for the right objectives — retargeting past visitors, building brand frequency, and supporting your other channels — rather than expecting it to be a primary acquisition driver. Display reach is massive, with the Google Display Network alone reaching 90% of internet users."
+    answer: "Yes, but with important caveats. Display advertising is highly effective for retargeting (generating 3-8x ROAS) and brand awareness campaigns. For prospecting and direct response, display is less effective than search or social advertising because users aren't actively looking for your product. The key is using display for the right objectives , retargeting past visitors, building brand frequency, and supporting your other channels , rather than expecting it to be a primary acquisition driver. Display reach is massive, with the Google Display Network alone reaching 90% of internet users."
   - question: "What is the difference between Google Display Network and programmatic advertising?"
     answer: "Google Display Network (GDN) is Google's display inventory accessed through Google Ads. It's simpler to set up and manage but limited to Google's inventory. Programmatic advertising uses demand-side platforms (DSPs) to buy display inventory across the entire internet through real-time bidding. Programmatic offers more inventory, better targeting options, and more control over placements but requires more expertise and typically higher minimum spend. For budgets under $15k/month in display, GDN is usually sufficient. Above that, programmatic offers better options."
   - question: "What display ad sizes should I create?"
-    answer: "Focus on the five sizes that generate 90%+ of display impressions: 300x250 (medium rectangle), 728x90 (leaderboard), 160x600 (wide skyscraper), 320x50 (mobile banner), and 300x600 (half page). If you have limited resources, prioritize 300x250 and 728x90 first as they cover the most inventory. In 2026, responsive display ads that automatically adjust to available inventory are increasingly important — upload high-quality images in square (1:1) and landscape (1.91:1) formats along with your logo and multiple headlines."
+    answer: "Focus on the five sizes that generate 90%+ of display impressions: 300x250 (medium rectangle), 728x90 (leaderboard), 160x600 (wide skyscraper), 320x50 (mobile banner), and 300x600 (half page). If you have limited resources, prioritize 300x250 and 728x90 first as they cover the most inventory. In 2026, responsive display ads that automatically adjust to available inventory are increasingly important , upload high-quality images in square (1:1) and landscape (1.91:1) formats along with your logo and multiple headlines."
 ---
 
 ## Display Advertising in 2026: The Role It Plays
 
-Display advertising — banner ads, native ads, and rich media formats appearing across websites and apps — is one of the oldest digital advertising channels. In 2026, it's not the flashiest channel, but it remains essential for a complete paid media strategy.
+Display advertising , banner ads, native ads, and rich media formats appearing across websites and apps , is one of the oldest digital advertising channels. In 2026, it's not the flashiest channel, but it remains essential for a complete paid media strategy.
 
-Display excels at three things: retargeting website visitors, building brand awareness at scale, and supporting conversions that originate on other channels. When used correctly, it delivers strong returns. When used incorrectly — as a primary direct response channel — it wastes budget.
+Display excels at three things: retargeting website visitors, building brand awareness at scale, and supporting conversions that originate on other channels. When used correctly, it delivers strong returns. When used incorrectly , as a primary direct response channel , it wastes budget.
 
 This guide covers how performance marketers should approach display advertising for maximum impact.
 
@@ -82,7 +82,7 @@ This guide covers how performance marketers should approach display advertising 
 - Set frequency caps (3-5 impressions per user per day for retargeting)
 - Use dynamic remarketing to show the exact products viewed
 - Exclude recent converters to avoid wasting impressions
-- Segment by recency — recent visitors convert better
+- Segment by recency , recent visitors convert better
 - Include urgency elements (limited time offers, low stock)
 
 ### Managed Placement Campaigns
@@ -159,7 +159,7 @@ For custom-designed banners:
 2. **Minimal text.** Less is more on display. One headline, one short value prop, one CTA.
 3. **Bold CTA button.** Contrasting color, actionable text ("Shop Now," "Get Quote," "Try Free").
 4. **Brand consistency.** Use your brand colors and logo for recognition across placements.
-5. **Mobile readability.** Text must be legible at 320x50 — the smallest common size.
+5. **Mobile readability.** Text must be legible at 320x50 , the smallest common size.
 6. **Animation.** Simple HTML5 animations increase engagement but keep under 3 loops and 30 seconds.
 
 ### Dynamic Creative
@@ -225,7 +225,7 @@ Consider programmatic display if:
 
 ### Brand Safety
 
-Display advertising carries brand safety risk — your ads appearing next to inappropriate content. Mitigate this by:
+Display advertising carries brand safety risk , your ads appearing next to inappropriate content. Mitigate this by:
 
 - Using brand safety categories and exclusions in Google Ads
 - Implementing third-party verification (IAS, DoubleVerify, MOAT)

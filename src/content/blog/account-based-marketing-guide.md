@@ -1,17 +1,17 @@
 ---
 title: "Account-Based Marketing (ABM) Guide: Targeted Growth for B2B"
-excerpt: "Learn how to implement account-based marketing with paid ads — from building target account lists to measuring pipeline impact and scaling your ABM program."
+excerpt: "Learn how to implement account-based marketing with paid ads , from building target account lists to measuring pipeline impact and scaling your ABM program."
 category: "Growth Systems"
 tags: ["account-based marketing", "ABM", "B2B marketing", "demand generation", "target accounts"]
 date: "2025-08-03"
 author: "Anwaar Tayyab"
 faqs:
   - question: "What is account-based marketing?"
-    answer: "Account-based marketing (ABM) is a B2B strategy that concentrates marketing and sales resources on a specific set of target accounts rather than casting a wide net. Instead of generating thousands of leads and hoping some convert, ABM identifies your ideal customers by name and coordinates personalized campaigns to engage buying committees at those specific companies. ABM flips the traditional funnel — you start with target accounts and work to create demand within them."
+    answer: "Account-based marketing (ABM) is a B2B strategy that concentrates marketing and sales resources on a specific set of target accounts rather than casting a wide net. Instead of generating thousands of leads and hoping some convert, ABM identifies your ideal customers by name and coordinates personalized campaigns to engage buying committees at those specific companies. ABM flips the traditional funnel , you start with target accounts and work to create demand within them."
   - question: "How many target accounts should an ABM program have?"
     answer: "It depends on your tier structure. Tier 1 (fully personalized, one-to-one) should include 10-50 accounts. Tier 2 (industry/segment personalized, one-to-few) should include 50-500 accounts. Tier 3 (broad ABM with account-level targeting, one-to-many) can include 500-5,000 accounts. Most companies start with 50-200 target accounts across tiers. The key is having enough accounts to generate meaningful pipeline but few enough to personalize effectively."
   - question: "What does ABM cost?"
-    answer: "A basic ABM program using LinkedIn and display targeting costs $5,000-$15,000/month in ad spend plus tools. A mid-market program with dedicated ABM platforms costs $10,000-$30,000/month (including tools like 6sense, Demandbase, or RollWorks at $2,000-$5,000/month plus $8,000-$25,000 in ad spend). An enterprise program with full personalization, direct mail, and events costs $30,000-$100,000+/month. ROI typically exceeds traditional demand gen — ABM programs average 87% higher ROI than other marketing activities according to ITSMA research."
+    answer: "A basic ABM program using LinkedIn and display targeting costs $5,000-$15,000/month in ad spend plus tools. A mid-market program with dedicated ABM platforms costs $10,000-$30,000/month (including tools like 6sense, Demandbase, or RollWorks at $2,000-$5,000/month plus $8,000-$25,000 in ad spend). An enterprise program with full personalization, direct mail, and events costs $30,000-$100,000+/month. ROI typically exceeds traditional demand gen , ABM programs average 87% higher ROI than other marketing activities according to ITSMA research."
 ---
 
 ## What Is Account-Based Marketing?
@@ -150,11 +150,11 @@ ABM works best as a coordinated multi-channel effort:
 
 For companies just starting with ABM ($10K-$20K/month total):
 
-1. **LinkedIn Ads** — Target buying committees at target accounts ($5K-$10K/month)
-2. **ZoomInfo or Apollo** — Contact data for target accounts ($500-$1,500/month)
-3. **Your CRM** — Track account engagement and pipeline
-4. **Google Ads RLSA** — Capture search demand from target account visitors
-5. **Retargeting (Meta + Display)** — Re-engage target account visitors
+1. **LinkedIn Ads** , Target buying committees at target accounts ($5K-$10K/month)
+2. **ZoomInfo or Apollo** , Contact data for target accounts ($500-$1,500/month)
+3. **Your CRM** , Track account engagement and pipeline
+4. **Google Ads RLSA** , Capture search demand from target account visitors
+5. **Retargeting (Meta + Display)** , Re-engage target account visitors
 
 This stack gives you account-level targeting, contact identification, and measurement without the cost of a full ABM platform.
 
@@ -241,7 +241,7 @@ ABM attribution should be account-level, not individual-level:
 
 **Mistake 3: Measuring ABM with demand gen metrics.** ABM isn't about lead volume. Measuring by CPL or MQL count misses the point. Focus on account engagement, pipeline, and revenue.
 
-**Mistake 4: Too many target accounts.** If you have 5,000 "target accounts," you don't have an ABM program — you have a targeted demand gen program. Be selective.
+**Mistake 4: Too many target accounts.** If you have 5,000 "target accounts," you don't have an ABM program , you have a targeted demand gen program. Be selective.
 
 **Mistake 5: Only using one channel.** ABM works through orchestrated multi-channel campaigns. LinkedIn alone isn't ABM. Display alone isn't ABM. The orchestration across channels is what creates impact.
 

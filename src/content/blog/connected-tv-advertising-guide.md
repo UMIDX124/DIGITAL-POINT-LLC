@@ -21,7 +21,7 @@ Connected TV advertising has moved from experimental to essential. In 2026, CTV 
 Here's why CTV matters now:
 
 - **87% of US households** have at least one connected TV device
-- **Cord-cutting continues** — traditional TV viewership drops 5-8% annually
+- **Cord-cutting continues** , traditional TV viewership drops 5-8% annually
 - **Ad-supported streaming** is booming (Netflix, Disney+, Amazon Prime all have ad tiers)
 - **Targeting capabilities** rival digital channels (demographics, interests, purchase behavior, first-party data)
 - **Measurement has improved dramatically** with data clean rooms, identity graphs, and attribution APIs
@@ -146,7 +146,7 @@ CTV creative needs differ from social video:
 
 **Front-load your brand.** Show your brand or logo within the first 3 seconds. CTV has high completion rates, but early branding ensures recognition even if attention wavers.
 
-**Include a clear CTA.** Tell viewers exactly what to do: "Search for [brand]," "Visit [URL]," or "Scan the QR code." QR codes on CTV ads see 2-5% scan rates — significantly higher than initial industry skepticism predicted.
+**Include a clear CTA.** Tell viewers exactly what to do: "Search for [brand]," "Visit [URL]," or "Scan the QR code." QR codes on CTV ads see 2-5% scan rates , significantly higher than initial industry skepticism predicted.
 
 **Test multiple creatives.** Rotate 3-5 creative variations and measure which drives the most search lift and website visits. Creative fatigue sets in faster on CTV because the full-screen format makes repeated ads more noticeable.
 
@@ -181,7 +181,7 @@ CTV creative needs differ from social video:
 
 ### Tier 3: Advanced Measurement (Requires Investment)
 
-**Incrementality testing:** Run holdout tests — expose Group A to CTV ads and Group B to PSA ads or no ads. Compare conversion rates. This is the gold standard for measuring true CTV impact.
+**Incrementality testing:** Run holdout tests , expose Group A to CTV ads and Group B to PSA ads or no ads. Compare conversion rates. This is the gold standard for measuring true CTV impact.
 
 **Brand lift studies:** Survey exposed and unexposed audiences to measure changes in awareness, consideration, and purchase intent. Available through major DSPs and measurement partners.
 

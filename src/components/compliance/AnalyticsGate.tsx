@@ -11,21 +11,19 @@
 
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 import { getConsent } from './CookieConsent';
 
-export default function AnalyticsGate() {
-  const [enabled, setEnabled] = useState(false);
+function subscribe(callback: () => void) {
+  document.addEventListener('dpl:consent-changed', callback);
+  return () => document.removeEventListener('dpl:consent-changed', callback);
+}
 
-  useEffect(() => {
-    setEnabled(getConsent() === 'accepted');
-    const handler = (e: Event) => {
-      const detail = (e as CustomEvent<'accepted' | 'necessary'>).detail;
-      setEnabled(detail === 'accepted');
-    };
-    document.addEventListener('dpl:consent-changed', handler);
-    return () => document.removeEventListener('dpl:consent-changed', handler);
-  }, []);
+const getSnapshot = () => getConsent() === 'accepted';
+const getServerSnapshot = () => false;
+
+export default function AnalyticsGate() {
+  const enabled = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   if (!enabled) return null;
   return (

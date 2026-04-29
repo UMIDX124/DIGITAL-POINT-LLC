@@ -20,21 +20,21 @@ Before you can fix attribution, you need to recognize the symptoms. Here are the
 
 ### Red Flag 1: Platform Numbers Don't Add Up
 
-You check Meta and it claims 500 conversions. Google claims 400. TikTok claims 200. But your actual sales were only 600. That's **1,100 claimed conversions vs. 600 real ones**—an 83% inflation rate.
+You check Meta and it claims 500 conversions. Google claims 400. TikTok claims 200. But your actual sales were only 600. That's **1,100 claimed conversions vs. 600 real ones**,an 83% inflation rate.
 
 Some overlap is expected (platforms have different attribution windows and methodologies), but if the total platform-reported conversions exceed reality by more than 30-40%, your tracking has problems.
 
 ### Red Flag 2: Direct/None Traffic Is Suspiciously High
 
-In GA4, if more than **25-30% of your conversions** are attributed to "Direct / (none)," you're likely losing attribution data. These are sessions where GA4 couldn't determine the traffic source—which usually means UTMs are missing, cookies were blocked, or cross-domain tracking is broken.
+In GA4, if more than **25-30% of your conversions** are attributed to "Direct / (none)," you're likely losing attribution data. These are sessions where GA4 couldn't determine the traffic source,which usually means UTMs are missing, cookies were blocked, or cross-domain tracking is broken.
 
 ### Red Flag 3: Your Team Can't Agree on What Works
 
-When the paid social team says Facebook is crushing it, the SEO team says organic is the real driver, and the email team claims their campaigns convert best—and everyone has data to support their claim—your attribution is telling different stories because it's fragmented or inconsistent.
+When the paid social team says Facebook is crushing it, the SEO team says organic is the real driver, and the email team claims their campaigns convert best,and everyone has data to support their claim,your attribution is telling different stories because it's fragmented or inconsistent.
 
 ### Red Flag 4: ROAS Looks Too Good to Be True
 
-If a channel shows a 20x ROAS, be skeptical. While it's possible, it often indicates attribution errors—double-counting conversions, counting organic conversions as paid, or misconfigured conversion events tracking non-revenue actions.
+If a channel shows a 20x ROAS, be skeptical. While it's possible, it often indicates attribution errors,double-counting conversions, counting organic conversions as paid, or misconfigured conversion events tracking non-revenue actions.
 
 ### Red Flag 5: Scaling Doesn't Produce Expected Results
 
@@ -47,8 +47,8 @@ UTM parameters are the foundation of attribution, and they're where things most 
 ### Common UTM Problems
 
 **Inconsistent naming conventions:**
-- `utm_source=Facebook` vs `utm_source=facebook` vs `utm_source=fb` — These create three separate sources in GA4
-- `utm_medium=cpc` vs `utm_medium=paid_social` vs `utm_medium=paid` — Inconsistency fragments your data
+- `utm_source=Facebook` vs `utm_source=facebook` vs `utm_source=fb` , These create three separate sources in GA4
+- `utm_medium=cpc` vs `utm_medium=paid_social` vs `utm_medium=paid` , Inconsistency fragments your data
 
 **Missing UTMs on key channels:**
 - Organic social posts without UTMs
@@ -84,10 +84,10 @@ Tracking pixels are the second most common failure point. Here's how to diagnose
 
 Use these tools to check pixel health:
 
-- **Meta Pixel Helper** (Chrome extension) — Shows if the Meta pixel fires correctly
-- **Google Tag Assistant** (Chrome extension) — Validates Google tags
-- **TikTok Pixel Helper** — Checks TikTok pixel implementation
-- **GA4 DebugView** — Real-time event monitoring in GA4
+- **Meta Pixel Helper** (Chrome extension) , Shows if the Meta pixel fires correctly
+- **Google Tag Assistant** (Chrome extension) , Validates Google tags
+- **TikTok Pixel Helper** , Checks TikTok pixel implementation
+- **GA4 DebugView** , Real-time event monitoring in GA4
 
 ### Common Pixel Issues and Fixes
 
@@ -183,7 +183,7 @@ A user who sees your ad on mobile but converts on desktop appears as two separat
 
 ## Step 5: Close the Offline Attribution Gap
 
-If any part of your conversion process happens offline—phone calls, in-store visits, sales team involvement—you need to connect those touchpoints to your digital attribution data.
+If any part of your conversion process happens offline,phone calls, in-store visits, sales team involvement,you need to connect those touchpoints to your digital attribution data.
 
 ### Phone Call Attribution
 
@@ -203,7 +203,7 @@ If any part of your conversion process happens offline—phone calls, in-store v
 
 Add a "How did you hear about us?" field to your conversion forms:
 - Keep it open-text (not a dropdown) for honest responses
-- This captures **dark social** — word of mouth, podcast mentions, community recommendations
+- This captures **dark social** , word of mouth, podcast mentions, community recommendations
 - Cross-reference self-reported data with click-based attribution for a complete picture
 
 ## Step 6: Validate Your Fixed Attribution

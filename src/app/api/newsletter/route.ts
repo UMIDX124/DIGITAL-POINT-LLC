@@ -53,7 +53,7 @@ export async function POST(req: Request) {
     try {
       await sendEmail({
       to: email,
-      subject: 'Welcome to Digital Point — Growth Insights',
+      subject: 'Welcome to Digital Point: Growth Insights',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0B; color: #e0d6eb; padding: 40px 30px; border-radius: 12px;">
           <div style="text-align: center; margin-bottom: 30px;">
@@ -79,7 +79,7 @@ export async function POST(req: Request) {
             <a href="https://digitalpointllc.com/blog" style="display: inline-block; background: linear-gradient(135deg, #C26800, #C26800); color: white; text-decoration: none; padding: 12px 28px; border-radius: 8px; font-size: 14px; font-weight: 600;">Read Our Latest Insights</a>
           </div>
           <div style="text-align: center; border-top: 1px solid rgba(255, 168, 51, 0.15); padding-top: 20px;">
-            <p style="color: #8E8E96; font-size: 12px; margin: 0;">Digital Point LLC — Performance Marketing & Growth Systems</p>
+            <p style="color: #8E8E96; font-size: 12px; margin: 0;">Digital Point LLC · Performance Marketing & Growth Systems</p>
             <p style="color: #8E8E96; font-size: 11px; margin-top: 4px;">You're receiving this because you subscribed at digitalpointllc.com</p>
           </div>
         </div>

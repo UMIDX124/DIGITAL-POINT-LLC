@@ -45,7 +45,7 @@ export function FreeResources() {
             Guides &amp; Frameworks
           </h2>
           <p className="text-[color:var(--text-primary)] text-lg mt-4 leading-relaxed">
-            Actionable playbooks you can implement today — no email required
+            Actionable playbooks you can implement today. No email required.
           </p>
         </div>
 

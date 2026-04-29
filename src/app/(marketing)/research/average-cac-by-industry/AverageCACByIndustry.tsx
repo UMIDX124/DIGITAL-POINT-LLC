@@ -210,7 +210,7 @@ export function AverageCACByIndustry({ faqs }: Props) {
         <Container size="narrow">
           <FadeUp>
             <GrowthAuditCTA
-              title="Know your CAC — then beat it"
+              title="Know your CAC, then beat it"
               description="Get a free growth audit to benchmark your customer acquisition cost and find the channels that will lower it."
             />
           </FadeUp>

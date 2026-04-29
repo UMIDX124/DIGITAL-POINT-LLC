@@ -61,6 +61,12 @@ export function HeroDataTicker() {
   const [randomDelta, setRandomDelta] = useState<number | null>(null);
 
   useEffect(() => {
+    // Hydration-safety contract: SSR + first client render emit `null` so
+    // server and client agree, then we seed once on mount. The setState
+    // calls below are intentional and not subject to the cascading-render
+    // concern react-hooks/set-state-in-effect targets (a one-shot seed,
+    // not a derived value).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setNow(new Date());
     setRandomDelta(Math.floor(Math.random() * 8) + 8);
 
@@ -97,10 +103,11 @@ export function HeroDataTicker() {
 
   return (
     <div className="hero-ticker" aria-hidden="true">
-      {/* Top-left ID block. */}
+      {/* Top-left ID block. `representative` flag is the integrity tag:
+          values below are illustrative, not live client telemetry. */}
       <div className="hero-ticker-id">
         <div>$DPL.OPS</div>
-        <div>live</div>
+        <div>representative</div>
       </div>
 
       {/* Right-side data column (operator readouts). */}

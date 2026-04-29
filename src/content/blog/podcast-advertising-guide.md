@@ -9,9 +9,9 @@ faqs:
   - question: "How much does podcast advertising cost?"
     answer: "Podcast advertising rates are typically measured in CPM (cost per thousand impressions). Average rates in 2026 range from $15-$25 CPM for programmatic/dynamically inserted ads and $25-$50+ CPM for host-read ads. Premium shows with large, engaged audiences can charge $50-$100+ CPM. A typical mid-tier podcast campaign costs $5,000-$25,000 per month. Host-read ads cost more but consistently deliver 2-3x higher recall and conversion rates than pre-produced ads."
   - question: "How do you track podcast advertising ROI?"
-    answer: "Podcast ROI tracking combines several methods: vanity URLs (yoursite.com/podcastname) for direct tracking, unique promo codes for attribution, post-purchase surveys asking 'how did you hear about us,' branded search lift analysis during campaign periods, pixel-based attribution through podcast platforms (Spotify, Megaphone), and marketing mix modeling. No single method captures everything — use a combination for the most complete picture."
+    answer: "Podcast ROI tracking combines several methods: vanity URLs (yoursite.com/podcastname) for direct tracking, unique promo codes for attribution, post-purchase surveys asking 'how did you hear about us,' branded search lift analysis during campaign periods, pixel-based attribution through podcast platforms (Spotify, Megaphone), and marketing mix modeling. No single method captures everything , use a combination for the most complete picture."
   - question: "Are podcast ads effective for B2B companies?"
-    answer: "Yes, podcast ads are particularly effective for B2B. Business and technology podcast listeners skew toward decision-makers with higher incomes and education levels. B2B podcast campaigns typically see 2-4x higher consideration lift than display advertising. The key is selecting shows that match your target buyer persona — niche B2B podcasts with 10,000-50,000 listeners often outperform broad shows with millions of downloads for B2B advertisers."
+    answer: "Yes, podcast ads are particularly effective for B2B. Business and technology podcast listeners skew toward decision-makers with higher incomes and education levels. B2B podcast campaigns typically see 2-4x higher consideration lift than display advertising. The key is selecting shows that match your target buyer persona , niche B2B podcasts with 10,000-50,000 listeners often outperform broad shows with millions of downloads for B2B advertisers."
 ---
 
 ## Why Podcast Advertising Works
@@ -25,7 +25,7 @@ The numbers tell the story:
 - **54% of podcast listeners** say they're more likely to consider a brand after hearing it on a podcast
 - **Podcast ad revenue** exceeded $4 billion in 2025 and continues growing 15-20% annually
 
-For businesses investing **$10K+ per month** on paid media, podcast advertising offers a channel that reaches highly engaged audiences with minimal ad fatigue — something increasingly rare in digital marketing.
+For businesses investing **$10K+ per month** on paid media, podcast advertising offers a channel that reaches highly engaged audiences with minimal ad fatigue , something increasingly rare in digital marketing.
 
 ## Podcast Ad Formats
 
@@ -172,7 +172,7 @@ Identify podcast hosts who are influential in your space, regardless of show cat
 - Send the product for the host to try before recording
 
 **For pre-produced ads:**
-- Keep it conversational — podcast listeners are allergic to "ad voice"
+- Keep it conversational , podcast listeners are allergic to "ad voice"
 - Match the tone of the shows you're placing in
 - Test multiple versions (different CTAs, offers, lengths)
 - Include clear audio branding (consistent jingle or tagline)
@@ -210,7 +210,7 @@ To estimate true podcast ROI, many advertisers apply a multiplier to their direc
 3. Calculate a multiplier: (tracked conversions + estimated search lift conversions) / tracked conversions
 4. Apply this multiplier to get estimated total impact
 
-Typical multipliers range from **1.5x to 3x** — meaning for every directly tracked conversion, there are 0.5 to 2 additional untracked conversions.
+Typical multipliers range from **1.5x to 3x** , meaning for every directly tracked conversion, there are 0.5 to 2 additional untracked conversions.
 
 ### Benchmark Your Podcast CPA
 

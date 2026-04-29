@@ -31,7 +31,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     highlightMetric: '6.8x',
     highlightLabel: 'ROAS',
-    behindTheScenes: 'Faizan personally rebuilt this account\'s campaign structure over a weekend because he couldn\'t sleep knowing how much budget was being wasted on broad targeting. The client\'s founder called us on Monday morning wondering if the dashboard was broken — the numbers looked "too good." They weren\'t.',
+    behindTheScenes: 'Faizan personally rebuilt this account\'s campaign structure over a weekend because he couldn\'t sleep knowing how much budget was being wasted on broad targeting. The client\'s founder called us on Monday morning wondering if the dashboard was broken. The numbers looked "too good." They weren\'t.',
   },
   {
     slug: 'b2b-saas-attribution',
@@ -65,6 +65,6 @@ export const caseStudies: CaseStudy[] = [
     ],
     highlightMetric: '5.3x',
     highlightLabel: 'ROAS',
-    behindTheScenes: 'The first audit call was rough — the account had 200+ ad groups with no clear structure. We almost said no. But the team behind the business was genuinely great, just stuck with bad account management. Faizan restructured everything from scratch, and within two weeks the client asked, "Why didn\'t our last agency do this?" Good question.',
+    behindTheScenes: 'The first audit call was rough. The account had 200+ ad groups with no clear structure. We almost said no. But the team behind the business was genuinely great, just stuck with bad account management. Faizan restructured everything from scratch, and within two weeks the client asked, "Why didn\'t our last agency do this?" Good question.',
   },
 ];

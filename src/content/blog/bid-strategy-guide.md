@@ -7,7 +7,7 @@ date: "2025-08-29"
 author: "M. Faizan Rafiq"
 faqs:
   - question: "Should I use manual or automated bidding?"
-    answer: "For most advertisers in 2026, automated bidding outperforms manual bidding — but with important caveats. Automated bidding works best when you have at least 30-50 conversions per month per campaign, clean conversion tracking, and sufficient budget for the algorithm to learn. Manual bidding is better when you're just launching campaigns, have very low conversion volume, need precise control over specific placements, or when your conversion data is unreliable."
+    answer: "For most advertisers in 2026, automated bidding outperforms manual bidding , but with important caveats. Automated bidding works best when you have at least 30-50 conversions per month per campaign, clean conversion tracking, and sufficient budget for the algorithm to learn. Manual bidding is better when you're just launching campaigns, have very low conversion volume, need precise control over specific placements, or when your conversion data is unreliable."
   - question: "How long does it take for automated bidding to learn?"
     answer: "Most platforms need a 'learning period' of 1-2 weeks or 50+ conversions before automated bidding stabilizes. During this period, performance is volatile and CPAs may be 2-3x higher than your target. Don't make major changes during the learning period as it resets the process. Google Ads typically needs 2-4 weeks, Meta needs 1-2 weeks, and LinkedIn needs 2-4 weeks of data before automated strategies perform reliably."
   - question: "What is the best bid strategy for Google Ads?"
@@ -18,7 +18,7 @@ faqs:
 
 Your bid strategy is the single most impactful setting in any ad account. It determines how much you pay for every click, impression, and conversion. Get it right, and you scale profitably. Get it wrong, and you burn through budget with nothing to show for it.
 
-Things have changed fast. Five years ago, manual bidding was standard practice. Today, machine learning-powered automated bidding outperforms manual bidding in most scenarios — but "most" isn't "all." Understanding when to use each approach is critical for marketers with **significant monthly ad budgets** on paid media.
+Things have changed fast. Five years ago, manual bidding was standard practice. Today, machine learning-powered automated bidding outperforms manual bidding in most scenarios , but "most" isn't "all." Understanding when to use each approach is critical for marketers with **significant monthly ad budgets** on paid media.
 
 ## Bid Strategy Options by Platform
 
@@ -49,7 +49,7 @@ Things have changed fast. Five years ago, manual bidding was standard practice. 
 | Bid Cap | Sets a maximum bid per auction | Precise auction-level control |
 | ROAS Goal (Minimum ROAS) | Targets a minimum return | E-commerce, revenue optimization |
 
-**Key difference from Google:** Meta's default "Lowest Cost" has no cap — it will spend your entire budget to get the most conversions possible, even if CPA rises. This works well during learning but can overshoot targets at scale.
+**Key difference from Google:** Meta's default "Lowest Cost" has no cap , it will spend your entire budget to get the most conversions possible, even if CPA rises. This works well during learning but can overshoot targets at scale.
 
 ### LinkedIn Ads Bid Strategies
 
@@ -104,7 +104,7 @@ If your primary goal is showing up for specific competitive searches (like your 
 
 ### The Case for Automation
 
-Modern ad platforms process billions of signals per auction — user demographics, device type, time of day, search intent, browsing behavior, weather, and hundreds more. No human can process these signals in real-time, but algorithms can.
+Modern ad platforms process billions of signals per auction , user demographics, device type, time of day, search intent, browsing behavior, weather, and hundreds more. No human can process these signals in real-time, but algorithms can.
 
 **Automated bidding outperforms manual when:**
 - You have 30+ conversions per month per campaign
@@ -174,7 +174,7 @@ Automated bidding works best with **consolidated campaign structures**:
 
 - **Fewer, larger campaigns** outperform many small ones (more data per campaign)
 - **Broad targeting** with smart bidding often outperforms narrow targeting with manual bidding
-- **Avoid micro-segmentation** — let the algorithm find the best audiences within broader parameters
+- **Avoid micro-segmentation** , let the algorithm find the best audiences within broader parameters
 
 ### Best Practice 5: Use Portfolio Bid Strategies
 
@@ -230,7 +230,7 @@ Best for: Accounts with multiple campaigns targeting similar conversion goals.
 
 ### Issue: Low Spend / Limited Delivery
 
-**Cause:** Target CPA or ROAS too aggressive — the algorithm can't find enough auctions to win at your target.
+**Cause:** Target CPA or ROAS too aggressive , the algorithm can't find enough auctions to win at your target.
 **Fix:** Raise CPA target or lower ROAS target by 15-20%. Alternatively, broaden your targeting.
 
 ### Issue: Automated Bidding Overspending

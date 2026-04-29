@@ -7,7 +7,7 @@ date: "2025-08-08"
 author: "Anwaar Tayyab"
 faqs:
   - question: "What is ad fatigue and why does it happen?"
-    answer: "Ad fatigue occurs when your target audience sees the same ad too many times, causing engagement to decline and costs to increase. It happens because ad platforms show your ads to the most responsive segments of your audience first. Over time, those segments become saturated, and the platform serves ads to less responsive users or shows the same users your ad repeatedly. The result is declining CTR, increasing CPC and CPM, and decreasing ROAS. Ad fatigue is an inevitable consequence of running any campaign long enough — the key is managing it proactively."
+    answer: "Ad fatigue occurs when your target audience sees the same ad too many times, causing engagement to decline and costs to increase. It happens because ad platforms show your ads to the most responsive segments of your audience first. Over time, those segments become saturated, and the platform serves ads to less responsive users or shows the same users your ad repeatedly. The result is declining CTR, increasing CPC and CPM, and decreasing ROAS. Ad fatigue is an inevitable consequence of running any campaign long enough , the key is managing it proactively."
   - question: "How often should I refresh my ad creative?"
     answer: "On Meta and TikTok, plan to refresh creative every 2-4 weeks for prospecting campaigns and every 4-6 weeks for retargeting. On Google Search, ad copy can run longer (4-8 weeks) before fatigue sets in because the audience refreshes naturally as new people search. On Google Display, refresh every 3-4 weeks. On LinkedIn, creative lasts longer (6-8 weeks) due to the platform's frequency controls. These timelines shorten as your budget increases because higher budgets exhaust audiences faster. Monitor frequency and engagement metrics to know exactly when to refresh rather than relying on fixed timelines."
   - question: "Can I prevent ad fatigue completely?"
@@ -16,7 +16,7 @@ faqs:
 
 ## The Silent Campaign Killer
 
-Ad fatigue is the gradual decline in ad performance that happens when your audience sees the same creative too many times. It doesn't crash your campaigns overnight — it erodes them slowly, making it easy to miss until significant damage is done.
+Ad fatigue is the gradual decline in ad performance that happens when your audience sees the same creative too many times. It doesn't crash your campaigns overnight , it erodes them slowly, making it easy to miss until significant damage is done.
 
 At Digital Point LLC, we see ad fatigue as one of the top three reasons campaigns underperform. Companies often blame algorithms, targeting, or market conditions when the real problem is stale creative that their audience has tuned out.
 
@@ -56,29 +56,29 @@ These timelines vary by platform, budget level, and audience size. Higher budget
 
 **Meta Ads:**
 - Primary indicator: Frequency metric (available at ad set and ad level)
-- Secondary: Check "Learning Limited" status — this often correlates with fatigue
+- Secondary: Check "Learning Limited" status , this often correlates with fatigue
 - Check the delivery insights for "Audience saturation" warning
-- Monitor first-time impression ratio — a declining percentage means more repeat views
+- Monitor first-time impression ratio , a declining percentage means more repeat views
 
 **Google Ads (Display and YouTube):**
 - Monitor impression share and frequency capping data
-- Check view rate trends on YouTube — declining view rates suggest fatigue
+- Check view rate trends on YouTube , declining view rates suggest fatigue
 - Monitor ad-level CTR trends week over week
 
 **Google Ads (Search):**
 - Search fatigue is less common because the audience refreshes with new searchers
-- Monitor ad-level CTR — if it declines while impression volume stays constant, creative may be fatiguing
-- Check Quality Score trends — declining expected CTR signals fatigue
+- Monitor ad-level CTR , if it declines while impression volume stays constant, creative may be fatiguing
+- Check Quality Score trends , declining expected CTR signals fatigue
 
 **TikTok Ads:**
 - Monitor video engagement metrics: average watch time, completion rate
 - CTR is the fastest-moving fatigue indicator on TikTok
-- TikTok creative fatigues faster than any other platform — plan for 2-3 week cycles
+- TikTok creative fatigues faster than any other platform , plan for 2-3 week cycles
 
 **LinkedIn Ads:**
 - Frequency is capped by LinkedIn, so fatigue is slower
 - Monitor CTR and engagement rate trends
-- Check social actions (likes, comments, shares) — declining social engagement precedes declining click engagement
+- Check social actions (likes, comments, shares) , declining social engagement precedes declining click engagement
 
 ### Building a Fatigue Dashboard
 
@@ -109,7 +109,7 @@ The number one prevention strategy is always having fresh creative ready to depl
 | $50k-$100k/month | 25-40 variations | 12-20 backup |
 | $100k+/month | 40+ variations | 20+ backup |
 
-A "variation" means a meaningfully different ad — different concept, different hook, different format. Changing the button color doesn't count.
+A "variation" means a meaningfully different ad , different concept, different hook, different format. Changing the button color doesn't count.
 
 ### Strategy 2: Diversify Creative Formats
 
@@ -154,7 +154,7 @@ Use platform features that automatically vary creative elements:
 
 **Google Responsive Ads:** Provide 15 headlines and 4 descriptions. Google tests combinations automatically.
 
-**TikTok Smart Creative:** Similar to Meta's dynamic creative — upload multiple elements and let the algorithm combine.
+**TikTok Smart Creative:** Similar to Meta's dynamic creative , upload multiple elements and let the algorithm combine.
 
 ### Strategy 6: Stagger Launch Dates
 
@@ -175,12 +175,12 @@ When refreshing, change elements in this order of impact:
 
 | Priority | What to Change | Expected Impact |
 |---|---|---|
-| 1 | Creative concept and messaging angle | Highest — essentially a new ad |
-| 2 | Visual format (image to video, static to carousel) | High — different user experience |
-| 3 | Opening hook and headline | Medium-High — catches attention differently |
-| 4 | CTA and offer | Medium — different conversion trigger |
-| 5 | Color scheme and visual treatment | Low-Medium — cosmetic freshness |
-| 6 | Minor copy tweaks | Low — barely perceived as different |
+| 1 | Creative concept and messaging angle | Highest , essentially a new ad |
+| 2 | Visual format (image to video, static to carousel) | High , different user experience |
+| 3 | Opening hook and headline | Medium-High , catches attention differently |
+| 4 | CTA and offer | Medium , different conversion trigger |
+| 5 | Color scheme and visual treatment | Low-Medium , cosmetic freshness |
+| 6 | Minor copy tweaks | Low , barely perceived as different |
 
 Always prioritize concept-level changes over cosmetic tweaks. Your audience is fatigued on the message, not the font.
 

@@ -17,7 +17,7 @@ const systemTypes = [
   {
     icon: BarChart3,
     title: 'Reporting Dashboards',
-    description: 'Clear, actionable dashboards that show what matters — not data dumps that require translation.',
+    description: 'Clear, actionable dashboards that show what matters, not data dumps that require translation.',
   },
   {
     icon: Database,
@@ -78,7 +78,7 @@ const workflowTabs = [
 
 const breakPoints = [
   'Reports exist but no one uses them to make decisions',
-  'Attribution is broken — every channel claims credit',
+  'Attribution is broken; every channel claims credit',
   'Data lives in 5+ tools and never comes together',
   'Reporting takes days to compile manually',
   'No one trusts the numbers enough to act on them',

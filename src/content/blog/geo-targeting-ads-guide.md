@@ -7,7 +7,7 @@ date: "2025-11-01"
 author: "Anwaar Tayyab"
 faqs:
   - question: "What is geo-targeting in digital advertising?"
-    answer: "Geo-targeting is the practice of delivering ads to users based on their geographic location—country, state, city, zip code, or radius around a point. It ensures your ads reach people in locations where your business operates or where your target customers live."
+    answer: "Geo-targeting is the practice of delivering ads to users based on their geographic location,country, state, city, zip code, or radius around a point. It ensures your ads reach people in locations where your business operates or where your target customers live."
   - question: "How much can geo-targeting improve ROAS?"
     answer: "Proper geo-targeting typically improves ROAS by 15-35% by eliminating spend in low-performing locations. Some advertisers see even larger gains when they discover that a small number of regions drive the majority of their conversions."
   - question: "Should I use radius targeting or zip code targeting?"
@@ -18,9 +18,9 @@ faqs:
 
 ## Why Location Is Your Most Underused Targeting Lever
 
-Most performance marketers obsess over audience targeting, bidding strategies, and creative testing—but overlook one of the highest-impact optimization levers available: **geographic targeting.** The data consistently shows that location-based performance variance is enormous. Within a single national campaign, ROAS can vary by **200-400%** between the best and worst-performing regions.
+Most performance marketers obsess over audience targeting, bidding strategies, and creative testing,but overlook one of the highest-impact optimization levers available: **geographic targeting.** The data consistently shows that location-based performance variance is enormous. Within a single national campaign, ROAS can vary by **200-400%** between the best and worst-performing regions.
 
-Yet most campaigns use default geographic settings—targeting an entire country with the same bids and budgets. This means your best-performing cities subsidize your worst-performing ones, dragging down overall efficiency.
+Yet most campaigns use default geographic settings,targeting an entire country with the same bids and budgets. This means your best-performing cities subsidize your worst-performing ones, dragging down overall efficiency.
 
 Smart geo-targeting flips this dynamic. By allocating budget toward high-performing locations and reducing or eliminating spend in underperforming ones, you can significantly improve [ROAS](/blog/roas-optimization-guide) without changing a single ad or audience setting.
 
@@ -102,12 +102,12 @@ Steps for optimization:
 **Strategy:** Country-level campaign separation with localization
 
 **Campaign structure best practices:**
-- **Separate campaigns per country** — Never mix countries in one campaign
-- **Language matching** — Create ads in the local language
-- **Currency in ads** — Show prices in local currency
-- **Local landing pages** — Translate and localize content, not just translate
-- **Time zone scheduling** — Set ad schedules based on local business hours
-- **Payment methods** — Offer locally preferred payment options
+- **Separate campaigns per country** , Never mix countries in one campaign
+- **Language matching** , Create ads in the local language
+- **Currency in ads** , Show prices in local currency
+- **Local landing pages** , Translate and localize content, not just translate
+- **Time zone scheduling** , Set ad schedules based on local business hours
+- **Payment methods** , Offer locally preferred payment options
 
 **Budget allocation approach:**
 Start with your highest-confidence markets, prove ROAS, then expand. Don't spread budget thin across 20 countries simultaneously.
@@ -232,7 +232,7 @@ The [Performance Marketing](/performance-marketing) team at Digital Point LLC us
 
 ### What is geo-targeting in digital advertising?
 
-Geo-targeting is the practice of delivering ads to users based on their geographic location—country, state, city, zip code, or radius around a point. It ensures your ads reach people in locations where your business operates or where your target customers live.
+Geo-targeting is the practice of delivering ads to users based on their geographic location,country, state, city, zip code, or radius around a point. It ensures your ads reach people in locations where your business operates or where your target customers live.
 
 ### How much can geo-targeting improve ROAS?
 

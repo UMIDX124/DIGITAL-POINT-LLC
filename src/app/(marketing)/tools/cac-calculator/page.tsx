@@ -3,7 +3,7 @@ import { ToolSchema, FAQSchema } from '@/components/seo/FAQSchema';
 import { CACCalculator } from './CACCalculator';
 
 export const metadata: Metadata = {
-  title: 'Free CAC Calculator — Customer Acquisition Cost',
+  title: 'Free CAC Calculator: Customer Acquisition Cost',
   description: 'Calculate your Customer Acquisition Cost (CAC) by channel. Compare CAC to LTV and find your most efficient acquisition sources.',
   keywords: ['cac calculator', 'customer acquisition cost', 'cac formula', 'ltv to cac ratio', 'marketing efficiency'],
   alternates: { canonical: 'https://digitalpointllc.com/tools/cac-calculator' },

@@ -9,16 +9,16 @@ faqs:
   - question: "What is the average customer acquisition cost across all industries?"
     answer: "The average CAC across all industries in 2026 is approximately $120-$180 for B2C companies and $400-$900 for B2B companies. However, these averages are misleading because CAC varies dramatically by business model, product price point, and sales cycle length. A SaaS company selling a $50/month product will have a very different CAC than one selling a $50,000/year enterprise contract. Always benchmark against companies with similar price points and business models rather than broad industry averages."
   - question: "Why is my CAC higher than the industry benchmark?"
-    answer: "Several factors can push your CAC above industry benchmarks: poor ad targeting (reaching unqualified audiences), low landing page conversion rates, weak or fatigued creative, inefficient funnel design, inadequate lead nurturing, lack of brand awareness requiring more touchpoints to convert, competitive markets with high CPCs, or tracking issues that undercount conversions. Start by auditing your conversion funnel from click to customer — the bottleneck is usually in the middle of the funnel, not the top."
+    answer: "Several factors can push your CAC above industry benchmarks: poor ad targeting (reaching unqualified audiences), low landing page conversion rates, weak or fatigued creative, inefficient funnel design, inadequate lead nurturing, lack of brand awareness requiring more touchpoints to convert, competitive markets with high CPCs, or tracking issues that undercount conversions. Start by auditing your conversion funnel from click to customer , the bottleneck is usually in the middle of the funnel, not the top."
   - question: "How often do CAC benchmarks change?"
-    answer: "CAC benchmarks shift meaningfully every 6-12 months due to changes in ad platform costs, competitive dynamics, privacy regulations, and economic conditions. In 2025-2026, we have seen CAC increase 10-20% across most industries due to rising CPMs on Meta and Google, increased competition, and signal loss from privacy changes. Companies that actively optimize their acquisition funnels can still decrease their CAC even as industry benchmarks rise — this is what separates growing companies from stagnant ones."
+    answer: "CAC benchmarks shift meaningfully every 6-12 months due to changes in ad platform costs, competitive dynamics, privacy regulations, and economic conditions. In 2025-2026, we have seen CAC increase 10-20% across most industries due to rising CPMs on Meta and Google, increased competition, and signal loss from privacy changes. Companies that actively optimize their acquisition funnels can still decrease their CAC even as industry benchmarks rise , this is what separates growing companies from stagnant ones."
 ---
 
 ## Why CAC Benchmarks Matter
 
 Knowing your customer acquisition cost in isolation tells you nothing. You need context. Is your $75 CAC good or terrible? That depends entirely on your industry, business model, and competitive landscape.
 
-At Digital Point LLC, we manage paid media for companies across dozens of industries and see the real numbers — not survey data, but actual account performance. This guide shares the CAC benchmarks we track across our client base and the broader market in 2026.
+At Digital Point LLC, we manage paid media for companies across dozens of industries and see the real numbers , not survey data, but actual account performance. This guide shares the CAC benchmarks we track across our client base and the broader market in 2026.
 
 Use these benchmarks to understand where you stand and, more importantly, where the opportunities are.
 
@@ -210,7 +210,7 @@ Google Performance Max, Meta Advantage+, and LinkedIn's AI targeting features ar
 
 ### Channel Diversification
 
-Over-reliance on a single channel creates vulnerability. The smartest advertisers are diversifying across 3-5 channels, using each for its strength — Google for high intent, Meta for scale, LinkedIn for B2B precision, TikTok for awareness, and programmatic for reach.
+Over-reliance on a single channel creates vulnerability. The smartest advertisers are diversifying across 3-5 channels, using each for its strength , Google for high intent, Meta for scale, LinkedIn for B2B precision, TikTok for awareness, and programmatic for reach.
 
 ## How Digital Point LLC Helps Reduce CAC
 

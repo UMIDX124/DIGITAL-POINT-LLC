@@ -7,16 +7,16 @@ date: "2026-02-24"
 author: "M. Faizan Rafiq"
 faqs:
   - question: "What is a good CAC for SaaS?"
-    answer: "A healthy SaaS CAC depends on your LTV. The industry standard is a LTV:CAC ratio of 3:1 or better, meaning your customer lifetime value should be at least 3x your acquisition cost. For benchmarks: SMB SaaS (ACV under $5K) typically targets $200-$800 CAC; mid-market SaaS ($5K-$50K ACV) targets $2,000-$10,000 CAC; enterprise SaaS ($50K+ ACV) targets $10,000-$50,000+ CAC. Also track CAC payback period — how many months until a customer's revenue covers the acquisition cost. Under 12 months is healthy; under 6 months is excellent."
+    answer: "A healthy SaaS CAC depends on your LTV. The industry standard is a LTV:CAC ratio of 3:1 or better, meaning your customer lifetime value should be at least 3x your acquisition cost. For benchmarks: SMB SaaS (ACV under $5K) typically targets $200-$800 CAC; mid-market SaaS ($5K-$50K ACV) targets $2,000-$10,000 CAC; enterprise SaaS ($50K+ ACV) targets $10,000-$50,000+ CAC. Also track CAC payback period , how many months until a customer's revenue covers the acquisition cost. Under 12 months is healthy; under 6 months is excellent."
   - question: "What is the best paid channel for SaaS?"
     answer: "Google Search is typically the highest-ROI channel for SaaS because it captures buyers actively searching for solutions. For B2B SaaS, LinkedIn is the second most important channel for reaching professional audiences. For B2C or SMB SaaS, Meta (Facebook/Instagram) offers lower CPCs and broader reach. The typical allocation for a SaaS company spending $30K+/month: 40-50% Google Search, 20-30% LinkedIn (B2B) or Meta (B2C/SMB), 15-20% retargeting across platforms, and 10-15% testing new channels."
   - question: "Should SaaS companies offer free trials or demos?"
-    answer: "It depends on your product complexity and deal size. Self-serve products with low ACVs (under $500/year) typically benefit from free trials — they let users experience value before paying, and trial-to-paid conversion rates of 15-25% are common. Higher ACV products ($5K+) typically use demo/sales-assisted flows because the buying decision involves multiple stakeholders and ROI justification. Some companies offer both: a self-serve free trial for individual users and a guided demo for enterprise buyers."
+    answer: "It depends on your product complexity and deal size. Self-serve products with low ACVs (under $500/year) typically benefit from free trials , they let users experience value before paying, and trial-to-paid conversion rates of 15-25% are common. Higher ACV products ($5K+) typically use demo/sales-assisted flows because the buying decision involves multiple stakeholders and ROI justification. Some companies offer both: a self-serve free trial for individual users and a guided demo for enterprise buyers."
 ---
 
 ## SaaS Paid Acquisition Fundamentals
 
-SaaS marketing is unique. Unlike e-commerce where you optimize for one-time purchases, SaaS acquisition must account for recurring revenue, retention, and lifetime value. A customer acquired at a high CPA can be extremely profitable if they stick around for years — or a total loss if they churn in month two.
+SaaS marketing is unique. Unlike e-commerce where you optimize for one-time purchases, SaaS acquisition must account for recurring revenue, retention, and lifetime value. A customer acquired at a high CPA can be extremely profitable if they stick around for years , or a total loss if they churn in month two.
 
 For SaaS companies spending **$10K to six figures monthly** on paid acquisition, the playbook requires balancing acquisition volume with unit economics, optimizing for the right conversion events, and building a measurement system that connects ad spend to actual revenue.
 
@@ -112,7 +112,7 @@ Google Search should be your first and often largest paid channel because it cap
 | Long-tail | Specific features, use cases, integrations | Maximize Conversions | 10% |
 
 **SaaS Google Ads tips:**
-- Use offline conversion imports religiously — optimize to SQL or opportunity, not just form fills
+- Use offline conversion imports religiously , optimize to SQL or opportunity, not just form fills
 - Build keyword lists from customer interview language, not just SEO tools
 - Create dedicated landing pages for each keyword theme (problem pages, category pages, competitor comparison pages)
 - Use call extensions for high-ACV products where phone consultations drive conversions
@@ -244,10 +244,10 @@ Don't increase budget when:
 
 SaaS attribution should track the full journey from first touch to closed revenue:
 
-1. **First-touch attribution** — Which channel introduced the customer?
-2. **Lead creation attribution** — What converted them from anonymous to known?
-3. **Opportunity creation attribution** — What triggered the sales engagement?
-4. **Revenue attribution** — What influenced the final purchase decision?
+1. **First-touch attribution** , Which channel introduced the customer?
+2. **Lead creation attribution** , What converted them from anonymous to known?
+3. **Opportunity creation attribution** , What triggered the sales engagement?
+4. **Revenue attribution** , What influenced the final purchase decision?
 
 Import CRM data back to ad platforms at each stage for algorithm optimization.
 

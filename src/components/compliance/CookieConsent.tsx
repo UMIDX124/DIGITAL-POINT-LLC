@@ -20,7 +20,7 @@
  *   ring-stroke  ghost necessary-only           text tokens
  */
 
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 
 const STORAGE_KEY = 'dpl_cookie_consent';
 type Consent = 'accepted' | 'necessary' | null;
@@ -32,23 +32,32 @@ export function getConsent(): Consent {
   return null;
 }
 
-export default function CookieConsent() {
-  const [visible, setVisible] = useState(false);
+function subscribeConsent(callback: () => void) {
+  // The `dpl:open-cookie-prefs` event (fired from the footer Cookies link)
+  // clears the consent flag so the banner re-shows. Handle it inside the
+  // subscriber so the visibility snapshot re-reads after the clear.
+  const onOpenPrefs = () => {
+    window.localStorage.removeItem(STORAGE_KEY);
+    callback();
+  };
+  document.addEventListener('dpl:consent-changed', callback);
+  document.addEventListener('dpl:open-cookie-prefs', onOpenPrefs);
+  return () => {
+    document.removeEventListener('dpl:consent-changed', callback);
+    document.removeEventListener('dpl:open-cookie-prefs', onOpenPrefs);
+  };
+}
 
-  useEffect(() => {
-    if (getConsent() === null) setVisible(true);
-    const onOpen = () => {
-      window.localStorage.removeItem(STORAGE_KEY);
-      setVisible(true);
-    };
-    document.addEventListener('dpl:open-cookie-prefs', onOpen);
-    return () => document.removeEventListener('dpl:open-cookie-prefs', onOpen);
-  }, []);
+const getVisibleSnapshot = () => getConsent() === null;
+const getVisibleServerSnapshot = () => false;
+
+export default function CookieConsent() {
+  const visible = useSyncExternalStore(subscribeConsent, getVisibleSnapshot, getVisibleServerSnapshot);
 
   const set = (v: Exclude<Consent, null>) => {
     window.localStorage.setItem(STORAGE_KEY, v);
-    setVisible(false);
-    // Notify any listeners (AnalyticsGate) so it can mount/unmount immediately.
+    // Notify any listeners (AnalyticsGate, this banner's snapshot) so the
+    // gate mounts/unmounts and the banner hides immediately.
     document.dispatchEvent(new CustomEvent('dpl:consent-changed', { detail: v }));
   };
 
@@ -74,7 +83,7 @@ export default function CookieConsent() {
           style={{ color: 'var(--text-secondary)' }}
         >
           <span className="hidden sm:inline" style={{ color: 'var(--text-primary)' }}>
-            Minimal analytics — no trackers, no ad pixels.
+            Minimal analytics. No trackers, no ad pixels.
           </span>
           <span className="sm:hidden" style={{ color: 'var(--text-primary)' }}>
             Minimal analytics only.

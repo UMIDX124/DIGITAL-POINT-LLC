@@ -4,7 +4,7 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { copy } from '@/lib/copy';
 
 export const metadata: Metadata = {
-  title: 'Automation — AI workflows that run the boring parts',
+  title: 'Automation: AI workflows that run the boring parts',
   description:
     'Lead capture, document parsing, follow-up, reporting, portfolio monitoring. Operator-built AI workflows, operated as a service.',
   alternates: { canonical: 'https://digitalpointllc.com/automation' },
@@ -87,11 +87,11 @@ export default function AutomationPage() {
               </p>
               <ul className="mt-8 grid grid-cols-2 gap-4 font-mono text-[12px] text-[color:var(--muted)]">
                 {[
-                  'n8n — orchestration',
-                  'Groq — inference',
-                  'TypeScript — custom services',
-                  'Postgres — state',
-                  'Observability — always-on',
+                  'n8n · orchestration',
+                  'Groq · inference',
+                  'TypeScript · custom services',
+                  'Postgres · state',
+                  'Observability · always-on',
                   'On-call operators',
                 ].map((s) => (
                   <li key={s} className="py-3 px-4 border-hairline rounded-md">{s}</li>
@@ -119,7 +119,7 @@ export default function AutomationPage() {
               {/* Read-only dashboard mock — flat, mono numbers, no fake glass */}
               <div className="card-flat p-6 md:p-8" style={{ background: '#141416' }}>
                 <div className="flex items-center justify-between mb-6 pb-4" style={{ borderBottom: '1px solid #27272A' }}>
-                  <span className="eyebrow">Portfolio — last 24h</span>
+                  <span className="eyebrow">Portfolio · last 24h</span>
                   <span className="font-mono text-[11px] text-[color:var(--muted)]">auto-refresh 60s</span>
                 </div>
 
@@ -142,11 +142,11 @@ export default function AutomationPage() {
 
                 <div className="divide-hairline" style={{ borderTop: '1px solid #27272A' }}>
                   {[
-                    { name: 'Lead intake — Meta', runs: 412, status: 'OK' },
-                    { name: 'Lead intake — Google', runs: 198, status: 'OK' },
-                    { name: 'Doc parsing — contracts', runs: 47, status: 'OK' },
-                    { name: 'Follow-up — day-3 retarget', runs: 321, status: 'OK' },
-                    { name: 'Reporting rollup — weekly', runs: 1, status: 'OK' },
+                    { name: 'Lead intake · Meta', runs: 412, status: 'OK' },
+                    { name: 'Lead intake · Google', runs: 198, status: 'OK' },
+                    { name: 'Doc parsing · contracts', runs: 47, status: 'OK' },
+                    { name: 'Follow-up · day-3 retarget', runs: 321, status: 'OK' },
+                    { name: 'Reporting rollup · weekly', runs: 1, status: 'OK' },
                   ].map((row) => (
                     <div key={row.name} className="flex items-center justify-between py-3">
                       <span className="text-[14px] text-[color:var(--ivory-dim)]">{row.name}</span>

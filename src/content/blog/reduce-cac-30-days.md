@@ -9,9 +9,9 @@ faqs:
   - question: "Is it realistic to reduce CAC by 30% in 30 days?"
     answer: "Yes, for most companies spending $10k or more per month on ads that have not undergone a systematic optimization in the past 6 months. The majority of ad accounts we audit at Digital Point LLC have 20-35% of budget going to clearly underperforming segments. Eliminating that waste alone can achieve a 15-20% CAC reduction. Combined with conversion rate improvements and targeting refinements, 30% is an achievable target. Companies already running highly optimized accounts may see a 10-15% improvement, which is still significant at scale."
   - question: "Will reducing CAC also reduce my lead or customer volume?"
-    answer: "Not if done correctly. The first phase of CAC reduction focuses on eliminating waste — budget that's generating clicks but not customers. Reallocating that budget to your best-performing campaigns and audiences should maintain or increase volume while reducing CAC. The key is to cut the right things. Don't slash budget across the board. Instead, surgically remove underperformers and redirect to proven winners."
+    answer: "Not if done correctly. The first phase of CAC reduction focuses on eliminating waste , budget that's generating clicks but not customers. Reallocating that budget to your best-performing campaigns and audiences should maintain or increase volume while reducing CAC. The key is to cut the right things. Don't slash budget across the board. Instead, surgically remove underperformers and redirect to proven winners."
   - question: "What tools do I need to implement this 30-day plan?"
-    answer: "At minimum, you need access to your ad platform dashboards (Google Ads, Meta Ads Manager), Google Analytics 4, and a landing page builder that supports A/B testing. For more advanced optimization, consider a call tracking tool (like CallRail), a heatmap tool (like Hotjar or Microsoft Clarity — which is free), and a CRM that tracks lead-to-customer conversion. You don't need expensive tools to start — the biggest gains come from better decision-making with the data you already have."
+    answer: "At minimum, you need access to your ad platform dashboards (Google Ads, Meta Ads Manager), Google Analytics 4, and a landing page builder that supports A/B testing. For more advanced optimization, consider a call tracking tool (like CallRail), a heatmap tool (like Hotjar or Microsoft Clarity , which is free), and a CRM that tracks lead-to-customer conversion. You don't need expensive tools to start , the biggest gains come from better decision-making with the data you already have."
 ---
 
 ## The 30-Day CAC Reduction Plan
@@ -24,11 +24,11 @@ This isn't theory. This is a specific, day-by-day plan you can execute starting 
 
 You can't improve what you don't measure. Before day one, document these numbers:
 
-- **Current blended CAC** — total marketing and sales spend divided by new customers
-- **Channel-specific CAC** — CAC for each ad platform separately
-- **Campaign-level CAC** — CAC for each campaign
-- **Landing page conversion rates** — for every page receiving paid traffic
-- **Lead-to-customer conversion rate** — what percentage of leads become paying customers
+- **Current blended CAC** , total marketing and sales spend divided by new customers
+- **Channel-specific CAC** , CAC for each ad platform separately
+- **Campaign-level CAC** , CAC for each campaign
+- **Landing page conversion rates** , for every page receiving paid traffic
+- **Lead-to-customer conversion rate** , what percentage of leads become paying customers
 
 Pull these from the last 30 and 90 days. The 90-day view gives you statistical significance. The 30-day view shows your current trajectory.
 
@@ -40,11 +40,11 @@ Week one is about cutting the fat. This is where the fastest and most dramatic C
 
 Pull every campaign across all platforms. Sort by cost per acquisition (or cost per lead if you can't track to customer). Create three buckets:
 
-**Green — performing well:** CAC is at or below your target. These get more budget.
+**Green , performing well:** CAC is at or below your target. These get more budget.
 
-**Yellow — borderline:** CAC is 1-1.5x your target. These get optimized.
+**Yellow , borderline:** CAC is 1-1.5x your target. These get optimized.
 
-**Red — underperforming:** CAC is more than 1.5x your target with enough data to be statistically significant. These get paused or restructured.
+**Red , underperforming:** CAC is more than 1.5x your target with enough data to be statistically significant. These get paused or restructured.
 
 Most accounts have 20-30% of spend in the red bucket. Pause those campaigns immediately.
 
@@ -52,9 +52,9 @@ Most accounts have 20-30% of spend in the red bucket. Pause those campaigns imme
 
 Download your search term report for the last 90 days. Look for:
 
-- Irrelevant queries that are triggering your ads — add as negative keywords
-- Queries with high spend and zero conversions — add as negatives
-- Queries with conversions but high CAC — consider lowering bids or creating dedicated ad groups
+- Irrelevant queries that are triggering your ads , add as negative keywords
+- Queries with high spend and zero conversions , add as negatives
+- Queries with conversions but high CAC , consider lowering bids or creating dedicated ad groups
 
 **Benchmark:** A thorough search term audit typically adds 100-300 negative keywords and reduces wasted spend by 10-20%.
 
@@ -95,16 +95,16 @@ Apply bid adjustments: increase bids on high-performing segments, decrease on lo
 
 Review audience performance on Meta:
 
-- Check frequency on prospecting audiences — if above 2.5, your audiences are too small or your budget is too high
+- Check frequency on prospecting audiences , if above 2.5, your audiences are too small or your budget is too high
 - Review Advantage+ audience performance versus manual audiences
-- Check lookalike audience sizes — 1% versus 3% versus 5%
+- Check lookalike audience sizes , 1% versus 3% versus 5%
 - Pause any audience segments with CAC more than 2x your target
 
 Review audience targeting on Google:
 
 - Remove poorly performing in-market audiences
 - Tighten remarketing audience windows if performance degrades with longer durations
-- Check customer match list recency — stale lists perform worse
+- Check customer match list recency , stale lists perform worse
 
 ### Week 1 Expected Impact
 
@@ -188,7 +188,7 @@ Audit your current creative performance:
 
 - Any ad with frequency above 3 on prospecting needs replacement
 - Any ad running more than 4-6 weeks without refresh should be tested against new variations
-- Sort ads by cost per acquisition — identify what makes your best performers work
+- Sort ads by cost per acquisition , identify what makes your best performers work
 
 Create new creative that:
 - Uses different angles than your current winners (new pain points, new benefits)
@@ -282,7 +282,7 @@ Same spend, 43% more customers. Or you could maintain the same customer volume a
 
 **Don't cut everything at once.** Make changes systematically so you can measure the impact of each change. If you change everything on day one, you won't know what worked.
 
-**Don't confuse correlation with causation.** A campaign's CAC spiked the same week you launched new creative — was it the creative or something else? Always check for external factors.
+**Don't confuse correlation with causation.** A campaign's CAC spiked the same week you launched new creative , was it the creative or something else? Always check for external factors.
 
 **Don't ignore statistical significance.** A campaign with 5 conversions and a low CAC might just be lucky. Wait for at least 20-30 conversions before making major decisions.
 

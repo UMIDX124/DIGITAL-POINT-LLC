@@ -11,7 +11,7 @@ faqs:
   - question: "What tools are best for marketing report automation?"
     answer: "The best stack depends on your budget. For small teams: Looker Studio + Supermetrics. For mid-market: Databox or Klipfolio. For enterprise: Tableau or Looker with a data warehouse. All approaches benefit from a data pipeline tool like Fivetran or Stitch."
   - question: "Should I automate reports before fixing my tracking?"
-    answer: "No. Automating bad data just delivers wrong answers faster. First ensure your tracking is accurate—proper UTM parameters, clean conversion tracking, and reliable attribution. Then automate. Garbage in, garbage out applies doubly to automated systems."
+    answer: "No. Automating bad data just delivers wrong answers faster. First ensure your tracking is accurate,proper UTM parameters, clean conversion tracking, and reliable attribution. Then automate. Garbage in, garbage out applies doubly to automated systems."
   - question: "How often should automated reports be sent?"
     answer: "Daily summaries for campaign managers, weekly performance reports for directors, monthly strategic reports for executives, and quarterly business reviews for leadership. Match frequency to the decision cadence of each audience."
 ---
@@ -20,7 +20,7 @@ faqs:
 
 Marketing teams are drowning in reporting. The average marketing manager spends **8 to 15 hours every week** pulling data from platforms, copying numbers into spreadsheets, building charts, and formatting decks. That's nearly two full days of every work week spent on reporting instead of strategy, optimization, or creative thinking.
 
-And the problem is getting worse. As channel mix diversifies and attribution grows more complex, the number of data sources feeding into marketing reports has expanded from 3-5 to **12-20 for most teams.** Google Ads, Meta Ads, LinkedIn, TikTok, GA4, CRM, email platforms, SEO tools, call tracking—each one requires its own login, its own export process, and its own data quirks.
+And the problem is getting worse. As channel mix diversifies and attribution grows more complex, the number of data sources feeding into marketing reports has expanded from 3-5 to **12-20 for most teams.** Google Ads, Meta Ads, LinkedIn, TikTok, GA4, CRM, email platforms, SEO tools, call tracking,each one requires its own login, its own export process, and its own data quirks.
 
 The solution isn't hiring more analysts. The solution is building automated reporting systems that deliver accurate, timely data to the right people without manual intervention. This guide walks you through exactly how to do that.
 
@@ -32,11 +32,11 @@ The solution isn't hiring more analysts. The solution is building automated repo
 
 **Tools for extraction:**
 
-- **Supermetrics** — Connects 100+ marketing platforms to Google Sheets, Looker Studio, or data warehouses. The go-to tool for teams that want simplicity.
-- **Fivetran** — Enterprise-grade data pipeline tool that syncs data automatically. More reliable but more expensive.
-- **Stitch Data** — Open-source-friendly alternative to Fivetran.
-- **Funnel.io** — Purpose-built for marketing data extraction and transformation.
-- **Custom APIs** — For teams with engineering resources, direct API integrations offer maximum control.
+- **Supermetrics** , Connects 100+ marketing platforms to Google Sheets, Looker Studio, or data warehouses. The go-to tool for teams that want simplicity.
+- **Fivetran** , Enterprise-grade data pipeline tool that syncs data automatically. More reliable but more expensive.
+- **Stitch Data** , Open-source-friendly alternative to Fivetran.
+- **Funnel.io** , Purpose-built for marketing data extraction and transformation.
+- **Custom APIs** , For teams with engineering resources, direct API integrations offer maximum control.
 
 **Key consideration:** Data extraction frequency matters. Real-time data sounds appealing but is rarely necessary and often more expensive. For most reports, **daily extraction** strikes the right balance between freshness and cost.
 
@@ -46,18 +46,18 @@ Raw data from platforms is messy. Different platforms use different naming conve
 
 **Common transformations:**
 
-- **Standardize naming conventions** — "Facebook" and "Meta" should map to the same channel
-- **Currency conversion** — If running ads in multiple countries
-- **Attribution window alignment** — Compare channels using the same [attribution windows](/blog/attribution-window-guide)
-- **Metric calculations** — CAC, ROAS, LTV:CAC ratio, and other derived metrics
-- **[UTM parameter cleaning](/blog/utm-tracking-best-practices)** — Standardize messy UTM data
+- **Standardize naming conventions** , "Facebook" and "Meta" should map to the same channel
+- **Currency conversion** , If running ads in multiple countries
+- **Attribution window alignment** , Compare channels using the same [attribution windows](/blog/attribution-window-guide)
+- **Metric calculations** , CAC, ROAS, LTV:CAC ratio, and other derived metrics
+- **[UTM parameter cleaning](/blog/utm-tracking-best-practices)** , Standardize messy UTM data
 
 **Tools for transformation:**
 
-- **dbt (data build tool)** — The gold standard for SQL-based transformations
-- **Google Sheets formulas** — Simple but breaks at scale
-- **Supermetrics transformations** — Basic transformations within the extraction tool
-- **Python scripts** — Maximum flexibility for custom logic
+- **dbt (data build tool)** , The gold standard for SQL-based transformations
+- **Google Sheets formulas** , Simple but breaks at scale
+- **Supermetrics transformations** , Basic transformations within the extraction tool
+- **Python scripts** , Maximum flexibility for custom logic
 
 ### Layer 3: Data Storage
 
@@ -74,17 +74,17 @@ For simple setups, Google Sheets works. For anything more complex, you need a pr
 
 **Dashboard tools:**
 
-- **Looker Studio (free)** — Best for Google ecosystem integration
-- **Tableau** — Best for complex visualizations and enterprise needs
-- **Databox** — Best for marketing-specific dashboards
-- **Power BI** — Best for Microsoft-heavy organizations
+- **Looker Studio (free)** , Best for Google ecosystem integration
+- **Tableau** , Best for complex visualizations and enterprise needs
+- **Databox** , Best for marketing-specific dashboards
+- **Power BI** , Best for Microsoft-heavy organizations
 
 **Distribution methods:**
 
-- **Scheduled email delivery** — Most dashboard tools support automated email reports
-- **Slack/Teams integration** — Push key metrics to channels where your team already works
-- **PDF generation** — For client-facing reports or board decks
-- **Embedded dashboards** — For client portals or internal wikis
+- **Scheduled email delivery** , Most dashboard tools support automated email reports
+- **Slack/Teams integration** , Push key metrics to channels where your team already works
+- **PDF generation** , For client-facing reports or board decks
+- **Embedded dashboards** , For client portals or internal wikis
 
 ## Building Your First Automated Report: Step by Step
 
@@ -169,11 +169,11 @@ Include week-over-week and month-over-month comparisons, target vs. actual metri
 
 Don't wait for the weekly report to discover that ad spend doubled or conversions dropped to zero. Set up automated alerts for:
 
-- **Spend anomalies** — Daily spend exceeding 150% of average
-- **Conversion drops** — Conversion volume dropping below 50% of rolling average
-- **CPC spikes** — Cost per click increasing more than 30% overnight
-- **Tracking failures** — Zero conversions from a normally active platform
-- **[ROAS thresholds](/blog/roas-optimization-guide)** — Campaign ROAS falling below profitability threshold
+- **Spend anomalies** , Daily spend exceeding 150% of average
+- **Conversion drops** , Conversion volume dropping below 50% of rolling average
+- **CPC spikes** , Cost per click increasing more than 30% overnight
+- **Tracking failures** , Zero conversions from a normally active platform
+- **[ROAS thresholds](/blog/roas-optimization-guide)** , Campaign ROAS falling below profitability threshold
 
 **Tools for anomaly detection:**
 
@@ -184,11 +184,11 @@ Don't wait for the weekly report to discover that ad spend doubled or conversion
 
 ### AI-Powered Report Narratives
 
-One of the most tedious parts of reporting is writing the narrative—explaining what happened and why. In 2026, AI tools can generate draft narratives from your data:
+One of the most tedious parts of reporting is writing the narrative,explaining what happened and why. In 2026, AI tools can generate draft narratives from your data:
 
-- **Narrative Science / Quill** — Enterprise narrative generation
-- **ChatGPT / Claude API** — Feed in data summaries, get draft insights
-- **Databox Insights** — Automated performance commentary
+- **Narrative Science / Quill** , Enterprise narrative generation
+- **ChatGPT / Claude API** , Feed in data summaries, get draft insights
+- **Databox Insights** , Automated performance commentary
 
 The key is using AI for the first draft, then having a human add strategic context and recommendations. Data can tell you what happened. Only a human analyst can recommend what to do about it.
 
@@ -240,7 +240,7 @@ These discrepancies are normal (different [attribution windows](/blog/attributio
 
 ### Pitfall 1: Automating Before Fixing Data Quality
 
-If your [conversion tracking](/blog/conversion-tracking-setup-guide) is broken, automating your reports just delivers inaccurate data faster. Invest in data quality first—proper [UTM tracking](/blog/utm-tracking-best-practices), [server-side tracking](/blog/server-side-tracking-guide), and clean CRM data.
+If your [conversion tracking](/blog/conversion-tracking-setup-guide) is broken, automating your reports just delivers inaccurate data faster. Invest in data quality first,proper [UTM tracking](/blog/utm-tracking-best-practices), [server-side tracking](/blog/server-side-tracking-guide), and clean CRM data.
 
 ### Pitfall 2: Over-Automating
 
@@ -268,7 +268,7 @@ The best stack depends on your budget. For small teams: Looker Studio + Supermet
 
 ### Should I automate reports before fixing my tracking?
 
-No. Automating bad data just delivers wrong answers faster. First ensure your tracking is accurate—proper UTM parameters, clean conversion tracking, and reliable attribution. Then automate. Garbage in, garbage out applies doubly to automated systems.
+No. Automating bad data just delivers wrong answers faster. First ensure your tracking is accurate,proper UTM parameters, clean conversion tracking, and reliable attribution. Then automate. Garbage in, garbage out applies doubly to automated systems.
 
 ### How often should automated reports be sent?
 

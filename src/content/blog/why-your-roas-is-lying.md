@@ -27,7 +27,7 @@ There are three main culprits behind inflated ROAS:
 
 ### Attribution Window Games
 
-Meta's default 7-day click, 1-day view window captures conversions that may have happened organically. A user sees your ad on Monday, forgets about it, then Googles your brand on Thursday — Meta takes credit.
+Meta's default 7-day click, 1-day view window captures conversions that may have happened organically. A user sees your ad on Monday, forgets about it, then Googles your brand on Thursday , Meta takes credit.
 
 ### Cross-Platform Double Counting
 
@@ -41,15 +41,15 @@ Platforms count conversions from users who merely saw your ad but never clicked.
 
 Sophisticated advertisers focus on these metrics:
 
-- **Blended CAC** — Total marketing spend divided by total new customers, regardless of channel
-- **Incremental ROAS** — Run holdout tests to measure true incremental revenue from ads
-- **Contribution Margin by Channel** — Revenue minus COGS minus ad spend per channel
-- **MER (Marketing Efficiency Ratio)** — Total revenue divided by total marketing spend
-- **New Customer Revenue** — Separate new vs. returning customer revenue from ads
+- **Blended CAC** , Total marketing spend divided by total new customers, regardless of channel
+- **Incremental ROAS** , Run holdout tests to measure true incremental revenue from ads
+- **Contribution Margin by Channel** , Revenue minus COGS minus ad spend per channel
+- **MER (Marketing Efficiency Ratio)** , Total revenue divided by total marketing spend
+- **New Customer Revenue** , Separate new vs. returning customer revenue from ads
 
 ## Building a Real Attribution System
 
-The solution isn't abandoning platform data — it's building a system that triangulates truth from multiple sources:
+The solution isn't abandoning platform data , it's building a system that triangulates truth from multiple sources:
 
 1. Server-side conversion tracking with first-party data
 2. UTM-based attribution in your CRM
@@ -58,7 +58,7 @@ The solution isn't abandoning platform data — it's building a system that tria
 
 ## The Bottom Line
 
-Stop optimizing for platform-reported ROAS. Start building systems that show you what's actually driving revenue. The companies that get this right don't just improve their marketing — they transform their entire growth trajectory.
+Stop optimizing for platform-reported ROAS. Start building systems that show you what's actually driving revenue. The companies that get this right don't just improve their marketing , they transform their entire growth trajectory.
 
 ---
 

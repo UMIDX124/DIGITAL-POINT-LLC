@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     'Managed remote teams for marketing ops, creative production, analytics, and execution support. Vetted specialists without the hiring overhead.',
   openGraph: {
-    title: 'Remote Workforce — Digital Point LLC',
+    title: 'Remote Workforce · Digital Point LLC',
     description:
       'Managed remote teams for marketing ops, creative production, analytics, and execution support.',
     url: 'https://digitalpointllc.com/remote-workforce',

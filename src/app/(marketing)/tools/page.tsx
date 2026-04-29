@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Free ROAS calculator, CAC calculator, ad spend profit calculator, and more. Instantly analyze your marketing performance.',
   alternates: { canonical: 'https://digitalpointllc.com/tools' },
   openGraph: {
-    title: 'Free Marketing Tools & Calculators — Digital Point LLC',
+    title: 'Free Marketing Tools & Calculators · Digital Point LLC',
     description: 'Interactive marketing calculators for ROAS, CAC, ad spend profitability, and attribution modeling.',
   },
 };

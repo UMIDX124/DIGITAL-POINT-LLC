@@ -33,7 +33,7 @@ The concept borrows from scientific experimentation. You split your audience int
 - **Test group:** Sees your ads (business as usual)
 - **Control group:** Does NOT see your ads (or sees a placebo)
 
-After the test period, you compare conversion rates between the two groups. The difference represents the **incremental lift**—conversions directly caused by your advertising.
+After the test period, you compare conversion rates between the two groups. The difference represents the **incremental lift**,conversions directly caused by your advertising.
 
 ### The Math
 
@@ -48,7 +48,7 @@ After the test period, you compare conversion rates between the two groups. The 
 - Incremental conversions: 20 out of 50
 - Incrementality rate: 40% (meaning 40% of attributed conversions are truly incremental)
 
-In this example, the ad channel is driving real value—but **60% of conversions credited to it would have happened anyway**. Your true ROAS is less than half what your attribution model suggests.
+In this example, the ad channel is driving real value,but **60% of conversions credited to it would have happened anyway**. Your true ROAS is less than half what your attribution model suggests.
 
 ## Types of Incrementality Tests
 
@@ -162,9 +162,9 @@ In this example, the ad channel is driving real value—but **60% of conversions
 
 Start with the channel or campaign where you have the most uncertainty or the highest spend. Common first tests:
 
-- **Retargeting campaigns** — Often the most over-attributed channel
-- **Branded search** — Are you paying for clicks you'd get organically?
-- **Largest prospecting channel** — Validate your biggest investment
+- **Retargeting campaigns** , Often the most over-attributed channel
+- **Branded search** , Are you paying for clicks you'd get organically?
+- **Largest prospecting channel** , Validate your biggest investment
 
 ### Step 2: Define Success Metrics
 
@@ -178,10 +178,10 @@ Before running the test, define what you'll measure:
 
 Use a **power analysis** to determine how long the test needs to run and how large your test/control groups need to be. Key inputs:
 
-- **Baseline conversion rate** — Your current conversion rate
-- **Minimum detectable effect** — The smallest lift you want to be able to detect (typically 10-20%)
-- **Statistical significance level** — Usually 95% (p < 0.05)
-- **Power** — Usually 80% (probability of detecting a real effect)
+- **Baseline conversion rate** , Your current conversion rate
+- **Minimum detectable effect** , The smallest lift you want to be able to detect (typically 10-20%)
+- **Statistical significance level** , Usually 95% (p < 0.05)
+- **Power** , Usually 80% (probability of detecting a real effect)
 
 Online calculators like Evan Miller's A/B test calculator can help. As a rule of thumb:
 
@@ -193,9 +193,9 @@ Online calculators like Evan Miller's A/B test calculator can help. As a rule of
 
 During the test period:
 
-- **Don't change anything else** — Keep creative, targeting, and budgets constant
+- **Don't change anything else** , Keep creative, targeting, and budgets constant
 - **Monitor daily** for any anomalies but don't end the test early
-- **Track your measurement independently** — Use your CRM/order system, not the ad platform, to count conversions
+- **Track your measurement independently** , Use your CRM/order system, not the ad platform, to count conversions
 
 ### Step 5: Analyze Results
 
@@ -204,8 +204,8 @@ After the test concludes:
 1. Calculate the **conversion rate for test and control groups**
 2. Determine the **incremental lift** (test rate minus control rate)
 3. Calculate the **incrementality rate** (what percentage of attributed conversions are truly incremental)
-4. Calculate **incremental ROAS** — Revenue from incremental conversions divided by ad spend
-5. Assess **statistical significance** — Is the result reliable or could it be random noise?
+4. Calculate **incremental ROAS** , Revenue from incremental conversions divided by ad spend
+5. Assess **statistical significance** , Is the result reliable or could it be random noise?
 
 ### Step 6: Act on the Results
 
@@ -271,4 +271,4 @@ The most accurate measurement combines incrementality testing with other approac
 - Use **marketing mix modeling** for top-down budget allocation
 - When all three methods agree, you can act with high confidence
 
-Incrementality testing takes effort, but it provides something no other measurement method can: **proof of causation**. In a world of increasingly noisy attribution data, knowing what your ads actually cause—versus what they merely correlate with—is one of the most valuable insights a marketer can have.
+Incrementality testing takes effort, but it provides something no other measurement method can: **proof of causation**. In a world of increasingly noisy attribution data, knowing what your ads actually cause,versus what they merely correlate with,is one of the most valuable insights a marketer can have.

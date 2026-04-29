@@ -66,9 +66,7 @@ export function ToolsHub() {
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
               Marketing{' '}
-              <span className="bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FF8800] bg-clip-text text-transparent">
-                calculators
-              </span>
+              <span style={{ color: 'var(--accent-bright)' }}>calculators</span>
               {' '}& tools
             </h1>
             <p className="text-[color:var(--text-primary)] text-lg md:text-xl max-w-2xl leading-relaxed">

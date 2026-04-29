@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
     if (!apiKey) {
       console.error('[chat] GROQ_API_KEY not configured');
       return NextResponse.json(
-        { error: 'AI service not configured. Try again in a minute — admin is fixing this now.' },
+        { error: 'AI service not configured. Try again in a minute. Admin is fixing this now.' },
         { status: 503 },
       );
     }
@@ -92,7 +92,7 @@ export async function POST(req: NextRequest) {
 
     let groqRes = await callGroq();
     if ([502, 503, 504].includes(groqRes.status)) {
-      console.warn(`[chat] groq ${groqRes.status} — retrying once`);
+      console.warn(`[chat] groq ${groqRes.status}: retrying once`);
       groqRes = await callGroq();
     }
 

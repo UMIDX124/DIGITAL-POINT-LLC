@@ -347,7 +347,7 @@ export default function PrivacyPolicyPage() {
                     >
                       our on-site routes
                     </a>
-                    {' '}(Cosmo chat or the free growth audit form) — your inquiry
+                    {' '}(Cosmo chat or the free growth audit form). Your inquiry
                     routes directly to the operator best matched to your stage.
                   </p>
                   <p className="mt-1">

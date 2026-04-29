@@ -15,7 +15,7 @@ const variants: Record<string, { hook: string; heading: string }> = {
   },
   paidAds: {
     heading: 'Think your ad spend could work harder?',
-    hook: "We'll show you where the waste is — free.",
+    hook: "We'll show you where the waste is. Free.",
   },
   default: {
     heading: 'Want a team that actually moves the needle?',

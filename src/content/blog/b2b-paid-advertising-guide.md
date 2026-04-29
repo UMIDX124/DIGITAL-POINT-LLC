@@ -9,7 +9,7 @@ faqs:
   - question: "What is the best paid advertising channel for B2B?"
     answer: "It depends on your deal size and sales cycle. For most B2B companies, Google Search is the highest-intent channel (capturing active demand), LinkedIn provides the best professional targeting (reaching specific titles and companies), and Meta offers the lowest CPMs for awareness and retargeting. The optimal mix for most B2B companies spending $20K+/month is: 40-50% Google Search, 20-30% LinkedIn, 15-20% Meta retargeting, and 10-15% display/content."
   - question: "What is a good cost per lead for B2B advertising?"
-    answer: "B2B CPL varies dramatically by channel and lead quality. Benchmarks: Google Search $30-$80 (high intent), LinkedIn $50-$150 (professional targeting), Meta $15-$50 (broader, lower intent), Display/Native $20-$60 (awareness-stage). However, CPL alone is misleading — a $150 LinkedIn lead that converts to a $100K deal is far more valuable than a $15 Meta lead that never engages sales. Focus on cost per SQL and cost per opportunity, not just CPL."
+    answer: "B2B CPL varies dramatically by channel and lead quality. Benchmarks: Google Search $30-$80 (high intent), LinkedIn $50-$150 (professional targeting), Meta $15-$50 (broader, lower intent), Display/Native $20-$60 (awareness-stage). However, CPL alone is misleading , a $150 LinkedIn lead that converts to a $100K deal is far more valuable than a $15 Meta lead that never engages sales. Focus on cost per SQL and cost per opportunity, not just CPL."
   - question: "How much should a B2B company spend on paid advertising?"
     answer: "Most B2B companies allocate 5-15% of revenue to marketing, with 30-50% of that going to paid advertising. For growth-stage B2B companies, 10-20% of revenue on marketing is common. As a benchmark: B2B companies with $1M-$10M revenue typically spend $5K-$30K/month on paid ads; $10M-$50M revenue companies spend $20K-$100K/month; and $50M+ companies spend $50K-$500K+/month. The key is to track spend relative to pipeline generated, not just lead volume."
 ---
@@ -31,7 +31,7 @@ For B2B companies spending **$15K–$150K+ monthly** on paid media, success requ
 
 ### Channel 1: Google Search (40-50% of Budget)
 
-Google Search captures **active demand** — people searching for solutions to problems you solve.
+Google Search captures **active demand** , people searching for solutions to problems you solve.
 
 **B2B Google Ads benchmarks:**
 
@@ -122,10 +122,10 @@ Meta offers the lowest CPMs and most sophisticated algorithms, but B2B targeting
 Programmatic display extends your reach beyond search and social:
 
 **B2B display strategies:**
-- **Account-based display** — Target ads to IP addresses of specific companies (via Demandbase, RollWorks, or 6sense)
-- **Content syndication** — Distribute gated content through programmatic networks
-- **Publisher direct** — Advertise on industry-specific sites your buyers read
-- **Retargeting** — Re-engage website visitors across the web
+- **Account-based display** , Target ads to IP addresses of specific companies (via Demandbase, RollWorks, or 6sense)
+- **Content syndication** , Distribute gated content through programmatic networks
+- **Publisher direct** , Advertise on industry-specific sites your buyers read
+- **Retargeting** , Re-engage website visitors across the web
 
 **B2B display benchmarks:**
 
@@ -134,7 +134,7 @@ Programmatic display extends your reach beyond search and social:
 | CPM | $5-$15 | $15-$40 |
 | CTR | 0.08-0.15% | 0.15-0.30% |
 | CPL | $50-$150 | $80-$250 |
-| Account engagement lift | — | 30-50% |
+| Account engagement lift | , | 30-50% |
 
 ## The B2B Paid Advertising Funnel
 

@@ -50,7 +50,7 @@ export function AdSpendCalculator({ faqs }: Props) {
             <Breadcrumbs items={[{ label: 'Tools', href: '/tools' }, { label: 'Ad Spend Profit Calculator', href: '/tools/ad-spend-profit-calculator' }]} />
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mt-6">
               Ad Spend{' '}
-              <span className="bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FFA833] bg-clip-text text-transparent">Profit</span>
+              <span style={{ color: 'var(--accent-bright)' }}>Profit</span>
               {' '}Calculator
             </h1>
             <p className="text-[color:var(--text-primary)] text-lg mt-3 max-w-2xl">
@@ -114,12 +114,12 @@ export function AdSpendCalculator({ faqs }: Props) {
                   <div className="grid grid-cols-2 gap-3">
                     <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
                       <span className="text-[color:var(--text-muted)] text-xs">Monthly Revenue</span>
-                      <p className="font-display text-xl font-bold text-white mt-1">{revenue > 0 ? `$${revenue.toLocaleString()}` : '—'}</p>
+                      <p className="font-display text-xl font-bold text-white mt-1">{revenue > 0 ? `$${revenue.toLocaleString()}` : '·'}</p>
                     </div>
                     <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
                       <span className="text-[color:var(--text-muted)] text-xs">Monthly Profit</span>
                       <p className={`font-display text-xl font-bold mt-1 ${profit >= 0 ? 'text-[color:var(--accent-bright)]' : 'text-[color:var(--accent-primary)]'}`}>
-                        {spend > 0 ? `$${profit.toLocaleString()}` : '—'}
+                        {spend > 0 ? `$${profit.toLocaleString()}` : '·'}
                       </p>
                     </div>
                   </div>
@@ -127,13 +127,13 @@ export function AdSpendCalculator({ faqs }: Props) {
                     <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
                       <span className="text-[color:var(--text-muted)] text-xs">Profit Margin</span>
                       <p className={`font-display text-xl font-bold mt-1 ${profitMargin >= 0 ? 'text-[color:var(--accent-primary)]' : 'text-[color:var(--accent-primary)]'}`}>
-                        {revenue > 0 ? `${profitMargin.toFixed(1)}%` : '—'}
+                        {revenue > 0 ? `${profitMargin.toFixed(1)}%` : '·'}
                       </p>
                     </div>
                     <div className="rounded-xl p-4" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
                       <span className="text-[color:var(--text-muted)] text-xs">Annual Profit</span>
                       <p className={`font-display text-xl font-bold mt-1 ${annualProfit >= 0 ? 'text-[color:var(--accent-bright)]' : 'text-[color:var(--accent-primary)]'}`}>
-                        {spend > 0 ? `$${annualProfit.toLocaleString()}` : '—'}
+                        {spend > 0 ? `$${annualProfit.toLocaleString()}` : '·'}
                       </p>
                     </div>
                   </div>

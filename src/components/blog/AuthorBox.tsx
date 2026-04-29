@@ -31,7 +31,7 @@ const defaultAuthor: AuthorInfo = {
   name: 'Digital Point LLC',
   initials: 'DP',
   title: 'Team',
-  bio: 'We\'re a small, opinionated team that believes marketing should be measurable, honest, and actually drive revenue. We write from experience — the wins, the failures, and the "we probably should have tested that first" moments.',
+  bio: 'We\'re a small, opinionated team that believes marketing should be measurable, honest, and actually drive revenue. We write from experience: the wins, the failures, and the "we probably should have tested that first" moments.',
   expertise: ['Digital Marketing', 'Growth', 'Analytics'],
 };
 

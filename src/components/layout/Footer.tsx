@@ -89,7 +89,7 @@ export function Footer() {
                 queue where your message lines up with everyone else&apos;s. We don&apos;t run that way.
               </p>
               <p className="footer-philosophy-body text-sm">
-                When you reach out through Cosmo or our audit form, your inquiry goes directly to the operator best matched to your stage — not a ticket pool. We answer from our personal accounts because we&apos;re personally accountable for what we ship.
+                When you reach out through Cosmo or our audit form, your inquiry goes directly to the operator best matched to your stage, not a ticket pool. We answer from our personal accounts because we&apos;re personally accountable for what we ship.
               </p>
               <p className="footer-philosophy-body text-sm">
                 If you&apos;d rather talk to a human first, just tell Cosmo. We&apos;ll route the conversation to the right operator within one business day.

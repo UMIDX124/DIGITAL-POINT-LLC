@@ -20,7 +20,7 @@ const problems = [
   {
     icon: Users,
     title: 'Vendors don\'t talk to each other',
-    description: 'Agencies, freelancers, tools—each in their own silo. No one owns the whole picture.',
+    description: 'Agencies, freelancers, tools, each in their own silo. No one owns the whole picture.',
   },
   {
     icon: Clock,
@@ -30,7 +30,7 @@ const problems = [
   {
     icon: Zap,
     title: 'You know something is off',
-    description: 'You can feel it. But you don\'t have the data to prove it—or the time to fix it.',
+    description: 'You can feel it. But you don\'t have the data to prove it, or the time to fix it.',
   },
 ];
 
@@ -82,7 +82,7 @@ export function ProblemSection() {
             {/* Main Title */}
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-[1.15] tracking-tight mb-6">
               <span className="block">You&apos;re not guessing.</span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#FFA833] via-[#FF8800] to-[#FF8800]">
+              <span className="block" style={{ color: 'var(--accent-bright)' }}>
                 You just don&apos;t have the data.
               </span>
             </h2>

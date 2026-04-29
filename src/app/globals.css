@@ -1902,41 +1902,20 @@ html[data-paused-global="true"] .logo-marquee-track {
   letter-spacing: var(--ls-tight);
   max-width: var(--maxw-heading-section);
 }
-/* Phase 19 — GSAP-pinned frame stack. Frames overlap (absolute positioning)
-   so the GSAP timeline can cross-fade them. The stack itself becomes a
-   100vh viewport that ScrollTrigger pins for ~5 viewport-heights of
-   scroll distance. Reduced-motion / no-JS / mobile users fall back to
-   the Phase 13 CSS-sticky behavior via the layered selectors below. */
-.services-pin-stack {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-}
+/* Phase 13 — sticky frame stack (Phase 19 GSAP scrub revert). Each
+   frame is position: sticky, solid background, layered so the next
+   frame visually replaces the previous on scroll. Pure CSS pin, no JS. */
 .services-pin-frame {
-  position: absolute;
-  inset: 0;
+  position: sticky;
+  top: 0;
   background: var(--bg-secondary);
+  min-height: 60vh;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid var(--border-subtle);
   contain: layout style;
-  will-change: transform, opacity;
 }
 .services-pin-frame:last-child { border-bottom: none; }
-/* Reduced-motion fallback: revert to vertical-stack sticky behavior so
-   the section is still scannable when GSAP doesn't run. */
-@media (prefers-reduced-motion: reduce) {
-  .services-pin-stack {
-    height: auto;
-    overflow: visible;
-  }
-  .services-pin-frame {
-    position: sticky;
-    top: 0;
-    inset: auto;
-    min-height: 60vh;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-}
 .services-pin-frame-inner {
   display: block;
   width: 100%;

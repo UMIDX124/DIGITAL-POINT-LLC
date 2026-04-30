@@ -1,13 +1,12 @@
 import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';
 import { StickyCTABar } from '@/components/ui-dp/StickyCTABar';
-import { ScrollMotion } from '@/components/motion/ScrollMotion';
 
 /**
- * Phase 19 Path 3 trim — Lenis SmoothScrollProvider removed. Owner
- * feedback: "website feels heavy/laggy." Removing the smooth-scroll
- * layer + its rAF bridge cuts per-frame work; native scroll restored.
- * ScrollMotion (intersection-observer reveals) preserved.
+ * Phase 19 nuke-lag — ScrollMotion (IntersectionObserver + lazy GSAP
+ * for workgrid scrub + workflow path draw) ALSO removed. Owner: "tooooo
+ * much lag." Static-first; reveals re-introduced only as pure CSS
+ * animations triggered on page-load if/when needed.
  */
 
 export default function MarketingLayout({
@@ -17,7 +16,6 @@ export default function MarketingLayout({
 }) {
   return (
     <div className="relative min-h-screen flex flex-col">
-      <ScrollMotion />
       <Navigation />
       <main className="flex-1">{children}</main>
       <Footer />

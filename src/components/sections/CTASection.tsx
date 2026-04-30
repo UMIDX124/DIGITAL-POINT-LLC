@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { copy } from '@/lib/copy';
-import MagneticCTA from '@/components/effects/MagneticCTA';
 
 /**
  * Phase 4f → 17b 2A-REFIX final CTA. Originally a "dramatic purple-glow
@@ -35,13 +34,11 @@ export function CTASection() {
           Free · Written plan in 5 days · Co-founder reviews personally
         </p>
 
-        <div className="mt-5 flex flex-col sm:flex-row gap-3 justify-center items-center" data-reveal>
-          <MagneticCTA strength={0.3} radius={90}>
-            <Link href={ctaPrimary.href} className="cta-primary" data-cta-primary>
-              {ctaPrimary.label}
-              <span aria-hidden="true">→</span>
-            </Link>
-          </MagneticCTA>
+        <div className="mt-5 flex flex-col sm:flex-row gap-3 justify-center items-center">
+          <Link href={ctaPrimary.href} className="cta-primary" data-cta-primary>
+            {ctaPrimary.label}
+            <span aria-hidden="true">→</span>
+          </Link>
           <Link href={ctaSecondary.href} className="cta-ghost">
             {ctaSecondary.label}
           </Link>

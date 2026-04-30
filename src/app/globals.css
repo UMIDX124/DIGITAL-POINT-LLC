@@ -2203,29 +2203,13 @@ html[data-paused-global="true"] .logo-marquee-track {
   display: block;
   overflow: visible;
 }
-.orbit-spinner {
-  animation: orbit-spin 90s linear infinite;
-  will-change: transform;
-}
+/* Phase 19 nuke-lag — orbit rotation REMOVED. Owner: "tooooo much lag."
+   The 90s linear rotation (and its counter-rotation for labels) ran
+   continuously even off-screen, paying compositor cost on every device.
+   Keeping the orbit as a static brand mark. */
+.orbit-spinner,
 .orbit-label {
-  /* Counter-rotation cancels the spinner's rotation so text reads
-     upright at every frame. Same duration, opposite direction. */
-  animation: orbit-spin-counter 90s linear infinite;
-  will-change: transform;
-}
-@keyframes orbit-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-@keyframes orbit-spin-counter {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(-360deg); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .orbit-spinner,
-  .orbit-label {
-    animation: none;
-  }
+  animation: none;
 }
 
 /* ===================================================================

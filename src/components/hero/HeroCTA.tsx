@@ -1,11 +1,10 @@
 import Link from 'next/link';
-import MagneticCTA from '@/components/effects/MagneticCTA';
 import { copy } from '@/lib/copy';
 
 /**
- * Hero CTA stack: primary audit booking, secondary in-page services anchor,
- * trust microcopy. Labels and hrefs sourced from copy.ts (single source of truth).
- * GSAP cascade targets `[data-hero-cta] > *`.
+ * Hero CTA stack — Phase 19 nuke-lag rewrite.
+ * MagneticCTA wrapper removed (was attaching a global mousemove listener
+ * with rAF tick per instance). Pure Link + CSS hover.
  */
 export function HeroCTA() {
   const { ctaPrimary, ctaSecondary } = copy.hero;
@@ -13,12 +12,10 @@ export function HeroCTA() {
   return (
     <>
       <div className="flex flex-wrap items-center gap-6" data-hero-cta>
-        <MagneticCTA strength={0.3} radius={90}>
-          <Link href={ctaPrimary.href} className="cta-primary" data-cta-primary>
-            {ctaPrimary.label}
-            <span aria-hidden="true">→</span>
-          </Link>
-        </MagneticCTA>
+        <Link href={ctaPrimary.href} className="cta-primary" data-cta-primary>
+          {ctaPrimary.label}
+          <span aria-hidden="true">→</span>
+        </Link>
         <Link href={ctaSecondary.href} className="text-link inline-flex items-center gap-1.5">
           {ctaSecondary.label}
           <svg

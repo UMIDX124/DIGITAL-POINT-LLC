@@ -1,18 +1,16 @@
 import { HeroSection } from '@/components/sections/HeroSection';
 import { ServicesPinReveal } from '@/components/sections/ServicesPinReveal';
-import { LogoStripSection } from '@/components/sections/LogoStripSection';
 import { StatStripSection } from '@/components/sections/StatStripSection';
-import { PullQuoteSection } from '@/components/sections/PullQuoteSection';
 import { WorkflowSection } from '@/components/sections/WorkflowSection';
-import { CTASection } from '@/components/sections/CTASection';
-import { CredentialsWall } from '@/components/sections/CredentialsWall';
-import { RecentWorkInline } from '@/components/sections/RecentWorkInline';
 import { FounderSection } from '@/components/sections/FounderSection';
+import { CTASection } from '@/components/sections/CTASection';
 
-/* Phase 19 Path 3 — homepage composition. Adds RecentWorkInline,
-   CredentialsWall, FounderSection to give the page real-feeling
-   substance without breaking integrity rules. LogoStripSection still
-   ships (env-gated null until real logos land). */
+/* Phase 19 Path 3 trim. Premium service-agency sites (Linear, Stripe,
+   innowise) ship short pages: 6 sections that each earn their place.
+   Stripped from home: PullQuote (was editorial gimmick), CredentialsWall
+   (band-aid; folded into FounderSection narrative), RecentWorkInline
+   (band-aid; StatStrip carries proof), LogoStripSection (still env-gated
+   null). Result: 6 sections that each carry one clear job. */
 
 export default function HomePage() {
   return (
@@ -20,12 +18,8 @@ export default function HomePage() {
       <HeroSection />
       <ServicesPinReveal />
       <StatStripSection />
-      <RecentWorkInline />
       <WorkflowSection />
-      <PullQuoteSection />
-      <CredentialsWall />
       <FounderSection />
-      <LogoStripSection />
       <CTASection />
     </>
   );

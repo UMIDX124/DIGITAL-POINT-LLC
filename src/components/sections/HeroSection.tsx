@@ -2,10 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 import { AutomationOrbit } from '@/components/hero/AutomationOrbit';
-import { HeroDataTicker } from '@/components/hero/HeroDataTicker';
 import { HeroHeadline } from '@/components/hero/HeroHeadline';
 import { HeroCTA } from '@/components/hero/HeroCTA';
-import { HeroAtmosphereFallback } from '@/components/hero/HeroAtmosphereFallback';
 import { copy } from '@/lib/copy';
 
 // Phase 18.6 P7 perf-pass — Three.js dynamic import REMOVED so the
@@ -181,18 +179,11 @@ export function HeroSection() {
       id="hero"
       className="hero hero-section relative w-full overflow-hidden"
     >
-      {/* Phase 18.6 P7 perf-pass — CSS-only sphere fallback for everyone.
-          Three.js path disabled site-wide (was causing GPU stalls + 9fps
-          render). Visual outcome similar (3 blurred amber/blue radial
-          divs at sphere positions). */}
-      <HeroAtmosphereFallback />
-
-      {/* Phase 16 C — Bloomberg Operator data substrate replaces the
-          Phase 6 conic ambient blur and the legacy radial glow.
-          K9 invariant: substrate sits between atmosphere and content
-          (default stacking; .hero-grid carve-out z=2 keeps content
-          above ticker; ticker above CSS atmosphere via DOM order). */}
-      <HeroDataTicker />
+      {/* Phase 19 Path 3 trim — HeroAtmosphereFallback (3 blurred divs,
+          GPU-expensive filter:blur) and HeroDataTicker (setInterval clock
+          + counter loop, integrity-tag 'representative') REMOVED. Hero
+          now ships ONE signature visual: AutomationOrbit. Cleaner
+          composition, lower lag, fewer competing layers. */}
 
       <div className="hero-grid relative mx-auto w-full max-w-[90rem]">
         <div className="hero-content">

@@ -423,19 +423,14 @@
     overscroll-behavior-y: contain;
   }
   body {
-    /* Phase 18.6 P5 — atmosphere intensity doubled per repo-owner
-       "make it twice as lit." All values 2× P4:
-         Layer 1 amber: 0.12 → 0.24
-         Layer 2 blue:  0.10 → 0.20
-         Layer 3 warm center fill: 0.04 → 0.08
-       Still under K17 amended caps (≤30% amber / ≤22% blue). Hero
-       atmosphere stack remains visually distinct — hero is denser
-       multi-layer + grain whereas body is broad ambient wash. */
+    /* Phase 19 Path 3 trim — body atmosphere simplified from a 3-stack
+       of radial-gradients to a single subtle wash. Cuts paint cost per
+       scroll frame and removes the "page feels heavy" signal owner
+       flagged. Previous P5 doubled-intensity multi-layer system kept in
+       git history for reference. */
     background-color: var(--bg-canvas);
     background-image:
-      radial-gradient(ellipse at 15% 18%, rgba(255, 136, 0, 0.24) 0%, transparent 50%),
-      radial-gradient(ellipse at 85% 82%, rgba(42, 143, 189, 0.20) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, rgba(255, 136, 0, 0.08) 0%, transparent 70%);
+      radial-gradient(ellipse at 18% 22%, rgba(255, 136, 0, 0.10) 0%, transparent 55%);
     /* Phase 18.6 P7 perf-pass — background-attachment: fixed REMOVED.
        Fixed-attachment + radial-gradient was forcing a full repaint on
        every scroll frame (compositor couldn't accelerate). Default

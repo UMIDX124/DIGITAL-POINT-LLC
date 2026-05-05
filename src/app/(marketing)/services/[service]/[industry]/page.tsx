@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { ArrowUpRight } from 'lucide-react';
 import { Section, Container } from '@/components/ui-dp/AnimatedElements';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
-import { GrowthAuditCTA } from '@/components/seo/GrowthAuditCTA';
 import {
   services,
   industries,
@@ -29,24 +30,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!content) return {};
 
   const title = `${content.service.name} for ${content.industry.name} | Digital Point LLC`;
-  const description = `Expert ${content.service.name.toLowerCase()} tailored for ${content.industry.name.toLowerCase()} companies. We help ${content.industry.name.toLowerCase()} businesses lower CAC, improve ROAS, and scale profitably.`;
+  const description = `Vertical page for ${content.service.name.toLowerCase()} in ${content.industry.name.toLowerCase()}. Curated short-list of priority verticals in progress; this URL is currently a placeholder.`;
   const url = `https://digitalpointllc.com/services/${service}/${industry}`;
 
   return {
     title,
     description,
-    openGraph: {
-      title,
-      description,
-      url,
-      type: 'website',
-    },
-    alternates: {
-      canonical: url,
-    },
+    alternates: { canonical: url },
     robots: {
       index: false,
-      follow: true,
+      follow: false,
+      nocache: true,
+      googleBot: { index: false, follow: false },
     },
   };
 }
@@ -57,85 +52,106 @@ export default async function ServiceIndustryPage({ params }: PageProps) {
   if (!content) notFound();
 
   return (
-    <>
-      <Section className="pt-32 pb-16">
-        <Container size="narrow">
-          <Breadcrumbs
-            items={[
-              { label: 'Services', href: '/services' },
-              { label: content.service.name, href: `/services/${service}` },
-              { label: content.industry.name, href: `/services/${service}/${industry}` },
-            ]}
-          />
+    <Section className="pt-32 pb-32">
+      <Container size="narrow">
+        <Breadcrumbs
+          items={[
+            { label: 'Services', href: '/services' },
+            { label: content.service.name, href: `/services/${service}` },
+            { label: content.industry.name, href: `/services/${service}/${industry}` },
+          ]}
+        />
 
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-6 mb-8 leading-tight" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
-            {content.service.name} for {content.industry.name}
-          </h1>
+        <p
+          className="font-mono uppercase mt-6 mb-4"
+          style={{ fontSize: '12px', letterSpacing: '0.18em', color: 'var(--text-tertiary)' }}
+        >
+          PLACEHOLDER · CURATED VERTICALS IN PROGRESS
+        </p>
 
-          <div className="space-y-6 text-[color:var(--text-primary)] text-lg leading-relaxed">
-            <p>{content.intro}</p>
-            <p>{content.whyItMatters}</p>
-            <p>{content.approach}</p>
-            <p>{content.results}</p>
-          </div>
-        </Container>
-      </Section>
+        <h1
+          className="font-display"
+          style={{
+            fontSize: 'var(--text-h1)',
+            color: 'var(--text-primary)',
+            lineHeight: 1.1,
+            letterSpacing: '-0.02em',
+            maxWidth: 'var(--maxw-heading-display)',
+          }}
+        >
+          {content.service.name} for {content.industry.name}.
+        </h1>
 
-      <Section className="py-16">
-        <Container size="narrow">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
-            Key Benefits
-          </h2>
-          <ul className="space-y-4">
-            {content.benefits.map((benefit, index) => (
-              <li
-                key={index}
-                className="flex items-start gap-3 text-[color:var(--text-primary)] text-base leading-relaxed"
+        <div
+          className="mt-8 space-y-5 text-[16px] leading-[1.65]"
+          style={{ color: 'var(--text-secondary)', maxWidth: 'var(--maxw-body)' }}
+        >
+          <p>
+            This is a placeholder. Digital Point is tightening its programmatic
+            footprint to a curated short list of five priority verticals across
+            five service pillars, hand-written by the operators who run the
+            engagements. Generic per-vertical pages do not represent the work.
+          </p>
+          <p>
+            The curated 25-page set ships as part of Phase 20 polish. Until then,
+            this URL is set to <code>noindex,nofollow</code> and is excluded
+            from the sitemap so search engines do not surface generic content
+            on Digital Point&apos;s behalf.
+          </p>
+          <p>
+            For the actual service surfaces, follow the links below.
+          </p>
+        </div>
+
+        <ul
+          role="list"
+          className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-0"
+          style={{ borderTop: '1px solid var(--border-subtle)' }}
+        >
+          {[
+            { href: `/automation`, label: content.service.name, body: 'The canonical service page. What we actually run, how it is built, and the current pricing.' },
+            { href: '/case-studies', label: 'Case studies', body: 'Anonymized engagements with real operator-hours and pipeline numbers attached.' },
+            { href: '/free-growth-audit', label: 'Free audit', body: 'Five-day written deployment plan. A co-founder reviews your stack personally.' },
+            { href: '/contact', label: 'Talk to us', body: 'One accountable surface. No generic queue.' },
+          ].map((link) => (
+            <li
+              key={link.href}
+              className="group"
+              style={{
+                borderBottom: '1px solid var(--border-subtle)',
+                borderRight: '1px solid var(--border-subtle)',
+              }}
+            >
+              <Link
+                href={link.href}
+                className="flex flex-col h-full p-6 focus-ring transition-colors hover:bg-[var(--bg-secondary)]"
               >
-                <span
-                  className="mt-2 w-2 h-2 rounded-full shrink-0"
-                  style={{ background: '#FF8800' }}
-                />
-                {benefit}
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </Section>
-
-      <Section className="py-16">
-        <Container size="narrow">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
-            How We Help {content.industry.name} Companies
-          </h2>
-          <div className="space-y-6">
-            {content.howWeHelp.map((step, index) => (
-              <div
-                key={index}
-                className="flex items-start gap-4"
-              >
-                <span
-                  className="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold text-white"
-                  style={{
-                    background: 'linear-gradient(135deg, #C26800 0%, #C26800 100%)',
-                  }}
-                >
-                  {index + 1}
-                </span>
-                <p className="text-[color:var(--text-primary)] text-base leading-relaxed pt-1">
-                  {step}
+                <div className="flex items-start justify-between gap-4">
+                  <span
+                    className="font-display"
+                    style={{
+                      fontSize: '17px',
+                      color: 'var(--text-primary)',
+                      lineHeight: 1.25,
+                      letterSpacing: '-0.01em',
+                    }}
+                  >
+                    {link.label}
+                  </span>
+                  <ArrowUpRight
+                    className="w-4 h-4 mt-1 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    style={{ color: 'var(--accent-primary)' }}
+                    aria-hidden="true"
+                  />
+                </div>
+                <p className="mt-3 text-[13.5px] leading-[1.55]" style={{ color: 'var(--text-secondary)' }}>
+                  {link.body}
                 </p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      <Section className="py-16 pb-32">
-        <Container size="narrow">
-          <GrowthAuditCTA />
-        </Container>
-      </Section>
-    </>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Container>
+    </Section>
   );
 }

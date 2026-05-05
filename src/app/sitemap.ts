@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getAllPosts, categoryMeta } from '@/lib/blog';
-import { services, industries, cities } from '@/lib/programmatic-seo';
+import { services, cities } from '@/lib/programmatic-seo';
 import { comparisons } from '@/lib/comparisons';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -67,16 +67,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Programmatic SEO: /services/[service]/[industry]
-  const serviceIndustryPages: MetadataRoute.Sitemap = services.flatMap((service) =>
-    industries.map((industry) => ({
-      url: `${baseUrl}/services/${service.slug}/${industry.slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    }))
-  );
+  // Phase 20 C4 — sunset broad industry indexation. Pages still resolve at
+  // their URLs as noindex,nofollow placeholders; excluded from sitemap so
+  // search engines do not surface generic content. Curated 5x5 hand-written
+  // replacement set is in progress; UF to name the 5 priority verticals.
+  const serviceIndustryPages: MetadataRoute.Sitemap = [];
 
   // Programmatic SEO: /services/[service]/near/[city]
+  // Phase 5f deferred — keep in sitemap pending programmatic-seo audit.
   const serviceCityPages: MetadataRoute.Sitemap = services.flatMap((service) =>
     cities.map((city) => ({
       url: `${baseUrl}/services/${service.slug}/near/${city.slug}`,

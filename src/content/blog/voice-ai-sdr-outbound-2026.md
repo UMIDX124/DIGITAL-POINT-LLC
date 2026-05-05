@@ -30,7 +30,7 @@ Compliance setup, in case it matters for your read: AI disclosure in the first t
 
 We launched on a Tuesday. By Friday we had run 1,140 dials and the data looked weird.
 
-Connect rate was 31 percent, which was actually higher than the human team's 24 percent baseline. We think this is partly because the agent dials on a tighter schedule than humans (no coffee breaks, no end-of-day fatigue), and partly because some prospects who would not pick up for an unknown human number were curious enough to answer once they realized something different was happening on the line.
+Connect rate was 31 percent, higher than the human team's 24 percent baseline. We think this is partly because the agent dials on a tighter schedule than humans (no coffee breaks, no end-of-day fatigue), and partly because some prospects who would not pick up for an unknown human number were curious enough to answer once they realized something different was happening on the line.
 
 Conversation length averaged 47 seconds. Of those, about 18 percent ended with a "not interested" before the agent could complete its qualification check. That is high, and it told us version one of the prompt was leading too hard with the pitch instead of opening with a relevant observation about the prospect's company. We rewrote the opening to reference one specific data point from the lead's LinkedIn profile or company page, which the agent fetched from a small enrichment step before each call. Hang-up rate dropped to 11 percent the next week.
 
@@ -48,7 +48,7 @@ Our managed-service fee: $2,800
 
 Total: $4,672 a month.
 
-That is slightly more than the $4,200 the client was paying for two human SDRs. We were upfront about that going in. The math that actually mattered was per-dial cost ($0.40 versus $9.50) and per-meeting cost. The agent booked 27 meetings in month one and 31 in month two. The human team had been booking 14 a month. So the cost per booked meeting dropped from roughly $300 to roughly $151. Pipeline coverage almost doubled. The client wrote about that yesterday on their internal Slack and forwarded it to us.
+That is slightly more than the $4,200 the client was paying for two human SDRs. We were upfront about that going in. The math that mattered was per-dial cost ($0.40 versus $9.50) and per-meeting cost. The agent booked 27 meetings in month one and 31 in month two. The human team had been booking 14 a month. So the cost per booked meeting dropped from roughly $300 to roughly $151. Pipeline coverage almost doubled. The client wrote about that yesterday on their internal Slack and forwarded it to us.
 
 The broader industry numbers we have seen quoted in 2026 reports (3 to 5 times more conversations per rep, 40 to 60 percent reductions in cost per qualified lead) are roughly in line with what we measured, which surprised us slightly. Our default assumption with vendor-published numbers is that they are picked from the high end of the distribution.
 
@@ -56,7 +56,7 @@ The broader industry numbers we have seen quoted in 2026 reports (3 to 5 times m
 
 Three things, in order of how much they hurt.
 
-We underestimated how much the human hand-off mattered. The first version of the workflow let the agent attempt to book a meeting directly using the calendar tool. That worked technically. It also produced a 40 percent meeting no-show rate. When we changed it so the agent qualified and then routed to a live human within three minutes if the prospect was warm, no-shows dropped to 18 percent. The lesson is that prospects who agree to a meeting with an AI feel less bound to actually attend than prospects who confirm a meeting with a human voice in real time. We did not see that coming.
+We underestimated how much the human hand-off mattered. The first version of the workflow let the agent attempt to book a meeting directly using the calendar tool. That worked technically. It also produced a 40 percent meeting no-show rate. When we changed it so the agent qualified and then routed to a live human within three minutes if the prospect was warm, no-shows dropped to 18 percent. The lesson is that prospects who agree to a meeting with an AI feel less bound to attend than prospects who confirm a meeting with a human voice in real time. We did not see that coming.
 
 We tried to skip the dialer layer. Early on we let the agent place outbound calls directly through Retell's native dialing without going through our Twilio dialer. It was simpler to set up. It also meant we lost some of the call-quality controls and the unified do-not-call list management that the dialer gives you. We moved back to dialer-fronted calling in week three.
 
@@ -64,7 +64,7 @@ We did not budget enough for prompt iteration. We had four prompt revisions in e
 
 ## What we would skip if we did it again
 
-We would skip trying to make the agent handle nuanced objection handling. Objections about pricing, fit, and timing are still humans-only territory in our current opinion. The agent's job is to find the prospects who are warm enough to want to talk to a human, fast. That is it.
+We would skip trying to make the agent handle nuanced objection handling. Objections about pricing and fit are still humans-only territory in our current opinion. The agent's job is to find the prospects who are warm enough to want to talk to a human, fast. That is it.
 
 We would also skip the "let the AI do the whole call" benchmark. There is a press cycle around fully autonomous voice agents closing meetings and even sometimes closing deals. We have not seen this work reliably in B2B yet, and we have tested it on three engagements now. The math gets dramatically better when AI handles volume and humans handle depth. We are not the first to say this. We think it will keep being true through this year and probably next.
 

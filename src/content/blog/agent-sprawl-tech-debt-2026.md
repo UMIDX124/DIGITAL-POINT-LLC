@@ -16,7 +16,7 @@ faqs:
 
 A client showed us their AI dashboard last month. Six agents in production, three more in pilot, and a slide claiming they had cut ops time by 40 percent. That was the headline. The real number was buried in their IT bill. They were paying for nine separate vector databases, four different model providers, and a finance team that could not get a clean monthly cost line for any of it.
 
-This is what agent sprawl looks like in 2026, and we are seeing it across most of the mid-market clients we onboard.
+We see this shape across most of the mid-market clients we onboard now.
 
 ## The shape of the problem
 
@@ -32,7 +32,7 @@ We do not let a client add another agent until we have answered four questions a
 
 **Where is the context coming from?** If three agents are pulling from three slightly different copies of "the customer record", we collapse them first. The fastest way to do this in 2026 is to put MCP servers in front of your CRM, your data warehouse, and your support inbox, then have every agent talk to those servers instead of holding its own integration. Microsoft adopted MCP as the integration standard for Windows AI Foundry and Microsoft 365 Copilot earlier this year. Most clients we work with have not made that switch yet, and the savings on duplicated infra alone usually pays for the consolidation work.
 
-**Who owns the prompt?** This sounds like a soft question. It is not. If marketing's agent and sales' agent both define "ICP" in their system prompts, and one says "5 to 50 employees" and the other says "10 to 100", every downstream score is wrong. We move definitions out of prompts and into a shared config file the agents read at runtime. It is two days of work and it ends about half the cross-department arguments we see.
+**Who owns the prompt?** It is not a soft question. If marketing's agent and sales' agent both define "ICP" in their system prompts, and one says "5 to 50 employees" and the other says "10 to 100", every downstream score is wrong. We move definitions out of prompts and into a shared config file the agents read at runtime. It is two days of work and it ends about half the cross-department arguments we see.
 
 **What does the agent escalate, and to whom?** The single most common failure mode we see in 2026 is an agent that silently does the wrong thing because nobody defined the escalation path. Voice agents are especially bad at this. If the prospect says "I'm not interested but my colleague might be", an agent without an escalation rule will end the call. A human SDR would have asked for the colleague's name. We bake explicit escalation triggers into every agent we ship, and we route them to a real person, not another agent.
 
@@ -52,10 +52,10 @@ That last one is the one to pay attention to. The 2026 industry estimate is $60,
 
 ## The right number of agents is smaller than you think
 
-Most clients come to us thinking they need five or six. After the audit, the number we ship is usually two or three. The ones we keep tend to be specialists with sharp scopes (one agent, one job, one set of tools), not generalists who try to do six things and end up doing none of them well.
+Most clients come to us thinking they need five or six. After the audit, the number we ship is usually two or three. The ones we keep tend to be specialists with sharp scopes (one agent, one job), not generalists trying to do six things and doing none of them well.
 
-The org-chart metaphor that everyone is using in 2026 is actually right. You want a coordinator (or a thin orchestration layer) and a few specialists, not nine generalists who all read your CRM. The specialists are easier to test, easier to swap out when a better model ships, and easier to audit when something goes wrong.
+The org-chart metaphor that everyone is using in 2026 is right. You want a coordinator (or a thin orchestration layer) and a few specialists, not nine generalists who all read your CRM. The specialists are easier to test, easier to swap out when a better model ships, and easier to audit when something goes wrong.
 
-We are running our own internal stack on three agents right now. One handles inbound qualification. One handles client reporting. One does ad-creative drafts. The orchestration sits in n8n with MCP servers in front of our shared data. It is boring infrastructure. That is the point.
+We are running our own internal stack on three agents right now. One handles inbound qualification. One handles client reporting. One does ad-creative drafts. The orchestration sits in n8n with MCP servers in front of our shared data. Boring infrastructure by design.
 
 If you are about to greenlight your fifth agent, the smarter move is probably to shut down two and tighten the three you keep. We can tell you that for free. The hard part comes after.

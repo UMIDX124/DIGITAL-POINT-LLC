@@ -18,13 +18,13 @@ We pulled analytics for ten clients on Monday morning. Half of them had measurab
 
 That is a real change from a year ago, and it is the reason GEO is not a buzzword anymore.
 
-## What actually changed
+## What changed
 
 The argument that "AI engines just send traffic to whoever ranks on Google" was true in 2023. It is not true now. Brandlight published research earlier in 2026 showing the overlap between top Google links and AI-cited sources has dropped from 70 percent to under 20 percent. We have seen this on client accounts where a page sits at position 14 on Google but gets cited verbatim in a ChatGPT answer for the same query. And the reverse, where a page-one Google result never shows up in any AI answer at all.
 
 The reason is structural. A traditional search engine ranks documents against a query. An LLM decomposes the query into smaller sub-queries, pulls multiple sources for each one, and writes a synthesis. The page that wins is the one that has a clear, extractable answer the model can quote directly. Density of keywords does not matter. Backlinks matter less than they used to. Format and platform matter a lot.
 
-## Where each engine actually goes for answers
+## Where each engine goes for answers
 
 This is the part most agencies are still guessing at. Here is what we are seeing in client tooling and citation logs as of April 2026:
 
@@ -40,17 +40,17 @@ We have not seen a client where one engine dominates all AI-driven traffic. The 
 
 ## Topic targeting beats keyword targeting
 
-Every GEO writeup published this year keeps repeating this line, and we want to explain why it actually matters in production.
+Every GEO writeup published this year keeps repeating this line. Here is why it matters in production.
 
 When an LLM decomposes a prospect's question, it does not search for the original phrase. It searches for the sub-questions inside it. So if a prospect asks ChatGPT "should I hire a remote SDR or use a voice AI agent", the model breaks that into things like "average cost of a remote SDR in 2026", "what tasks can voice AI handle in outbound", "comparison of voice AI agent vendors", and several more. Then it pulls a source for each sub-question and writes the synthesis.
 
-If your content targets only the original phrase, you are competing for the visible query and ignoring the four invisible ones the model actually ran. The teams winning at GEO right now write content that covers the topic with enough breadth that the model finds extractable answers for several sub-queries on the same page.
+If your content targets only the original phrase, you are competing for the visible query and ignoring the four invisible ones the model ran. The teams winning at GEO right now write content that covers the topic with enough breadth that the model finds extractable answers for several sub-queries on the same page.
 
-In practice this looks like a longer page with sharper sub-headers, an FAQ block at the top instead of the bottom, and answer-first paragraphs. Burying the answer under three paragraphs of context still works fine for a human reader scrolling. It does not work for a model looking for a 60-word quotable chunk.
+In practice this looks like a longer page with sharper sub-headers, an FAQ block at the top instead of the bottom, and answer-first paragraphs. Burying the answer under three paragraphs of context fails the model, which is hunting for a 60-word quotable chunk.
 
 ## A test you can run this week
 
-Pick five questions a prospect would actually ask before buying from you. Run each one through ChatGPT, Perplexity, and Gemini. Save the responses. Look at three things:
+Pick five questions a prospect would ask before buying from you. Run each one through ChatGPT, Perplexity, and Gemini. Save the responses. Look at three things:
 
 1. Are you cited? If yes, on how many of the five?
 2. If you are not cited, who is? Make a list. These are the sources currently winning your category.
@@ -60,8 +60,8 @@ We did this exercise for one of our remote-workforce clients three weeks ago. Th
 
 ## What we are not doing
 
-We are not adding "AI search optimization" as a separate service line. We do not think it deserves to be one yet. The work fits inside content strategy and analytics, and pretending it is a brand-new discipline is mostly an excuse to charge a markup. The teams winning at GEO are doing the same content work they were doing for SEO, just with sharper structure and platform spread.
+We are not adding "AI search optimization" as a separate service line. We do not think it deserves to be one yet. The work fits inside content strategy and analytics, and pretending it is a brand-new discipline is mostly an excuse to charge a markup. The teams winning at GEO are doing the same content work they were doing for SEO, with sharper structure and wider platform spread.
 
 The real shift is in attribution. If 5 percent of your new traffic is coming from chatgpt.com today, it will probably be 15 percent by Q4. The customers who get a year ahead on this are the ones who started measuring it in April, not the ones who waited for a vendor deck.
 
-Look at your referer report this week. If the AI engines are missing, that is the answer. If they are there, that is the start of a real plan.
+Look at your referer report this week. The presence or absence of AI engines is the start of the plan.

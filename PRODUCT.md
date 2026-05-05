@@ -75,7 +75,7 @@ These come from `CLAUDE.md` Phase 17b → Phase 18.5 lockdowns. Treat as load-be
 - HeroDataTicker substrate sits between atmosphere and content (z-index 1.5 region). Opacities 0.18 amber / 0.12 UTC / 0.18 instrument-blue.
 
 ### Architecture
-- Native scroll only. No Lenis, no scroll-jacking libraries.
+- **Smooth scroll (Phase 19 supersedure, repo-owner authorized 2026-04-30):** Lenis re-introduced with GSAP ScrollTrigger bridge. Native scroll preserved for `prefers-reduced-motion: reduce`. The prior Phase 8 "no Lenis" lock is superseded.
 - Marquee logo strip null-returned (env-gated `NEXT_PUBLIC_MARQUEE_ENABLED`).
 - `TestimonialsSection.tsx` returns null — testimonials surface elsewhere or not at all.
 - FAQ lives at `/faq` with `FAQPage` JSON-LD.

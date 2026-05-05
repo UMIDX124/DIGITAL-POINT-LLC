@@ -1,10 +1,12 @@
 # DPL Environment Variable Audit — Final
 
+> ⚠️ **Snapshot dated 2026-04-23 — verify before relying.** Phase 19 ship + Phase 20 prep landed since this audit. Run `vercel env ls --environment=production` to confirm current state matches what's documented below before any rotation or deploy work.
+
 Generated: 2026-04-23
 Project: `umidx124s-projects/digitalpointllc-1`
 Production URL: https://www.digitalpointllc.com
 
-Status: **Clean.** Zero vars in "Needs Attention" state.
+Status (as of generation): **Clean.** Zero vars in "Needs Attention" state.
 
 ---
 

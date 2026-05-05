@@ -1,5 +1,7 @@
 # MASTER WEBSITE PROMPT — Production Business Website
 
+> ℹ️ **This is a REUSABLE TEMPLATE, not DPL-specific spec.** Contains `{{PLACEHOLDER}}` values for adapting to other business sites (VCS, BSL, future verticals). For DPL-specific locked rules + current ship state, read `CLAUDE.md` + `PRODUCT.md` + `DESIGN.md` + `docs/HANDOFF_PHASE_19.md` instead. Do not apply this template's defaults to DPL — DPL has Phase 18-19 locked invariants that override generic template guidance.
+
 > Copy this entire prompt into a new Claude Code session for your other business project.
 > Replace all `{{PLACEHOLDER}}` values with your actual business info before pasting.
 

@@ -1,5 +1,7 @@
 # Session Handoff — DPL Site (Phase 17b → Phase 18.6 perf-pass)
 
+> ⚠️ **HISTORICAL — ends at Phase 18.6 (2026-04-28).** Phase 19 (Lenis re-introduction + lag-nuke trim) shipped after this handoff. For latest ship state, read [`HANDOFF_PHASE_19.md`](HANDOFF_PHASE_19.md). This file preserved for context on the Phase 17b → 18.6 arc.
+
 **Generated:** 2026-04-28 (end-of-session)
 **Session arc:** Phase 2 deferred items closure → Phase 3 V1–V10 → Phase 4 N1–N3 → Phase 5 validation → Phase 17b closure → Phase 18 atmosphere → Phase 18.5 atmosphere intensity bump + B2 Three.js spheres + parallax → Phase 18.6 brand asset swap + structural visual remediation + perf-pass
 **Next-session opens at:** Optional scroll-fps optimization + visual audit of sub-pages (out-of-home routes) + lint cleanup OR fresh directive

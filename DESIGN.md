@@ -232,7 +232,7 @@ Located in `src/components/sections/` and `src/components/hero/`:
 - Modal as first thought.
 - Em dashes (use commas/colons/semicolons/parentheses).
 - Generic email surfaces (mailto, info@, contact email in headers). Single allowed surface: literal `<code>hello@</code>` token in footer philosophy block.
-- Lenis or any scroll-jacking library. Native scroll only.
+- ~~Lenis or any scroll-jacking library. Native scroll only.~~ **SUPERSEDED Phase 19 (2026-04-30):** Lenis re-introduced with GSAP ScrollTrigger bridge. `prefers-reduced-motion` preserves native scroll. Other scroll-jacking libraries (Locomotive, ScrollReveal-as-engine, etc.) remain banned.
 
 ## Where to look
 

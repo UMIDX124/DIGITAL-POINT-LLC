@@ -274,7 +274,7 @@ export function RemoteWorkforcePage() {
           <SectionHeader
             eyebrow="Common Concerns"
             title="We've heard every remote hiring nightmare."
-            description="Here's why they happen, and how we prevent them."
+            description="Each one traces to the same root: no structured onboarding, no audit cadence, no replacement clause. Our pod model closes those gaps before the first standup."
             align="center"
           />
 

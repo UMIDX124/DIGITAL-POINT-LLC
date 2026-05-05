@@ -368,7 +368,7 @@ export const copy = {
         {
           title: 'Follow-up sequences',
           body:
-            'Adaptive email and SMS flows that adjust based on engagement, lifecycle stage, and CRM signals. Not static drips.',
+            'Adaptive email and SMS flows that adjust based on engagement, lifecycle stage, and CRM signals.',
           stat: '2–3x reply rate vs static drip',
         },
         {

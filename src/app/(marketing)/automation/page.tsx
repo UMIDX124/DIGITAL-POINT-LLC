@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { copy } from '@/lib/copy';
+import { RelatedLinks } from '@/components/sections/RelatedLinks';
 
 export const metadata: Metadata = {
   title: 'Automation: AI workflows that run the boring parts',
@@ -163,6 +164,34 @@ export default function AutomationPage() {
           </div>
         </div>
       </section>
+
+      {/* Related context */}
+      <RelatedLinks
+        eyebrow="WHERE THIS FITS"
+        headline="The workflows live inside a wider operating loop."
+        links={[
+          {
+            href: '/remote-workforce',
+            label: 'Operators',
+            body: 'Trained humans audit the exception cases AI cannot resolve. The reason this is a service, not a tool.',
+          },
+          {
+            href: '/systems-reporting',
+            label: 'Systems & Reporting',
+            body: 'The reporting layer that makes every workflow output legible without chasing a dashboard.',
+          },
+          {
+            href: '/case-studies',
+            label: 'Case studies',
+            body: 'What 14,400 operator-hours replaced and +89% qualified pipeline look like in production.',
+          },
+          {
+            href: '/faq',
+            label: 'FAQ',
+            body: 'How agents handle exceptions, integrate with your CRM, and what happens to the stack if the engagement ends.',
+          },
+        ]}
+      />
 
       {/* Pricing */}
       <section className="relative section-padding" style={{ background: 'var(--bg-canvas)', borderBottom: '1px solid #27272A' }}>

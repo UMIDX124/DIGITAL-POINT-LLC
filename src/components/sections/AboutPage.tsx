@@ -7,6 +7,7 @@ import {
   StaggerContainer, StaggerItem, SignalPoint, MetricDisplay
 } from '@/components/ui-dp/AnimatedElements';
 import Link from 'next/link';
+import { RelatedLinks } from '@/components/sections/RelatedLinks';
 
 const milestones = [
   { year: '2017', title: 'Two Friends, One Laptop', description: 'Faizan and Anwaar started Digital Point from a tiny home office. First client came from a cold LinkedIn message that almost went to spam.' },
@@ -185,6 +186,34 @@ export function AboutPage() {
           </StaggerContainer>
         </Container>
       </Section>
+
+      {/* Related context */}
+      <RelatedLinks
+        eyebrow="WHAT WE OPERATE"
+        headline="The four surfaces that make up the engagement."
+        links={[
+          {
+            href: '/automation',
+            label: 'Workflow automation',
+            body: 'AI agents and pipelines we build, deploy, and run on your behalf.',
+          },
+          {
+            href: '/remote-workforce',
+            label: 'Remote operators',
+            body: 'Vetted humans who audit AI exceptions and back the loop.',
+          },
+          {
+            href: '/systems-reporting',
+            label: 'Systems & Reporting',
+            body: 'The reporting layer that makes every output legible without a dashboard hunt.',
+          },
+          {
+            href: '/case-studies',
+            label: 'Case studies',
+            body: 'Anonymized engagements with the operator-hours and pipeline numbers attached.',
+          },
+        ]}
+      />
 
       {/* CTA */}
       <Section>

@@ -7,11 +7,12 @@ import {
   Users, UserCheck, Shield, BarChart3, Clock, RefreshCw,
   ArrowRight, CheckCircle, Filter
 } from 'lucide-react';
-import { 
-  Section, Container, SectionHeader, FadeUp, GlassCard, 
-  StaggerContainer, StaggerItem, SignalPoint 
+import {
+  Section, Container, SectionHeader, FadeUp, GlassCard,
+  StaggerContainer, StaggerItem, SignalPoint
 } from '@/components/ui-dp/AnimatedElements';
 import Link from 'next/link';
+import { RelatedLinks } from '@/components/sections/RelatedLinks';
 
 const roles = [
   { category: 'Marketing', roles: ['Media Buyers', 'Designers', 'Video Editors', 'Content Writers', 'SEO Specialists'] },
@@ -291,6 +292,34 @@ export function RemoteWorkforcePage() {
           </FadeUp>
         </Container>
       </Section>
+
+      {/* Related context */}
+      <RelatedLinks
+        eyebrow="WHERE OPERATORS FIT"
+        headline="Operators sit on top of the AI stack, not next to it."
+        links={[
+          {
+            href: '/automation',
+            label: 'Workflow automation',
+            body: 'The agents and pipelines operators audit. Built on n8n, Groq inference, and custom services.',
+          },
+          {
+            href: '/systems-reporting',
+            label: 'Systems & Reporting',
+            body: 'How operator output rolls up into the weekly narrative and monthly report you actually read.',
+          },
+          {
+            href: '/case-studies',
+            label: 'Case studies',
+            body: 'One engagement replaced six full-time ops roles with two operators auditing AI workflows.',
+          },
+          {
+            href: '/about',
+            label: 'How we vet',
+            body: 'Sourcing, structured onboarding, and the replacement guarantee that backs the pod model.',
+          },
+        ]}
+      />
 
       {/* CTA */}
       <Section background="gradient">

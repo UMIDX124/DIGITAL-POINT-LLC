@@ -8,6 +8,7 @@
 
 import type { Metadata } from 'next';
 import { FAQSection } from '@/components/sections/FAQSection';
+import { RelatedLinks } from '@/components/sections/RelatedLinks';
 
 export const metadata: Metadata = {
   title: 'FAQ · Digital Point LLC',
@@ -27,6 +28,32 @@ export default function FAQPage() {
   return (
     <main style={{ paddingTop: 'var(--section-top)' }}>
       <FAQSection />
+      <RelatedLinks
+        eyebrow="MORE CONTEXT"
+        headline="The pages people land on after the FAQ."
+        links={[
+          {
+            href: '/automation',
+            label: 'What the agents run',
+            body: 'Lead intake, document parsing, follow-up, reporting, portfolio monitoring. The actual workflows.',
+          },
+          {
+            href: '/remote-workforce',
+            label: 'Who audits the AI',
+            body: 'Trained operators handling the exception cases the agents cannot resolve.',
+          },
+          {
+            href: '/systems-reporting',
+            label: 'How it all reports back',
+            body: 'The reporting layer that makes every workflow legible without chasing a dashboard.',
+          },
+          {
+            href: '/case-studies',
+            label: 'Production examples',
+            body: 'Anonymized engagements with operator-hours and pipeline numbers attached.',
+          },
+        ]}
+      />
     </main>
   );
 }

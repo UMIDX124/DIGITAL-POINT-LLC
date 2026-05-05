@@ -55,6 +55,7 @@ LLMs are explainer-only. They never generate metrics.
 - **Quality gates per commit:** `pnpm exec tsc --noEmit` → 0 errors, `pnpm lint` → 0 warnings, `pnpm build` → succeeds, headless screenshot → no empty regions, K11 Lighthouse mobile median ≥ 92 if perf-impacting, K17 atmosphere caps respected if Three.js touched.
 - **VS Code Claude plans. Terminal Claude executes.** Unless auto-mode is explicitly active, VS Code Claude does not run code-changing tools — it drafts prompts/plans for terminal Claude.
 - **Pause for user before deploys.** No `vercel deploy --prod` without explicit "ship it."
+- **Cwd discipline (locked 2026-05-06):** Every shell command must start with explicit `cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 &&`. Never assume cwd. Before any `git push`: print `git config --get remote.origin.url` (must match `git@github.com:UMIDX124/DIGITAL-POINT-LLC.git`). Before any `vercel` command: read `.vercel/project.json` and confirm `projectName: digitalpointllc-1`. Cost of typing the path: 0. Cost of pushing DPL work to CrawlIQ remote: hours of cleanup. Non-negotiable.
 
 ### Skill bundles available (project-scoped at `.claude/skills/`)
 56 skills installed via copy from CrawlIQ on 2026-05-06:

@@ -35,6 +35,7 @@ interface FormData {
   company: string;
   bottleneck: string;
   adSpend: string;
+  website?: string;
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
@@ -317,6 +318,17 @@ export function AuditPage() {
                       </p>
 
                       <form onSubmit={handleSubmit} className="space-y-5">
+                        <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+                          <label htmlFor="audit-website-hp">Website (leave blank)</label>
+                          <input
+                            id="audit-website-hp"
+                            type="text"
+                            tabIndex={-1}
+                            autoComplete="off"
+                            value={formData.website ?? ''}
+                            onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                          />
+                        </div>
                         <div>
                           <Label htmlFor="name" className="text-white mb-2 block">
                             Name <span className="text-red-400">*</span>

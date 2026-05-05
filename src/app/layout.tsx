@@ -8,6 +8,7 @@ import { GrainOverlay } from "@/components/background/GrainOverlay";
 import { CursorBloom } from "@/components/background/CursorBloom";
 import { VisibilityPause } from "@/components/motion/VisibilityPause";
 import ChatWidget from "@/components/chat/ChatWidget";
+import { BotIdClient } from "botid/client";
 // Phase 17b 3-restructured A3 — analytics gated on cookie consent.
 import CookieConsent from "@/components/compliance/CookieConsent";
 import AnalyticsGate from "@/components/compliance/AnalyticsGate";
@@ -255,6 +256,12 @@ export default function RootLayout({
         <GrainOverlay />
         <CursorBloom />
         <VisibilityPause />
+        <BotIdClient
+          protect={[
+            { path: '/api/audit', method: 'POST' },
+            { path: '/api/founder', method: 'POST' },
+          ]}
+        />
         {children}
         <ChatWidget />
         <Toaster />

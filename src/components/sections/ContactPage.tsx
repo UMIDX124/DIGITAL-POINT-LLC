@@ -42,7 +42,7 @@ const officeDetails = [
 ];
 
 export function ContactPage() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', message: '', website: '' });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -57,7 +57,7 @@ export function ContactPage() {
       });
       if (res.ok) {
         setStatus('success');
-        setForm({ name: '', email: '', message: '' });
+        setForm({ name: '', email: '', message: '', website: '' });
       } else {
         setStatus('error');
       }
@@ -177,6 +177,18 @@ export function ContactPage() {
                     <form onSubmit={handleSubmit} className="space-y-5">
                       <h3 className="font-display text-xl font-semibold text-white mb-2">Drop us a line</h3>
                       <p className="text-[color:var(--text-muted)] text-sm mb-6">No form letters, no auto-replies. A real human (probably Faizan, let&apos;s be honest) will get back to you within 24 hours.</p>
+
+                      <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+                        <label htmlFor="contact-website-hp">Website (leave blank)</label>
+                        <input
+                          id="contact-website-hp"
+                          type="text"
+                          tabIndex={-1}
+                          autoComplete="off"
+                          value={form.website}
+                          onChange={(e) => setForm(f => ({ ...f, website: e.target.value }))}
+                        />
+                      </div>
 
                       <div>
                         <label htmlFor="contact-name" className="block text-sm text-[color:var(--text-primary)] mb-1.5">Name</label>

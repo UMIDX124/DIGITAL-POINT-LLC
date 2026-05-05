@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { checkBotId } from 'botid/server';
 import { db } from '@/lib/db';
 import { sendEmail, escapeHtml } from '@/lib/email';
 
@@ -40,6 +41,14 @@ function sanitize(input: string): string {
 
 export async function POST(request: NextRequest) {
   try {
+    const verification = await checkBotId();
+    if (verification.isBot && !verification.isVerifiedBot) {
+      return NextResponse.json(
+        { success: false, message: 'Request blocked.' },
+        { status: 403 }
+      );
+    }
+
     const ip = request.headers.get('x-forwarded-for') ||
                request.headers.get('x-real-ip') ||
                'unknown';
@@ -52,6 +61,10 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
+
+    if (typeof body.website === 'string' && body.website.trim().length > 0) {
+      return NextResponse.json({ success: true, message: 'Message received! A Co-Founder will get back to you within 24 hours.' });
+    }
 
     const name = sanitize(body.name || '');
     const email = sanitize(body.email || '');

@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import { copy } from '@/lib/copy';
 import LetterHoverText from '@/components/effects/LetterHoverText';
+import { ServiceVignette } from '@/components/sections/ServiceVignette';
+
+const VIGNETTE_KINDS = ['agents', 'workflow', 'operators', 'marketing', 'reporting'] as const;
 
 /**
  * Phase 13 scroll-pin service reveal (Phase 19 GSAP scrub revert).
@@ -45,15 +48,20 @@ export function ServicesPinReveal() {
               <span className="services-pin-num font-italic-display" aria-hidden="true">
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <div className="services-pin-content">
-                <h3 className="services-pin-title font-display">
-                  {item.label}
-                </h3>
-                <p className="services-pin-desc font-body">{item.description}</p>
-                <Link href={item.href} className="services-pin-link text-link">
-                  See {item.label}
-                  <span aria-hidden="true">→</span>
-                </Link>
+              <div className="services-pin-grid">
+                <div className="services-pin-content">
+                  <h3 className="services-pin-title font-display">
+                    {item.label}
+                  </h3>
+                  <p className="services-pin-desc font-body">{item.description}</p>
+                  <Link href={item.href} className="services-pin-link text-link">
+                    See {item.label}
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </div>
+                <div className="services-pin-vignette" aria-hidden="true">
+                  <ServiceVignette kind={VIGNETTE_KINDS[i] ?? 'agents'} />
+                </div>
               </div>
             </div>
           </article>

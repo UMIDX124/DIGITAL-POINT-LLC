@@ -1350,18 +1350,20 @@ a.text-link:hover,
 }
 .hero-grid {
   padding-inline: var(--container-gutter);
-  /* Phase 18 V4 → Phase 18.6 P1 second-pass amendment — orbit + copy
-     column anchoring. Switched from `minmax(0,1fr) auto` to proportional
-     `1.4fr 1fr` (closer to pre-V4 Tailwind setup) so copy column gets
-     ~58% of grid width and orbit column gets ~42%. Combined with reduced
-     gap (clamp 2rem→1rem min, 4vw→2vw, 6rem→3rem max), this brings the
-     orbit visually adjacent to copy instead of hugging the viewport
-     right edge. align-items: center retained from prior P1 fix —
-     orbit vertical-centers in the row alongside copy mass. */
   display: grid;
   grid-template-columns: 1.4fr 1fr;
   gap: clamp(1rem, 2vw, 3rem);
   align-items: center;
+}
+/* Phase 20.1.5 — desktop hero rail allowance.
+   Reserve left/right gutters wide enough that the section nav rail
+   (~140px) and telemetry strip rail (~120px) never collide with the
+   centered hero-grid content. */
+@media (min-width: 1024px) {
+  .hero-grid {
+    padding-left: clamp(8.5rem, 11vw, 11rem);
+    padding-right: clamp(7rem, 9vw, 9.5rem);
+  }
 }
 @media (max-width: 1024px) {
   .hero-grid {
@@ -1403,12 +1405,12 @@ a.text-link:hover,
      wrap on smaller widths instead of nowrap-into-orbit-overflow. Lower
      bound bumped to 3.25rem for bigger mobile presence. Tracking
      tightened from -0.03em to -0.045em. */
-  font-size: clamp(3.25rem, 7.5vw, 8rem);
+  font-size: clamp(3.25rem, 6.6vw, 7rem);
   line-height: 1.02;
   font-weight: 500;
   text-wrap: balance;
   color: var(--text-primary);
-  max-width: 18ch;
+  max-width: 14ch;
   letter-spacing: -0.045em;
 }
 .hero-sub {
@@ -2157,11 +2159,56 @@ html[data-paused-global="true"] .logo-marquee-track {
   letter-spacing: -0.04em;
   z-index: 0;
 }
+/* Phase 20.1.5 — services-pin two-column layout. Left = copy stack,
+   right = mood vignette. Below 900px, vignette stacks below the copy. */
+.services-pin-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  margin-left: clamp(0rem, 8vw, 8rem);
+}
+@media (max-width: 900px) {
+  .services-pin-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
 .services-pin-content {
   position: relative;
   z-index: 1;
   max-width: 38rem;
-  margin-left: clamp(0rem, 8vw, 8rem);
+}
+.services-pin-vignette {
+  width: 100%;
+  max-width: 480px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(31, 22, 18, 0.55) 0%, rgba(10, 9, 8, 0.85) 80%);
+  padding: clamp(0.85rem, 1.5vw, 1.25rem);
+  position: relative;
+}
+.services-pin-vignette::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(180deg, rgba(255, 168, 51, 0.04) 0%, transparent 35%),
+    linear-gradient(0deg, rgba(44, 95, 90, 0.05) 0%, transparent 30%);
+  pointer-events: none;
+}
+.service-vignette {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 400 / 280;
+}
+@media (max-width: 900px) {
+  .services-pin-vignette { max-width: 100%; }
 }
 /* Phase 17b Pillar 4 P1.2 — service-internal vertical rhythm.
    Eyebrow margin preserved (already at 1.25rem). Title shrinks slightly
@@ -2773,10 +2820,11 @@ html[data-i-seen="1"] .dpl-intro-loader { display: none; }
 .hero-section-nav {
   position: absolute;
   top: 50%;
-  left: clamp(1rem, 2.5vw, 2.25rem);
+  left: clamp(1.25rem, 2.2vw, 2rem);
   z-index: 5;
   transform: translateY(-50%);
   pointer-events: none;
+  max-width: 6.5rem;
 }
 @media (max-width: 1023px) {
   .hero-section-nav { display: none; }
@@ -2841,17 +2889,66 @@ html[data-i-seen="1"] .dpl-intro-loader { display: none; }
 .manifesto-stack {
   display: flex;
   flex-direction: column;
-  gap: clamp(2.5rem, 6vh, 5rem);
-  max-width: 30ch;
+  gap: clamp(4.5rem, 10vh, 8rem);
+}
+.manifesto-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+.manifesto-row--reverse {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+}
+.manifesto-row--reverse .manifesto-statement { order: 2; }
+.manifesto-row--reverse .manifesto-vignette-wrap { order: 1; }
+@media (max-width: 900px) {
+  .manifesto-row,
+  .manifesto-row--reverse {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .manifesto-row--reverse .manifesto-statement { order: 1; }
+  .manifesto-row--reverse .manifesto-vignette-wrap { order: 2; }
+}
+.manifesto-vignette-wrap {
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 16 / 10;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(31, 22, 18, 0.55) 0%, rgba(10, 9, 8, 0.85) 80%);
+  padding: clamp(0.85rem, 1.5vw, 1.25rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.manifesto-vignette-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(180deg, rgba(255, 168, 51, 0.04) 0%, transparent 35%),
+    linear-gradient(0deg, rgba(44, 95, 90, 0.05) 0%, transparent 30%);
+  pointer-events: none;
+}
+.manifesto-vignette {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 .manifesto-statement {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
-  font-size: clamp(2rem, 4.2vw, 4rem);
+  font-size: clamp(1.85rem, 3.6vw, 3.25rem);
   font-weight: 500;
-  line-height: 1.05;
+  line-height: 1.06;
   letter-spacing: -0.035em;
   color: var(--text-primary);
   text-wrap: balance;
+  max-width: 18ch;
 }
 .manifesto-amber {
   color: var(--accent-bright);
@@ -2868,6 +2965,12 @@ html[data-i-seen="1"] .dpl-intro-loader { display: none; }
 }
 @media (max-width: 768px) {
   .manifesto-statement { font-size: clamp(1.75rem, 7vw, 2.5rem); }
+}
+
+/* Phase 20.1.5 — cookie consent compact entry */
+@keyframes dpl-consent-in {
+  0%   { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================================

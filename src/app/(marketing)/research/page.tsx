@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { ArticleSchema } from '@/components/seo/FAQSchema';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 import { ResearchHub } from './ResearchHub';
 
 export const metadata: Metadata = {
@@ -22,6 +23,12 @@ export default function ResearchPage() {
         datePublished="2026-01-15"
         dateModified="2026-03-20"
         url="https://digitalpointllc.com/research"
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', item: 'https://digitalpointllc.com' },
+          { name: 'Research', item: 'https://digitalpointllc.com/research' },
+        ]}
       />
       <ResearchHub />
     </>

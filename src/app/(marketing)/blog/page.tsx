@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getAllPosts, getAllCategories, categoryMeta } from '@/lib/blog';
 import { BlogListPage } from './BlogListPage';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Blog & Resources · Digital Point LLC',
@@ -23,5 +24,15 @@ export default function Blog() {
   const posts = getAllPosts();
   const categories = getAllCategories();
 
-  return <BlogListPage posts={posts} categories={categories} categoryMeta={categoryMeta} />;
+  return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', item: 'https://digitalpointllc.com' },
+          { name: 'Blog', item: 'https://digitalpointllc.com/blog' },
+        ]}
+      />
+      <BlogListPage posts={posts} categories={categories} categoryMeta={categoryMeta} />
+    </>
+  );
 }

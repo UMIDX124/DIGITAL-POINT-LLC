@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { ToolsHub } from './ToolsHub';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Free Marketing Tools & Calculators',
@@ -12,5 +13,15 @@ export const metadata: Metadata = {
 };
 
 export default function ToolsPage() {
-  return <ToolsHub />;
+  return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', item: 'https://digitalpointllc.com' },
+          { name: 'Tools', item: 'https://digitalpointllc.com/tools' },
+        ]}
+      />
+      <ToolsHub />
+    </>
+  );
 }

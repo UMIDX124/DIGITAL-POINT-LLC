@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getAllGuides } from '@/lib/guides';
 import { GuidesHub } from './GuidesHub';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Marketing Guides & Playbooks',
@@ -23,5 +24,15 @@ export const metadata: Metadata = {
 
 export default function GuidesPage() {
   const guides = getAllGuides();
-  return <GuidesHub guides={guides} />;
+  return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', item: 'https://digitalpointllc.com' },
+          { name: 'Guides', item: 'https://digitalpointllc.com/guides' },
+        ]}
+      />
+      <GuidesHub guides={guides} />
+    </>
+  );
 }

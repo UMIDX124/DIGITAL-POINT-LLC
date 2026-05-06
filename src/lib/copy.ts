@@ -17,10 +17,15 @@ export const copy = {
   },
 
   hero: {
-    eyebrow: 'AUTOMATION · OPERATORS · SINCE 2017',
+    eyebrow: 'OPERATING SINCE 2017 · MUMBAI · LIVE',
     headline: 'Hire the AI. Skip the headcount.',
+    /* Phase 20.1.4 stop-slop pass — tightened to operator-confident
+       voice. Removed list cadence ("CRM, ops, reporting, and growth"
+       was a 4-beat soft list). Replaced with a single declarative
+       beat plus a load-bearing follow-up. No em-dashes, no triplets,
+       no banned jargon, no -ly adverbs. */
     subhead:
-      'AI agents run your CRM, ops, reporting, and growth workflows. Trained operators audit the edges. Headcount stays flat while output compounds.',
+      'DPL operates the AI agents and trained humans that run your ops. You see outputs, not invoices for hours.',
     ctaPrimary: { label: 'Book a free audit', href: '/free-growth-audit' },
     ctaSecondary: { label: 'See what we run', href: '#services' },
   },

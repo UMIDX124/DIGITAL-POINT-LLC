@@ -2819,3 +2819,61 @@ html[data-i-seen="1"] .dpl-intro-loader { display: none; }
   border-color: var(--accent-bright);
   box-shadow: 0 0 8px rgba(255, 168, 51, 0.55);
 }
+
+/* ============================================
+   Phase 20.1.4 — ManifestoSection
+   Narrative depth between hero and services. Editorial breath, big
+   declarative type, single-beat statements. Cubic-bezier brand ease
+   on stagger reveal (handled by SectionFlow).
+   ============================================ */
+.manifesto-section {
+  position: relative;
+  padding-block: clamp(7rem, 16vh, 14rem);
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(31, 22, 18, 0.45) 0%, transparent 70%);
+}
+.manifesto-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.30em;
+  color: var(--text-tertiary);
+  margin-bottom: clamp(2rem, 4vh, 3.5rem);
+}
+.manifesto-stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 6vh, 5rem);
+  max-width: 30ch;
+}
+.manifesto-statement {
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-size: clamp(2rem, 4.2vw, 4rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+.manifesto-amber {
+  color: var(--accent-bright);
+  font-style: italic;
+  font-family: 'InstrumentSerifLocal', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.manifesto-tag {
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  color: var(--text-muted);
+  margin-top: clamp(3rem, 6vh, 5rem);
+}
+@media (max-width: 768px) {
+  .manifesto-statement { font-size: clamp(1.75rem, 7vw, 2.5rem); }
+}
+
+/* ============================================
+   Phase 20.1.4 — body atmosphere with scroll-progress shift
+   --scroll-progress is set 0..1 by SectionFlow; we use it to subtly
+   shift atmospheric hue as user scrolls so the page reads as one
+   continuous cinematic surface, not a stack of slabs.
+   ============================================ */
+:root { --scroll-progress: 0; }

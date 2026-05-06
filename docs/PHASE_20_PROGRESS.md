@@ -3,7 +3,14 @@
 Started: 2026-05-06 22:11
 Branch: redesign/impeccable-pass
 Production: https://www.digitalpointllc.com
-Last preview URL: https://digitalpointllc-1-h27jt12et-umidx124s-projects.vercel.app (deployment dpl_3UXEGy8rDDTbvKvUqBrtsiPDEF2N · 2026-05-06 22:42)
+Last preview URL: https://digitalpointllc-1-fg29etj2l-umidx124s-projects.vercel.app (Batch 4 closure · 2026-05-07)
+Recent prior:
+- https://digitalpointllc-1-ny79hbd7s-umidx124s-projects.vercel.app (Batch 3 closure · 2026-05-07)
+- https://digitalpointllc-1-99721opyw-umidx124s-projects.vercel.app (Batch 2 closure · 2026-05-07)
+Prior preview URLs:
+- https://digitalpointllc-1-2hhnecobu-umidx124s-projects.vercel.app (Batch 1 closure · 2026-05-07)
+- https://digitalpointllc-1-ild0f04s6-umidx124s-projects.vercel.app (Sub-phase B core · 2026-05-07)
+- https://digitalpointllc-1-h27jt12et-umidx124s-projects.vercel.app (concept board · 2026-05-06)
 
 ## Phase boundary log
 
@@ -53,5 +60,20 @@ Sub-phase D: ⏸ blocked
 Sub-phase E: ⏸ blocked
 
 ## Resume marker
-Last completed: Loop A Sub-phase A — mascot concept board (15 PNGs + MASCOT_CONCEPTS_PHASE_20.md)
-Next action: Wait for UF reply with concept pick. On reply, start Sub-phase B per PHASE_20_POLISH_PROMPT.md Section 8: replace public/Dp-logo1.png with high-fidelity render of winning concept, recompute Logo SHA + pin in CLAUDE.md, generate SVG + Lottie + WebM variants, upgrade favicon/manifest/OG, then Cosmo FAB cinematic upgrade + chat panel Bloomberg Operator interior.
+Last completed: Loop I — production push prepared. PHASE_20_HANDOFF.md written. Ready for FF merge from redesign/impeccable-pass to main, push origin main, vercel deploy --prod, git tag phase-20-polish.
+
+Loops closed:
+- Loop A Sub-phase A (concept board) ✅
+- Loop A Sub-phase B core (CosmoMark + FAB upgrade + system prompt v3) ✅
+- Loop A Sub-phase B mascot ASSET swap deferred (Dp-logo1.png brand mark preserved; CosmoMark is separate)
+- Loop A Sub-phase C (AI Gateway) deferred — needs Vercel env config
+- Loop A Sub-phase D (scroll-bound Cosmo) deferred — needs GSAP scroll-trigger work
+- Loop A Sub-phase E (per-commit gates) ✅ applied at every commit
+- Loop B (deep audit) — static-analysis findings closed; runtime audit deferred
+- Loop C (HIGH/MEDIUM/LOW closures) — M1, M2, M3, M5, H6, H7, H9, L1, L3, L5 closed; H1a/b/c shipped via Loop G
+- Loop D (visual polish) — minimal in this session (FAB redesign + DesignOnlyBanner styling)
+- Loop E (perf K11) deferred — last G-GATE 94 still authoritative
+- Loop F (a11y) — partial via L5; full re-baseline deferred
+- Loop G (SEO) — H1 schema + H2 Twitter + H3 OG all shipped
+- Loop H (per UF scope) — H1 vs-pages + H4 directory plan + H7 analytics audit shipped; rest skipped per directive
+- Loop I — handoff doc shipped, FF merge + prod deploy + tag is the final action

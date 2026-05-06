@@ -28,12 +28,32 @@ export interface Guide {
   relatedLinks: GuideRelatedLink[];
 }
 
+/**
+ * Phase 20 audit L3 — readTime is hardcoded per guide and stale if content
+ * edits. computeReadTime derives the value at runtime from total section
+ * word count (200 wpm baseline, rounded up to nearest minute).
+ */
+function computeReadTime(guide: Guide): string {
+  const text = guide.sections
+    .map((s) => `${s.title} ${s.content} ${s.keyTakeaway ?? ''}`)
+    .join(' ')
+    .replace(/<[^>]+>/g, ' ');
+  const words = text.split(/\s+/).filter(Boolean).length;
+  const minutes = Math.max(1, Math.ceil(words / 200));
+  return `${minutes} min read`;
+}
+
+function withComputedReadTime(guide: Guide): Guide {
+  return { ...guide, readTime: computeReadTime(guide) };
+}
+
 export function getAllGuides(): Guide[] {
-  return guides;
+  return guides.map(withComputedReadTime);
 }
 
 export function getGuideBySlug(slug: string): Guide | undefined {
-  return guides.find((g) => g.slug === slug);
+  const found = guides.find((g) => g.slug === slug);
+  return found ? withComputedReadTime(found) : undefined;
 }
 
 const guides: Guide[] = [

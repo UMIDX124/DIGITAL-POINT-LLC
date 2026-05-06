@@ -1,40 +1,47 @@
 /**
- * HeroSidePanels — Phase 20.1.2 cinematic side telemetry strips.
+ * HeroSidePanels — Phase 20.1.3 Hubtown-clone section nav.
  *
- * Reference: Hubtown.com hero (vertical "LOGIN / MENU" type labels left
- * and right of the hero centerpiece + bottom scroll indicator).
+ * Reference: Hubtown.co.in left section nav (FUTURE / INNOVATION /
+ * COLLABORATION / EXCELLENCE / PURPOSE / LEGACY with active dot).
+ * DPL adaptation: 5 service pillars in locked order with active-state
+ * indicator on the first item.
  *
- * Server Component — pure CSS positioning, no JS, no client cost.
+ * Right side: brief telemetry strip (DPL / 2017 → NOW vertical mono).
  *
- * Composition:
- *   - Left column: "LIVE OPS" / "9 AGENTS" / "24/7" (rotated 90°,
- *     mono uppercase, muted with amber accent at top).
- *   - Right column: "DPL" / "2017 → NOW" / "OPERATING" (rotated 90°,
- *     mono uppercase, muted).
- *   - Bottom-center: "SCROLL" with downward arrow + animated dash
- *     (CSS-only animation, prefers-reduced-motion safe).
+ * Bottom-center: SCROLL TO EXPLORE indicator with animated bar.
  *
- * All elements absolutely positioned within the hero section. Only
- * visible at viewport ≥ 1024px so they don't clutter mobile.
+ * Server Component, pure CSS, zero JS cost.
  */
+const PILLARS = [
+  { label: 'AGENTS', active: true },
+  { label: 'AUTOMATION', active: false },
+  { label: 'OPERATORS', active: false },
+  { label: 'MARKETING', active: false },
+  { label: 'SYSTEMS', active: false },
+];
+
 export function HeroSidePanels() {
   return (
     <>
-      {/* Left vertical telemetry strip */}
-      <div
-        className="hero-side-panel hero-side-panel--left"
-        aria-hidden="true"
+      {/* LEFT — section nav (Hubtown-style stacked labels with active dot) */}
+      <nav
+        className="hero-section-nav"
+        aria-label="Service pillars overview"
       >
-        <span className="hero-side-strip">
-          <span className="hero-side-strip-tag">LIVE.OPS</span>
-          <span className="hero-side-strip-rule" />
-          <span className="hero-side-strip-meta">9 AGENTS</span>
-          <span className="hero-side-strip-rule" />
-          <span className="hero-side-strip-meta">24 / 7</span>
-        </span>
-      </div>
+        <ol>
+          {PILLARS.map((p) => (
+            <li
+              key={p.label}
+              className={`hero-section-nav-item ${p.active ? 'is-active' : ''}`}
+            >
+              <span className="hero-section-nav-dot" aria-hidden="true" />
+              <span className="hero-section-nav-label">{p.label}</span>
+            </li>
+          ))}
+        </ol>
+      </nav>
 
-      {/* Right vertical telemetry strip */}
+      {/* RIGHT — telemetry strip */}
       <div
         className="hero-side-panel hero-side-panel--right"
         aria-hidden="true"
@@ -48,9 +55,9 @@ export function HeroSidePanels() {
         </span>
       </div>
 
-      {/* Bottom-center scroll indicator */}
+      {/* BOTTOM — scroll to explore */}
       <div className="hero-scroll-indicator" aria-hidden="true">
-        <span className="hero-scroll-tag">SCROLL</span>
+        <span className="hero-scroll-tag">SCROLL TO EXPLORE</span>
         <span className="hero-scroll-bar">
           <span className="hero-scroll-bar-dot" />
         </span>

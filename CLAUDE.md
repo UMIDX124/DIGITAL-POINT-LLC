@@ -93,6 +93,14 @@ If `.agents/product-marketing-context.md` doesn't exist yet for DPL, generate it
 - Cosmo FAB IntersectionObserver footer-aware visibility.
 - Phase 12 contact strategy: zero generic email surfaces; ContactPoint URL-based; `<code>hello@</code>` literal in Footer philosophy block is the ONE allowed email-shaped surface (Pillar 4 R7).
 
+### Phase 20 Loop A Sub-phase B (authorized 2026-05-07)
+
+- **Cosmo mascot LOCKED to concept-2 oscilloscope-wave** — canonical asset is `src/components/cosmo/CosmoMark.tsx` inline SVG. Brand mark `Dp-logo1.png` (SHA `ed31936c...`) remains UNCHANGED for Navigation, Footer, root-layout intro loader, conversion-page header, schema.org logo URL, FAQSchema. `CosmoMark` is the chat-surface mark only (FAB + chat panel header). Brand mark and chat mark are intentionally distinct so Cosmo can evolve without dragging brand identity along.
+- **Cosmo re-enabled** — `<ChatWidget />` mounted in `src/app/(marketing)/layout.tsx` via `next/dynamic` `ssr:false`. Resolves audit finding C3 (Cosmo advertised but no render path). Conversion layout (`/free-growth-audit`) intentionally does NOT mount Cosmo (single-purpose audit funnel).
+- **Cosmo FAB visual** — `cosmo-fab` upgraded from amber radial gradient to Bloomberg Operator interior: `--bg-elevated` (#0A0A0A) bg, 1px hairline `--border-bright` (amber 30%), amber drop-shadow halo. The FAB reads as a tiny oscilloscope screen with amber waveform inside.
+- **Cosmo system prompt v3-phase20** — operator-confident Bloomberg-terminal voice. Service order corrected to locked invariant. Hero alignment with "Hire the AI. Skip the headcount." Stop-slop discipline (no em-dashes, no comma-as-em-dash, no three-item rhetorical lists, no Wh- starters, no -ly adverbs, no banned business jargon). Source: `src/lib/cosmo-system-prompt.ts`.
+- **Sub-phase C-E deferred** — AI Gateway migration (Sub-phase C), scroll-bound Cosmo presence (Sub-phase D), and final Sub-phase E gates remain deferred to follow-up batches. Current Cosmo runs on the existing direct-Groq SDK pipeline at `/api/chat`; Vercel AI Gateway migration requires additional env config and is tracked in `docs/PHASE_20_PROGRESS.md`.
+
 ### Phase 17b additions
 
 - **V3 italic descender STRUCTURAL fix** — `.hero-em-inner` inline-block child establishes BFC for italic descender clearance; supersedes Pillar 5 R1 parametric padding-block clamp on `.hero-em` (preserved in commit `499d965` for safety-net rollback).

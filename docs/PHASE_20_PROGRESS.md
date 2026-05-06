@@ -3,7 +3,7 @@
 Started: 2026-05-06 22:11
 Branch: redesign/impeccable-pass
 Production: https://www.digitalpointllc.com
-Last preview URL: (pending — captured after first batch push)
+Last preview URL: https://digitalpointllc-1-h27jt12et-umidx124s-projects.vercel.app (deployment dpl_3UXEGy8rDDTbvKvUqBrtsiPDEF2N · 2026-05-06 22:42)
 
 ## Phase boundary log
 

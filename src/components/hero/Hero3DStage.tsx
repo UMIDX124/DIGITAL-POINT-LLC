@@ -4,52 +4,48 @@ import { useEffect, useRef } from 'react';
 import type * as THREEType from 'three';
 
 /**
- * Hero3DStage v3 — Phase 20.1.2 cinematic premium hero.
+ * Hero3DStage v4 — Phase 20.1.3 Hubtown-clone cinematic.
  *
- * Reference: Hubtown.com hero (cinematic glowing centerpiece + volumetric
- * light shafts + atmospheric depth + mountain silhouettes). DPL palette
- * adaptation: amber/copper/cream where Hubtown uses cyan/blue.
+ * UF reference fully understood after multi-frame video analysis: the
+ * Hubtown hero is a glowing CUBE on water with mountain walls wrapping
+ * the sides + ONE dominant light beam from above + left vertical section
+ * nav. v4 rebuilds the scene to match that signature with DPL amber
+ * palette substitution.
  *
- * Composition (back-to-front render order):
+ * Composition (back-to-front):
  *
- *   1. ATMOSPHERIC FOG via THREE.FogExp2 — volumetric depth that softens
- *      far geometry and reads as actual atmosphere, not flat black.
+ *   1. ATMOSPHERIC FOG (THREE.FogExp2) — depth softening, color #0a0908.
  *
- *   2. CENTRAL CRYSTAL — Octahedron at subdivision 1 (8 visible facets).
- *      Custom shader: facet-based normal coloring + internal emissive
- *      glow + fresnel rim + time-driven pulse. Suspended at origin,
- *      slow rotation across all axes, breathing scale.
+ *   2. MOUNTAIN WALLS — 2 large 3D plane geometries with displacement
+ *      shader, positioned left + right of cube wrapping the scene like
+ *      a valley. Copper-bronze tinted, recede into fog.
  *
- *   3. CRYSTAL CORE LIGHT — small bright sphere at origin with additive
- *      blend, pulses with the crystal. Reads as light leaking through
- *      the crystal's translucency.
+ *   3. WATER PLANE — below cube, shader-based sine-wave displacement +
+ *      vertex-color depth gradient. Catches reflected amber from cube +
+ *      light beam. Stretches to horizon.
  *
- *   4. VOLUMETRIC LIGHT SHAFTS — 3 cone geometries above the crystal,
- *      additive blend, gradient-alpha shader (bright at apex, fade out).
- *      Slow rotation. Reads as god-rays / light from above without
- *      requiring real volumetric shader (cheap GPU).
+ *   4. CENTRAL CUBE — RoundedBoxGeometry approximated via subdivided
+ *      BoxGeometry with vertex shader edge softening. Custom shader:
+ *      internal emissive glow + edge highlight + facet-shade. Amber
+ *      core, copper edges, cream rim. Suspended slightly above water.
  *
- *   5. ORBITAL ELEMENTS — 3 thin tori at varying tilts and copper/amber
- *      colors, slow counter-rotation, gives the scene scale + telemetry
- *      register.
+ *   5. CORE LIGHT — bright sphere inside cube origin (additive blend,
+ *      no depth write) reads as light source through the translucent
+ *      cube material.
  *
- *   6. AMBIENT PARTICLE FIELD — 1200 points, spherical shell, vertex
- *      colors blend amber → copper → cream by distance.
+ *   6. DOMINANT LIGHT BEAM — single large cone above cube, custom
+ *      gradient-alpha shader, intense at apex (cube top), fades upward
+ *      and outward. Additive blend.
  *
- *   7. FOREGROUND DRIFT — 200 particles drifting toward camera, cream
- *      color, additive blend. Reads as data motes.
+ *   7. AMBIENT PARTICLE FIELD — 1500 points scattered above water
+ *      surface, drift slowly. Vertex colors blend amber → cream.
  *
- *   8. CAMERA CINEMATIC MOTION — slight breathing dolly + parallax tilt
- *      on pointer + scroll-driven recede.
+ *   8. CAMERA — slightly elevated angle (Y +1.2) looking down at the
+ *      cube + horizon. Breathing dolly + parallax + scroll recede.
  *
- * Performance gates (HARD, applied before any GPU work):
- *  - viewport ≥ 1024px (matchMedia)
- *  - prefers-reduced-motion → aborts init
- *  - navigator.hardwareConcurrency < 4 → aborts (low-end CPU)
- *  - Init via requestIdleCallback (1500ms timeout) — never blocks LCP
- *  - Pixel ratio capped at min(devicePixelRatio, 1.75)
- *  - Render loop pauses when document.hidden OR scrolled out of view
- *  - Full disposal on unmount
+ * Performance: same gates as v3 (desktop ≥1024px, prefers-motion,
+ * hardwareConcurrency ≥4, requestIdleCallback init, IO pause off-screen,
+ * full disposal on unmount).
  */
 export default function Hero3DStage() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -83,39 +79,46 @@ export default function Hero3DStage() {
       renderer.setClearColor(0x000000, 0);
 
       const scene = new THREE.Scene();
-      scene.fog = new THREE.FogExp2(0x0e0a06, 0.040);
+      scene.fog = new THREE.FogExp2(0x0a0908, 0.045);
 
       const camera = new THREE.PerspectiveCamera(
-        38,
+        42,
         container.clientWidth / container.clientHeight,
         0.1,
         80,
       );
-      camera.position.set(0, 0.4, 14);
-      camera.lookAt(0, 0, 0);
+      camera.position.set(0, 1.2, 12);
+      camera.lookAt(0, 0.4, 0);
 
-      /* === 1. CENTRAL CRYSTAL (octahedron) === */
-      const crystalGeo = new THREE.OctahedronGeometry(2.2, 1);
-      const crystalMat = new THREE.ShaderMaterial({
+      /* === 1. CENTRAL CUBE — glowing emissive box === */
+      const cubeGeo = new THREE.BoxGeometry(3.0, 3.0, 3.0, 8, 8, 8);
+      const cubeMat = new THREE.ShaderMaterial({
         transparent: true,
         side: THREE.DoubleSide,
         uniforms: {
           uTime: { value: 0 },
-          uColorCore: { value: new THREE.Color(0xff8800) },     // amber inside
-          uColorMid: { value: new THREE.Color(0xc26f3c) },      // copper mid
-          uColorRim: { value: new THREE.Color(0xfff0d4) },      // cream rim
+          uColorCore: { value: new THREE.Color(0xff8800) },
+          uColorEdge: { value: new THREE.Color(0xc26f3c) },
+          uColorRim: { value: new THREE.Color(0xfff0d4) },
           uPulse: { value: 0.0 },
         },
         vertexShader: `
           varying vec3 vWorldNormal;
           varying vec3 vViewPosition;
           varying vec3 vLocalPosition;
+          varying float vEdgeFactor;
           void main() {
             vLocalPosition = position;
             vec4 worldPos = modelMatrix * vec4(position, 1.0);
             vec4 mvPos = viewMatrix * worldPos;
             vViewPosition = -mvPos.xyz;
             vWorldNormal = normalize((modelMatrix * vec4(normal, 0.0)).xyz);
+            // Edge factor: high near cube edges, low on faces
+            vec3 absPos = abs(position) / 1.5;
+            float maxAxis = max(max(absPos.x, absPos.y), absPos.z);
+            vec3 sortedAxes = absPos;
+            // distance from face center: 1.0 at edges, 0.0 at face center
+            vEdgeFactor = pow(min(min(1.0 - absPos.x, 1.0 - absPos.y), 1.0 - absPos.z) * 1.5, 0.6);
             gl_Position = projectionMatrix * mvPos;
           }
         `,
@@ -123,40 +126,44 @@ export default function Hero3DStage() {
           varying vec3 vWorldNormal;
           varying vec3 vViewPosition;
           varying vec3 vLocalPosition;
+          varying float vEdgeFactor;
           uniform vec3 uColorCore;
-          uniform vec3 uColorMid;
+          uniform vec3 uColorEdge;
           uniform vec3 uColorRim;
           uniform float uPulse;
           uniform float uTime;
           void main() {
             vec3 viewDir = normalize(vViewPosition);
-            float fresnel = pow(1.0 - max(dot(normalize(vWorldNormal), viewDir), 0.0), 1.8);
+            float fresnel = pow(1.0 - max(dot(normalize(vWorldNormal), viewDir), 0.0), 2.0);
 
-            // Core glow falloff from origin
-            float distFromCenter = length(vLocalPosition) / 2.2;
+            // Internal glow falloff from cube center
+            float distFromCenter = length(vLocalPosition) / 1.5;
             float coreGlow = 1.0 - smoothstep(0.0, 1.0, distFromCenter);
 
-            // Subtle facet-based color shift via normal
-            float facetShade = 0.5 + 0.5 * vWorldNormal.y;
+            // Facet shade — top brighter than bottom
+            float facetShade = 0.55 + 0.45 * (vWorldNormal.y * 0.5 + 0.5);
 
-            // Three-stop blend
-            vec3 col = mix(uColorCore, uColorMid, smoothstep(0.0, 0.55, fresnel));
-            col = mix(col, uColorRim, smoothstep(0.55, 1.0, fresnel));
-            col = mix(col, uColorCore * 1.4, coreGlow * 0.45);
-            col *= 0.85 + 0.30 * facetShade;
+            // Color blend: core (inside) → edge (faces) → rim (silhouette)
+            vec3 col = mix(uColorEdge, uColorCore, coreGlow);
+            col = mix(col, uColorRim, fresnel * 0.85);
+            col *= 0.70 + 0.40 * facetShade;
 
-            float intensity = 0.70 + 0.50 * uPulse;
-            float alpha = mix(0.12, 0.92, fresnel) + coreGlow * 0.35;
-            gl_FragColor = vec4(col * intensity, clamp(alpha, 0.05, 1.0));
+            // Bright edge highlight where cube edges are visible
+            float edgeBrightness = 1.0 - vEdgeFactor;
+            col += uColorRim * edgeBrightness * 0.45;
+
+            float intensity = 0.85 + 0.30 * uPulse;
+            float alpha = mix(0.18, 0.95, fresnel) + coreGlow * 0.45 + edgeBrightness * 0.35;
+            gl_FragColor = vec4(col * intensity, clamp(alpha, 0.06, 1.0));
           }
         `,
       });
-      const crystal = new THREE.Mesh(crystalGeo, crystalMat);
-      crystal.position.set(0, 0.2, 0);
-      scene.add(crystal);
+      const cube = new THREE.Mesh(cubeGeo, cubeMat);
+      cube.position.set(0, 0.7, 0);
+      scene.add(cube);
 
-      /* Crystal core light — small bright sphere at origin with bloom-like additive */
-      const coreGeo = new THREE.SphereGeometry(0.42, 24, 24);
+      /* Crystal core sphere — bright additive light at cube center */
+      const coreGeo = new THREE.SphereGeometry(0.55, 24, 24);
       const coreMat = new THREE.MeshBasicMaterial({
         color: 0xfff0d4,
         transparent: true,
@@ -166,100 +173,182 @@ export default function Hero3DStage() {
         fog: false,
       });
       const core = new THREE.Mesh(coreGeo, coreMat);
-      core.position.copy(crystal.position);
+      core.position.copy(cube.position);
       scene.add(core);
 
-      /* === 2. VOLUMETRIC LIGHT SHAFTS — 3 cones from above === */
-      const shafts: { mesh: THREEType.Mesh; baseRot: number }[] = [];
-      const shaftMaterial = (color: number, opacity: number) =>
+      /* === 2. DOMINANT LIGHT BEAM — single large cone above cube === */
+      const beamGeo = new THREE.ConeGeometry(3.6, 12, 64, 1, true);
+      const beamMat = new THREE.ShaderMaterial({
+        transparent: true,
+        side: THREE.DoubleSide,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+        uniforms: {
+          uColorTop: { value: new THREE.Color(0xff8800) },
+          uColorBottom: { value: new THREE.Color(0xfff0d4) },
+        },
+        vertexShader: `
+          varying float vY;
+          varying float vRadial;
+          void main() {
+            vY = position.y;
+            // Cone has y from -h/2 (apex) to +h/2 (base) when default
+            // After rotation Z=PI: y from +h/2 (apex bottom) to -h/2 (base top)
+            // Use absolute distance from center for radial fade
+            vRadial = length(position.xz) / 3.6;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          }
+        `,
+        fragmentShader: `
+          varying float vY;
+          varying float vRadial;
+          uniform vec3 uColorTop;
+          uniform vec3 uColorBottom;
+          void main() {
+            // y goes -6 (apex bottom) to +6 (base top) after rotation
+            // Map: apex (cube) bright, fade upward
+            float yNorm = clamp((vY + 6.0) / 12.0, 0.0, 1.0);
+            // Radial fade: tighter at center, transparent at edges
+            float radialFade = 1.0 - smoothstep(0.5, 1.0, vRadial);
+            float a = (1.0 - yNorm) * 0.85 * radialFade;
+            vec3 col = mix(uColorBottom, uColorTop, yNorm);
+            gl_FragColor = vec4(col, a);
+          }
+        `,
+      });
+      const beam = new THREE.Mesh(beamGeo, beamMat);
+      beam.rotation.z = Math.PI; // apex points DOWN at cube
+      beam.position.set(0, 6.7, -0.2);
+      scene.add(beam);
+
+      /* === 3. WATER PLANE — sine-wave displacement + reflection wash === */
+      const waterGeo = new THREE.PlaneGeometry(60, 30, 80, 40);
+      const waterMat = new THREE.ShaderMaterial({
+        transparent: true,
+        uniforms: {
+          uTime: { value: 0 },
+          uColorDeep: { value: new THREE.Color(0x0a0908) },
+          uColorShallow: { value: new THREE.Color(0xff8800) },
+          uColorRim: { value: new THREE.Color(0xfff0d4) },
+        },
+        vertexShader: `
+          uniform float uTime;
+          varying vec3 vPos;
+          varying float vWave;
+          void main() {
+            vPos = position;
+            float w1 = sin(position.x * 0.4 + uTime * 0.7) * 0.06;
+            float w2 = cos(position.y * 0.3 + uTime * 0.5) * 0.05;
+            float w3 = sin((position.x + position.y) * 0.25 + uTime * 0.4) * 0.04;
+            vWave = w1 + w2 + w3;
+            vec3 p = position;
+            p.z += vWave;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
+          }
+        `,
+        fragmentShader: `
+          uniform vec3 uColorDeep;
+          uniform vec3 uColorShallow;
+          uniform vec3 uColorRim;
+          uniform float uTime;
+          varying vec3 vPos;
+          varying float vWave;
+          void main() {
+            // Distance from cube origin (in xy of plane, plane is on xy)
+            float dist = length(vPos.xy) / 14.0;
+            float reflection = (1.0 - smoothstep(0.0, 0.45, dist)) * 0.85;
+            // Wave brightness — bright peaks
+            float waveLight = smoothstep(0.0, 0.06, vWave) * 0.35;
+            vec3 col = mix(uColorDeep, uColorShallow, reflection);
+            col = mix(col, uColorRim, waveLight);
+            // Far horizon fade
+            float horizonFade = 1.0 - smoothstep(0.5, 1.0, dist);
+            float alpha = (reflection * 0.70 + waveLight * 0.35) * horizonFade;
+            gl_FragColor = vec4(col, clamp(alpha, 0.0, 0.85));
+          }
+        `,
+      });
+      const water = new THREE.Mesh(waterGeo, waterMat);
+      water.rotation.x = -Math.PI / 2;
+      water.position.set(0, -1.2, 0);
+      scene.add(water);
+
+      /* === 4. MOUNTAIN WALLS (left + right) === */
+      const mountainShader = (side: number) =>
         new THREE.ShaderMaterial({
           transparent: true,
           side: THREE.DoubleSide,
-          depthWrite: false,
-          blending: THREE.AdditiveBlending,
           uniforms: {
-            uColor: { value: new THREE.Color(color) },
-            uOpacity: { value: opacity },
+            uColor: { value: new THREE.Color(0x1f1612) },
+            uHighlight: { value: new THREE.Color(0xc26f3c) },
+            uSide: { value: side },
           },
           vertexShader: `
-            varying float vY;
+            varying float vRidge;
+            varying vec3 vPos;
+            float hash(vec3 p) { return fract(sin(dot(p, vec3(127.1, 311.7, 74.7))) * 43758.5453); }
+            float noise(vec3 p) {
+              vec3 i = floor(p), f = fract(p);
+              f = f * f * (3.0 - 2.0 * f);
+              float n = mix(
+                mix(mix(hash(i), hash(i + vec3(1,0,0)), f.x),
+                    mix(hash(i + vec3(0,1,0)), hash(i + vec3(1,1,0)), f.x), f.y),
+                mix(mix(hash(i + vec3(0,0,1)), hash(i + vec3(1,0,1)), f.x),
+                    mix(hash(i + vec3(0,1,1)), hash(i + vec3(1,1,1)), f.x), f.y),
+                f.z
+              );
+              return n;
+            }
             void main() {
-              vY = position.y;
-              gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+              vec3 p = position;
+              // Displacement creates jagged ridges
+              float ridge = noise(p * 0.45) * 1.6 + noise(p * 0.18) * 2.4;
+              p.z -= ridge;
+              vRidge = ridge;
+              vPos = p;
+              gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
             }
           `,
           fragmentShader: `
-            varying float vY;
+            varying float vRidge;
+            varying vec3 vPos;
             uniform vec3 uColor;
-            uniform float uOpacity;
+            uniform vec3 uHighlight;
+            uniform float uSide;
             void main() {
-              // y goes from -h to 0 in cone (apex at top in our orientation)
-              // Map to 0..1 alpha falloff: bright near apex, fade toward base
-              float a = smoothstep(0.0, 1.0, (vY + 6.0) / 6.0);
-              gl_FragColor = vec4(uColor, a * uOpacity);
+              // Highlight ridge tops
+              float ridgeNorm = clamp(vRidge / 4.0, 0.0, 1.0);
+              vec3 col = mix(uColor, uHighlight, ridgeNorm * 0.55);
+              // Vertical fade — top fades into atmosphere
+              float yFade = 1.0 - smoothstep(2.0, 8.0, vPos.y);
+              gl_FragColor = vec4(col, yFade * 0.95);
             }
           `,
         });
-      const shaftConfigs = [
-        { x: 0.0, color: 0xffa833, opacity: 0.32, scale: 1.0 },
-        { x: -1.5, color: 0xc26f3c, opacity: 0.20, scale: 0.85 },
-        { x: 1.7, color: 0xfff0d4, opacity: 0.18, scale: 0.75 },
-      ];
-      for (const cfg of shaftConfigs) {
-        const coneGeo = new THREE.ConeGeometry(2.4 * cfg.scale, 6, 32, 1, true);
-        const coneMat = shaftMaterial(cfg.color, cfg.opacity);
-        const cone = new THREE.Mesh(coneGeo, coneMat);
-        // Position cone so apex points DOWN at the crystal level (y ≈ 0).
-        // Default cone has apex at (0, +h/2, 0) and base at (0, -h/2, 0).
-        // Rotate 180° around Z so apex is at -h/2 (down). Then translate up
-        // so apex sits at y ≈ 0 (crystal level) and base extends upward.
-        cone.rotation.z = Math.PI;
-        cone.position.set(cfg.x, 3.0, -1.0);
-        scene.add(cone);
-        shafts.push({ mesh: cone, baseRot: cfg.x * 0.05 });
-      }
+      const mountainGeoLeft = new THREE.PlaneGeometry(20, 14, 60, 30);
+      const mountainLeft = new THREE.Mesh(mountainGeoLeft, mountainShader(-1));
+      mountainLeft.position.set(-12, 1, -3);
+      mountainLeft.rotation.y = Math.PI * 0.32;
+      scene.add(mountainLeft);
 
-      /* === 3. ORBITAL RINGS === */
-      const rings: { mesh: THREEType.Mesh; speed: number }[] = [];
-      const ringConfigs = [
-        { tilt: 0.0, color: 0xffa833, radius: 4.4, tube: 0.010, speed: 0.12 },
-        { tilt: 0.42, color: 0xc26f3c, radius: 5.6, tube: 0.014, speed: -0.08 },
-        { tilt: -0.85, color: 0x2c5f5a, radius: 7.0, tube: 0.011, speed: 0.06 },
-      ];
-      for (const cfg of ringConfigs) {
-        const ringGeo = new THREE.TorusGeometry(cfg.radius, cfg.tube, 12, 200);
-        const ringMat = new THREE.MeshBasicMaterial({
-          color: cfg.color,
-          transparent: true,
-          opacity: 0.50,
-          blending: THREE.AdditiveBlending,
-          fog: false,
-        });
-        const ring = new THREE.Mesh(ringGeo, ringMat);
-        ring.rotation.x = cfg.tilt;
-        scene.add(ring);
-        rings.push({ mesh: ring, speed: cfg.speed });
-      }
+      const mountainGeoRight = new THREE.PlaneGeometry(20, 14, 60, 30);
+      const mountainRight = new THREE.Mesh(mountainGeoRight, mountainShader(1));
+      mountainRight.position.set(12, 1, -3);
+      mountainRight.rotation.y = -Math.PI * 0.32;
+      scene.add(mountainRight);
 
-      /* === 4. AMBIENT PARTICLE FIELD === */
-      const HALO_COUNT = 1200;
+      /* === 5. AMBIENT PARTICLE FIELD === */
+      const HALO_COUNT = 1500;
       const haloPos = new Float32Array(HALO_COUNT * 3);
       const haloCol = new Float32Array(HALO_COUNT * 3);
       const cAmber = new THREE.Color(0xff8800);
-      const cCopper = new THREE.Color(0xc26f3c);
       const cCream = new THREE.Color(0xfff0d4);
       for (let i = 0; i < HALO_COUNT; i++) {
-        const r = 7 + Math.random() * 8;
-        const theta = Math.random() * Math.PI * 2;
-        const phi = Math.acos(2 * Math.random() - 1);
-        haloPos[i * 3 + 0] = r * Math.sin(phi) * Math.cos(theta);
-        haloPos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-        haloPos[i * 3 + 2] = r * Math.cos(phi);
-        const t = (r - 7) / 8;
-        const c =
-          t < 0.5
-            ? cAmber.clone().lerp(cCopper, t * 2)
-            : cCopper.clone().lerp(cCream, (t - 0.5) * 2);
+        haloPos[i * 3 + 0] = (Math.random() - 0.5) * 28;
+        haloPos[i * 3 + 1] = -0.5 + Math.random() * 7;
+        haloPos[i * 3 + 2] = -8 + Math.random() * 14;
+        const t = Math.random();
+        const c = cAmber.clone().lerp(cCream, t);
         haloCol[i * 3 + 0] = c.r;
         haloCol[i * 3 + 1] = c.g;
         haloCol[i * 3 + 2] = c.b;
@@ -268,7 +357,7 @@ export default function Hero3DStage() {
       haloGeo.setAttribute('position', new THREE.BufferAttribute(haloPos, 3));
       haloGeo.setAttribute('color', new THREE.BufferAttribute(haloCol, 3));
       const haloMat = new THREE.PointsMaterial({
-        size: 0.045,
+        size: 0.04,
         vertexColors: true,
         transparent: true,
         opacity: 0.85,
@@ -279,31 +368,6 @@ export default function Hero3DStage() {
       });
       const halo = new THREE.Points(haloGeo, haloMat);
       scene.add(halo);
-
-      /* === 5. FOREGROUND DRIFT === */
-      const DRIFT_COUNT = 200;
-      const driftPos = new Float32Array(DRIFT_COUNT * 3);
-      const driftVel = new Float32Array(DRIFT_COUNT);
-      for (let i = 0; i < DRIFT_COUNT; i++) {
-        driftPos[i * 3 + 0] = (Math.random() - 0.5) * 18;
-        driftPos[i * 3 + 1] = (Math.random() - 0.5) * 12;
-        driftPos[i * 3 + 2] = -8 + Math.random() * 18;
-        driftVel[i] = 0.4 + Math.random() * 0.8;
-      }
-      const driftGeo = new THREE.BufferGeometry();
-      driftGeo.setAttribute('position', new THREE.BufferAttribute(driftPos, 3));
-      const driftMat = new THREE.PointsMaterial({
-        size: 0.022,
-        color: 0xfff0d4,
-        transparent: true,
-        opacity: 0.55,
-        depthWrite: false,
-        blending: THREE.AdditiveBlending,
-        sizeAttenuation: true,
-        fog: false,
-      });
-      const drift = new THREE.Points(driftGeo, driftMat);
-      scene.add(drift);
 
       /* Pointer + scroll state */
       const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
@@ -322,7 +386,6 @@ export default function Hero3DStage() {
       window.addEventListener('pointermove', onPointer, { passive: true });
       window.addEventListener('scroll', onScroll, { passive: true });
 
-      /* Resize */
       const onResize = () => {
         if (!container) return;
         const w = container.clientWidth;
@@ -334,7 +397,6 @@ export default function Hero3DStage() {
       const ro = new ResizeObserver(onResize);
       ro.observe(container);
 
-      /* Pause when off-screen */
       let inView = true;
       const io = new IntersectionObserver(
         ([entry]) => {
@@ -347,7 +409,7 @@ export default function Hero3DStage() {
       /* Render loop */
       const clock = new THREE.Clock();
       let raf = 0;
-      const driftPosAttr = driftGeo.getAttribute('position') as THREEType.BufferAttribute;
+      const haloPosAttr = haloGeo.getAttribute('position') as THREEType.BufferAttribute;
 
       const tick = () => {
         if (disposed) return;
@@ -356,54 +418,47 @@ export default function Hero3DStage() {
         const dt = clock.getDelta();
         const t = clock.getElapsedTime();
 
-        /* Crystal — slow tumble + breathing scale + shader pulse */
-        crystalMat.uniforms.uTime.value = t;
-        crystalMat.uniforms.uPulse.value = 0.5 + 0.5 * Math.sin(t * 0.78);
-        const scale = 1.0 + Math.sin(t * 0.78) * 0.04;
-        crystal.scale.setScalar(scale);
-        crystal.rotation.x = t * 0.18;
-        crystal.rotation.y = t * 0.12;
-        crystal.rotation.z = Math.sin(t * 0.22) * 0.18;
+        /* Cube — slow rotation + breathing pulse */
+        cubeMat.uniforms.uTime.value = t;
+        cubeMat.uniforms.uPulse.value = 0.5 + 0.5 * Math.sin(t * 0.6);
+        cube.rotation.y = t * 0.10;
+        cube.rotation.x = Math.sin(t * 0.18) * 0.10;
+        cube.position.y = 0.7 + Math.sin(t * 0.55) * 0.15;
 
         /* Core light pulses */
-        const pulse = 0.5 + 0.5 * Math.sin(t * 0.78);
-        core.scale.setScalar(0.85 + pulse * 0.50);
+        const pulse = 0.5 + 0.5 * Math.sin(t * 0.6);
+        core.scale.setScalar(0.85 + pulse * 0.55);
         coreMat.opacity = 0.55 + pulse * 0.40;
+        core.position.copy(cube.position);
 
-        /* Light shafts — slow sway around their X position */
-        for (let i = 0; i < shafts.length; i++) {
-          const s = shafts[i];
-          s.mesh.rotation.y = Math.sin(t * 0.18 + i) * 0.10;
-          s.mesh.position.x = shaftConfigs[i].x + Math.sin(t * 0.13 + i * 1.5) * 0.18;
+        /* Beam follows cube + slight pulse */
+        beam.position.x = cube.position.x;
+        beam.position.z = cube.position.z - 0.2;
+        beam.rotation.y = Math.sin(t * 0.18) * 0.04;
+        (beamMat.uniforms.uColorTop.value as THREEType.Color).setHSL(
+          0.085,
+          1.0,
+          0.50 + pulse * 0.10,
+        );
+
+        /* Water animates via shader uTime */
+        waterMat.uniforms.uTime.value = t;
+
+        /* Halo slow drift — particles bob in place */
+        for (let i = 0; i < HALO_COUNT; i++) {
+          const baseY = haloPos[i * 3 + 1];
+          haloPosAttr.array[i * 3 + 1] = baseY + Math.sin(t * 0.5 + i * 0.13) * 0.08;
         }
-
-        /* Orbital rings */
-        for (const r of rings) {
-          r.mesh.rotation.z += dt * r.speed;
-        }
-
-        /* Halo slow rotation */
-        halo.rotation.y += dt * 0.020;
-
-        /* Foreground drift */
-        for (let i = 0; i < DRIFT_COUNT; i++) {
-          driftPosAttr.array[i * 3 + 2] += dt * driftVel[i];
-          if (driftPosAttr.array[i * 3 + 2] > 12) {
-            driftPosAttr.array[i * 3 + 0] = (Math.random() - 0.5) * 18;
-            driftPosAttr.array[i * 3 + 1] = (Math.random() - 0.5) * 12;
-            driftPosAttr.array[i * 3 + 2] = -8;
-          }
-        }
-        driftPosAttr.needsUpdate = true;
+        haloPosAttr.needsUpdate = true;
 
         /* Camera cinematic motion */
         pointer.x += (pointer.tx - pointer.x) * 0.045;
         pointer.y += (pointer.ty - pointer.y) * 0.045;
-        const breathe = Math.sin(t * 0.62) * 0.40;
-        camera.position.x = pointer.x * 0.85;
-        camera.position.y = 0.4 - pointer.y * 0.55;
-        camera.position.z = 14 + breathe + scrollProgress * 8;
-        camera.lookAt(0, 0.2, 0);
+        const breathe = Math.sin(t * 0.55) * 0.3;
+        camera.position.x = pointer.x * 0.7;
+        camera.position.y = 1.2 - pointer.y * 0.4;
+        camera.position.z = 12 + breathe + scrollProgress * 7;
+        camera.lookAt(0, 0.4, 0);
 
         renderer.render(scene, camera);
       };
@@ -416,22 +471,20 @@ export default function Hero3DStage() {
         window.removeEventListener('scroll', onScroll);
         ro.disconnect();
         io.disconnect();
-        crystalGeo.dispose();
-        crystalMat.dispose();
+        cubeGeo.dispose();
+        cubeMat.dispose();
         coreGeo.dispose();
         coreMat.dispose();
-        for (const s of shafts) {
-          s.mesh.geometry.dispose();
-          (s.mesh.material as THREEType.Material).dispose();
-        }
-        for (const r of rings) {
-          r.mesh.geometry.dispose();
-          (r.mesh.material as THREEType.Material).dispose();
-        }
+        beamGeo.dispose();
+        beamMat.dispose();
+        waterGeo.dispose();
+        waterMat.dispose();
+        mountainGeoLeft.dispose();
+        (mountainLeft.material as THREEType.Material).dispose();
+        mountainGeoRight.dispose();
+        (mountainRight.material as THREEType.Material).dispose();
         haloGeo.dispose();
         haloMat.dispose();
-        driftGeo.dispose();
-        driftMat.dispose();
         renderer.dispose();
       };
     };
@@ -468,7 +521,7 @@ export default function Hero3DStage() {
       className="hero-3d-stage absolute inset-0 z-0 pointer-events-none"
       style={{
         background:
-          'radial-gradient(ellipse 110% 90% at 50% 55%, rgba(31, 22, 18, 0.75) 0%, rgba(15, 12, 10, 0.55) 45%, rgba(10, 9, 8, 0.0) 90%)',
+          'radial-gradient(ellipse 120% 90% at 50% 60%, rgba(31, 22, 18, 0.80) 0%, rgba(15, 12, 10, 0.55) 45%, rgba(10, 9, 8, 0.0) 90%)',
       }}
     >
       <canvas
@@ -476,42 +529,6 @@ export default function Hero3DStage() {
         className="block h-full w-full"
         style={{ display: 'block' }}
       />
-      {/* Mountain silhouette layer — pure SVG, sits in front of canvas
-          for foreground depth (Hubtown reference). Uses copper-bronze
-          tint to read as warm distant geometry, not literal mountains. */}
-      <svg
-        className="hero-3d-silhouettes absolute inset-x-0 bottom-0 w-full"
-        viewBox="0 0 1440 360"
-        preserveAspectRatio="xMidYMax slice"
-        style={{ pointerEvents: 'none', height: '36%' }}
-      >
-        <defs>
-          <linearGradient id="mountFar" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="rgba(140, 107, 63, 0.28)" />
-            <stop offset="100%" stopColor="rgba(31, 22, 18, 0.85)" />
-          </linearGradient>
-          <linearGradient id="mountMid" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="rgba(194, 111, 60, 0.32)" />
-            <stop offset="100%" stopColor="rgba(15, 12, 10, 0.95)" />
-          </linearGradient>
-          <linearGradient id="mountNear" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="rgba(10, 9, 8, 0.85)" />
-            <stop offset="100%" stopColor="rgba(10, 9, 8, 1.0)" />
-          </linearGradient>
-        </defs>
-        <path
-          d="M0 240 L80 200 L160 220 L240 180 L320 200 L400 170 L480 195 L560 165 L640 188 L720 158 L800 180 L880 152 L960 175 L1040 148 L1120 170 L1200 142 L1280 168 L1360 145 L1440 165 L1440 360 L0 360 Z"
-          fill="url(#mountFar)"
-        />
-        <path
-          d="M0 285 L100 250 L200 270 L300 245 L400 268 L500 240 L600 264 L700 235 L800 260 L900 232 L1000 256 L1100 228 L1200 252 L1300 226 L1400 250 L1440 248 L1440 360 L0 360 Z"
-          fill="url(#mountMid)"
-        />
-        <path
-          d="M0 320 L120 305 L240 318 L360 302 L480 320 L600 304 L720 322 L840 306 L960 324 L1080 308 L1200 326 L1320 310 L1440 326 L1440 360 L0 360 Z"
-          fill="url(#mountNear)"
-        />
-      </svg>
     </div>
   );
 }

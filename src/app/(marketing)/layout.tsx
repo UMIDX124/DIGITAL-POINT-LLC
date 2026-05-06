@@ -27,7 +27,7 @@ export default function MarketingLayout({
   return (
     <div className="relative min-h-screen flex flex-col">
       <Navigation />
-      <main className="flex-1">{children}</main>
+      <main id="main" className="flex-1">{children}</main>
       <Footer />
       <StickyCTABar />
     </div>

@@ -2562,3 +2562,28 @@ html[data-i-seen="1"] .dpl-intro-loader { display: none; }
   .cosmo-mark-idle .cosmo-mark-wave,
   .cosmo-mark-speaking .cosmo-mark-wave { animation: none; }
 }
+
+/* ============================================
+   Phase 20 audit L5 — Skip-to-content link (a11y)
+   Visually hidden until focused, then visible at top-left.
+   Anchors to <main id="main"> in marketing layout.
+   ============================================ */
+.skip-to-content {
+  position: fixed;
+  top: -48px;
+  left: 8px;
+  z-index: 1000;
+  padding: 10px 16px;
+  background: var(--accent-primary);
+  color: var(--cta-text-on-amber);
+  font: 600 14px/1 var(--font-geist-sans), system-ui, sans-serif;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: top 180ms ease-out;
+}
+.skip-to-content:focus,
+.skip-to-content:focus-visible {
+  top: 8px;
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}

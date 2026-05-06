@@ -9,6 +9,7 @@ import { CursorBloom } from "@/components/background/CursorBloom";
 import { VisibilityPause } from "@/components/motion/VisibilityPause";
 import ChatWidget from "@/components/chat/ChatWidget";
 import { BotIdClient } from "botid/client";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 // Phase 17b 3-restructured A3 — analytics gated on cookie consent.
 import CookieConsent from "@/components/compliance/CookieConsent";
 import AnalyticsGate from "@/components/compliance/AnalyticsGate";
@@ -236,6 +237,10 @@ export default function RootLayout({
         className="font-sans antialiased"
         style={{ color: "#F5F5F7" }}
       >
+        {/* Phase 20 audit L5 — skip-to-content link for keyboard users.
+            Visually hidden until focused, then anchors to <main id="main">
+            in (marketing)/layout.tsx. */}
+        <a href="#main" className="skip-to-content">Skip to content</a>
         {/* Phase 18.6 P5/P6 — inline style background:#000000 REMOVED so
             body's globals.css background (subtle radial atmosphere) takes
             effect. Color retained inline so unstyled fallback is readable. */}
@@ -267,6 +272,10 @@ export default function RootLayout({
         <Toaster />
         <CookieConsent />
         <AnalyticsGate />
+        {/* Phase 20 audit M1 — Vercel Speed Insights for real-user CWV
+            data (LCP, INP, CLS at 75th percentile). Client-only via the
+            @vercel/speed-insights/next adapter. */}
+        <SpeedInsights />
         {process.env.NEXT_PUBLIC_ADSENSE_ID ? (
           <Script
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`}

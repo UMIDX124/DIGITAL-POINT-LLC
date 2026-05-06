@@ -1396,27 +1396,30 @@ a.text-link:hover,
   color: var(--text-tertiary);
 }
 .hero-h1 {
-  /* Phase 18 V2 → Phase 18.6 P1 fifth pass — font-size cap reduced
-     from clamp(3.5rem, 7.5vw, 7rem) (cap 112px) to clamp(3rem, 5.5vw,
-     5rem) (cap 80px). At 112px cap, "Skip the headcount." (line 2,
-     nowrap @ ≥640px per Pillar 4 P0.2) had natural width ~950px which
-     exceeded the 704px h1 max-width and overflowed into the orbit zone
-     at large viewports. At 80px cap, line 2 width ~680px fits within
-     the 704px max-width naturally. Lower bound 3rem holds mobile
-     typographic weight. */
-  font-size: clamp(3rem, 5.5vw, 5rem);
-  line-height: 1.05;
-  font-weight: 400;
-  text-wrap: pretty;
+  /* Phase 20.1 typography drama (UF authorized override of Phase 18.6 P1
+     fifth-pass cap). Cap 80px was undersized for premium agency tier
+     (Linear/Stripe hit 120-160px on desktop). New cap 128px (8rem) at
+     7.5vw mid-range. Line 2 ("Skip the headcount.") now allowed to
+     wrap on smaller widths instead of nowrap-into-orbit-overflow. Lower
+     bound bumped to 3.25rem for bigger mobile presence. Tracking
+     tightened from -0.03em to -0.045em. */
+  font-size: clamp(3.25rem, 7.5vw, 8rem);
+  line-height: 1.02;
+  font-weight: 500;
+  text-wrap: balance;
   color: var(--text-primary);
-  max-width: var(--maxw-heading-display);
-  letter-spacing: var(--ls-display);
+  max-width: 18ch;
+  letter-spacing: -0.045em;
 }
 .hero-sub {
-  font-size: var(--text-body);
+  /* Phase 20.1 — bumped from var(--text-body) (17px static) to a
+     premium clamp 18px → 24px so the lede has presence vs the new
+     larger h1. */
+  font-size: clamp(1.125rem, 1.4vw, 1.5rem);
   color: var(--text-secondary);
-  max-width: var(--maxw-body);
-  line-height: 1.55;
+  max-width: 36ch;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
 }
 .hero-trust-microcopy {
   font-size: 12px;
@@ -1593,21 +1596,13 @@ html[data-paused-global="true"] .grain-overlay {
    natural wrap is allowed so the line doesn't overflow narrow mobile
    viewports. */
 .hero-h1-line-2 {
-  /* Phase 18.6 P1 third pass — display: inline → block so sentence 2
-     becomes its own block-level beat under sentence 1 instead of inline-
-     flowing past the <br>. Inline display + <br> was inheriting the
-     inflated line box of sentence 1 (where .hero-em padding-block-end
-     for italic descender clearance extends the line height). Block
-     gives sentence 2 its own line box, isolated from sentence 1's
-     em-inflation. The implicit line-height-driven spacing alone gives
-     the right beat; margin-block-start dropped to 0 (was 0.15em). */
+  /* Phase 20.1 — block-level beat preserved. Phase 18.6 P1 nowrap @ ≥640px
+     dropped: at the new 128px-cap h1 size, "Skip the headcount." nowrap
+     overflowed the now-narrower max-width. Natural wrap is fine; the
+     text-wrap: balance on .hero-h1 + max-width: 18ch shape both lines
+     appropriately at every viewport. */
   display: block;
   margin-block-start: 0;
-}
-@media (min-width: 640px) {
-  .hero-h1-line-2 {
-    white-space: nowrap;
-  }
 }
 
 /* Phase 18 V3 → Phase 18.6 P1 REVERT — .hero-em-inner inline-block

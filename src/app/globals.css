@@ -49,15 +49,15 @@
 
 /* =======================================================================
    DIGITAL POINT LLC — PHASE 4a: DIVYANSH-REPLICA VISUAL SYSTEM
-   Dark surfaces · purple primary · editorial typography · motion tokens
+   Dark surfaces · amber primary · editorial typography · motion tokens
 
    PRIMARY COLOR SUPERSEDURE (durable, documented in commit):
-   DPL primary is PURPLE #FF8800. This supersedes the legacy amber/gold
+   DPL primary is AMBER #FF8800. This supersedes the prior register
    rule in global ~/.claude/CLAUDE.md for the DPL site ONLY. Other projects
    (CRM, VCS, BSL) keep their existing color rules.
 
    TOKEN SYSTEM — ported from divyanshagarwal.com at 0.78× scale, palette
-   remapped to DPL purple on dark charcoal.
+   remapped to DPL amber on absolute black.
 
    PRESERVE (Phase 0-3a contracts, do NOT break):
    - Scroll-reveal safety net: ScrollMotion.tsx 2.5s fallback must still
@@ -82,9 +82,9 @@
    - Section-space + container-gutter tokens matching Divyansh rhythm.
    - Type utility classes (.font-hero, .font-display, .font-body, .font-italic-display).
 
-   ALIAS (legacy name → new purple value):
+   ALIAS (legacy name → new amber value):
    - --amber, --amber-bright, --plum, --plum-light, --plum-dark, --signal
-     all retargeted to the purple palette so any component that still
+     all retargeted to the amber palette so any component that still
      references them renders correctly until its rewrite lands.
    ======================================================================= */
 
@@ -149,7 +149,7 @@
   --color-border-glass: var(--border-default);
   --color-border-active: var(--accent);
 
-  /* Charts — purple ladder */
+  /* Charts — amber ladder */
   --color-chart-1: var(--accent);
   --color-chart-2: var(--accent-bright);
   --color-chart-3: #FFA833;
@@ -337,9 +337,9 @@
   --border-default: rgba(255, 255, 255, 0.1);
   --border-bright: rgba(255, 136, 0, 0.3);
 
-  /* ----- Legacy palette aliases → purple palette -----
+  /* ----- Legacy palette aliases → amber palette -----
      Components not yet rewritten still reference these names. They resolve
-     to the new purple values so visual output is consistent without
+     to the new amber values so visual output is consistent without
      per-component edits. */
   --bg: var(--bg-primary);
   --surface: var(--bg-secondary);
@@ -462,7 +462,7 @@
     font-feature-settings: "tnum" 1;
   }
 
-  /* Selection — purple */
+  /* Selection — amber */
   ::selection { background: rgba(255, 136, 0, 0.35); color: var(--text-primary); }
 }
 
@@ -528,7 +528,7 @@
   .text-ivory-dim { color: var(--text-secondary); }
   .text-muted     { color: var(--text-tertiary); }
 
-  /* Legacy .text-amber / .text-amber-bright aliases — now purple. */
+  /* Legacy .text-amber / .text-amber-bright aliases (preserved). */
   .text-amber         { color: var(--accent); }
   .text-amber-bright  { color: var(--accent-bright); }
 
@@ -621,7 +621,7 @@
   .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 3px; }
   .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-  /* Focus rings — purple, accessible. */
+  /* Focus rings — amber, accessible. */
   .focus-ring { outline: none; }
   .focus-ring:focus-visible {
     outline: 2px solid var(--accent-bright);
@@ -742,7 +742,7 @@ a.text-link:hover,
 
 /* ============================================
    RECENT WORK — Phase 4e
-   Card hover: border brightens, translateY(-2px), soft purple glow.
+   Card hover: border brightens, translateY(-2px), soft amber glow.
    ============================================ */
 .recent-work-card {
   transition:
@@ -877,7 +877,7 @@ a.text-link:hover,
 
 /* ============================================
    CTA BUTTONS — Phase 4c
-   Primary = filled purple, ghost = outlined.
+   Primary = filled amber, ghost = outlined.
    ============================================ */
 .cta-primary {
   display: inline-flex; align-items: center; gap: 0.5rem;

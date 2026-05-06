@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { ResultsPage } from '@/components/sections/ResultsPage';
+import { DesignOnlyBanner } from '@/components/integrity/DesignOnlyBanner';
 
 export const metadata: Metadata = {
   title: 'Results & Case Studies',
@@ -23,5 +24,12 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <ResultsPage />;
+  return (
+    <>
+      <div className="container-wide" style={{ paddingTop: 'var(--section-sm)' }}>
+        <DesignOnlyBanner note="Outcome figures shown are operational composites pending fresh client-cleared attribution. Specific named-client metrics surface after NDA review only." />
+      </div>
+      <ResultsPage />
+    </>
+  );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { CaseStudiesPage } from './CaseStudiesPage';
+import { DesignOnlyBanner } from '@/components/integrity/DesignOnlyBanner';
 
 export const metadata: Metadata = {
   title: 'Case Studies · Digital Point LLC',
@@ -21,5 +22,12 @@ export const metadata: Metadata = {
 };
 
 export default function CaseStudies() {
-  return <CaseStudiesPage />;
+  return (
+    <>
+      <div className="container-wide" style={{ paddingTop: 'var(--section-sm)' }}>
+        <DesignOnlyBanner note="Case-study outcomes are anonymized composites pending fresh client signoff. Numbers reflect representative engagement shape, not a specific named client until cleared." />
+      </div>
+      <CaseStudiesPage />
+    </>
+  );
 }

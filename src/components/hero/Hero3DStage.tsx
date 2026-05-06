@@ -4,48 +4,30 @@ import { useEffect, useRef } from 'react';
 import type * as THREEType from 'three';
 
 /**
- * Hero3DStage v4 — Phase 20.1.3 Hubtown-clone cinematic.
+ * Hero3DStage v5 — Phase 20.1.6 cinematic rebuild.
  *
- * UF reference fully understood after multi-frame video analysis: the
- * Hubtown hero is a glowing CUBE on water with mountain walls wrapping
- * the sides + ONE dominant light beam from above + left vertical section
- * nav. v4 rebuilds the scene to match that signature with DPL amber
- * palette substitution.
+ * v4 deliverables (cube + water + mountains + beam) failed visual review:
+ * cube read as flat-shaded Maya still-life, mountain planes were buried
+ * by fog (never reached the screen), water plane produced a brown smear
+ * with no reflection cue. v5 simplifies the scene to a single dominant
+ * focal point with proper PBR lighting and a recognizable cinematic
+ * motif (hex grid floor + light beam).
  *
- * Composition (back-to-front):
+ * Composition:
+ *   1. Atmospheric exponential fog (warm near-black)
+ *   2. Hexagonal grid floor — emissive amber lines fading into fog
+ *   3. Faceted icosahedron — MeshStandardMaterial with emissive amber
+ *      core + metalness + low roughness; matches CosmoMark v2 mark
+ *   4. Inner glow sphere (additive blend) reading as light source
+ *      through the icosahedron faces
+ *   5. Backface fresnel-rim shell — slightly larger icosahedron, only
+ *      backfaces, gradient alpha → produces silhouette glow
+ *   6. Dominant beam cone above mark, additive blend, gradient alpha
+ *   7. PointLight inside mark + AmbientLight for global lift
+ *   8. 1500 particle field, amber → cream lerp
  *
- *   1. ATMOSPHERIC FOG (THREE.FogExp2) — depth softening, color #0a0908.
- *
- *   2. MOUNTAIN WALLS — 2 large 3D plane geometries with displacement
- *      shader, positioned left + right of cube wrapping the scene like
- *      a valley. Copper-bronze tinted, recede into fog.
- *
- *   3. WATER PLANE — below cube, shader-based sine-wave displacement +
- *      vertex-color depth gradient. Catches reflected amber from cube +
- *      light beam. Stretches to horizon.
- *
- *   4. CENTRAL CUBE — RoundedBoxGeometry approximated via subdivided
- *      BoxGeometry with vertex shader edge softening. Custom shader:
- *      internal emissive glow + edge highlight + facet-shade. Amber
- *      core, copper edges, cream rim. Suspended slightly above water.
- *
- *   5. CORE LIGHT — bright sphere inside cube origin (additive blend,
- *      no depth write) reads as light source through the translucent
- *      cube material.
- *
- *   6. DOMINANT LIGHT BEAM — single large cone above cube, custom
- *      gradient-alpha shader, intense at apex (cube top), fades upward
- *      and outward. Additive blend.
- *
- *   7. AMBIENT PARTICLE FIELD — 1500 points scattered above water
- *      surface, drift slowly. Vertex colors blend amber → cream.
- *
- *   8. CAMERA — slightly elevated angle (Y +1.2) looking down at the
- *      cube + horizon. Breathing dolly + parallax + scroll recede.
- *
- * Performance: same gates as v3 (desktop ≥1024px, prefers-motion,
- * hardwareConcurrency ≥4, requestIdleCallback init, IO pause off-screen,
- * full disposal on unmount).
+ * Performance gates retained: desktop ≥1024px, prefers-motion,
+ * hardwareConcurrency ≥4, requestIdleCallback init, IO pause off-screen.
  */
 export default function Hero3DStage() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -77,92 +59,57 @@ export default function Hero3DStage() {
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
       renderer.setSize(container.clientWidth, container.clientHeight, false);
       renderer.setClearColor(0x000000, 0);
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.05;
 
       const scene = new THREE.Scene();
-      scene.fog = new THREE.FogExp2(0x0a0908, 0.045);
+      scene.fog = new THREE.FogExp2(0x0a0908, 0.055);
 
       const camera = new THREE.PerspectiveCamera(
-        42,
+        38,
         container.clientWidth / container.clientHeight,
         0.1,
         80,
       );
-      camera.position.set(0, 1.2, 12);
-      camera.lookAt(0, 0.4, 0);
+      camera.position.set(0, 1.2, 11);
+      camera.lookAt(0, 0.6, 0);
 
-      /* === 1. CENTRAL CUBE — glowing emissive box === */
-      const cubeGeo = new THREE.BoxGeometry(3.0, 3.0, 3.0, 8, 8, 8);
-      const cubeMat = new THREE.ShaderMaterial({
+      /* === Lights === */
+      const ambient = new THREE.AmbientLight(0xfff0d4, 0.18);
+      scene.add(ambient);
+
+      const keyLight = new THREE.PointLight(0xff8800, 4.5, 14, 1.6);
+      keyLight.position.set(0, 1.0, 0);
+      scene.add(keyLight);
+
+      const fillLight = new THREE.DirectionalLight(0xfff0d4, 0.4);
+      fillLight.position.set(2, 4, 3);
+      scene.add(fillLight);
+
+      const rimLight = new THREE.DirectionalLight(0xc26f3c, 0.55);
+      rimLight.position.set(-3, 2, -4);
+      scene.add(rimLight);
+
+      /* === 1. CENTRAL FACETED OCTAHEDRON ===
+         Icosahedron at detail=1 produces 80 visible triangle facets —
+         matches the diamond mark and reads as a properly cut crystal
+         under PBR. */
+      const markGeo = new THREE.IcosahedronGeometry(1.55, 1);
+      const markMat = new THREE.MeshStandardMaterial({
+        color: 0x2a1a10,
+        emissive: 0xff8800,
+        emissiveIntensity: 0.55,
+        metalness: 0.85,
+        roughness: 0.18,
+        flatShading: true,
         transparent: true,
-        side: THREE.DoubleSide,
-        uniforms: {
-          uTime: { value: 0 },
-          uColorCore: { value: new THREE.Color(0xff8800) },
-          uColorEdge: { value: new THREE.Color(0xc26f3c) },
-          uColorRim: { value: new THREE.Color(0xfff0d4) },
-          uPulse: { value: 0.0 },
-        },
-        vertexShader: `
-          varying vec3 vWorldNormal;
-          varying vec3 vViewPosition;
-          varying vec3 vLocalPosition;
-          varying float vEdgeFactor;
-          void main() {
-            vLocalPosition = position;
-            vec4 worldPos = modelMatrix * vec4(position, 1.0);
-            vec4 mvPos = viewMatrix * worldPos;
-            vViewPosition = -mvPos.xyz;
-            vWorldNormal = normalize((modelMatrix * vec4(normal, 0.0)).xyz);
-            // Edge factor: high near cube edges, low on faces
-            vec3 absPos = abs(position) / 1.5;
-            float maxAxis = max(max(absPos.x, absPos.y), absPos.z);
-            vec3 sortedAxes = absPos;
-            // distance from face center: 1.0 at edges, 0.0 at face center
-            vEdgeFactor = pow(min(min(1.0 - absPos.x, 1.0 - absPos.y), 1.0 - absPos.z) * 1.5, 0.6);
-            gl_Position = projectionMatrix * mvPos;
-          }
-        `,
-        fragmentShader: `
-          varying vec3 vWorldNormal;
-          varying vec3 vViewPosition;
-          varying vec3 vLocalPosition;
-          varying float vEdgeFactor;
-          uniform vec3 uColorCore;
-          uniform vec3 uColorEdge;
-          uniform vec3 uColorRim;
-          uniform float uPulse;
-          uniform float uTime;
-          void main() {
-            vec3 viewDir = normalize(vViewPosition);
-            float fresnel = pow(1.0 - max(dot(normalize(vWorldNormal), viewDir), 0.0), 2.0);
-
-            // Internal glow falloff from cube center
-            float distFromCenter = length(vLocalPosition) / 1.5;
-            float coreGlow = 1.0 - smoothstep(0.0, 1.0, distFromCenter);
-
-            // Facet shade — top brighter than bottom
-            float facetShade = 0.55 + 0.45 * (vWorldNormal.y * 0.5 + 0.5);
-
-            // Color blend: core (inside) → edge (faces) → rim (silhouette)
-            vec3 col = mix(uColorEdge, uColorCore, coreGlow);
-            col = mix(col, uColorRim, fresnel * 0.85);
-            col *= 0.70 + 0.40 * facetShade;
-
-            // Bright edge highlight where cube edges are visible
-            float edgeBrightness = 1.0 - vEdgeFactor;
-            col += uColorRim * edgeBrightness * 0.45;
-
-            float intensity = 0.85 + 0.30 * uPulse;
-            float alpha = mix(0.18, 0.95, fresnel) + coreGlow * 0.45 + edgeBrightness * 0.35;
-            gl_FragColor = vec4(col * intensity, clamp(alpha, 0.06, 1.0));
-          }
-        `,
+        opacity: 0.92,
       });
-      const cube = new THREE.Mesh(cubeGeo, cubeMat);
-      cube.position.set(0, 0.7, 0);
-      scene.add(cube);
+      const mark = new THREE.Mesh(markGeo, markMat);
+      mark.position.set(0, 0.7, 0);
+      scene.add(mark);
 
-      /* Crystal core sphere — bright additive light at cube center */
+      /* Inner emissive core sphere */
       const coreGeo = new THREE.SphereGeometry(0.55, 24, 24);
       const coreMat = new THREE.MeshBasicMaterial({
         color: 0xfff0d4,
@@ -173,11 +120,115 @@ export default function Hero3DStage() {
         fog: false,
       });
       const core = new THREE.Mesh(coreGeo, coreMat);
-      core.position.copy(cube.position);
+      core.position.copy(mark.position);
       scene.add(core);
 
-      /* === 2. DOMINANT LIGHT BEAM — single large cone above cube === */
-      const beamGeo = new THREE.ConeGeometry(3.6, 12, 64, 1, true);
+      /* Backface fresnel-rim shell — slightly larger icosahedron, only
+         backfaces visible, gradient alpha pushes a soft halo around the
+         mark silhouette. */
+      const rimGeo = new THREE.IcosahedronGeometry(1.85, 1);
+      const rimMat = new THREE.ShaderMaterial({
+        transparent: true,
+        side: THREE.BackSide,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+        uniforms: {
+          uColor: { value: new THREE.Color(0xff8800) },
+          uPulse: { value: 0 },
+        },
+        vertexShader: `
+          varying vec3 vNormal;
+          varying vec3 vViewPos;
+          void main() {
+            vNormal = normalize(normalMatrix * normal);
+            vec4 mv = modelViewMatrix * vec4(position, 1.0);
+            vViewPos = -mv.xyz;
+            gl_Position = projectionMatrix * mv;
+          }
+        `,
+        fragmentShader: `
+          varying vec3 vNormal;
+          varying vec3 vViewPos;
+          uniform vec3 uColor;
+          uniform float uPulse;
+          void main() {
+            vec3 viewDir = normalize(vViewPos);
+            float fresnel = pow(1.0 - abs(dot(normalize(vNormal), viewDir)), 2.4);
+            float a = fresnel * (0.55 + uPulse * 0.20);
+            gl_FragColor = vec4(uColor, a);
+          }
+        `,
+      });
+      const rim = new THREE.Mesh(rimGeo, rimMat);
+      rim.position.copy(mark.position);
+      scene.add(rim);
+
+      /* === 2. HEX GRID FLOOR ===
+         Procedural hex grid using LineSegments — emissive amber lines
+         on a dark plane that fade to transparent in distance via fog. */
+      const HEX_R = 0.9;
+      const HEX_W = HEX_R * Math.sqrt(3);
+      const ROWS = 18;
+      const COLS = 22;
+      const lineVerts: number[] = [];
+      const lineColors: number[] = [];
+      const cAmber = new THREE.Color(0xff8800);
+      const cCopper = new THREE.Color(0xc26f3c);
+      const cDim = new THREE.Color(0x1f1612);
+
+      for (let r = -ROWS / 2; r < ROWS / 2; r++) {
+        for (let c = -COLS / 2; c < COLS / 2; c++) {
+          const cx = c * HEX_W + (r % 2 === 0 ? 0 : HEX_W / 2);
+          const cz = r * HEX_R * 1.5;
+          const distFromCenter = Math.sqrt(cx * cx + cz * cz);
+          const t = Math.min(1, distFromCenter / 16);
+          const tint = cAmber.clone().lerp(cDim, 0.35 + t * 0.55);
+
+          // 6 hex corners
+          const pts: [number, number][] = [];
+          for (let k = 0; k < 6; k++) {
+            const a = (k / 6) * Math.PI * 2 + Math.PI / 6;
+            pts.push([cx + Math.cos(a) * HEX_R, cz + Math.sin(a) * HEX_R]);
+          }
+          for (let k = 0; k < 6; k++) {
+            const [x1, z1] = pts[k];
+            const [x2, z2] = pts[(k + 1) % 6];
+            lineVerts.push(x1, 0, z1, x2, 0, z2);
+            lineColors.push(tint.r, tint.g, tint.b, tint.r, tint.g, tint.b);
+          }
+        }
+      }
+      const hexGeo = new THREE.BufferGeometry();
+      hexGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(lineVerts), 3));
+      hexGeo.setAttribute('color', new THREE.BufferAttribute(new Float32Array(lineColors), 3));
+      const hexMat = new THREE.LineBasicMaterial({
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.65,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+      });
+      const hex = new THREE.LineSegments(hexGeo, hexMat);
+      hex.position.set(0, -1.5, 0);
+      scene.add(hex);
+
+      // Subtle copper accent ring under the mark
+      const ringGeo = new THREE.RingGeometry(2.2, 2.45, 64, 1);
+      const ringMat = new THREE.MeshBasicMaterial({
+        color: cCopper,
+        transparent: true,
+        opacity: 0.55,
+        side: THREE.DoubleSide,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending,
+      });
+      const ring = new THREE.Mesh(ringGeo, ringMat);
+      ring.rotation.x = -Math.PI / 2;
+      ring.position.set(0, -1.49, 0);
+      scene.add(ring);
+
+      /* === 3. DOMINANT BEAM === */
+      const beamGeo = new THREE.ConeGeometry(2.6, 11, 64, 1, true);
       const beamMat = new THREE.ShaderMaterial({
         transparent: true,
         side: THREE.DoubleSide,
@@ -192,10 +243,7 @@ export default function Hero3DStage() {
           varying float vRadial;
           void main() {
             vY = position.y;
-            // Cone has y from -h/2 (apex) to +h/2 (base) when default
-            // After rotation Z=PI: y from +h/2 (apex bottom) to -h/2 (base top)
-            // Use absolute distance from center for radial fade
-            vRadial = length(position.xz) / 3.6;
+            vRadial = length(position.xz) / 2.6;
             gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
           }
         `,
@@ -205,150 +253,31 @@ export default function Hero3DStage() {
           uniform vec3 uColorTop;
           uniform vec3 uColorBottom;
           void main() {
-            // y goes -6 (apex bottom) to +6 (base top) after rotation
-            // Map: apex (cube) bright, fade upward
-            float yNorm = clamp((vY + 6.0) / 12.0, 0.0, 1.0);
-            // Radial fade: tighter at center, transparent at edges
-            float radialFade = 1.0 - smoothstep(0.5, 1.0, vRadial);
-            float a = (1.0 - yNorm) * 0.85 * radialFade;
+            float yNorm = clamp((vY + 5.5) / 11.0, 0.0, 1.0);
+            float radialFade = 1.0 - smoothstep(0.4, 1.0, vRadial);
+            float a = (1.0 - yNorm) * 1.10 * radialFade;
             vec3 col = mix(uColorBottom, uColorTop, yNorm);
-            gl_FragColor = vec4(col, a);
+            gl_FragColor = vec4(col, clamp(a, 0.0, 0.95));
           }
         `,
       });
       const beam = new THREE.Mesh(beamGeo, beamMat);
-      beam.rotation.z = Math.PI; // apex points DOWN at cube
-      beam.position.set(0, 6.7, -0.2);
+      beam.rotation.z = Math.PI;
+      beam.position.set(0, 6.2, -0.2);
       scene.add(beam);
 
-      /* === 3. WATER PLANE — sine-wave displacement + reflection wash === */
-      const waterGeo = new THREE.PlaneGeometry(60, 30, 80, 40);
-      const waterMat = new THREE.ShaderMaterial({
-        transparent: true,
-        uniforms: {
-          uTime: { value: 0 },
-          uColorDeep: { value: new THREE.Color(0x0a0908) },
-          uColorShallow: { value: new THREE.Color(0xff8800) },
-          uColorRim: { value: new THREE.Color(0xfff0d4) },
-        },
-        vertexShader: `
-          uniform float uTime;
-          varying vec3 vPos;
-          varying float vWave;
-          void main() {
-            vPos = position;
-            float w1 = sin(position.x * 0.4 + uTime * 0.7) * 0.06;
-            float w2 = cos(position.y * 0.3 + uTime * 0.5) * 0.05;
-            float w3 = sin((position.x + position.y) * 0.25 + uTime * 0.4) * 0.04;
-            vWave = w1 + w2 + w3;
-            vec3 p = position;
-            p.z += vWave;
-            gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
-          }
-        `,
-        fragmentShader: `
-          uniform vec3 uColorDeep;
-          uniform vec3 uColorShallow;
-          uniform vec3 uColorRim;
-          uniform float uTime;
-          varying vec3 vPos;
-          varying float vWave;
-          void main() {
-            // Distance from cube origin (in xy of plane, plane is on xy)
-            float dist = length(vPos.xy) / 14.0;
-            float reflection = (1.0 - smoothstep(0.0, 0.45, dist)) * 0.85;
-            // Wave brightness — bright peaks
-            float waveLight = smoothstep(0.0, 0.06, vWave) * 0.35;
-            vec3 col = mix(uColorDeep, uColorShallow, reflection);
-            col = mix(col, uColorRim, waveLight);
-            // Far horizon fade
-            float horizonFade = 1.0 - smoothstep(0.5, 1.0, dist);
-            float alpha = (reflection * 0.70 + waveLight * 0.35) * horizonFade;
-            gl_FragColor = vec4(col, clamp(alpha, 0.0, 0.85));
-          }
-        `,
-      });
-      const water = new THREE.Mesh(waterGeo, waterMat);
-      water.rotation.x = -Math.PI / 2;
-      water.position.set(0, -1.2, 0);
-      scene.add(water);
-
-      /* === 4. MOUNTAIN WALLS (left + right) === */
-      const mountainShader = (side: number) =>
-        new THREE.ShaderMaterial({
-          transparent: true,
-          side: THREE.DoubleSide,
-          uniforms: {
-            uColor: { value: new THREE.Color(0x1f1612) },
-            uHighlight: { value: new THREE.Color(0xc26f3c) },
-            uSide: { value: side },
-          },
-          vertexShader: `
-            varying float vRidge;
-            varying vec3 vPos;
-            float hash(vec3 p) { return fract(sin(dot(p, vec3(127.1, 311.7, 74.7))) * 43758.5453); }
-            float noise(vec3 p) {
-              vec3 i = floor(p), f = fract(p);
-              f = f * f * (3.0 - 2.0 * f);
-              float n = mix(
-                mix(mix(hash(i), hash(i + vec3(1,0,0)), f.x),
-                    mix(hash(i + vec3(0,1,0)), hash(i + vec3(1,1,0)), f.x), f.y),
-                mix(mix(hash(i + vec3(0,0,1)), hash(i + vec3(1,0,1)), f.x),
-                    mix(hash(i + vec3(0,1,1)), hash(i + vec3(1,1,1)), f.x), f.y),
-                f.z
-              );
-              return n;
-            }
-            void main() {
-              vec3 p = position;
-              // Displacement creates jagged ridges
-              float ridge = noise(p * 0.45) * 1.6 + noise(p * 0.18) * 2.4;
-              p.z -= ridge;
-              vRidge = ridge;
-              vPos = p;
-              gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
-            }
-          `,
-          fragmentShader: `
-            varying float vRidge;
-            varying vec3 vPos;
-            uniform vec3 uColor;
-            uniform vec3 uHighlight;
-            uniform float uSide;
-            void main() {
-              // Highlight ridge tops
-              float ridgeNorm = clamp(vRidge / 4.0, 0.0, 1.0);
-              vec3 col = mix(uColor, uHighlight, ridgeNorm * 0.55);
-              // Vertical fade — top fades into atmosphere
-              float yFade = 1.0 - smoothstep(2.0, 8.0, vPos.y);
-              gl_FragColor = vec4(col, yFade * 0.95);
-            }
-          `,
-        });
-      const mountainGeoLeft = new THREE.PlaneGeometry(20, 14, 60, 30);
-      const mountainLeft = new THREE.Mesh(mountainGeoLeft, mountainShader(-1));
-      mountainLeft.position.set(-12, 1, -3);
-      mountainLeft.rotation.y = Math.PI * 0.32;
-      scene.add(mountainLeft);
-
-      const mountainGeoRight = new THREE.PlaneGeometry(20, 14, 60, 30);
-      const mountainRight = new THREE.Mesh(mountainGeoRight, mountainShader(1));
-      mountainRight.position.set(12, 1, -3);
-      mountainRight.rotation.y = -Math.PI * 0.32;
-      scene.add(mountainRight);
-
-      /* === 5. AMBIENT PARTICLE FIELD === */
+      /* === 4. PARTICLE FIELD === */
       const HALO_COUNT = 1500;
       const haloPos = new Float32Array(HALO_COUNT * 3);
       const haloCol = new Float32Array(HALO_COUNT * 3);
-      const cAmber = new THREE.Color(0xff8800);
+      const cAmberP = new THREE.Color(0xff8800);
       const cCream = new THREE.Color(0xfff0d4);
       for (let i = 0; i < HALO_COUNT; i++) {
-        haloPos[i * 3 + 0] = (Math.random() - 0.5) * 28;
+        haloPos[i * 3 + 0] = (Math.random() - 0.5) * 26;
         haloPos[i * 3 + 1] = -0.5 + Math.random() * 7;
         haloPos[i * 3 + 2] = -8 + Math.random() * 14;
         const t = Math.random();
-        const c = cAmber.clone().lerp(cCream, t);
+        const c = cAmberP.clone().lerp(cCream, t);
         haloCol[i * 3 + 0] = c.r;
         haloCol[i * 3 + 1] = c.g;
         haloCol[i * 3 + 2] = c.b;
@@ -357,7 +286,7 @@ export default function Hero3DStage() {
       haloGeo.setAttribute('position', new THREE.BufferAttribute(haloPos, 3));
       haloGeo.setAttribute('color', new THREE.BufferAttribute(haloCol, 3));
       const haloMat = new THREE.PointsMaterial({
-        size: 0.04,
+        size: 0.045,
         vertexColors: true,
         transparent: true,
         opacity: 0.85,
@@ -369,7 +298,7 @@ export default function Hero3DStage() {
       const halo = new THREE.Points(haloGeo, haloMat);
       scene.add(halo);
 
-      /* Pointer + scroll state */
+      /* === Pointer + scroll === */
       const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
       const onPointer = (e: PointerEvent) => {
         const w = window.innerWidth || 1;
@@ -406,7 +335,7 @@ export default function Hero3DStage() {
       );
       io.observe(container);
 
-      /* Render loop */
+      /* === Render loop === */
       const clock = new THREE.Clock();
       let raf = 0;
       const haloPosAttr = haloGeo.getAttribute('position') as THREEType.BufferAttribute;
@@ -415,50 +344,53 @@ export default function Hero3DStage() {
         if (disposed) return;
         raf = requestAnimationFrame(tick);
         if (document.hidden || !inView) return;
-        const dt = clock.getDelta();
         const t = clock.getElapsedTime();
 
-        /* Cube — slow rotation + breathing pulse */
-        cubeMat.uniforms.uTime.value = t;
-        cubeMat.uniforms.uPulse.value = 0.5 + 0.5 * Math.sin(t * 0.6);
-        cube.rotation.y = t * 0.10;
-        cube.rotation.x = Math.sin(t * 0.18) * 0.10;
-        cube.position.y = 0.7 + Math.sin(t * 0.55) * 0.15;
-
-        /* Core light pulses */
         const pulse = 0.5 + 0.5 * Math.sin(t * 0.6);
+
+        /* Mark — slow rotation + breathing pulse */
+        mark.rotation.y = t * 0.18;
+        mark.rotation.x = Math.sin(t * 0.22) * 0.20;
+        mark.position.y = 0.7 + Math.sin(t * 0.55) * 0.15;
+        markMat.emissiveIntensity = 0.45 + pulse * 0.35;
+
+        /* Rim */
+        rim.position.copy(mark.position);
+        rim.rotation.copy(mark.rotation);
+        rimMat.uniforms.uPulse.value = pulse;
+
+        /* Core */
         core.scale.setScalar(0.85 + pulse * 0.55);
         coreMat.opacity = 0.55 + pulse * 0.40;
-        core.position.copy(cube.position);
+        core.position.copy(mark.position);
 
-        /* Beam follows cube + slight pulse */
-        beam.position.x = cube.position.x;
-        beam.position.z = cube.position.z - 0.2;
+        /* Key light pulse — drives the whole scene reaction */
+        keyLight.intensity = 3.6 + pulse * 1.6;
+        keyLight.position.copy(mark.position);
+
+        /* Beam */
+        beam.position.x = mark.position.x;
+        beam.position.z = mark.position.z - 0.2;
         beam.rotation.y = Math.sin(t * 0.18) * 0.04;
-        (beamMat.uniforms.uColorTop.value as THREEType.Color).setHSL(
-          0.085,
-          1.0,
-          0.50 + pulse * 0.10,
-        );
 
-        /* Water animates via shader uTime */
-        waterMat.uniforms.uTime.value = t;
+        /* Hex floor — slow scroll toward camera */
+        hex.position.z = (t * 0.25) % 1.35;
 
-        /* Halo slow drift — particles bob in place */
+        /* Halo bob */
         for (let i = 0; i < HALO_COUNT; i++) {
           const baseY = haloPos[i * 3 + 1];
           haloPosAttr.array[i * 3 + 1] = baseY + Math.sin(t * 0.5 + i * 0.13) * 0.08;
         }
         haloPosAttr.needsUpdate = true;
 
-        /* Camera cinematic motion */
+        /* Camera */
         pointer.x += (pointer.tx - pointer.x) * 0.045;
         pointer.y += (pointer.ty - pointer.y) * 0.045;
-        const breathe = Math.sin(t * 0.55) * 0.3;
+        const breathe = Math.sin(t * 0.55) * 0.25;
         camera.position.x = pointer.x * 0.7;
         camera.position.y = 1.2 - pointer.y * 0.4;
-        camera.position.z = 12 + breathe + scrollProgress * 7;
-        camera.lookAt(0, 0.4, 0);
+        camera.position.z = 11 + breathe + scrollProgress * 6;
+        camera.lookAt(0, 0.6, 0);
 
         renderer.render(scene, camera);
       };
@@ -471,18 +403,18 @@ export default function Hero3DStage() {
         window.removeEventListener('scroll', onScroll);
         ro.disconnect();
         io.disconnect();
-        cubeGeo.dispose();
-        cubeMat.dispose();
+        markGeo.dispose();
+        markMat.dispose();
+        rimGeo.dispose();
+        rimMat.dispose();
         coreGeo.dispose();
         coreMat.dispose();
         beamGeo.dispose();
         beamMat.dispose();
-        waterGeo.dispose();
-        waterMat.dispose();
-        mountainGeoLeft.dispose();
-        (mountainLeft.material as THREEType.Material).dispose();
-        mountainGeoRight.dispose();
-        (mountainRight.material as THREEType.Material).dispose();
+        hexGeo.dispose();
+        hexMat.dispose();
+        ringGeo.dispose();
+        ringMat.dispose();
         haloGeo.dispose();
         haloMat.dispose();
         renderer.dispose();

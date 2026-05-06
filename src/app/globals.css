@@ -1370,27 +1370,17 @@ a.text-link:hover,
     grid-template-columns: 1fr;
   }
 }
-/* Phase 18 V4 → Phase 18.6 P1 amendment — AutomationOrbit dimensional
-   bounds. Replaces .hero-pulse-wrap (which had max-width: 32rem and no
-   font-scale guard); font-size: 14px isolates orbit-internal text from
-   cascade. P1 amendment: max-width upper raised 480px → 600px so orbit
-   reads as primary visual element alongside copy. Lower bound + clamp
-   slope unchanged. */
-.automation-orbit-container {
+/* Phase 20.1.6 — AutomationOrbit removed from hero in favor of single
+   focal point (Hero3DStage). The hero-grid right column is now an
+   empty spacer that reserves the column width so the copy column
+   continues to read at the prior horizontal balance against the 3D
+   stage on the right. */
+.hero-stage-spacer {
   width: 100%;
-  /* Phase 18.6 P3 — clamp upper bumped 600px → 760px so orbit reads at
-     proportional scale alongside the now-smaller h1 (font-size cap 80px
-     vs prior 112px). Lower bound + slope adjusted to scale gracefully. */
-  max-width: clamp(320px, 44vw, 760px);
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-height: clamp(320px, 60vh, 600px);
 }
 @media (max-width: 1024px) {
-  .automation-orbit-container {
-    max-height: 360px;
-  }
+  .hero-stage-spacer { display: none; }
 }
 .hero-eyebrow {
   font-size: var(--text-micro);

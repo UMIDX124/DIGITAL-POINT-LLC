@@ -1,4 +1,3 @@
-import { AutomationOrbit } from '@/components/hero/AutomationOrbit';
 import { HeroHeadline } from '@/components/hero/HeroHeadline';
 import { HeroCTA } from '@/components/hero/HeroCTA';
 import Hero3DStage from '@/components/hero/Hero3DStage';
@@ -6,23 +5,14 @@ import HeroScrollEnhance from '@/components/hero/HeroScrollEnhance';
 import { HeroSidePanels } from '@/components/hero/HeroSidePanels';
 import { copy } from '@/lib/copy';
 
-/* Phase 20.1 premium hero — Hero3DStage is a Client Component
-   ('use client'); direct import keeps HeroSection as a Server Component
-   (Next 16 forbids next/dynamic ssr:false inside Server Components).
-   Three.js bundle is code-split automatically by Turbopack via the
-   dynamic await import('three') inside Hero3DStage's effect. SSR pass
-   renders an empty canvas wrapper; the GPU work only happens client-side
-   after gates pass (desktop + prefers-motion + hardware tier). */
+/* Phase 20.1.6 hero — single focal point composition. The Hero3DStage
+   is the right-side focal element; copy column lives on the left.
+   AutomationOrbit (the COSMO node graph) was removed: visual review
+   showed it competed with the 3D mark for attention, breaking the
+   "one focal point per scroll" Hubtown discipline. Hero3DStage
+   remains the cinematic surface; HeroSidePanels render the section
+   nav and telemetry rails. */
 
-/**
- * Phase 20.1 hero — ships the new 3D stage behind static content. The
- * Phase 19 nuke-lag rule (no client-side motion in HeroSection itself)
- * is preserved at the section level: this component remains pure server-
- * rendered markup. The 3D scene is a sibling component dynamic-imported
- * with ssr:false, so initial-bundle delta is zero. Reduced-motion / mobile
- * / low-CPU users see only the multi-color body atmosphere shipped in
- * Phase 20.1 Batch A — no broken-canvas surface.
- */
 export function HeroSection() {
   return (
     <section
@@ -47,9 +37,7 @@ export function HeroSection() {
           <HeroCTA />
         </div>
 
-        <div className="automation-orbit-container relative">
-          <AutomationOrbit />
-        </div>
+        <div className="hero-stage-spacer" aria-hidden="true" />
       </div>
     </section>
   );

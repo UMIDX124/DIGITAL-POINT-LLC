@@ -2522,3 +2522,50 @@ html[data-i-seen="1"] .dpl-intro-loader { display: none; }
   78%  { opacity: 1; }
   100% { opacity: 0; visibility: hidden; }
 }
+
+/* ============================================
+   Phase 20 Loop A Sub-phase B — CosmoMark (oscilloscope-wave concept 2)
+   Concept-2 lock: Cosmo chat surface uses inline SVG oscilloscope-wave
+   instead of Dp-logo1.png. Brand mark (Dp-logo1.png) preserved for
+   nav/footer/conversion/schema; Cosmo gets its own visual identity.
+
+   .cosmo-mark              base SVG container
+   .cosmo-mark-idle         gentle ambient amber pulse (opacity 1↔0.78, 5s)
+   .cosmo-mark-active       brighter wave + amber drop-shadow halo
+   .cosmo-mark-speaking     echo wave fades in + primary wave pulse
+
+   All animations are opacity + filter only — no transform, no layout
+   triggers. K11 budget unchanged. prefers-reduced-motion disables
+   ambient pulse; static wave is preserved for clarity.
+   ============================================ */
+.cosmo-mark { display: block; will-change: opacity, filter; }
+.cosmo-mark-echo { opacity: 0; transition: opacity 200ms ease-out; }
+
+@keyframes cosmo-mark-idle-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.78; }
+}
+.cosmo-mark-idle .cosmo-mark-wave {
+  animation: cosmo-mark-idle-pulse 5s ease-in-out infinite;
+}
+
+.cosmo-mark-active .cosmo-mark-wave {
+  filter: drop-shadow(0 0 4px rgba(255, 136, 0, 0.55));
+}
+
+@keyframes cosmo-mark-speaking-wave {
+  0%, 100% { opacity: 0.85; }
+  50%      { opacity: 1; }
+}
+.cosmo-mark-speaking .cosmo-mark-wave {
+  animation: cosmo-mark-speaking-wave 0.9s ease-in-out infinite;
+  filter: drop-shadow(0 0 5px rgba(255, 136, 0, 0.65));
+}
+.cosmo-mark-speaking .cosmo-mark-echo {
+  opacity: 0.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cosmo-mark-idle .cosmo-mark-wave,
+  .cosmo-mark-speaking .cosmo-mark-wave { animation: none; }
+}

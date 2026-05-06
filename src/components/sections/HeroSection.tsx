@@ -3,6 +3,7 @@ import { HeroHeadline } from '@/components/hero/HeroHeadline';
 import { HeroCTA } from '@/components/hero/HeroCTA';
 import Hero3DStage from '@/components/hero/Hero3DStage';
 import HeroScrollEnhance from '@/components/hero/HeroScrollEnhance';
+import { HeroSidePanels } from '@/components/hero/HeroSidePanels';
 import { copy } from '@/lib/copy';
 
 /* Phase 20.1 premium hero — Hero3DStage is a Client Component
@@ -29,6 +30,7 @@ export function HeroSection() {
       className="hero hero-section relative w-full overflow-hidden"
     >
       <Hero3DStage />
+      <HeroSidePanels />
       <HeroScrollEnhance />
       <div className="hero-grid relative mx-auto w-full max-w-[90rem] z-10">
         <div className="hero-content">

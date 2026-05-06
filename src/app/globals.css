@@ -2653,3 +2653,99 @@ html[data-i-seen="1"] .dpl-intro-loader { display: none; }
 .design-only-text {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
+
+/* ============================================
+   Phase 20.1.2 — Hero side telemetry strips + scroll indicator
+   Hubtown-cinematic side labels + bottom scroll cue.
+   Desktop only (≥1024px); hidden on mobile per skill rule.
+   ============================================ */
+.hero-side-panel {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+.hero-side-panel--left { left: clamp(0.75rem, 2vw, 1.75rem); }
+.hero-side-panel--right { right: clamp(0.75rem, 2vw, 1.75rem); }
+@media (max-width: 1023px) {
+  .hero-side-panel { display: none; }
+}
+.hero-side-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: var(--text-muted);
+}
+.hero-side-strip-tag {
+  color: var(--accent-bright);
+  letter-spacing: 0.28em;
+}
+.hero-side-strip-meta {
+  color: var(--text-tertiary);
+}
+.hero-side-strip-rule {
+  display: inline-block;
+  width: 1px;
+  height: 28px;
+  background: var(--border-default);
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: clamp(1rem, 3vh, 2rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 5;
+  pointer-events: none;
+}
+@media (max-width: 1023px) {
+  .hero-scroll-indicator { bottom: clamp(0.75rem, 2vh, 1.25rem); }
+}
+.hero-scroll-tag {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.hero-scroll-bar {
+  position: relative;
+  width: 1px;
+  height: 56px;
+  background: var(--border-default);
+  overflow: hidden;
+}
+.hero-scroll-bar-dot {
+  position: absolute;
+  top: 0;
+  left: -2px;
+  width: 5px;
+  height: 8px;
+  background: var(--accent-bright);
+  box-shadow: 0 0 12px rgba(255, 168, 51, 0.55);
+  animation: hero-scroll-dot 2.4s cubic-bezier(0.65, 0.05, 0, 1) infinite;
+}
+@keyframes hero-scroll-dot {
+  0%   { transform: translateY(-12px); opacity: 0; }
+  18%  { opacity: 1; }
+  82%  { opacity: 1; }
+  100% { transform: translateY(60px); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-bar-dot { animation: none; top: 24px; }
+}

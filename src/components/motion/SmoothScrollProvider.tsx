@@ -48,9 +48,13 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
       gsap.registerPlugin(ScrollTrigger);
 
       const lenis = new Lenis({
-        duration: 1.0,
+        /* Phase 20.1.2 smoothness pass — UF flagged page-feel as "not
+           smooth enough." Tuned: duration 1.0 → 1.2 (longer ease tail),
+           lerp 0.085 → 0.07 (slightly more buttery follow), wheel
+           multiplier kept at 1 so scroll velocity feels natural. */
+        duration: 1.2,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easeOutExpo
-        lerp: 0.085,
+        lerp: 0.07,
         wheelMultiplier: 1,
         touchMultiplier: 1.4,
         smoothWheel: true,

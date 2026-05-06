@@ -89,16 +89,25 @@
    ======================================================================= */
 
 @theme inline {
-  /* --- Purple accent surfacing (new canonical primary) --- */
+  /* --- Amber accent surfacing (canonical primary) --- */
   --color-accent: var(--accent);
   --color-accent-bright: var(--accent-bright);
   --color-accent-deep: var(--accent-deep);
+
+  /* --- Phase 20.1 premium-palette secondary accents --- */
+  --color-accent-cream: var(--accent-cream);
+  --color-accent-copper: var(--accent-copper);
+  --color-accent-bronze: var(--accent-bronze);
+  --color-accent-jade: var(--accent-jade);
+  --color-accent-tide: var(--accent-tide);
 
   /* --- Background system --- */
   --color-bg-primary: var(--bg-primary);
   --color-bg-secondary: var(--bg-secondary);
   --color-bg-tertiary: var(--bg-tertiary);
   --color-bg-elevated: var(--bg-elevated);
+  --color-bg-warm: var(--bg-warm);
+  --color-bg-cool: var(--bg-cool);
 
   /* --- Text system --- */
   --color-text-primary: var(--text-primary);
@@ -297,30 +306,44 @@
   --font-instrument-serif: 'InstrumentSerifLocal';
   --radius: 0.5rem;
 
-  /* --- Phase 16 Section A: Bloomberg Operator palette ---
-     Pure black canvas, phosphor amber primary, instrument blue secondary
-     (sparing — semantic emphasis on data/AI moments only). Replaces the
-     Phase 13 violet system. --bg-canvas is the new canonical name; the
-     legacy --bg-primary / --bg-secondary / --bg-tertiary / --bg-elevated
-     names continue to resolve so unrewritten components still render. */
-  --bg-canvas: #000000;
-  --bg-primary: #000000;
-  --bg-secondary: #050505;
-  --bg-tertiary: #030303;
-  --bg-elevated: #0A0A0A;
+  /* --- Phase 20.1 premium palette evolution (UF authorized 2026-05-07) ---
+     Repo-owner override: prior pure-black + amber-only Bloomberg Operator
+     register felt monolithic and not premium. New palette keeps amber as
+     primary but shifts canvas to charcoal-with-warm-undertone (no pure
+     #000), adds warm secondaries (copper + cream + bronze) and a cool
+     anchor (jade) for depth. Zero violet/indigo/purple absolute rule
+     (K1) preserved. Skill-pack rule "no pure #000000" honored.
 
-  /* --- Phosphor amber + instrument blue accents --- */
-  --accent-primary: #FF8800;
-  --accent-secondary: #2A8FBD;
+     Surface elevation differential: bg-canvas → bg-secondary →
+     bg-elevated each step lifts ~5% luminance with a subtle warm
+     undertone so multi-layer depth reads even at low intensities. */
+  --bg-canvas: #0A0908;            /* charcoal w/ warm undertone, NOT pure black */
+  --bg-primary: #0A0908;
+  --bg-secondary: #131110;         /* slightly lifted, warm */
+  --bg-tertiary: #0F0E0C;          /* alt rows, marginally lifted */
+  --bg-elevated: #1A1714;          /* cards, modals, popovers */
+  --bg-warm: #1F1612;              /* premium warm-tinted dark, hero zones */
+  --bg-cool: #0E1413;              /* cool-tinted dark, jade-accent zones */
+
+  /* --- Primary amber + warm/cool secondary accents --- */
+  --accent-primary: #FF8800;       /* phosphor amber, brand primary */
+  --accent-secondary: #2A8FBD;     /* instrument blue (legacy semantic, sparing) */
+  --accent-cream: #F5E8D4;         /* warm cream, premium contrast on dark */
+  --accent-copper: #C26F3C;        /* copper, deeper warm secondary */
+  --accent-bronze: #8C6B3F;        /* muted bronze, subtle warm borders */
+  --accent-jade: #2C5F5A;          /* deep jade, cool sophistication accent */
+  --accent-tide: #1F3D3A;          /* deeper jade-teal, atmospheric ambient */
   --ring-stroke: #3A2D14;
   --cta-text-on-amber: #1A0E00;
   /* Legacy --accent / --accent-bright / --accent-deep names retained,
-     retargeted to the new amber so existing rules keep rendering. */
+     retargeted to the amber palette so existing rules keep rendering. */
   --accent: #FF8800;
   --accent-bright: #FFA833;
   --accent-deep: #C26800;
   --accent-glow: rgba(255, 136, 0, 0.25);
   --accent-glow-soft: rgba(255, 136, 0, 0.08);
+  --accent-glow-cream: rgba(245, 232, 212, 0.12);
+  --accent-glow-jade: rgba(44, 95, 90, 0.20);
 
   /* --- Text --- */
   --text-primary: #ECECEC;
@@ -333,9 +356,11 @@
   --text-error: #F87171;
 
   /* --- Borders --- */
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-default: rgba(255, 255, 255, 0.1);
-  --border-bright: rgba(255, 136, 0, 0.3);
+  --border-subtle: rgba(255, 240, 220, 0.06);   /* warm-tinted hairlines */
+  --border-default: rgba(255, 240, 220, 0.10);
+  --border-bright: rgba(255, 136, 0, 0.32);
+  --border-cream: rgba(245, 232, 212, 0.18);   /* premium contrast border */
+  --border-jade: rgba(44, 95, 90, 0.30);       /* cool secondary border */
 
   /* ----- Legacy palette aliases → amber palette -----
      Components not yet rewritten still reference these names. They resolve
@@ -423,14 +448,17 @@
     overscroll-behavior-y: contain;
   }
   body {
-    /* Phase 19 Path 3 trim — body atmosphere simplified from a 3-stack
-       of radial-gradients to a single subtle wash. Cuts paint cost per
-       scroll frame and removes the "page feels heavy" signal owner
-       flagged. Previous P5 doubled-intensity multi-layer system kept in
-       git history for reference. */
+    /* Phase 20.1 — premium-palette body atmosphere. Single-stack scroll-
+       cheap (no fixed-attachment) with three calibrated washes: amber
+       primary glow upper-left, copper warm secondary mid-right, jade
+       cool accent lower-left. Gives the page real depth without
+       multi-layer paint cost. Replaces the Phase 19 single-amber wash
+       that the repo owner flagged as "too dark, colors not special." */
     background-color: var(--bg-canvas);
     background-image:
-      radial-gradient(ellipse at 18% 22%, rgba(255, 136, 0, 0.10) 0%, transparent 55%);
+      radial-gradient(ellipse 70% 50% at 18% 22%, rgba(255, 136, 0, 0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 88% 38%, rgba(194, 111, 60, 0.09) 0%, transparent 65%),
+      radial-gradient(ellipse 80% 50% at 8% 88%, rgba(44, 95, 90, 0.08) 0%, transparent 70%);
     /* Phase 18.6 P7 perf-pass — background-attachment: fixed REMOVED.
        Fixed-attachment + radial-gradient was forcing a full repaint on
        every scroll frame (compositor couldn't accelerate). Default

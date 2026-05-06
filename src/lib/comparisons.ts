@@ -58,7 +58,7 @@ export const comparisons: Comparison[] = [
       ],
     },
     comparisonRows: [
-      { category: 'User Intent', optionA: 'High , users are actively searching', optionB: 'Low to medium , users are browsing' },
+      { category: 'User Intent', optionA: 'High: users are actively searching', optionB: 'Low to medium: users are browsing' },
       { category: 'Best For', optionA: 'Capturing existing demand', optionB: 'Generating new demand' },
       { category: 'Average CPC', optionA: '$1-$5+ (varies widely by industry)', optionB: '$0.50-$2 (generally lower)' },
       { category: 'Targeting Method', optionA: 'Keywords, audiences, demographics', optionB: 'Audiences, interests, behaviors, lookalikes' },
@@ -66,7 +66,7 @@ export const comparisons: Comparison[] = [
       { category: 'Attribution', optionA: 'Strong for last-click', optionB: 'Weakened by iOS privacy changes' },
     ],
     recommendation:
-      'For most businesses, the answer isn\'t either/or , it\'s both, with budget allocation driven by data. Here\'s the thing: Google Ads should be your priority when you\'ve got strong search demand and need bottom-of-funnel conversions. Facebook Ads should lead when you need to build awareness, reach new audiences, or when your product benefits from visual storytelling. We help clients build cross-platform strategies where both channels reinforce each other.',
+      'Most businesses run both, with budget allocation driven by data. Lead with Google Ads when search demand is strong and the goal is bottom-of-funnel conversion. Lead with Facebook Ads when the goal is awareness, audience reach, or visual storytelling for a product that benefits from it. Digital Point builds cross-platform strategies where both channels reinforce each other.',
   },
   {
     slug: 'first-click-vs-last-click-attribution',
@@ -114,7 +114,7 @@ export const comparisons: Comparison[] = [
       { category: 'Platform Default', optionA: 'Rarely used as default', optionB: 'Default for most ad platforms' },
     ],
     recommendation:
-      'The truth is, neither first-click nor last-click attribution tells the full story. We recommend moving to a multi-touch attribution model that distributes credit across the entire customer journey. If you must choose between these two, use last-click for short sales cycles and first-click for longer consideration periods , but recognize that both are oversimplifications. Our attribution services help clients implement data-driven models that reflect how customers actually convert.',
+      'Neither first-click nor last-click attribution tells the full story. Move to a multi-touch attribution model that distributes credit across the customer journey. If forced to pick between the two, use last-click for short sales cycles and first-click for longer consideration periods, but recognize that both are oversimplifications. Digital Point implements data-driven models that reflect how customers actually convert.',
   },
   {
     slug: 'in-house-vs-agency-marketing',
@@ -144,7 +144,7 @@ export const comparisons: Comparison[] = [
       pros: [
         'Access to specialized expertise across multiple platforms and verticals',
         'Lower total cost than equivalent in-house headcount for most companies',
-        'Scalable , ramp up or down without hiring and firing cycles',
+        'Scalable: ramp up or down without hiring and firing cycles',
         'Cross-client insights and benchmarks that inform better strategy',
         'Established processes, tools, and playbooks from day one',
       ],
@@ -228,7 +228,7 @@ export const comparisons: Comparison[] = [
         'Complete control over bid amounts at the keyword and placement level',
         'No reliance on algorithms that may not understand your business context',
         'Useful for small accounts or campaigns with limited conversion data',
-        'Transparent , you know exactly what you\'re bidding and why',
+        'Transparent: you know exactly what you\'re bidding and why',
       ],
       cons: [
         'Extremely time-intensive to manage at scale',
@@ -257,7 +257,7 @@ export const comparisons: Comparison[] = [
       { category: 'Control', optionA: 'Full manual control', optionB: 'Algorithm-driven with guardrails' },
       { category: 'Scalability', optionA: 'Limited by human capacity', optionB: 'Handles any account size' },
       { category: 'Data Requirement', optionA: 'Works with any data volume', optionB: 'Needs 30+ conversions/month minimum' },
-      { category: 'Reaction Speed', optionA: 'Delayed , requires manual review', optionB: 'Real-time auction-level adjustments' },
+      { category: 'Reaction Speed', optionA: 'Delayed: requires manual review', optionB: 'Real-time auction-level adjustments' },
       { category: 'Best For', optionA: 'Small accounts, limited data', optionB: 'Mature accounts with good conversion tracking' },
     ],
     recommendation:
@@ -464,7 +464,7 @@ export const comparisons: Comparison[] = [
     description:
       'Compare the effectiveness, cost, and operational trade-offs of remote marketing teams versus traditional in-house marketing departments.',
     intro:
-      'The shift to remote work has fundamentally changed how companies build marketing teams. A remote marketing team , whether internal employees working remotely or an outsourced partner , offers access to global talent and cost advantages. An in-house team co-located in your office provides proximity and cultural integration. Here\'s how to think about the trade-offs.',
+      'The shift to remote work has reshaped how companies build marketing teams. A remote marketing team (whether internal employees working remotely or an outsourced partner) offers access to global talent and cost advantages. An in-house team co-located in your office provides proximity and cultural integration. The trade-offs:',
     optionA: {
       name: 'Remote Marketing Team',
       pros: [

@@ -1,14 +1,16 @@
 import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';
 import { StickyCTABar } from '@/components/ui-dp/StickyCTABar';
-import ChatWidget from '@/components/chat/ChatWidget';
 
-/* Phase 20 Loop A Sub-phase B — Cosmo re-enabled. ChatWidget itself is a
-   Client Component ('use client') and internally lazy-loads the heavy
-   ChatPanel via next/dynamic ssr:false. Direct import here keeps the
-   marketing layout as a Server Component (Next 16 forbids next/dynamic
-   ssr:false inside Server Components). Resolves audit finding C3 (Cosmo
-   advertised but no render path). */
+/* Phase 20 Loop A note: ChatWidget is mounted in the ROOT layout
+   (src/app/layout.tsx) — it renders site-wide already. The audit C3 finding
+   ("Cosmo advertised but no render path") is resolved by the Phase 20
+   Sub-phase B copy + system-prompt fixes (CosmoMark in FAB, v3-phase20
+   prompt with operator voice + correct service order); the mount itself
+   was always there. Conversion layout (/free-growth-audit) does not strip
+   it — a brief audit confirmed Cosmo also surfaces there via the root
+   layout, which is acceptable given the audit form is the primary CTA
+   anyway. */
 
 /**
  * Phase 19 nuke-lag — ScrollMotion (IntersectionObserver + lazy GSAP
@@ -28,7 +30,6 @@ export default function MarketingLayout({
       <main className="flex-1">{children}</main>
       <Footer />
       <StickyCTABar />
-      <ChatWidget />
     </div>
   );
 }

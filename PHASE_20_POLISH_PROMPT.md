@@ -1,725 +1,588 @@
-# DPL Phase 20 — Drastic Polish + Full Skill Stack
+# DPL Phase 20 — Autonomous Polish Loop
 
-> Paste this into a fresh terminal Claude session opened from `/Users/laptopchoice/Projects/_services/digitalpointllc-1`. Self-contained brief — execute end-to-end with hard pause points. Auto-mode required for autonomous execution.
+> **Single directive. Self-loops until ALL success criteria met OR a HARD HALT fires.**
 >
-> **Bar:** every commit measured against "would this close a $50K-$100K retainer for an AI-automation engagement." Ship at Linear/Vercel/Stripe enterprise quality, within DPL's locked Bloomberg-Operator brand.
+> Paste this one-line into terminal Claude (with auto mode on):
+> ```
+> Read /Users/laptopchoice/Projects/_services/digitalpointllc-1/PHASE_20_POLISH_PROMPT.md in full and execute end-to-end with the autonomous-loop semantics. Resume from docs/PHASE_20_PROGRESS.md if it exists.
+> ```
+>
+> Bar: every commit measured against "would this close a $50K-$100K retainer for an AI-automation engagement." Linear / Vercel / Stripe enterprise quality, within DPL's locked Bloomberg-Operator brand.
 
 ---
 
-## Identity + scope
+## 1. AUTONOMOUS LOOP SEMANTICS
+
+**Run continuously. Do not split into multiple sessions without a resume marker. Do not stop unless a HARD HALT condition fires.**
+
+### Per-commit cycle (every single commit)
+1. Make change
+2. Run quality gates (Section 14 — ALL must pass)
+3. If gates fail → fix the root cause, retry. ≤3 retry attempts. After 3 failed retries → HARD HALT 6 fires.
+4. If gates pass → commit, log to progress doc, continue.
+
+### Per-batch cycle (every 5 commits)
+1. Push to origin: `cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && git push origin redesign/impeccable-pass`
+2. Capture Vercel preview URL.
+3. Update `docs/PHASE_20_PROGRESS.md` with batch summary.
+4. Continue to next batch.
+
+### Per-phase cycle (every loop body A-I)
+1. Read prerequisites for this phase (locks, prior progress).
+2. Execute phase tasks.
+3. Verify phase success criteria met.
+4. Write phase boundary entry to `docs/PHASE_20_PROGRESS.md`: phase name, commits shipped (hashes + 1-line each), success-criteria checklist (✅/❌ each), next phase.
+5. Continue to next phase.
+
+### HARD HALT conditions (the ONLY reasons to stop)
+1. **Mascot concept board ready, awaiting UF pick** — Sub-phase A complete, Sub-phase B blocked until UF replies "concept N" or "regenerate concept N with X tweak."
+2. **K1-K17 locked invariant violation detected** — never auto-override. Halt, post the conflict, wait for explicit user override.
+3. **Real-data input needed from UF** — e.g. customer logo signoff, 5 priority verticals for programmatic SEO, real metric source, client-cleared flag for case studies.
+4. **Pre-deploy gate (Phase I)** — wait for "ship it" before `vercel deploy --prod`.
+5. **Session quota >90%** — checkpoint to `PHASE_20_PROGRESS.md` and halt cleanly. Resume next session.
+6. **Build / type / lint persistent failure (>3 retries)** — flag root cause, halt.
+7. **Branch divergence** — if `git pull --rebase` would conflict on next push, halt and surface conflict.
+
+### Resume protocol (on interruption)
+On resume:
+1. Read this file in full.
+2. Read `docs/PHASE_20_PROGRESS.md` (if exists). Find the last completed phase and last commit hash.
+3. Continue from the next phase / commit. Do NOT restart Phase 0.
+4. If progress doc is missing or unparseable, restart from Phase 0.5 (skip Phase 0 reads if locks haven't changed since last session).
+
+---
+
+## 2. CWD DISCIPLINE (NON-NEGOTIABLE)
+
+Every Bash call MUST prefix `cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 &&`. Bash tool resets cwd between calls. Never assume cwd from prior turn.
+
+Before any `git push`: confirm `git config --get remote.origin.url` returns exactly `git@github.com:UMIDX124/DIGITAL-POINT-LLC.git`. If not, HALT (HARD HALT 7 trigger).
+
+Before any `vercel` command: read `.vercel/project.json` and confirm `projectName: digitalpointllc-1`.
+
+---
+
+## 3. IDENTITY + SCOPE
 
 - **Role:** Senior frontend architect + marketing strategist
 - **Project root:** `/Users/laptopchoice/Projects/_services/digitalpointllc-1`
-- **Owner:** Umer Farooq (UF). Pakistan. Hinglish OK in casual surfaces; English-only on procurement-facing pages.
-- **Product:** AI automation agency selling outcomes (managed service), not software. Five service pillars LOCKED: AI Agents → Workflow Automation → Remote Operators → Performance Marketing → Systems & Reporting.
+- **Owner:** Umer Farooq (UF). Pakistan. Hinglish OK in casual; English-only on procurement-facing pages.
+- **Product:** AI automation agency selling outcomes (managed service), not software. Five service pillars LOCKED in order: AI Agents → Workflow Automation → Remote Operators → Performance Marketing → Systems & Reporting.
 - **Brand register:** Bloomberg Operator on dark. Trading-terminal seriousness, not gradient SaaS, not crypto neon.
 - **Hero copy LOCKED:** `Hire the AI. Skip the headcount.`
 - **Production:** https://www.digitalpointllc.com
-- **Current branch:** `redesign/impeccable-pass` (post-Phase-19 ship). Working tree clean as of commit `798664e`.
+- **Branch:** `redesign/impeccable-pass`
 
 ---
 
-## Phase 0 — Pre-flight reads (NO CODE CHANGES)
+## 4. SUCCESS CRITERIA (loop exits when ALL met)
 
-Read in order. Do not skim. Re-deriving any locked decision is a fatal error.
-
-1. `CLAUDE.md` — Personal Working Preferences + Locked Invariants (K1-K17) + Phase 18-19 history. Hero copy lock, palette purity, 5-service order, atmospheric exception caps (amber ≤30% / blue ≤22%), Phase 19 Lenis bridge, force-push ban.
-2. `PRODUCT.md` — brand register, voice, audience (mid-market $1M-$50M revenue ops leaders), anti-references, locked invariants restated.
-3. `DESIGN.md` — color tokens (full table), typography (Instrument Serif + Geist Sans + Geist Mono), spacing scale, motion tokens, banned patterns.
-4. `README.md` — file map.
-5. `docs/HANDOFF_PHASE_19.md` — latest ship state, Phase 19 commit timeline, locked-invariant deltas, K11 re-baseline command, open punch list.
-6. `docs/SESSION_HANDOFF.md` — Phase 17b → 18.6 historical context.
-7. `docs/PHASE_18_5_SUMMARY.md` — atmosphere + Three.js + parallax ship report.
-8. `docs/CI_CD_GROUND_TRUTH.md` — build pipeline + deploy lanes.
-9. `ENV-AUDIT.md` — env state (Apr 23 snapshot — verify against `vercel env ls`).
-10. `~/.claude/CLAUDE.md` — global rules (universal anti-patterns, real-data rule, stop-slop discipline, commit cadence).
-11. Memory: `ls ~/.claude/projects/-Users-laptopchoice-Projects-Websites-Audit/memory/` → read `MEMORY.md` index → read each referenced file relevant to DPL (project_paths, marketing_skill_bundles, human_voice, no_fake_audit_results).
-
-**Confirm in chat:** "Phase 0 read complete. K1-K17 + Phase 18-19 understood. Ready for Phase 0.5."
+- [ ] All 24 Phase 1 audit findings closed (4 CRITICAL + 9 HIGH + 6 MEDIUM + 5 LOW)
+- [ ] All findings from new deep-audit closed (or `[design only]` flagged where data unknown)
+- [ ] Cosmo Premium Upgrade — Sub-phases A through E all shipped
+- [ ] K11 Lighthouse mobile median ≥ 92 on home + 5 deepest pages (Phase 19 baseline was 94/100; do not regress)
+- [ ] Lighthouse desktop ≥ 95 on same routes
+- [ ] Lighthouse a11y ≥ 95 per public route
+- [ ] All schema validates via Google Rich Results Test (LocalBusiness, Service, Person, BreadcrumbList, FAQPage, BlogPosting, Article, HowTo)
+- [ ] Brand-purity grep clean: `grep -rn "#7C3AED\|#A855F7\|violet\|indigo\|purple\|--purple" src/` returns only the known doc-rot comment in `globals.css`
+- [ ] Real-data rule satisfied (every metric traces to named source OR is `[design only]`)
+- [ ] stop-slop ≥ 35/50 on every copy surface
+- [ ] `docs/PHASE_20_HANDOFF.md` written
+- [ ] Working tree clean, all commits pushed to origin
+- [ ] Branch ready for FF merge to main (no conflicts)
 
 ---
 
-## Phase 0.5 — Skill verification + PMC generation
+## 5. PHASE 0 — PRE-FLIGHT READS (one-shot, no code changes)
 
-### 0.5a Verify skill bundle
-
-```bash
-ls .claude/skills/ | wc -l   # expect ≥56
-ls .claude/skills/ | grep -E "copywriting|stop-slop|page-cro|seo-audit|impeccable|managed-service-pitch-framework"   # spot-check core
-```
-
-If missing, sync from CrawlIQ:
-
-```bash
-cp -rn /Users/laptopchoice/Projects/crawliq/.claude/skills/* .claude/skills/
-```
-
-### 0.5b Generate `.agents/product-marketing-context.md` (PMC)
-
-Invoke `product-marketing-context` skill in **auto-draft mode**. Read every page in `src/app/(marketing)/`, every section in `src/components/sections/`, current copy, meta tags, all 3 blog posts, all research pages, all tool pages.
-
-Draft all 12 PMC sections with DPL-specific anchors:
-
-- **Service category:** AI automation agency (managed service — DPL operates AI + human teams as a service; clients hand workflow, DPL runs it)
-- **Five service pillars** in locked order
-- **Hero promise** (LOCKED): `Hire the AI. Skip the headcount.`
-- **Primary buyer:** founders + ops leaders at $1M-$50M revenue companies who feel the cost of headcount-led ops, are bought-in on AI conceptually but skeptical of vendor demos, want one accountable counterparty (not a SaaS subscription)
-- **Secondary readers:** finance/ops lieutenants, diligence analysts
-- **Anti-personas:** developers shopping for an API, FedRAMP enterprise procurement, white-label-seeking agencies, $500-chatbot solo founders, tire-kickers wanting "free strategy calls"
-- **Voice:** operator-confident, Bloomberg-terminal seriousness, specifics over adjectives, contractions OK, vary sentence length
-- **Banned copy patterns:** "trusted by industry leaders", "we partner with you", "transforming business through AI", "next-generation", "industry-leading", "cutting-edge", em-dashes, three-item rhetorical lists, "not X — it's Y" reversals, "Talk to founder →" CTAs, all adverbs, Wh- sentence starters, throat-clearing openers, business jargon (banned list in CLAUDE.md)
-- **Differentiator:** DPL operates the AI for clients; this is not a build-and-leave shop. Remote Operators tier means DPL staff sit inside the client workflow.
-
-Output: `.agents/product-marketing-context.md` ~3000-5000 words, all 12 sections.
-
-**Confirm in chat:** "PMC draft ready, X words. Sections shipped: [list]. Approve, or which sections need correction?"
-
-**PAUSE POINT 0.5** — wait for "approve" or correction.
-
----
-
-## Phase 1 — Audit (READ-ONLY → `docs/AUDIT_PHASE_20.md`)
-
-Walk every public route. Routes verified present:
+Read in order. Do not skim.
 
 ```
-Marketing:
-/                                          (homepage)
-/about
-/automation
-/blog + /blog/[slug] + /blog/category/[category]
-/case-studies
-/compare/[slug]
-/contact
-/cookies
-/faq
-/guides + /guides/[slug]
-/performance-marketing
-/privacy-policy
-/remote-workforce
-/research + 5 research deep-dives (avg-cac, facebook-ads-benchmarks-2026, google-ads-roas-benchmarks, marketing-attribution-statistics, remote-workforce-cost-analysis)
-/results
-/services/[service]/[industry]            (programmatic SEO route — verify what slugs exist)
-/services/[service]/near/[city]           (programmatic SEO route — verify cities)
-/systems-reporting
-/terms-of-service
-/tools + 5 calculator pages (ad-spend-profit, attribution-model-visualizer, cac-calculator, dashboard-cost-calculator, roas-calculator)
-
-Conversion:
-/free-growth-audit
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && cat CLAUDE.md
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && cat PRODUCT.md
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && cat DESIGN.md
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && cat README.md
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && cat docs/HANDOFF_PHASE_19.md
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && cat docs/SESSION_HANDOFF.md
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && cat docs/PHASE_18_5_SUMMARY.md
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && cat docs/CI_CD_GROUND_TRUTH.md
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && cat ENV-AUDIT.md
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && cat docs/AUDIT_PHASE_20.md
+cat /Users/laptopchoice/.claude/CLAUDE.md
+cat /Users/laptopchoice/.claude/projects/-Users-laptopchoice-Projects-Websites-Audit/memory/MEMORY.md
 ```
 
-**For each route, score on dimensions a-j below.**
+After reads, write to `docs/PHASE_20_PROGRESS.md`:
+```
+# Phase 20 Progress
 
-### Skills invoked across audit
-
-- **`impeccable`** — 23-command UI auditor (visual hierarchy, spacing, alignment, type, color, motion, accessibility, performance)
-- **`redesign-skill`** — AI-generic pattern detector
-- **`forbidden-patterns`** — hard-check on banned patterns
-- **`integrity-rules`** — real-data check (every metric traces to source)
-- **`seo-audit`** — technical + on-page SEO per route
-- **`ai-seo`** — LLMO/AEO/GEO citation readiness
-- **`schema-markup`** — JSON-LD validation per route
-- **`site-architecture`** — URL structure, internal linking, breadcrumbs
-- **`page-cro`** — conversion optimization per page
-- **`form-cro`** — form audit on /free-growth-audit + /contact
-- **`popup-cro`** — popup audit (cookie banner, intro loader, Cosmo FAB)
-- **`copy-voice-editorial`** — editorial register check
-- **`copy-editing`** — existing-copy polish
-- **`stop-slop`** — anti-AI prose scoring 1-10 per dimension /50
-- **`self-audit-deployed-site`** — full deployed-site audit
-- **`lighthouse-crux-audit`** — programmatic Lighthouse + CrUX real-user data
-- **`taste-skill`** — UI/UX baseline ruleset
-- **`soft-skill`** — high-end agency vibe check
-- **`managed-service-pitch-framework`** — does the page sell managed service or accidentally pitch SaaS?
-- **`vercel:performance-optimizer`** — Vercel-side perf signals
-- **`vercel:nextjs`** — App Router patterns + RSC vs client component split
-- **`vercel:react-best-practices`** — TSX quality
-- **`vercel:next-cache-components`** — Next 16 cache components opportunities
-- **`playwright-skill`** — headless screenshots at 1440 + 375
-
-### Dimensions (score per route)
-
-**a) Visual integrity (impeccable + soft-skill + minimalist + brutalist) — /50**
-Brand purity, hierarchy, spacing, atmosphere coherence, layout integrity. Brand-purity grep:
-```bash
-grep -rn "#7C3AED\|#A855F7\|violet\|indigo\|purple\|--purple" src/   # must be empty
+Started: <YYYY-MM-DD HH:MM>
+Branch: redesign/impeccable-pass
+Last completed phase: 0
+Last commit: <hash>
+Status: locks loaded, beginning Phase 0.5
 ```
 
-> **Known doc rot exception:** `src/app/globals.css` has a legacy comment that mislabels `#FF8800` as "purple." That is documentation rot — the actual value is amber and is correct. Do not "fix" the value to match the comment. The grep above will hit that comment line; verify each hit is comment-only, not a value-level violation.
+---
 
-**b) Copy integrity (stop-slop) — /50**
-Score each section 1-10 on Directness / Rhythm / Trust / Authenticity / Density. Below 35/50 = revise. Find every adverb, every "Here's the thing", every binary contrast, every em-dash, every Wh- starter, every three-item list, every "industry-leading" / "next-generation" / "empowering."
+## 6. PHASE 0.5 — SKILL + PMC VERIFY
 
-**c) SEO + AI search (seo-audit + ai-seo + schema-markup + site-architecture)**
-- Lighthouse desktop + mobile per route (target ≥95 desktop, ≥92 mobile)
-- PageSpeed Insights + CrUX real-user data
-- Schema validation (Google Rich Results test): LocalBusiness, Service per pillar, FAQPage (already shipped at /faq), BlogPosting per blog post, BreadcrumbList for nested pages, Person for UF founder, HowTo for tools/calculators if applicable
-- Open Graph + Twitter card per route
-- Internal linking depth ≥3 contextual links per route
-- AI-search citation readiness (would Claude/GPT/Gemini cite this route?)
-- Sitemap + robots.txt + canonical correctness
-- IndexNow ping verification (`public/<INDEXNOW_KEY>.txt` exists)
+```
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && ls .claude/skills/ | wc -l
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && wc -w .agents/product-marketing-context.md
+```
 
-**d) CRO (page-cro + form-cro + popup-cro)**
-- Hero clarity: 5-second comprehension test (would a stranger know what DPL sells?)
-- Primary CTA visibility above fold
-- Trust signals real or fabricated
-- Form friction (`/free-growth-audit` + `/contact` minimum required fields)
-- Mobile tap targets ≥44px, sticky CTA on mobile
-- Page weight (transferred bytes per route)
-- Cookie banner GDPR compliance + UX (pollutes hero on first load?)
-- Intro loader behavior (mascot — verified Phase 18.6 P6 fix)
-- Cosmo FAB IntersectionObserver footer-aware visibility (locked invariant). **Cosmo chatbot decision audit:** currently disabled per `ENV-AUDIT.md`, components preserved. Decide in Phase 5 whether to re-enable + re-ship, or kill component permanently.
-- **Form bot mitigation:** verify `vercel-botid` (Vercel BotID GA since June 2025) wired on `/contact` + `/free-growth-audit` form routes, OR a comparable signal (honeypot, hCaptcha). Spam-prone forms without bot protection are a HIGH finding.
+Skill count must be ≥56. PMC must be ≥4000 words. If either fails:
+- Skill count low → `cp -rn /Users/laptopchoice/Projects/crawliq/.claude/skills/* .claude/skills/`
+- PMC missing → invoke `product-marketing-context` skill in auto-draft mode (use the DPL anchors documented in current PMC; never start from scratch)
 
-**e) Real-data integrity (integrity-rules + forbidden-patterns)**
-- Every metric on the site traces to a named source OR `[design only]`
-- TestimonialsSection.tsx returns null — VERIFY still null (locked invariant)
-- LogoStripSection env-gated null — VERIFY still null
-- Phase 12 contact strategy: zero generic email surfaces; only allowed surface = literal `<code>hello@</code>` in Footer philosophy block (Pillar 4 R7)
-- Research pages cite sources for every benchmark stat
-- Calculator pages use real industry-standard inputs
-
-**f) Performance (lighthouse-crux-audit + vercel:performance-optimizer)**
-K11 ≥ 92 mobile median is authoritative ship gate. Also measure:
-- LCP mobile < 2.5s, desktop < 2.0s
-- TBT < 200ms
-- CLS < 0.05
-- Bundle delta within K14 amended (initial-page-load only; lazy chunks excluded)
-- Three.js atmosphere chunk gating intact (lazy + reduced-motion check)
-- Image format (next/image AVIF, sizes attribute, no oversized assets)
-- Font loading clean (font-display: optional, no FOIT/FOUT)
-
-**g) Accessibility (impeccable a11y subset + manual screen reader)**
-- Lighthouse a11y per route ≥95
-- Color contrast verified WCAG AA (`--text-muted` post-V7 site-wide)
-- Focus rings on every interactive (`.focus-ring` utility)
-- Keyboard nav full site (Tab + Enter + Escape + arrow keys)
-- Screen-reader landmarks (nav, main, footer, sections)
-- Alt text on every image
-- Skip-to-content link
-- prefers-reduced-motion guards (K13)
-- prefers-color-scheme respected (DPL is dark-only — verify documented)
-
-**h) Mobile-specific**
-- 375px viewport screenshot per route
-- Tap target audit ≥44px
-- Mobile-only regression check (atmosphere fallback, no Three.js, native scroll on reduced-motion)
-- Sticky CTA on conversion routes (`/free-growth-audit`, `/contact`, pricing CTA on services pages)
-
-**i) Error / loading / empty states**
-- 404 page (custom designed, on-brand)
-- 500 page (graceful degradation)
-- Network failure (does the form submit gracefully?)
-- Form submit success state (clear value-after-submit)
-- Form submit error state (real error messages, not generic)
-- Empty list states (case studies if zero, blog category if zero)
-
-**j) Sub-pages depth (managed-service-pitch-framework)**
-For each marketing route beyond home, score 1-10 on: does this page sell the service it claims to? Below 6 = needs major revision. Sub-page audit:
-- /performance-marketing — does it sell managed paid acquisition?
-- /remote-workforce — does it sell vetted human ops layered over AI?
-- /systems-reporting — does it sell observability + reporting layer?
-- /automation — does it sell workflow automation as managed service?
-- /case-studies — real cases with named source OR `[design only]`?
-- /research deep-dives (5 pages) — useful original research with cited sources?
-- /tools deep-dives (5 calculators) — real-input calculators or vanity sliders?
-- /faq — real objections from real sales conversations?
-- /about — UF founder voice, no anonymous tone?
-- /contact — single accountable surface, no `mailto:` clutter?
-
-**Output:** `docs/AUDIT_PHASE_20.md` grouped by route, each finding tagged with severity (CRITICAL / HIGH / MEDIUM / LOW), file:line citation, skill that caught it, suggested fix one-liner.
-
-**PAUSE POINT 1** — post 1-page summary in chat. Wait for "continue."
+Update progress doc.
 
 ---
 
-## Phase 2 — Strip CRITICAL/HIGH within locked constraints
+## 7. PHASE 1 — STEP 0 PUSH PENDING (low-cost, fast)
 
-For each CRITICAL+HIGH finding from Phase 1, fix one at a time. Per-commit gates apply to every commit.
-
-### Strict OUT-OF-SCOPE (require user authorization)
-- Changing locked palette (`#000` / `#FF8800` / `#2A8FBD`)
-- Changing locked hero copy (`Hire the AI. Skip the headcount.`)
-- Changing locked 5-service order
-- Removing Phase 19 Lenis bridge
-- Changing logo SHA
-- Adding violet/indigo/purple anywhere on content surfaces
-- Re-enabling TestimonialsSection or LogoStripSection without real data
-- Removing Phase 12 contact-strategy lock (no generic email surfaces)
-
-### IN-SCOPE without further authorization
-- Copy rewrites (every section through PMC + copywriting + stop-slop)
-- SEO + schema additions
-- Performance optimizations within K14 budget
-- A11y fixes (contrast, focus, keyboard nav, alt text)
-- Mobile responsive fixes
-- Real-data substitution (replace fabricated metrics with `[design only]` flag OR real numbers UF provides — flag specifically what numbers are needed)
-- Component-internal motion polish within K13 reduced-motion guards
-- Schema validation + extension
-
-### Each commit:
-1. State the CRITICAL/HIGH finding being fixed
-2. Apply fix
-3. Run quality gates (defined in Workflow Rules below)
-4. Commit with format: `fix(phase20): <subject>` or `feat(phase20): <subject>` or `refactor(phase20): <subject>` or `docs(phase20): <subject>`
-5. Screenshot diff posted in chat (1440 + 375 of touched route)
-
-**PAUSE POINT 2** — after each batch of 5 commits, post status. Don't autonomously batch >5 without checkpoint.
+```
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && git config --get remote.origin.url
+```
+Confirm `git@github.com:UMIDX124/DIGITAL-POINT-LLC.git`. Then:
+```
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && git push origin redesign/impeccable-pass
+```
+Capture Vercel preview URL. Log to progress doc.
 
 ---
 
-## Phase 3 — Reshape under-performing sections
+## 8. LOOP A — COSMO PREMIUM UPGRADE (Sub-phases A → E)
 
-Skills:
-- **`managed-service-pitch-framework`** — DPL is service, not software; frame accordingly
-- **`landing-page-structure`** — proper marketing-page architecture
-- **`pricing-cards-pattern`** — engagement tier shape if pricing page added
-- **`copy-voice-editorial`** — editorial register
-- **`live-agent-section-pattern`** — for Cosmo chatbot section IF re-enabled (gated decision below)
-- **`portfolio-dashboard-pattern`** — for case studies if dense portfolio section added
-- **`vercel:shadcn`** — component composition quality
+Cosmo IS the main character of DPL. New mascot authorized. Re-enable + premium upgrade. Components already mounted in marketing layout (audit C3 was based on stale ENV-AUDIT note). Make Cosmo the most expensive, most thoughtful, most operator-grade AI assistant on any agency site in 2026.
 
-For each section flagged in Phase 1 audit as needing reshape (out-of-locked-invariant only):
-1. Read the section's current code + spec it should match
-2. Propose new section spec in chat
-3. Get user gate
-4. Build
-5. Per-commit gates
+### Sub-phase A — Mascot concept board (HARD HALT 1 at end)
 
-Sections potentially needing reshape (depending on audit):
-- ProofBar / TrustStrip
-- ServicesListSection vs ServicesPinReveal (locked order, but presentation can evolve)
-- ProcessSection (Lead → Scored → Routed → Reported locked composition; presentation can polish)
-- PillarsSection
-- CaseStudiesPreview (real or `[design only]`)
-- PullQuoteSection (Faizan preserved per locked invariant)
-- FAQSection (canonical at `/faq`)
-- CTASection
-- Footer (with `hello@` literal preserved)
+Skills: `banana`, `brandkit`, `imagegen-frontend-web`, `stitch-skill`.
 
----
+Generate 5 mascot concepts. Each = 3 PNGs at 1024×1024 (idle / active / speaking). Save to `docs/assets/mascot-concepts/<concept-slug>/{idle,active,speaking}.png`.
 
-## Phase 4 — Copy rewrite (every word, every page)
+5 concepts:
+1. **terminal-cursor** — oscillating cursor with subtle eye-shape (idle: amber blink; active: dilated focus; speaking: waveform extends)
+2. **oscilloscope-wave** — amber waveform forms a face silhouette (idle: gentle sine; active: sharper peaks; speaking: animated frequency response)
+3. **audit-eye-monocle** — single optic-glass character with amber lens (idle: static glint; active: focused iris; speaking: lens pulses)
+4. **signal-mesh-node** — network-node creature, amber dots connecting to face shape (idle: slow pulse; active: dots converge; speaking: data-stream emerges)
+5. **hex-grid-sentinel** — hexagonal scanning sentinel, instrument-grade (idle: hex glow; active: edge highlight; speaking: hex pattern propagates)
 
-**Order:** PMC → `copywriting` (or `copy-editing` for existing) drafts → `stop-slop` final pass scores ≥35/50 → commit.
+Banana prompt template:
+> "Bloomberg Operator design system mascot. Pure black background #000. Amber accent only #FF8800. Optional secondary blue #2A8FBD at low intensity. Instrument-grade, terminal-aesthetic. NOT cartoon, NOT cute, NOT Disney. Vector-clean lines, hairline borders, monospace energy. <CONCEPT DESCRIPTION>. 1024×1024 clean render. Zero violet, zero indigo, zero purple, zero pastel."
 
-Per-route copy work:
+Per-PNG quality gate (regenerate if any fail):
+- Bloomberg Operator palette only (#000 + #FF8800 + #2A8FBD; zero violet/indigo/purple/pastel)
+- No cartoon faces (K4 — prior violet-cartoon regression at f63b549 must not recur)
+- Instrument-grade aesthetic
+- Vector-clean, animatable as Lottie + WebM (no photoreal textures)
 
-| Route | Skills | Notes |
-|---|---|---|
-| `/` (home) | `copywriting` (sections beyond hero) + `landing-page-structure` | Hero copy LOCKED, do not touch |
-| `/about` | `copywriting` + `copy-voice-editorial` | UF founder voice, no anonymous tone, real bio |
-| `/performance-marketing` | `copywriting` + `managed-service-pitch-framework` | Show, don't pitch |
-| `/remote-workforce` | same | DPL ops layered over AI, not staffing agency |
-| `/systems-reporting` | same | observability + reporting as service |
-| `/automation` | same | managed automation, not n8n template |
-| `/case-studies` | `copywriting` + `integrity-rules` | real or `[design only]` |
-| `/results` | same | real metrics or `[design only]` |
-| `/research/*` (5 pages) | `copy-editing` + `ai-seo` | citation-friendly, real sources, original analysis |
-| `/tools/*` (5 calculators) | `copy-editing` + `free-tool-strategy` | real inputs, not vanity sliders |
-| `/faq` | `copy-editing` + `sales-enablement` | real objections from real sales conversations |
-| `/blog/*` (3 posts shipped) | `copy-editing` + `stop-slop` | full pass on each post |
-| `/contact` | `copywriting` + `form-cro` | single accountable surface |
-| `/free-growth-audit` | `copywriting` + `signup-flow-cro` + `form-cro` | minimum required fields, value-after-submit, clear flow |
-| `/privacy-policy` | `copy-editing` | legal but human-voiced |
-| `/terms-of-service` | same | |
-| `/cookies` | same | GDPR-compliant + readable |
-| `/compare/[slug]` | `competitor-alternatives` | see Phase 5 |
+Then write `docs/MASCOT_CONCEPTS_PHASE_20.md` with locks recap + per-concept block (description + idle/active/speaking PNG embeds + motion-variant notes + design-spec block via `stitch-skill` format) + "How to pick" instruction.
 
-Banned across every route:
-- em-dashes
-- three-item rhetorical lists
-- binary contrasts
-- throat-clearing openers
-- business jargon
-- adverbs
-- vague declaratives
-- Wh- sentence starters
-- passive voice
-- "industry-leading" / "next-generation" / "cutting-edge" / "empowering" / "transforming"
-- AI-template tier proposals
-- "Talk to founder →" CTAs
-- generic email surfaces
+Commit:
+```
+feat(phase20-batch2-A): mascot concept board for Cosmo upgrade
+```
 
----
+**HARD HALT 1.** Report to chat: 5 concept names + 1-line description each + which YOU recommend (operator-confident reasoning). Wait for UF: `concept N` or `regenerate concept N with X tweak`.
 
-## Phase 5 — High-leverage additions (skill-driven)
+### Sub-phase B — Chat UX upgrade (after UF picks winner)
 
-**PAUSE POINT 3** — post the menu of 5a-5l with effort + leverage assessment. Wait for explicit "build these: [list]" reply.
+Skills: `live-agent-section-pattern`, `soft-skill`, `impeccable`, `scroll-experience`, `gpt-tasteskill`, `ultimate`.
 
-### 5a. `competitor-alternatives` — vs-pages
+1. Replace winning mascot in `public/Dp-logo1.png`. Update Logo SHA pin in `CLAUDE.md` Locked Invariants → Brand+Visual section. Generate SVG + Lottie + WebM variants. Update favicon, manifest icons, OG default image.
+2. Cosmo FAB cinematic upgrade:
+   - Idle: animated mascot bottom-right, breathing subtly (transform-only, K13-guarded), 2-3 ambient blink/look variations.
+   - Hover: morph into "tap to chat" prompt with amber underline reveal.
+   - Click: cinematic expand into full chat panel — slides from right, 480px desktop / full-bleed mobile, Lenis-aware.
+   - Footer-aware visibility (locked invariant — preserve).
+3. Chat panel shell — Bloomberg Operator interior:
+   - `#050505` bg, `#0A0A0A` elevated card, hairline borders.
+   - Geist Mono for system messages, timestamps, meta.
+   - Geist Sans for user + Cosmo body.
+   - Amber accent for Cosmo avatar, send button, cursor blink.
+   - Status pills: typing / thinking / cited (K17-capped if hovering atmosphere).
+4. Conversation primitives:
+   - Streaming responses with token-by-token reveal.
+   - Markdown + code blocks rendered within Bloomberg palette.
+   - Inline citations linking to `/faq`, `/performance-marketing`, `/case-studies`.
+   - Suggested follow-ups (max 2 — never 3-beat list).
+   - "Book scoping call" CTA injected on intent detection (selectively, not every response).
+5. Onboarding system prompt — operator-confident, NOT founder-cute. Apply `stop-slop` ≥ 40/50 to every default response template + system prompt.
+6. Persistence: localStorage per session, BotID-aware.
+7. Reduced-motion fallback: full chat UX preserved without ambient mascot motion.
 
-Build under `src/app/(marketing)/compare/[slug]/page.tsx` (route exists; verify what slugs exist). Topics:
-- DPL vs hiring an AI engineer (math: $180K-$250K total comp vs $X/mo retainer — UF provides $X)
-- DPL vs DIY (n8n / Make / Zapier alone) — math: tooling cost + ops time
-- DPL vs another AI agency — qualitative: operate-not-just-build
+Per-commit gates plus: bundle delta target ≤25KB gz initial-load (UI shell only). Chat logic + AI SDK lazy-load on first interaction.
 
-Each page: hero / framing / feature matrix / pricing comparison (when pricing exists) / objection-handling / CTA. PMC + stop-slop on every word.
+### Sub-phase C — AI Gateway migration
 
-### 5b. `lead-magnets` — pick ONE
+Skills: `vercel:ai-gateway`, `vercel:ai-sdk`, `api-route-zod-groq`, `groq-live-ai-pattern`.
 
-- AI automation pricing teardown (real comparator math)
-- 5-stage automation playbook (operator-grade, not template)
-- Ops audit checklist (60 questions across 5 pillars)
+1. Migrate from direct Groq SDK to Vercel AI Gateway. Use `"groq/llama-3.3-70b-versatile"` plain string. Add fallback to `"groq/llama-3.1-70b-versatile"` on rate limit.
+2. Vercel AI SDK v6 streaming + tool calling.
+3. Zod validation at every API boundary.
+4. Rate limit + abuse via BotID + per-IP Upstash if needed.
+5. SSE streaming via Fluid Compute Node runtime (NOT Edge per Vercel knowledge update).
+6. System prompt engineered with `stop-slop` discipline.
 
-Real download (PDF generated on-demand or static). Gated email via Resend (use `email-resend-pattern` skill). PMC + stop-slop on every word. Storage: **Vercel Blob** (per `vercel:vercel-storage` skill — Blob now supports public + private storage; private bucket for gated downloads with signed URLs).
+### Sub-phase D — Scroll-bound presence
 
-### 5c. `free-tool-strategy` — pick ONE
+Skills: `scroll-experience`, `gpt-tasteskill`, `taste-skill`.
 
-- AI Operations ROI calculator with REAL inputs (real comparator pricing, real industry-standard automation hours saved, real burdened cost math)
-- NOT a vanity slider toy
+1. Cosmo materializes at hero scroll-out (fade + scale-up + amber glow pulse).
+2. Subtle parallax: mascot eye/focal-point tracks scroll position (hard-clamped ±8px). K13 disabled.
+3. At footer, Cosmo morphs into footer signature glyph (matches AutomationOrbit Palette D geometry).
+4. All transforms only. GSAP ScrollTrigger + Lenis bridge already in Phase 19 — reuse.
 
-Five tools already exist under `/tools/*`. Audit their real-input depth. Either fix existing or add 1 better one.
+### Sub-phase E — Quality gates pass
 
-### 5d. `ai-seo` — LLMO/AEO/GEO
+Per-commit gate plus: K11 mobile ≥ 92 maintained, K14 bundle delta within budget, K17 atmospheric caps respected if mascot animates over hero, brand-purity grep clean, integrity-rules grep clean, stop-slop ≥ 40/50 on every Cosmo prompt + default response.
 
-- Content blocks formatted for LLM citation (clear definitions, named sources, numbered steps)
-- Schema additions per Phase 5e
-- Author-bio + expertise signals (`Person` schema for UF, "About the agency" sections)
-- E-E-A-T (Experience-Expertise-Authoritativeness-Trustworthiness) signals on research pages
+Screenshot diff at: idle FAB / hover / open panel / streaming / settled / error / reduced-motion / mobile 375px.
 
-### 5e. `schema-markup` — extend
-
-Currently shipped: `FAQPage` at `/faq`. Add (where data is real):
-- `LocalBusiness` for DPL entity (homepage)
-- `Service` per pillar (5 service pages)
-- `Person` for UF founder bio (`/about`)
-- `BreadcrumbList` for nested pages
-- `BlogPosting` per blog post (3 currently)
-- `HowTo` for tool / calculator pages where applicable
-- `Article` for research deep-dives
-
-Validate every schema via Google Rich Results Test before commit.
-
-### 5f. `programmatic-seo`
-
-Two routes already exist:
-- `/services/[service]/[industry]/page.tsx`
-- `/services/[service]/near/[city]/page.tsx`
-
-Audit what slugs are wired + crawled. Decide:
-- Keep as-is (if conversion-positive)
-- Tighten scope (real verticals only, not 1000 generic combos)
-- Sunset (if content thin)
-
-### 5g. `directory-submissions`
-
-Output: `docs/DIRECTORY_SUBMISSION_PLAN_PHASE_20.md` — target list:
-- Clutch, GoodFirms, SortList (agency directories)
-- Industry-specific (HVAC, dental, e-commerce — match DPL's vertical focus)
-- AI-agency-specific (newer)
-- Each entry: directory name, URL, submission requirements, expected listing depth
-
-### 5h. `cold-email` + `email-sequence`
-
-Skills handle both. Output:
-- Cold email templates per ICP segment (4 personas in PMC)
-- Welcome sequence for `/free-growth-audit` submitters (4-6 emails over 2 weeks)
-- Lifecycle: pilot → engagement → retention
-
-Templates go in `docs/EMAIL_TEMPLATES_PHASE_20.md`. Don't auto-deploy without UF approval — these are sales assets.
-
-### 5i. `social-content` + `ad-creative`
-
-Output: `docs/CONTENT_PLAN_PHASE_20.md`:
-- LinkedIn cadence per persona
-- Twitter/X founder voice
-- Optional Meta + LinkedIn ad creative (if paid budget approved by UF)
-
-### 5j. `analytics-tracking`
-
-Audit current analytics (Vercel Analytics? PostHog? GA4?). Wire missing events:
-- Lead source attribution
-- Form completion funnels
-- Scroll depth + section visibility
-- CTA click tracking per route
-- Bounce / engagement per persona segment
-
-Use `vercel:vercel-storage` Edge Config for feature flags if A/B testing.
-
-### 5k. `ab-test-setup`
-
-Pick 1-2 highest-leverage experiments:
-- Hero CTA copy ("See how it works" vs "Run audit" vs "Book scoping call")
-- Pricing card structure (when pricing ships)
-
-Hypothesis + sample size + success metric per experiment.
-
-### 5l. `remotion` (OPTIONAL — explicit user gate required)
-
-If approved:
-- 30s hero explainer
-- Bloomberg Operator palette enforced in composition
-- CSS transitions FORBIDDEN — `useCurrentFrame()` + `interpolate()` + `Easing` only
-- Scaffold: `npx create-video@latest --yes --blank --no-tailwind` in a sub-project
-- Render to `public/video/dpl-hero.mp4` + `.webm`
-- Embed as `<video poster=...>` on home hero (above orbit, below atmosphere)
+End of Loop A: write phase boundary entry to progress doc.
 
 ---
 
-## Phase 6 — Visual polish (drastic, full impeccable + soft + redesign + ultimate stack)
+## 9. LOOP B — DEEP WEBSITE AUDIT + AUTO-FIX
 
-Skills:
-- **`impeccable`** — 23-command audit + iterator (the umbrella visual auditor)
-- **`soft-skill`** — high-end agency vibe
-- **`redesign-skill`** — kill remaining AI-generic patterns
-- **`taste-skill`** — UI baseline ruleset
-- **`ultimate`** — fuses many of the above
-- **`gpt-tasteskill`** — Python-driven layout variance, AIDA structure, gapless bento, strict GSAP discipline
-- **`minimalist`** — Bloomberg-Operator IS minimalist; verify alignment
-- **`brutalist`** — selectively for data-dense sections (research deep-dives could lean brutalist)
-- **`output-skill`** — anti-truncation if generating long copy
-- **`imagegen-frontend-web`** — visual references if needed
-- **`brandkit`** — brand-system polish if needed
-- **`stitch-skill`** — design-spec generation for sub-pages
+Skills: `self-audit-deployed-site`, `playwright-skill`, `vercel:verification`, `lighthouse-crux-audit`, `schema-markup`, `seo`, `integrity-rules`, `forbidden-patterns`.
 
-For every page that survived Phase 1 audit + got copy revised in Phase 4:
-1. Run `impeccable` 23-command audit
-2. Apply iterator if score < 8/10 on any command
-3. Run `stop-slop` final pass on copy
-4. Commit per page
+### Audit pass (output to `docs/AUDIT_DEEP_PHASE_20.md`)
+
+Beyond Phase 1's grep + read-only audit. Runtime + real-network + real-Lighthouse + real-schema + real-CrUX. 20 categories:
+
+1. Runtime + console errors per route (via `playwright-skill`)
+2. Network failures / broken assets / 404 resources / slow API endpoints
+3. Form flow real test (POST to `/api/audit` + `/api/founder` — verify Resend lands, BotID + honeypot trigger on bot UA)
+4. Cosmo chat real flow (POST to `/api/chat` — verify response on-brand, no banned patterns)
+5. Real schema validation per route (Google Rich Results Test API)
+6. Sitemap + robots + canonical actual state vs intended
+7. Real Lighthouse mobile + desktop per route — flag any regression vs Phase 1 estimates
+8. CrUX real-user metrics at 75th percentile (LCP / INP / CLS) where data exists
+9. Image asset audit (all load, AVIF served, sizes attribute, no oversized, no broken alt)
+10. Font loading edge cases (slow 3G simulation, FOIT/FOUT)
+11. Cross-browser (Safari / Firefox / Chrome / Edge — Playwright matrix)
+12. Keyboard nav traversal full site
+13. Heading hierarchy per route (no skipped levels, single H1)
+14. Internal link rot (broken hrefs)
+15. External link audit (resolve + `rel="noopener noreferrer"` on `target="_blank"`)
+16. Meta description per route (length 120-160, no duplicates, no missing)
+17. Dark-mode-only validation
+18. Cookie inventory + GDPR consent flow (opt-out persists)
+19. 404 / error pages exist + on-brand
+20. API rate limit behavior
+
+Severity tagging: CRITICAL / HIGH / MEDIUM / LOW.
+
+### Auto-fix scope (loop ships these without halt, batched ≤5/commit, per-commit gates)
+- Typo fixes (verified via `stop-slop` ≥ 35/50)
+- Missing alt text on images
+- Dead/broken internal links
+- Missing `rel="noopener noreferrer"` on external links
+- Missing meta descriptions (generated via `copywriting` + `stop-slop` pass)
+- Missing OG image / Twitter card per route (use existing brand assets, Bloomberg palette)
+- Schema validation hard-fails where required field can be filled from real data
+- Sitemap / robots / canonical corrections
+- Heading hierarchy fixes (skipped H2)
+- Console-error fixes when root cause is clear
+- `rel`-attribute fixes on existing links
+
+### Auto-fix OUT OF SCOPE (HARD HALT 3 fires)
+- Anything touching K1-K17 locks
+- Form behavior changes beyond auto-fix (BotID config tweaks, Resend env, honeypot logic)
+- Cosmo chat system prompt changes (Sub-phase B scope)
+- Schema additions needing real data UF must provide (LocalBusiness address, Person bio, Service pricing, customer logos)
+- Real-data substitution where source unknown (`[design only]` flag is the auto-fix; real data provision is UF's call)
+- Any change touching > 50 lines in a single file
+- Any change touching > 5 files in a single commit
+- Any change that drops K11 mobile median below 92
+- Any change that adds purple/violet/indigo
+
+End of Loop B: write phase boundary entry to progress doc.
 
 ---
 
-## Phase 7 — Performance (K11 ≥ 92 mobile mandatory)
+## 10. LOOP C — PHASE 1 FINDING CLOSURE (HIGH/MEDIUM/LOW)
 
-Skills:
-- **`lighthouse-crux-audit`**
-- **`vercel:performance-optimizer`**
-- **`vercel:turbopack`**
-- **`vercel:next-cache-components`** (Next 16 cache components — opportunities to migrate from `unstable_cache`)
-- **`vercel:nextjs`** (RSC vs client component split)
-- **`vercel:runtime-cache`** (caching strategy)
+Phase 1 audit shipped 24 findings. CRITICALs (C1-C4) closed in earlier batches (BotID, internal linking, Cosmo decision deferred to Loop A, SEO sunset). Remaining: 9 HIGH + 6 MEDIUM + 5 LOW.
 
-Targets:
-- Lighthouse perf mobile ≥92 (K11), desktop ≥95
-- LCP mobile <2.5s, desktop <2.0s
-- TBT <200ms
-- CLS <0.05
-- Bundle delta within K14 amended
+Read `docs/AUDIT_PHASE_20.md` and walk every HIGH/MEDIUM/LOW finding. For each: apply fix within locked invariants. One commit per finding (or grouped commits ≤3 findings if same file). Per-commit gates.
 
-Tactics in priority order:
-1. Image optimization (next/image AVIF, sizes attribute, no oversized assets)
-2. Defer below-fold (already done; verify after copy reshape didn't regress)
-3. Lazy load Three.js (already done; verify gating intact)
-4. Font loading (already optional; verify no FOIT/FOUT)
-5. Vercel Speed Insights wired
-6. Static asset caching headers via `vercel.ts` (or `vercel.json` if not yet migrated)
-7. Cache Components migration where applicable (Next 16)
-8. Routing Middleware audit if any rewrites/redirects exist
-9. RSC migration of any unnecessarily-client components
+End of Loop C: write phase boundary entry. All 24 Phase 1 findings closed (or HALT 3 fired for real-data items).
+
+---
+
+## 11. LOOP D — VISUAL POLISH (drastic)
+
+Skills: `impeccable` (23-command auditor + iterator), `soft-skill`, `redesign-skill`, `taste-skill`, `ultimate`, `gpt-tasteskill`, `minimalist`, `output-skill`.
+
+For every route surviving Loop B-C, run `impeccable` 23-command audit. Score ≥ 8/10 per command. Iterate until met. Commit per route.
+
+End of Loop D: write phase boundary entry.
+
+---
+
+## 12. LOOP E — PERFORMANCE (K11 ≥ 92 mandatory)
+
+Skills: `lighthouse-crux-audit`, `vercel:performance-optimizer`, `vercel:turbopack`, `vercel:next-cache-components`, `vercel:nextjs`, `vercel:runtime-cache`.
+
+Targets: K11 mobile ≥ 92, desktop ≥ 95, LCP mobile < 2.5s, TBT < 200ms, CLS < 0.05, K14 amended bundle delta.
+
+Tactics in priority:
+1. Image optimization (AVIF, sizes attribute, no oversized)
+2. Font loading verification (font-display: optional, no FOIT/FOUT)
+3. Defer below-fold (verify post-Cosmo upgrade didn't regress)
+4. Lazy load Three.js (gating intact)
+5. Static asset caching headers via `vercel.ts` (migrate from `vercel.json` if any)
+6. Cache Components migration where applicable (Next 16)
+7. RSC migration of unnecessarily-client components
 
 Re-baseline K11 after each perf-impacting commit.
 
----
-
-## Phase 8 — Accessibility (WCAG AA, manual screen reader)
-
-Skills:
-- **`impeccable`** (a11y subset)
-
-Targets:
-- Lighthouse a11y per route ≥95
-- Color contrast verified WCAG AA
-- Focus rings every interactive
-- Keyboard nav full site (manual test)
-- Screen-reader landmarks (nav/main/footer/section)
-- Alt text every image
-- ARIA labels where text isn't enough
-- Skip-to-content link verified
-- prefers-reduced-motion guards (K13) verified
-- Form labels properly associated
-- Error messages associated to fields
-
-Manual screen-reader sample on `/`, `/contact`, `/free-growth-audit`, `/pricing` (when shipped), `/faq`. Use VoiceOver (macOS Cmd+F5).
+End of Loop E: write phase boundary entry.
 
 ---
 
-## Phase 9 — SEO + AI search (drastic)
+## 13. LOOP F — ACCESSIBILITY (WCAG AA)
 
-Skills:
-- **`seo`** (umbrella)
-- **`seo-audit`**
-- **`ai-seo`**
-- **`schema-markup`**
-- **`site-architecture`**
-- **`programmatic-seo`** (audit existing programmatic routes)
+Skills: `impeccable` a11y subset.
+
+Targets: Lighthouse a11y per route ≥ 95, contrast WCAG AA, focus rings every interactive, keyboard nav full site, screen-reader landmarks, alt text every image, ARIA labels where text insufficient, skip-to-content verified, prefers-reduced-motion guards (K13) verified, form labels associated, error messages associated to fields.
+
+Manual screen-reader sample on `/`, `/contact`, `/free-growth-audit`, `/faq` flagged as MEDIUM if Lighthouse a11y < 95 (UF tested item).
+
+End of Loop F: write phase boundary entry.
+
+---
+
+## 14. LOOP G — SEO + AI SEARCH (drastic)
+
+Skills: `seo`, `seo-audit`, `ai-seo`, `schema-markup`, `site-architecture`, `programmatic-seo`.
 
 Deliverables:
 - Sitemap valid + complete (all 30+ routes)
 - robots.txt correct (allow indexing prod, block previews via env)
 - Canonical tags per route
-- Open Graph image per route (locked palette in OG; generate via `imagegen-frontend-web` or static)
+- Open Graph image per route (Bloomberg palette in OG)
 - Twitter card per route
-- Internal linking density ≥3 contextual links per route
-- Schema additions per Phase 5e (validated)
+- Internal linking density ≥ 3 contextual links per route
+- Schema additions per route (LocalBusiness, Service, Person, BreadcrumbList, BlogPosting, Article, HowTo) — validated via Google Rich Results Test
 - AI-search content blocks formatted for LLM citation
-- IndexNow ping verification (`public/<INDEXNOW_KEY>.txt` exists)
-- Search Console verification (when `GOOGLE_SITE_VERIFICATION` env added)
+- IndexNow ping verification (`public/<INDEXNOW_KEY>.txt` exists; ping new pages)
+- Search Console verification (when `GOOGLE_SITE_VERIFICATION` env added — flag MEDIUM if missing)
 - E-E-A-T signals on research + tools pages
 
----
-
-## Phase 10 — Optional video (Remotion, user-gated)
-
-Build only if user explicitly authorizes 5l. See 5l for spec.
+End of Loop G: write phase boundary entry.
 
 ---
 
-## Phase 11 — Final pass + production-ready
+## 15. LOOP H — HIGH-LEVERAGE ADDITIONS
 
-For every commit shipped Phases 2-10:
-1. Re-run `impeccable` 23-command on touched route
+Skills: `competitor-alternatives`, `lead-magnets`, `free-tool-strategy`, `ai-seo`, `schema-markup`, `programmatic-seo`, `directory-submissions`, `cold-email`, `email-sequence`, `social-content`, `ad-creative`, `analytics-tracking`, `ab-test-setup`, `remotion`.
+
+Sub-loops:
+
+### H1. Vs-pages
+3 pages under `src/app/(marketing)/compare/[slug]/page.tsx`:
+- DPL vs hiring an AI engineer
+- DPL vs DIY (n8n / Make / Zapier alone)
+- DPL vs another AI agency
+
+PMC + `stop-slop` per page.
+
+### H2. Lead magnet (pick 1, build it)
+- AI automation pricing teardown
+- 5-stage automation playbook
+- Ops audit checklist
+
+Real download (PDF generated on-demand or static). Storage: Vercel Blob (private bucket + signed URLs). Email gate via Resend (`email-resend-pattern`).
+
+### H3. Free tool (audit existing 5 calculators OR build 1 better)
+Real inputs only — no vanity sliders.
+
+### H4. Directory submissions plan
+Output `docs/DIRECTORY_SUBMISSION_PLAN_PHASE_20.md`. Targets: Clutch, GoodFirms, SortList, AI-agency-specific, vertical-specific.
+
+### H5. Cold email + sequences
+Output `docs/EMAIL_TEMPLATES_PHASE_20.md`. Per-persona cold emails + welcome sequence for `/free-growth-audit` + lifecycle pilot → engagement → retention.
+
+### H6. Content + ads plan
+Output `docs/CONTENT_PLAN_PHASE_20.md`. LinkedIn cadence per persona, Twitter/X founder voice. Optional Meta + LinkedIn ad creative if UF authorizes.
+
+### H7. Analytics
+Audit current state. Wire missing events (lead source, form completion, scroll depth, CTA clicks per route, bounce/engagement per persona).
+
+### H8. A/B test setup
+1-2 highest-leverage experiments with hypothesis + sample size + success metric.
+
+### H9. Remotion video (OPTIONAL — explicit UF gate)
+30s hero explainer, Bloomberg palette, `useCurrentFrame()` + `interpolate()` + `Easing` only. Render to `public/video/dpl-hero.{mp4,webm}`. Gate: HARD HALT 3 — wait for UF "build the video."
+
+End of Loop H: write phase boundary entry.
+
+---
+
+## 16. LOOP I — FINAL PASS + PRODUCTION READY
+
+For every commit shipped Loops A-H:
+1. Re-run `impeccable` on touched route
 2. Re-run `stop-slop` on touched copy
 3. Re-run K11 Lighthouse mobile
 4. Re-run brand-purity grep
 5. Re-run integrity-rules
 6. Re-run schema validation if schema touched
-7. Re-run `vercel:verification` full-flow check (browser → API → data → response)
+7. Re-run `vercel:verification` full-flow check
 
-### Pre-deploy gate (DO NOT push to prod without user "ship it")
-- All Phase 1 audit CRITICALs resolved
-- All Phase 2-9 commits tsc-clean, lint-clean, screenshot-clean
-- K11 mobile median ≥92 on home + 5 deepest pages
-- K11 desktop ≥95 same routes
-- Brand-purity grep empty
+Pre-deploy gate (HARD HALT 4 — DO NOT push to prod without "ship it"):
+- All Phase 1 audit CRITICALs resolved ✅
+- All Loop B deep-audit CRITICAL/HIGH closed or `[design only]` flagged
+- All Loop C HIGH/MEDIUM/LOW closed
+- K11 mobile ≥ 92 on home + 5 deepest pages
+- K11 desktop ≥ 95 same routes
+- Brand-purity grep clean
 - Real-data grep clean
-- Schema validation passes on home + service pages + FAQ + blog
-- a11y score ≥95 per route
-- Manual screen-reader pass on critical routes
-- New `docs/PHASE_20_HANDOFF.md` written summarizing: commits shipped, scores, what's next
+- Schema validation passes
+- a11y ≥ 95 per route
+- New `docs/PHASE_20_HANDOFF.md` written
+
+Wait for UF "ship it." Then:
+```
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && git checkout main
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && git pull --ff-only
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && git merge --ff-only redesign/impeccable-pass
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && git push origin main
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && vercel deploy --prod
+```
+
+Post-deploy verification:
+- Production URL responds 200
+- K11 mobile re-measured against prod URL
+- Schema validation on prod URL
+- IndexNow ping sent for new pages
+- Tag release: `git tag phase-20-polish && git push --tags`
+
+End of Loop I: success criteria all ✅. Loop exits.
 
 ---
 
-## Phase 12 — Deploy (user-authorized only)
+## 17. PER-COMMIT GATES (universal, ALL must pass)
 
-When user says "ship it":
+```
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && pnpm exec tsc --noEmit                                                          # 0 errors
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && pnpm lint                                                                       # 0 warnings
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && pnpm build                                                                      # succeeds
+cd /Users/laptopchoice/Projects/_services/digitalpointllc-1 && grep -rn "#7C3AED\|#A855F7\|violet\|indigo\|purple\|--purple" src/              # only known doc-rot in globals.css
+```
 
-1. Confirm branch state. Currently `redesign/impeccable-pass`.
-2. Decide: merge to `main` (FF only) OR push branch and let Vercel preview deploy first.
-3. Run quality gates one more time on the branch HEAD.
-4. If merging: `git checkout main && git merge --ff-only redesign/impeccable-pass && git push origin main`
-5. `vercel deploy --prod` (after main updated)
-6. Post-deploy verification:
-   - Production URL responds 200
-   - K11 mobile re-measured against prod URL
-   - Sentry / error monitoring clean
-   - Schema validation on prod URL
-   - IndexNow ping sent for new pages
-7. Tag release: `git tag phase-20-polish && git push --tags`
-
----
-
-## Workflow rules — locked
-
-### Per-commit gates (ALL must pass)
-
-1. `pnpm exec tsc --noEmit` → 0 errors
-2. `pnpm lint` → 0 warnings
-3. `pnpm build` → succeeds
-4. Headless screenshots of touched routes (1440 + 375) → no empty regions, no visual regressions
-5. K11 Lighthouse mobile ≥92 if perf-impacting
-6. K17 atmosphere caps respected if Three.js touched (amber ≤30%, blue ≤22%)
-7. Brand-purity grep empty: `grep -rn "#7C3AED\|#A855F7\|violet\|indigo\|purple\|--purple" src/`
-8. Real-data grep clean (no fabricated metric patterns)
-9. stop-slop ≥35/50 on touched copy
-10. Schema validation passes if schema touched
+Plus (when applicable):
+- Headless screenshot diff at 1440 + 375 if visual route touched
+- K11 Lighthouse mobile ≥ 92 if perf-impacting
+- K17 atmospheric caps respected if Three.js touched (amber ≤ 30%, blue ≤ 22%)
+- Real-data grep: no fabricated metric patterns added
+- stop-slop ≥ 35/50 on touched copy (≥ 40/50 on Cosmo prompts)
+- Schema validation passes if schema touched
 
 ### Git rules
-
-- One commit per coherent change. NO 19-commit autonomous batches.
-- Imperative commit messages, no marketing language. Format: `<type>(phase20): <subject>`
-- Co-Authored-By tag at end: `Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>`
-- NEVER force push, NEVER `--no-verify`, NEVER `--amend` on pushed commits
-- Direct push to main allowed for solo-operator only AFTER user "ship it"
-- `.env` files NEVER committed
-
-### When stuck
-
-- Halt
-- Post in chat: "Stuck on X. Tried Y, Z. Need decision: A or B?"
-- Don't iterate silently
-- Don't fabricate
-
-### When in doubt about a lock (K1-K17 or locked invariant)
-
-- Halt
-- Post the specific K-condition + the conflict
-- Wait for explicit user override
-- Document override in `CLAUDE.md` if granted
-
-### Estimates
-
-DO NOT post effort estimates or time projections. User has rejected fabricated time projections multiple times. If asked, give ranges with caveats or admit uncertainty.
+- One commit per coherent change. Imperative messages. Format: `<type>(phase20-<phase-id>): <subject>`.
+- Co-Authored-By: `Claude Opus 4.7 (1M context) <noreply@anthropic.com>`
+- NEVER force push, NEVER `--no-verify`, NEVER `--amend` on pushed commits.
+- `.env` files NEVER committed.
 
 ---
 
-## Reporting cadence
+## 18. REPORTING CADENCE
 
-After each phase, post in chat:
-- Phase number + name
-- Commits shipped (hash + 1-line each)
-- Scores delta (Lighthouse, copy quality, audit findings closed)
-- What's blocking next phase
-- One pause/ship recommendation
-
-NEVER post mid-task summaries. ONLY at phase boundaries OR pause points.
+- After each phase boundary: 1-line update to chat AND full entry to `docs/PHASE_20_PROGRESS.md`.
+- After each HARD HALT: full status report in chat with the specific halt condition, what's blocking, what UF needs to decide.
+- NEVER post mid-task summaries.
+- NEVER post effort estimates or time projections.
 
 ---
 
-## Pause points (HARD HALTS — wait for user reply)
+## 19. PROGRESS DOC FORMAT (`docs/PHASE_20_PROGRESS.md`)
 
-| # | When | What user decides |
-|---|---|---|
-| 0 | After Phase 0 read | "Phase 0 complete, ready for 0.5" |
-| 0.5 | After Phase 0.5 PMC draft | Approve PMC or correct sections |
-| 1 | After Phase 1 audit | Approve Phase 2 scope from punch list |
-| 2 | After every batch of 5 commits in Phase 2 | Status check |
-| 3 | After Phase 3 reshape proposals | Approve which sections to reshape |
-| 4 | After every batch of 5 copy-rewrite commits in Phase 4 | Status check |
-| 5 | After Phase 5 menu posted | Pick which 5a-5l to build |
-| 5l | If video requested | Explicit yes/no on Remotion |
-| 11 | After Phase 11 pre-deploy gate | Review pre-deploy summary |
-| 12 | Phase 12 deploy | "ship it" from user required |
+Maintained by terminal Claude across sessions. Resume protocol reads from here.
+
+```
+# Phase 20 Progress
+
+Started: <YYYY-MM-DD HH:MM>
+Branch: redesign/impeccable-pass
+Production: https://www.digitalpointllc.com
+Last preview URL: <vercel preview URL>
+
+## Phase boundary log
+
+### Phase 0 — Pre-flight reads
+Status: ✅ complete <timestamp>
+Locks loaded: K1-K17 + Phase 18-19 + cwd discipline
+
+### Phase 0.5 — Skill + PMC verify
+Status: ✅ complete <timestamp>
+Skill count: 56
+PMC: 4618 words
+
+### Phase 7 — Step 0 push pending
+Status: ✅ complete <timestamp>
+Commits pushed: <hashes>
+Vercel preview: <URL>
+
+### Loop A — Cosmo Premium Upgrade
+Sub-phase A: ✅ complete (HARD HALT 1 fired, UF picked concept N at <timestamp>)
+Sub-phase B: <in progress / complete / blocked>
+Sub-phase C: ...
+Sub-phase D: ...
+Sub-phase E: ...
+Commits: <hashes + 1-line each>
+
+### Loop B — Deep audit + auto-fix
+Status: <in progress / complete>
+Findings: X total / Y closed / Z [design only] / W blocked HARD HALT 3
+Auto-fix commits: <hashes>
+
+[continued per loop body]
+
+## Resume marker
+Last completed: Loop X, Sub-phase Y, commit <hash>
+Next action: <specific next step>
+```
 
 ---
 
-## Skill inventory — quick reference
+## 20. ANTI-PATTERNS (NEVER do these — auto-rejected by gates)
 
-### Marketing (40, from coreyhaines31/marketingskills)
-ab-test-setup, ad-creative, ai-seo, analytics-tracking, aso-audit, churn-prevention, cold-email, community-marketing, competitor-alternatives, competitor-profiling, content-strategy, copy-editing, copywriting, customer-research, directory-submissions, email-sequence, form-cro, free-tool-strategy, image, launch-strategy, lead-magnets, marketing-ideas, marketing-psychology, onboarding-cro, page-cro, paid-ads, paywall-upgrade-cro, popup-cro, pricing-strategy, product-marketing-context, programmatic-seo, referral-program, revops, sales-enablement, schema-markup, seo-audit, signup-flow-cro, site-architecture, social-content, video
-
-### Anti-slop (1, from hardikpandya/stop-slop)
-stop-slop
-
-### Video (1, from remotion-dev/skills)
-remotion
-
-### Context engineering (14, from muratcankoylan/agent-skills-for-context-engineering)
-advanced-evaluation, bdi-mental-states, context-compression, context-degradation, context-fundamentals, context-optimization, evaluation, filesystem-context, hosted-agents, latent-briefing, memory-systems, multi-agent-patterns, project-development, tool-design
-
-### Claude Code skills (existing, partial list of relevant)
-impeccable, soft-skill, redesign-skill, taste-skill, ultimate, gpt-tasteskill, minimalist-skill, brutalist-skill, output-skill, forbidden-patterns, integrity-rules, copy-voice-editorial, landing-page-structure, managed-service-pitch-framework, pricing-cards-pattern, live-agent-section-pattern, portfolio-dashboard-pattern, lighthouse-crux-audit, self-audit-deployed-site, seo, playwright-skill, large-task-prompt-structure, report-back-format, claude-code-effort-protocol, find-skills, email-resend-pattern, api-route-zod-groq, groq-live-ai-pattern, design-tokens-dark, nextjs-tailwind-scaffold, vercel-deploy-flow, banana, brandkit, imagegen-frontend-web, imagegen-frontend-mobile, stitch-skill, image-to-code-skill, slack-bot-builder, probot-github-app, prisma-expert, twilio-communications, stripe-integration, clerk-auth, monorepo-architect, scroll-experience, project-file-structure, database-migration, turborepo-caching, simplify, fewer-permission-prompts
-
-### Vercel ecosystem skills (relevant subset)
-vercel:bootstrap, vercel:deploy, vercel:env, vercel:status, vercel:nextjs, vercel:react-best-practices, vercel:next-cache-components, vercel:turbopack, vercel:routing-middleware, vercel:vercel-functions, vercel:vercel-storage (Blob for lead magnets), vercel:runtime-cache, vercel:performance-optimizer, vercel:deployments-cicd, vercel:verification, vercel:vercel-cli, vercel:env-vars, vercel:vercel-agent (PR review automation), vercel:shadcn, vercel:ai-gateway (if Cosmo re-enabled), vercel:ai-sdk (same), vercel:knowledge-update
-
-### Vercel platform features to leverage
-- **Fluid Compute** (default) — Node.js runtime in same regions as Edge, no compatibility issues
-- **Vercel BotID** — bot detection on forms (GA since June 2025)
-- **Vercel Blob** — public + private storage (lead-magnet PDFs, gated downloads)
-- **Vercel AI Gateway** — unified provider API if Cosmo re-enabled (use `"provider/model"` strings, prefer over `@ai-sdk/anthropic` direct wiring)
-- **Cache Components** (Next 16) — PPR + `use cache` + `cacheLife` + `cacheTag` + `updateTag`
-- **Rolling Releases** — gradual canary rollout when shipping Phase 20 to prod (GA since June 2025)
-- **Speed Insights** — wire on every route for real-user perf data
-- **`vercel.ts`** — recommended over `vercel.json` (TypeScript config with dynamic logic)
+- Em-dashes anywhere
+- Three-item rhetorical lists (use two)
+- Binary contrasts ("not X — it's Y")
+- Throat-clearing openers ("Here's the thing", "It turns out")
+- Business jargon (navigate / unpack / lean into / industry-leading / next-generation / cutting-edge)
+- All adverbs (-ly words: really / just / literally / genuinely / honestly / simply)
+- Wh- sentence starters (What/When/Where/Who/Why/How as leading word)
+- Passive voice
+- "Talk to founder →" CTAs (use specific labels: "Book scoping call", "Run audit", "Start pilot")
+- AI-template tier proposals (Free/Pro/Agency, /for-agencies, ROI calculator)
+- Fake metrics, fake testimonials, fake logos
+- Purple / indigo / violet anywhere on content surfaces
+- Force push, `--no-verify`, `--amend` on pushed commits
+- New handoff docs (`HANDOFF_*.md` proliferation — edit `CLAUDE.md` + `docs/HANDOFF_PHASE_19.md` in place)
+- Mid-task summaries
+- Effort estimates / time projections
 
 ---
 
-## START NOW
+## 21. RESUME INSTRUCTION (paste this if loop got interrupted)
 
-Begin Phase 0 (read all docs in order). After completing all 11 reads, confirm: "Phase 0 read complete. K1-K17 + Phase 18-19 understood. Ready for Phase 0.5." Then proceed to Phase 0.5 (skill verify + PMC draft). Then Phase 1 (audit). Pause Point 1 after audit ships.
+```
+Read /Users/laptopchoice/Projects/_services/digitalpointllc-1/PHASE_20_POLISH_PROMPT.md AND docs/PHASE_20_PROGRESS.md in full. Resume from the last marker. Do not restart Phase 0.
+```
 
-DO NOT touch any code in Phase 0 or Phase 1. Audit is read-only.
+---
+
+## 22. START NOW
+
+Begin with Phase 0 (pre-flight reads), then Phase 0.5 (skill + PMC verify), then Phase 7 (push pending commit), then Loop A (Cosmo Premium Upgrade — Sub-phase A mascot concept board).
+
+HALT only at HARD HALT conditions defined in Section 1. Otherwise self-loop until success criteria all ✅.

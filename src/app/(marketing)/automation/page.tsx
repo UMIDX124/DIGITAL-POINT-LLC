@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { copy } from '@/lib/copy';
 import { RelatedLinks } from '@/components/sections/RelatedLinks';
+import { ServiceSchema } from '@/components/seo/ServiceSchema';
 
 export const metadata: Metadata = {
   title: 'Automation: AI workflows that run the boring parts',
@@ -32,6 +33,31 @@ export default function AutomationPage() {
 
   return (
     <>
+      <ServiceSchema
+        name="AI Agents"
+        description="Autonomous AI agents that replace repeatable headcount: customer support triage, email drafting, lead qualification, ops escalation routing. Operated as a managed service by Digital Point."
+        url="https://digitalpointllc.com/automation#ai-agents"
+        serviceTypes={[
+          'AI Agents',
+          'Customer Support Automation',
+          'Email Triage Automation',
+          'Lead Qualification AI',
+          'Ops Escalation Routing',
+        ]}
+      />
+      <ServiceSchema
+        name="Workflow Automation"
+        description="Operator-built AI workflows that run lead capture, document parsing, follow-up, reporting, and portfolio monitoring. Operated as a managed service, not sold as software."
+        url="https://digitalpointllc.com/automation"
+        serviceTypes={[
+          'Workflow Automation',
+          'Lead Capture Automation',
+          'Document Parsing',
+          'Follow-up Automation',
+          'Portfolio Monitoring',
+          'Reporting Automation',
+        ]}
+      />
       {/* Hero */}
       <section
         className="relative w-full overflow-hidden"

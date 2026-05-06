@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { SystemsReportingPage } from '@/components/sections/SystemsReportingPage';
+import { ServiceSchema } from '@/components/seo/ServiceSchema';
 
 export const metadata: Metadata = {
   title: 'Systems & Reporting',
@@ -27,5 +28,21 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <SystemsReportingPage />;
+  return (
+    <>
+      <ServiceSchema
+        name="Systems & Reporting"
+        description="Attribution, dashboards, CRM structure, and marketing automation infrastructure. The reporting layer that makes operator and agent work legible to leadership."
+        url="https://digitalpointllc.com/systems-reporting"
+        serviceTypes={[
+          'Systems and Reporting',
+          'Attribution Setup',
+          'Marketing Dashboards',
+          'CRM Structure',
+          'Marketing Automation Infrastructure',
+        ]}
+      />
+      <SystemsReportingPage />
+    </>
+  );
 }

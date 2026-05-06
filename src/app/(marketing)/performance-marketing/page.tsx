@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { PerformanceMarketingPage } from '@/components/sections/PerformanceMarketingPage';
+import { ServiceSchema } from '@/components/seo/ServiceSchema';
 
 export const metadata: Metadata = {
   title: 'Performance Marketing',
@@ -27,5 +28,25 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <PerformanceMarketingPage />;
+  return (
+    <>
+      <ServiceSchema
+        name="Performance Marketing"
+        description="Paid acquisition across Meta, Google, LinkedIn, and TikTok with operator and agent execution. CAC and ROAS optimization plus full attribution tracking, run as a managed service."
+        url="https://digitalpointllc.com/performance-marketing"
+        serviceTypes={[
+          'Performance Marketing',
+          'Paid Acquisition',
+          'Meta Ads Management',
+          'Google Ads Management',
+          'LinkedIn Ads Management',
+          'TikTok Ads Management',
+          'CAC Optimization',
+          'ROAS Optimization',
+          'Attribution Tracking',
+        ]}
+      />
+      <PerformanceMarketingPage />
+    </>
+  );
 }

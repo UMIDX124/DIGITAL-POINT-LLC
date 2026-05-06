@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { RemoteWorkforcePage } from '@/components/sections/RemoteWorkforcePage';
+import { ServiceSchema } from '@/components/seo/ServiceSchema';
 
 export const metadata: Metadata = {
   title: 'Remote Workforce',
@@ -27,5 +28,21 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <RemoteWorkforcePage />;
+  return (
+    <>
+      <ServiceSchema
+        name="Remote Operators"
+        description="Vetted remote teams layered over the AI stack: marketing ops, creative production, analytics, execution support. Managed by Digital Point so headcount lift stays at zero."
+        url="https://digitalpointllc.com/remote-workforce"
+        serviceTypes={[
+          'Remote Operators',
+          'Marketing Ops',
+          'Creative Production',
+          'Analytics Operations',
+          'Execution Support',
+        ]}
+      />
+      <RemoteWorkforcePage />
+    </>
+  );
 }

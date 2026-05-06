@@ -1,44 +1,34 @@
 /**
- * CosmoMark — concept 2 (oscilloscope-wave) inline SVG mascot for the
- * Cosmo chat surface. Phase 20 Loop A Sub-phase B locked invariant:
- * Cosmo mascot is the oscilloscope-wave variant of the Bloomberg Operator
- * design language.
+ * CosmoMark v2 — Phase 20.1.2 cinematic redesign.
  *
- * Architectural separation: this is the Cosmo identity, distinct from
- * Dp-logo1.png (DPL brand mark used in nav, footer, conversion pages,
- * schema.org, intro loader). Brand mark and chat-surface mark are
- * intentionally different so Cosmo can evolve without dragging the DPL
- * brand identity along.
+ * v1 was a sine waveform; UF flagged it as "didn't work." v2 redesigns
+ * Cosmo as a faceted crystal-shard mark that visually matches the
+ * Hero3DStage v3 octahedron centerpiece. Same design language, same
+ * palette gradient (amber core → copper mid → cream rim), same rim-
+ * glow visual register at icon scale.
  *
- * Motion states are pure CSS (transform + opacity) for K11 budget +
- * prefers-reduced-motion compliance via globals.css `.cosmo-mark-*`
- * classes. No JS animation loops.
+ * Construction: 6-point diamond/octahedron silhouette with internal
+ * facet lines. Three radial-gradient stops applied via SVG <radialGradient>.
+ * Outer halo via blur-filtered duplicate path. Pulse animations driven
+ * by .cosmo-mark-* CSS classes for state.
  *
- * The single sine wave path is a 4-segment cubic bezier approximation
- * across two full cycles (period 28 on the 64x64 viewBox), amplitude 14,
- * centered at y=32. Control-point math: each half-cycle uses control
- * points at x ± P/3 from endpoints with y = ±4A/3 from baseline; this
- * is the best-known cubic approximation of a sine half-wave.
+ * States (props.state):
+ *   - 'idle'    → gentle ambient pulse on core gradient (5s)
+ *   - 'active'  → brighter rim, amber drop-shadow halo
+ *   - 'speaking'→ rapid pulse + cream rim flash
+ *
+ * Architectural separation preserved: this is the Cosmo identity (chat
+ * surface mark), distinct from Dp-logo1.png (DPL brand mark).
  */
 import type { CSSProperties } from 'react';
 
 type CosmoMarkProps = {
-  /** Visual state — drives stroke brightness and (via CSS) animation */
   state?: 'idle' | 'active' | 'speaking';
-  /** Render size in px (square). Inline SVG scales perfectly; default 64 */
   size?: number;
-  /** Optional aria-label; defaults to '' (decorative) */
   ariaLabel?: string;
   className?: string;
   style?: CSSProperties;
 };
-
-const PRIMARY_PATH =
-  'M 4 32 C 8.67 13.33 13.33 13.33 18 32 S 27.33 50.67 32 32 S 41.33 13.33 46 32 S 55.33 50.67 60 32';
-
-/* Speaking-state secondary wave: half amplitude, offset phase, faint trail */
-const ECHO_PATH =
-  'M 4 32 C 8.67 25 13.33 25 18 32 S 27.33 39 32 32 S 41.33 25 46 32 S 55.33 39 60 32';
 
 export function CosmoMark({
   state = 'idle',
@@ -59,34 +49,84 @@ export function CosmoMark({
       className={`cosmo-mark cosmo-mark-${state} ${className}`}
       style={style}
     >
-      {/* Faint hairline grid (oscilloscope substrate) */}
-      <g
-        stroke="var(--accent-primary, #FF8800)"
-        strokeWidth="0.25"
-        opacity="0.12"
-      >
-        <line x1="4" y1="32" x2="60" y2="32" />
-        <line x1="32" y1="4" x2="32" y2="60" />
-      </g>
-      {/* Echo wave (only visible in speaking state via CSS opacity) */}
-      <path
-        d={ECHO_PATH}
-        fill="none"
-        stroke="var(--accent-primary, #FF8800)"
-        strokeWidth="1.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="cosmo-mark-echo"
+      <defs>
+        {/* Core radial gradient — matches Hero3DStage crystal palette */}
+        <radialGradient id="cosmo-core-grad" cx="50%" cy="42%" r="55%">
+          <stop offset="0%" stopColor="#FFF0D4" stopOpacity="1" />
+          <stop offset="35%" stopColor="#FFA833" stopOpacity="1" />
+          <stop offset="70%" stopColor="#FF8800" stopOpacity="0.95" />
+          <stop offset="100%" stopColor="#C26F3C" stopOpacity="0.85" />
+        </radialGradient>
+        <radialGradient id="cosmo-halo-grad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#FF8800" stopOpacity="0.55" />
+          <stop offset="60%" stopColor="#C26F3C" stopOpacity="0.18" />
+          <stop offset="100%" stopColor="#C26F3C" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="cosmo-facet-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#FFF0D4" stopOpacity="0.85" />
+          <stop offset="100%" stopColor="#C26F3C" stopOpacity="0.55" />
+        </linearGradient>
+      </defs>
+
+      {/* Outer halo — diamond shape, radial gradient, blur-faded */}
+      <circle
+        cx="32"
+        cy="32"
+        r="28"
+        fill="url(#cosmo-halo-grad)"
+        className="cosmo-mark-halo"
       />
-      {/* Primary waveform */}
-      <path
-        d={PRIMARY_PATH}
-        fill="none"
-        stroke="var(--accent-primary, #FF8800)"
-        strokeWidth="2.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="cosmo-mark-wave"
+
+      {/* Core diamond / octahedron silhouette */}
+      <g className="cosmo-mark-core">
+        {/* Main diamond fill (stretched octahedron) */}
+        <polygon
+          points="32,8 50,32 32,56 14,32"
+          fill="url(#cosmo-core-grad)"
+          opacity="0.92"
+        />
+        {/* Top-right facet highlight */}
+        <polygon
+          points="32,8 50,32 32,32"
+          fill="url(#cosmo-facet-grad)"
+          opacity="0.55"
+        />
+        {/* Bottom-left facet shadow */}
+        <polygon
+          points="14,32 32,32 32,56"
+          fill="#0A0908"
+          opacity="0.18"
+        />
+        {/* Center facet lines (hairline structure) */}
+        <g
+          stroke="#FFF0D4"
+          strokeWidth="0.6"
+          opacity="0.55"
+          fill="none"
+          strokeLinecap="round"
+        >
+          <line x1="32" y1="8" x2="32" y2="56" />
+          <line x1="14" y1="32" x2="50" y2="32" />
+        </g>
+        {/* Outer outline — amber stroke */}
+        <polygon
+          points="32,8 50,32 32,56 14,32"
+          fill="none"
+          stroke="#FFA833"
+          strokeWidth="1.2"
+          strokeLinejoin="round"
+          className="cosmo-mark-outline"
+        />
+      </g>
+
+      {/* Bright apex highlight — small bright dot top */}
+      <circle
+        cx="32"
+        cy="14"
+        r="1.4"
+        fill="#FFF0D4"
+        opacity="0.85"
+        className="cosmo-mark-apex"
       />
     </svg>
   );

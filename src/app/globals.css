@@ -2563,36 +2563,51 @@ html[data-i-seen="1"] .dpl-intro-loader { display: none; }
    triggers. K11 budget unchanged. prefers-reduced-motion disables
    ambient pulse; static wave is preserved for clarity.
    ============================================ */
+/* Phase 20.1.2 CosmoMark v2 — superseded the v1 sine wave with a
+   faceted diamond/octahedron mark matching Hero3DStage v3 crystal. */
 .cosmo-mark { display: block; will-change: opacity, filter; }
-.cosmo-mark-echo { opacity: 0; transition: opacity 200ms ease-out; }
+.cosmo-mark-halo { transform-origin: 50% 50%; transform-box: fill-box; }
+.cosmo-mark-core { transform-origin: 50% 50%; transform-box: fill-box; }
+.cosmo-mark-apex { transform-origin: 50% 50%; transform-box: fill-box; }
 
 @keyframes cosmo-mark-idle-pulse {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0.78; }
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 1.0; }
 }
-.cosmo-mark-idle .cosmo-mark-wave {
-  animation: cosmo-mark-idle-pulse 5s ease-in-out infinite;
+@keyframes cosmo-mark-idle-apex {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 1.0; }
+}
+.cosmo-mark-idle .cosmo-mark-halo {
+  animation: cosmo-mark-idle-pulse 4s ease-in-out infinite;
+}
+.cosmo-mark-idle .cosmo-mark-apex {
+  animation: cosmo-mark-idle-apex 2s ease-in-out infinite;
 }
 
-.cosmo-mark-active .cosmo-mark-wave {
-  filter: drop-shadow(0 0 4px rgba(255, 136, 0, 0.55));
+.cosmo-mark-active .cosmo-mark-halo {
+  opacity: 1;
+}
+.cosmo-mark-active .cosmo-mark-core {
+  filter: drop-shadow(0 0 6px rgba(255, 168, 51, 0.65));
 }
 
-@keyframes cosmo-mark-speaking-wave {
-  0%, 100% { opacity: 0.85; }
-  50%      { opacity: 1; }
+@keyframes cosmo-mark-speaking-pulse {
+  0%, 100% { transform: scale(1.00); }
+  50%      { transform: scale(1.06); }
 }
-.cosmo-mark-speaking .cosmo-mark-wave {
-  animation: cosmo-mark-speaking-wave 0.9s ease-in-out infinite;
-  filter: drop-shadow(0 0 5px rgba(255, 136, 0, 0.65));
+.cosmo-mark-speaking .cosmo-mark-core {
+  animation: cosmo-mark-speaking-pulse 0.9s cubic-bezier(0.65, 0.05, 0, 1) infinite;
+  filter: drop-shadow(0 0 8px rgba(255, 168, 51, 0.85));
 }
-.cosmo-mark-speaking .cosmo-mark-echo {
-  opacity: 0.55;
+.cosmo-mark-speaking .cosmo-mark-halo {
+  opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cosmo-mark-idle .cosmo-mark-wave,
-  .cosmo-mark-speaking .cosmo-mark-wave { animation: none; }
+  .cosmo-mark-idle .cosmo-mark-halo,
+  .cosmo-mark-idle .cosmo-mark-apex,
+  .cosmo-mark-speaking .cosmo-mark-core { animation: none; }
 }
 
 /* ============================================

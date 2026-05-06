@@ -1608,40 +1608,33 @@ html[data-paused-global="true"] .grain-overlay {
 }
 
 /* ============================================
-   Phase 16 D.5 — Cosmo chat trigger with DP mascot
+   Phase 20 Loop A Sub-phase B — Cosmo chat trigger
+   Bloomberg Operator interior: black-elevated bg, hairline amber border,
+   amber drop-shadow halo. Replaces Phase 16 D.5 amber radial gradient
+   so the inline CosmoMark waveform reads cleanly inside the FAB.
+
    .cosmo-fab          circular button host (size set by parent classes)
-   .cosmo-mascot       breathe animation on the inner Image (4s, 1↔1.04)
-   .cosmo-fab:hover    scales 1.08, mascot brightness 1.15
-   prefers-reduced-motion → breathe disabled, hover preserved
+   .cosmo-fab-inner    flex centering wrapper for the inline SVG mark
+   .cosmo-fab:hover    1.08 scale, halo intensity bump
+   prefers-reduced-motion → preserves hover scale (transform only)
    ============================================ */
 .cosmo-fab {
-  background: radial-gradient(circle at 30% 30%, var(--accent-bright), var(--accent) 60%, var(--accent-deep));
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-bright);
   box-shadow:
-    0 0 24px rgba(255, 136, 0, 0.45),
-    inset 0 1px 2px rgba(255, 255, 255, 0.35);
+    0 0 24px rgba(255, 136, 0, 0.30),
+    0 0 0 1px rgba(255, 136, 0, 0.05) inset;
   will-change: transform;
+  transition: box-shadow 200ms ease-out, transform 200ms ease-out;
 }
 .cosmo-fab:hover {
   transform: scale(1.08);
   box-shadow:
-    0 0 32px rgba(255, 136, 0, 0.85),
-    inset 0 1px 2px rgba(255, 255, 255, 0.4);
+    0 0 32px rgba(255, 136, 0, 0.55),
+    0 0 0 1px rgba(255, 136, 0, 0.10) inset;
 }
 .cosmo-fab:active { transform: scale(0.95); }
-.cosmo-mascot {
-  animation: cosmo-breathe 4s ease-in-out infinite;
-  will-change: transform;
-}
-.cosmo-fab:hover .cosmo-mascot {
-  filter: brightness(1.15);
-}
-@keyframes cosmo-breathe {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.04); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .cosmo-mascot { animation: none; }
-}
+.cosmo-fab-inner { will-change: opacity; }
 
 /* Phase 17b 3-restructured G3 — chat panel slide-in entry. */
 @keyframes chat-panel-slide-in {

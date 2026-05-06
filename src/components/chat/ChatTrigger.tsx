@@ -1,7 +1,7 @@
 'use client';
 
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import { CosmoMark } from '@/components/cosmo/CosmoMark';
 
 type Props = {
   onClick: () => void;
@@ -9,21 +9,18 @@ type Props = {
 };
 
 /**
- * Phase 16 D.5 — Cosmo chat trigger with DP mascot embed.
- * Phase 17b 3-restructured A2 — footer-aware visibility.
+ * Phase 20 Loop A Sub-phase B — Cosmo chat trigger upgraded to concept-2
+ * oscilloscope-wave inline SVG. Replaces Phase 16 D.5 Dp-logo1.png embed.
  *
- * The mini button embeds /Dp-logo1.png (mascot). Idle 'breathe' (4s
- * scale 1↔1.04), hover scales 1.08 + brightness 1.15. Pure CSS, no JS
- * animation loops, prefers-reduced-motion disables breathe.
+ * The button hosts <CosmoMark/> with state="active" when the panel is open
+ * (brighter glow, amber drop-shadow halo) and state="idle" otherwise (gentle
+ * ambient pulse). Hover scale 1.08 + amber halo intensity bump are pure
+ * CSS via .cosmo-fab. Wave attention cue (30s idle) preserved.
  *
- * Wave animation (30s idle trigger) preserved for first-time-visitor
- * attention.
- *
- * Footer-aware: IntersectionObserver on the site <footer> element.
- * When footer enters viewport (≥5%), FAB transitions translateY(120%)
- * + opacity:0 + pointer-events:none over 200ms ease-out. Returns when
- * footer exits viewport. Idle/hover animations unchanged — they nest
- * inside the visibility transform.
+ * Footer-aware visibility (Phase 17b 3-restructured A2 invariant): when
+ * the site <footer> enters viewport (≥5%), the FAB transitions translateY
+ * 120% + opacity 0 + pointer-events:none over 200ms ease-out. Returns when
+ * footer exits.
  */
 export default function ChatTrigger({ onClick, panelOpen }: Props) {
   const ref = useRef<HTMLButtonElement>(null);
@@ -91,20 +88,16 @@ export default function ChatTrigger({ onClick, panelOpen }: Props) {
         .filter(Boolean)
         .join(' ')}
     >
-      <span className="block h-full w-full rounded-full relative overflow-hidden">
-        <Image
-          src="/Dp-logo1.png"
-          alt=""
-          fill
-          sizes="64px"
-          className="cosmo-mascot object-contain p-1"
-          priority={false}
-          unoptimized
+      <span className="cosmo-fab-inner block h-full w-full rounded-full relative overflow-hidden flex items-center justify-center">
+        <CosmoMark
+          state={panelOpen ? 'active' : 'idle'}
+          size={48}
+          ariaLabel=""
         />
         {/* Sparkle on wave (first-visit attention cue) */}
         {showWave && (
           <span className="chat-trigger-sparkle absolute -top-1 -right-1 h-3 w-3" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor" className="text-white/90">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="text-[var(--accent-bright)]">
               <path d="M12 0L14 10L24 12L14 14L12 24L10 14L0 12L10 10Z" />
             </svg>
           </span>

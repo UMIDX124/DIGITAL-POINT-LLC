@@ -1,17 +1,14 @@
-import dynamic from 'next/dynamic';
 import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';
 import { StickyCTABar } from '@/components/ui-dp/StickyCTABar';
+import ChatWidget from '@/components/chat/ChatWidget';
 
-/* Phase 20 Loop A Sub-phase B — Cosmo re-enabled. ChatWidget loads
-   client-side only (next/dynamic ssr:false) so the inline SVG FAB
-   doesn't ship in the SSR pass. Resolves audit finding C3 (Cosmo
-   advertised but no render path). System prompt + chat panel + API
-   route /api/chat were already in place; this mounts the surface. */
-const ChatWidget = dynamic(() => import('@/components/chat/ChatWidget'), {
-  ssr: false,
-  loading: () => null,
-});
+/* Phase 20 Loop A Sub-phase B — Cosmo re-enabled. ChatWidget itself is a
+   Client Component ('use client') and internally lazy-loads the heavy
+   ChatPanel via next/dynamic ssr:false. Direct import here keeps the
+   marketing layout as a Server Component (Next 16 forbids next/dynamic
+   ssr:false inside Server Components). Resolves audit finding C3 (Cosmo
+   advertised but no render path). */
 
 /**
  * Phase 19 nuke-lag — ScrollMotion (IntersectionObserver + lazy GSAP

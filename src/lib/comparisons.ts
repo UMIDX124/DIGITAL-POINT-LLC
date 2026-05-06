@@ -506,6 +506,158 @@ export const comparisons: Comparison[] = [
     recommendation:
       'In our experience, remote marketing teams deliver equal or better results than co-located teams when supported by clear communication structures, documented processes, and the right collaboration tools. As a remote-first performance marketing agency, Digital Point LLC has built its entire operating model around this approach , delivering enterprise-level paid media management and marketing intelligence to US-based clients through a highly skilled, globally distributed team.',
   },
+
+  /* ──────── Phase 20 Loop H1 — DPL positioning vs-pages ──────── */
+  {
+    slug: 'dpl-vs-hiring-ai-engineer',
+    title: 'Digital Point vs Hiring an AI Engineer',
+    metaTitle: 'DPL vs Hiring an AI Engineer: Which Is the Right Move?',
+    description:
+      'Compare hiring a full-time AI engineer against partnering with Digital Point LLC for AI agents, automation, and operator-backed execution. Cost, ramp time, scope, and accountability head to head.',
+    intro:
+      'Hiring a full-time AI engineer is one path to scale operations without growing the rest of the team. Partnering with Digital Point LLC is another. The right call depends on how much specialized AI work you have, how fast you need it shipped, and whether you want one accountable counterparty or a full-time hire to manage. Both are legitimate. The trade-offs are below.',
+    optionA: {
+      name: 'Hiring an AI engineer in-house',
+      pros: [
+        'Full-time focus on your domain and your stack',
+        'Tribal knowledge accumulates with one person over years',
+        'Direct reporting line, no contract or scope review',
+        'Equity-aligned incentives if early-stage company',
+      ],
+      cons: [
+        'Loaded cost typically $180K-$280K/year US ($120K-$200K base plus benefits, equity, taxes)',
+        'Recruiting cycle 8-16 weeks for a senior AI generalist',
+        'Single-person dependency. Sick days, vacation, attrition all halt the work',
+        'Engineer alone cannot ship a full ops layer (also needs ops people, designers, attribution analysts)',
+        'Skills gap: most "AI engineers" specialize in models, not in agent orchestration plus workflow automation plus reporting',
+      ],
+    },
+    optionB: {
+      name: 'Digital Point LLC managed service',
+      pros: [
+        'No hiring cycle. Active engagement starts within 2-3 weeks of audit signoff',
+        'Bench includes AI-agent builders, automation engineers, marketing operators, and attribution analysts in one accountable counterparty',
+        'Pricing scales with scope (no fixed $250K headcount commit)',
+        'Operators backstop the AI when the agent plateaus, so workflows do not break in the wild',
+        'Cross-client pattern recognition: DPL has run 200+ growth audits and operated $50M+ in ad spend',
+      ],
+      cons: [
+        'Not a full-time embedded resource. Communication happens in scheduled cycles, not Slack-on-tap',
+        'No equity alignment',
+        'Specialized in growth ops and acquisition-side workflows. Pure ML research or model training is not the fit',
+      ],
+    },
+    comparisonRows: [
+      { category: 'Annual cost (US loaded)', optionA: '$180K-$280K base + benefits', optionB: 'Engagement-scoped, typically less than 1 senior hire' },
+      { category: 'Time to first ship', optionA: '2-4 months (recruit, ramp, build)', optionB: '2-3 weeks from audit signoff' },
+      { category: 'Bench depth', optionA: 'One person', optionB: 'Agents + automation + operators + analysts' },
+      { category: 'Coverage when one person is out', optionA: 'Work pauses', optionB: 'Operator backstop + team rotation' },
+      { category: 'Pattern library across other clients', optionA: 'None initially', optionB: '8 years, 200+ audits' },
+      { category: 'Equity alignment', optionA: 'Yes if early-stage', optionB: 'No' },
+      { category: 'Best fit', optionA: 'Sustained AI R&D, model-research scope', optionB: 'AI agents replacing ops headcount' },
+    ],
+    recommendation:
+      'Hire an in-house AI engineer when sustained model-research scope or deep tribal knowledge of a single product surface is the priority. Partner with Digital Point when the goal is replacing repeatable ops headcount with AI agents, workflow automation, and operator backstop, all delivered as a managed service. The two paths are not mutually exclusive: many DPL clients have an in-house AI engineer working on the product surface while DPL operates the ops layer around it.',
+  },
+  {
+    slug: 'dpl-vs-diy-zapier-make',
+    title: 'Digital Point vs DIY (Zapier, Make, n8n)',
+    metaTitle: 'DPL vs DIY Automation Stacks (Zapier, Make, n8n): Which Path?',
+    description:
+      'Compare building AI-agent and automation workflows yourself with Zapier, Make, or n8n against partnering with Digital Point LLC. Setup, scale, error handling, and accountability head to head.',
+    intro:
+      'Zapier, Make, and n8n are excellent automation engines. For straightforward connectors and simple triggered actions, building it yourself is the right call. For AI-agent orchestration, error handling at scale, attribution tracking, and operator backstop when the agent plateaus, the DIY path stops paying for itself. The trade-offs are below.',
+    optionA: {
+      name: 'DIY (Zapier / Make / n8n)',
+      pros: [
+        'Low monthly cost: $20-$300/month at small scale',
+        'Full control over every workflow definition',
+        'No external dependency on a partner',
+        'Strong community and template libraries',
+      ],
+      cons: [
+        'Time cost: setup, edge-case handling, error logging, and reporting all fall on the in-house team',
+        'Workflows degrade silently when source-system APIs change unless someone audits them',
+        'No operator backstop when the AI agent plateaus on a non-trivial input',
+        'Attribution and reporting layer not included; need separate dashboards',
+        'Scale walls: Zapier task limits, Make ops limits, n8n self-hosting overhead',
+      ],
+    },
+    optionB: {
+      name: 'Digital Point LLC managed service',
+      pros: [
+        'AI agents, automation engine, operator backstop, and reporting layer in one engagement',
+        'Pre-built patterns for common ops workflows (lead routing, document parsing, follow-up, churn flag, attribution)',
+        'Workflow monitoring and edge-case handling included',
+        'Cross-client pattern library reduces setup time vs greenfield DIY',
+        'Operators audit the agent output so workflows do not silently degrade',
+      ],
+      cons: [
+        'Higher monthly investment than a $20 Zapier seat',
+        'External engagement, scope and contract review',
+        'Not the fit for very small businesses with one or two simple automations',
+      ],
+    },
+    comparisonRows: [
+      { category: 'Monthly cost (entry)', optionA: '$20-$300 software + in-house time', optionB: 'Engagement-scoped' },
+      { category: 'Setup time', optionA: '40-200 hours of in-house work', optionB: '2-3 weeks from audit signoff' },
+      { category: 'Error handling', optionA: 'Manual, in-house', optionB: 'Operator backstop + monitoring' },
+      { category: 'Attribution + reporting', optionA: 'Separate stack required', optionB: 'Included via Systems & Reporting pillar' },
+      { category: 'Scale ceiling', optionA: 'Platform task / ops limits', optionB: 'Engineered around the platform limits' },
+      { category: 'Best fit', optionA: 'Simple triggered automations, low volume', optionB: 'AI agents replacing ops headcount, ongoing scope' },
+    ],
+    recommendation:
+      'Stay DIY when the workflow is a small number of simple triggered actions and the in-house team has bandwidth to monitor them. Partner with Digital Point when the workflow includes AI agents, multi-step orchestration, error-handling at scale, and attribution that has to feed back into reporting. Many DPL clients keep their existing Zapier or Make setups for simple connectors and overlay DPL on the more complex agent + automation + operator workflows where DIY breaks down.',
+  },
+  {
+    slug: 'dpl-vs-other-ai-agencies',
+    title: 'Digital Point vs Other AI Agencies',
+    metaTitle: 'DPL vs Other AI Agencies: How to Compare Operators',
+    description:
+      'Compare Digital Point LLC against the broader AI-agency market on positioning, scope, deliverable shape, accountability, and pricing posture.',
+    intro:
+      'The AI-agency market has expanded fast. Most newer agencies sell software-style implementations: install a tool, hand it back, hourly support if needed. Digital Point LLC operates AI plus human teams as a managed service. The work is run, not sold. Below is the comparison framework worth using when evaluating any AI agency, not just DPL.',
+    optionA: {
+      name: 'Typical AI agency (software-implementation model)',
+      pros: [
+        'Lower entry price: tool licensing plus implementation fee',
+        'Fast time to first artifact (the tool is configured and handed off)',
+        'Clear scope: install X, run Y workshops, hand over docs',
+      ],
+      cons: [
+        'Once handed off, the in-house team owns ongoing operation',
+        'Edge-case handling and operator backstop not included',
+        'Pattern library tied to one toolchain (the tool the agency resells)',
+        'Misaligned incentive: paid on install, not on outcome over time',
+      ],
+    },
+    optionB: {
+      name: 'Digital Point LLC managed service',
+      pros: [
+        'AI agents plus workflow automation plus operator backstop, run as a service',
+        'Outcome-aligned engagement: the work is operated, not handed off',
+        'Tool-agnostic. Pattern library spans n8n, Make, custom Python, Vercel infra, Groq, OpenAI, Anthropic, plus the operator layer',
+        'Attribution and reporting included via Systems & Reporting pillar',
+        '8 years operating, 200+ growth audits, $50M+ in ad spend operated',
+      ],
+      cons: [
+        'Higher entry investment than a tool-install engagement',
+        'Less software, more service. Not the fit for buyers who want a dashboard to log into',
+        'Engagement-scoped, not one-and-done',
+      ],
+    },
+    comparisonRows: [
+      { category: 'Engagement shape', optionA: 'Install + handoff', optionB: 'Operated as a service' },
+      { category: 'Operator backstop', optionA: 'Not included', optionB: 'Included' },
+      { category: 'Tool lock-in', optionA: 'High (resold tool)', optionB: 'Low (tool-agnostic)' },
+      { category: 'Attribution layer', optionA: 'Separate engagement', optionB: 'Included' },
+      { category: 'Track record signals', optionA: 'Varies', optionB: '8 years, 200+ audits, $50M+ operated' },
+      { category: 'Incentive alignment', optionA: 'Paid on install', optionB: 'Paid on operating outcomes' },
+      { category: 'Best fit', optionA: 'Buyer wants a tool installed', optionB: 'Buyer wants ops operated' },
+    ],
+    recommendation:
+      'Evaluate any AI agency on whether they install software or operate the workflow. Software-install agencies are fine for buyers who want a tool deployed and have an in-house team to run it afterward. Digital Point is built for buyers who want the workflow itself operated, not just deployed. The acid test: ask the agency who handles edge cases at month 6. If the answer is "we hand off to your team," they sell software. If the answer is "we operate it, escalate to your team only on policy decisions," they sell a managed service.',
+  },
 ];
 
 export function getComparisonBySlug(slug: string): Comparison | undefined {

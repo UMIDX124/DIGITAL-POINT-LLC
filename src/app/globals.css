@@ -2138,11 +2138,20 @@ html[data-paused-global="true"] .logo-marquee-track {
   font-size: clamp(8rem, 22vw, 18rem);
   font-style: italic;
   line-height: 0.9;
+  /* Phase 20.1 — palette variety: numerals shift from solid amber to a
+     vertical amber → copper gradient via background-clip. Premium
+     editorial feel + adds the secondary-color presence the repo owner
+     flagged as missing. Falls back to amber on browsers without
+     background-clip:text (most modern browsers support it). */
   color: var(--accent);
-  /* Phase 17b 3-restructured B3 → 3-reversal R5. 0.15 (original) was
-     distracting; 0.08 killed structural anchor visibility; 0.12 restores
-     the big-number cue while staying restrained. */
-  opacity: 0.12;
+  background: linear-gradient(180deg, var(--accent-bright) 0%, var(--accent) 38%, var(--accent-copper) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Phase 17b 3-restructured B3 → 3-reversal R5 → Phase 20.1 lifted to
+     0.18 (was 0.12) since the gradient distribution makes the numeral
+     feel more present without dominating. */
+  opacity: 0.18;
   pointer-events: none;
   user-select: none;
   letter-spacing: -0.04em;

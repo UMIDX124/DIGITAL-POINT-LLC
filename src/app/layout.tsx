@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import Script from "next/script";
@@ -246,15 +247,12 @@ export default function RootLayout({
             body's globals.css background (subtle radial atmosphere) takes
             effect. Color retained inline so unstyled fallback is readable. */}
         <div className="dpl-intro-loader" aria-hidden="true">
-          {/* Phase 18.6 P6 — intro loader content swapped from
-              "Digital Point" italic text wordmark to the mascot image
-              per repo-owner request. Larger than nav-logo (96px vs 60px)
-              so it reads as a focal pre-paint moment. */}
-          <img
+          <Image
             src="/Dp-logo1.png"
             alt="Digital Point"
-            width="96"
-            height="96"
+            width={96}
+            height={96}
+            priority
             className="dpl-intro-mascot"
           />
           <span className="dpl-intro-line" />

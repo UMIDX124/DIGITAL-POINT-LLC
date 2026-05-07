@@ -16,7 +16,7 @@ import { trackFormStart, trackFormSubmit, trackFormSuccess, trackFormError, trac
 
 const challenges = [
   { id: 'inconsistent-leads', label: 'Inconsistent leads', icon: TrendingUp, description: 'Lead flow is unpredictable month to month' },
-  { id: 'poor-tracking', label: 'Poor tracking/reporting', icon: BarChart3, description: "Can't tell what's actually driving results" },
+  { id: 'poor-tracking', label: 'Poor tracking/reporting', icon: BarChart3, description: "Can't tell what's driving results" },
   { id: 'ads-not-performing', label: 'Ads not performing', icon: TrendingUp, description: 'Spending on ads but not seeing returns' },
   { id: 'team-issues', label: 'Team/execution issues', icon: Users, description: 'Need better execution or bandwidth' },
   { id: 'not-sure', label: 'Not sure yet', icon: HelpCircle, description: 'I know something is off but not what' },
@@ -314,7 +314,7 @@ export function AuditPage() {
                         Where should we send your audit?
                       </h2>
                       <p className="text-[color:var(--text-primary)] text-sm mb-6">
-                        A co-founder will personally review your setup.
+                        A co-founder reviews your setup.
                       </p>
 
                       <form onSubmit={handleSubmit} className="space-y-5">

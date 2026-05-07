@@ -72,7 +72,7 @@ export async function POST(req: Request) {
               <li>ROAS optimization strategies</li>
               <li>CAC benchmarks by industry</li>
               <li>Attribution & analytics insights</li>
-              <li>Growth systems that actually scale</li>
+              <li>Growth systems that scale</li>
             </ul>
           </div>
           <div style="text-align: center; margin-bottom: 24px;">

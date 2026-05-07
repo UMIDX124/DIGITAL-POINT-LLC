@@ -22,12 +22,12 @@ const systemTypes = [
   {
     icon: Database,
     title: 'Attribution Systems',
-    description: 'Multi-touch attribution that actually reflects your customer journey and informs decisions.',
+    description: 'Multi-touch attribution that reflects your customer journey and informs decisions.',
   },
   {
     icon: Settings,
     title: 'CRM Structure',
-    description: 'Pipeline stages, lead scoring, and automation rules that match how your business actually works.',
+    description: 'Pipeline stages, lead scoring, and automation rules that match how your business works.',
   },
   {
     icon: Workflow,

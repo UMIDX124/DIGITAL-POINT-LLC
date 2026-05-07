@@ -251,7 +251,7 @@ export const copy = {
         n: '01',
         title: 'Audit',
         body:
-          'A co-founder personally reviews your setup: stack, attribution, team, funnel. No junior associate. Delivered within 5 business days.',
+          'A co-founder reviews your setup: stack, attribution, team, funnel. No junior associate. Delivered within 5 business days.',
       },
       {
         n: '02',
@@ -330,7 +330,7 @@ export const copy = {
     eyebrow: 'ABOUT',
     headline: 'We started running operations. We evolved into running them with AI.',
     body:
-      "Digital Point LLC was founded in 2017 by M. Faizan Rafiq and Anwaar Tayyab. We spent five years operating campaigns, lead pipelines, and reporting stacks for growth-stage businesses by hand. Along the way we realized the bigger unlock was never the human heroics. It was building agents and automation that ran the work, with operators auditing the edges. Today we deploy AI agent stacks for companies that want to scale without scaling team, and our founders still sign off on every engagement personally.",
+      "Digital Point LLC was founded in 2017 by M. Faizan Rafiq and Anwaar Tayyab. We spent five years operating campaigns, lead pipelines, and reporting stacks for growth-stage businesses by hand. Along the way we saw the bigger unlock was never the human heroics. It was building agents and automation that ran the work, with operators auditing the edges. Today we deploy AI agent stacks for companies that want to scale without scaling team, and our founders still sign off on every engagement.",
     founders: [
       { name: 'M. Faizan Rafiq', role: 'Co-Founder' },
       { name: 'Anwaar Tayyab', role: 'Co-Founder' },
@@ -341,7 +341,7 @@ export const copy = {
     eyebrow: "LET'S WORK",
     headline: "Let's map where AI could be running your repeatable work.",
     body:
-      "A co-founder reviews your setup personally. Free. Written plan within 5 business days: what AI can run, what automation can stitch, where operators stay. If we can't help, we'll tell you.",
+      "A co-founder reviews your setup. Free. Written plan within 5 business days: what AI can run, what automation can stitch, where operators stay. If we can't help, we'll tell you.",
     ctaPrimary: { label: 'Talk to a co-founder', href: '/free-growth-audit' },
     ctaSecondary: { label: 'See case studies', href: '/case-studies' },
   },

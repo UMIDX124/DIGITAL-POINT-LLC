@@ -36,7 +36,7 @@ export function HeroCTA() {
       </div>
 
       <p className="hero-trust-microcopy mt-4">
-        Free · 30 min · No sales pitch · Co-founder reviews personally
+        Free · 30 min · No sales pitch · Co-founder reviews your setup
       </p>
     </>
   );

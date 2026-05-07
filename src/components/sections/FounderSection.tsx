@@ -38,7 +38,7 @@ const FOUNDERS: ReadonlyArray<Founder> = [
     role: 'Co-Founder',
     slug: 'faizan',
     photo: false,
-    bio: 'Operated paid acquisition and lead pipelines for growth-stage businesses for eight years. Built the first agent stack out of necessity after watching too many ops hires churn through the same playbook. Reviews every audit personally.',
+    bio: 'Operated paid acquisition and lead pipelines for growth-stage businesses for eight years. Built the first agent stack out of necessity after watching too many ops hires churn through the same playbook. Reviews every audit.',
     linkedin: 'https://linkedin.com/in/faizanrafiq',
   },
   {

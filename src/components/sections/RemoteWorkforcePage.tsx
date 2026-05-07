@@ -47,7 +47,7 @@ const painPoints = [
   'Remote hiring feels risky. How do you know they\'ll deliver?',
   'Previous remote teams had communication issues',
   'Quality control was non-existent with past providers',
-  'No visibility into what remote staff actually do',
+  'No visibility into what remote staff are doing',
   'Time zone differences caused delays',
   'Onboarding was slow and disorganized',
 ];
@@ -76,8 +76,8 @@ export function RemoteWorkforcePage() {
 
           <FadeUp delay={0.1}>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-text-primary leading-[1.1] tracking-tight max-w-4xl">
-              Remote teams you can actually{' '}
-              <span className="text-gradient-plum">trust, manage, and scale</span>.
+              Remote teams you can{' '}
+              <span className="text-gradient-plum">trust and scale</span>.
             </h1>
           </FadeUp>
 
@@ -306,7 +306,7 @@ export function RemoteWorkforcePage() {
           {
             href: '/systems-reporting',
             label: 'Systems & Reporting',
-            body: 'How operator output rolls up into the weekly narrative and monthly report you actually read.',
+            body: 'How operator output rolls up into the weekly narrative and monthly report.',
           },
           {
             href: '/case-studies',

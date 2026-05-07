@@ -18,7 +18,7 @@ const systemSteps = [
   {
     icon: LineChart,
     title: 'Reporting',
-    description: 'Numbers flow into dashboards you can actually read.',
+    description: 'Numbers flow into dashboards you can read.',
   },
   {
     icon: Lightbulb,
@@ -49,7 +49,7 @@ export function SystemSection() {
       <Container className="relative z-10">
         <SectionHeader
           eyebrow="The System"
-          title="This is how growth actually works."
+          title="This is how growth works."
           description="Most companies have pieces. Few have the full loop connected."
           align="center"
         />

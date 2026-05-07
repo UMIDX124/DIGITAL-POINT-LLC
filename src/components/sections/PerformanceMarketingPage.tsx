@@ -89,7 +89,7 @@ export function PerformanceMarketingPage() {
 
           <FadeUp delay={0.2}>
             <p className="text-text-secondary text-lg mt-6 max-w-2xl leading-relaxed">
-              Not just media buying. Not just creative. A systematic approach to paid acquisition with CAC clarity, ROAS visibility, and creative testing that actually scales.
+              Performance marketing operated against ROAS and CAC targets, with attribution that ties spend to revenue and creative testing wired to outcomes.
             </p>
           </FadeUp>
 

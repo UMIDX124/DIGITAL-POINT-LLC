@@ -31,7 +31,7 @@ export function CTASection() {
             buttons reads as a single visual cluster instead of three
             disconnected centered elements. */}
         <p className="cta-section-microcopy mt-12 font-mono uppercase">
-          Free · Written plan in 5 days · Co-founder reviews personally
+          Free · Written plan in 5 days · Co-founder reviews your setup
         </p>
 
         <div className="mt-5 flex flex-col sm:flex-row gap-3 justify-center items-center">

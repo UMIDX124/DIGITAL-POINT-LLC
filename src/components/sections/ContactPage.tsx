@@ -78,11 +78,11 @@ export function ContactPage() {
               Get In Touch
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
-              We actually{' '}
-              <span style={{ color: 'var(--accent-bright)' }}>read every message</span>
+              We read{' '}
+              <span style={{ color: 'var(--accent-bright)' }}>every message</span>
             </h1>
             <p className="text-[color:var(--text-primary)] text-lg md:text-xl max-w-2xl leading-relaxed">
-              We don&apos;t list a generic support inbox. Most agencies hide behind a hello@ queue where your message lines up with everyone else&apos;s. We don&apos;t run that way. Reach out through Cosmo or the audit form. Your inquiry routes directly to the operator best matched to your stage, not a ticket pool. We answer from our personal accounts because we&apos;re personally accountable for what we ship.
+              No generic support inbox. Most agencies hide behind a hello@ queue where your message lines up with everyone else&apos;s. Reach out through Cosmo or the audit form. Your inquiry routes to the operator best matched to your stage, not a ticket pool. We answer from our personal accounts because we own what we ship.
             </p>
           </FadeUp>
         </Container>

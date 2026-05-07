@@ -15,7 +15,7 @@ export const metadata: Metadata = {
         url: 'https://www.digitalpointllc.com/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Digital Point LLC — book a free growth audit',
+        alt: 'Digital Point LLC. Book a free growth audit.',
       },
     ],
   },

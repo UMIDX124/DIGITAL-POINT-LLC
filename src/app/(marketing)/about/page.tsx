@@ -36,7 +36,7 @@ export default function About() {
         description="Co-founded Digital Point LLC in 2017. Operates the analytics, attribution, and reporting infrastructure side of the firm. Builds the systems that make paid-media work measurable."
       />
       <div className="container-wide" style={{ paddingTop: 'var(--section-sm)' }}>
-        <DesignOnlyBanner note="Eight-plus years, $50M+ ad spend operated, 200+ growth audits, 4.2x ROAS — figures shown are operational composites pending fresh attribution audit before next refresh." />
+        <DesignOnlyBanner note="Eight-plus years, $50M+ ad spend operated, 200+ growth audits, 4.2x ROAS. Figures shown are operational composites pending fresh attribution audit before next refresh." />
       </div>
       <AboutPage />
     </>

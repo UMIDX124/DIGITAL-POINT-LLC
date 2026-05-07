@@ -383,6 +383,9 @@ export default function Hero3DStage() {
       const clock = new THREE.Clock();
       let raf = 0;
 
+      // Mark container so CSS knows the canvas is taking over.
+      container.classList.add('is-canvas-active');
+
       const tick = () => {
         if (disposed) return;
         raf = requestAnimationFrame(tick);
@@ -441,6 +444,7 @@ export default function Hero3DStage() {
       cleanup = () => {
         disposed = true;
         cancelAnimationFrame(raf);
+        container.classList.remove('is-canvas-active');
         window.removeEventListener('pointermove', onPointer);
         ro.disconnect();
         io.disconnect();

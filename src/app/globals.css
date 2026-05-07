@@ -2963,10 +2963,10 @@ html[data-i-seen="1"] .dpl-intro-loader { display: none; }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Phase 20.1.7 — Hero3DStage SVG fallback for mobile / reduced-motion /
-   low-CPU users. Stays under the canvas so desktop renders the 3D
-   scene over it; mobile (canvas blank because effect early-returns)
-   sees the SVG silhouette + grid + beam instead of an empty gradient. */
+/* Phase 20.1.7 — Hero3DStage SVG fallback. Sits behind content as
+   ambient atmosphere; never as a foreground subject competing with
+   headline + subhead. On mobile we further dim and slide it right so
+   the reading column has no orange diamond bleed-through. */
 .hero-3d-fallback {
   position: absolute;
   inset: 0;
@@ -2974,16 +2974,29 @@ html[data-i-seen="1"] .dpl-intro-loader { display: none; }
   height: 100%;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.92;
+  opacity: 0.45;
+  mix-blend-mode: screen;
+}
+@media (max-width: 1023px) {
+  .hero-3d-fallback {
+    opacity: 0.32;
+    transform: translate(15%, 6%) scale(0.85);
+    transform-origin: 50% 50%;
+  }
 }
 .hero-3d-canvas {
   position: relative;
   z-index: 1;
 }
-@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
-  /* On desktop with motion enabled, the canvas owns the visual; hide
-     the SVG so it doesn't double-stack behind the live render. */
-  .hero-3d-fallback { opacity: 0; }
+/* Phase 20.1.7 — class-based fallback toggle. Init code adds
+   `is-canvas-active` to the container once the WebGL scene starts
+   rendering; until then the SVG silhouette is what users see. This
+   is more robust than a media query (Playwright headless reports
+   prefers-reduced-motion: reduce, which would otherwise hide both
+   layers). */
+.hero-3d-stage.is-canvas-active .hero-3d-fallback {
+  opacity: 0;
+  transition: opacity 600ms cubic-bezier(0.65, 0.05, 0, 1);
 }
 
 /* ============================================

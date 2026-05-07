@@ -1,3 +1,0 @@
-src/components/sections/TestimonialsSection.tsx:4: * The previous Phase 4f implementation rendered Sarah Chen / Marcus
-src/components/sections/TestimonialsSection.tsx:5: * Thompson / Jennifer Walsh quotes from `copy.testimonials`. Those
-src/components/sections/LogoStripSection.tsx:8: * killed the Sarah Chen / Marcus Thompson testimonials in Phase 13,

@@ -1,1 +1,0 @@
-public/Dp-logo1.png: PNG image data, 510 x 543, 8-bit/color RGBA, non-interlaced

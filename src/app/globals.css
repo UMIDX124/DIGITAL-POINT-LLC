@@ -2988,6 +2988,29 @@ html[data-i-seen="1"] .dpl-intro-loader { display: none; }
   position: relative;
   z-index: 1;
 }
+/* Phase 20.1.7 — left-column fade. The 3D mark sits in the right
+   half of the canvas; this gradient pushes a soft black wash over
+   the left ~38% so the headline column reads with no orange bleed
+   from the mark glow + hex floor. */
+.hero-3d-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(90deg,
+    rgba(10, 9, 8, 0.78) 0%,
+    rgba(10, 9, 8, 0.55) 28%,
+    rgba(10, 9, 8, 0.0) 52%);
+}
+@media (max-width: 1023px) {
+  .hero-3d-stage::after {
+    background: linear-gradient(180deg,
+      rgba(10, 9, 8, 0.0) 0%,
+      rgba(10, 9, 8, 0.55) 35%,
+      rgba(10, 9, 8, 0.85) 65%);
+  }
+}
 /* Phase 20.1.7 — class-based fallback toggle. Init code adds
    `is-canvas-active` to the container once the WebGL scene starts
    rendering; until then the SVG silhouette is what users see. This

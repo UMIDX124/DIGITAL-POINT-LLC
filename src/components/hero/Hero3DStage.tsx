@@ -71,8 +71,13 @@ export default function Hero3DStage() {
         0.1,
         80,
       );
+      // Phase 20.1.7 — anchor mark visually in the right column of the
+      // hero-grid so it does not bleed through the copy column. The
+      // canvas spans the full hero-section width; pushing the mark
+      // world-x to +2.5 + lookAt to (1.6,...) lands it visually right
+      // of center on a 1440 viewport.
       camera.position.set(0, 1.2, 11);
-      camera.lookAt(0, 0.6, 0);
+      camera.lookAt(1.6, 0.6, 0);
 
       /* === Lights === */
       const ambient = new THREE.AmbientLight(0xfff0d4, 0.18);
@@ -106,7 +111,7 @@ export default function Hero3DStage() {
         opacity: 0.92,
       });
       const mark = new THREE.Mesh(markGeo, markMat);
-      mark.position.set(0, 0.7, 0);
+      mark.position.set(2.5, 0.7, 0);
       scene.add(mark);
 
       /* Inner emissive core sphere */
@@ -224,7 +229,7 @@ export default function Hero3DStage() {
       });
       const ring = new THREE.Mesh(ringGeo, ringMat);
       ring.rotation.x = -Math.PI / 2;
-      ring.position.set(0, -1.49, 0);
+      ring.position.set(2.5, -1.49, 0);
       scene.add(ring);
 
       /* === 3. DOMINANT BEAM === */
@@ -263,7 +268,7 @@ export default function Hero3DStage() {
       });
       const beam = new THREE.Mesh(beamGeo, beamMat);
       beam.rotation.z = Math.PI;
-      beam.position.set(0, 6.2, -0.2);
+      beam.position.set(2.5, 6.2, -0.2);
       scene.add(beam);
 
       /* === 4. PARTICLE FIELD ===
@@ -397,9 +402,11 @@ export default function Hero3DStage() {
 
         const pulse = 0.5 + 0.5 * Math.sin(t * 0.6);
 
-        /* Mark — slow rotation + breathing pulse */
+        /* Mark — slow rotation + breathing pulse. x stays at 2.5 (set
+           on init); y bobs around 0.7. */
         mark.rotation.y = t * 0.18;
         mark.rotation.x = Math.sin(t * 0.22) * 0.20;
+        mark.position.x = 2.5;
         mark.position.y = 0.7 + Math.sin(t * 0.55) * 0.15;
         markMat.emissiveIntensity = 0.45 + pulse * 0.35;
 
@@ -417,10 +424,13 @@ export default function Hero3DStage() {
         keyLight.intensity = 3.6 + pulse * 1.6;
         keyLight.position.copy(mark.position);
 
-        /* Beam */
+        /* Beam follows mark x */
         beam.position.x = mark.position.x;
         beam.position.z = mark.position.z - 0.2;
         beam.rotation.y = Math.sin(t * 0.18) * 0.04;
+
+        /* Ring follows mark x */
+        ring.position.x = mark.position.x;
 
         /* Hex floor — slow scroll toward camera */
         hex.position.z = (t * 0.25) % 1.35;
@@ -435,7 +445,7 @@ export default function Hero3DStage() {
         camera.position.x = pointer.x * 0.7;
         camera.position.y = 1.2 - pointer.y * 0.4;
         camera.position.z = 11 + breathe + scrollProgress * 6;
-        camera.lookAt(0, 0.6, 0);
+        camera.lookAt(1.6, 0.6, 0);
 
         renderer.render(scene, camera);
       };

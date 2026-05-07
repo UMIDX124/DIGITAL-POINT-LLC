@@ -8,7 +8,6 @@ import { Toaster } from "@/components/ui/toaster";
 import { GrainOverlay } from "@/components/background/GrainOverlay";
 import { CursorBloom } from "@/components/background/CursorBloom";
 import { VisibilityPause } from "@/components/motion/VisibilityPause";
-import ChatWidget from "@/components/chat/ChatWidget";
 import { BotIdClient } from "botid/client";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 // Phase 17b 3-restructured A3 — analytics gated on cookie consent.
@@ -267,7 +266,6 @@ export default function RootLayout({
           ]}
         />
         {children}
-        <ChatWidget />
         <Toaster />
         <CookieConsent />
         <AnalyticsGate />

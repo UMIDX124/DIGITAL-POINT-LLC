@@ -18,7 +18,7 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
       <BreadcrumbSchema
         items={allItems.map((item) => ({
           name: item.label,
-          url: `${baseUrl}${item.href}`,
+          url: item.href === '/' ? baseUrl : `${baseUrl}${item.href}`,
         }))}
       />
       <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-[color:var(--text-muted)]">

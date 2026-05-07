@@ -2963,6 +2963,29 @@ html[data-i-seen="1"] .dpl-intro-loader { display: none; }
   100% { opacity: 1; transform: translateY(0); }
 }
 
+/* Phase 20.1.7 — Hero3DStage SVG fallback for mobile / reduced-motion /
+   low-CPU users. Stays under the canvas so desktop renders the 3D
+   scene over it; mobile (canvas blank because effect early-returns)
+   sees the SVG silhouette + grid + beam instead of an empty gradient. */
+.hero-3d-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.92;
+}
+.hero-3d-canvas {
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  /* On desktop with motion enabled, the canvas owns the visual; hide
+     the SVG so it doesn't double-stack behind the live render. */
+  .hero-3d-fallback { opacity: 0; }
+}
+
 /* ============================================
    Phase 20.1.4 — body atmosphere with scroll-progress shift
    --scroll-progress is set 0..1 by SectionFlow; we use it to subtly

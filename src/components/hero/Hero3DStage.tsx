@@ -497,9 +497,91 @@ export default function Hero3DStage() {
           'radial-gradient(ellipse 120% 90% at 50% 60%, rgba(31, 22, 18, 0.80) 0%, rgba(15, 12, 10, 0.55) 45%, rgba(10, 9, 8, 0.0) 90%)',
       }}
     >
+      {/* Phase 20.1.7 mobile / reduced-motion / low-CPU fallback. Static
+          SVG: faceted-diamond mark + horizon grid + descending beam.
+          Hidden when canvas is active (canvas has higher z-index) so
+          desktop users see the 3D scene; mobile gets the static graphic
+          instead of an empty radial gradient. */}
+      <svg
+        className="hero-3d-fallback"
+        viewBox="0 0 800 500"
+        preserveAspectRatio="xMidYMid slice"
+        aria-hidden="true"
+      >
+        <defs>
+          <linearGradient id="hero-beam" x1="0.5" y1="0" x2="0.5" y2="1">
+            <stop offset="0%" stopColor="rgba(255,168,51,0.0)" />
+            <stop offset="55%" stopColor="rgba(255,168,51,0.18)" />
+            <stop offset="100%" stopColor="rgba(255,240,212,0.50)" />
+          </linearGradient>
+          <radialGradient id="hero-mark-glow" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%" stopColor="rgba(255,168,51,0.95)" />
+            <stop offset="55%" stopColor="rgba(255,136,0,0.45)" />
+            <stop offset="100%" stopColor="rgba(255,136,0,0.0)" />
+          </radialGradient>
+          <linearGradient id="hero-mark-face" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#ff8800" />
+            <stop offset="100%" stopColor="#c26f3c" />
+          </linearGradient>
+        </defs>
+
+        {/* atmospheric beam */}
+        <polygon
+          points="335,0 465,0 520,360 280,360"
+          fill="url(#hero-beam)"
+          opacity="0.85"
+        />
+
+        {/* horizon grid — 6 perspective lines */}
+        <g stroke="rgba(255,168,51,0.32)" strokeWidth="1" fill="none">
+          <line x1="0" y1="380" x2="800" y2="380" />
+          <line x1="-120" y1="430" x2="920" y2="430" opacity="0.7" />
+          <line x1="-260" y1="490" x2="1060" y2="490" opacity="0.5" />
+          <line x1="200" y1="380" x2="100" y2="500" opacity="0.6" />
+          <line x1="320" y1="380" x2="280" y2="500" opacity="0.7" />
+          <line x1="400" y1="380" x2="400" y2="500" opacity="0.85" />
+          <line x1="480" y1="380" x2="520" y2="500" opacity="0.7" />
+          <line x1="600" y1="380" x2="700" y2="500" opacity="0.6" />
+        </g>
+
+        {/* mark glow halo */}
+        <circle cx="400" cy="260" r="160" fill="url(#hero-mark-glow)" opacity="0.85" />
+
+        {/* faceted-diamond silhouette — matches CosmoMark v2 */}
+        <g transform="translate(400 260)">
+          <polygon
+            points="0,-100 86,-50 86,50 0,100 -86,50 -86,-50"
+            fill="url(#hero-mark-face)"
+            stroke="rgba(255,240,212,0.75)"
+            strokeWidth="1.5"
+            opacity="0.92"
+          />
+          <polygon
+            points="0,-100 86,-50 0,0"
+            fill="rgba(255,240,212,0.18)"
+          />
+          <polygon
+            points="0,-100 -86,-50 0,0"
+            fill="rgba(0,0,0,0.20)"
+          />
+          <circle cx="0" cy="0" r="14" fill="rgba(255,240,212,0.95)" />
+        </g>
+
+        {/* ground reflection ring */}
+        <ellipse
+          cx="400"
+          cy="400"
+          rx="160"
+          ry="14"
+          fill="none"
+          stroke="rgba(194,111,60,0.55)"
+          strokeWidth="1.5"
+        />
+      </svg>
+
       <canvas
         ref={canvasRef}
-        className="block h-full w-full"
+        className="block h-full w-full hero-3d-canvas"
         style={{ display: 'block' }}
       />
     </div>

@@ -149,6 +149,7 @@ export default function RootLayout({
               founder: [
                 { "@type": "Person", name: "M. Faizan Rafiq", jobTitle: "Co-Founder" },
                 { "@type": "Person", name: "Anwaar Tayyab", jobTitle: "Co-Founder" },
+                { "@type": "Person", name: "Umer Farooq", jobTitle: "Operator" },
               ],
             }),
           }}

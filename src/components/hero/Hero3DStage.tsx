@@ -508,11 +508,9 @@ export default function Hero3DStage() {
         const bulbScale = 0.95 + bulbPulse * 0.18;
         bulb.scale.setScalar(bulbScale);
 
-        /* Inner head glow */
+        /* Inner head glow — child of bot, stays at local origin */
         innerGlow.scale.setScalar(0.95 + pulse * 0.20);
         innerGlowMat.opacity = 0.18 + pulse * 0.14;
-        innerGlow.position.copy(bot.position);
-        innerGlow.position.x = bot.position.x;
 
         /* Core point light follows bot, pulses */
         corePulse.position.set(bot.position.x, bot.position.y + 0.1, 0.5);

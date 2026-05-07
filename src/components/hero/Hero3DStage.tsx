@@ -56,7 +56,7 @@ export default function Hero3DStage() {
         alpha: true,
         powerPreference: 'high-performance',
       });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
       renderer.setSize(container.clientWidth, container.clientHeight, false);
       renderer.setClearColor(0x000000, 0);
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -266,16 +266,23 @@ export default function Hero3DStage() {
       beam.position.set(0, 6.2, -0.2);
       scene.add(beam);
 
-      /* === 4. PARTICLE FIELD === */
-      const HALO_COUNT = 1500;
+      /* === 4. PARTICLE FIELD ===
+         Phase 20.1.7 perf — count 1500 → 800 (47% reduction). Bob is
+         now done in the vertex shader (`uTime` + per-vertex seed) so
+         the per-frame JS loop that updated 1500 vertices and called
+         needsUpdate=true is gone. Net: zero JS work per frame for
+         particles, GPU does the displacement. */
+      const HALO_COUNT = 800;
       const haloPos = new Float32Array(HALO_COUNT * 3);
       const haloCol = new Float32Array(HALO_COUNT * 3);
+      const haloSeed = new Float32Array(HALO_COUNT);
       const cAmberP = new THREE.Color(0xff8800);
       const cCream = new THREE.Color(0xfff0d4);
       for (let i = 0; i < HALO_COUNT; i++) {
         haloPos[i * 3 + 0] = (Math.random() - 0.5) * 26;
         haloPos[i * 3 + 1] = -0.5 + Math.random() * 7;
         haloPos[i * 3 + 2] = -8 + Math.random() * 14;
+        haloSeed[i] = Math.random() * 6.2832;
         const t = Math.random();
         const c = cAmberP.clone().lerp(cCream, t);
         haloCol[i * 3 + 0] = c.r;
@@ -285,15 +292,51 @@ export default function Hero3DStage() {
       const haloGeo = new THREE.BufferGeometry();
       haloGeo.setAttribute('position', new THREE.BufferAttribute(haloPos, 3));
       haloGeo.setAttribute('color', new THREE.BufferAttribute(haloCol, 3));
-      const haloMat = new THREE.PointsMaterial({
-        size: 0.045,
-        vertexColors: true,
+      haloGeo.setAttribute('aSeed', new THREE.BufferAttribute(haloSeed, 1));
+      const haloMat = new THREE.ShaderMaterial({
         transparent: true,
-        opacity: 0.85,
         depthWrite: false,
         blending: THREE.AdditiveBlending,
-        sizeAttenuation: true,
         fog: true,
+        uniforms: {
+          uTime: { value: 0 },
+          uSize: { value: 32.0 * Math.min(window.devicePixelRatio, 1.5) },
+          fogColor: { value: scene.fog.color },
+          fogDensity: { value: (scene.fog as THREEType.FogExp2).density },
+        },
+        vertexShader: `
+          attribute float aSeed;
+          attribute vec3 color;
+          uniform float uTime;
+          uniform float uSize;
+          varying vec3 vColor;
+          varying float vFogDepth;
+          void main() {
+            vColor = color;
+            vec3 p = position;
+            p.y += sin(uTime * 0.5 + aSeed) * 0.08;
+            vec4 mv = modelViewMatrix * vec4(p, 1.0);
+            vFogDepth = -mv.z;
+            gl_Position = projectionMatrix * mv;
+            gl_PointSize = uSize / -mv.z;
+          }
+        `,
+        fragmentShader: `
+          uniform vec3 fogColor;
+          uniform float fogDensity;
+          varying vec3 vColor;
+          varying float vFogDepth;
+          void main() {
+            // round point with soft edge
+            vec2 c = gl_PointCoord - 0.5;
+            float d = length(c);
+            float alpha = smoothstep(0.5, 0.0, d) * 0.85;
+            // fog falloff
+            float fogFactor = 1.0 - exp(-fogDensity * fogDensity * vFogDepth * vFogDepth);
+            vec3 col = mix(vColor, fogColor, fogFactor);
+            gl_FragColor = vec4(col, alpha * (1.0 - fogFactor));
+          }
+        `,
       });
       const halo = new THREE.Points(haloGeo, haloMat);
       scene.add(halo);
@@ -306,19 +349,20 @@ export default function Hero3DStage() {
         pointer.tx = (e.clientX / w - 0.5) * 2;
         pointer.ty = (e.clientY / h - 0.5) * 2;
       };
+      // Phase 20.1.7 — scrollProgress is now read inline in the tick
+      // function. The dedicated scroll listener was removed; on every
+      // wheel event it forced a layout read (container.clientHeight)
+      // which compounded with Lenis firing 60+/s. The tick function
+      // already runs once per frame and reads stable cached values.
       let scrollProgress = 0;
-      const onScroll = () => {
-        const y = window.scrollY || 0;
-        const h = container.clientHeight || window.innerHeight;
-        scrollProgress = Math.max(0, Math.min(1, y / h));
-      };
+      let cachedHeight = container.clientHeight || window.innerHeight;
       window.addEventListener('pointermove', onPointer, { passive: true });
-      window.addEventListener('scroll', onScroll, { passive: true });
 
       const onResize = () => {
         if (!container) return;
         const w = container.clientWidth;
         const h = container.clientHeight;
+        cachedHeight = h || window.innerHeight;
         renderer.setSize(w, h, false);
         camera.aspect = w / h;
         camera.updateProjectionMatrix();
@@ -338,13 +382,15 @@ export default function Hero3DStage() {
       /* === Render loop === */
       const clock = new THREE.Clock();
       let raf = 0;
-      const haloPosAttr = haloGeo.getAttribute('position') as THREEType.BufferAttribute;
 
       const tick = () => {
         if (disposed) return;
         raf = requestAnimationFrame(tick);
         if (document.hidden || !inView) return;
         const t = clock.getElapsedTime();
+
+        // Update scroll progress once per frame (cheap: no clientHeight read)
+        scrollProgress = Math.max(0, Math.min(1, (window.scrollY || 0) / cachedHeight));
 
         const pulse = 0.5 + 0.5 * Math.sin(t * 0.6);
 
@@ -376,12 +422,8 @@ export default function Hero3DStage() {
         /* Hex floor — slow scroll toward camera */
         hex.position.z = (t * 0.25) % 1.35;
 
-        /* Halo bob */
-        for (let i = 0; i < HALO_COUNT; i++) {
-          const baseY = haloPos[i * 3 + 1];
-          haloPosAttr.array[i * 3 + 1] = baseY + Math.sin(t * 0.5 + i * 0.13) * 0.08;
-        }
-        haloPosAttr.needsUpdate = true;
+        /* Halo bob done in vertex shader; just push uTime */
+        haloMat.uniforms.uTime.value = t;
 
         /* Camera */
         pointer.x += (pointer.tx - pointer.x) * 0.045;
@@ -400,7 +442,6 @@ export default function Hero3DStage() {
         disposed = true;
         cancelAnimationFrame(raf);
         window.removeEventListener('pointermove', onPointer);
-        window.removeEventListener('scroll', onScroll);
         ro.disconnect();
         io.disconnect();
         markGeo.dispose();

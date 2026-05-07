@@ -48,13 +48,14 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
       gsap.registerPlugin(ScrollTrigger);
 
       const lenis = new Lenis({
-        /* Phase 20.1.2 smoothness pass — UF flagged page-feel as "not
-           smooth enough." Tuned: duration 1.0 → 1.2 (longer ease tail),
-           lerp 0.085 → 0.07 (slightly more buttery follow), wheel
-           multiplier kept at 1 so scroll velocity feels natural. */
-        duration: 1.2,
+        /* Phase 20.1.7 — UF flagged residual "halka lag". 0.07 lerp was
+           slow-following (extended catch-up tail = lag feel). Bumped to
+           0.10 for snappier wheel response while staying above the
+           jittery 0.15+ range. Duration tightened 1.2 → 1.0 so anchor
+           scrollTo lands faster. */
+        duration: 1.0,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easeOutExpo
-        lerp: 0.07,
+        lerp: 0.10,
         wheelMultiplier: 1,
         touchMultiplier: 1.4,
         smoothWheel: true,

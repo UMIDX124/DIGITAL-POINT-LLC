@@ -14,7 +14,7 @@ const resources = [
   {
     icon: Target,
     title: 'Marketing Attribution Blueprint',
-    description: 'How to build attribution that actually tracks revenue',
+    description: 'A blueprint for attribution that traces revenue back to source.',
     href: '/guides/marketing-attribution-complete-guide',
   },
   {

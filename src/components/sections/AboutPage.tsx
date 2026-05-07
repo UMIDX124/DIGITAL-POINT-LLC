@@ -68,7 +68,7 @@ export function AboutPage() {
               , not reports about growth.
             </h1>
             <p className="text-[color:var(--text-primary)] text-lg md:text-xl max-w-2xl leading-relaxed">
-              We&apos;ve been in your shoes, staring at dashboards that don&apos;t add up, wondering which campaigns actually drive revenue. We built Digital Point to fix that, for ourselves first, then for everyone else.
+              We&apos;ve stared at the same dashboards. Numbers that don&apos;t reconcile, campaigns no one can prove drive revenue. We built Digital Point to fix that, for ourselves first, then for the operators who pay us to do it.
             </p>
           </FadeUp>
         </Container>
@@ -113,16 +113,16 @@ export function AboutPage() {
               }}
             >
               <p className="text-[color:var(--text-primary)] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
-                Here&apos;s the honest version: back in 2017, Faizan was managing ad accounts and kept seeing the same thing. Businesses pouring money into campaigns with no idea what was actually driving revenue. Anwaar, on the other hand, was deep in the data side, building dashboards that nobody used because they answered the wrong questions.
+                In 2017, Faizan ran ad accounts and kept seeing the same pattern. Money pouring in, no clear line back to revenue. Anwaar lived on the data side, building dashboards no one used because they answered the wrong questions.
               </p>
               <p className="text-[color:var(--text-primary)] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
-                We met, argued about attribution models over too much coffee, and realized we were solving two halves of the same problem. Faizan knew how to make ads perform. Anwaar knew how to prove it. Together, we figured: why not just do both?
+                The two of us argued about attribution over too much coffee and realized we were halves of the same problem. Faizan made ads perform. Anwaar proved which ones did. We decided to ship both as one service.
               </p>
               <p className="text-[color:var(--text-primary)] text-base leading-relaxed mb-4" style={{ maxWidth: 'var(--maxw-body)' }}>
-                Digital Point started in a spare room with one client who took a chance on us. Eight years later, we&apos;ve managed over $50M in ad spend, built remote teams across continents, and helped businesses go from &ldquo;we think our ads work&rdquo; to &ldquo;we know exactly what&apos;s driving revenue.&rdquo;
+                Digital Point started with one client who took a chance on us. Eight years on, we&apos;ve managed over $50M in ad spend, built remote ops teams across continents, and moved clients from &ldquo;we think our ads work&rdquo; to &ldquo;we know what&apos;s driving the line.&rdquo;
               </p>
               <p className="text-white text-base leading-relaxed font-medium" style={{ maxWidth: 'var(--maxw-body)' }}>
-                We&apos;re still those two guys who argue about attribution over coffee. We just have a bigger team now, and better coffee.
+                Same two operators. Bigger team. Same fight about attribution.
               </p>
               <div className="flex flex-wrap gap-6 mt-6 pt-6" style={{ borderTop: '1px solid rgba(255, 136, 0, 0.15)' }}>
                 <div>

@@ -90,8 +90,15 @@ export default function SectionFlow() {
         }
       }
 
-      // Document-level scroll-progress variable for body atmosphere shift
-      const onScroll = () => {
+      // Document-level scroll-progress variable for body atmosphere shift.
+      // Phase 20.1.7 — rAF-throttled. Without this, every wheel tick fires
+      // a layout read (scrollHeight) + style write (setProperty) on the
+      // <html> element. Lenis fires scroll events at 60+ Hz; the layout
+      // thrash compounded with the body atmosphere recalc was the
+      // residual lag UF flagged. One rAF per real frame, no thrash.
+      let scrollScheduled = false;
+      const writeProgress = () => {
+        scrollScheduled = false;
         const max = Math.max(
           document.documentElement.scrollHeight - window.innerHeight,
           1,
@@ -102,8 +109,13 @@ export default function SectionFlow() {
           progress.toFixed(4),
         );
       };
+      const onScroll = () => {
+        if (scrollScheduled) return;
+        scrollScheduled = true;
+        requestAnimationFrame(writeProgress);
+      };
       window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
+      writeProgress();
 
       cleanup = () => {
         for (const t of triggers) t.kill();

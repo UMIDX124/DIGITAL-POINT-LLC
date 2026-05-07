@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Facebook Ads Benchmarks 2026: CPC, CPM, CTR & ROAS by Industry',
   description: 'Updated Facebook Ads benchmarks for 2026: average CPC, CPM, CTR, and ROAS across 12 industries. Based on $48M+ in tracked Meta ad spend.',
   keywords: ['facebook ads benchmarks 2026', 'meta ads benchmarks', 'facebook cpc by industry', 'facebook ads ctr', 'facebook ads cpm', 'facebook roas benchmarks'],
-  alternates: { canonical: 'https://digitalpointllc.com/research/facebook-ads-benchmarks-2026' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/research/facebook-ads-benchmarks-2026' },
   openGraph: {
     title: 'Facebook Ads Benchmarks 2026: CPC, CPM, CTR & ROAS by Industry',
     description: 'Updated Facebook Ads benchmarks for 2026 across 12 industries. Based on $48M+ in tracked Meta ad spend.',
@@ -29,7 +29,7 @@ export default function FacebookAdsBenchmarksPage() {
         description="Updated Facebook Ads benchmarks for 2026: average CPC, CPM, CTR, and ROAS across 12 industries."
         datePublished="2026-03-01"
         dateModified="2026-03-20"
-        url="https://digitalpointllc.com/research/facebook-ads-benchmarks-2026"
+        url="https://www.digitalpointllc.com/research/facebook-ads-benchmarks-2026"
       />
       <FAQSchema faqs={faqs} />
       <FacebookAdsBenchmarks faqs={faqs} />

@@ -5,11 +5,11 @@ export const metadata: Metadata = {
   title: 'Cookies | Digital Point LLC',
   description:
     'Cookie disclosure for Digital Point LLC. The exact cookies and storage we use, why, and how to opt out.',
-  alternates: { canonical: 'https://digitalpointllc.com/cookies' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/cookies' },
   openGraph: {
     title: 'Cookies | Digital Point LLC',
     description: 'Cookie disclosure for Digital Point LLC.',
-    url: 'https://digitalpointllc.com/cookies',
+    url: 'https://www.digitalpointllc.com/cookies',
   },
 };
 

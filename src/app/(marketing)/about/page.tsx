@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About · Digital Point LLC',
     description: 'Learn about Digital Point LLC. Eight-plus years deploying AI agents, automation, and trained operators that replace operations headcount for growth-stage companies.',
-    url: 'https://digitalpointllc.com/about',
+    url: 'https://www.digitalpointllc.com/about',
     type: 'website',
   },
   twitter: {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: 'About · Digital Point LLC',
     description: 'Learn about Digital Point LLC. Eight-plus years deploying AI agents, automation, and trained operators that replace operations headcount for growth-stage companies.',
   },
-  alternates: { canonical: 'https://digitalpointllc.com/about' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/about' },
 };
 
 export default function About() {
@@ -26,13 +26,13 @@ export default function About() {
       <PersonSchema
         name="M. Faizan Rafiq"
         jobTitle="Co-Founder"
-        url="https://digitalpointllc.com/about"
+        url="https://www.digitalpointllc.com/about"
         description="Co-founded Digital Point LLC in 2017. Operates the paid acquisition and ad-performance side of the firm. Eight-plus years running paid media across Meta, Google, LinkedIn, and TikTok for growth-stage companies."
       />
       <PersonSchema
         name="Anwaar Tayyab"
         jobTitle="Co-Founder"
-        url="https://digitalpointllc.com/about"
+        url="https://www.digitalpointllc.com/about"
         description="Co-founded Digital Point LLC in 2017. Operates the analytics, attribution, and reporting infrastructure side of the firm. Builds the systems that make paid-media work measurable."
       />
       <div className="container-wide" style={{ paddingTop: 'var(--section-sm)' }}>

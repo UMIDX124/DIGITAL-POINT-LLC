@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: 'Case Studies · Digital Point LLC',
     description:
       'Real results from real clients. See how AI agents + automation + operator backstop replaced ops headcount and ran the workflows unattended.',
-    url: 'https://digitalpointllc.com/case-studies',
+    url: 'https://www.digitalpointllc.com/case-studies',
     type: 'website',
   },
   twitter: {
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: 'Case Studies · Digital Point LLC',
     description: 'Real results from real clients. See how AI agents + automation + operator backstop replaced ops headcount and ran the workflows unattended.',
   },
-  alternates: { canonical: 'https://digitalpointllc.com/case-studies' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/case-studies' },
 };
 
 export default function CaseStudies() {

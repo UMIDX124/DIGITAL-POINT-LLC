@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = getPostBySlug(slug);
   if (!post) return {};
 
-  const baseUrl = 'https://digitalpointllc.com';
+  const baseUrl = 'https://www.digitalpointllc.com';
   return {
     title: post.title,
     description: post.excerpt,
@@ -56,7 +56,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const toc = generateTOC(post.content);
   const htmlContent = markdownToHtml(post.content);
-  const baseUrl = 'https://digitalpointllc.com';
+  const baseUrl = 'https://www.digitalpointllc.com';
   const catMeta = categoryMeta[post.category] || { color: '#FF8800', slug: post.category.toLowerCase().replace(/\s+/g, '-'), description: post.category };
 
   // Get related posts (same category, excluding current)

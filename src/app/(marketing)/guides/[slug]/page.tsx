@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const guide = getGuideBySlug(slug);
   if (!guide) return {};
 
-  const url = `https://digitalpointllc.com/guides/${slug}`;
+  const url = `https://www.digitalpointllc.com/guides/${slug}`;
 
   return {
     title: `${guide.title} | Digital Point LLC`,

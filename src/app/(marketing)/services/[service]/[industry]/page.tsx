@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const title = `${content.service.name} for ${content.industry.name} | Digital Point LLC`;
   const description = `Vertical page for ${content.service.name.toLowerCase()} in ${content.industry.name.toLowerCase()}. Curated short-list of priority verticals in progress; this URL is currently a placeholder.`;
-  const url = `https://digitalpointllc.com/services/${service}/${industry}`;
+  const url = `https://www.digitalpointllc.com/services/${service}/${industry}`;
 
   return {
     title,

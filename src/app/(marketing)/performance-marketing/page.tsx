@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: 'Performance Marketing · Digital Point LLC',
     description:
       'Paid acquisition across Meta, Google, LinkedIn & TikTok. We optimize CAC, ROAS, and scale ad spend profitably.',
-    url: 'https://digitalpointllc.com/performance-marketing',
+    url: 'https://www.digitalpointllc.com/performance-marketing',
     type: 'website',
     images: [
       { url: '/og-image.png', width: 1200, height: 630, alt: 'Digital Point Performance Marketing. Paid acquisition with operator and agent execution.' },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
   },
   alternates: {
-    canonical: 'https://digitalpointllc.com/performance-marketing',
+    canonical: 'https://www.digitalpointllc.com/performance-marketing',
   },
 };
 
@@ -33,7 +33,7 @@ export default function Page() {
       <ServiceSchema
         name="Performance Marketing"
         description="Paid acquisition across Meta, Google, LinkedIn, and TikTok with operator and agent execution. CAC and ROAS optimization plus full attribution tracking, run as a managed service."
-        url="https://digitalpointllc.com/performance-marketing"
+        url="https://www.digitalpointllc.com/performance-marketing"
         serviceTypes={[
           'Performance Marketing',
           'Paid Acquisition',

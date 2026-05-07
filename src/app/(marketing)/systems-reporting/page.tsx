@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: 'Systems & Reporting · Digital Point LLC',
     description:
       'Attribution, dashboards, CRM structure, and marketing automation for growth companies.',
-    url: 'https://digitalpointllc.com/systems-reporting',
+    url: 'https://www.digitalpointllc.com/systems-reporting',
     type: 'website',
     images: [
       { url: '/og-image.png', width: 1200, height: 630, alt: 'Digital Point Systems and Reporting. The layer that makes the work legible.' },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
   },
   alternates: {
-    canonical: 'https://digitalpointllc.com/systems-reporting',
+    canonical: 'https://www.digitalpointllc.com/systems-reporting',
   },
 };
 
@@ -33,7 +33,7 @@ export default function Page() {
       <ServiceSchema
         name="Systems & Reporting"
         description="Attribution, dashboards, CRM structure, and marketing automation infrastructure. The reporting layer that makes operator and agent work legible to leadership."
-        url="https://digitalpointllc.com/systems-reporting"
+        url="https://www.digitalpointllc.com/systems-reporting"
         serviceTypes={[
           'Systems and Reporting',
           'Attribution Setup',

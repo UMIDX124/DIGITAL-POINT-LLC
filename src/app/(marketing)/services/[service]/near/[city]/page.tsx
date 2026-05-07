@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const title = `${content.service.name} in ${content.city.name} | Digital Point LLC`;
   const description = `Professional ${content.service.name.toLowerCase()} for businesses in ${content.city.name}, ${content.city.state}. We help ${content.city.name} companies improve ROAS, reduce CAC, and scale paid media profitably.`;
-  const url = `https://digitalpointllc.com/services/${service}/near/${city}`;
+  const url = `https://www.digitalpointllc.com/services/${service}/near/${city}`;
 
   return {
     title,

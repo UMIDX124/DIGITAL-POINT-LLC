@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   title: 'Automation: AI workflows that run the boring parts',
   description:
     'Lead capture, document parsing, follow-up, reporting, portfolio monitoring. Operator-built AI workflows, operated as a service.',
-  alternates: { canonical: 'https://digitalpointllc.com/automation' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/automation' },
   openGraph: {
     title: 'Automation · Digital Point LLC',
     description:
       'Operator-built AI workflows for lead capture, document parsing, follow-up, reporting, and portfolio monitoring. Operated as a service.',
-    url: 'https://digitalpointllc.com/automation',
+    url: 'https://www.digitalpointllc.com/automation',
     type: 'website',
     images: [
       { url: '/og-image.png', width: 1200, height: 630, alt: 'Digital Point Automation. AI workflows operated as a managed service.' },
@@ -36,7 +36,7 @@ export default function AutomationPage() {
       <ServiceSchema
         name="AI Agents"
         description="Autonomous AI agents that replace repeatable headcount: customer support triage, email drafting, lead qualification, ops escalation routing. Operated as a managed service by Digital Point."
-        url="https://digitalpointllc.com/automation#ai-agents"
+        url="https://www.digitalpointllc.com/automation#ai-agents"
         serviceTypes={[
           'AI Agents',
           'Customer Support Automation',
@@ -48,7 +48,7 @@ export default function AutomationPage() {
       <ServiceSchema
         name="Workflow Automation"
         description="Operator-built AI workflows that run lead capture, document parsing, follow-up, reporting, and portfolio monitoring. Operated as a managed service, not sold as software."
-        url="https://digitalpointllc.com/automation"
+        url="https://www.digitalpointllc.com/automation"
         serviceTypes={[
           'Workflow Automation',
           'Lead Capture Automation',

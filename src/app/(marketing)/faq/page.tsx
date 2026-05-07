@@ -14,12 +14,12 @@ export const metadata: Metadata = {
   title: 'FAQ · Digital Point LLC',
   description:
     'Common questions about how Digital Point deploys AI agents, automation, and trained operators that replace operations headcount.',
-  alternates: { canonical: 'https://digitalpointllc.com/faq' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/faq' },
   openGraph: {
     title: 'FAQ · Digital Point LLC',
     description:
       'Common questions about how Digital Point deploys AI agents, automation, and trained operators that replace operations headcount.',
-    url: 'https://digitalpointllc.com/faq',
+    url: 'https://www.digitalpointllc.com/faq',
     type: 'website',
   },
 };

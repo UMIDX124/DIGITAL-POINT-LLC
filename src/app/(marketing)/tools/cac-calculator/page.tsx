@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Free CAC Calculator: Customer Acquisition Cost',
   description: 'Calculate your Customer Acquisition Cost (CAC) by channel. Compare CAC to LTV and find your most efficient acquisition sources.',
   keywords: ['cac calculator', 'customer acquisition cost', 'cac formula', 'ltv to cac ratio', 'marketing efficiency'],
-  alternates: { canonical: 'https://digitalpointllc.com/tools/cac-calculator' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/tools/cac-calculator' },
 };
 
 const faqs = [
@@ -18,7 +18,7 @@ const faqs = [
 export default function CACCalculatorPage() {
   return (
     <>
-      <ToolSchema name="CAC Calculator" description="Calculate Customer Acquisition Cost across channels." url="https://digitalpointllc.com/tools/cac-calculator" />
+      <ToolSchema name="CAC Calculator" description="Calculate Customer Acquisition Cost across channels." url="https://www.digitalpointllc.com/tools/cac-calculator" />
       <FAQSchema faqs={faqs} />
       <CACCalculator faqs={faqs} />
     </>

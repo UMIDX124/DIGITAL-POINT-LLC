@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Google Ads ROAS Benchmarks by Industry: Search, Display, YouTube & PMax',
   description: 'Google Ads ROAS benchmarks across Search, Display, YouTube, and Performance Max campaigns. Industry data from $62M in analyzed Google Ads spend.',
   keywords: ['google ads roas benchmarks', 'google ads roas by industry', 'search ads roas', 'performance max roas', 'youtube ads roas', 'google display ads roas'],
-  alternates: { canonical: 'https://digitalpointllc.com/research/google-ads-roas-benchmarks' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/research/google-ads-roas-benchmarks' },
   openGraph: {
     title: 'Google Ads ROAS Benchmarks by Industry · Digital Point LLC',
     description: 'ROAS benchmarks for Search, Display, YouTube, and PMax campaigns across 12 industries.',
@@ -28,7 +28,7 @@ export default function GoogleAdsROASBenchmarksPage() {
         description="Google Ads ROAS benchmarks across Search, Display, YouTube, and Performance Max campaigns."
         datePublished="2026-02-10"
         dateModified="2026-03-18"
-        url="https://digitalpointllc.com/research/google-ads-roas-benchmarks"
+        url="https://www.digitalpointllc.com/research/google-ads-roas-benchmarks"
       />
       <FAQSchema faqs={faqs} />
       <GoogleAdsROASBenchmarks faqs={faqs} />

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: 'Results & Case Studies · Digital Point LLC',
     description:
       'Real problems. Real fixes. Measurable outcomes across AI agent deployments, automation engineering, and operator-backed workflows.',
-    url: 'https://digitalpointllc.com/results',
+    url: 'https://www.digitalpointllc.com/results',
     type: 'website',
   },
   twitter: {
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     description: 'Real problems. Real fixes. Measurable outcomes across AI agent deployments, automation engineering, and operator-backed workflows.',
   },
   alternates: {
-    canonical: 'https://digitalpointllc.com/results',
+    canonical: 'https://www.digitalpointllc.com/results',
   },
 };
 

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: 'Remote Workforce · Digital Point LLC',
     description:
       'Managed remote teams for marketing ops, creative production, analytics, and execution support.',
-    url: 'https://digitalpointllc.com/remote-workforce',
+    url: 'https://www.digitalpointllc.com/remote-workforce',
     type: 'website',
     images: [
       { url: '/og-image.png', width: 1200, height: 630, alt: 'Digital Point Remote Workforce. Managed teams without the hiring overhead.' },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
   },
   alternates: {
-    canonical: 'https://digitalpointllc.com/remote-workforce',
+    canonical: 'https://www.digitalpointllc.com/remote-workforce',
   },
 };
 
@@ -33,7 +33,7 @@ export default function Page() {
       <ServiceSchema
         name="Remote Operators"
         description="Vetted remote teams layered over the AI stack: marketing ops, creative production, analytics, execution support. Managed by Digital Point so headcount lift stays at zero."
-        url="https://digitalpointllc.com/remote-workforce"
+        url="https://www.digitalpointllc.com/remote-workforce"
         serviceTypes={[
           'Remote Operators',
           'Marketing Ops',

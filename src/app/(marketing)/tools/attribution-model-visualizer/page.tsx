@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Marketing Attribution Model Visualizer: Compare Models Side by Side',
   description: 'Visualize how different attribution models (first-click, last-click, linear, time-decay, position-based) distribute credit across your marketing touchpoints.',
   keywords: ['attribution model visualizer', 'marketing attribution', 'multi-touch attribution', 'first click attribution', 'last click attribution', 'linear attribution'],
-  alternates: { canonical: 'https://digitalpointllc.com/tools/attribution-model-visualizer' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/tools/attribution-model-visualizer' },
   openGraph: {
     title: 'Marketing Attribution Model Visualizer · Digital Point LLC',
     description: 'Compare how first-click, last-click, linear, time-decay, and position-based models distribute conversion credit.',
@@ -27,7 +27,7 @@ export default function AttributionVisualizerPage() {
       <ToolSchema
         name="Marketing Attribution Model Visualizer"
         description="Free tool to visualize and compare how different attribution models distribute conversion credit across marketing touchpoints."
-        url="https://digitalpointllc.com/tools/attribution-model-visualizer"
+        url="https://www.digitalpointllc.com/tools/attribution-model-visualizer"
       />
       <FAQSchema faqs={faqs} />
       <AttributionVisualizer faqs={faqs} />

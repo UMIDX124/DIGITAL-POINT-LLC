@@ -10,7 +10,7 @@ interface BreadcrumbItem {
 }
 
 export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
-  const baseUrl = 'https://digitalpointllc.com';
+  const baseUrl = 'https://www.digitalpointllc.com';
   const allItems = [{ label: 'Home', href: '/' }, ...items];
 
   return (

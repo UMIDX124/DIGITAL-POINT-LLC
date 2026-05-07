@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/_next/'],
       },
     ],
-    sitemap: 'https://digitalpointllc.com/sitemap.xml',
+    sitemap: 'https://www.digitalpointllc.com/sitemap.xml',
   };
 }

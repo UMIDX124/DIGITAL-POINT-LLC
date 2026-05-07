@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${categoryName} Articles`,
     description: meta.description,
-    alternates: { canonical: `https://digitalpointllc.com/blog/category/${slug}` },
+    alternates: { canonical: `https://www.digitalpointllc.com/blog/category/${slug}` },
     openGraph: {
       title: `${categoryName} · Digital Point LLC Blog`,
       description: meta.description,

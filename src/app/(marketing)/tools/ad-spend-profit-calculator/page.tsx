@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Ad Spend Profit Calculator: Model Your Advertising ROI',
   description: 'Model profitability at different ad spend levels. Find your optimal budget and maximize advertising profit.',
   keywords: ['ad spend calculator', 'advertising profit', 'ad budget calculator', 'marketing roi', 'ad spend optimization'],
-  alternates: { canonical: 'https://digitalpointllc.com/tools/ad-spend-profit-calculator' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/tools/ad-spend-profit-calculator' },
 };
 
 const faqs = [
@@ -18,7 +18,7 @@ const faqs = [
 export default function Page() {
   return (
     <>
-      <ToolSchema name="Ad Spend Profit Calculator" description="Model advertising profitability at different spend levels." url="https://digitalpointllc.com/tools/ad-spend-profit-calculator" />
+      <ToolSchema name="Ad Spend Profit Calculator" description="Model advertising profitability at different spend levels." url="https://www.digitalpointllc.com/tools/ad-spend-profit-calculator" />
       <FAQSchema faqs={faqs} />
       <AdSpendCalculator faqs={faqs} />
     </>

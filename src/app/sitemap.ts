@@ -4,7 +4,7 @@ import { services, cities } from '@/lib/programmatic-seo';
 import { comparisons } from '@/lib/comparisons';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://digitalpointllc.com';
+  const baseUrl = 'https://www.digitalpointllc.com';
 
   // Homepage
   const homepage: MetadataRoute.Sitemap = [

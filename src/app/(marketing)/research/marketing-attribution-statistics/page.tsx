@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Marketing Attribution Statistics 2026: Models, Accuracy & Privacy Impact',
   description: 'Marketing attribution statistics for 2026: model adoption rates, tracking accuracy post-iOS 17, privacy impact data, and multi-touch attribution benchmarks.',
   keywords: ['marketing attribution statistics', 'attribution model adoption', 'multi-touch attribution', 'marketing measurement 2026', 'ios tracking impact', 'cookie deprecation impact'],
-  alternates: { canonical: 'https://digitalpointllc.com/research/marketing-attribution-statistics' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/research/marketing-attribution-statistics' },
   openGraph: {
     title: 'Marketing Attribution Statistics 2026 · Digital Point LLC',
     description: 'Attribution model adoption rates, tracking accuracy, and privacy impact data for 2026.',
@@ -28,7 +28,7 @@ export default function MarketingAttributionStatisticsPage() {
         description="Marketing attribution statistics: model adoption rates, tracking accuracy, and privacy impact data."
         datePublished="2026-03-05"
         dateModified="2026-03-20"
-        url="https://digitalpointllc.com/research/marketing-attribution-statistics"
+        url="https://www.digitalpointllc.com/research/marketing-attribution-statistics"
       />
       <FAQSchema faqs={faqs} />
       <MarketingAttributionStatistics faqs={faqs} />

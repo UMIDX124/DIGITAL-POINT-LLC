@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const comparison = getComparisonBySlug(slug);
   if (!comparison) return {};
 
-  const url = `https://digitalpointllc.com/compare/${slug}`;
+  const url = `https://www.digitalpointllc.com/compare/${slug}`;
 
   return {
     title: `${comparison.metaTitle} | Digital Point LLC`,

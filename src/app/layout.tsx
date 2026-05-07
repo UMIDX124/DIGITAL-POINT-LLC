@@ -23,7 +23,7 @@ import AnalyticsGate from "@/components/compliance/AnalyticsGate";
  */
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://digitalpointllc.com"),
+  metadataBase: new URL("https://www.digitalpointllc.com"),
   title: {
     default: "Digital Point. Hire the AI. Skip the headcount.",
     template: "%s | Digital Point LLC",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     title: "Digital Point. Hire the AI. Skip the headcount.",
     description:
       "Digital Point operates the AI agent and automation stack that runs your CRM, ops, reporting, and growth workflows, so you scale without scaling headcount.",
-    url: "https://digitalpointllc.com",
+    url: "https://www.digitalpointllc.com",
     siteName: "Digital Point LLC",
     type: "website",
     locale: "en_US",
@@ -100,7 +100,7 @@ export const metadata: Metadata = {
     google: process.env.GOOGLE_SITE_VERIFICATION,
   } : undefined,
   alternates: {
-    canonical: "https://digitalpointllc.com",
+    canonical: "https://www.digitalpointllc.com",
   },
 };
 
@@ -166,7 +166,7 @@ export default function RootLayout({
               name: "Digital Point LLC",
               description:
                 "AI agent and automation infrastructure that runs operational workflows (CRM, ops, reporting, growth) so you scale without scaling team.",
-              url: "https://digitalpointllc.com",
+              url: "https://www.digitalpointllc.com",
               serviceType: [
                 "AI Agent Deployment",
                 "Workflow Automation",
@@ -189,7 +189,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "Digital Point LLC",
-              url: "https://digitalpointllc.com",
+              url: "https://www.digitalpointllc.com",
             }),
           }}
         />
@@ -202,12 +202,12 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://digitalpointllc.com" },
-                { "@type": "ListItem", position: 2, name: "Remote Workforce", item: "https://digitalpointllc.com/remote-workforce" },
-                { "@type": "ListItem", position: 3, name: "Automation", item: "https://digitalpointllc.com/automation" },
-                { "@type": "ListItem", position: 4, name: "Performance Marketing", item: "https://digitalpointllc.com/performance-marketing" },
-                { "@type": "ListItem", position: 5, name: "Results", item: "https://digitalpointllc.com/results" },
-                { "@type": "ListItem", position: 6, name: "Free Growth Audit", item: "https://digitalpointllc.com/free-growth-audit" },
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.digitalpointllc.com" },
+                { "@type": "ListItem", position: 2, name: "Remote Workforce", item: "https://www.digitalpointllc.com/remote-workforce" },
+                { "@type": "ListItem", position: 3, name: "Automation", item: "https://www.digitalpointllc.com/automation" },
+                { "@type": "ListItem", position: 4, name: "Performance Marketing", item: "https://www.digitalpointllc.com/performance-marketing" },
+                { "@type": "ListItem", position: 5, name: "Results", item: "https://www.digitalpointllc.com/results" },
+                { "@type": "ListItem", position: 6, name: "Free Growth Audit", item: "https://www.digitalpointllc.com/free-growth-audit" },
               ],
             }),
           }}

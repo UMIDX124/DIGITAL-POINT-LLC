@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Marketing Dashboard Cost Calculator: Estimate Build vs Buy Costs',
   description: 'Calculate the true cost of building a custom marketing dashboard vs buying off-the-shelf. Compare tools like Looker, Tableau, Power BI, and custom solutions.',
   keywords: ['marketing dashboard cost', 'dashboard calculator', 'looker cost', 'tableau pricing', 'custom dashboard cost', 'marketing reporting cost'],
-  alternates: { canonical: 'https://digitalpointllc.com/tools/dashboard-cost-calculator' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/tools/dashboard-cost-calculator' },
   openGraph: {
     title: 'Marketing Dashboard Cost Calculator · Digital Point LLC',
     description: 'Estimate the true cost of your marketing dashboard: build vs buy, team costs, and tool licensing.',
@@ -27,7 +27,7 @@ export default function DashboardCostCalculatorPage() {
       <ToolSchema
         name="Marketing Dashboard Cost Calculator"
         description="Free calculator to estimate the cost of building or buying a marketing dashboard solution."
-        url="https://digitalpointllc.com/tools/dashboard-cost-calculator"
+        url="https://www.digitalpointllc.com/tools/dashboard-cost-calculator"
       />
       <FAQSchema faqs={faqs} />
       <DashboardCostCalculator faqs={faqs} />

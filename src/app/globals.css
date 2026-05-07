@@ -317,13 +317,17 @@
      Surface elevation differential: bg-canvas → bg-secondary →
      bg-elevated each step lifts ~5% luminance with a subtle warm
      undertone so multi-layer depth reads even at low intensities. */
-  --bg-canvas: #0A0908;            /* charcoal w/ warm undertone, NOT pure black */
-  --bg-primary: #0A0908;
-  --bg-secondary: #131110;         /* slightly lifted, warm */
-  --bg-tertiary: #0F0E0C;          /* alt rows, marginally lifted */
-  --bg-elevated: #1A1714;          /* cards, modals, popovers */
-  --bg-warm: #1F1612;              /* premium warm-tinted dark, hero zones */
-  --bg-cool: #0E1413;              /* cool-tinted dark, jade-accent zones */
+  /* Phase 20.1.8 — UF "abhi b dark p kaam hona". Tones recalibrated
+     for richer dark with warm undertones (NOT pure black, NOT washed
+     out). Each step now lifts ~7% with stronger warm bias so layered
+     surfaces read as separate planes instead of one flat slab. */
+  --bg-canvas: #060503;            /* charcoal w/ warm undertone, deeper than v1 */
+  --bg-primary: #060503;
+  --bg-secondary: #100C09;         /* warm-lifted */
+  --bg-tertiary: #0B0907;          /* alt rows, marginally lifted */
+  --bg-elevated: #1C1813;          /* cards, modals, popovers */
+  --bg-warm: #251812;              /* premium warm-tinted dark, hero zones */
+  --bg-cool: #0E1717;              /* cool-tinted dark, jade-accent zones */
 
   /* --- Primary amber + warm/cool secondary accents --- */
   --accent-primary: #FF8800;       /* phosphor amber, brand primary */
@@ -455,10 +459,16 @@
        multi-layer paint cost. Replaces the Phase 19 single-amber wash
        that the repo owner flagged as "too dark, colors not special." */
     background-color: var(--bg-canvas);
+    /* Phase 20.1.8 — atmosphere recomp. Warmer amber + copper bias
+       upper bands; cooler jade-tide pull on lower thirds. Each wash
+       slightly stronger than v1 so colors read as actual lighting,
+       not faint tints. Compatibility: still no fixed attachment, so
+       compositor caches the gradient as a static layer. */
     background-image:
-      radial-gradient(ellipse 70% 50% at 18% 22%, rgba(255, 136, 0, 0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 40% at 88% 38%, rgba(194, 111, 60, 0.09) 0%, transparent 65%),
-      radial-gradient(ellipse 80% 50% at 8% 88%, rgba(44, 95, 90, 0.08) 0%, transparent 70%);
+      radial-gradient(ellipse 75% 55% at 16% 18%, rgba(255, 136, 0, 0.18) 0%, transparent 62%),
+      radial-gradient(ellipse 65% 45% at 92% 40%, rgba(194, 111, 60, 0.14) 0%, transparent 68%),
+      radial-gradient(ellipse 90% 55% at 6% 90%, rgba(44, 95, 90, 0.14) 0%, transparent 72%),
+      radial-gradient(ellipse 50% 35% at 78% 92%, rgba(140, 107, 63, 0.10) 0%, transparent 70%);
     /* Phase 18.6 P7 perf-pass — background-attachment: fixed REMOVED.
        Fixed-attachment + radial-gradient was forcing a full repaint on
        every scroll frame (compositor couldn't accelerate). Default

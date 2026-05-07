@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   keywords: ['average cac by industry', 'customer acquisition cost benchmarks', 'cac benchmarks 2026', 'b2b cac', 'b2c cac', 'cost per acquisition by industry'],
   alternates: { canonical: 'https://www.digitalpointllc.com/research/average-cac-by-industry' },
   openGraph: {
-    title: 'Average CAC by Industry: 2026 Benchmarks · Digital Point LLC',
+    title: 'Average CAC by Industry: 2026 Benchmarks',
     description: 'Customer acquisition cost benchmarks across 18 industries. B2B vs B2C breakdowns and channel-level data.',
   },
 };

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'Attribution, dashboards, CRM structure, and marketing automation. The infrastructure that lets you make decisions with confidence.',
   openGraph: {
-    title: 'Systems & Reporting · Digital Point LLC',
+    title: 'Systems & Reporting',
     description:
       'Attribution, dashboards, CRM structure, and marketing automation for growth companies.',
     url: 'https://www.digitalpointllc.com/systems-reporting',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Systems & Reporting · Digital Point LLC',
+    title: 'Systems & Reporting',
     description: 'Attribution, dashboards, CRM structure. The layer that makes the work legible.',
     images: ['/og-image.png'],
   },

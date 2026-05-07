@@ -11,12 +11,12 @@ import { FAQSection } from '@/components/sections/FAQSection';
 import { RelatedLinks } from '@/components/sections/RelatedLinks';
 
 export const metadata: Metadata = {
-  title: 'FAQ · Digital Point LLC',
+  title: 'FAQ',
   description:
     'Common questions about how Digital Point deploys AI agents, automation, and trained operators that replace operations headcount.',
   alternates: { canonical: 'https://www.digitalpointllc.com/faq' },
   openGraph: {
-    title: 'FAQ · Digital Point LLC',
+    title: 'FAQ',
     description:
       'Common questions about how Digital Point deploys AI agents, automation, and trained operators that replace operations headcount.',
     url: 'https://www.digitalpointllc.com/faq',

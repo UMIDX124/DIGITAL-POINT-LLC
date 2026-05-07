@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'Paid acquisition across Meta, Google, LinkedIn & TikTok. We optimize CAC, ROAS, and scale ad spend profitably with full attribution tracking.',
   openGraph: {
-    title: 'Performance Marketing · Digital Point LLC',
+    title: 'Performance Marketing',
     description:
       'Paid acquisition across Meta, Google, LinkedIn & TikTok. We optimize CAC, ROAS, and scale ad spend profitably.',
     url: 'https://www.digitalpointllc.com/performance-marketing',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Performance Marketing · Digital Point LLC',
+    title: 'Performance Marketing',
     description: 'Paid acquisition across Meta, Google, LinkedIn, TikTok. CAC + ROAS optimized.',
     images: ['/og-image.png'],
   },

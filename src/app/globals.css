@@ -848,10 +848,15 @@ a.text-link:hover,
   color: var(--text-tertiary);
 }
 .service-name {
-  font-size: var(--text-service-row);
+  font-size: clamp(1.5rem, 7vw, var(--fs-4xl));
   color: var(--text-primary);
   line-height: var(--lh-snug);
   letter-spacing: var(--ls-tight);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+@media (min-width: 768px) {
+  .service-name { font-size: var(--text-service-row); }
 }
 
 /* Phase 7 — LetterHoverText (CSS-only per-character transitions).

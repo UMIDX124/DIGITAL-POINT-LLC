@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'Managed remote teams for marketing ops, creative production, analytics, and execution support. Vetted specialists without the hiring overhead.',
   openGraph: {
-    title: 'Remote Workforce · Digital Point LLC',
+    title: 'Remote Workforce',
     description:
       'Managed remote teams for marketing ops, creative production, analytics, and execution support.',
     url: 'https://www.digitalpointllc.com/remote-workforce',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Remote Workforce · Digital Point LLC',
+    title: 'Remote Workforce',
     description: 'Managed remote teams without the hiring overhead.',
     images: ['/og-image.png'],
   },

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   keywords: ['google ads roas benchmarks', 'google ads roas by industry', 'search ads roas', 'performance max roas', 'youtube ads roas', 'google display ads roas'],
   alternates: { canonical: 'https://www.digitalpointllc.com/research/google-ads-roas-benchmarks' },
   openGraph: {
-    title: 'Google Ads ROAS Benchmarks by Industry · Digital Point LLC',
+    title: 'Google Ads ROAS Benchmarks by Industry',
     description: 'ROAS benchmarks for Search, Display, YouTube, and PMax campaigns across 12 industries.',
   },
 };

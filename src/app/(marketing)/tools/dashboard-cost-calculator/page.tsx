@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   keywords: ['marketing dashboard cost', 'dashboard calculator', 'looker cost', 'tableau pricing', 'custom dashboard cost', 'marketing reporting cost'],
   alternates: { canonical: 'https://www.digitalpointllc.com/tools/dashboard-cost-calculator' },
   openGraph: {
-    title: 'Marketing Dashboard Cost Calculator · Digital Point LLC',
+    title: 'Marketing Dashboard Cost Calculator',
     description: 'Estimate the true cost of your marketing dashboard: build vs buy, team costs, and tool licensing.',
   },
 };

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'Real problems. Real fixes. Measurable outcomes. See how DPL deployed AI agents and automation that replaced operations headcount across CRM, ops, and reporting workflows.',
   openGraph: {
-    title: 'Results & Case Studies · Digital Point LLC',
+    title: 'Results & Case Studies',
     description:
       'Real problems. Real fixes. Measurable outcomes across AI agent deployments, automation engineering, and operator-backed workflows.',
     url: 'https://www.digitalpointllc.com/results',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Results & Case Studies · Digital Point LLC',
+    title: 'Results & Case Studies',
     description: 'Real problems. Real fixes. Measurable outcomes across AI agent deployments, automation engineering, and operator-backed workflows.',
   },
   alternates: {

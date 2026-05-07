@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   keywords: ['remote workforce cost analysis', 'remote team cost comparison', 'outsourcing cost savings', 'remote marketing team cost', 'offshore team costs', 'managed remote team pricing'],
   alternates: { canonical: 'https://www.digitalpointllc.com/research/remote-workforce-cost-analysis' },
   openGraph: {
-    title: 'Remote Workforce Cost Analysis: US vs Remote Teams · Digital Point LLC',
+    title: 'Remote Workforce Cost Analysis: US vs Remote Teams',
     description: 'Cost comparison of US in-house vs managed remote teams across 8 role categories.',
   },
 };

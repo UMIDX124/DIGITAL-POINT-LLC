@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   keywords: ['marketing attribution statistics', 'attribution model adoption', 'multi-touch attribution', 'marketing measurement 2026', 'ios tracking impact', 'cookie deprecation impact'],
   alternates: { canonical: 'https://www.digitalpointllc.com/research/marketing-attribution-statistics' },
   openGraph: {
-    title: 'Marketing Attribution Statistics 2026 · Digital Point LLC',
+    title: 'Marketing Attribution Statistics 2026',
     description: 'Attribution model adoption rates, tracking accuracy, and privacy impact data for 2026.',
   },
 };

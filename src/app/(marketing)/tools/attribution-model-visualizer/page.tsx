@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   keywords: ['attribution model visualizer', 'marketing attribution', 'multi-touch attribution', 'first click attribution', 'last click attribution', 'linear attribution'],
   alternates: { canonical: 'https://www.digitalpointllc.com/tools/attribution-model-visualizer' },
   openGraph: {
-    title: 'Marketing Attribution Model Visualizer · Digital Point LLC',
+    title: 'Marketing Attribution Model Visualizer',
     description: 'Compare how first-click, last-click, linear, time-decay, and position-based models distribute conversion credit.',
   },
 };

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     'Lead capture, document parsing, follow-up, reporting, portfolio monitoring. Operator-built AI workflows, operated as a service.',
   alternates: { canonical: 'https://www.digitalpointllc.com/automation' },
   openGraph: {
-    title: 'Automation · Digital Point LLC',
+    title: 'Automation',
     description:
       'Operator-built AI workflows for lead capture, document parsing, follow-up, reporting, and portfolio monitoring. Operated as a service.',
     url: 'https://www.digitalpointllc.com/automation',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Automation · Digital Point LLC',
+    title: 'Automation',
     description: 'AI workflows that run the boring parts. Operated as a service.',
     images: ['/og-image.png'],
   },

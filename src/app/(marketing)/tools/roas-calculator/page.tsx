@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   keywords: ['roas calculator', 'return on ad spend', 'advertising roi', 'roas formula', 'ad spend calculator'],
   alternates: { canonical: 'https://www.digitalpointllc.com/tools/roas-calculator' },
   openGraph: {
-    title: 'Free ROAS Calculator · Digital Point LLC',
+    title: 'Free ROAS Calculator',
     description: 'Calculate your true Return on Ad Spend. Compare platform-reported vs. blended ROAS.',
   },
 };

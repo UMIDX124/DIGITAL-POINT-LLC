@@ -4,17 +4,17 @@ import { BlogListPage } from './BlogListPage';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
-  title: 'Blog & Resources · Digital Point LLC',
+  title: 'Blog & Resources',
   description: 'Field notes from running AI in production: agent stacks, automation engineering, operator workflows. What works, what breaks, and what we ship next.',
   openGraph: {
-    title: 'Blog & Resources · Digital Point LLC',
+    title: 'Blog & Resources',
     description: 'Field notes from running AI in production: agent stacks, automation engineering, operator workflows. What works, what breaks, and what we ship next.',
     url: 'https://www.digitalpointllc.com/blog',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blog & Resources · Digital Point LLC',
+    title: 'Blog & Resources',
     description: 'Field notes from running AI in production: agent stacks, automation engineering, operator workflows. What works, what breaks, and what we ship next.',
   },
   alternates: { canonical: 'https://www.digitalpointllc.com/blog' },

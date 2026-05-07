@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     'Forty-five minutes. We map where AI agents could be running your repeatable work, where automation could remove handoffs, and where operators are still earning their seat. You leave with a deployment-ready blueprint, no agency retainer attached.',
   openGraph: {
-    title: 'Book a Free Audit · Digital Point LLC',
+    title: 'Book a Free Audit',
     description:
       "We map where AI agents could be running your repeatable work and where automation could replace handoffs. Deployment-ready blueprint in 45 minutes.",
     url: 'https://www.digitalpointllc.com/free-growth-audit',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Book a Free Audit · Digital Point LLC',
+    title: 'Book a Free Audit',
     description:
       'Deployment-ready AI + automation blueprint in 45 minutes. No retainer attached.',
     images: ['https://www.digitalpointllc.com/og-image.png'],

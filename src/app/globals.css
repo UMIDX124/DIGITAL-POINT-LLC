@@ -7,6 +7,25 @@
    ============================================================ */
 
 @theme inline {
+  /* Legacy aliases — surviving page-level components (AuditPage form)
+     pull these CSS variables. Map them onto the canonical new tokens
+     so the form renders cleanly without a full rewrite. */
+  --accent-bright: #ff8800;
+  --accent-primary: #ff8800;
+  --text-primary: #f5f5f7;
+  --text-secondary: #a1a1aa;
+  --text-muted: #969aa3;
+  --text-tertiary: #969aa3;
+  --color-text-muted-legacy: #8d8d96;
+  --maxw-heading-display: 88rem;
+  --maxw-heading-section: 56rem;
+  --bg-canvas: #0a0a0a;
+  --bg-elevated: #161616;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-bright: rgba(255, 136, 0, 0.30);
+  --section-top: clamp(7rem, 14vw, 12rem);
+  --section-sm: clamp(3rem, 6vw, 5rem);
+
   /* Canvas — off-black, less harsh than #000 */
   --color-canvas: #0a0a0a;
   --color-canvas-raised: #111111;
@@ -18,11 +37,11 @@
   --color-accent-soft: #c26800;
   --color-accent-faint: rgba(255, 136, 0, 0.12);
 
-  /* Text — cool greys, calm contrast */
+  /* Text — cool greys, WCAG AA contrast on canvas (#0a0a0a). */
   --color-text-primary: #f5f5f7;
   --color-text-secondary: #a1a1aa;
-  --color-text-tertiary: #71717a;
-  --color-text-muted: #52525b;
+  --color-text-tertiary: #969aa3;
+  --color-text-muted: #8d8d96;
 
   /* Lines + borders */
   --color-line-faint: rgba(255, 255, 255, 0.06);
@@ -110,19 +129,24 @@
   box-sizing: border-box;
 }
 
+:root {
+  color-scheme: dark;
+  background-color: #0a0a0a;
+}
+
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
-  background: var(--color-canvas);
+  background-color: #0a0a0a;
   color-scheme: dark;
 }
 
 body {
   margin: 0;
-  background: var(--color-canvas);
-  color: var(--color-text-primary);
+  background-color: #0a0a0a;
+  color: #f5f5f7;
   font-family: var(--font-sans);
   font-feature-settings: "ss01", "cv11";
   font-size: var(--text-base);
@@ -231,10 +255,14 @@ select {
 
 .section {
   padding-block: var(--section-y);
+  background: var(--color-canvas);
+  position: relative;
 }
 
 .section-sm {
   padding-block: var(--section-y-sm);
+  background: var(--color-canvas);
+  position: relative;
 }
 
 .section-divider {
@@ -492,14 +520,11 @@ html[data-i-seen="1"] .dpl-intro-loader {
    ============================================================ */
 
 [data-reveal] {
-  opacity: 0;
   transform: translateY(12px);
-  transition: opacity var(--motion-deliberate) var(--ease-out),
-    transform var(--motion-deliberate) var(--ease-out);
+  transition: transform var(--motion-deliberate) var(--ease-out);
 }
 
 [data-reveal].is-visible {
-  opacity: 1;
   transform: none;
 }
 
@@ -535,26 +560,14 @@ html[data-i-seen="1"] .dpl-intro-loader {
   position: relative;
   padding-block: clamp(7rem, 14vw, 12rem) var(--section-y);
   overflow: hidden;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background:
+  background-color: #0a0a0a;
+  background-image:
     radial-gradient(60% 40% at 50% 0%, rgba(255, 136, 0, 0.08), transparent 70%),
     radial-gradient(40% 30% at 100% 100%, rgba(255, 136, 0, 0.04), transparent 70%);
 }
 
-.hero-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.015) 0 1px, transparent 1px 96px),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.015) 0 1px, transparent 1px 96px);
-  mask-image: radial-gradient(60% 60% at 50% 40%, #000 30%, transparent 80%);
+.hero-bg {
+  display: none;
 }
 
 .hero-inner {
@@ -887,6 +900,9 @@ html[data-i-seen="1"] .dpl-intro-loader {
   color: var(--color-text-secondary);
   font-size: var(--text-sm);
   transition: color var(--motion-fast) var(--ease-out);
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
 }
 
 .dpl-footer__link:hover {
@@ -969,6 +985,10 @@ html[data-i-seen="1"] .dpl-intro-loader {
 
 .dpl-nav__link {
   transition: color var(--motion-fast) var(--ease-out);
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-inline: 0.25rem;
 }
 
 .dpl-nav__link:hover {
@@ -1082,22 +1102,18 @@ html[data-i-seen="1"] .dpl-intro-loader {
 
 @keyframes hero-sub-in {
   from {
-    opacity: 0;
     transform: translateY(10px);
   }
   to {
-    opacity: 1;
     transform: none;
   }
 }
 
 @keyframes hero-cta-in {
   from {
-    opacity: 0;
     transform: translateY(8px);
   }
   to {
-    opacity: 1;
     transform: none;
   }
 }
@@ -1112,15 +1128,11 @@ html[data-i-seen="1"] .dpl-intro-loader {
 
 /* Reveal on scroll — pillar cards stagger when entering view */
 .pillar-grid > .pillar-card {
-  opacity: 0;
   transform: translateY(16px);
-  transition:
-    opacity 0.6s var(--ease-out),
-    transform 0.6s var(--ease-out);
+  transition: transform 0.6s var(--ease-out);
 }
 
 .pillar-grid.is-revealed > .pillar-card {
-  opacity: 1;
   transform: none;
 }
 

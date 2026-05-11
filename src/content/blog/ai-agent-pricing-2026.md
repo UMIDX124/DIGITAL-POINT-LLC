@@ -1,6 +1,6 @@
 ---
-title: "What an AI agent really costs in 2026"
-excerpt: "Audit fees, pilot costs, monthly retainers, hidden integration tax, and platform alternatives — the full pricing map for AI agent engagements in 2026, with numbers nobody else publishes."
+title: "What an AI agent costs in 2026"
+excerpt: "Audit fees, pilot costs, monthly retainers, hidden integration tax, and platform alternatives. The full pricing map for AI agent engagements in 2026, with numbers nobody else publishes."
 date: "2026-05-12"
 lastModified: "2026-05-12"
 author: "Digital Point LLC"
@@ -13,11 +13,11 @@ tags:
 indexable: true
 faqs:
   - question: "What is a fair price for an AI Agent Readiness Audit?"
-    answer: "Market range in 2026 is $5,000 to $15,000 for a 2-to-4-week roadmap audit. DPL offers the audit free at $0 because the AI runs the work in our model, not a 6-person account team. Either pricing is defensible if anchored on the math — what is not defensible is a vague 'starts at' or 'request a quote' page that hides the actual range."
-  - question: "Are AI automation agency retainers really cheaper than hiring in-house?"
-    answer: "Yes, by a wide margin once the agent stack carries the workload. A four-person ops team (Ops Manager + Reporting Analyst + Lead Coordinator + QA Reviewer) is approximately $400K fully loaded in 2026 US salary bands. A DPL retainer is $2,500/month or $30K/year. The same coverage at 13× lower cost only works if the AI actually runs the work — which is why production-grade observability and operator backstop matter more than the price."
+    answer: "Market range in 2026 is $5,000 to $15,000 for a 2-to-4-week roadmap audit. DPL offers the audit free at $0 because the AI runs the work in our model, not a 6-person account team. Either pricing is defensible if anchored on the math. What is not defensible is a vague 'starts at' or 'request a quote' page that hides the actual range."
+  - question: "Are AI automation agency retainers cheaper than hiring in-house?"
+    answer: "Yes, by a wide margin once the agent stack carries the workload. A four-person ops team (Ops Manager + Reporting Analyst + Lead Coordinator + QA Reviewer) is approximately $400K fully loaded in 2026 US salary bands. A DPL retainer is $2,500/month or $30K/year. The same coverage at 13× lower cost only works if the AI runs the work. Which is why production-grade observability and operator backstop matter more than the price."
   - question: "What hidden costs should I expect on top of an agency retainer?"
-    answer: "Integration work is the largest hidden cost — budget 20% to 40% extra on top of platform or retainer fees to cover CRM, helpdesk, and database connectors. Token spend for the underlying LLM is variable; expect $50 to $500 per month per workflow at moderate volume. Premium support tiers and pay-per-interaction overages on platforms can double the listed monthly price if the agent has a busy month. DPL retainers absorb token cost up to documented thresholds."
+    answer: "Integration work is the largest hidden cost. Budget 20% to 40% extra on top of platform or retainer fees to cover CRM, helpdesk, and database connectors. Token spend for the underlying LLM is variable; expect $50 to $500 per month per workflow at moderate volume. Premium support tiers and pay-per-interaction overages on platforms can double the listed monthly price if the agent has a busy month. DPL retainers absorb token cost up to documented thresholds."
 ---
 
 Most AI automation agencies do not publish pricing. The buyer guides keep saying it. The reviews keep saying it. Open ten agency websites today and you will see the same pattern: feature lists, case study teasers, and a "Contact us" button that opens a discovery flow before anyone says a number.
@@ -36,11 +36,11 @@ What you should get for $5,000 to $15,000: a written deployment plan, an invento
 
 DPL prices the audit at $0 because we recover the cost inside the first month of any engagement that turns into a pilot. The trade-off is full transparency: the audit goes through a co-founder, not a junior consultant, and we tell you when we cannot help.
 
-### 2. Pilot — one workflow, scoped and shipped
+### 2. Pilot. One workflow, scoped and shipped
 
 Pilot pricing splits into two market segments.
 
-For a simple workflow automation (one trigger, two-to-three steps, one API connector), $1,500 to $2,500 fixed-fee is the going rate. The DPL pilot lands at $2,500 fixed for 30 days, scoped to one workflow operated in production with a real-time Slack channel attached. The pilot is operationally loaded — meaning we run the workflow during the 30 days, not just hand you the build and walk away.
+For a simple workflow automation (one trigger, two-to-three steps, one API connector), $1,500 to $2,500 fixed-fee is the going rate. The DPL pilot lands at $2,500 fixed for 30 days, scoped to one workflow operated in production with a real-time Slack channel attached. The pilot is operationally loaded. Meaning we run the workflow during the 30 days, not hand you the build and walk away.
 
 For a more complex multi-step AI agent build (LLM planner, three or more tool calls, state persistence, retry logic, an operator review queue), $5,000 to $15,000 fixed-fee is typical. [Arsum's 2026 pricing breakdown](https://arsum.com/blog/posts/ai-automation-agency-pricing/) and [Braincuber's pricing guide](https://www.braincuber.com/blog/ai-agents-pricing-guide-what-does-it-actually-cost) both place the bulk of pilots in this band.
 
@@ -50,19 +50,19 @@ What the price floor of $1,500 buys you in 2026: a Zapier-only build with no obs
 
 If the engagement scope is "build me a real production agent from scratch," the market range jumps to $25,000 for a structured MVP and $300,000+ for a true enterprise-grade agentic system. Custom voice agents (branded customer service bots, AI narrators) run $2,000 to $25,000+ depending on the depth of integration and the number of intent paths.
 
-Salesforce Agentforce implementations sit at the top of this range — $50,000 to $150,000 implementation plus $10,000 to $25,000 per month ongoing consulting per the [Fin.ai pricing comparison](https://fin.ai/learn/ai-customer-service-agent-pricing-comparison). This is where enterprise AI buyers end up if they shop on the "established platforms" axis instead of the agency-managed axis.
+Salesforce Agentforce implementations sit at the top of this range. $50,000 to $150,000 implementation plus $10,000 to $25,000 per month ongoing consulting per the [Fin.ai pricing comparison](https://fin.ai/learn/ai-customer-service-agent-pricing-comparison). This is where enterprise AI buyers end up if they shop on the "established platforms" axis instead of the agency-managed axis.
 
-### 4. Monthly retainer — production operations
+### 4. Monthly retainer. Production operations
 
 Once the agent is shipping production work, the engagement shifts to retainer.
 
 | Tier | Monthly retainer | What it buys |
 |---|---|---|
-| SMB / off-the-shelf | $500 – $5,000 | Monitoring, model swaps, retry queue management. One or two workflows. |
-| Production-grade | $3,000 – $15,000 | Multiple production workflows, drift detection, weekly narrative reports, operator escalation. |
-| Enterprise | $10,000 – $25,000+ | Compliance-sensitive workflows, custom integrations, on-call SLAs. |
+| SMB / off-the-shelf | $500 to $5,000 | Monitoring, model swaps, retry queue management. One or two workflows. |
+| Production-grade | $3,000 to $15,000 | Multiple production workflows, drift detection, weekly narrative reports, operator escalation. |
+| Enterprise | $10,000 to $25,000+ | Compliance-sensitive workflows, custom integrations, on-call SLAs. |
 
-DPL sits in the SMB tier at $2,500/month, deliberately. The math anchor that makes it work: a four-person ops team (Ops Manager + Reporting Analyst + Lead Coordinator + QA Reviewer) at $80K-$100K base each is approximately $400K fully loaded annually. Our retainer at $30K/year is 13× lower. The savings exist because the AI runs the workflow, operators audit exceptions, and co-founders sign off — there is no 6-person account ladder to fund.
+DPL sits in the SMB tier at $2,500/month, deliberately. The math anchor that makes it work: a four-person ops team (Ops Manager + Reporting Analyst + Lead Coordinator + QA Reviewer) at $80K-$100K base each is approximately $400K fully loaded annually. Our retainer at $30K/year is 13× lower. The savings exist because the AI runs the workflow, operators audit exceptions, and co-founders sign off. There is no 6-person account ladder to fund.
 
 ### 5. The hidden 20-40% integration tax
 
@@ -72,7 +72,7 @@ Token costs are the second line item people miss. Most production agents using A
 
 ## What this means for buyers in three sentences
 
-If the agency lists pricing publicly, anchor your evaluation on whether their math story holds — what they charge versus what the in-house alternative would cost.
+If the agency lists pricing publicly, anchor your evaluation on whether their math story holds. What they charge versus what the in-house alternative would cost.
 
 If the agency refuses to publish a range and only offers a discovery call, treat that as a 20-40% price premium baked into the obscurity.
 
@@ -88,4 +88,4 @@ We publish ours in full and stand behind it on the [/pricing](/pricing) page.
 - **Recovery Diagnosis:** $5,000 fixed for 2 weeks. 30-criteria audit of an existing agent stack. Written report and 1-hour walkthrough call.
 - **Recovery Fix:** $10,000 fixed for 4 weeks. Production fix with proper observability, retries, rollback path, and operator handover.
 
-If you want to vet our pricing against the rest of the market before booking, [run our 10-question diagnostic](/diagnostic) — it scores your existing agent stack against the same 30-criteria checklist that drives our recovery service. No email required.
+If you want to vet our pricing against the rest of the market before booking, [run our 10-question diagnostic](/diagnostic). It scores your existing agent stack against the same 30-criteria checklist that drives our recovery service. No email required.

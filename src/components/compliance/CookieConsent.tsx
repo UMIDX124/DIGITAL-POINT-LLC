@@ -94,8 +94,14 @@ export default function CookieConsent() {
           {' '}
           <a
             href="/cookies"
-            className="underline whitespace-nowrap"
-            style={{ color: 'var(--text-tertiary)' }}
+            className="whitespace-nowrap"
+            style={{
+              color: 'var(--color-text-primary)',
+              textDecoration: 'underline',
+              textDecorationColor: 'var(--color-accent)',
+              textDecorationThickness: '1px',
+              textUnderlineOffset: '2px',
+            }}
           >
             Details
           </a>
@@ -119,8 +125,8 @@ export default function CookieConsent() {
             onClick={() => set('accepted')}
             className="px-2.5 py-1 rounded text-[11px] font-semibold transition-opacity hover:opacity-90 whitespace-nowrap"
             style={{
-              background: 'var(--accent-bright)',
-              color: 'var(--cta-text-on-amber)',
+              background: 'var(--color-accent)',
+              color: '#0a0a0a',
             }}
           >
             Accept

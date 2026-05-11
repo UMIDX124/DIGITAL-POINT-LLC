@@ -31,7 +31,7 @@ export function Navigation() {
           <Link
             href="/audit"
             className="btn btn-primary"
-            style={{ height: '2.25rem', paddingInline: '0.875rem' }}
+            style={{ minHeight: '2.75rem', paddingInline: '1rem' }}
           >
             Book audit
           </Link>

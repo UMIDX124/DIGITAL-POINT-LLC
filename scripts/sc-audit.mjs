@@ -1,0 +1,11 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch();
+const ctx = await b.newContext({ viewport: { width: 1440, height: 900 } });
+const p = await ctx.newPage();
+await p.goto('http://localhost:3110/audit', { waitUntil: 'domcontentloaded', timeout: 20000 });
+await p.waitForTimeout(2500);
+await p.screenshot({ path: '/tmp/audit-form-1.png', fullPage: false });
+await p.evaluate(() => window.scrollBy(0, 600));
+await p.waitForTimeout(500);
+await p.screenshot({ path: '/tmp/audit-form-2.png', fullPage: false });
+await b.close();

@@ -1,6 +1,6 @@
 ---
-title: "n8n vs Lindy vs custom code: which AI agent stack should you actually pick"
-excerpt: "An operator-level breakdown of the three real choices for shipping AI agents in 2026 — n8n self-hosted, a Lindy/Relevance/Stack platform, or custom TypeScript — with the cost curve, tradeoffs, and the decision rule we use on real engagements."
+title: "n8n vs Lindy vs custom code: which AI agent stack should you pick"
+excerpt: "An operator-level breakdown of the three real choices for shipping AI agents in 2026. N8n self-hosted, a Lindy/Relevance/Stack platform, or custom TypeScript. With the cost curve, tradeoffs, and the decision rule we use on real engagements."
 date: "2026-05-12"
 lastModified: "2026-05-12"
 author: "Digital Point LLC"
@@ -18,7 +18,7 @@ faqs:
     answer: "Self-host on a $20/month VM if you have anyone who can run a Linux service. The cost curve stays flat as workflow volume grows, your data does not leave your infrastructure, and the AI agent nodes are the deepest of the three major orchestration platforms. Use n8n Cloud only if compliance forbids self-hosting or if your team has zero infrastructure ownership."
   - question: "Is Lindy a competitor or a complement to a DPL engagement?"
     answer: "Lindy is a complement for a narrow slice of use cases (inbox, calendar, meeting follow-up). For anything that touches your CRM, billing, document parsing, or multi-step business workflows, it's a starting point that hits a ceiling fast. We have clients who use Lindy for the personal-assistant layer alongside a DPL-operated stack on the production-workflow layer."
-  - question: "When does custom code actually beat both n8n and Lindy?"
+  - question: "When does custom code beat both n8n and Lindy?"
     answer: "When the workflow needs sub-second latency, custom retry semantics, deep integration with internal services, or compliance posture that platform-hosted runners cannot offer. Roughly 15-20% of our deployments end up custom TypeScript on Vercel Functions or a self-hosted service. The other 80% is faster and cheaper to ship on n8n with a thin custom-code layer for the irregular bits."
 ---
 
@@ -40,11 +40,11 @@ The cost curve is the second headline feature. At moderate volume (10-50 workflo
 
 Lindy, Relevance AI, Stack AI, and Beam AI are the four most-discussed platforms in 2026. They serve different segments.
 
-**Lindy** ($49.99/month entry, custom for enterprise) is the easiest to start with and the broadest in scope. It positions as a "personal AI work assistant" — inbox, meetings, calendar, follow-ups, ad hoc tool use. The deployment model is fully no-code. It is great for solo founders and small teams who need an AI layer on their personal workflows. It hits a ceiling fast on multi-step business workflows that touch your CRM at scale.
+**Lindy** ($49.99/month entry, custom for enterprise) is the easiest to start with and the broadest in scope. It positions as a "personal AI work assistant". Inbox, meetings, calendar, follow-ups, ad hoc tool use. The deployment model is fully no-code. It is great for solo founders and small teams who need an AI layer on their personal workflows. It hits a ceiling fast on multi-step business workflows that touch your CRM at scale.
 
-**Relevance AI** is closest in positioning to DPL — its hero copy is literally "Scale GTM results, without scaling headcount", which is almost identical to ours. The difference is they are a self-serve platform; you log in and configure agents yourself. The deployment is faster than custom code but locks you into their platform pricing as volume grows.
+**Relevance AI** is closest in positioning to DPL. Its hero copy is "Scale GTM results, without scaling headcount", which is almost identical to ours. The difference is they are a self-serve platform; you log in and configure agents yourself. The deployment is faster than custom code but locks you into their platform pricing as volume grows.
 
-**Stack AI** targets regulated enterprises — finance, healthcare, legal, operations — with SOC 2 Type II, ISO 27001, HIPAA, and GDPR compliance baked in. Pricing is custom. If you are buying for a Fortune 500, this is on your shortlist. If you are a $1M-$50M ARR mid-market company, it is overkill and overpriced.
+**Stack AI** targets regulated enterprises. Finance, healthcare, legal, operations. With SOC 2 Type II, ISO 27001, HIPAA, and GDPR compliance baked in. Pricing is custom. If you are buying for a Fortune 500, this is on your shortlist. If you are a $1M-$50M ARR mid-market company, it is overkill and overpriced.
 
 **Beam AI** anchors on "your 200-page SOP becomes a working agent" and serves Fortune 500 BPO, HR, banking, and insurance operations. Custom pricing, value-based. Strong if your problem is replacing a documented manual process; less applicable if you are inventing the workflow.
 
@@ -60,7 +60,7 @@ We pick using three questions, in order:
 
 **Question 1: Does the workflow need to run inside the client's infrastructure for compliance reasons?**
 
-If yes, eliminate Lindy, Relevance, and Beam from consideration. Stack AI is the only platform with full on-prem and VPC deployment options. n8n self-hosted is the other option. Custom code on a self-hosted runner is the third.
+If yes, eliminate Lindy, Relevance, and Beam from consideration. Stack AI is the only platform with full on-prem and VPC deployment options. N8n self-hosted is the other option. Custom code on a self-hosted runner is the third.
 
 If no, all options remain on the table.
 

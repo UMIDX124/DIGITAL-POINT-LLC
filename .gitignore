@@ -57,6 +57,9 @@ server.log
 
 # Upload folder
 /upload/
+
+# Pre-rebrand and editor backup files in public/
+public/*.bak-*
 # Claude Code / Taste Skill local scaffolding
 .agents/
 skills-lock.json

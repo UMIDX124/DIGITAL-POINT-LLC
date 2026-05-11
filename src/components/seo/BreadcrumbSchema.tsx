@@ -1,5 +1,5 @@
 /**
- * BreadcrumbSchema — Phase 20 audit M5.
+ * BreadcrumbSchema. Phase 20 audit M5.
  *
  * Per-route BreadcrumbList JSON-LD. The site-wide BreadcrumbList in root
  * layout.tsx is a global navigation map (always Home → 5 fixed items),

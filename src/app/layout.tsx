@@ -8,12 +8,12 @@ import { Logomark } from "@/components/brand/Logomark";
 import { VisibilityPause } from "@/components/motion/VisibilityPause";
 import { BotIdClient } from "botid/client";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-// Phase 17b 3-restructured A3 — analytics gated on cookie consent.
+// Phase 17b 3-restructured A3. Analytics gated on cookie consent.
 import CookieConsent from "@/components/compliance/CookieConsent";
 import AnalyticsGate from "@/components/compliance/AnalyticsGate";
 
 /**
- * Phase 12 — Instrument Serif served via manual @font-face in globals.css
+ * Phase 12. Instrument Serif served via manual @font-face in globals.css
  * (latin-subset ~10 KB / weight). Regular preloaded selectively in <head>;
  * italic loads on-demand when CSS first references it (hero-em / pullquote).
  * Geist Sans + Mono are already self-hosted via the `geist` npm package.
@@ -128,7 +128,7 @@ export default function RootLayout({
               sameAs: [
                 "https://www.linkedin.com/company/digitalpointllc",
               ],
-              /* Phase 17b 3-reversal E1 — URL-based ContactPoint, no email.
+              /* Phase 17b 3-reversal E1. URL-based ContactPoint, no email.
                  Cosmo on-site chat + audit form are the canonical routes;
                  the deep-anchor URL points at the footer philosophy block
                  explaining the policy. */
@@ -211,15 +211,15 @@ export default function RootLayout({
           }}
         />
 
-        {/* Phase 18.6 P7 perf-pass — Instrument Serif preload tags removed.
+        {/* Phase 18.6 P7 perf-pass. Instrument Serif preload tags removed.
             Browser console warning on production: "preloaded but not used
-            within a few seconds from window load event" — the preload was
+            within a few seconds from window load event". The preload was
             wasted bandwidth + parse cost. @font-face in globals.css uses
             font-display: optional so fonts load on-demand and visible-paint
             uses fallback until ready (Pillar 3R iter 2 CLS fix). Net: drop
             ~20KB of eager font fetch, paint stays stable. */}
 
-        {/* Phase 12 — CSS-only intro loader sessionStorage gate. Inline
+        {/* Phase 12. CSS-only intro loader sessionStorage gate. Inline
             script runs synchronously before paint to mark <html> if the
             intro has been shown this session. CSS in globals.css uses the
             attribute selector to skip the @keyframes when present. */}
@@ -237,11 +237,11 @@ export default function RootLayout({
         className="font-sans antialiased"
         style={{ color: "#F5F5F7" }}
       >
-        {/* Phase 20 audit L5 — skip-to-content link for keyboard users.
+        {/* Phase 20 audit L5. Skip-to-content link for keyboard users.
             Visually hidden until focused, then anchors to <main id="main">
             in (marketing)/layout.tsx. */}
         <a href="#main" className="skip-to-content">Skip to content</a>
-        {/* Phase 18.6 P5/P6 — inline style background:#000000 REMOVED so
+        {/* Phase 18.6 P5/P6. Inline style background:#000000 REMOVED so
             body's globals.css background (subtle radial atmosphere) takes
             effect. Color retained inline so unstyled fallback is readable. */}
         <div className="dpl-intro-loader" aria-hidden="true">
@@ -261,7 +261,7 @@ export default function RootLayout({
         <Toaster />
         <CookieConsent />
         <AnalyticsGate />
-        {/* Phase 20 audit M1 — Vercel Speed Insights for real-user CWV
+        {/* Phase 20 audit M1. Vercel Speed Insights for real-user CWV
             data (LCP, INP, CLS at 75th percentile). Client-only via the
             @vercel/speed-insights/next adapter. */}
         <SpeedInsights />

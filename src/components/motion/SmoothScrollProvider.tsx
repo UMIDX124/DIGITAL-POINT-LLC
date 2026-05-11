@@ -3,7 +3,7 @@
 import { useEffect, useRef, type ReactNode } from 'react';
 
 /**
- * Phase 19 — Lenis smooth-scroll integration with GSAP ScrollTrigger
+ * Phase 19. Lenis smooth-scroll integration with GSAP ScrollTrigger
  * bridge (Stripe / Vercel marketing pattern). Repo-owner authorized
  * supersedure of the Phase 8 "no Lenis" lock.
  *
@@ -21,7 +21,7 @@ import { useEffect, useRef, type ReactNode } from 'react';
  *    just without smooth-wheel inertia).
  * 5. Lenis ticker + gsap.ticker uses lerp 0.085 (snappy but smooth);
  *    duration 1.0; easing: easeOutExpo. Tuned to feel like Stripe
- *    landing — not floaty.
+ *    landing. not floaty.
  *
  * Bundle cost: ~7kb gzipped lenis + ~1kb of integration glue.
  */
@@ -48,7 +48,7 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
       gsap.registerPlugin(ScrollTrigger);
 
       const lenis = new Lenis({
-        /* Phase 20.1.7 — UF flagged residual "halka lag". 0.07 lerp was
+        /* Phase 20.1.7. UF flagged residual "halka lag". 0.07 lerp was
            slow-following (extended catch-up tail = lag feel). Bumped to
            0.10 for snappier wheel response while staying above the
            jittery 0.15+ range. Duration tightened 1.2 → 1.0 so anchor

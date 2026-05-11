@@ -22,7 +22,7 @@ const tools = [
   {
     slug: 'attribution-model-visualizer',
     title: 'Attribution Model Visualizer',
-    description: 'First-click, last-click, linear, time-decay, position-based — compared side by side on your data.',
+    description: 'First-click, last-click, linear, time-decay, position-based. Compared side by side on your data.',
     tags: ['Attribution', 'Analytics'],
   },
   {
@@ -50,7 +50,7 @@ export function ToolsHub() {
 
           <p className="hero-sub text-pretty">
             Five interactive tools to stress-test your marketing math. Calculate ROAS,
-            CAC, profitability, attribution, and dashboard cost — answers in your
+            CAC, profitability, attribution, and dashboard cost. Answers in your
             browser, no account required.
           </p>
 

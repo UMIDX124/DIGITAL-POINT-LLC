@@ -7,25 +7,32 @@ export const metadata: Metadata = {
     'Your AI agent is broken. We fix it. Diagnose in 2 weeks ($5,000), fix in 4 ($10,000), operate from there ($2,500 / month). The only systematic recovery service for production AI agents.',
   alternates: { canonical: 'https://www.digitalpointllc.com/recovery' },
   openGraph: {
-    title: 'AI Agent Recovery — Digital Point',
+    title: 'AI Agent Recovery',
     description:
       'Diagnose in 2 weeks, fix in 4, operate from there. The only systematic recovery service for production AI agents.',
     url: 'https://www.digitalpointllc.com/recovery',
     type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Digital Point. AI Agent Recovery.' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI Agent Recovery',
+    description: 'Your AI agent is broken. We fix it. $5,000 diagnosis, $10,000 fix, $2,500/m operate.',
+    images: ['/og-image.png'],
   },
 };
 
 const criteria = [
-  'Observability — what is the agent actually doing right now',
-  'Retry logic — failure modes, backoff, dead-letter handling',
-  'Drift detection — is the model output still in spec',
-  'Prompt injection resistance — input sanitization, output guarding',
-  'Cost variance — token spend per task, runaway loop detection',
-  'Escalation paths — what happens when the agent gets it wrong',
-  'Data security — who sees what, encryption posture, access scopes',
-  'State management — what does the agent remember between runs',
-  'Tooling integration — webhook health, downstream API stability',
-  'Operator handoff — can a human take over mid-task',
+  'Observability: what is the agent doing right now',
+  'Retry logic: failure modes, backoff, dead-letter handling',
+  'Drift detection: is the model output still in spec',
+  'Prompt injection resistance: input sanitization, output guarding',
+  'Cost variance: token spend per task, runaway loop detection',
+  'Escalation paths: what happens when the agent gets it wrong',
+  'Data security: who sees what, encryption posture, access scopes',
+  'State management: what does the agent remember between runs',
+  'Tooling integration: webhook health, downstream API stability',
+  'Operator handoff: can a human take over mid-task',
 ];
 
 const symptoms = [
@@ -100,7 +107,7 @@ export default function RecoveryPage() {
               The 2024 build wave shipped a lot of agents. By 2026, many of them have stopped working right.
             </h2>
             <p className="section-desc text-pretty">
-              No agency markets recovery systematically. Platforms can&apos;t — they sell
+              No agency markets recovery systematically. Platforms can&apos;t. They sell
               tools. Big consultancies sell &quot;build new.&quot; We&apos;re the operator team
               that diagnoses what broke and ships the fix.
             </p>
@@ -235,7 +242,7 @@ export default function RecoveryPage() {
             <p className="section-desc text-pretty">
               Every DPL retainer ships a Slack Connect channel where every agent
               decision is posted in real time, with PII redaction. Operator interventions,
-              retry attempts, cost-per-task, failure modes — all visible. Platforms hide
+              retry attempts, cost-per-task, failure modes. All visible. Platforms hide
               what their agents do. We show everything.
             </p>
           </div>

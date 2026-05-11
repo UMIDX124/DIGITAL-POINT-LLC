@@ -5,10 +5,10 @@ import { DiagnosticTool } from '@/components/diagnostic/DiagnosticTool';
 export const metadata: Metadata = {
   title: 'Agent Production-Readiness Diagnostic',
   description:
-    'Free 10-question diagnostic. Score your AI agent stack against 30 points of production criteria — observability, retry logic, drift, cost guardrails, escalation, rollback. No email required.',
+    'Free 10-question diagnostic. Score your AI agent stack against 30 points of production criteria. Observability, retry logic, drift, cost guardrails, escalation, rollback. No email required.',
   alternates: { canonical: 'https://www.digitalpointllc.com/diagnostic' },
   openGraph: {
-    title: 'Is your AI agent production-ready? — Digital Point',
+    title: 'Is your AI agent production-ready?',
     description:
       'Free 10-question diagnostic. Score your AI agent stack against 30 points of production criteria. No email required.',
     url: 'https://www.digitalpointllc.com/diagnostic',

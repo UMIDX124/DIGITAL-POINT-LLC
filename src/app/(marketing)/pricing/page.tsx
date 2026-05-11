@@ -6,6 +6,20 @@ export const metadata: Metadata = {
   description:
     'Transparent pricing. Audit free. Pilot $2,500 fixed for 30 days. Retainer $2,500 / month. Recovery service: diagnosis $5,000 / fix $10,000. The agency market does not publish pricing. We do.',
   alternates: { canonical: 'https://www.digitalpointllc.com/pricing' },
+  openGraph: {
+    title: 'Pricing',
+    description:
+      'Audit free. Pilot $2,500 fixed for 30 days. Retainer $2,500 / month. Recovery diagnosis $5,000. We publish what the market hides.',
+    url: 'https://www.digitalpointllc.com/pricing',
+    type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Digital Point. Transparent pricing.' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Pricing',
+    description: 'Audit free. Pilot $2,500. Retainer $2,500/m. We publish what the market hides.',
+    images: ['/og-image.png'],
+  },
 };
 
 const tiers = [

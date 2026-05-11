@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Phase 17b 3-restructured A3 — footer Cookies link wrapper.
+ * Phase 17b 3-restructured A3. footer Cookies link wrapper.
  *
  * Footer.tsx is a server component, so the click-to-reopen-banner handler
  * has to live in a client island. This wrapper reads the link content

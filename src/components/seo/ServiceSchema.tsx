@@ -1,5 +1,5 @@
 /**
- * ServiceSchema — Phase 20 audit H1a.
+ * ServiceSchema. Phase 20 audit H1a.
  *
  * Per-pillar Service JSON-LD. Root layout already ships a single
  * ProfessionalService schema covering the firm; per-page Service schemas
@@ -8,7 +8,7 @@
  * Workflow Automation, Remote Operators, Performance Marketing, Systems
  * & Reporting).
  *
- * Server component, JSON-LD only — zero JS bundle impact.
+ * Server component, JSON-LD only. zero JS bundle impact.
  */
 type ServiceSchemaProps = {
   /** Service name (matches the locked pillar name) */
@@ -19,7 +19,7 @@ type ServiceSchemaProps = {
   url: string;
   /** Free-form service category list (e.g. ['Lead Capture', 'Document Parsing']) */
   serviceTypes?: string[];
-  /** Area served — defaults to Worldwide */
+  /** Area served. defaults to Worldwide */
   areaServed?: string;
 };
 

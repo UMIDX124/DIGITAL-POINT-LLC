@@ -4,7 +4,7 @@ const pillars = [
   {
     index: '01',
     title: 'AI Agents',
-    desc: 'Custom-trained agents that run repeatable knowledge work — CRM updates, lead routing, qualification, follow-up cadences.',
+    desc: 'Custom-trained agents that run repeatable knowledge work. CRM updates, lead routing, qualification, follow-up cadences.',
     href: '/agents',
   },
   {
@@ -16,7 +16,7 @@ const pillars = [
   {
     index: '03',
     title: 'Remote Operators',
-    desc: 'Trained humans audit the edges where automation breaks. Not generic VAs — operators with workflow context.',
+    desc: 'Trained humans audit the edges where automation breaks. Not generic VAs. operators with workflow context.',
     href: '/operators',
   },
 ];

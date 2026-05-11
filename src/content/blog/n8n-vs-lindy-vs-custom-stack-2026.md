@@ -1,6 +1,6 @@
 ---
 title: "n8n vs Lindy vs custom code: which AI agent stack should you pick"
-excerpt: "An operator-level breakdown of the three real choices for shipping AI agents in 2026. N8n self-hosted, a Lindy/Relevance/Stack platform, or custom TypeScript. With the cost curve, tradeoffs, and the decision rule we use on real engagements."
+excerpt: "An operator-level breakdown of the three real choices for shipping AI agents in 2026. n8n self-hosted, a Lindy/Relevance/Stack platform, or custom TypeScript. With the cost curve, tradeoffs, and the decision rule we use on real engagements."
 date: "2026-05-12"
 lastModified: "2026-05-12"
 author: "Digital Point LLC"
@@ -60,7 +60,7 @@ We pick using three questions, in order:
 
 **Question 1: Does the workflow need to run inside the client's infrastructure for compliance reasons?**
 
-If yes, eliminate Lindy, Relevance, and Beam from consideration. Stack AI is the only platform with full on-prem and VPC deployment options. N8n self-hosted is the other option. Custom code on a self-hosted runner is the third.
+If yes, eliminate Lindy, Relevance, and Beam from consideration. Stack AI is the only platform with full on-prem and VPC deployment options. n8n self-hosted is the other option. Custom code on a self-hosted runner is the third.
 
 If no, all options remain on the table.
 

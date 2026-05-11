@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
       });
       ticketId = ticket.id;
     } catch {
-      // Database unavailable (e.g. SQLite on serverless) — continue with email
+      // Database unavailable (e.g. sQLite on serverless). Continue with email
     }
 
     // Route email based on priority (best-effort)
@@ -165,7 +165,7 @@ export async function POST(request: NextRequest) {
         `,
       });
     } catch {
-      // Email service unavailable — still return success to user
+      // Email service unavailable. Still return success to user
     }
 
     return NextResponse.json({

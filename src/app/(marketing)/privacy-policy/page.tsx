@@ -1,370 +1,208 @@
 import type { Metadata } from 'next';
-import { Section, Container, FadeUp } from '@/components/ui-dp/AnimatedElements';
-import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Digital Point LLC',
+  title: 'Privacy Policy',
   description:
-    'Privacy Policy for Digital Point LLC. Learn how we collect, use, and protect your information when you visit digitalpointllc.com.',
-  alternates: {
-    canonical: 'https://www.digitalpointllc.com/privacy-policy',
-  },
-  openGraph: {
-    title: 'Privacy Policy | Digital Point LLC',
-    description:
-      'Privacy Policy for Digital Point LLC. Learn how we collect, use, and protect your information.',
-    url: 'https://www.digitalpointllc.com/privacy-policy',
-  },
+    'How Digital Point LLC collects, processes, and protects personal information across the marketing site, the audit form, the diagnostic tool, and the Cosmo chat surface.',
+  alternates: { canonical: 'https://www.digitalpointllc.com/privacy-policy' },
 };
+
+const lastUpdated = 'May 12, 2026';
+
+const sections = [
+  {
+    id: 'who-we-are',
+    title: '1. Who we are',
+    body: [
+      'Digital Point LLC is a US-LLC registered in Wilmington, Delaware. We operate production AI agent stacks for B2B SaaS, e-commerce, and professional-services clients. This policy covers personal information we collect through www.digitalpointllc.com, the audit form, the diagnostic tool, and the Cosmo on-site chat.',
+      'Contact for privacy questions: reach a co-founder via the audit form at /audit. We do not operate a generic support inbox.',
+    ],
+  },
+  {
+    id: 'what-we-collect',
+    title: '2. Information we collect',
+    body: [
+      'Audit form submissions (/audit): name, email, company name, current ad spend range, and a free-text challenge description you choose to share. We collect a UTM source/medium/campaign trio when present in the URL.',
+      'Cosmo chat (/api/chat): the conversation transcript and a session-scoped identifier. Transcripts are retained for service-quality review for 30 days, then deleted.',
+      'Newsletter submissions (/api/newsletter): email only.',
+      'Diagnostic tool (/diagnostic): runs entirely in your browser. We do not collect or store your answers or score unless you submit them through a follow-up form.',
+      'Technical: IP address (for rate-limiting on POST routes only), user-agent string, viewport size for responsive rendering. We do not maintain persistent IP logs beyond the rate-limit window (60 minutes).',
+      'Analytics: Vercel Analytics + Vercel Speed Insights, gated behind the cookie consent banner. If you decline, neither runs. We do not load Google Analytics, Facebook Pixel, or any other third-party tracking.',
+    ],
+  },
+  {
+    id: 'how-we-use',
+    title: '3. How we use information',
+    body: [
+      'Service delivery. To reply to your audit request, route it to the right co-founder, send written deployment plans, and operate any engagement you commit to.',
+      'Improving the service. Aggregated, identifier-removed analytics on which pages get used and where users drop off. Never resold.',
+      'Legal and security. To comply with subpoenas, court orders, and tax obligations. To defend against fraud and abuse on our forms.',
+      'We do not sell, rent, or share personal information with advertisers or data brokers.',
+    ],
+  },
+  {
+    id: 'vendors',
+    title: '4. Subprocessors',
+    body: [
+      'We use a small set of vendors to deliver the service. Each is bound by a Data Processing Agreement.',
+    ],
+    table: [
+      ['Vendor', 'Purpose', 'Data category'],
+      ['Vercel Inc.', 'Hosting, edge functions, analytics, speed insights', 'IP (transient), interaction events, form payloads in transit'],
+      ['Anthropic PBC', 'Claude inference for Cosmo chat + planner reasoning', 'Transcript content during inference; zero data retention'],
+      ['Groq Inc.', 'Llama-3 inference for high-throughput agent steps', 'Prompt content during inference; zero data retention'],
+      ['OpenAI', 'Optional model alternative on selected workflows', 'Prompt content during inference'],
+      ['Neon Inc.', 'PostgreSQL database for audit form submissions', 'Form payloads + audit log'],
+      ['Resend / SMTP provider', 'Transactional email delivery', 'Sender, recipient, subject, body'],
+      ['Vercel BotID', 'Bot detection on form endpoints', 'Anonymized challenge-response data'],
+    ],
+  },
+  {
+    id: 'data-protection',
+    title: '5. Data protection',
+    body: [
+      'All traffic served over HTTPS with HSTS preload (max-age 2 years, includeSubDomains).',
+      'Content Security Policy headers restrict inline scripts to a documented allowlist (Vercel Analytics, Vercel Speed Insights, BotID).',
+      'API endpoints (audit, founder, leads) protected by BotID + per-IP rate limiting.',
+      'Database access is service-account-scoped. Co-founder review on every audit submission before any operational handoff.',
+      'For engagement deployments: a DPA is signed with you at pilot stage. Agents run with read-only or least-privilege credentials. PII is redacted from live observability streams (Slack Connect) before posting.',
+    ],
+  },
+  {
+    id: 'your-rights',
+    title: '6. Your rights',
+    body: [
+      'GDPR-equivalent rights apply to all users regardless of geography. You may request access to, correction of, or deletion of personal information we hold about you.',
+      'To exercise any right, submit the request through the audit form at /audit with subject line "Privacy request." We respond within 30 days, usually within 5 business days.',
+      'You may opt out of analytics at any time by clicking the cookie banner reset link in /cookies or by clearing the dpl_cookie_consent localStorage value.',
+    ],
+  },
+  {
+    id: 'children',
+    title: '7. Children',
+    body: [
+      'The service is B2B and not directed to anyone under 16. We do not knowingly collect information from children.',
+    ],
+  },
+  {
+    id: 'changes',
+    title: '8. Changes to this policy',
+    body: [
+      'We revise this policy as the service evolves. Material changes are dated at the top of this page and announced via the next monthly engagement report to active clients. The most recent revision date is in the header.',
+    ],
+  },
+];
 
 export default function PrivacyPolicyPage() {
   return (
-    <Section className="pt-32 pb-20">
-      <Container>
-        <FadeUp>
-          <div className="mb-8">
-            <Breadcrumbs
-              items={[{ label: 'Privacy Policy', href: '/privacy-policy' }]}
-            />
+    <>
+      <section className="hero">
+        <div className="hero-bg" aria-hidden="true" />
+        <div className="hero-inner">
+          <div className="hero-meta">
+            <span>Privacy Policy · Last updated {lastUpdated}</span>
           </div>
 
-          <div className="max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Privacy Policy
-            </h1>
-            <p className="text-[color:var(--text-muted)] text-sm mb-12">
-              Last updated: March 23, 2026
-            </p>
+          <h1 className="hero-title text-balance">
+            What we <span className="hero-title__amber">collect</span>.<br />
+            What we don&apos;t.
+          </h1>
 
-            <div className="space-y-10 text-[color:var(--text-primary)] leading-relaxed">
-              <p>
-                Digital Point LLC (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) operates the website
-                digitalpointllc.com (the &quot;Site&quot;). This Privacy Policy explains how we
-                collect, use, disclose, and safeguard your information when you
-                visit our Site. By using the Site, you agree to the practices
-                described in this policy.
-              </p>
+          <p className="hero-sub text-pretty">
+            Digital Point LLC operates AI agent infrastructure on behalf of B2B clients.
+            This page explains what data we process on www.digitalpointllc.com and on
+            the engagements that follow. Written plain, no dark patterns.
+          </p>
+        </div>
+      </section>
 
-              {/* Information We Collect */}
-              <div>
-                <h2 className="text-2xl font-semibold text-white mb-4">
-                  Information We Collect
+      <section className="section section-divider">
+        <div className="container-wide">
+          <div style={{ maxWidth: '52rem', display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+            {sections.map((s) => (
+              <article key={s.id} id={s.id}>
+                <h2
+                  className="font-display"
+                  style={{
+                    fontSize: 'clamp(1.5rem, 3vw, 2.25rem)',
+                    color: 'var(--color-text-primary)',
+                    marginBlockEnd: '1rem',
+                  }}
+                >
+                  {s.title}
                 </h2>
-                <p className="mb-4">
-                  We may collect the following types of information when you
-                  interact with our Site:
-                </p>
-                <ul className="list-disc list-inside space-y-2 pl-2">
-                  <li>
-                    <span className="font-medium text-white">Analytics Data:</span>{' '}
-                    We use Google Analytics 4 (GA4) to collect anonymized usage
-                    data, including pages visited, session duration, referral
-                    sources, device type, browser type, and approximate
-                    geographic location. This data is aggregated and does not
-                    personally identify you.
-                  </li>
-                  <li>
-                    <span className="font-medium text-white">Contact Information:</span>{' '}
-                    When you submit a contact form, subscribe to our newsletter,
-                    or otherwise voluntarily provide information, we may collect
-                    your name, email address, company name, and any message
-                    content you include.
-                  </li>
-                  <li>
-                    <span className="font-medium text-white">Cookies and Tracking Technologies:</span>{' '}
-                    We use cookies, pixels, and similar technologies to enhance
-                    your browsing experience, analyze site traffic, and serve
-                    relevant advertisements. See the Cookie Policy section below
-                    for details.
-                  </li>
-                </ul>
-              </div>
-
-              {/* Google AdSense & Advertising Cookies */}
-              <div>
-                <h2 className="text-2xl font-semibold text-white mb-4">
-                  Google AdSense and Advertising Cookies
-                </h2>
-                <p className="mb-4">
-                  We use Google AdSense to display advertisements on our Site.
-                  Google AdSense uses cookies to serve ads based on your prior
-                  visits to our Site and other websites. Google&apos;s use of
-                  advertising cookies enables it and its partners to serve ads
-                  based on your browsing patterns.
-                </p>
-                <p className="mb-4">
-                  Third-party vendors, including Google, use cookies to serve ads
-                  based on your prior visits to this website or other websites.
-                  You may opt out of personalized advertising by visiting{' '}
-                  <a
-                    href="https://www.google.com/settings/ads"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white underline underline-offset-2 hover:text-[color:var(--text-primary)] transition-colors"
+                {s.body.map((p, i) => (
+                  <p
+                    key={i}
+                    style={{
+                      color: 'var(--color-text-secondary)',
+                      fontSize: 'var(--text-md)',
+                      lineHeight: 1.7,
+                      marginBlockEnd: '1rem',
+                    }}
                   >
-                    Google Ads Settings
-                  </a>{' '}
-                  or the{' '}
-                  <a
-                    href="https://optout.networkadvertising.org/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white underline underline-offset-2 hover:text-[color:var(--text-primary)] transition-colors"
-                  >
-                    Network Advertising Initiative opt-out page
-                  </a>
-                  .
-                </p>
-              </div>
-
-              {/* How We Use Information */}
-              <div>
-                <h2 className="text-2xl font-semibold text-white mb-4">
-                  How We Use Information
-                </h2>
-                <p className="mb-4">
-                  We use the information we collect for the following purposes:
-                </p>
-                <ul className="list-disc list-inside space-y-2 pl-2">
-                  <li>To operate, maintain, and improve our Site</li>
-                  <li>To respond to your inquiries and fulfill your requests</li>
-                  <li>
-                    To send periodic emails related to our services, if you have
-                    opted in to receive communications
-                  </li>
-                  <li>
-                    To analyze usage trends and measure the effectiveness of our
-                    content and marketing efforts
-                  </li>
-                  <li>To serve relevant advertisements via Google AdSense</li>
-                  <li>
-                    To detect, prevent, and address technical issues or security
-                    threats
-                  </li>
-                </ul>
-              </div>
-
-              {/* Third-Party Services */}
-              <div>
-                <h2 className="text-2xl font-semibold text-white mb-4">
-                  Third-Party Services
-                </h2>
-                <p className="mb-4">
-                  We rely on the following third-party services to operate and
-                  improve our Site. Each service has its own privacy policy
-                  governing data collection and use:
-                </p>
-                <ul className="list-disc list-inside space-y-2 pl-2">
-                  <li>
-                    <span className="font-medium text-white">Google Analytics 4 (GA4):</span>{' '}
-                    Used for website analytics and traffic measurement. Data is
-                    processed by Google LLC. See{' '}
-                    <a
-                      href="https://policies.google.com/privacy"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white underline underline-offset-2 hover:text-[color:var(--text-primary)] transition-colors"
-                    >
-                      Google&apos;s Privacy Policy
-                    </a>
-                    .
-                  </li>
-                  <li>
-                    <span className="font-medium text-white">Google AdSense:</span>{' '}
-                    Used to display advertisements. Google may use cookies and
-                    tracking technologies to personalize ads. See{' '}
-                    <a
-                      href="https://policies.google.com/technologies/ads"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white underline underline-offset-2 hover:text-[color:var(--text-primary)] transition-colors"
-                    >
-                      Google&apos;s Advertising Policies
-                    </a>
-                    .
-                  </li>
-                  <li>
-                    <span className="font-medium text-white">Vercel:</span>{' '}
-                    Our Site is hosted on Vercel. Vercel may collect server logs,
-                    including IP addresses and request metadata, as part of
-                    standard hosting operations. See{' '}
-                    <a
-                      href="https://vercel.com/legal/privacy-policy"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white underline underline-offset-2 hover:text-[color:var(--text-primary)] transition-colors"
-                    >
-                      Vercel&apos;s Privacy Policy
-                    </a>
-                    .
-                  </li>
-                </ul>
-              </div>
-
-              {/* Cookie Policy */}
-              <div>
-                <h2 className="text-2xl font-semibold text-white mb-4">
-                  Cookie Policy
-                </h2>
-                <p className="mb-4">
-                  Cookies are small text files placed on your device when you
-                  visit a website. We use the following types of cookies:
-                </p>
-                <ul className="list-disc list-inside space-y-2 pl-2">
-                  <li>
-                    <span className="font-medium text-white">Essential Cookies:</span>{' '}
-                    Required for the Site to function properly, such as session
-                    management and security.
-                  </li>
-                  <li>
-                    <span className="font-medium text-white">Analytics Cookies:</span>{' '}
-                    Used by Google Analytics to understand how visitors interact
-                    with our Site. These cookies collect anonymized data about
-                    page views, session duration, and navigation paths.
-                  </li>
-                  <li>
-                    <span className="font-medium text-white">Advertising Cookies:</span>{' '}
-                    Used by Google AdSense and its partners to deliver relevant
-                    ads and measure ad performance.
-                  </li>
-                </ul>
-                <p className="mt-4">
-                  You can manage or disable cookies through your browser
-                  settings. Note that disabling certain cookies may affect the
-                  functionality of the Site.
-                </p>
-              </div>
-
-              {/* Data Retention */}
-              <div>
-                <h2 className="text-2xl font-semibold text-white mb-4">
-                  Data Retention
-                </h2>
-                <p>
-                  We retain personal information (such as email addresses
-                  collected through forms) only for as long as necessary to
-                  fulfill the purpose for which it was collected or as required
-                  by law. Analytics data collected through Google Analytics is
-                  retained according to our GA4 data retention settings, which
-                  is typically 14 months. You may request deletion of your
-                  personal data at any time by contacting us.
-                </p>
-              </div>
-
-              {/* Your Rights */}
-              <div>
-                <h2 className="text-2xl font-semibold text-white mb-4">
-                  Your Rights
-                </h2>
-                <p className="mb-4">
-                  Depending on your location, you may have certain rights
-                  regarding your personal data, including:
-                </p>
-                <ul className="list-disc list-inside space-y-2 pl-2">
-                  <li>
-                    <span className="font-medium text-white">Opt out of personalized advertising:</span>{' '}
-                    You can opt out of personalized ads by visiting{' '}
-                    <a
-                      href="https://www.google.com/settings/ads"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white underline underline-offset-2 hover:text-[color:var(--text-primary)] transition-colors"
-                    >
-                      Google Ads Settings
-                    </a>{' '}
-                    or by adjusting your browser&apos;s cookie preferences.
-                  </li>
-                  <li>
-                    <span className="font-medium text-white">Unsubscribe from emails:</span>{' '}
-                    Every marketing email we send includes an unsubscribe link.
-                    You may also contact us directly to be removed from our
-                    mailing list.
-                  </li>
-                  <li>
-                    <span className="font-medium text-white">Access and deletion:</span>{' '}
-                    You may request access to the personal data we hold about
-                    you, or request that we delete it, by emailing us at the
-                    address below.
-                  </li>
-                </ul>
-              </div>
-
-              {/* Children's Privacy */}
-              <div>
-                <h2 className="text-2xl font-semibold text-white mb-4">
-                  Children&apos;s Privacy
-                </h2>
-                <p>
-                  Our Site is not directed to children under the age of 13. We
-                  do not knowingly collect personal information from children
-                  under 13. If we become aware that we have inadvertently
-                  collected personal data from a child under 13, we will take
-                  steps to delete that information as quickly as possible. If you
-                  believe a child under 13 has provided us with personal
-                  information, please reach out through{' '}
-                  <a
-                    href="/#contact-philosophy"
-                    className="text-white underline underline-offset-2 hover:text-[color:var(--text-primary)] transition-colors"
-                  >
-                    our on-site routes
-                  </a>
-                  {' '}(Cosmo chat or the free growth audit form). We answer from
-                  our personal accounts within one business day.
-                </p>
-              </div>
-
-              {/* Changes to This Policy */}
-              <div>
-                <h2 className="text-2xl font-semibold text-white mb-4">
-                  Changes to This Policy
-                </h2>
-                <p>
-                  We may update this Privacy Policy from time to time to reflect
-                  changes in our practices, technology, legal requirements, or
-                  other factors. When we make changes, we will update the
-                  &quot;Last updated&quot; date at the top of this page. We encourage
-                  you to review this page periodically to stay informed about
-                  how we protect your information.
-                </p>
-              </div>
-
-              {/* Contact Us */}
-              <div>
-                <h2 className="text-2xl font-semibold text-white mb-4">
-                  Contact Us
-                </h2>
-                <p>
-                  If you have any questions or concerns about this Privacy
-                  Policy or our data practices, please contact us at:
-                </p>
-                <div className="mt-4 p-4 sm:p-6 rounded-xl border border-white/10 bg-white/[0.02] break-words">
-                  <p className="font-medium text-white">Digital Point LLC</p>
-                  <p className="mt-1">
-                    Reach us through{' '}
-                    <a
-                      href="/#contact-philosophy"
-                      className="text-white underline underline-offset-2 hover:text-[color:var(--text-primary)] transition-colors"
-                    >
-                      our on-site routes
-                    </a>
-                    {' '}(Cosmo chat or the free growth audit form). Your inquiry
-                    routes directly to the operator best matched to your stage.
+                    {p}
                   </p>
-                  <p className="mt-1">
-                    Website:{' '}
-                    <a
-                      href="https://www.digitalpointllc.com"
-                      className="text-white underline underline-offset-2 hover:text-[color:var(--text-primary)] transition-colors"
-                    >
-                      digitalpointllc.com
-                    </a>
-                  </p>
-                </div>
-              </div>
+                ))}
+                {s.table ? (
+                  <div
+                    style={{
+                      marginBlockStart: '1.5rem',
+                      border: '1px solid var(--color-line-faint)',
+                      borderRadius: 'var(--radius-lg)',
+                      overflow: 'hidden',
+                      background: 'var(--color-canvas-raised)',
+                    }}
+                  >
+                    {s.table.map((row, ri) => (
+                      <div
+                        key={ri}
+                        style={{
+                          display: 'grid',
+                          gridTemplateColumns: '1fr 1.5fr 1.5fr',
+                          background: ri === 0 ? 'var(--color-canvas-elevated)' : 'transparent',
+                          borderBlockEnd: ri < s.table!.length - 1 ? '1px solid var(--color-line-faint)' : 'none',
+                          fontSize: 'var(--text-sm)',
+                        }}
+                      >
+                        {row.map((cell, ci) => (
+                          <div
+                            key={ci}
+                            style={{
+                              padding: '0.875rem 1rem',
+                              color: ri === 0 ? 'var(--color-text-tertiary)' : 'var(--color-text-secondary)',
+                              fontFamily: ri === 0 ? 'var(--font-mono)' : undefined,
+                              letterSpacing: ri === 0 ? '0.08em' : undefined,
+                              textTransform: ri === 0 ? 'uppercase' : undefined,
+                              fontSize: ri === 0 ? '0.6875rem' : 'var(--text-sm)',
+                            }}
+                          >
+                            {cell}
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-divider">
+        <div className="container-wide">
+          <div className="section-header section-header--center">
+            <p className="eyebrow eyebrow--accent">Questions about this policy</p>
+            <h2 className="section-title text-balance">Reach a co-founder directly.</h2>
+            <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
+              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
+              <Link href="/cookies" className="btn btn-ghost">Cookie settings</Link>
             </div>
           </div>
-        </FadeUp>
-      </Container>
-    </Section>
+        </div>
+      </section>
+    </>
   );
 }

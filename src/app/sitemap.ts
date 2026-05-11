@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: baseUrl, lastModified: new Date(), changeFrequency: 'weekly', priority: 1.0 },
   ];
 
-  // Core service pages — new positioning (priority 1.0 for Recovery as lead)
+  // Core service pages. New positioning (priority 1.0 for Recovery as lead)
   const servicePages: MetadataRoute.Sitemap = [
     { url: `${baseUrl}/recovery`, lastModified: new Date(), changeFrequency: 'monthly', priority: 1.0 },
     { url: `${baseUrl}/agents`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.95 },
@@ -26,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // /operators, /agents. Excluded from sitemap so search engines only see
   // the canonical destinations.
 
-  // Other core pages (blog excluded — currently noindex, legacy content)
+  // Other core pages (blog excluded. Currently noindex, legacy content)
   const corePages: MetadataRoute.Sitemap = [
     { url: `${baseUrl}/results`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/case-studies`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },

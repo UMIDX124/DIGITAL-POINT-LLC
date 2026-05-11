@@ -1,5 +1,5 @@
 /**
- * DesignOnlyBanner — Phase 20 audit M2 + H7 flag.
+ * DesignOnlyBanner. Phase 20 audit M2 + H7 flag.
  *
  * Surfaces an honest "[design only]" banner on pages where metrics, case
  * studies, testimonials, or trust signals are placeholder-shaped pending
@@ -11,7 +11,7 @@
  * generate metrics. This banner is the visible rendering of the rule.
  *
  * Default copy is a generic disclaimer; pass `note` to scope it (e.g. on
- * /case-studies — "Outcomes shown are illustrative composites pending
+ * /case-studies. "Outcomes shown are illustrative composites pending
  * client signoff").
  */
 type DesignOnlyBannerProps = {

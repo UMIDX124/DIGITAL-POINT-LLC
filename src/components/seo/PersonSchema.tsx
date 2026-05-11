@@ -1,5 +1,5 @@
 /**
- * PersonSchema — Phase 20 audit H1b.
+ * PersonSchema. Phase 20 audit H1b.
  *
  * Schema.org Person JSON-LD for DPL founders. Pairs with the Organization
  * schema in root layout (which already lists founder Person entries with

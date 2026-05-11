@@ -3,9 +3,9 @@
 import Link from 'next/link';
 
 /**
- * Phase 15 C.4 — 404 redesign with DPL hierarchy.
+ * Phase 15 C.4. 404 redesign with DPL hierarchy.
  * Editorial typography: massive italic Instrument Serif "404", grounded
- * sans body. Three escape routes (home, audit form, Cosmo chat) — no
+ * sans body. Three escape routes (home, audit form, Cosmo chat). No
  * dead-end. Cosmo open via window event (Phase 13 pattern).
  */
 export default function NotFound() {

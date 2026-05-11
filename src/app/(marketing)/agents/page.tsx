@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'AI Agents',
   description:
-    'Production AI agents we deploy and operate for you. Custom-trained agents that run repeatable knowledge work — CRM updates, lead routing, qualification, follow-up cadences. n8n + Groq + custom TypeScript stack.',
+    'Production AI agents we deploy and operate for you. Custom-trained agents that run repeatable knowledge work. CRM updates, lead routing, qualification, follow-up cadences. n8n + Groq + custom TypeScript stack.',
   alternates: { canonical: 'https://www.digitalpointllc.com/agents' },
 };
 
@@ -15,7 +15,7 @@ const useCases = [
   },
   {
     title: 'Sales follow-up cadence',
-    desc: 'Adaptive follow-up sequences that respond to prospect signal — opened, replied, ghosted, asked a hard question. No template trees.',
+    desc: 'Adaptive follow-up sequences that respond to prospect signal. Opened, replied, ghosted, asked a hard question. No template trees.',
   },
   {
     title: 'CRM enrichment',

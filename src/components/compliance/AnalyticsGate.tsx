@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Phase 17b 3-restructured A3 — analytics consent gate.
+ * Phase 17b 3-restructured A3. analytics consent gate.
  *
  * Wraps Vercel <Analytics /> + <SpeedInsights /> so they only mount when
  * the user has accepted analytics in CookieConsent. Reads the same

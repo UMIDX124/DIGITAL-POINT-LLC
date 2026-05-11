@@ -12,7 +12,7 @@ const ChatPanel = dynamic(() => import('./ChatPanel'), {
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
 
-  /* Phase 13 — global open hook so Contact page CTAs can trigger Cosmo
+  /* Phase 13. global open hook so Contact page CTAs can trigger Cosmo
      without prop-drilling. Window event 'cosmo:open' opens the panel. */
   useEffect(() => {
     const onOpen = () => setOpen(true);

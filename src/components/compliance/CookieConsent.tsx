@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Phase 17b 3-restructured A3 — GDPR cookie consent banner.
+ * Phase 17b 3-restructured A3. GDPR cookie consent banner.
  *
  * Native HTML/CSS modal pattern (no third-party SaaS dependency). Two
  * actions: "Accept all" → enables analytics; "Necessary only" → suppresses
@@ -9,7 +9,7 @@
  *
  * Banner appears on first visit (flag === null), suppressed thereafter.
  * Footer Cookies link can re-open via global event 'dpl:open-cookie-prefs'
- * dispatched on document — listener resets flag and re-shows banner.
+ * dispatched on document. listener resets flag and re-shows banner.
  *
  * Conditional analytics mount: <Analytics> + <SpeedInsights> in layout.tsx
  * are wrapped in <AnalyticsGate> which reads the same flag client-side
@@ -50,7 +50,7 @@ const getVisibleServerSnapshot = () => false;
 
 export default function CookieConsent() {
   const visible = useSyncExternalStore(subscribeConsent, getVisibleSnapshot, getVisibleServerSnapshot);
-  // Phase 20.1.5 — delayed first-paint so the banner never appears in the
+  // Phase 20.1.5. delayed first-paint so the banner never appears in the
   // hero above-fold shot. Mounts at 1800ms post-load. Also collapses to a
   // compact bottom-left pill at all viewports so it never overlaps the
   // centered content / CTAs.

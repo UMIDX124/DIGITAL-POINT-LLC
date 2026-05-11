@@ -45,7 +45,7 @@ const TOTAL_STEPS = 4;
 
 export function AuditPage() {
   const [step, setStep] = useState(1);
-  // Phase 8 — UTM params read via lazy initializer so client-side state
+  // Phase 8. UTM params read via lazy initializer so client-side state
   // hydrates with URL data without an effect (root-cause fix for the
   // react-hooks/set-state-in-effect lint that previously had a suppression).
   const [formData, setFormData] = useState<FormData>(() => {

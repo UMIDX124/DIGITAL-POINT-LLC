@@ -9,7 +9,7 @@ type Props = {
 };
 
 /**
- * Phase 20 Loop A Sub-phase B — Cosmo chat trigger upgraded to concept-2
+ * Phase 20 Loop A Sub-phase B. Cosmo chat trigger upgraded to concept-2
  * oscilloscope-wave inline SVG. Replaces Phase 16 D.5 Dp-logo1.png embed.
  *
  * The button hosts <CosmoMark/> with state="active" when the panel is open
@@ -57,7 +57,7 @@ export default function ChatTrigger({ onClick, panelOpen }: Props) {
   };
 
   return (
-    /* Phase 17b 3-restructured A2 — outer wrapper handles footer-aware
+    /* Phase 17b 3-restructured A2. outer wrapper handles footer-aware
        translateY/opacity. Inner button retains cosmo-fab hover scale +
        breathe animations from globals.css unaltered. */
     <div

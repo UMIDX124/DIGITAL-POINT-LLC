@@ -1,7 +1,7 @@
 import { DesignOnlyBanner } from '@/components/integrity/DesignOnlyBanner';
 
 /**
- * Phase 20 audit H6 — research deep-dive benchmarks ship without explicit
+ * Phase 20 audit H6. Research deep-dive benchmarks ship without explicit
  * named-source citations on every datum. Per CLAUDE.md real-data rule and
  * UF directive default ("real-data unknown items = [design only] flag,
  * do NOT halt for case study clearance, customer logos, testimonials, or

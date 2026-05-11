@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Upsert lead — update if session already has a lead
+    // Upsert lead. Update if session already has a lead
     const lead = await db.chatLead.upsert({
       where: { sessionId },
       create: {

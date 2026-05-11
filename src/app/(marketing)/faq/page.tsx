@@ -5,14 +5,14 @@ import { FAQSchema } from '@/components/seo/FAQSchema';
 export const metadata: Metadata = {
   title: 'FAQ',
   description:
-    'Common questions about Digital Point — what we do, how recovery works, what production AI agent operations means, pricing, the tech stack, and operator coverage.',
+    'Common questions about Digital Point. What we do, how recovery works, what production AI agent operations means, pricing, the tech stack, and operator coverage.',
   alternates: { canonical: 'https://www.digitalpointllc.com/faq' },
 };
 
 const faqs = [
   {
     q: 'How is this different from a platform like Lindy, Relevance AI, or Stack AI?',
-    a: 'Platforms sell you tools and licenses; you self-serve the deployment and operations. We are a service. We deploy the agents, operate them in production, and stand behind the outcomes. Trained human operators audit every exception the AI cannot resolve. You do not log into a platform — you watch the work happen in a Slack channel we run with you.',
+    a: 'Platforms sell you tools and licenses; you self-serve the deployment and operations. We are a service. We deploy the agents, operate them in production, and stand behind the outcomes. Trained human operators audit every exception the AI cannot resolve. You do not log into a platform. You watch the work happen in a Slack channel we run with you.',
   },
   {
     q: 'What does "production-grade" actually mean?',
@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: 'What is the AI Agent Recovery service?',
-    a: 'For companies that already shipped an agent — internally built, on a platform, or with another vendor — and the agent has started drifting, hallucinating on edge cases, retrying silently, or burning tokens unexpectedly. We diagnose against 30 production criteria over 2 weeks ($5,000), ship the fix over 4 weeks ($10,000), and operate from there if you want ($2,500/month).',
+    a: 'For companies that already shipped an agent. Internally built, on a platform, or with another vendor. And the agent has started drifting, hallucinating on edge cases, retrying silently, or burning tokens unexpectedly. We diagnose against 30 production criteria over 2 weeks ($5,000), ship the fix over 4 weeks ($10,000), and operate from there if you want ($2,500/month).',
   },
   {
     q: 'What is the tech stack?',
@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     q: 'Will I see what your agents do in real time?',
-    a: 'Yes. Every retainer ships a Slack Connect channel with you. Every agent decision is posted in real time with PII redaction. Operator interventions, retry attempts, cost-per-task — all visible. Most platforms hide their agents\' work. We show everything.',
+    a: 'Yes. Every retainer ships a Slack Connect channel with you. Every agent decision is posted in real time with PII redaction. Operator interventions, retry attempts, cost-per-task. All visible. Most platforms hide their agents\' work. We show everything.',
   },
   {
     q: 'Can I cancel anytime?',

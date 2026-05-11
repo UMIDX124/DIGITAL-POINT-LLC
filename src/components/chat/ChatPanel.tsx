@@ -15,7 +15,7 @@ const GREETING: Message = {
   content: "Hey, I'm Cosmo. What can I help with?",
 };
 
-// Phase 17b 3-restructured G4 — quick-reply pills shown alongside the
+// Phase 17b 3-restructured G4. quick-reply pills shown alongside the
 // initial greeting until the user sends their first message.
 const QUICK_REPLIES: readonly string[] = [
   'What do you do?',
@@ -28,7 +28,7 @@ export default function ChatPanel({ open, onClose }: Props) {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  // Phase 17b 3-restructured G3 — skeleton mount state. Shown for ≥300ms
+  // Phase 17b 3-restructured G3. skeleton mount state. Shown for ≥300ms
   // when panel opens before the actual greeting + quick-reply pills surface.
   const [showSkeleton, setShowSkeleton] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -110,7 +110,7 @@ export default function ChatPanel({ open, onClose }: Props) {
 
   if (!open) return null;
 
-  // Phase 17b 3-restructured G4 — quick-reply pills shown until the user
+  // Phase 17b 3-restructured G4. quick-reply pills shown until the user
   // has sent any message (i.e. messages array still equals the GREETING).
   const showQuickReplies = !showSkeleton && messages.length === 1 && messages[0] === GREETING && !loading;
 
@@ -139,7 +139,7 @@ export default function ChatPanel({ open, onClose }: Props) {
       </div>
 
       <div ref={listRef} className="flex-1 overflow-y-auto px-5 py-4 space-y-3">
-        {/* Phase 17b 3-restructured G3 — skeleton state shown for ~350ms
+        {/* Phase 17b 3-restructured G3. skeleton state shown for ~350ms
             while panel slides in. Three pulsing placeholder bubbles in
             bot-bubble style. Suppressed once skeleton timer expires. */}
         {showSkeleton && (
@@ -166,7 +166,7 @@ export default function ChatPanel({ open, onClose }: Props) {
             </div>
           </div>
         ))}
-        {/* Phase 17b 3-restructured G4 — quick-reply pills below greeting. */}
+        {/* Phase 17b 3-restructured G4. quick-reply pills below greeting. */}
         {showQuickReplies && (
           <div className="flex flex-wrap gap-2 pt-1">
             {QUICK_REPLIES.map((q) => (

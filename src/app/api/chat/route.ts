@@ -22,7 +22,7 @@ function rateLimitOk(ip: string): boolean {
 
 export async function POST(req: NextRequest) {
   const reqStart = Date.now();
-  // Phase 7 — diagnostic instrumentation (visible in Vercel runtime logs).
+  // Phase 7. Diagnostic instrumentation (visible in Vercel runtime logs).
   // Helps diagnose env propagation issues quickly: hasKey + length is
   // enough to confirm the runtime sees the key without leaking it.
   const hasKey = !!process.env.GROQ_API_KEY;
@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
 
     const model = process.env.GROQ_MODEL || 'llama-3.3-70b-versatile';
 
-    // Phase 8 — single retry on 502/503/504 (transient Groq edge errors).
+    // Phase 8. Single retry on 502/503/504 (transient Groq edge errors).
     // Most live failures are momentary; one immediate retry usually wins.
     const callGroq = async () =>
       fetch('https://api.groq.com/openai/v1/chat/completions', {

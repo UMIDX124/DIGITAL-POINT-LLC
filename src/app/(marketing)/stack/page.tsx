@@ -12,7 +12,7 @@ const layers = [
   {
     category: 'Orchestration',
     items: [
-      { label: 'n8n', detail: 'Self-hosted on a dedicated VM. Visual workflow builder with full data sovereignty. Default for agencies in 2026 per the buyer\'s guides — and because the cost curve stays flat as volume scales.' },
+      { label: 'n8n', detail: 'Self-hosted on a dedicated VM. Visual workflow builder with full data sovereignty. Default for agencies in 2026 per the buyer\'s guides. And because the cost curve stays flat as volume scales.' },
     ],
   },
   {

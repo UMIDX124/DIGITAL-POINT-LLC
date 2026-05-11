@@ -1,4 +1,4 @@
-// Phase 17b Pillar 3 — converted to server component (no client-only API).
+// Phase 17b Pillar 3. Converted to server component (no client-only API).
 // Same pattern as BlogListPage: gratuitous 'use client' was forcing the
 // category list tree to hydrate.
 import Link from 'next/link';

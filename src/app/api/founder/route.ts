@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { checkBotId } from 'botid/server';
 import { db } from '@/lib/db';
 import { sendEmail, escapeHtml } from '@/lib/email';
+import { FounderSubmissionSchema } from '@/lib/schemas';
 
 const rateLimitMap = new Map<string, { count: number; lastRequest: number }>();
 const RATE_LIMIT_WINDOW = 60 * 1000;
@@ -66,34 +67,19 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true, message: 'Message received! A Co-Founder will get back to you within 24 hours.' });
     }
 
-    const name = sanitize(body.name || '');
-    const email = sanitize(body.email || '');
-    const message = sanitize(body.message || '');
-    const utmSource = body.utmSource ? sanitize(body.utmSource) : undefined;
-    const utmMedium = body.utmMedium ? sanitize(body.utmMedium) : undefined;
-    const utmCampaign = body.utmCampaign ? sanitize(body.utmCampaign) : undefined;
-
-    if (!name || name.length < 2) {
+    const parsed = FounderSubmissionSchema.safeParse(body);
+    if (!parsed.success) {
       return NextResponse.json(
-        { success: false, message: 'Please enter a valid name' },
+        { error: 'Invalid input', issues: parsed.error.flatten() },
         { status: 400 }
       );
     }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !emailRegex.test(email)) {
-      return NextResponse.json(
-        { success: false, message: 'Please enter a valid email address' },
-        { status: 400 }
-      );
-    }
-
-    if (!message || message.length < 10) {
-      return NextResponse.json(
-        { success: false, message: 'Message must be at least 10 characters' },
-        { status: 400 }
-      );
-    }
+    const name = sanitize(parsed.data.name);
+    const email = sanitize(parsed.data.email);
+    const message = sanitize(parsed.data.message);
+    const utmSource = parsed.data.utmSource ? sanitize(parsed.data.utmSource) : undefined;
+    const utmMedium = parsed.data.utmMedium ? sanitize(parsed.data.utmMedium) : undefined;
+    const utmCampaign = parsed.data.utmCampaign ? sanitize(parsed.data.utmCampaign) : undefined;
 
     let submissionId = 'no-db';
     try {

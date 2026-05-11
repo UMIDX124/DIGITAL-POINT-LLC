@@ -25,6 +25,16 @@ export const LeadSubmissionSchema = z.object({
 });
 export type LeadSubmission = z.infer<typeof LeadSubmissionSchema>;
 
+export const FounderSubmissionSchema = z.object({
+  name: nameSchema,
+  email: emailSchema,
+  message: z.string().trim().min(10).max(5000),
+  utmSource: optionalShortString,
+  utmMedium: optionalShortString,
+  utmCampaign: optionalShortString,
+});
+export type FounderSubmission = z.infer<typeof FounderSubmissionSchema>;
+
 export const AuditSubmissionSchema = z.object({
   name: nameSchema,
   email: emailSchema,

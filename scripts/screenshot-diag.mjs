@@ -1,0 +1,13 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch();
+const ctx = await b.newContext({ viewport: { width: 1440, height: 900 } });
+const p = await ctx.newPage();
+await p.goto('http://localhost:3107/diagnostic', { waitUntil: 'domcontentloaded', timeout: 20000 });
+await p.waitForTimeout(2500);
+await p.screenshot({ path: '/tmp/diag-hero.png', fullPage: false });
+console.log('hero ok');
+await p.evaluate(() => window.scrollBy(0, 700));
+await p.waitForTimeout(800);
+await p.screenshot({ path: '/tmp/diag-questions.png', fullPage: false });
+console.log('questions ok');
+await b.close();

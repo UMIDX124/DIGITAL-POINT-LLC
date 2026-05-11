@@ -14,6 +14,11 @@ export function RecoverySection() {
             hallucinating on edge cases, or now retries silently in production. No one
             offers systematic recovery as a service. We do.
           </p>
+          <div className="hero-cta-row" style={{ marginBlockStart: 'var(--space-4)' }}>
+            <Link href="/diagnostic" className="btn-link">
+              Score your agent in 2 minutes
+            </Link>
+          </div>
         </div>
 
         <div className="pillar-grid pillar-grid--three" style={{ marginBlockStart: '3rem' }}>

@@ -1,25 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { sendEmail, escapeHtml } from '@/lib/email';
+import { computeLeadQualityScore } from '@/lib/lead-scoring';
+import { LeadSubmissionSchema } from '@/lib/schemas';
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { sessionId, name, email, company, phone, interest, qualityScore, conversationSummary } = body;
-
-    if (!sessionId) {
-      return NextResponse.json({ error: 'Missing sessionId' }, { status: 400 });
+    const parsed = LeadSubmissionSchema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: 'Invalid input', issues: parsed.error.flatten() },
+        { status: 400 }
+      );
     }
+    const { sessionId, name, email, company, phone, interest, conversationSummary } = parsed.data;
+    const qualityScore = computeLeadQualityScore({ company, phone, interest, conversationSummary });
 
-    // Validate email if provided
-    if (email) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        return NextResponse.json({ error: 'Invalid email address' }, { status: 400 });
-      }
-    }
-
-    // Upsert lead. Update if session already has a lead
     const lead = await db.chatLead.upsert({
       where: { sessionId },
       create: {
@@ -29,7 +26,7 @@ export async function POST(request: NextRequest) {
         company: company || null,
         phone: phone || null,
         interest: interest || null,
-        qualityScore: qualityScore || 0,
+        qualityScore,
         conversationSummary: conversationSummary || null,
       },
       update: {
@@ -38,7 +35,7 @@ export async function POST(request: NextRequest) {
         ...(company && { company }),
         ...(phone && { phone }),
         ...(interest && { interest }),
-        ...(qualityScore !== undefined && { qualityScore }),
+        qualityScore,
         ...(conversationSummary && { conversationSummary }),
       },
     });

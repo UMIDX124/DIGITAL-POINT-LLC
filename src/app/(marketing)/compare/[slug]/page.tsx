@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Section, Container } from '@/components/ui-dp/AnimatedElements';
-import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
-import { GrowthAuditCTA } from '@/components/seo/GrowthAuditCTA';
+import Link from 'next/link';
 import { comparisons, getComparisonBySlug } from '@/lib/comparisons';
 
 interface PageProps {
@@ -21,7 +19,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const url = `https://www.digitalpointllc.com/compare/${slug}`;
 
   return {
-    title: `${comparison.metaTitle} | Digital Point LLC`,
+    title: comparison.metaTitle,
     description: comparison.description,
     openGraph: {
       title: comparison.metaTitle,
@@ -42,224 +40,186 @@ export default async function ComparisonPage({ params }: PageProps) {
 
   return (
     <>
-      <Section className="pt-32 pb-16">
-        <Container size="narrow">
-          <Breadcrumbs
-            items={[
-              { label: 'Compare', href: '/compare' },
-              { label: comparison.title, href: `/compare/${slug}` },
-            ]}
-          />
+      <section className="hero">
+        <div className="hero-bg" aria-hidden="true" />
+        <div className="hero-inner">
+          <div className="hero-meta">
+            <span>Compare · Side-by-side analysis</span>
+          </div>
 
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-6 mb-8 leading-tight" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
-            {comparison.metaTitle}
+          <h1 className="hero-title text-balance" style={{ fontSize: 'var(--text-display)' }}>
+            {comparison.title}
           </h1>
 
-          <p className="text-[color:var(--text-primary)] text-lg leading-relaxed">
-            {comparison.intro}
-          </p>
-        </Container>
-      </Section>
+          <p className="hero-sub text-pretty">{comparison.intro}</p>
 
-      {/* Comparison Table */}
-      <Section className="py-16">
-        <Container size="narrow">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
-            Side-by-Side Comparison
-          </h2>
-          <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
-            <table className="w-full border-collapse min-w-[500px]">
-              <thead>
-                <tr>
-                  <th
-                    className="text-left text-xs uppercase tracking-wider text-[color:var(--text-muted)] py-3 px-4 border-b"
-                    style={{ borderColor: 'rgba(255, 136, 0, 0.2)' }}
-                  >
-                    Category
-                  </th>
-                  <th
-                    className="text-left text-xs uppercase tracking-wider py-3 px-4 border-b"
-                    style={{
-                      borderColor: 'rgba(255, 136, 0, 0.2)',
-                      color: '#FF8800',
-                    }}
-                  >
-                    {comparison.optionA.name}
-                  </th>
-                  <th
-                    className="text-left text-xs uppercase tracking-wider py-3 px-4 border-b"
-                    style={{
-                      borderColor: 'rgba(255, 136, 0, 0.2)',
-                      color: '#FF8800',
-                    }}
-                  >
-                    {comparison.optionB.name}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparison.comparisonRows.map((row, index) => (
-                  <tr key={index}>
-                    <td
-                      className="text-sm font-medium text-white py-3 px-4 border-b"
-                      style={{ borderColor: 'rgba(255, 136, 0, 0.1)' }}
-                    >
-                      {row.category}
-                    </td>
-                    <td
-                      className="text-sm text-[color:var(--text-primary)] py-3 px-4 border-b"
-                      style={{ borderColor: 'rgba(255, 136, 0, 0.1)' }}
-                    >
-                      {row.optionA}
-                    </td>
-                    <td
-                      className="text-sm text-[color:var(--text-primary)] py-3 px-4 border-b"
-                      style={{ borderColor: 'rgba(255, 136, 0, 0.1)' }}
-                    >
-                      {row.optionB}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="hero-cta-row">
+            <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
+            <Link href="#table" className="btn btn-ghost">See the comparison</Link>
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
 
-      {/* Pros and Cons */}
-      <Section className="py-16">
-        <Container size="narrow">
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Option A */}
-            <div
-              className="rounded-2xl p-6 md:p-8"
-              style={{
-                background: 'rgba(20,20,22, 0.6)',
-                border: '1px solid rgba(255, 136, 0, 0.2)',
-              }}
-            >
-              <h3 className="font-display text-xl font-bold text-white mb-6">
-                {comparison.optionA.name}
-              </h3>
-              <div className="mb-6">
-                <h4
-                  className="text-sm font-semibold uppercase tracking-wider mb-3"
-                  style={{ color: '#FF8800' }}
-                >
-                  Pros
-                </h4>
-                <ul className="space-y-2">
-                  {comparison.optionA.pros.map((pro, index) => (
-                    <li
-                      key={index}
-                      className="flex items-start gap-2 text-sm text-[color:var(--text-primary)] leading-relaxed"
-                    >
-                      <span className="text-green-400 mt-0.5 shrink-0">+</span>
-                      {pro}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h4
-                  className="text-sm font-semibold uppercase tracking-wider mb-3"
-                  style={{ color: '#FF8800' }}
-                >
-                  Cons
-                </h4>
-                <ul className="space-y-2">
-                  {comparison.optionA.cons.map((con, index) => (
-                    <li
-                      key={index}
-                      className="flex items-start gap-2 text-sm text-[color:var(--text-primary)] leading-relaxed"
-                    >
-                      <span className="text-red-400 mt-0.5 shrink-0">-</span>
-                      {con}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Option B */}
-            <div
-              className="rounded-2xl p-6 md:p-8"
-              style={{
-                background: 'rgba(20,20,22, 0.6)',
-                border: '1px solid rgba(255, 136, 0, 0.2)',
-              }}
-            >
-              <h3 className="font-display text-xl font-bold text-white mb-6">
-                {comparison.optionB.name}
-              </h3>
-              <div className="mb-6">
-                <h4
-                  className="text-sm font-semibold uppercase tracking-wider mb-3"
-                  style={{ color: '#FF8800' }}
-                >
-                  Pros
-                </h4>
-                <ul className="space-y-2">
-                  {comparison.optionB.pros.map((pro, index) => (
-                    <li
-                      key={index}
-                      className="flex items-start gap-2 text-sm text-[color:var(--text-primary)] leading-relaxed"
-                    >
-                      <span className="text-green-400 mt-0.5 shrink-0">+</span>
-                      {pro}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h4
-                  className="text-sm font-semibold uppercase tracking-wider mb-3"
-                  style={{ color: '#FF8800' }}
-                >
-                  Cons
-                </h4>
-                <ul className="space-y-2">
-                  {comparison.optionB.cons.map((con, index) => (
-                    <li
-                      key={index}
-                      className="flex items-start gap-2 text-sm text-[color:var(--text-primary)] leading-relaxed"
-                    >
-                      <span className="text-red-400 mt-0.5 shrink-0">-</span>
-                      {con}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+      <section className="section section-divider" id="table">
+        <div className="container-wide">
+          <div className="section-header">
+            <p className="eyebrow">Side-by-side</p>
+            <h2 className="section-title text-balance">
+              {comparison.optionA.name} vs {comparison.optionB.name}
+            </h2>
           </div>
-        </Container>
-      </Section>
 
-      {/* Recommendation */}
-      <Section className="py-16">
-        <Container size="narrow">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-6" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
-            Our Recommendation
-          </h2>
           <div
-            className="rounded-2xl p-6 md:p-8"
             style={{
-              background: 'linear-gradient(135deg, rgba(255, 136, 0, 0.12), rgba(255, 136, 0, 0.06))',
-              border: '1px solid rgba(255, 168, 51, 0.2)',
+              marginBlockStart: '2.5rem',
+              border: '1px solid var(--color-line-faint)',
+              borderRadius: 'var(--radius-lg)',
+              overflow: 'hidden',
+              background: 'var(--color-canvas-raised)',
             }}
           >
-            <p className="text-[color:var(--text-primary)] text-base leading-relaxed">
-              {comparison.recommendation}
-            </p>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'minmax(8rem, 1fr) 1fr 1fr',
+                background: 'var(--color-canvas-elevated)',
+                borderBlockEnd: '1px solid var(--color-line-faint)',
+              }}
+            >
+              <div className="font-mono" style={{ padding: '1rem 1.25rem', fontSize: '0.6875rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--color-text-tertiary)' }}>
+                Category
+              </div>
+              <div className="font-mono" style={{ padding: '1rem 1.25rem', fontSize: '0.6875rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--color-accent)' }}>
+                {comparison.optionA.name}
+              </div>
+              <div className="font-mono" style={{ padding: '1rem 1.25rem', fontSize: '0.6875rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--color-accent)' }}>
+                {comparison.optionB.name}
+              </div>
+            </div>
+            {comparison.comparisonRows.map((row, i) => (
+              <div
+                key={i}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'minmax(8rem, 1fr) 1fr 1fr',
+                  borderBlockEnd: i < comparison.comparisonRows.length - 1 ? '1px solid var(--color-line-faint)' : 'none',
+                }}
+              >
+                <div style={{ padding: '1rem 1.25rem', color: 'var(--color-text-primary)', fontSize: 'var(--text-sm)', fontWeight: 500 }}>
+                  {row.category}
+                </div>
+                <div style={{ padding: '1rem 1.25rem', color: 'var(--color-text-secondary)', fontSize: 'var(--text-sm)', lineHeight: 1.6 }}>
+                  {row.optionA}
+                </div>
+                <div style={{ padding: '1rem 1.25rem', color: 'var(--color-text-secondary)', fontSize: 'var(--text-sm)', lineHeight: 1.6 }}>
+                  {row.optionB}
+                </div>
+              </div>
+            ))}
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
 
-      <Section className="py-16 pb-32">
-        <Container size="narrow">
-          <GrowthAuditCTA />
-        </Container>
-      </Section>
+      <section className="section section-divider">
+        <div className="container-wide">
+          <div className="pillar-grid">
+            {[comparison.optionA, comparison.optionB].map((opt) => (
+              <article key={opt.name} className="pillar-card">
+                <span className="pillar-card__index">{opt.name}</span>
+                <div>
+                  <p
+                    className="font-mono"
+                    style={{
+                      fontSize: '0.6875rem',
+                      letterSpacing: '0.16em',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-accent)',
+                      marginBlockEnd: '0.625rem',
+                    }}
+                  >
+                    Pros
+                  </p>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                    {opt.pros.map((p) => (
+                      <li
+                        key={p}
+                        style={{
+                          display: 'flex',
+                          gap: '0.5rem',
+                          alignItems: 'flex-start',
+                          color: 'var(--color-text-secondary)',
+                          fontSize: 'var(--text-sm)',
+                          lineHeight: 1.55,
+                        }}
+                      >
+                        <span style={{ color: 'var(--color-accent)' }}>+</span>
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div style={{ marginBlockStart: '1rem' }}>
+                  <p
+                    className="font-mono"
+                    style={{
+                      fontSize: '0.6875rem',
+                      letterSpacing: '0.16em',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-text-tertiary)',
+                      marginBlockEnd: '0.625rem',
+                    }}
+                  >
+                    Cons
+                  </p>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                    {opt.cons.map((c) => (
+                      <li
+                        key={c}
+                        style={{
+                          display: 'flex',
+                          gap: '0.5rem',
+                          alignItems: 'flex-start',
+                          color: 'var(--color-text-secondary)',
+                          fontSize: 'var(--text-sm)',
+                          lineHeight: 1.55,
+                        }}
+                      >
+                        <span style={{ color: 'var(--color-text-tertiary)' }}>−</span>
+                        {c}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-divider">
+        <div className="container-wide">
+          <div className="section-header">
+            <p className="eyebrow eyebrow--accent">Our recommendation</p>
+            <h2 className="section-title text-balance">Where DPL would point you.</h2>
+            <p className="section-desc text-pretty">{comparison.recommendation}</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-divider">
+        <div className="container-wide">
+          <div className="section-header section-header--center">
+            <p className="eyebrow">Want help operating either option</p>
+            <h2 className="section-title text-balance">
+              Free 45-minute audit. Co-founder reviews your setup.
+            </h2>
+            <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
+              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
+              <Link href="/recovery" className="btn btn-ghost">Recovery service</Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

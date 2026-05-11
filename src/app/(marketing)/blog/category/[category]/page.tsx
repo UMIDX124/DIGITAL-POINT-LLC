@@ -21,11 +21,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!categoryName) return {};
   const meta = categoryMeta[categoryName];
 
+  const hasIndexable = getAllPosts().some(
+    (p) => p.category === categoryName && p.indexable === true
+  );
+
   return {
     title: `${categoryName} Articles`,
     description: meta.description,
     alternates: { canonical: `https://www.digitalpointllc.com/blog/category/${slug}` },
-    robots: { index: false, follow: true, googleBot: { index: false, follow: true } },
+    robots: hasIndexable
+      ? { index: true, follow: true, googleBot: { index: true, follow: true } }
+      : { index: false, follow: true, googleBot: { index: false, follow: true } },
     openGraph: {
       title: `${categoryName} Articles`,
       description: meta.description,

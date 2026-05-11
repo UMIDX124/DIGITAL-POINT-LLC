@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { getAllPosts, categoryMeta } from '@/lib/blog';
 import { comparisons } from '@/lib/comparisons';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -54,10 +55,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/tools/dashboard-cost-calculator`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
   ];
 
-  // Blog excluded from sitemap. Posts are legacy paid-media content,
-  // currently noindex pending content cluster rebuild. Programmatic SEO
-  // routes (/services/[service]/[industry], /services/[service]/near/[city])
-  // are dropped entirely — off-positioning.
+  // Blog: only indexable posts (new positioning cluster) ship in the
+  // sitemap. Legacy paid-media posts remain noindex and out of sitemap.
+  const indexablePosts = getAllPosts().filter((p) => p.indexable === true);
+  const blogPages: MetadataRoute.Sitemap =
+    indexablePosts.length > 0
+      ? [
+          { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
+          ...indexablePosts.map((p) => ({
+            url: `${baseUrl}/blog/${p.slug}`,
+            lastModified: p.lastModified ? new Date(p.lastModified) : new Date(p.date),
+            changeFrequency: 'monthly' as const,
+            priority: 0.75,
+          })),
+        ]
+      : [];
+  const indexableCategories = Array.from(
+    new Set(indexablePosts.map((p) => p.category))
+  );
+  const blogCategoryPages: MetadataRoute.Sitemap = indexableCategories
+    .map((c) => categoryMeta[c])
+    .filter(Boolean)
+    .map((meta) => ({
+      url: `${baseUrl}/blog/category/${meta.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.65,
+    }));
 
   // Comparison pages
   const comparisonPages: MetadataRoute.Sitemap = comparisons.map((comp) => ({
@@ -80,6 +104,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...corePages,
     ...researchPages,
     ...toolPages,
+    ...blogPages,
+    ...blogCategoryPages,
     ...comparisonPages,
     ...legalPages,
   ];

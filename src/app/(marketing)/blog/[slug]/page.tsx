@@ -21,15 +21,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!post) return {};
 
   const baseUrl = 'https://www.digitalpointllc.com';
+  const indexable = post.indexable === true;
   return {
     title: post.title,
     description: post.excerpt,
     keywords: post.tags,
-    robots: {
-      index: false,
-      follow: true,
-      googleBot: { index: false, follow: true },
-    },
+    robots: indexable
+      ? { index: true, follow: true, googleBot: { index: true, follow: true } }
+      : { index: false, follow: true, googleBot: { index: false, follow: true } },
     openGraph: {
       title: post.title,
       description: post.excerpt,

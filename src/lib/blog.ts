@@ -19,9 +19,18 @@ export interface BlogPost {
   image?: string;
   featured?: boolean;
   faqs?: { question: string; answer: string }[];
+  /**
+   * Posts default to noindex (legacy paid-media archive). Set to true in
+   * frontmatter for new positioning-aligned posts so they are indexed and
+   * surface in the sitemap.
+   */
+  indexable?: boolean;
 }
 
 export type BlogCategory =
+  | 'AI Agents'
+  | 'Workflow Automation'
+  | 'Pricing Transparency'
   | 'Marketing Attribution'
   | 'Paid Ads Benchmarks'
   | 'CAC ROAS Optimization'
@@ -30,6 +39,21 @@ export type BlogCategory =
   | 'Growth Systems';
 
 export const categoryMeta: Record<BlogCategory, { color: string; slug: string; description: string }> = {
+  'AI Agents': {
+    color: '#FF8800',
+    slug: 'ai-agents',
+    description: 'Deployment patterns, production gates, observability, and operator-backed runbooks for AI agent stacks.',
+  },
+  'Workflow Automation': {
+    color: '#FF8800',
+    slug: 'workflow-automation',
+    description: 'n8n, Make, and custom orchestration patterns for production-grade workflow automation.',
+  },
+  'Pricing Transparency': {
+    color: '#FF8800',
+    slug: 'pricing-transparency',
+    description: 'What AI automation engagements actually cost, with the math on retainers, pilots, and recovery.',
+  },
   'Marketing Attribution': {
     color: '#FF8800',
     slug: 'marketing-attribution',
@@ -88,6 +112,7 @@ export function getAllPosts(): BlogPost[] {
         image: data.image,
         featured: data.featured || false,
         faqs: data.faqs,
+        indexable: data.indexable === true,
       } as BlogPost;
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());

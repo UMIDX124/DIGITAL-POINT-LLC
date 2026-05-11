@@ -1,53 +1,34 @@
-'use client';
-
 import Link from 'next/link';
-import { Calculator, TrendingUp, DollarSign, BarChart3, PieChart } from 'lucide-react';
-import {
-  Section, Container, FadeUp, GlassCard,
-  StaggerContainer, StaggerItem, SignalPoint
-} from '@/components/ui-dp/AnimatedElements';
-import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
-import { GrowthAuditCTA } from '@/components/seo/GrowthAuditCTA';
 
 const tools = [
   {
     slug: 'roas-calculator',
     title: 'ROAS Calculator',
-    description: 'Calculate your Return on Ad Spend instantly. Compare platform-reported vs. blended ROAS.',
-    icon: TrendingUp,
-    color: '#FF8800',
+    description: 'Calculate Return on Ad Spend instantly. Compare platform-reported vs blended ROAS so you stop budgeting against inflated numbers.',
     tags: ['Paid Ads', 'ROI'],
   },
   {
     slug: 'cac-calculator',
     title: 'CAC Calculator',
-    description: 'Calculate Customer Acquisition Cost across channels. Find your most efficient acquisition source.',
-    icon: DollarSign,
-    color: '#FF8800',
+    description: 'Customer acquisition cost across channels. Find which acquisition source is funding which segment.',
     tags: ['Unit Economics', 'Growth'],
   },
   {
     slug: 'ad-spend-profit-calculator',
     title: 'Ad Spend Profit Calculator',
-    description: 'Model profitability at different ad spend levels. Find your optimal budget allocation.',
-    icon: Calculator,
-    color: '#FFA833',
+    description: 'Model profitability at different ad spend levels. Find the optimal budget before you scale.',
     tags: ['Budget', 'Profitability'],
   },
   {
     slug: 'attribution-model-visualizer',
     title: 'Attribution Model Visualizer',
-    description: 'Compare first-click, last-click, linear, time-decay, and position-based attribution models side by side.',
-    icon: PieChart,
-    color: '#FF8800',
+    description: 'First-click, last-click, linear, time-decay, position-based — compared side by side on your data.',
     tags: ['Attribution', 'Analytics'],
   },
   {
     slug: 'dashboard-cost-calculator',
     title: 'Dashboard Cost Calculator',
-    description: 'Estimate the cost of building vs. buying a marketing analytics dashboard for your team.',
-    icon: BarChart3,
-    color: '#FFA833',
+    description: 'Build vs buy comparison for marketing analytics dashboards. Burdened cost in three scenarios.',
     tags: ['Reporting', 'Systems'],
   },
 ];
@@ -55,65 +36,73 @@ const tools = [
 export function ToolsHub() {
   return (
     <>
-      <section className="relative min-h-[50vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 radial-glow" />
-        <Container className="relative z-10 pt-32 pb-12">
-          <FadeUp>
-            <Breadcrumbs items={[{ label: 'Tools', href: '/tools' }]} />
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-glass border border-border-glass text-text-secondary text-sm mb-6 mt-4">
-              <SignalPoint size="sm" />
-              Free Marketing Tools
-            </span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Marketing{' '}
-              <span style={{ color: 'var(--accent-bright)' }}>calculators</span>
-              {' '}& tools
-            </h1>
-            <p className="text-[color:var(--text-primary)] text-lg md:text-xl max-w-2xl leading-relaxed">
-              Free interactive tools to analyze your marketing performance, calculate ROI, and find optimization opportunities.
-            </p>
-          </FadeUp>
-        </Container>
+      <section className="hero">
+        <div className="hero-bg" aria-hidden="true" />
+        <div className="hero-inner">
+          <div className="hero-meta">
+            <span>Free tools · No sign-up · No email gate</span>
+          </div>
+
+          <h1 className="hero-title text-balance">
+            Marketing <span className="hero-title__amber">calculators</span>.<br />
+            Built for operators.
+          </h1>
+
+          <p className="hero-sub text-pretty">
+            Five interactive tools to stress-test your marketing math. Calculate ROAS,
+            CAC, profitability, attribution, and dashboard cost — answers in your
+            browser, no account required.
+          </p>
+
+          <div className="hero-cta-row">
+            <Link href="/audit" className="btn btn-primary">
+              Book a free audit
+            </Link>
+            <Link href="#tools" className="btn btn-ghost">
+              See the tools
+            </Link>
+          </div>
+        </div>
       </section>
 
-      <Section>
-        <Container>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {tools.map((tool) => {
-              const Icon = tool.icon;
-              return (
-                <StaggerItem key={tool.slug}>
-                  <Link href={`/tools/${tool.slug}`}>
-                    <GlassCard className="p-6 h-full flex flex-col group cursor-pointer relative">
-                      <div
-                        className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-                        style={{ background: `${tool.color}15`, border: `1px solid ${tool.color}25` }}
-                      >
-                        <Icon className="w-6 h-6" style={{ color: tool.color }} />
-                      </div>
-                      <h3 className="font-display text-lg font-semibold text-white group-hover:text-[color:var(--accent-bright)] transition-colors mb-2">
-                        {tool.title}
-                      </h3>
-                      <p className="text-[color:var(--text-muted)] text-sm leading-relaxed flex-1 mb-4">{tool.description}</p>
-                      <div className="flex gap-2">
-                        {tool.tags.map((tag) => (
-                          <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] text-[color:var(--text-muted)] bg-[rgba(255, 136, 0,0.1)]">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </GlassCard>
-                  </Link>
-                </StaggerItem>
-              );
-            })}
-          </StaggerContainer>
-
-          <div className="mt-16">
-            <GrowthAuditCTA variant="banner" title="Need custom analytics?" description="Our team builds custom dashboards and attribution systems. Start with a free growth audit." />
+      <section className="section section-divider" id="tools">
+        <div className="container-wide">
+          <div className="pillar-grid pillar-grid--three">
+            {tools.map((t) => (
+              <Link
+                key={t.slug}
+                href={`/tools/${t.slug}`}
+                className="pillar-card"
+                style={{ textDecoration: 'none' }}
+              >
+                <span className="pillar-card__index">Tool · {t.tags[0]}</span>
+                <h3 className="pillar-card__title">{t.title}</h3>
+                <p className="pillar-card__desc">{t.description}</p>
+                <div className="pillar-card__link">
+                  <span className="btn-link">Open tool</span>
+                </div>
+              </Link>
+            ))}
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
+
+      <section className="section section-divider">
+        <div className="container-wide">
+          <div className="section-header section-header--center">
+            <p className="eyebrow eyebrow--accent">Need a custom system</p>
+            <h2 className="section-title text-balance">
+              Free 45-minute audit. Custom dashboards and attribution systems.
+            </h2>
+            <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
+              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
+              <Link href="/stack" className="btn btn-ghost">See the stack</Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
+
+export default ToolsHub;

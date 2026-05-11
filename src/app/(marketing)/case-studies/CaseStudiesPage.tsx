@@ -1,173 +1,228 @@
-'use client';
-
 import Link from 'next/link';
-import { motion } from '@/lib/framer-compat';
-import { Section, Container, SectionHeader, FadeUp } from '@/components/ui-dp/AnimatedElements';
 import { caseStudies } from '@/lib/case-studies';
-import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 
 export function CaseStudiesPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative min-h-[40vh] flex items-end overflow-hidden">
-        <div className="absolute inset-0 radial-glow" />
-        <Container className="relative z-10 pt-28 pb-8">
-          <FadeUp>
-            <Breadcrumbs
-              items={[
-                { label: 'Case Studies', href: '/case-studies' },
-              ]}
-            />
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mt-6" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
-              AI Deployments That Speak for Themselves
-            </h1>
-            <p className="text-[color:var(--text-primary)] text-lg mt-4 max-w-2xl">
-              Real agent stacks. Measurable outcomes. See how we replaced
-              operations headcount with AI + automation + operator backstop.
-            </p>
-          </FadeUp>
-        </Container>
-      </section>
-
-      {/* Case Studies */}
-      <Section>
-        <Container>
-          <div className="max-w-4xl mx-auto space-y-12">
-            {caseStudies.map((study, idx) => (
-              <FadeUp key={study.slug} delay={idx * 0.1}>
-                <motion.div
-                  className="rounded-2xl overflow-hidden"
-                  style={{
-                    background: 'rgba(13, 8, 21, 0.6)',
-                    border: '1px solid rgba(255, 136, 0, 0.2)',
-                  }}
-                  whileHover={{ scale: 1.005 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {/* Header */}
-                  <div
-                    className="px-4 sm:px-6 md:px-8 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
-                    style={{
-                      background:
-                        'linear-gradient(135deg, rgba(255, 136, 0, 0.1) 0%, rgba(13, 8, 21, 0.8) 100%)',
-                      borderBottom: '1px solid rgba(255, 136, 0, 0.15)',
-                    }}
-                  >
-                    <div>
-                      <p className="text-[color:var(--text-muted)] text-xs uppercase tracking-wider mb-1">
-                        {study.industry}
-                      </p>
-                      <h2 className="font-display text-xl font-bold text-white">
-                        {study.title}
-                      </h2>
-                    </div>
-                    <div className="text-right">
-                      <p
-                        className="font-display text-2xl font-bold"
-                        style={{ color: '#FF8800' }}
-                      >
-                        {study.highlightMetric}
-                      </p>
-                      <p className="text-[color:var(--text-muted)] text-xs">
-                        {study.highlightLabel}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Body */}
-                  <div className="px-4 sm:px-6 md:px-8 py-6 space-y-6">
-                    {/* Problem */}
-                    <div>
-                      <h3 className="text-xs uppercase tracking-wider text-[color:var(--accent-primary)] font-semibold mb-2">
-                        The Problem
-                      </h3>
-                      <p className="text-[color:var(--text-primary)] text-sm leading-relaxed">
-                        {study.problem}
-                      </p>
-                    </div>
-
-                    {/* Strategy */}
-                    <div>
-                      <h3 className="text-xs uppercase tracking-wider text-[color:var(--accent-primary)] font-semibold mb-2">
-                        Our Strategy
-                      </h3>
-                      <p className="text-[color:var(--text-primary)] text-sm leading-relaxed">
-                        {study.strategy}
-                      </p>
-                    </div>
-
-                    {/* Results */}
-                    <div>
-                      <h3 className="text-xs uppercase tracking-wider text-[color:var(--accent-primary)] font-semibold mb-3">
-                        Results
-                      </h3>
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-                        {study.results.map((r) => (
-                          <div
-                            key={r.label}
-                            className="rounded-xl p-3 sm:p-4 text-center"
-                            style={{
-                              background: 'rgba(255, 136, 0, 0.08)',
-                              border: '1px solid rgba(255, 136, 0, 0.12)',
-                            }}
-                          >
-                            <p
-                              className="font-display text-lg font-bold"
-                              style={{ color: '#FF8800' }}
-                            >
-                              {r.value}
-                            </p>
-                            <p className="text-[color:var(--text-muted)] text-xs mt-1">
-                              {r.label}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Behind the Scenes */}
-                    {study.behindTheScenes && (
-                      <div
-                        className="rounded-xl p-5"
-                        style={{
-                          background: 'linear-gradient(135deg, rgba(255, 136, 0, 0.08), rgba(255, 136, 0, 0.05))',
-                          border: '1px solid rgba(255, 168, 51, 0.12)',
-                        }}
-                      >
-                        <h3 className="text-xs uppercase tracking-wider text-[color:var(--accent-bright)] font-semibold mb-2">
-                          Behind the Scenes
-                        </h3>
-                        <p className="text-[color:var(--text-primary)] text-sm leading-relaxed italic">
-                          {study.behindTheScenes}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
-              </FadeUp>
-            ))}
+      <section className="hero">
+        <div className="hero-bg" aria-hidden="true" />
+        <div className="hero-inner">
+          <div className="hero-meta">
+            <span>Case studies · Composites · Real engagements</span>
           </div>
 
-          {/* CTA */}
-          <FadeUp delay={0.3}>
-            <div className="text-center mt-16">
-              <p className="text-[color:var(--text-primary)] text-lg mb-6">
-                Ready to become the next success story?
-              </p>
-              <Link
-                href="/audit"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-white transition-all hover:scale-105"
+          <h1 className="hero-title text-balance">
+            AI deployments that <span className="hero-title__amber">speak</span> for themselves.
+          </h1>
+
+          <p className="hero-sub text-pretty">
+            Real agent stacks. Measured outcomes. The figures below are operational
+            composites pending fresh client-cleared attribution. Specific named-client
+            metrics surface after NDA review only.
+          </p>
+
+          <div className="hero-cta-row">
+            <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
+            <Link href="/recovery" className="btn btn-ghost">Recovery service</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-divider">
+        <div className="container-wide">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            {caseStudies.map((study, i) => (
+              <article
+                key={study.slug}
+                className="surface"
                 style={{
-                  background: 'linear-gradient(135deg, #C26800 0%, #FF8800 100%)',
+                  padding: 'clamp(1.5rem, 3vw, 2.5rem)',
+                  display: 'grid',
+                  gap: '1.5rem',
                 }}
               >
-                Get Your Free Growth Audit
-              </Link>
+                <header
+                  style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'space-between',
+                    gap: '1rem',
+                    paddingBlockEnd: '1.25rem',
+                    borderBlockEnd: '1px solid var(--color-line-faint)',
+                  }}
+                >
+                  <div>
+                    <p
+                      className="font-mono"
+                      style={{
+                        fontSize: '0.6875rem',
+                        letterSpacing: '0.16em',
+                        textTransform: 'uppercase',
+                        color: 'var(--color-accent)',
+                      }}
+                    >
+                      {String(i + 1).padStart(2, '0')} · {study.industry}
+                    </p>
+                    <h2
+                      className="font-display"
+                      style={{
+                        marginBlockStart: '0.5rem',
+                        fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                        color: 'var(--color-text-primary)',
+                      }}
+                    >
+                      {study.title}
+                    </h2>
+                  </div>
+                  <div style={{ textAlign: 'right' }}>
+                    <p
+                      className="font-mono"
+                      style={{
+                        fontSize: 'clamp(2rem, 4vw, 3rem)',
+                        fontWeight: 600,
+                        color: 'var(--color-accent)',
+                        lineHeight: 1,
+                      }}
+                    >
+                      {study.highlightMetric}
+                    </p>
+                    <p
+                      className="font-mono"
+                      style={{
+                        marginBlockStart: '0.25rem',
+                        fontSize: '0.6875rem',
+                        letterSpacing: '0.12em',
+                        textTransform: 'uppercase',
+                        color: 'var(--color-text-tertiary)',
+                      }}
+                    >
+                      {study.highlightLabel}
+                    </p>
+                  </div>
+                </header>
+
+                <div
+                  style={{
+                    display: 'grid',
+                    gap: '1.5rem',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(14rem, 1fr))',
+                  }}
+                >
+                  <div>
+                    <p
+                      className="font-mono"
+                      style={{
+                        fontSize: '0.6875rem',
+                        letterSpacing: '0.16em',
+                        textTransform: 'uppercase',
+                        color: 'var(--color-text-tertiary)',
+                      }}
+                    >
+                      Problem
+                    </p>
+                    <p
+                      style={{
+                        marginBlockStart: '0.5rem',
+                        color: 'var(--color-text-secondary)',
+                        fontSize: 'var(--text-sm)',
+                        lineHeight: 1.6,
+                      }}
+                    >
+                      {study.problem}
+                    </p>
+                  </div>
+                  <div>
+                    <p
+                      className="font-mono"
+                      style={{
+                        fontSize: '0.6875rem',
+                        letterSpacing: '0.16em',
+                        textTransform: 'uppercase',
+                        color: 'var(--color-text-tertiary)',
+                      }}
+                    >
+                      Strategy
+                    </p>
+                    <p
+                      style={{
+                        marginBlockStart: '0.5rem',
+                        color: 'var(--color-text-secondary)',
+                        fontSize: 'var(--text-sm)',
+                        lineHeight: 1.6,
+                      }}
+                    >
+                      {study.strategy}
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    display: 'grid',
+                    gap: '1px',
+                    gridTemplateColumns: `repeat(${study.results.length}, 1fr)`,
+                    background: 'var(--color-line-faint)',
+                    border: '1px solid var(--color-line-faint)',
+                    borderRadius: 'var(--radius-md)',
+                    overflow: 'hidden',
+                  }}
+                >
+                  {study.results.map((r) => (
+                    <div
+                      key={r.label}
+                      style={{
+                        background: 'var(--color-canvas)',
+                        padding: '1rem 1.25rem',
+                      }}
+                    >
+                      <p
+                        className="font-mono"
+                        style={{
+                          fontSize: 'var(--text-md)',
+                          fontWeight: 600,
+                          color: 'var(--color-accent)',
+                          letterSpacing: '-0.01em',
+                        }}
+                      >
+                        {r.value}
+                      </p>
+                      <p
+                        className="font-mono"
+                        style={{
+                          marginBlockStart: '0.25rem',
+                          fontSize: '0.6875rem',
+                          letterSpacing: '0.12em',
+                          textTransform: 'uppercase',
+                          color: 'var(--color-text-tertiary)',
+                        }}
+                      >
+                        {r.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-divider">
+        <div className="container-wide">
+          <div className="section-header section-header--center">
+            <p className="eyebrow eyebrow--accent">Your turn</p>
+            <h2 className="section-title text-balance">
+              Free 45-minute audit. Written deployment plan in 5 days.
+            </h2>
+            <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
+              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
+              <Link href="/recovery" className="btn btn-ghost">Recover a broken agent</Link>
             </div>
-          </FadeUp>
-        </Container>
-      </Section>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
+
+export default CaseStudiesPage;

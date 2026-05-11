@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { COSMO_SYSTEM_PROMPT as SYSTEM_PROMPT } from '@/lib/cosmo-system-prompt';
+import { ChatRequestSchema } from '@/lib/schemas';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -36,29 +37,14 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const messages = body?.messages;
-
-    if (!Array.isArray(messages) || messages.length === 0) {
-      return NextResponse.json({ error: 'Invalid messages payload' }, { status: 400 });
+    const parsed = ChatRequestSchema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: 'Invalid input', issues: parsed.error.flatten() },
+        { status: 400 }
+      );
     }
-
-    const sanitized = messages
-      .filter(
-        (m: unknown): m is { role: string; content: string } =>
-          !!m && typeof m === 'object' && 'role' in m && 'content' in m &&
-          typeof (m as { role: unknown }).role === 'string' &&
-          typeof (m as { content: unknown }).content === 'string',
-      )
-      .filter((m) => ['user', 'assistant'].includes(m.role))
-      .slice(-12)
-      .map((m) => ({
-        role: m.role as 'user' | 'assistant',
-        content: String(m.content).slice(0, 2000),
-      }));
-
-    if (sanitized.length === 0) {
-      return NextResponse.json({ error: 'No valid messages' }, { status: 400 });
-    }
+    const sanitized = parsed.data.messages.slice(-12);
 
     const apiKey = process.env.GROQ_API_KEY;
     if (!apiKey) {

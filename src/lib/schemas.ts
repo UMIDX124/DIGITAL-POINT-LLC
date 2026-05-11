@@ -35,6 +35,19 @@ export const FounderSubmissionSchema = z.object({
 });
 export type FounderSubmission = z.infer<typeof FounderSubmissionSchema>;
 
+export const ChatRequestSchema = z.object({
+  messages: z
+    .array(
+      z.object({
+        role: z.enum(['user', 'assistant']),
+        content: z.string().trim().min(1).max(2000),
+      })
+    )
+    .min(1)
+    .max(50),
+});
+export type ChatRequest = z.infer<typeof ChatRequestSchema>;
+
 export const AuditSubmissionSchema = z.object({
   name: nameSchema,
   email: emailSchema,

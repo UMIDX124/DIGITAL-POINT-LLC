@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Logomark } from "@/components/brand/Logomark";
@@ -265,13 +264,6 @@ export default function RootLayout({
             data (LCP, INP, CLS at 75th percentile). Client-only via the
             @vercel/speed-insights/next adapter. */}
         <SpeedInsights />
-        {process.env.NEXT_PUBLIC_ADSENSE_ID ? (
-          <Script
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`}
-            strategy="afterInteractive"
-            crossOrigin="anonymous"
-          />
-        ) : null}
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
+import { SubmissionsQuerySchema } from '@/lib/schemas';
 
 export async function GET(request: NextRequest) {
   try {
@@ -23,10 +24,15 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Pagination
     const url = new URL(request.url);
-    const page = Math.max(1, Number(url.searchParams.get('page')) || 1);
-    const limit = Math.min(100, Math.max(1, Number(url.searchParams.get('limit')) || 25));
+    const query = SubmissionsQuerySchema.safeParse(Object.fromEntries(url.searchParams));
+    if (!query.success) {
+      return NextResponse.json(
+        { success: false, message: 'Invalid query parameters', issues: query.error.flatten() },
+        { status: 400 }
+      );
+    }
+    const { page, limit } = query.data;
     const skip = (page - 1) * limit;
 
     const [auditSubmissions, founderSubmissions, auditCount, founderCount] = await Promise.all([

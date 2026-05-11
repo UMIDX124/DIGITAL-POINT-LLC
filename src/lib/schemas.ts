@@ -64,6 +64,17 @@ export const NewsletterSchema = z.object({
 });
 export type NewsletterInput = z.infer<typeof NewsletterSchema>;
 
+export const IndexNowRequestSchema = z.object({
+  urls: z.array(z.string().url().max(2048)).min(1).max(10000),
+});
+export type IndexNowRequest = z.infer<typeof IndexNowRequestSchema>;
+
+export const SubmissionsQuerySchema = z.object({
+  page: z.coerce.number().int().min(1).max(10000).default(1),
+  limit: z.coerce.number().int().min(1).max(100).default(25),
+});
+export type SubmissionsQuery = z.infer<typeof SubmissionsQuerySchema>;
+
 export const AuditSubmissionSchema = z.object({
   name: nameSchema,
   email: emailSchema,

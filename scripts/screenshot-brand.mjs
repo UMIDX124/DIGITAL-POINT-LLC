@@ -1,0 +1,13 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch();
+const ctx = await b.newContext({ viewport: { width: 1440, height: 900 } });
+const p = await ctx.newPage();
+await p.goto('http://localhost:3105/', { waitUntil: 'domcontentloaded', timeout: 20000 });
+await p.waitForTimeout(2200);
+await p.screenshot({ path: '/tmp/brand-home-desktop.png', fullPage: false });
+console.log('home desktop ok');
+await p.goto('http://localhost:3105/audit', { waitUntil: 'domcontentloaded', timeout: 20000 });
+await p.waitForTimeout(2200);
+await p.screenshot({ path: '/tmp/brand-audit-desktop.png', fullPage: false });
+console.log('audit desktop ok');
+await b.close();

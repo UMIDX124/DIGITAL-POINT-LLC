@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { Logomark } from "@/components/brand/Logomark";
 import { VisibilityPause } from "@/components/motion/VisibilityPause";
 import { BotIdClient } from "botid/client";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -245,14 +245,9 @@ export default function RootLayout({
             body's globals.css background (subtle radial atmosphere) takes
             effect. Color retained inline so unstyled fallback is readable. */}
         <div className="dpl-intro-loader" aria-hidden="true">
-          <Image
-            src="/Dp-logo1.png"
-            alt="Digital Point"
-            width={96}
-            height={96}
-            priority
-            className="dpl-intro-mascot"
-          />
+          <span className="dpl-intro-mascot">
+            <Logomark size={96} />
+          </span>
           <span className="dpl-intro-line" />
         </div>
         <VisibilityPause />

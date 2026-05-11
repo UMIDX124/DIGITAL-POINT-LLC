@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { Logomark } from '@/components/brand/Logomark';
 
 const navLinks = [
   { label: 'Recovery', href: '/recovery' },
@@ -14,15 +14,8 @@ export function Navigation() {
   return (
     <header className="dpl-nav" role="banner">
       <nav className="dpl-nav__inner" aria-label="Primary">
-        <Link href="/" className="dpl-nav__brand">
-          <Image
-            src="/Dp-logo1.png"
-            alt=""
-            width={28}
-            height={28}
-            priority
-            style={{ borderRadius: 6 }}
-          />
+        <Link href="/" className="dpl-nav__brand" aria-label="Digital Point home">
+          <Logomark size={28} />
           <span>Digital Point</span>
         </Link>
 

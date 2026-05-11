@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { Logomark } from '@/components/brand/Logomark';
 
 const cols = [
   {
@@ -38,13 +38,7 @@ export function Footer() {
         <div className="dpl-footer__grid">
           <div className="dpl-footer__col">
             <Link href="/" className="dpl-nav__brand" style={{ marginBlockEnd: '1rem' }}>
-              <Image
-                src="/Dp-logo1.png"
-                alt=""
-                width={28}
-                height={28}
-                style={{ borderRadius: 6 }}
-              />
+              <Logomark size={32} />
               <span>Digital Point</span>
             </Link>
             <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--text-sm)', maxWidth: '28rem', lineHeight: 1.6 }}>

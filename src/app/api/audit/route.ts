@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { checkBotId } from 'botid/server';
 import { db } from '@/lib/db';
 import { sendEmail, escapeHtml } from '@/lib/email';
+import { AuditSubmissionSchema } from '@/lib/schemas';
 
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 const RATE_LIMIT = 5;
@@ -68,27 +69,20 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true, message: 'Audit request received successfully' });
     }
 
-    if (!body.name || !body.email || !body.bottleneck) {
+    const parsed = AuditSubmissionSchema.safeParse(body);
+    if (!parsed.success) {
       return NextResponse.json(
-        { success: false, message: 'Missing required fields' },
+        { error: 'Invalid input', issues: parsed.error.flatten() },
         { status: 400 }
       );
     }
+    const data = parsed.data;
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(body.email)) {
-      return NextResponse.json(
-        { success: false, message: 'Invalid email address' },
-        { status: 400 }
-      );
-    }
+    const name = sanitize(data.name) || '';
+    const email = sanitize(data.email) || '';
+    const company = sanitize(data.company);
+    const bottleneck = sanitize(data.bottleneck);
 
-    const name = sanitize(body.name) || '';
-    const email = sanitize(body.email) || '';
-    const company = sanitize(body.company);
-    const bottleneck = sanitize(body.bottleneck);
-
-    // Try to save to database (may fail on serverless with SQLite)
     let submissionId = 'no-db';
     try {
       const submission = await db.auditSubmission.create({
@@ -96,21 +90,21 @@ export async function POST(request: NextRequest) {
           name,
           email,
           company,
-          website: sanitize(body.website),
-          businessType: sanitize(body.businessType),
-          adSpend: sanitize(body.adSpend),
-          teamSize: sanitize(body.teamSize),
+          website: sanitize(data.website),
+          businessType: sanitize(data.businessType),
+          adSpend: sanitize(data.adSpend),
+          teamSize: sanitize(data.teamSize),
           bottleneck,
-          services: body.services?.map((s: string) => sanitize(s)).filter(Boolean).join(',') || null,
-          notes: sanitize(body.notes) || '',
-          utmSource: sanitize(body.utmSource),
-          utmMedium: sanitize(body.utmMedium),
-          utmCampaign: sanitize(body.utmCampaign),
+          services: data.services?.map((s) => sanitize(s)).filter(Boolean).join(',') || null,
+          notes: sanitize(data.notes) || '',
+          utmSource: sanitize(data.utmSource),
+          utmMedium: sanitize(data.utmMedium),
+          utmCampaign: sanitize(data.utmCampaign),
         },
       });
       submissionId = submission.id;
     } catch {
-      // Database unavailable (e.g. sQLite on serverless). Continue with email
+      // SQLite on serverless can fail; continue with email
     }
 
     // Send email with escaped user input (best-effort)

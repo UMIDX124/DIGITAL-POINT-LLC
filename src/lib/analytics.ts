@@ -8,7 +8,7 @@ export const pageNames: Record<string, string> = {
   '/remote-workforce': 'Remote Workforce',
   '/systems-reporting': 'Systems & Reporting',
   '/results': 'Results',
-  '/free-growth-audit': 'Free Growth Audit',
+  '/audit': 'Free Growth Audit',
   '/about': 'About',
   '/contact': 'Contact',
   '/blog': 'Blog',

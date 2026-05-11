@@ -26,7 +26,7 @@ export const copy = {
        no banned jargon, no -ly adverbs. */
     subhead:
       'DPL operates the AI agents and trained humans that run your ops. You see outputs, not invoices for hours.',
-    ctaPrimary: { label: 'Book a free audit', href: '/free-growth-audit' },
+    ctaPrimary: { label: 'Book a free audit', href: '/audit' },
     ctaSecondary: { label: 'See what we run', href: '#services' },
   },
 
@@ -342,7 +342,7 @@ export const copy = {
     headline: "Let's map where AI could be running your repeatable work.",
     body:
       "A co-founder reviews your setup. Free. Written plan within 5 business days: what AI can run, what automation can stitch, where operators stay. If we can't help, we'll tell you.",
-    ctaPrimary: { label: 'Talk to a co-founder', href: '/free-growth-audit' },
+    ctaPrimary: { label: 'Talk to a co-founder', href: '/audit' },
     ctaSecondary: { label: 'See case studies', href: '/case-studies' },
   },
 
@@ -352,7 +352,7 @@ export const copy = {
       headline: 'AI that runs the boring parts.',
       body:
         'Lead capture, document intake, follow-up, reporting, portfolio monitoring. We build the workflows, we operate the workflows, you watch the outputs.',
-      ctaPrimary: { label: 'Book a free audit', href: '/free-growth-audit' },
+      ctaPrimary: { label: 'Book a free audit', href: '/audit' },
     },
     whatWeAutomate: {
       eyebrow: 'WHAT WE AUTOMATE',
@@ -417,14 +417,14 @@ export const copy = {
           price: 'Free',
           body: 'Co-founder review of your workflow gaps. Written plan within 5 business days.',
           cta: 'Book audit',
-          href: '/free-growth-audit',
+          href: '/audit',
         },
         {
           name: 'Pilot',
           price: '$2,500 fixed',
           body: 'One workflow, end-to-end. Scoped, built, operated for 30 days. You own the output.',
           cta: 'Start pilot',
-          href: '/free-growth-audit',
+          href: '/audit',
           featured: true,
         },
         {

@@ -165,7 +165,7 @@ export function BlogPage() {
               <p className="text-[color:var(--text-primary)] text-sm mb-6">
                 No spam. Just real frameworks and case studies we use with our clients. Unsubscribe anytime.
               </p>
-              <Link href="/free-growth-audit">
+              <Link href="/audit">
                 <span
                   className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-xl transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98]"
                   style={{

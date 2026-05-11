@@ -34,7 +34,7 @@ export function LeadMagnetBanner() {
 
       <div className="flex items-center justify-center gap-4 flex-wrap">
         <Link
-          href="/free-growth-audit"
+          href="/audit"
           className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-xl transition-transform hover:scale-[1.02] active:scale-[0.98]"
           style={{
             background: 'linear-gradient(135deg, #C26800 0%, #C26800 100%)',

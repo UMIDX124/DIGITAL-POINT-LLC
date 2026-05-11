@@ -83,7 +83,7 @@ export default function NotFound() {
             <span aria-hidden="true">→</span>
           </Link>
           <Link
-            href="/free-growth-audit"
+            href="/audit"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-md font-medium text-sm transition-colors"
             style={{
               border: '1px solid var(--border-default)',

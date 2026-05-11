@@ -149,7 +149,7 @@ export default function CookiesPage() {
             >
               <strong>Questions or removal requests:</strong> reach out via
               Cosmo on the homepage or the{' '}
-              <a href="/free-growth-audit" style={{ color: 'var(--accent)' }}>
+              <a href="/audit" style={{ color: 'var(--accent)' }}>
                 audit form
               </a>{' '}
               and an operator will handle it from a personal account, not a

@@ -200,11 +200,12 @@ export default function RootLayout({
               "@type": "BreadcrumbList",
               itemListElement: [
                 { "@type": "ListItem", position: 1, name: "Home", item: "https://www.digitalpointllc.com" },
-                { "@type": "ListItem", position: 2, name: "Remote Workforce", item: "https://www.digitalpointllc.com/remote-workforce" },
-                { "@type": "ListItem", position: 3, name: "Automation", item: "https://www.digitalpointllc.com/automation" },
-                { "@type": "ListItem", position: 4, name: "Performance Marketing", item: "https://www.digitalpointllc.com/performance-marketing" },
-                { "@type": "ListItem", position: 5, name: "Results", item: "https://www.digitalpointllc.com/results" },
-                { "@type": "ListItem", position: 6, name: "Free Growth Audit", item: "https://www.digitalpointllc.com/free-growth-audit" },
+                { "@type": "ListItem", position: 2, name: "Recovery", item: "https://www.digitalpointllc.com/recovery" },
+                { "@type": "ListItem", position: 3, name: "Agents", item: "https://www.digitalpointllc.com/agents" },
+                { "@type": "ListItem", position: 4, name: "Automation", item: "https://www.digitalpointllc.com/automation" },
+                { "@type": "ListItem", position: 5, name: "Operators", item: "https://www.digitalpointllc.com/operators" },
+                { "@type": "ListItem", position: 6, name: "Pricing", item: "https://www.digitalpointllc.com/pricing" },
+                { "@type": "ListItem", position: 7, name: "Audit", item: "https://www.digitalpointllc.com/audit" },
               ],
             }),
           }}

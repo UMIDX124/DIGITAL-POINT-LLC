@@ -12,6 +12,16 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: true,
   },
+  async redirects() {
+    return [
+      // New positioning: legacy pillar URLs route to new pillars.
+      { source: '/performance-marketing', destination: '/automation', permanent: true },
+      { source: '/remote-workforce', destination: '/operators', permanent: true },
+      { source: '/systems-reporting', destination: '/agents', permanent: true },
+      // /free-growth-audit becomes the audit canonical at /audit.
+      { source: '/free-growth-audit', destination: '/audit', permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

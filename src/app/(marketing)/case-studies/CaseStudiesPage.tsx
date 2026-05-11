@@ -236,6 +236,35 @@ export function CaseStudiesPage() {
                     </div>
                   ))}
                 </div>
+
+                <div
+                  style={{
+                    paddingBlockStart: '1.25rem',
+                    borderBlockStart: '1px solid var(--color-line-faint)',
+                  }}
+                >
+                  <p
+                    className="font-mono"
+                    style={{
+                      fontSize: '0.6875rem',
+                      letterSpacing: '0.16em',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-text-tertiary)',
+                    }}
+                  >
+                    Operator notes
+                  </p>
+                  <p
+                    style={{
+                      marginBlockStart: '0.5rem',
+                      color: 'var(--color-text-secondary)',
+                      fontSize: 'var(--text-sm)',
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {study.behindTheScenes}
+                  </p>
+                </div>
               </article>
             ))}
           </div>

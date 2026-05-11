@@ -1,6 +1,7 @@
 import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';
 import ChatWidget from '@/components/chat/ChatWidget';
+import { RevealOnScroll } from '@/components/motion/RevealOnScroll';
 
 export default function MarketingLayout({
   children,
@@ -13,6 +14,7 @@ export default function MarketingLayout({
       <main id="main" className="flex-1">{children}</main>
       <Footer />
       <ChatWidget />
+      <RevealOnScroll />
     </div>
   );
 }

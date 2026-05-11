@@ -1019,3 +1019,142 @@ html[data-i-seen="1"] .dpl-intro-loader {
   height: 32px;
   color: var(--color-accent);
 }
+
+/* Cosmo wave mark — three states. Bars driven by --bar-i index. */
+.cosmo-mark {
+  display: block;
+}
+
+.cosmo-mark .cosmo-bar {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.cosmo-mark-idle .cosmo-bar {
+  animation: cosmo-bar-idle 4s ease-in-out infinite;
+  animation-delay: calc(var(--bar-i, 0) * 120ms);
+}
+
+.cosmo-mark-active .cosmo-bar {
+  animation: cosmo-bar-active 1.2s ease-in-out infinite;
+  animation-delay: calc(var(--bar-i, 0) * 60ms);
+}
+
+.cosmo-mark-speaking .cosmo-bar {
+  animation: cosmo-bar-speaking 600ms ease-in-out infinite;
+  animation-delay: calc(var(--bar-i, 0) * 60ms);
+}
+
+@keyframes cosmo-bar-idle {
+  0%, 100% { opacity: 0.85; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.05); }
+}
+
+@keyframes cosmo-bar-active {
+  0%, 100% { transform: scaleY(0.85); }
+  50% { transform: scaleY(1.15); }
+}
+
+@keyframes cosmo-bar-speaking {
+  0%, 100% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1.4); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cosmo-mark .cosmo-bar {
+    animation: none !important;
+  }
+}
+
+/* Hero subtle fade-ins. Title and meta render instantly so LCP is the
+   typography itself; below it, sub + CTAs ease in for atmosphere. */
+.hero-sub {
+  animation: hero-sub-in 0.6s var(--ease-out) 0.15s both;
+}
+
+.hero-cta-row {
+  animation: hero-cta-in 0.5s var(--ease-out) 0.3s both;
+}
+
+.hero-microcopy {
+  animation: hero-sub-in 0.4s var(--ease-out) 0.45s both;
+}
+
+@keyframes hero-sub-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-cta-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-sub,
+  .hero-cta-row,
+  .hero-microcopy {
+    animation: none !important;
+  }
+}
+
+/* Reveal on scroll — pillar cards stagger when entering view */
+.pillar-grid > .pillar-card {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s var(--ease-out),
+    transform 0.6s var(--ease-out);
+}
+
+.pillar-grid.is-revealed > .pillar-card {
+  opacity: 1;
+  transform: none;
+}
+
+.pillar-grid.is-revealed > .pillar-card:nth-child(1) { transition-delay: 0ms; }
+.pillar-grid.is-revealed > .pillar-card:nth-child(2) { transition-delay: 80ms; }
+.pillar-grid.is-revealed > .pillar-card:nth-child(3) { transition-delay: 160ms; }
+.pillar-grid.is-revealed > .pillar-card:nth-child(4) { transition-delay: 240ms; }
+.pillar-grid.is-revealed > .pillar-card:nth-child(5) { transition-delay: 320ms; }
+.pillar-grid.is-revealed > .pillar-card:nth-child(6) { transition-delay: 400ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pillar-grid > .pillar-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Math tile amber pulse on enter */
+.math-tile--accent {
+  position: relative;
+  overflow: hidden;
+}
+
+.math-tile--accent::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(60% 50% at 50% 50%, rgba(255, 136, 0, 0.15), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.8s var(--ease-out);
+  pointer-events: none;
+}
+
+.math-tile--accent.is-revealed::before {
+  opacity: 1;
+}

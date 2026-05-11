@@ -1,19 +1,4 @@
-// Phase 17b Pillar 3 — converted to server component. Was gratuitously
-// `'use client'` despite zero client-only API (no useState/useEffect, no
-// event handlers, no window/document access). Audit §4 caught /blog mobile
-// LH median 64 (vs ≥90 floor). Root cause: the `'use client'` directive
-// was forcing the entire 9KB list tree + 100 post excerpts (1.5MB content
-// dir) to hydrate client-side. As a server component, the page renders to
-// HTML server-side; nested client islands (NewsletterOptIn) mount as their
-// own boundaries.
 import Link from 'next/link';
-import { ArrowRight, Clock, Tag } from 'lucide-react';
-import {
-  Section, Container, FadeUp, GlassCard,
-  StaggerContainer, StaggerItem, SignalPoint
-} from '@/components/ui-dp/AnimatedElements';
-import { GrowthAuditCTA } from '@/components/seo/GrowthAuditCTA';
-import { NewsletterOptIn } from '@/components/seo/NewsletterOptIn';
 import type { BlogPost, BlogCategory } from '@/lib/blog';
 
 interface Props {
@@ -22,197 +7,113 @@ interface Props {
   categoryMeta: Record<string, { color: string; slug: string; description: string }>;
 }
 
-// Fallback articles when no MDX content exists yet
-const fallbackArticles = [
-  {
-    slug: 'why-your-roas-is-lying',
-    title: 'Why Your ROAS Is Lying to You (And What to Track Instead)',
-    excerpt: 'Most businesses rely on platform-reported ROAS, but it rarely tells the full story. Here\'s what sophisticated advertisers track to understand real performance.',
-    category: 'CAC ROAS Optimization' as BlogCategory,
-    readTime: '6 min read',
-    date: '2025-03-15',
-    tags: [],
-    content: '',
-    author: 'Digital Point LLC',
-  },
-  {
-    slug: 'remote-team-playbook',
-    title: 'The Remote Team Playbook: How We Build High-Output Teams Across Time Zones',
-    excerpt: 'Building a remote workforce isn\'t about finding cheap labor. It\'s about creating systems that let distributed teams operate at enterprise speed.',
-    category: 'Remote Workforce' as BlogCategory,
-    readTime: '8 min read',
-    date: '2025-02-20',
-    tags: [],
-    content: '',
-    author: 'Digital Point LLC',
-  },
-  {
-    slug: 'reporting-that-drives-decisions',
-    title: 'Reporting That Actually Drives Decisions (Not Just Occupies Meetings)',
-    excerpt: 'Stop sending PDF reports that nobody reads. Here\'s how we build reporting systems that surface the signal from the noise.',
-    category: 'Marketing Analytics' as BlogCategory,
-    readTime: '5 min read',
-    date: '2025-01-10',
-    tags: [],
-    content: '',
-    author: 'Digital Point LLC',
-  },
-  {
-    slug: 'scaling-ad-spend-without-cac-creep',
-    title: 'How to Scale Ad Spend Without CAC Creep',
-    excerpt: 'Scaling from $50K to $500K/month in ad spend without letting customer acquisition costs spiral is a real skill. Here\'s the framework.',
-    category: 'CAC ROAS Optimization' as BlogCategory,
-    readTime: '7 min read',
-    date: '2024-12-15',
-    tags: [],
-    content: '',
-    author: 'Digital Point LLC',
-  },
-  {
-    slug: 'ai-powered-lead-qualification',
-    title: 'AI-Powered Lead Qualification: What Works and What Doesn\'t',
-    excerpt: 'We integrated AI agents into our client\'s lead pipeline. The results were surprising, both good and bad.',
-    category: 'Growth Systems' as BlogCategory,
-    readTime: '6 min read',
-    date: '2024-11-20',
-    tags: [],
-    content: '',
-    author: 'Digital Point LLC',
-  },
-  {
-    slug: 'attribution-in-2025',
-    title: 'Attribution in 2025: A Practical Guide for Marketing Teams',
-    excerpt: 'With third-party cookies dying and privacy regulations tightening, here\'s how smart teams are still measuring what works.',
-    category: 'Marketing Attribution' as BlogCategory,
-    readTime: '9 min read',
-    date: '2024-10-05',
-    tags: [],
-    content: '',
-    author: 'Digital Point LLC',
-  },
-];
-
-const categoryColors: Record<string, string> = {
-  'Marketing Attribution': '#FF8800',
-  'Paid Ads Benchmarks': '#FF8800',
-  'CAC ROAS Optimization': '#FFA833',
-  'Marketing Analytics': '#FF8800',
-  'Remote Workforce': '#FFA833',
-  'Growth Systems': '#f472b6',
-  'Performance Marketing': '#FF8800',
-  'AI & Automation': '#FFA833',
-  'Systems & Reporting': '#FF8800',
-};
-
 export function BlogListPage({ posts, categories, categoryMeta }: Props) {
-  const displayPosts = posts.length > 0 ? posts : fallbackArticles;
-
   return (
     <>
-      {/* Hero */}
-      <section className="relative min-h-[50vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 radial-glow" />
-        <Container className="relative z-10 pt-32 pb-12">
-          <FadeUp>
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-glass border border-border-glass text-text-secondary text-sm mb-6">
-              <SignalPoint size="sm" />
-              Resources & Insights
-            </span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6" style={{ maxWidth: 'var(--maxw-heading-display)' }}>
-              Field notes from running{' '}
-              <span style={{ color: 'var(--accent-bright)' }}>AI in production</span>
-            </h1>
-            <p className="text-[color:var(--text-primary)] text-lg md:text-xl max-w-2xl leading-relaxed">
-              What works, what breaks, and what we ship next. Agent stacks, automation engineering, operator workflows, from the team running them daily.
-            </p>
-          </FadeUp>
-        </Container>
+      <section className="hero">
+        <div className="hero-bg" aria-hidden="true" />
+        <div className="hero-inner">
+          <div className="hero-meta">
+            <span>Blog · Legacy archive · Pending new content cluster</span>
+          </div>
+
+          <h1 className="hero-title text-balance">
+            Field notes from <span className="hero-title__amber">running</span> AI in production.
+          </h1>
+
+          <p className="hero-sub text-pretty">
+            The archive below is performance-marketing era content from 2024-2025.
+            We&apos;re currently sequencing a fresh content cluster on AI agent deployment,
+            workflow automation, and pricing transparency. Until then these pages
+            stay accessible but are not indexed.
+          </p>
+
+          <div className="hero-cta-row">
+            <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
+            <Link href="/recovery" className="btn btn-ghost">Recovery service</Link>
+          </div>
+        </div>
       </section>
 
-      {/* Categories */}
-      {Object.keys(categoryMeta).length > 0 && (
-        <Section className="!pt-0 !pb-0">
-          <Container>
-            <div className="flex flex-wrap gap-2">
-              {Object.entries(categoryMeta).map(([name, meta]) => {
-                const count = categories.find((c) => c.name === name)?.count || 0;
+      {categories.length > 0 ? (
+        <section className="section-sm section-divider">
+          <div className="container-wide">
+            <p className="eyebrow" style={{ marginBlockEnd: '1rem' }}>Categories</p>
+            <div className="stack-row">
+              {categories.map((c) => {
+                const meta = categoryMeta[c.name];
+                if (!meta) return null;
                 return (
                   <Link
-                    key={name}
+                    key={c.name}
                     href={`/blog/category/${meta.slug}`}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all hover:scale-105"
-                    style={{
-                      background: `${meta.color}10`,
-                      border: `1px solid ${meta.color}25`,
-                      color: meta.color,
-                    }}
+                    className="stack-badge"
+                    style={{ textDecoration: 'none' }}
                   >
-                    {name}
-                    {count > 0 && <span className="opacity-80">({count})</span>}
+                    <span style={{ color: 'var(--color-text-primary)' }}>{c.name}</span>
+                    <span style={{ marginInlineStart: '0.5rem', color: 'var(--color-text-tertiary)' }}>
+                      {c.count}
+                    </span>
                   </Link>
                 );
               })}
             </div>
-          </Container>
-        </Section>
-      )}
+          </div>
+        </section>
+      ) : null}
 
-      {/* Articles Grid */}
-      <Section>
-        <Container>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {displayPosts.map((article) => (
-              <StaggerItem key={article.slug}>
-                <Link href={`/blog/${article.slug}`} className="block h-full">
-                  <GlassCard className="p-6 h-full flex flex-col group cursor-pointer">
-                    <div className="flex items-center gap-2 mb-4">
-                      <span
-                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium"
-                        style={{
-                          background: `${categoryColors[article.category] || '#FF8800'}15`,
-                          border: `1px solid ${categoryColors[article.category] || '#FF8800'}30`,
-                          color: categoryColors[article.category] || '#FF8800',
-                        }}
-                      >
-                        <Tag className="w-3 h-3" />
-                        {article.category}
-                      </span>
-                    </div>
-                    <h3 className="font-display text-lg font-semibold text-white group-hover:text-[color:var(--accent-bright)] transition-colors mb-3 leading-snug">
-                      {article.title}
-                    </h3>
-                    <p className="text-[color:var(--text-muted)] text-sm leading-relaxed flex-1 mb-4">{article.excerpt}</p>
-                    <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(255, 136, 0, 0.1)' }}>
-                      <div className="flex items-center gap-3 text-[color:var(--text-muted)] text-xs">
-                        <span>{new Date(article.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
-                          {article.readTime}
-                        </span>
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-[color:var(--accent-primary)] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                    </div>
-                  </GlassCard>
-                </Link>
-              </StaggerItem>
+      <section className="section section-divider">
+        <div className="container-wide">
+          <div className="pillar-grid pillar-grid--three">
+            {posts.slice(0, 24).map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="pillar-card"
+                style={{ textDecoration: 'none' }}
+              >
+                <span className="pillar-card__index">
+                  {post.category} · {post.readTime}
+                </span>
+                <h3 className="pillar-card__title">{post.title}</h3>
+                <p className="pillar-card__desc">{post.excerpt}</p>
+                <div className="pillar-card__link">
+                  <span className="btn-link">Read post</span>
+                </div>
+              </Link>
             ))}
-          </StaggerContainer>
-        </Container>
-      </Section>
+          </div>
+          {posts.length > 24 ? (
+            <p
+              className="hero-microcopy"
+              style={{ marginBlockStart: '2rem', textAlign: 'center' }}
+            >
+              Showing 24 of {posts.length} archived posts. Browse by category above.
+            </p>
+          ) : null}
+        </div>
+      </section>
 
-      {/* Newsletter CTA */}
-      <Section>
-        <Container>
-          <FadeUp>
-            <div className="max-w-2xl mx-auto">
-              <NewsletterOptIn
-                title="Want growth insights in your inbox?"
-                description="No spam. Just real frameworks, benchmarks, and case studies we use with our clients. Unsubscribe anytime."
-              />
+      <section className="section section-divider">
+        <div className="container-wide">
+          <div className="section-header section-header--center">
+            <p className="eyebrow eyebrow--accent">New content shipping soon</p>
+            <h2 className="section-title text-balance">
+              Pricing transparency, agent recovery, production runbooks.
+            </h2>
+            <p className="section-desc text-pretty">
+              Three new clusters in the queue: AI Agent deployment patterns,
+              workflow automation case studies, and the math on pricing.
+            </p>
+            <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
+              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
+              <Link href="/recovery" className="btn btn-ghost">Recovery service</Link>
             </div>
-          </FadeUp>
-        </Container>
-      </Section>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
+
+export default BlogListPage;

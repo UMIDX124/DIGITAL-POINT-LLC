@@ -1,106 +1,72 @@
-'use client';
-
 import Link from 'next/link';
-import { ArrowRight, BookOpen, Clock } from 'lucide-react';
-import {
-  Section, Container, FadeUp, GlassCard, SectionHeader,
-} from '@/components/ui-dp/AnimatedElements';
-import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
-import { GrowthAuditCTA } from '@/components/seo/GrowthAuditCTA';
 import type { Guide } from '@/lib/guides';
-
-const guideColors: Record<string, string> = {
-  'marketing-attribution-complete-guide': '#FF8800',
-  'paid-ads-optimization-guide': '#FF8800',
-  'cac-roas-guide': '#FFA833',
-  'marketing-analytics-guide': '#FF8800',
-  'remote-marketing-team-guide': '#FFA833',
-  'growth-systems-guide': '#FFA833',
-};
 
 export function GuidesHub({ guides }: { guides: Guide[] }) {
   return (
     <>
-      <Section className="pt-32 pb-12">
-        <Container size="narrow">
-          <Breadcrumbs items={[{ label: 'Guides', href: '/guides' }]} />
-        </Container>
-      </Section>
-
-      <Section className="pb-8">
-        <Container size="narrow">
-          <SectionHeader
-            eyebrow="Comprehensive Guides"
-            title="Marketing Playbooks for Growth Teams"
-            description="In-depth, actionable guides covering every aspect of performance marketing, analytics, and growth operations. Built from real campaign data and operational experience."
-            align="center"
-          />
-        </Container>
-      </Section>
-
-      <Section className="pb-20">
-        <Container size="wide">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {guides.map((guide, index) => {
-              const color = guideColors[guide.slug] || '#FF8800';
-              return (
-                <FadeUp key={guide.slug} delay={index * 0.08}>
-                  <Link href={`/guides/${guide.slug}`} className="block group h-full">
-                    <GlassCard className="p-6 h-full">
-                      <div className="flex items-start gap-4">
-                        <div
-                          className="shrink-0 w-11 h-11 rounded-xl flex items-center justify-center"
-                          style={{ background: `${color}15`, border: `1px solid ${color}30` }}
-                        >
-                          <BookOpen className="w-5 h-5" style={{ color }} />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 mb-1.5">
-                            <span className="flex items-center gap-1 text-[color:var(--text-muted)] text-xs">
-                              <Clock className="w-3 h-3" />
-                              {guide.readTime}
-                            </span>
-                            <span className="text-[color:var(--text-muted)] text-xs">-</span>
-                            <span className="text-[color:var(--text-muted)] text-xs">
-                              {guide.sections.length} sections
-                            </span>
-                          </div>
-                          <h3 className="font-display text-lg font-semibold text-white group-hover:text-[color:var(--accent-bright)] transition-colors mb-2">
-                            {guide.title}
-                          </h3>
-                          <p className="text-[color:var(--text-primary)] text-sm leading-relaxed mb-3">
-                            {guide.description}
-                          </p>
-                          <div className="flex items-center justify-between">
-                            <span
-                              className="text-xs font-medium px-2.5 py-1 rounded-full"
-                              style={{ background: `${color}15`, color }}
-                            >
-                              Pillar Guide
-                            </span>
-                            <span className="flex items-center gap-1 text-[color:var(--accent-primary)] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                              Read Guide <ArrowRight className="w-3.5 h-3.5" />
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </GlassCard>
-                  </Link>
-                </FadeUp>
-              );
-            })}
+      <section className="hero">
+        <div className="hero-bg" aria-hidden="true" />
+        <div className="hero-inner">
+          <div className="hero-meta">
+            <span>Guides · Field notes from production</span>
           </div>
-        </Container>
-      </Section>
 
-      <Section className="pb-24">
-        <Container size="narrow">
-          <GrowthAuditCTA
-            title="Put these strategies into action"
-            description="Get a free growth audit and let our team help you implement the frameworks from these guides."
-          />
-        </Container>
-      </Section>
+          <h1 className="hero-title text-balance">
+            Marketing <span className="hero-title__amber">playbooks</span>.<br />
+            Built from real engagements.
+          </h1>
+
+          <p className="hero-sub text-pretty">
+            In-depth guides covering attribution, paid acquisition, CAC and ROAS
+            optimization, analytics, and the operating model behind running a
+            production growth stack. Pulled directly from work we do for clients.
+          </p>
+
+          <div className="hero-cta-row">
+            <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
+            <Link href="#guides" className="btn btn-ghost">See the guides</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-divider" id="guides">
+        <div className="container-wide">
+          <div className="pillar-grid">
+            {guides.map((g) => (
+              <Link
+                key={g.slug}
+                href={`/guides/${g.slug}`}
+                className="pillar-card"
+                style={{ textDecoration: 'none' }}
+              >
+                <span className="pillar-card__index">{g.readTime} · Guide</span>
+                <h3 className="pillar-card__title">{g.title}</h3>
+                <p className="pillar-card__desc">{g.description}</p>
+                <div className="pillar-card__link">
+                  <span className="btn-link">Read guide</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-divider">
+        <div className="container-wide">
+          <div className="section-header section-header--center">
+            <p className="eyebrow eyebrow--accent">Want a custom playbook for your stack?</p>
+            <h2 className="section-title text-balance">
+              45-minute audit. Written deployment plan in 5 days. Free.
+            </h2>
+            <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
+              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
+              <Link href="/stack" className="btn btn-ghost">See the stack</Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
+
+export default GuidesHub;

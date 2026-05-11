@@ -31,7 +31,7 @@ export const caseStudies: CaseStudy[] = [
  ],
  highlightMetric: '6.8x',
  highlightLabel: 'ROAS',
- behindTheScenes: 'Faizan rebuilt this account\'s campaign structure over a weekend because he couldn\'t sleep knowing how much budget was being wasted on broad targeting. The client\'s founder called us on Monday morning wondering if the dashboard was broken. The numbers looked "too good." They weren\'t.',
+ behindTheScenes: 'Faizan rebuilds account structure end-to-end when he sees broad-targeting waste past $50K/month spend. The pattern repeats across e-commerce DTC accounts: declining ROAS while spend climbs, attribution mostly last-click, lookalikes seeded from order data instead of high-LTV cohorts. A founder watching new numbers land on Monday morning signals the restructure is taking hold.',
  },
  {
  slug: 'b2b-saas-attribution',
@@ -48,7 +48,7 @@ export const caseStudies: CaseStudy[] = [
  ],
  highlightMetric: '+89%',
  highlightLabel: 'Pipeline',
- behindTheScenes: 'This one was Anwaar\'s baby. The client had data in seven different tools that didn\'t talk to each other. He spent three weeks untangling their attribution mess and building a single source of truth. The CMO told us it was the first time in two years she could explain marketing\'s impact to the board.',
+ behindTheScenes: 'Anwaar runs attribution rebuilds for B2B SaaS accounts where pipeline data lives in 5+ tools without integration. The board-explanation moment from a CMO marks the deployment as sticking. If she can defend marketing\'s revenue impact 90 days in without engineering\'s help, the system is doing its job.',
  },
  {
  slug: 'lead-gen-google-ads',
@@ -65,6 +65,6 @@ export const caseStudies: CaseStudy[] = [
  ],
  highlightMetric: '5.3x',
  highlightLabel: 'ROAS',
- behindTheScenes: 'The first audit call was rough. The account had 200+ ad groups with no clear structure. We almost said no. But the team behind the business was great, stuck with bad account management. Faizan restructured everything from scratch, and within two weeks the client asked, "Why didn\'t our last agency do this?" Good question.',
+ behindTheScenes: 'Faizan takes on lead-gen accounts with 200+ ad groups and no structure only when the operating team shows pattern recognition. The restructure-from-zero approach runs about two weeks. The signal that the work is landing is the operating team starting to ask why nobody fixed the structure sooner.',
  },
 ];

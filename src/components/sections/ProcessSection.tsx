@@ -1,37 +1,42 @@
-import { copy } from '@/lib/copy';
+const steps = [
+  {
+    num: '01 · Audit',
+    title: 'Free, written plan in 5 days',
+    desc: 'Co-founder review of your stack, attribution, team, funnel. Deployment-ready blueprint, no retainer attached. If we can\'t help, we\'ll tell you.',
+    price: 'Free',
+  },
+  {
+    num: '02 · Pilot',
+    title: '30 days, one workflow scoped',
+    desc: 'We scope, build, and operate one workflow for 30 days. You own the runbooks. Real-time Slack channel on day one.',
+    price: '$2,500 fixed',
+  },
+  {
+    num: '03 · Retainer',
+    title: 'Production operations',
+    desc: 'Continuous operation of the workflow portfolio. Replacements, updates, monitoring, monthly written report. Cancel any month.',
+    price: '$2,500 / month',
+  },
+];
 
 export function ProcessSection() {
-  const { eyebrow, headline, steps } = copy.process;
-
   return (
-    <section
-      className="relative section-padding"
-      style={{ background: 'var(--bg-canvas)', borderBottom: '1px solid #27272A' }}
-      id="process"
-    >
+    <section className="section section-divider" id="process">
       <div className="container-wide">
-        <header className="max-w-3xl mb-16">
-          <p className="eyebrow mb-5">{eyebrow}</p>
-          <h2 className="font-display text-[36px] md:text-[52px] leading-[1.05] tracking-tight text-[color:var(--ivory)]">
-            {headline}
+        <div className="section-header">
+          <p className="eyebrow">How an engagement runs</p>
+          <h2 className="section-title text-balance">
+            Audit, pilot, retainer. In that order. No surprise scope.
           </h2>
-        </header>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {steps.map((step) => (
-            <div key={step.n} className="card-flat p-8">
-              <div className="flex items-baseline gap-4 mb-6">
-                <span className="font-mono text-[12px] text-[color:var(--accent)] tracking-widest">
-                  {step.n}
-                </span>
-                <span className="flex-1 h-px" style={{ background: 'var(--border-default)' }} />
-              </div>
-              <h3 className="font-display text-[26px] leading-tight text-[color:var(--ivory)]">
-                {step.title}
-              </h3>
-              <p className="mt-4 text-[14.5px] leading-[1.6] text-[color:var(--ivory-dim)]">
-                {step.body}
-              </p>
+        <div className="process-list process-list--three" style={{ marginBlockStart: '3rem' }}>
+          {steps.map((s) => (
+            <div key={s.num} className="process-step">
+              <span className="process-step__num">{s.num}</span>
+              <h3 className="process-step__title">{s.title}</h3>
+              <p className="process-step__desc">{s.desc}</p>
+              <p className="process-step__price">{s.price}</p>
             </div>
           ))}
         </div>
@@ -39,3 +44,5 @@ export function ProcessSection() {
     </section>
   );
 }
+
+export default ProcessSection;

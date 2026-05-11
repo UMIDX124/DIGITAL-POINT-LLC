@@ -1,3046 +1,1021 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
-/* Phase 12 — manual @font-face for Instrument Serif. Latin-subset, ~10 KB
-   each. Same family name across regular + italic so font-style: italic
-   resolves to the italic file. font-display: swap = no FOIT block on LCP.
-   Regular is preloaded selectively in <head>; italic loads on-demand. */
-/* Phase 17b 3-restructured — fallback metric overrides to eliminate the
-   font-swap CLS surfaced by V6 LH gate (r1 + r3 = 0.188 CLS, source:
-   .hero-em / .font-italic-display height changes when Instrument Serif
-   loads, pushing the hero subhead down). The descriptors below tune the
-   fallback (Georgia) metrics to match Instrument Serif's em-square so
-   the .hero-em element occupies the same vertical box pre- and post-swap.
-   Values calibrated against Instrument Serif italic's intrinsic metrics:
-     ascent 1000  descent 320  line-gap 0  units-per-em 1000  → ratios
-     ascent-override 100% / descent-override 32% / line-gap-override 0%
-   size-adjust 100% (no scaling needed; family x-heights are close). */
-@font-face {
-  font-family: 'InstrumentSerifLocal';
-  font-style: normal;
-  font-weight: 400;
-  /* Phase 17b 3-restructured iter 2 (CLS fix) → Phase 17b Pillar 4 P0.1.
-     'optional' display preserved (no swap, no CLS). Ascent/descent
-     overrides re-tuned per Pillar 4 spec (95% / 22% / 0%) — slightly
-     tighter than the iter-2 100% / 32% / 0% which was over-extending the
-     line box and clipping the italic 'i' tittle at the top edge of
-     .hero-em. The 95% ascent + 22% descent leaves room for italic
-     ascender extension without oversizing the line. */
-  font-display: optional;
-  src: url('/fonts/instrument-serif-regular.woff2') format('woff2');
-  size-adjust: 100%;
-  ascent-override: 95%;
-  descent-override: 22%;
-  line-gap-override: 0%;
-}
-@font-face {
-  font-family: 'InstrumentSerifLocal';
-  font-style: italic;
-  font-weight: 400;
-  font-display: optional;
-  src: url('/fonts/instrument-serif-italic.woff2') format('woff2');
-  size-adjust: 100%;
-  ascent-override: 95%;
-  descent-override: 22%;
-  line-gap-override: 0%;
-}
-
-/* =======================================================================
-   DIGITAL POINT LLC — PHASE 4a: DIVYANSH-REPLICA VISUAL SYSTEM
-   Dark surfaces · amber primary · editorial typography · motion tokens
-
-   PRIMARY COLOR SUPERSEDURE (durable, documented in commit):
-   DPL primary is AMBER #FF8800. This supersedes the prior register
-   rule in global ~/.claude/CLAUDE.md for the DPL site ONLY. Other projects
-   (CRM, VCS, BSL) keep their existing color rules.
-
-   TOKEN SYSTEM — ported from divyanshagarwal.com at 0.78× scale, palette
-   remapped to DPL amber on absolute black.
-
-   PRESERVE (Phase 0-3a contracts, do NOT break):
-   - Scroll-reveal safety net: ScrollMotion.tsx 2.5s fallback must still
-     see [data-reveal], [data-stagger-item], [data-service-item],
-     [data-work-card], [data-testimonial-card], [data-pillar-card],
-     [data-workflow-label]. New 4c-4h attributes (e.g. [data-word-reveal],
-     [data-letter-reveal]) get added to that selector list when introduced.
-   - Signature ease cubic-bezier(0.65, 0.05, 0, 1) stays as --ease-brand.
-   - Fluid clamp typography + spacing scales (ported verbatim from ref).
-   - [data-slot="button"] Tailwind-transition override stays.
-   - .card-flat / .divide-hairline / .container-wide / .container-narrow
-     / .section-main|sm|lg|top / .eyebrow / .focus-ring primitives stay,
-     retargeted to the new palette.
-
-   INTRODUCE (new in 4a):
-   - Purple accent system (--accent, --accent-bright, --accent-deep,
-     --accent-glow, --accent-glow-soft).
-   - Multi-layer background system (--bg-primary/secondary/tertiary/elevated).
-   - New text/border color taxonomy (--text-primary..muted, --border-subtle..bright).
-   - Hero-scale type token (--text-hero = 0.78× Divyansh hero clamp).
-   - Motion tokens (--ease-out-soft, --ease-in-soft, --dur-micro..hero).
-   - Section-space + container-gutter tokens matching Divyansh rhythm.
-   - Type utility classes (.font-hero, .font-display, .font-body, .font-italic-display).
-
-   ALIAS (legacy name → new amber value):
-   - --amber, --amber-bright, --plum, --plum-light, --plum-dark, --signal
-     all retargeted to the amber palette so any component that still
-     references them renders correctly until its rewrite lands.
-   ======================================================================= */
+/* ============================================================
+   DPL — Design System (rebuild/from-scratch)
+   Linear / Antimetal axis. Dark dominant. Single amber accent.
+   Geist Sans/Mono only. 4-unit grid. Restrained motion.
+   ============================================================ */
 
 @theme inline {
-  /* --- Amber accent surfacing (canonical primary) --- */
-  --color-accent: var(--accent);
-  --color-accent-bright: var(--accent-bright);
-  --color-accent-deep: var(--accent-deep);
+  /* Canvas — off-black, less harsh than #000 */
+  --color-canvas: #0a0a0a;
+  --color-canvas-raised: #111111;
+  --color-canvas-elevated: #161616;
+  --color-canvas-bright: #1d1d1d;
 
-  /* --- Phase 20.1 premium-palette secondary accents --- */
-  --color-accent-cream: var(--accent-cream);
-  --color-accent-copper: var(--accent-copper);
-  --color-accent-bronze: var(--accent-bronze);
-  --color-accent-jade: var(--accent-jade);
-  --color-accent-tide: var(--accent-tide);
+  /* Accent — amber, single accent across the system */
+  --color-accent: #ff8800;
+  --color-accent-soft: #c26800;
+  --color-accent-faint: rgba(255, 136, 0, 0.12);
 
-  /* --- Background system --- */
-  --color-bg-primary: var(--bg-primary);
-  --color-bg-secondary: var(--bg-secondary);
-  --color-bg-tertiary: var(--bg-tertiary);
-  --color-bg-elevated: var(--bg-elevated);
-  --color-bg-warm: var(--bg-warm);
-  --color-bg-cool: var(--bg-cool);
+  /* Text — cool greys, calm contrast */
+  --color-text-primary: #f5f5f7;
+  --color-text-secondary: #a1a1aa;
+  --color-text-tertiary: #71717a;
+  --color-text-muted: #52525b;
 
-  /* --- Text system --- */
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-text-tertiary: var(--text-tertiary);
-  --color-text-muted: var(--text-muted);
+  /* Lines + borders */
+  --color-line-faint: rgba(255, 255, 255, 0.06);
+  --color-line-soft: rgba(255, 255, 255, 0.10);
+  --color-line-bright: rgba(255, 255, 255, 0.18);
+  --color-line-accent: rgba(255, 136, 0, 0.30);
 
-  /* --- Legacy aliases retargeted to new palette --- */
-  --color-bg: var(--bg-primary);
-  --color-surface: var(--bg-secondary);
-  --color-surface-2: var(--bg-elevated);
-  --color-border: var(--border-default);
-  --color-ivory: var(--text-primary);
-  --color-ivory-dim: var(--text-secondary);
-  --color-muted: var(--text-tertiary);
-  --color-amber: var(--accent);
-  --color-amber-bright: var(--accent-bright);
+  /* Status */
+  --color-success: #34d399;
+  --color-warn: #fbbf24;
+  --color-error: #f87171;
 
-  /* shadcn-compatible aliases */
-  --color-background: var(--bg-primary);
-  --color-foreground: var(--text-primary);
-  --color-card: var(--bg-secondary);
-  --color-card-foreground: var(--text-primary);
-  --color-popover: var(--bg-secondary);
-  --color-popover-foreground: var(--text-primary);
-  --color-primary: var(--accent);
-  --color-primary-foreground: var(--bg-primary);
-  --color-secondary: var(--bg-elevated);
-  --color-secondary-foreground: var(--text-primary);
-  --color-muted-foreground: var(--text-tertiary);
-  --color-accent-foreground: var(--text-primary);
-  --color-destructive: #DC2626;
-  --color-ring: var(--accent-bright);
-  --color-input: var(--border-default);
+  /* Type stack */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
 
-  /* Cosmic-era aliases still in use by legacy sub-pages */
-  --color-plum: var(--accent);
-  --color-plum-light: var(--accent-bright);
-  --color-plum-dark: var(--accent-deep);
-  --color-signal: var(--accent-bright);
-  --color-signal-glow: var(--accent-glow);
-  --color-cosmic-pink: var(--accent-bright);
-  --color-cosmic-magenta: var(--accent);
-  --color-surface-elevated: var(--bg-elevated);
-  --color-surface-glass: var(--accent-glow-soft);
-  --color-surface-glass-strong: var(--accent-glow);
-  --color-border-subtle: var(--border-subtle);
-  --color-border-glass: var(--border-default);
-  --color-border-active: var(--accent);
+  /* Type scale (4-unit pixel rhythm at 16px base) */
+  --text-xs: 0.75rem;       /* 12 */
+  --text-sm: 0.875rem;      /* 14 */
+  --text-base: 1rem;        /* 16 */
+  --text-md: 1.125rem;      /* 18 */
+  --text-lg: 1.25rem;       /* 20 */
+  --text-xl: 1.5rem;        /* 24 */
+  --text-2xl: 1.875rem;     /* 30 */
+  --text-3xl: 2.25rem;      /* 36 */
+  --text-4xl: 3rem;         /* 48 */
+  --text-5xl: 3.75rem;      /* 60 */
+  --text-6xl: 4.5rem;       /* 72 */
+  --text-7xl: 6rem;         /* 96 */
+  --text-8xl: 7.5rem;       /* 120 */
 
-  /* Charts — amber ladder */
-  --color-chart-1: var(--accent);
-  --color-chart-2: var(--accent-bright);
-  --color-chart-3: #FFA833;
-  --color-chart-4: var(--text-secondary);
-  --color-chart-5: var(--text-tertiary);
+  /* Display headlines — fluid */
+  --text-display: clamp(2.5rem, 6vw, 5rem);
+  --text-display-lg: clamp(3rem, 8vw, 7rem);
+  --text-eyebrow: 0.75rem;
 
-  /* Radius */
-  --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
-  --radius-xl: 12px;
-  --radius-2xl: 16px;
+  /* Spacing scale (4px units) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+  --space-40: 10rem;
 
-  /* Typography family aliases
-     Geist Sans / Mono ship via next/font's `geist` npm package. Instrument
-     Serif remains the display face. */
-  --font-sans: var(--font-geist-sans, var(--font-inter)), system-ui, sans-serif;
-  --font-display: var(--font-instrument-serif), Georgia, serif;
-  --font-mono: var(--font-geist-mono, var(--font-jetbrains-mono)), ui-monospace, monospace;
+  /* Section rhythm */
+  --section-y: clamp(5rem, 10vw, 9rem);
+  --section-y-sm: clamp(3rem, 6vw, 5rem);
 
-  /* Tailwind v4 preflight reads --default-font-family / --default-mono-font-family
-     for html/body font-family. Explicit Geist-first stack fixes Phase 4 bug
-     where body fell through to system sans. */
-  --default-font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --default-mono-font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* Container max-widths */
+  --maxw-prose: 38rem;
+  --maxw-content: 64rem;
+  --maxw-wide: 80rem;
+  --maxw-display: 88rem;
 
-  /* ===================================================================
-     FLUID TYPE SCALE — Phase 4a Divyansh × 0.78
-     ------------------------------------------------------------------- */
+  /* Radius — restrained */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-pill: 9999px;
 
-  /* Divyansh hero headline — Phase 5 shrink to prevent 100dvh overflow at
-     1440×900 on the 1.4fr split column. Previous clamp(4.7rem, 10.9vw, 10.9rem)
-     resolved to 157px and overran the 564px flex-centered content box. New
-     clamp maxes at 128px (8rem) which wraps to ~3 lines on 728px column and
-     fits the viewport cleanly. */
-  /* ===================================================================
-     PHASE 11 ADDENDUM — MODULAR SCALE (1.25× ratio, base 16px)
-     Source-of-truth size tokens. All semantic --text-* tokens below
-     derive from these. Adding a new size means picking from this scale
-     first; only add a new --fs-* step if the scale itself is missing it.
-     ------------------------------------------------------------------- */
-  --fs-base: 1rem;         /* 16px  — body */
-  --fs-sm:   0.875rem;     /* 14px  — caption, mono labels */
-  --fs-xs:   0.75rem;      /* 12px  — eyebrow, footer meta */
-  --fs-md:   1.125rem;     /* 18px  — emphasized body */
-  --fs-lg:   1.5rem;       /* 24px  — large body, blockquote */
-  --fs-xl:   2rem;         /* 32px  — h4, sub-headings */
-  --fs-2xl:  2.5rem;       /* 40px  — h3, service row mobile */
-  --fs-3xl:  3rem;         /* 48px  — section h2 mobile */
-  --fs-4xl:  3.75rem;      /* 60px  — service row desktop */
-  --fs-5xl:  4.5rem;       /* 72px  — section h2 desktop */
-  --fs-6xl:  5.5rem;       /* 88px  — hero h1 mobile */
-  --fs-7xl:  7.5rem;       /* 120px — hero h1 desktop */
-  --fs-8xl:  9rem;         /* 144px — hero h1 desktop wide (Phase 19 Path 3) */
-
-  /* Hero h1 — clamps from 6xl to 8xl across viewport. Phase 19 Path 3
-     pushed the desktop ceiling from 120px to 144px to commit harder
-     typographically, narrowing the perceptual gap to premium agency
-     comparators (Linear, Stripe, innowise). The 8vw mid-range stays;
-     ceiling moves up. */
-  --text-hero: clamp(var(--fs-6xl), 9vw, var(--fs-8xl));
-
-  /* Service rows — clamps from 2xl to 4xl. */
-  --text-service-row: clamp(var(--fs-2xl), 4vw, var(--fs-4xl));
-
-  /* Section h2 — clamps from 3xl to 5xl. */
-  --text-h1: clamp(var(--fs-3xl), 5vw, var(--fs-5xl));
-
-  /* Legacy alias for service rows (some components still reference
-     --text-display). Maps to the new --text-service-row scale. */
-  --text-display: var(--text-service-row);
-
-  /* H2 (secondary section header) — 32px → 69px. */
-  --text-h2: clamp(2rem, 4.3vw, 4.3rem);
-
-  /* H3 (card title / pull quote) — 24px → 48px. */
-  --text-h3: clamp(1.5rem, 3vw, 3rem);
-
-  /* Kept from Phase 1 port (used by existing sub-pages; not re-scaled):
-     h4 = 25→40, h5 = 20→30, h6 = 17→24, lead = 17→20, main = 15→18,
-     caption = 13→16. */
-  --text-h4: clamp(1.5625rem, 1.2946rem + 1.3393vw, 2.5rem);
-  --text-h5: clamp(1.25rem, 1.0714rem + 0.8929vw, 1.875rem);
-  --text-h6: clamp(1.0625rem, 0.9375rem + 0.625vw, 1.5rem);
-  --text-lead: clamp(1.0625rem, 1.0089rem + 0.2679vw, 1.25rem);
-  --text-main: clamp(0.9375rem, 0.8839rem + 0.2679vw, 1.125rem);
-  --text-caption: clamp(0.8125rem, 0.7589rem + 0.2679vw, 1rem);
-
-  /* Prompt-spec discrete sizes (non-fluid). */
-  --text-body: 1.0625rem;   /* 17px */
-  --text-small: 0.875rem;   /* 14px */
-  --text-micro: 0.75rem;    /* 12px */
-
-  /* Phase 11 addendum — additional scale-derived semantic tokens. */
-  --text-body-lg:    var(--fs-lg);    /* 24px — long-form */
-  --text-caption:    var(--fs-sm);    /* 14px — captions */
-  --text-mono-label: var(--fs-xs);    /* 12px — eyebrows, mono labels */
-
-  /* Phase 11 addendum — line-height + letter-spacing tokens. */
-  --lh-display: 1.02;
-  --lh-tight:   1.1;
-  --lh-snug:    1.25;
-  --lh-normal:  1.5;
-  --lh-relaxed: 1.65;
-
-  /* Phase 11 residuals — heading + body max-width system.
-     rem-based so the value resolves the same regardless of which element
-     applies it (ch resolves at element font-size, which made the
-     section-heading max-width misbehave when applied to the wrapping
-     <header> at body 16px). All targets calibrated for the
-     post-modular-scale type sizes. */
-  --maxw-heading-display:        44rem;  /* hero h1 (~704px) */
-  --maxw-heading-section:        36rem;  /* section h2 desktop (~576px) */
-  --maxw-heading-section-mobile: 22rem;  /* section h2 mobile (~352px) */
-  --maxw-pullquote:              36rem;  /* pull quote (~576px) — tightened in Phase 13 to land 4 lines on desktop */
-  --maxw-body:                   42rem;  /* body paragraph (~672px) */
-
-  --ls-display:   -0.03em;
-  --ls-tight:     -0.02em;
-  --ls-normal:    0;
-  --ls-mono:      0.15em;
-  --ls-mono-wide: 0.2em;
-
-  /* ===================================================================
-     MOTION TOKENS — Phase 4a
-     ------------------------------------------------------------------- */
-  --ease-brand: cubic-bezier(0.65, 0.05, 0, 1);
-  --ease-out-soft: cubic-bezier(0.33, 1, 0.68, 1);
-  --ease-in-soft: cubic-bezier(0.32, 0, 0.67, 0);
-
-  /* Phase 9 — animation speed tune. User flagged "boht slow". Each tier
-     dropped ~30-40% closer to Apple/Stripe/Linear marketing benchmarks. */
-  --dur-micro: 100ms;
-  --dur-short: 200ms;
-  --dur-medium: 350ms;
-  --dur-long: 600ms;
-  --dur-hero: 800ms;
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --motion-fast: 160ms;
+  --motion-base: 240ms;
+  --motion-slow: 400ms;
+  --motion-deliberate: 600ms;
 }
 
-/* ============================================
-   :root — color values + fluid spacing scale
-   ============================================ */
+/* ============================================================
+   Base
+   ============================================================ */
 
-:root {
-  --font-instrument-serif: 'InstrumentSerifLocal';
-  --radius: 0.5rem;
-
-  /* --- Phase 20.1 premium palette evolution (UF authorized 2026-05-07) ---
-     Repo-owner override: prior pure-black + amber-only Bloomberg Operator
-     register felt monolithic and not premium. New palette keeps amber as
-     primary but shifts canvas to charcoal-with-warm-undertone (no pure
-     #000), adds warm secondaries (copper + cream + bronze) and a cool
-     anchor (jade) for depth. Zero violet/indigo/purple absolute rule
-     (K1) preserved. Skill-pack rule "no pure #000000" honored.
-
-     Surface elevation differential: bg-canvas → bg-secondary →
-     bg-elevated each step lifts ~5% luminance with a subtle warm
-     undertone so multi-layer depth reads even at low intensities. */
-  /* Phase 20.1.8 — UF "abhi b dark p kaam hona". Tones recalibrated
-     for richer dark with warm undertones (NOT pure black, NOT washed
-     out). Each step now lifts ~7% with stronger warm bias so layered
-     surfaces read as separate planes instead of one flat slab. */
-  --bg-canvas: #060503;            /* charcoal w/ warm undertone, deeper than v1 */
-  --bg-primary: #060503;
-  --bg-secondary: #100C09;         /* warm-lifted */
-  --bg-tertiary: #0B0907;          /* alt rows, marginally lifted */
-  --bg-elevated: #1C1813;          /* cards, modals, popovers */
-  --bg-warm: #251812;              /* premium warm-tinted dark, hero zones */
-  --bg-cool: #0E1717;              /* cool-tinted dark, jade-accent zones */
-
-  /* --- Primary amber + warm/cool secondary accents --- */
-  --accent-primary: #FF8800;       /* phosphor amber, brand primary */
-  --accent-secondary: #2A8FBD;     /* instrument blue (legacy semantic, sparing) */
-  --accent-cream: #F5E8D4;         /* warm cream, premium contrast on dark */
-  --accent-copper: #C26F3C;        /* copper, deeper warm secondary */
-  --accent-bronze: #8C6B3F;        /* muted bronze, subtle warm borders */
-  --accent-jade: #2C5F5A;          /* deep jade, cool sophistication accent */
-  --accent-tide: #1F3D3A;          /* deeper jade-teal, atmospheric ambient */
-  --ring-stroke: #3A2D14;
-  --cta-text-on-amber: #1A0E00;
-  /* Legacy --accent / --accent-bright / --accent-deep names retained,
-     retargeted to the amber palette so existing rules keep rendering. */
-  --accent: #FF8800;
-  --accent-bright: #FFA833;
-  --accent-deep: #C26800;
-  --accent-glow: rgba(255, 136, 0, 0.25);
-  --accent-glow-soft: rgba(255, 136, 0, 0.08);
-  --accent-glow-cream: rgba(245, 232, 212, 0.12);
-  --accent-glow-jade: rgba(44, 95, 90, 0.20);
-
-  /* --- Text --- */
-  --text-primary: #ECECEC;
-  --text-secondary: #A8A8A8;
-  --text-tertiary: #9A9A9A;
-  --text-muted: #9A9A9A;
-  /* Phase 17b 2C — semantic error token. Centralizes the red previously
-     inlined as #F87171 in ChatPanel error states. Tailwind red-400 hue
-     reads correctly against --bg-canvas + meets WCAG AA at small sizes. */
-  --text-error: #F87171;
-
-  /* --- Borders --- */
-  --border-subtle: rgba(255, 240, 220, 0.06);   /* warm-tinted hairlines */
-  --border-default: rgba(255, 240, 220, 0.10);
-  --border-bright: rgba(255, 136, 0, 0.32);
-  --border-cream: rgba(245, 232, 212, 0.18);   /* premium contrast border */
-  --border-jade: rgba(44, 95, 90, 0.30);       /* cool secondary border */
-
-  /* ----- Legacy palette aliases → amber palette -----
-     Components not yet rewritten still reference these names. They resolve
-     to the new amber values so visual output is consistent without
-     per-component edits. */
-  --bg: var(--bg-primary);
-  --surface: var(--bg-secondary);
-  --surface-2: var(--bg-elevated);
-  --border: var(--border-default);
-  --ivory: var(--text-primary);
-  --ivory-dim: var(--text-secondary);
-  --muted: var(--text-tertiary);
-  --amber: var(--accent);
-  --amber-bright: var(--accent-bright);
-
-  --background: var(--bg-primary);
-  --foreground: var(--text-primary);
-  --plum: var(--accent);
-  --plum-light: var(--accent-bright);
-  --plum-dark: var(--accent-deep);
-  --signal: var(--accent-bright);
-  --signal-glow: var(--accent-glow);
-  --cosmic-pink: var(--accent-bright);
-  --cosmic-magenta: var(--accent);
-  --surface-elevated: var(--bg-elevated);
-  --surface-glass: var(--accent-glow-soft);
-  --surface-glass-strong: var(--accent-glow);
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-glass: var(--border-default);
-  --border-active: var(--accent);
-
-  /* ----- Legacy font-var aliases → Geist -----
-     RecentWorkSection + WorkflowSection inline SVG labels reference
-     var(--font-jetbrains-mono) directly. Aliasing keeps them resolved to
-     Geist Mono without component edits. */
-  --font-inter: var(--font-geist-sans);
-  --font-jetbrains-mono: var(--font-geist-mono);
-
-  /* ------------------------------------------------------------------
-     FLUID SPACING SCALE — retained from Phase 1 port.
-     ------------------------------------------------------------------ */
-  --space-1: clamp(0.375rem, 0.3393rem + 0.1786vw, 0.5rem);
-  --space-2: clamp(0.625rem, 0.5893rem + 0.1786vw, 0.75rem);
-  --space-3: clamp(0.875rem, 0.8393rem + 0.1786vw, 1rem);
-  --space-4: clamp(1.25rem, 1.1786rem + 0.3571vw, 1.5rem);
-  --space-5: clamp(1.75rem, 1.6786rem + 0.3571vw, 2rem);
-  --space-6: clamp(2rem, 1.8571rem + 0.7143vw, 2.5rem);
-  --space-7: clamp(2.25rem, 2.0357rem + 1.0714vw, 3rem);
-  --space-8: clamp(2.5rem, 2.0714rem + 2.1429vw, 4rem);
-
-  /* ------------------------------------------------------------------
-     SECTION-SPACE — Phase 1 tiers retained; Phase 4a adds --section-space
-     + --section-space-tight + --container-gutter from Divyansh spec.
-     ------------------------------------------------------------------ */
-  --section-sm: clamp(3rem, 2.4286rem + 2.8571vw, 5rem);
-  --section-main: clamp(4rem, 3.1429rem + 4.2857vw, 7rem);
-  --section-lg: clamp(5.5rem, 4.2143rem + 6.4286vw, 10rem);
-  --section-top: clamp(7rem, 5rem + 10vw, 14rem);
-
-  /* Phase 19 Path 3 — section rhythm widened. Premium service sites
-     (Linear, Stripe, innowise) ship section gaps in the 160-220px range
-     on desktop. Old: 100-174px. New: 128-208px. Adds breathing room
-     without pushing fold visibility off-screen. */
-  --section-space: clamp(8rem, 14vh, 13rem);
-  --section-space-tight: clamp(5rem, 9vh, 7rem);
-
-  --site-margin: clamp(1rem, 0.4286rem + 2.8571vw, 3rem);
-  --container-gutter: clamp(1.5rem, 5vw, 4rem);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-/* ============================================
-   BASE
-   ============================================ */
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  html {
-    scroll-behavior: smooth;
-    /* Smoother scroll-feel: contain elastic overscroll cascade so the
-       browser's bounce-back doesn't propagate into a chained repaint.
-       Combined with section-defer-paint below-fold + GPU-isolated grain
-       overlay, gives the "glide" feel. */
-    overscroll-behavior-y: contain;
-  }
-  body {
-    /* Phase 20.1 — premium-palette body atmosphere. Single-stack scroll-
-       cheap (no fixed-attachment) with three calibrated washes: amber
-       primary glow upper-left, copper warm secondary mid-right, jade
-       cool accent lower-left. Gives the page real depth without
-       multi-layer paint cost. Replaces the Phase 19 single-amber wash
-       that the repo owner flagged as "too dark, colors not special." */
-    background-color: var(--bg-canvas);
-    /* Phase 20.1.8 — atmosphere recomp. Warmer amber + copper bias
-       upper bands; cooler jade-tide pull on lower thirds. Each wash
-       slightly stronger than v1 so colors read as actual lighting,
-       not faint tints. Compatibility: still no fixed attachment, so
-       compositor caches the gradient as a static layer. */
-    background-image:
-      radial-gradient(ellipse 75% 55% at 16% 18%, rgba(255, 136, 0, 0.18) 0%, transparent 62%),
-      radial-gradient(ellipse 65% 45% at 92% 40%, rgba(194, 111, 60, 0.14) 0%, transparent 68%),
-      radial-gradient(ellipse 90% 55% at 6% 90%, rgba(44, 95, 90, 0.14) 0%, transparent 72%),
-      radial-gradient(ellipse 50% 35% at 78% 92%, rgba(140, 107, 63, 0.10) 0%, transparent 70%);
-    /* Phase 18.6 P7 perf-pass — background-attachment: fixed REMOVED.
-       Fixed-attachment + radial-gradient was forcing a full repaint on
-       every scroll frame (compositor couldn't accelerate). Default
-       scroll attachment lets the gradient cache as a static texture
-       that scrolls with content — visually similar warm wash, near-
-       zero scroll cost. Body atmosphere now extends across full
-       document height instead of viewport-locked, which reads more
-       natural anyway. */
-    color: var(--text-primary);
-    font-family: var(--font-geist-sans), var(--font-sans), system-ui, sans-serif;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  /* Phase 18.6 P5 → P7 perf-pass — body::before fixed-position overlay
-     REMOVED. Combined with body's own background-attachment: fixed +
-     hero's atmosphere stack, this 6th composite layer was producing
-     compositor thrashing (Playwright audit on prod showed avg 9fps,
-     119/120 frames > 16ms). Body's main background-image radial
-     gradients (P5 doubled values) deliver the atmospheric depth on
-     their own. */
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-instrument-serif), Georgia, serif;
-    font-weight: 400;
-    letter-spacing: -0.02em;
-  }
-  code, pre {
-    font-family: var(--font-mono);
-    font-feature-settings: "tnum" 1;
-  }
-
-  /* Selection — amber */
-  ::selection { background: rgba(255, 136, 0, 0.35); color: var(--text-primary); }
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  background: var(--color-canvas);
+  color-scheme: dark;
 }
 
-/* ============================================
-   TYPE UTILITY CLASSES — Phase 4a
-   ============================================ */
-
-@layer utilities {
-  .font-hero {
-    font-family: var(--font-instrument-serif), Georgia, serif;
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    line-height: 0.92;
-  }
-  .font-display {
-    font-family: var(--font-geist-sans), var(--font-sans);
-    font-weight: 500;
-    letter-spacing: -0.03em;
-    line-height: 0.95;
-  }
-  .font-body {
-    font-family: var(--font-geist-sans), var(--font-sans);
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    line-height: 1.5;
-  }
-  .font-mono {
-    font-family: var(--font-geist-mono), var(--font-mono);
-    font-weight: 400;
-    letter-spacing: 0;
-    font-feature-settings: "tnum" 1;
-  }
-  .font-italic-display {
-    font-family: var(--font-instrument-serif), Georgia, serif;
-    font-style: italic;
-    /* Phase 16 D.1 → Phase 17b 2A → 2A-REFIX. Cross-section default for
-       all Instrument Serif italic surfaces. Pillar 2A's 1.22 / 0.10em
-       was insufficient because the actual clip surface was `contain: paint`
-       on .section-deferred + .services-pin-frame ancestors (now dropped in
-       2A-REFIX). With paint-region clipping removed, this leaf-level
-       padding still provides line-box breathing room for cases where
-       components apply their own overflow:hidden ancestors. Minimum
-       line-height per directive: 1.30 on display italic. */
-    line-height: 1.32;
-    padding-block: 0.12em;
-    font-feature-settings: "calt" 1, "liga" 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-  }
-}
-
-/* ============================================
-   UTILITIES — flat surfaces, hairline borders, mono data
-   ============================================ */
-
-@layer utilities {
-  .bg-bg          { background-color: var(--bg-primary); }
-  .bg-surface     { background-color: var(--bg-secondary); }
-  .bg-surface-2   { background-color: var(--bg-elevated); }
-
-  .text-ivory     { color: var(--text-primary); }
-  .text-ivory-dim { color: var(--text-secondary); }
-  .text-muted     { color: var(--text-tertiary); }
-
-  /* Legacy .text-amber / .text-amber-bright aliases (preserved). */
-  .text-amber         { color: var(--accent); }
-  .text-amber-bright  { color: var(--accent-bright); }
-
-  .text-accent         { color: var(--accent); }
-  .text-accent-bright  { color: var(--accent-bright); }
-
-  .border-hairline { border: 1px solid var(--border-default); }
-  .divide-hairline > * + * { border-top: 1px solid var(--border-default); }
-
-  /* Phase 18 V7 — eyebrow contrast site-wide normalization. Color
-     migrated from var(--accent-bright) (#FFA833 amber) to
-     var(--text-muted) (#9A9A9A muted gray) — uniform contrast against
-     canvas (7.4:1 vs canvas, exceeds WCAG AAA threshold). font-weight
-     500 added explicitly per V7 envelope. font-size + letter-spacing
-     retained at the existing typographic register (changing those is
-     out of contrast-axis scope).
-
-     V7 CARVE-OUT — Pillar 4 P1.1 locked invariant: the services-section
-     eyebrow retains var(--accent-bright) amber via its own dedicated
-     class rule .services-pin-section-eyebrow (defined separately at
-     line ~1614). That JSX uses className="services-pin-section-eyebrow"
-     NOT className="eyebrow", so this V7 utility migration does not
-     affect P1.1. The carve-out is automatic via class isolation; no
-     selector override required here.
-
-     P1.1 substantiation (preserved across 4 audit iterations): the
-     muted gray reads as near-invisible on canvas at the services
-     section's display-size eyebrow despite the same 7.4:1 mathematical
-     contrast — perceptual hierarchy demands the canonical eyebrow amber
-     accent specifically there. */
-  .eyebrow {
-    font-family: var(--font-geist-mono), var(--font-mono);
-    font-size: 11px;
-    line-height: 1;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: var(--text-muted);
-  }
-
-  .data {
-    font-family: var(--font-geist-mono), var(--font-mono);
-    font-variant-numeric: tabular-nums;
-    letter-spacing: -0.01em;
-  }
-
-  /* Fluid type utility classes. */
-  .t-hero    { font-size: var(--text-hero);     line-height: 0.92; letter-spacing: -0.02em; }
-  .display   { font-size: var(--text-display);  line-height: 1;    letter-spacing: -0.03em; }
-  .t-h1      { font-size: var(--text-h1);       line-height: 1.05; letter-spacing: -0.02em; }
-  .t-h2      { font-size: var(--text-h2);       line-height: 1.05; letter-spacing: -0.02em; }
-  .t-h3      { font-size: var(--text-h3);       line-height: 1.1;  letter-spacing: -0.02em; }
-  .t-h4      { font-size: var(--text-h4);       line-height: 1.15; letter-spacing: -0.015em; }
-  .t-h5      { font-size: var(--text-h5);       line-height: 1.2;  letter-spacing: -0.01em; }
-  .t-h6      { font-size: var(--text-h6);       line-height: 1.3;  letter-spacing: -0.01em; }
-  .t-lead    { font-size: var(--text-lead);     line-height: 1.5; }
-  .t-main    { font-size: var(--text-main);     line-height: 1.6; }
-  .t-caption { font-size: var(--text-caption);  line-height: 1.5; }
-  .t-body    { font-size: var(--text-body);     line-height: 1.5; }
-  .t-small   { font-size: var(--text-small);    line-height: 1.45; }
-  .t-micro   { font-size: var(--text-micro);    line-height: 1.4; letter-spacing: 0.04em; }
-
-  /* Fluid section-space utilities. */
-  .section-sm    { padding-top: var(--section-sm);    padding-bottom: var(--section-sm); }
-  .section-main  { padding-top: var(--section-main);  padding-bottom: var(--section-main); }
-  .section-lg    { padding-top: var(--section-lg);    padding-bottom: var(--section-lg); }
-  .section-top   { padding-top: var(--section-top); }
-  .section-space       { padding-top: var(--section-space);       padding-bottom: var(--section-space); }
-  .section-space-tight { padding-top: var(--section-space-tight); padding-bottom: var(--section-space-tight); }
-
-  /* Legacy stepped utility. */
-  .section-padding { @apply py-20 md:py-28 lg:py-32; }
-
-  /* Containers. */
-  .container-wide   { margin-inline: auto; width: 100%; max-width: 80rem; padding-inline: var(--site-margin); }
-  .container-narrow { margin-inline: auto; width: 100%; max-width: 64rem; padding-inline: var(--site-margin); }
-  /* Phase 16 D.3 — edge-to-edge bleed container. No max-width: cards
-     stretch the full viewport width minus the site-margin gutter. Used
-     by RecentWorkSection / WorkflowSection so the section "boxes" reach
-     viewport edges on wide displays. */
-  .container-bleed  { margin-inline: auto; width: 100%; padding-inline: var(--site-margin); }
-  .container-prose  { margin-inline: auto; width: 100%; max-width: 48rem; padding-inline: var(--site-margin); }
-
-  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  .hide-scrollbar::-webkit-scrollbar { display: none; }
-
-  .custom-scrollbar { scrollbar-width: thin; scrollbar-color: var(--border-default) transparent; }
-  .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
-  .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-  .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 3px; }
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-
-  /* Focus rings — amber, accessible. */
-  .focus-ring { outline: none; }
-  .focus-ring:focus-visible {
-    outline: 2px solid var(--accent-bright);
-    outline-offset: 2px;
-  }
-
-  /* Phase 3a: shadcn Button transition override — now on brand ease. */
-  [data-slot="button"] {
-    transition-duration: var(--dur-short);
-    transition-timing-function: var(--ease-brand);
-  }
-
-  /* Card primitives. */
-  .card-flat {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-default);
-    border-radius: 8px;
-    transition: border-color var(--dur-medium) var(--ease-brand), transform var(--dur-medium) var(--ease-brand);
-  }
-  .card-flat:hover { border-color: var(--border-bright); }
-
-  /* Legacy cosmic/glass no-ops — kept so legacy className references resolve. */
-  .glass, .glass-strong {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-default);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
-  .cosmic-bg, .cosmic-glow, .radial-glow, .stars-bg, .grid-bg, .noise-overlay {
-    background: transparent;
-  }
-  .noise-overlay::before { display: none; }
-  .signal-glow, .btn-glow, .btn-glow::before, .signal-pulse { box-shadow: none; }
-  .text-gradient, .text-gradient-plum {
-    background: none;
-    -webkit-background-clip: border-box;
-    -webkit-text-fill-color: currentColor;
-    background-clip: border-box;
-    color: inherit;
-  }
-
-  .card-hover {
-    transition: border-color var(--dur-medium) var(--ease-brand), transform var(--dur-medium) var(--ease-brand);
-  }
-  .card-hover:hover {
-    border-color: var(--border-bright);
-    transform: none;
-    box-shadow: none;
-  }
-
-  .link-underline { position: relative; }
-  .link-underline::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--accent);
-    transition: width var(--dur-medium) var(--ease-brand);
-  }
-  .link-underline:hover::after { width: 100%; }
-
-  .tabular-nums { font-variant-numeric: tabular-nums; }
-}
-
-/* ============================================
-   ANIMATIONS — minimal, tasteful
-   ============================================ */
-
-@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes scale-in {
-  from { opacity: 0; transform: scale(0.98); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-.animate-fade-in  { animation: fade-in var(--dur-medium) var(--ease-brand) forwards; }
-.animate-fade-up  { animation: fade-up var(--dur-medium) var(--ease-brand) forwards; }
-.animate-scale-in { animation: scale-in var(--dur-medium) var(--ease-brand) forwards; }
-
-.stagger-children > * { opacity: 0; animation: fade-up var(--dur-medium) var(--ease-brand) forwards; }
-.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
-.stagger-children > *:nth-child(2) { animation-delay: 80ms; }
-.stagger-children > *:nth-child(3) { animation-delay: 160ms; }
-.stagger-children > *:nth-child(4) { animation-delay: 240ms; }
-.stagger-children > *:nth-child(5) { animation-delay: 320ms; }
-.stagger-children > *:nth-child(6) { animation-delay: 400ms; }
-
-/* ============================================
-   PHASE 4h — hover micro-interactions + wolf-logo tilt + link underline.
-   ============================================ */
-.nav-logo {
-  transition: transform var(--dur-short) var(--ease-out-soft);
-  will-change: transform;
-}
-.nav-logo-wrap:hover .nav-logo { transform: rotate(3deg); }
-
-/* Animated underline on any anchor tagged .text-link */
-a.text-link,
-.text-link {
-  position: relative;
-  color: var(--text-secondary);
-  background-image: linear-gradient(currentColor, currentColor);
-  background-size: 0% 1px;
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  transition: background-size var(--dur-short) var(--ease-out-soft), color var(--dur-short) var(--ease-out-soft);
-}
-a.text-link:hover,
-.text-link:hover {
-  background-size: 100% 1px;
-  color: var(--text-primary);
-}
-
-/* ============================================
-   RECENT WORK — Phase 4e
-   Card hover: border brightens, translateY(-2px), soft amber glow.
-   ============================================ */
-.recent-work-card {
-  transition:
-    transform var(--dur-medium) var(--ease-out-soft),
-    border-color var(--dur-short) var(--ease-out-soft),
-    box-shadow var(--dur-medium) var(--ease-out-soft);
-}
-.recent-work-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--border-bright);
-  box-shadow: 0 16px 48px var(--accent-glow-soft);
-}
-
-/* ============================================
-   TESTIMONIALS — Phase 5b
-   Card hover: border brightens, subtle lift. Matches recent-work feel so
-   the two grid sections read as part of the same interactive family.
-   ============================================ */
-.testimonial-card {
-  border: 1px solid var(--border-subtle);
-  transition:
-    transform var(--dur-short) var(--ease-out-soft),
-    border-color var(--dur-short) var(--ease-out-soft),
-    box-shadow var(--dur-short) var(--ease-out-soft);
-}
-.testimonial-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--border-bright);
-  box-shadow: 0 12px 32px var(--accent-glow-soft);
-}
-
-/* ============================================
-   SERVICES LIST — Phase 7 letter-hover (CSS-only)
-   Massive editorial rows. Each character renders as a .letter-hover-char
-   span; the parent .service-row :hover triggers per-letter cascade via
-   transition-delay derived from the inline --letter-index custom property.
-   No JS runtime; immune to the Phase 6 ScrambleText freeze regression.
-   ============================================ */
-.service-row {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 1.25rem;
-  /* Phase 18 V6 — visual row termination. Architectural cadence between
-     rows via 4rem block-end + ring-stroke hairline (was 1.25rem block
-     symmetric padding + --border-subtle). The asymmetric padding gives
-     each row breathing room before the divider; ring-stroke registers
-     as a quieter divider than border-subtle. */
-  padding-block-start: 1.25rem;
-  padding-block-end: 4rem;
-  border-block-end: 1px solid var(--ring-stroke);
-}
-.service-row:last-of-type {
-  border-block-end: none;
-}
-@media (min-width: 768px) { .service-row { gap: 2rem; } }
-
-/* Phase 18 reduced-scope C2.3 — base typography for service-row index +
-   name. Extracted from inline styles on the mobile services list. The
-   `.service-row:hover .service-name` accent-color rule above continues to
-   override base color on hover. */
-.service-index {
-  font-size: var(--text-micro);
-  letter-spacing: 0.12em;
-  color: var(--text-tertiary);
-}
-.service-name {
-  font-size: clamp(1.5rem, 7vw, var(--fs-4xl));
-  color: var(--text-primary);
-  line-height: var(--lh-snug);
-  letter-spacing: var(--ls-tight);
-  overflow-wrap: anywhere;
-  min-width: 0;
-}
-@media (min-width: 768px) {
-  .service-name { font-size: var(--text-service-row); }
-}
-
-/* Phase 7 — LetterHoverText (CSS-only per-character transitions).
-   Each .letter-hover-char span is a child of [data-service-row]; the
-   parent's :hover triggers a color + lift cascade. transition-delay
-   reads from --letter-index so letters fan out left-to-right. */
-.letter-hover-char {
-  /* Phase 9 — cascade tightened: 12ms → 8ms per letter, transition
-     0.28s → 0.2s. A 23-char service name now lands at ~376ms (was ~544ms). */
-  transition:
-    transform 0.2s ease-out,
-    color 0.2s ease-out;
-  transition-delay: calc(var(--letter-index, 0) * 8ms);
-  transform-origin: 50% 85%;
-  will-change: transform;
-}
-[data-service-row]:hover .letter-hover-char {
-  color: var(--accent-bright);
-  transform: translateY(-2px);
-}
-.service-row:hover .service-name { color: var(--accent-bright); }
-
-@media (prefers-reduced-motion: reduce) {
-  .letter-hover-char,
-  [data-service-row]:hover .letter-hover-char {
-    transition: color 0.15s ease-out !important;
-    transform: none !important;
-    transition-delay: 0ms !important;
-  }
-}
-
-.service-arrow {
-  color: var(--text-tertiary);
-  transform: translateX(-8px);
-  opacity: 0;
-  transition:
-    transform var(--dur-short) var(--ease-out-soft),
-    opacity   var(--dur-short) var(--ease-out-soft),
-    color     var(--dur-short) var(--ease-out-soft);
-}
-.service-row:hover .service-arrow {
-  transform: translateX(0);
-  opacity: 1;
-  color: var(--accent-bright);
-}
-
-/* Logo strip hover brighten */
-.logo-mark { transition: color var(--dur-short) var(--ease-out-soft); }
-[data-stagger-item]:hover .logo-mark { color: var(--text-primary); }
-
-/* ============================================
-   HERO WORD-REVEAL — Phase 4c
-   Wraps each non-space token in the hero headline with .word > .word-inner.
-   The outer .word clips the inner; the inner starts at translateY(110%) and
-   is animated to 0 by GSAP on mount. If GSAP fails for any reason, the
-   ScrollMotion 2.5s fallback resets it via [data-word-reveal] and
-   [data-letter-reveal] selectors.
-   ============================================ */
-.word { display: inline-block; overflow: hidden; vertical-align: top; line-height: inherit; padding-bottom: 0.08em; margin-bottom: -0.08em; }
-.word-inner { display: inline-block; transform: translateY(110%); will-change: transform; }
-
-/* ============================================
-   CTA BUTTONS — Phase 4c
-   Primary = filled amber, ghost = outlined.
-   ============================================ */
-.cta-primary {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  /* Phase 15 a11y — accent bg with #0A0A0B text reads ~13:1 (AAA).
-     Previous #ffffff on #FF8800 was ~2.5:1 (failed WCAG AA). */
-  background: var(--accent); color: #0A0A0B;
-  padding: 0.95rem 1.6rem; border-radius: 2px;
-  font-family: var(--font-geist-sans), var(--font-sans), sans-serif;
-  font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.01em;
-  transition:
-    transform var(--dur-short) var(--ease-out-soft),
-    background-color var(--dur-short) var(--ease-out-soft),
-    box-shadow var(--dur-short) var(--ease-out-soft);
-}
-.cta-primary:hover {
-  background: var(--accent-bright);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px var(--accent-glow);
-}
-.cta-primary:active { transform: translateY(0); }
-
-.cta-ghost {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  background: transparent; color: var(--text-primary);
-  padding: 0.95rem 1.6rem; border: 1px solid var(--border-default); border-radius: 2px;
-  font-family: var(--font-geist-sans), var(--font-sans), sans-serif;
-  font-weight: 500; font-size: 0.9375rem; letter-spacing: -0.01em;
-  transition:
-    border-color var(--dur-short) var(--ease-out-soft),
-    background-color var(--dur-short) var(--ease-out-soft),
-    color var(--dur-short) var(--ease-out-soft);
-}
-.cta-ghost:hover {
-  border-color: var(--accent);
-  background: var(--accent-glow-soft);
-  color: var(--text-primary);
-}
-
-/* ============================================
-   PHASE 18 reduced-scope C2.1 — HERO SECTION SCAFFOLDING (amended Phase 18.B)
-   Class extraction of the 6 inline-style props that lived on the hero
-   <section>, grid wrapper, eyebrow, h1, sub paragraph, and trust microcopy.
-   Phase 18.B atmospheric exception (authorized 2026-04-28, Path 3 reduced
-   scope, mockup A4): background: var(--bg-primary) replaced by amber +
-   blue glow zones + warm vignette per locked configuration. The radial
-   gradient stack terminates at #000 at 78% — visual edge state matches
-   prior Bloomberg Operator black canvas; warm-tone center #14100a is the
-   intentional Phase 18 atmospheric amendment. position: relative +
-   isolation: isolate establish a new stacking context so the ::before
-   grain layer + .hero-grid z-index 2 carve-out compose cleanly without
-   leaking into ancestor stacking.
-   Ambiguity #2 carve-out: spec called for `.hero-section > * { z-index: 2 }`
-   but that would promote <HeroDataTicker /> (substrate; locked invariant
-   K9 with 0.18/0.12/0.18 opacities) above content. Carve-out targets only
-   the .hero-grid content wrapper.
-   ============================================ */
-.hero-section {
-  position: relative;
-  isolation: isolate;
-  /* Phase 18.6 P1+P2 — atmosphere reverted to Phase 18.B subtle values
-     after Phase 18.5.C bump combined with V4 align-items:end + 100dvh
-     section produced visual hierarchy collapse (atmosphere dominated;
-     copy + orbit floated at section bottom inside huge empty space).
-     Live-eyeball verification 2026-04-28 confirmed: Phase 18.5.C
-     looked "under-delivered" only because layout left half the
-     viewport empty for atmosphere to over-paint. Phase 18.B values
-     were the right values against a broken layout — restoring them
-     alongside the layout fix prevents over-correcting again.
-     3-layer radial stack:
-       L1 amber primary glow @ 15% 25% — 0.13 / 38% falloff
-       L2 blue secondary glow @ 85% 75% — 0.08 / 38% falloff
-       L3 vignette ellipse 90% 80% — #14100a → #000 78%
-     The Three.js sphere layer (Phase 18.5.D B2) carries the "lit +
-     dimensional" intent at amber 0.27 / blue 0.25 — the CSS atmosphere
-     just provides the warm undertone behind them. K17 amended cap
-     (≤30% amber / ≤22% blue) retained for sphere materials; CSS
-     atmosphere now well under cap. */
-  background:
-    radial-gradient(circle at 15% 25%, rgba(255, 136, 0, 0.13) 0%, transparent 38%),
-    radial-gradient(circle at 85% 75%, rgba(42, 143, 189, 0.08) 0%, transparent 38%),
-    radial-gradient(ellipse 90% 80% at 50% 50%, #14100a 0%, #000 78%);
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  padding-top: var(--section-top);
-  padding-bottom: var(--section-main);
-}
-.hero-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  /* Phase 18.6 — grain reverted to Phase 18.B subtle values per atmosphere
-     bump revert (tile 200, baseFrequency 0.9, seed 1, layer opacity 0.06). */
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' seed='1'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.5'/></svg>");
-  opacity: 0.06;
-  mix-blend-mode: overlay;
-}
-/* Ambiguity #2 carve-out — content grid promotes above atmosphere +
-   grain (z-index: 2). HeroDataTicker substrate (sibling of .hero-grid
-   inside .hero-section) inherits default stacking and stays between
-   atmosphere and content per K9 locked invariant. */
-.hero-section > .hero-grid {
-  position: relative;
-  z-index: 2;
-}
-/* Phase 18.5.D — Three.js canvas. Sits at z-index 1: above CSS atmosphere
-   background (auto stacking) + grain (::before z=0), below .hero-grid
-   content (z=2). pointer-events: none so it never intercepts clicks /
-   focus on hero CTAs or copy. */
-.hero-atmosphere-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-  display: block;
-}
-/* Phase 18.5.D — CSS-only fallback for mobile (<1024px) and
-   prefers-reduced-motion: reduce. Mirrors the Three.js sphere positions
-   + base colors with radial-gradient + filter blur. K17-buffered
-   opacities (A 0.27 / B 0.25 / C 0.17). */
-.hero-atmosphere-fallback {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  overflow: hidden;
-}
-.hero-atmosphere-sphere {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-}
-.hero-atmosphere-sphere--a {
-  width: 760px;
-  height: 760px;
-  top: -8%;
-  left: -10%;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 136, 0, 0.27) 0%, transparent 70%);
-  filter: blur(28px);
-}
-.hero-atmosphere-sphere--b {
-  width: 520px;
-  height: 520px;
-  bottom: 8%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: radial-gradient(circle at 50% 50%, rgba(42, 143, 189, 0.25) 0%, transparent 70%);
-  filter: blur(22px);
-}
-.hero-atmosphere-sphere--c {
-  width: 400px;
-  height: 400px;
-  top: 30%;
-  right: 6%;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 136, 0, 0.17) 0%, transparent 70%);
-  filter: blur(18px);
-}
-
-/* ===================================================================
-   Phase 19 Path 3 — FounderSection (real-photo-ready), CredentialsWall,
-   RecentWorkInline. Editorial Bloomberg-Operator restraint, hairline
-   separators, generous whitespace, no glassmorphism.
-   ------------------------------------------------------------------- */
-
-/* FounderSection */
-.founder-section-header {
-  margin-bottom: clamp(3rem, 6vh, 5rem);
-  max-width: var(--maxw-heading-section);
-}
-.founder-grid {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(3rem, 8vh, 5.5rem);
-}
-.founder-row {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  padding-block: clamp(2rem, 5vh, 3.5rem);
-  border-top: 1px solid var(--border-subtle);
-}
-@media (min-width: 1024px) {
-  .founder-row {
-    grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
-    gap: clamp(3rem, 6vw, 6rem);
-    align-items: center;
-  }
-  .founder-row[data-orient='right'] {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 360px);
-  }
-  .founder-row[data-orient='right'] .founder-portrait { order: 2; }
-}
-.founder-portrait {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  width: 100%;
-  max-width: 360px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-default);
-  overflow: hidden;
-}
-.founder-portrait-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(0.15) contrast(1.04);
-}
-.founder-monogram {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-elevated) 100%);
-  position: relative;
-}
-.founder-monogram::before {
-  content: '';
-  position: absolute;
-  inset: 1.5rem;
-  border: 1px dashed var(--border-default);
-  pointer-events: none;
-}
-.founder-monogram-initials {
-  font-size: clamp(4rem, 8vw, 6.5rem);
-  color: var(--text-tertiary);
-  line-height: 1;
-  margin-bottom: 1rem;
-  font-style: italic;
-}
-.founder-monogram-meta {
-  font-size: var(--text-micro);
-  letter-spacing: 0.18em;
-  color: var(--text-muted);
-  opacity: 0.55;
-}
-.founder-body {
-  max-width: var(--maxw-body);
-}
-
-/* CredentialsWall */
-.credentials-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(2rem, 5vh, 3.5rem);
-  border-top: 1px solid var(--border-subtle);
-  padding-top: clamp(2rem, 5vh, 3.5rem);
-}
-@media (min-width: 720px) {
-  .credentials-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (min-width: 1024px) {
-  .credentials-grid {
-    grid-template-columns: 1.4fr 0.8fr 0.8fr;
-    gap: clamp(2.5rem, 4vw, 5rem);
-  }
-}
-.credentials-group {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-.credentials-group-eyebrow {
-  margin-bottom: 0.5rem;
-}
-.credentials-list {
-  list-style: none;
+body {
   margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-}
-.credentials-item {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 0;
-  border-top: 1px solid var(--border-subtle);
-}
-.credentials-item:nth-child(odd) {
-  border-right: 1px solid var(--border-subtle);
-  padding-right: 1rem;
-}
-.credentials-item:nth-child(even) {
-  padding-left: 1rem;
-}
-.credentials-value {
-  font-size: var(--text-md);
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
-  font-weight: 500;
-  line-height: 1.1;
-  margin-bottom: 0.25rem;
-}
-.credentials-label {
-  font-size: var(--text-micro);
-  letter-spacing: 0.16em;
-  color: var(--text-muted);
-}
-
-/* RecentWorkInline */
-.recent-work-header {
-  margin-bottom: clamp(3rem, 7vh, 5rem);
-  max-width: var(--maxw-heading-section);
-}
-.recent-work-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(2rem, 4vh, 3rem);
-}
-@media (min-width: 720px) {
-  .recent-work-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (min-width: 1024px) {
-  .recent-work-grid {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: clamp(2rem, 3vw, 3.5rem);
-  }
-}
-.recent-work-card {
-  display: flex;
-  flex-direction: column;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border-subtle);
-}
-.recent-work-viz-frame {
-  background: var(--bg-secondary);
-  padding: 1rem;
-  border: 1px solid var(--border-subtle);
-  margin-bottom: 0.5rem;
-}
-.recent-work-viz {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.recent-work-metric {
-  display: flex;
-  align-items: baseline;
-  margin-top: auto;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--border-subtle);
-}
-
-/* Phase 19 — Scroll progress indicator. 2px amber strip at top of
-   viewport, scaleX(0..1) with scroll. Above all content. */
-.scroll-progress-track {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  z-index: 100;
-  pointer-events: none;
-  background: transparent;
-}
-.scroll-progress-bar {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-bright) 100%);
-  transform-origin: left center;
-  transform: scaleX(0);
-  will-change: transform;
-}
-@media (prefers-reduced-motion: reduce) {
-  .scroll-progress-track { display: none; }
-}
-
-/* Phase 19 — WorkflowSection signal-flow + node pulse animations.
-   Communicates the AI/automation register: data packets continuously
-   travel along each path segment, nodes emit a slow pulse ring like
-   live agents on standby. SVG-only, GPU-accelerated stroke-dashoffset +
-   stroke transform. Skipped under prefers-reduced-motion. */
-@keyframes workflow-signal-flow {
-  0% {
-    stroke-dashoffset: 240;
-    opacity: 0;
-  }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% {
-    stroke-dashoffset: -240;
-    opacity: 0;
-  }
-}
-.workflow-signal-flow {
-  stroke-dasharray: 36 204;
-  stroke-dashoffset: 240;
-  animation: workflow-signal-flow 3.6s cubic-bezier(0.65, 0.05, 0, 1) infinite;
-  will-change: stroke-dashoffset, opacity;
-}
-@keyframes workflow-node-pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(2.1);
-    opacity: 0;
-  }
-}
-.workflow-node-pulse {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: workflow-node-pulse 2.6s cubic-bezier(0.33, 1, 0.68, 1) infinite;
-  will-change: transform, opacity;
-}
-@media (prefers-reduced-motion: reduce) {
-  .workflow-signal-flow,
-  .workflow-node-pulse {
-    animation: none;
-  }
-  .workflow-signal-flow { opacity: 0.6; stroke-dashoffset: 0; }
-  .workflow-node-pulse { opacity: 0; }
-}
-
-/* Phase 19 — Animated SVG neural-field overlay. Sits between atmosphere
-   spheres (z=1) and HeroDataTicker substrate. K17 atmospheric-exception
-   compliant: amber strokes capped at 0.45 opacity (line) and 0.55
-   opacity (node) with auto-distance falloff in JS — visible peak 0.27,
-   under the 0.30 K17 amber ceiling. Suppressed on <1024px and on
-   prefers-reduced-motion. */
-.hero-neural-field {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  mix-blend-mode: screen;
-}
-@media (max-width: 1023px) {
-  .hero-neural-field { display: none; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-neural-field { opacity: 0.4; }
-}
-.hero-grid {
-  padding-inline: var(--container-gutter);
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: clamp(1rem, 2vw, 3rem);
-  align-items: center;
-}
-/* Phase 20.1.5 — desktop hero rail allowance.
-   Reserve left/right gutters wide enough that the section nav rail
-   (~140px) and telemetry strip rail (~120px) never collide with the
-   centered hero-grid content. */
-@media (min-width: 1024px) {
-  .hero-grid {
-    padding-left: clamp(8.5rem, 11vw, 11rem);
-    padding-right: clamp(7rem, 9vw, 9.5rem);
-  }
-}
-@media (max-width: 1024px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* Phase 20.1.6 — AutomationOrbit removed from hero in favor of single
-   focal point (Hero3DStage). The hero-grid right column is now an
-   empty spacer that reserves the column width so the copy column
-   continues to read at the prior horizontal balance against the 3D
-   stage on the right. */
-.hero-stage-spacer {
-  width: 100%;
-  min-height: clamp(320px, 60vh, 600px);
-}
-@media (max-width: 1024px) {
-  .hero-stage-spacer { display: none; }
-}
-.hero-eyebrow {
-  font-size: var(--text-micro);
-  letter-spacing: 0.16em;
-  color: var(--text-tertiary);
-}
-.hero-h1 {
-  /* Phase 20.1 typography drama (UF authorized override of Phase 18.6 P1
-     fifth-pass cap). Cap 80px was undersized for premium agency tier
-     (Linear/Stripe hit 120-160px on desktop). New cap 128px (8rem) at
-     7.5vw mid-range. Line 2 ("Skip the headcount.") now allowed to
-     wrap on smaller widths instead of nowrap-into-orbit-overflow. Lower
-     bound bumped to 3.25rem for bigger mobile presence. Tracking
-     tightened from -0.03em to -0.045em. */
-  font-size: clamp(3.25rem, 6.6vw, 7rem);
-  line-height: 1.02;
-  font-weight: 500;
-  text-wrap: balance;
-  color: var(--text-primary);
-  max-width: 14ch;
-  letter-spacing: -0.045em;
-}
-.hero-sub {
-  /* Phase 20.1 — bumped from var(--text-body) (17px static) to a
-     premium clamp 18px → 24px so the lede has presence vs the new
-     larger h1. */
-  font-size: clamp(1.125rem, 1.4vw, 1.5rem);
-  color: var(--text-secondary);
-  max-width: 36ch;
+  background: var(--color-canvas);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  font-size: var(--text-base);
   line-height: 1.5;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.01em;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
-.hero-trust-microcopy {
-  font-size: 12px;
-  color: var(--text-muted);
+
+::selection {
+  background: var(--color-accent);
+  color: #0a0a0a;
+}
+
+/* Focus ring — amber, accessible */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+textarea,
+button,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* ============================================================
+   Type
+   ============================================================ */
+
+.font-display {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum", "cv11";
   letter-spacing: 0.02em;
 }
 
-/* ============================================
-   PHASE 18 reduced-scope C2.2 — FOOTER SCAFFOLDING
-   Class extraction of 12 inline-style props on Footer.tsx. Token values
-   unchanged — pure inline-to-class migration. Pillar 4 R7 directive-locked
-   philosophy-block typography hierarchy preserved verbatim. Compliance-strip
-   rule extracted but row itself unchanged (V8 removal pending Phase 3 spec).
-   ============================================ */
-.footer-root {
-  /* Phase 18.6 P2 — background changed from var(--bg-canvas) (opaque
-     #000) to transparent so body's site-wide subtle atmosphere shows
-     through. Footer terminus retains amber border-top + the existing
-     stacking. */
-  background: transparent;
-  border-top: 1px solid var(--accent);
-}
-.footer-logo-img {
-  width: 80px;
-  height: auto;
-}
-.footer-philosophy {
-  max-width: 56ch;
-}
-.footer-philosophy-heading {
-  color: var(--text-primary);
-  font-weight: 500;
-}
-.footer-philosophy-body {
-  color: var(--text-muted);
-  line-height: 1.65;
-}
-.footer-philosophy-code {
-  background: var(--ring-stroke);
-  color: var(--text-primary);
-  padding: 1px 6px;
-  border-radius: 3px;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 12px;
-}
-.footer-location {
-  margin-top: 1.25rem;
-}
-.footer-cta-amber {
-  background: var(--accent-bright);
-}
-/* .footer-trust-row removed per Phase 18 V8 (footer compliance strip
-   removal). Class definition deleted alongside its sole consumer. */
-.footer-bottom-bar {
-  border-top: 1px solid var(--border-default);
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
 }
 
-/* ============================================
-   PHASE 18 reduced-scope C2.4 — CTA SECTION SCAFFOLDING
-   Class extraction of 5 inline-style props on CTASection.tsx. Token
-   values unchanged. Italic h2 line-height 1.32 preserved (Pillar 5 italic
-   descender clearance pattern; same value as Faizan pull-quote section).
-   ============================================ */
-.cta-section-root {
-  /* Phase 18.6 P2 — transparent so body atmosphere shows through. */
-  background: transparent;
-  padding-top: var(--section-space);
-  padding-bottom: var(--section-space);
+.eyebrow--accent {
+  color: var(--color-accent);
 }
-.cta-section-eyebrow {
-  font-size: var(--text-micro);
-  letter-spacing: 0.18em;
-  color: var(--text-tertiary);
+
+.text-balance {
+  text-wrap: balance;
 }
-.cta-section-headline {
-  font-size: var(--text-h1);
-  font-style: italic;
-  color: var(--text-primary);
-  line-height: 1.32;
-  letter-spacing: -0.02em;
-  max-width: 18ch;
+
+.text-pretty {
+  text-wrap: pretty;
 }
-.cta-section-body {
-  font-size: var(--text-body);
-  color: var(--text-secondary);
+
+/* ============================================================
+   Layout primitives
+   ============================================================ */
+
+.container-wide {
+  max-width: var(--maxw-wide);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .container-wide {
+    padding-inline: var(--space-10);
+  }
+}
+
+.container-content {
+  max-width: var(--maxw-content);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+.container-prose {
+  max-width: var(--maxw-prose);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+.section-sm {
+  padding-block: var(--section-y-sm);
+}
+
+.section-divider {
+  border-block-start: 1px solid var(--color-line-faint);
+}
+
+/* Section header */
+.section-header {
+  max-width: 56rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.section-header--center {
+  text-align: center;
+  margin-inline: auto;
+  align-items: center;
+}
+
+.section-title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  color: var(--color-text-primary);
+}
+
+.section-desc {
+  font-size: var(--text-md);
   line-height: 1.55;
-  max-width: 52ch;
-}
-.cta-section-microcopy {
-  font-size: 12px;
-  color: var(--text-muted);
-  letter-spacing: 0.18em;
+  color: var(--color-text-secondary);
+  max-width: 40rem;
 }
 
-/* ============================================
-   PHASE 11 — HERO PULSE LINE
-   Replaces the 5-layer SVG orb. Single 1px×200px vertical line at
-   --accent 30% opacity, breathing scaleY + opacity. Near-zero perf cost,
-   doesn't compete with hero text. Pause-on-tab-hidden.
-   ============================================ */
-.hero-pulse-wrap {
-  /* Phase 16 B — opened up from 280px square to host the new orbital
-     system at full 32rem × 24rem (4:3). The legacy 280px square was for
-     the Phase 11 1px breathing line. */
+/* ============================================================
+   Buttons + links
+   ============================================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  height: 2.75rem;
+  padding-inline: var(--space-5);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background var(--motion-fast) var(--ease-out),
+    color var(--motion-fast) var(--ease-out),
+    border-color var(--motion-fast) var(--ease-out),
+    transform var(--motion-fast) var(--ease-out);
+  user-select: none;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: #0a0a0a;
+  border: 1px solid var(--color-accent);
+}
+
+.btn-primary:hover {
+  background: #ffa033;
+  border-color: #ffa033;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-line-soft);
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-line-bright);
+  background: var(--color-canvas-raised);
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-primary);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  transition: color var(--motion-fast) var(--ease-out);
+}
+
+.btn-link:hover {
+  color: var(--color-accent);
+}
+
+.btn-link::after {
+  content: "→";
+  font-family: var(--font-mono);
+  transition: transform var(--motion-fast) var(--ease-out);
+}
+
+.btn-link:hover::after {
+  transform: translateX(2px);
+}
+
+/* ============================================================
+   Surfaces
+   ============================================================ */
+
+.surface {
+  background: var(--color-canvas-raised);
+  border: 1px solid var(--color-line-faint);
+  border-radius: var(--radius-lg);
+}
+
+.surface-bright {
+  background: var(--color-canvas-elevated);
+  border: 1px solid var(--color-line-soft);
+  border-radius: var(--radius-lg);
+}
+
+.surface-accent {
+  background: var(--color-accent-faint);
+  border: 1px solid var(--color-line-accent);
+  border-radius: var(--radius-lg);
+}
+
+/* ============================================================
+   Hairlines + utilities
+   ============================================================ */
+
+.hairline {
+  height: 1px;
+  background: var(--color-line-faint);
   width: 100%;
-  max-width: 32rem;
+}
+
+.hairline-vert {
+  width: 1px;
+  background: var(--color-line-faint);
+  height: 100%;
+}
+
+.dot-amber {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.tag-mono {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-line-soft);
+  background: var(--color-canvas-raised);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.tag-mono--accent {
+  border-color: var(--color-line-accent);
+  background: var(--color-accent-faint);
+  color: var(--color-accent);
+}
+
+/* ============================================================
+   Skip link
+   ============================================================ */
+
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: var(--space-4);
+  z-index: 999;
+  padding: 0.5rem 0.75rem;
+  background: var(--color-canvas-elevated);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+}
+
+.skip-to-content:focus {
+  top: var(--space-4);
+}
+
+/* ============================================================
+   Intro loader (root layout brand mark) — minimal, brief
+   ============================================================ */
+
+.dpl-intro-loader {
+  position: fixed;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: var(--space-4);
+  background: var(--color-canvas);
+  z-index: 100;
+  animation: dpl-intro-out 0.8s var(--ease-out) 0.7s forwards;
 }
-.hero-pulse-line {
+
+.dpl-intro-mascot {
+  opacity: 0;
+  animation: dpl-intro-mark-in 0.4s var(--ease-out) 0.1s forwards;
+}
+
+.dpl-intro-line {
   display: block;
-  width: 1px;
-  height: 200px;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    var(--accent) 20%,
-    var(--accent-bright) 50%,
-    var(--accent) 80%,
-    transparent 100%
-  );
-  opacity: 0.55;
-  transform-origin: 50% 50%;
-  animation: hero-pulse-breathe 4s ease-in-out infinite;
-  will-change: transform, opacity;
+  width: 2px;
+  height: 1.25rem;
+  background: var(--color-accent);
+  opacity: 0;
+  animation: dpl-intro-line-in 0.5s var(--ease-out) 0.2s forwards;
 }
-@keyframes hero-pulse-breathe {
-  0%, 100% { transform: scaleY(1); opacity: 0.55; }
-  50%      { transform: scaleY(1.1); opacity: 0.85; }
+
+@keyframes dpl-intro-mark-in {
+  to {
+    opacity: 1;
+  }
 }
+
+@keyframes dpl-intro-line-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dpl-intro-out {
+  to {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+}
+
+html[data-i-seen="1"] .dpl-intro-loader {
+  display: none;
+}
+
+/* ============================================================
+   Reveal-on-scroll primitives (CSS-only)
+   ============================================================ */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--motion-deliberate) var(--ease-out),
+    transform var(--motion-deliberate) var(--ease-out);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-pulse-line { animation: none; }
-}
-
-/* Pause continuous motion when the tab is hidden. */
-html[data-paused-global="true"] .hero-pulse-line,
-html[data-paused-global="true"] .grain-overlay {
-  animation-play-state: paused !important;
-}
-
-/* Legacy animation names kept as no-ops so existing classes don't break layout. */
-@keyframes twinkle { 0%, 100% { opacity: 0; } 50% { opacity: 0; } }
-.animate-twinkle { animation: none; opacity: 0; }
-.animate-float, .animate-ping-slow, .animate-glow-pulse,
-.animate-gradient, .animate-pulse-glow, .animate-slide-in-right,
-.animate-fade-in-delayed, .animate-bounce-slow, .animate-float-slow,
-.animate-float-slow-reverse, .animate-nebula-1, .animate-nebula-2,
-.animate-spin-slow, .animate-gradient-shift { animation: none; }
-
-/* Accessibility — reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
 
-/* ============================================
-   PHASE 17b PILLAR 2A — HERO EM (italic descender clipping comprehensive fix)
-   Italic + accent emphasis on "the AI" inside the hero h1. Phase 16 D.1
-   addressed ascender clipping (i tittle) but descender / italic-slant
-   bottom extent was still clipping inside .word { overflow: hidden }.
-   Word-reveal animation (yPercent:110 → 0 inside overflow-hidden) requires
-   the clip to stay; fix expands the .word box vertically + activates
-   OpenType features for proper italic glyph metrics.
-   ============================================ */
-/* Phase 17b Pillar 4 P0.2 — nowrap wrapper for hero h1 line 2.
-   Keeps "Skip the headcount." as a single visual line at viewports
-   ≥640px so the explicit <br> produces exactly two lines. Below 640px
-   natural wrap is allowed so the line doesn't overflow narrow mobile
-   viewports. */
-.hero-h1-line-2 {
-  /* Phase 20.1 — block-level beat preserved. Phase 18.6 P1 nowrap @ ≥640px
-     dropped: at the new 128px-cap h1 size, "Skip the headcount." nowrap
-     overflowed the now-narrower max-width. Natural wrap is fine; the
-     text-wrap: balance on .hero-h1 + max-width: 18ch shape both lines
-     appropriately at every viewport. */
-  display: block;
-  margin-block-start: 0;
-}
-
-/* Phase 18 V3 → Phase 18.6 P1 REVERT — .hero-em-inner inline-block
-   wrapper removed. The inline-block + padding-block-start: 0.25em was
-   inflating the h1 line box, producing a ~300px gap between sentence
-   beats at production viewport scale. V3 structural BFC theory was
-   incorrect for the geometry; Pillar 5 R1 parametric padding-block-end
-   clamp re-applied directly on .hero-em — that fix was empirically
-   verified at all 5 viewports in Pillar 5 forensics F1.3 and is the
-   correct approach. */
-.hero-em {
-  /* Phase 18.6 P2 — em treatment changed from italic Instrument Serif
-     (.font-italic-display) to .font-display (Geist Sans 500) per repo-
-     owner request to match workforce-page hero typography. Italic +
-     descender clearance machinery removed (no descenders in sans).
-     Amber color retained for semantic accent; line-height inherits from
-     h1's 1.05 so em participates cleanly in the line box. */
-  color: var(--accent-primary);
-  font-style: normal;
-  line-height: inherit;
-  word-break: keep-all;
-  hyphens: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-/* ============================================
-   Phase 20 Loop A Sub-phase B — Cosmo chat trigger
-   Bloomberg Operator interior: black-elevated bg, hairline amber border,
-   amber drop-shadow halo. Replaces Phase 16 D.5 amber radial gradient
-   so the inline CosmoMark waveform reads cleanly inside the FAB.
-
-   .cosmo-fab          circular button host (size set by parent classes)
-   .cosmo-fab-inner    flex centering wrapper for the inline SVG mark
-   .cosmo-fab:hover    1.08 scale, halo intensity bump
-   prefers-reduced-motion → preserves hover scale (transform only)
-   ============================================ */
-.cosmo-fab {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-bright);
-  box-shadow:
-    0 0 24px rgba(255, 136, 0, 0.30),
-    0 0 0 1px rgba(255, 136, 0, 0.05) inset;
-  will-change: transform;
-  transition: box-shadow 200ms ease-out, transform 200ms ease-out;
-}
-.cosmo-fab:hover {
-  transform: scale(1.08);
-  box-shadow:
-    0 0 32px rgba(255, 136, 0, 0.55),
-    0 0 0 1px rgba(255, 136, 0, 0.10) inset;
-}
-.cosmo-fab:active { transform: scale(0.95); }
-.cosmo-fab-inner { will-change: opacity; }
-
-/* Phase 17b 3-restructured G3 — chat panel slide-in entry. */
-@keyframes chat-panel-slide-in {
-  from { transform: translateY(20px); opacity: 0; }
-  to   { transform: translateY(0);    opacity: 1; }
-}
-.chat-panel-enter {
-  animation: chat-panel-slide-in 250ms ease-out;
-}
-@media (prefers-reduced-motion: reduce) {
-  .chat-panel-enter { animation: none; }
-}
-
-/* Phase 17b 3-restructured G3 — chat skeleton pulse. */
-@keyframes chat-skeleton-pulse-anim {
-  0%, 100% { opacity: 0.55; }
-  50%      { opacity: 0.85; }
-}
-.chat-skeleton-pulse {
-  animation: chat-skeleton-pulse-anim 1.2s ease-in-out infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .chat-skeleton-pulse { animation: none; opacity: 0.7; }
-}
-/* Word-reveal slides .word-inner up from yPercent:110 to 0 inside .word
-   which has overflow:hidden (Tailwind utility on the span). Phase 17b 2A
-   → 2A-REFIX expands both axes of the .word container so italic ascenders
-   + descenders + slant-extent all fit inside the clip without breaking the
-   slide reveal. padding-bottom raised to 0.32em for deeper descender clearance
-   given the inline h1 lineHeight constraint. */
-.hero-em .word {
-  /* Post-Phase-18.6 P2 — em is sans-serif (Geist Sans 700), no italic
-     descenders to clear. Asymmetric padding-bottom 0.40em was inflating
-     em word boxes vs sibling .word containers, breaking baseline
-     alignment between "Hire" and "the AI". Zeroed for tight baseline
-     lock; sans-serif glyphs sit cleanly inside the .word overflow-hidden
-     clip without padding compensation. */
-  padding-top: 0;
-  padding-bottom: 0.08em;
-}
-
-/* ============================================
-   Phase 16 C — Hero data ticker (Bloomberg Operator substrate)
-   Replaces the Phase 6 .hero-ambient conic blur with functional
-   readouts: top-left ID block, right-column operator readouts,
-   bottom-strip metadata. Pure CSS, mono 9px, low opacity, no
-   animation, mobile-hidden < 1024px.
-
-   .hero-ambient class kept as a no-op (display: none) so any
-   stale references don't crash; previous animation removed.
-   ============================================ */
-.hero-ambient { display: none; }
-
-.hero-ticker {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 9px;
-  letter-spacing: 0.05em;
-  z-index: 0;
-}
-@media (max-width: 1023px) {
-  .hero-ticker { display: none; }
-}
-/* Phase 17b 3-restructured B1 — at narrow desktop (≤1280px) the
-   right-side .hero-ticker-readouts column collides with the hero
-   "Skip" word. Hide the readouts column at narrow desktop, keep the
-   left ID block + bottom strip (which don't collide). At >1280px
-   everything renders as before per Phase 16 C spec. */
-@media (min-width: 1024px) and (max-width: 1280px) {
-  .hero-ticker-readouts { display: none; }
-}
-.hero-ticker-id {
-  position: absolute;
-  top: calc(var(--section-top, 5rem) + 1rem);
-  left: var(--container-gutter, 1.5rem);
-  color: var(--accent-secondary);
-  opacity: 0.18;
-  line-height: 1.3;
-}
-.hero-ticker-id div:first-child {
-  font-weight: 600;
-  letter-spacing: 0.1em;
-}
-.hero-ticker-readouts {
-  position: absolute;
-  top: calc(var(--section-top, 5rem) + 1rem);
-  right: var(--container-gutter, 1.5rem);
-  color: var(--accent-primary);
-  opacity: 0.18;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  text-align: right;
-}
-.hero-ticker-row {
-  display: flex;
-  gap: 0.75rem;
-  justify-content: flex-end;
-}
-.hero-ticker-row span {
-  display: inline-block;
-}
-.hero-ticker-strip {
-  position: absolute;
-  bottom: 1.5rem;
-  left: var(--container-gutter, 1.5rem);
-  right: var(--container-gutter, 1.5rem);
-  color: var(--accent-primary);
-  opacity: 0.12;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* ============================================
-   PHASE 6 v2 — CHAT TRIGGER (Duolingo-style)
-   ============================================ */
-@keyframes chat-trigger-bob {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-4px); }
-}
-
-.chat-trigger {
-  animation: chat-trigger-bob 3s ease-in-out infinite;
-}
-.chat-trigger:hover { animation-play-state: paused; }
-
-@keyframes chat-trigger-wink {
-  0%, 96%, 100% { opacity: 0; transform: scaleY(1); }
-  98%           { opacity: 0.4; transform: scaleY(0.1); }
-}
-.chat-trigger-wink {
-  background: rgba(0, 0, 0, 0.7);
-  animation: chat-trigger-wink 8s ease-in-out infinite;
-  transform-origin: center;
-}
-
-@keyframes chat-trigger-wave {
-  0%, 100% { transform: translateY(0) rotate(0); }
-  20%      { transform: translateY(-6px) rotate(-8deg); }
-  40%      { transform: translateY(-6px) rotate(8deg); }
-  60%      { transform: translateY(-6px) rotate(-6deg); }
-  80%      { transform: translateY(-6px) rotate(6deg); }
-}
-.chat-trigger-wave { animation: chat-trigger-wave 1.6s ease-in-out 1; }
-
-@keyframes chat-trigger-sparkle {
-  0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
-  50%      { opacity: 1; transform: scale(1.2) rotate(180deg); }
-}
-.chat-trigger-sparkle { animation: chat-trigger-sparkle 2s ease-in-out infinite; }
-
-.chat-trigger-open { animation: none; transform: scale(0.9); }
-
-@media (prefers-reduced-motion: reduce) {
-  .chat-trigger,
-  .chat-trigger-wink,
-  .chat-trigger-wave,
-  .chat-trigger-sparkle {
-    animation: none !important;
+  .dpl-intro-loader {
+    display: none !important;
   }
-}
 
-html[data-paused-global="true"] .chat-trigger,
-html[data-paused-global="true"] .chat-trigger-wink,
-html[data-paused-global="true"] .chat-trigger-sparkle {
-  animation-play-state: paused;
-}
-
-/* ============================================
-   PHASE 6 v2 — CHAT PANEL
-   ============================================ */
-@keyframes chat-dot-pulse {
-  0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
-  40%           { opacity: 1;   transform: scale(1); }
-}
-.chat-dot {
-  animation: chat-dot-pulse 1.2s ease-in-out infinite;
-  /* Phase 18 reduced-scope C2.5 — extracted from inline bg on each dot. */
-  background: var(--text-tertiary);
-}
-/* Phase 18 reduced-scope C2.5 — staggered delays via nth-of-type instead
-   of per-element inline animationDelay. */
-.chat-dot:nth-of-type(2) { animation-delay: 0.15s; }
-.chat-dot:nth-of-type(3) { animation-delay: 0.3s; }
-
-@keyframes chat-panel-enter {
-  from { opacity: 0; transform: translateY(12px) scale(0.96); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-.chat-panel {
-  animation: chat-panel-enter 0.25s ease-out;
-  transform-origin: bottom right;
-  will-change: transform, opacity;
-}
-
-/* ============================================
-   PHASE 18 reduced-scope C2.5 — CHAT PANEL SCAFFOLDING
-   Class extraction of 15 inline-style props on ChatPanel.tsx. Token
-   values unchanged. Skeleton bubble width values addressed via
-   data-w="1|2|3" attribute selectors instead of per-render inline width.
-   ============================================ */
-.chat-panel-shell {
-  background: color-mix(in srgb, var(--bg-canvas) 95%, transparent);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-default);
-}
-/* Phase 18 N0 — Lightning CSS / Next.js optimizeCss strips an
-   unprefixed `backdrop-filter` declaration that sits adjacent to
-   `-webkit-backdrop-filter` in the same rule (verified in production
-   bundle 0dztqj2c1jknv.css after C2.5 ship). Wrapping the standard
-   property in @supports forces the optimizer to keep it as a separate
-   feature-gated declaration, restoring the blur on Chrome/Firefox/Edge
-   while preserving Safari's webkit-prefixed rendering. */
-@supports (backdrop-filter: blur(1px)) {
-  .chat-panel-shell {
-    backdrop-filter: blur(16px);
-  }
-}
-.chat-panel-header {
-  border-bottom: 1px solid var(--border-default);
-}
-.chat-panel-title {
-  color: var(--text-primary);
-}
-.chat-panel-subtitle {
-  color: var(--text-tertiary);
-}
-.chat-panel-close {
-  color: var(--text-tertiary);
-}
-.chat-skeleton-bubble {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-default);
-  height: 32px;
-}
-.chat-skeleton-bubble[data-w="1"] { width: 72%; }
-.chat-skeleton-bubble[data-w="2"] { width: 60%; }
-.chat-skeleton-bubble[data-w="3"] { width: 48%; }
-/* Common bubble styling — assistant default, user role override via
-   data-role="user" already on parent [data-chat-message]. */
-.chat-bubble {
-  background: var(--bg-elevated);
-  color: var(--text-primary);
-  border: 1px solid var(--border-default);
-}
-[data-chat-message][data-role="user"] .chat-bubble {
-  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
-  border: 1px solid color-mix(in srgb, var(--accent-primary) 30%, transparent);
-}
-.chat-quick-reply {
-  background: transparent;
-  border: 1px solid var(--ring-stroke);
-  color: var(--text-primary);
-}
-.chat-loading-bubble {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-default);
-}
-.chat-error {
-  color: var(--text-error);
-}
-.chat-input-bar {
-  border-top: 1px solid var(--border-default);
-}
-.chat-input {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-default);
-  color: var(--text-primary);
-}
-.chat-send-btn {
-  background: var(--accent-bright);
-  color: var(--cta-text-on-amber);
-}
-
-/* ============================================
-   PHASE 17b PILLAR 1 → 2A-REFIX — content-visibility / containment
-   strategy.
-   Phase 6 v2 D.9 used content-visibility:auto for below-fold deferral
-   (produced 0.196 CLS regression in Phase 14 iter 1). Pillar 1 replaced
-   with `contain: layout paint style`, which dropped CLS but kept `paint`
-   — the property that clips descenders at the element's content box.
-   Production verification falsified Pillar 2A's italic-clipping fix
-   precisely because `contain: paint` was clipping italic descenders on
-   every .section-deferred consumer.
-   2A-REFIX drops `paint` from the contain declaration. `layout style`
-   alone preserves CLS protection (layout independence + style isolation)
-   without paint-region clipping.
-   ============================================ */
-.section-deferred {
-  contain: layout style;
-}
-/* Below-fold paint deferral — applies content-visibility:auto with explicit
-   intrinsic size so the browser skips paint+layout for off-screen sections
-   during scroll without producing the Phase-14 CLS regression (which was
-   caused by missing contain-intrinsic-size). Apply only to sections that
-   live below 100vh AND don't host pinned ScrollTriggers (skip Hero,
-   ServicesPinReveal, WorkflowSection). Result: scroll repaint cost drops
-   ~3-5× when these sections are off-screen — that's the "glide like
-   clouds" delta. */
-.section-defer-paint {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 600px;
-}
-
-/* Phase 7: ScrambleText was removed (production hover-freeze regression);
-   restored letter-hover via .letter-hover-char above. */
-
-/* ============================================
-   PHASE 9 — DUAL-ROW INFINITE LOGO MARQUEE
-   Two rows, opposite directions, ~45s loop, CSS-only.
-   Each row contains TWO copies of the same list, animated with a
-   translateX(-50%) translation so the duplicate seamlessly continues
-   when the original wraps. Pause on hover, freeze under reduced
-   motion, edge-fade via mask-image.
-   ============================================ */
-.logo-marquee {
-  position: relative;
-  overflow: hidden;
-  --marquee-fade: 80px;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    #000 var(--marquee-fade),
-    #000 calc(100% - var(--marquee-fade)),
-    transparent 100%
-  );
-          mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    #000 var(--marquee-fade),
-    #000 calc(100% - var(--marquee-fade)),
-    transparent 100%
-  );
-}
-
-.logo-marquee-track {
-  display: flex;
-  width: max-content;
-  /* Phase 18 reduced-scope C3 — will-change dropped. The entire
-     LogoStripSection returns null unless NEXT_PUBLIC_MARQUEE_ENABLED
-     === 'true' (Pillar 4 P0.3 invariant); the marquee never animates
-     in production. will-change on a never-rendered element is a dead
-     GPU-layer hint. Re-add if/when the marquee is re-enabled. */
-}
-
-.logo-marquee-track[data-direction="left"]  { animation: marquee-left  45s linear infinite; }
-.logo-marquee-track[data-direction="right"] { animation: marquee-right 45s linear infinite; }
-
-.logo-marquee-track:hover { animation-play-state: paused; }
-
-.logo-marquee-list {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  gap: 64px;
-  padding-inline: 32px;
-  list-style: none;
-}
-
-.logo-marquee-list .logo-mark {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-  white-space: nowrap;
-  user-select: none;
-  transition: color var(--dur-short) var(--ease-out-soft);
-}
-
-.logo-marquee:hover .logo-mark { color: var(--text-secondary); }
-
-@keyframes marquee-left {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-@keyframes marquee-right {
-  from { transform: translateX(-50%); }
-  to   { transform: translateX(0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .logo-marquee-track[data-direction="left"],
-  .logo-marquee-track[data-direction="right"] {
-    animation: none;
+  [data-reveal] {
+    opacity: 1;
     transform: none;
   }
-  .logo-marquee {
-    overflow-x: auto;
-  }
 }
 
-html[data-paused-global="true"] .logo-marquee-track {
-  animation-play-state: paused;
-}
+/* ============================================================
+   Hero — typography-first, restrained
+   ============================================================ */
 
-/* ===================================================================
-   Phase 13 — Services scroll-pin reveal (Apple-feel).
-   Desktop: each frame is position: sticky, height ~85vh. Stacked frames
-   each carry a solid background so the next frame visually replaces the
-   previous on scroll. Pure CSS pin — no GSAP, no JS.
-   Mobile: pin disabled; mobile fallback list shows instead.
-   ------------------------------------------------------------------- */
-.services-pin-section {
+.hero {
   position: relative;
-  /* Phase 18.6 P2 — transparent so body atmosphere shows through.
-     Individual .services-pin-frame children remain opaque (required
-     for CSS-sticky pin-stack mechanic — each frame must visually cover
-     the previous on scroll). */
-  background: transparent;
-  border-bottom: 1px solid var(--border-subtle);
-}
-.services-pin-stack { display: none; }
-.services-pin-mobile {
-  display: block;
-  /* Phase 18 reduced-scope C2.3 — extracted from inline paddingBottom. */
-  padding-bottom: var(--section-space);
-}
-@media (min-width: 1024px) {
-  .services-pin-stack { display: block; }
-  .services-pin-mobile { display: none; }
-}
-/* Phase 18 reduced-scope C2.3 — header wrapper + header maxWidth +
-   section-eyebrow (amber per Pillar 4 P1.1) + section-headline. */
-.services-pin-header-wrap {
-  padding-top: var(--section-space);
-}
-.services-pin-header {
-  max-width: var(--maxw-heading-section);
-}
-.services-pin-section-eyebrow {
-  font-size: var(--text-mono-label);
-  letter-spacing: var(--ls-mono-wide);
-  /* Phase 17b Pillar 4 P1.1 — amber phosphor (not --text-tertiary).
-     Tertiary muted gray read as near-invisible on canvas despite
-     7.4:1 mathematical contrast. Canonical eyebrow accent. */
-  color: var(--accent-bright);
-}
-.services-pin-section-headline {
-  font-size: var(--text-h1);
-  color: var(--text-primary);
-  line-height: var(--lh-tight);
-  letter-spacing: var(--ls-tight);
-  max-width: var(--maxw-heading-section);
-}
-/* Phase 13 — sticky frame stack (Phase 19 GSAP scrub revert). Each
-   frame is position: sticky, solid background, layered so the next
-   frame visually replaces the previous on scroll. Pure CSS pin, no JS. */
-.services-pin-frame {
-  position: sticky;
-  top: 0;
-  background: var(--bg-secondary);
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid var(--border-subtle);
-  contain: layout style;
-}
-.services-pin-frame:last-child { border-bottom: none; }
-.services-pin-frame-inner {
-  display: block;
-  width: 100%;
-  padding-block: clamp(3rem, 8vh, 6rem);
-}
-.services-pin-num {
-  position: absolute;
-  left: clamp(1rem, 5vw, 4rem);
-  top: 50%;
-  /* Phase 14 lag fix — translate3d promotes the giant translucent text
-     to its own GPU layer once. Without translateZ(0), the 22vw italic
-     glyph repaints on every scroll frame on the CPU. */
-  transform: translate3d(0, -50%, 0);
-  font-size: clamp(8rem, 22vw, 18rem);
-  font-style: italic;
-  line-height: 0.9;
-  /* Phase 20.1 — palette variety: numerals shift from solid amber to a
-     vertical amber → copper gradient via background-clip. Premium
-     editorial feel + adds the secondary-color presence the repo owner
-     flagged as missing. Falls back to amber on browsers without
-     background-clip:text (most modern browsers support it). */
-  color: var(--accent);
-  background: linear-gradient(180deg, var(--accent-bright) 0%, var(--accent) 38%, var(--accent-copper) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  /* Phase 17b 3-restructured B3 → 3-reversal R5 → Phase 20.1 lifted to
-     0.18 (was 0.12) since the gradient distribution makes the numeral
-     feel more present without dominating. */
-  opacity: 0.18;
-  pointer-events: none;
-  user-select: none;
-  letter-spacing: -0.04em;
-  z-index: 0;
-}
-/* Phase 20.1.5 — services-pin two-column layout. Left = copy stack,
-   right = mood vignette. Below 900px, vignette stacks below the copy. */
-.services-pin-grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: center;
-  margin-left: clamp(0rem, 8vw, 8rem);
-}
-@media (max-width: 900px) {
-  .services-pin-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
-.services-pin-content {
-  position: relative;
-  z-index: 1;
-  max-width: 38rem;
-}
-.services-pin-vignette {
-  width: 100%;
-  max-width: 480px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 6px;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(31, 22, 18, 0.55) 0%, rgba(10, 9, 8, 0.85) 80%);
-  padding: clamp(0.85rem, 1.5vw, 1.25rem);
-  position: relative;
-}
-.services-pin-vignette::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background:
-    linear-gradient(180deg, rgba(255, 168, 51, 0.04) 0%, transparent 35%),
-    linear-gradient(0deg, rgba(44, 95, 90, 0.05) 0%, transparent 30%);
-  pointer-events: none;
-}
-.service-vignette {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 400 / 280;
-}
-@media (max-width: 900px) {
-  .services-pin-vignette { max-width: 100%; }
-}
-/* Phase 17b Pillar 4 P1.2 — service-internal vertical rhythm.
-   Eyebrow margin preserved (already at 1.25rem). Title shrinks slightly
-   (1.5rem → 1.25rem) per spec; description holds at 2rem. Explore link
-   gains explicit 1.5rem margin-top so the row stack reads as 4 distinct
-   beats: number → title → description → explore. */
-.services-pin-eyebrow {
-  display: block;
-  margin-bottom: 1.25rem;
-  /* Phase 18 reduced-scope C2.3 — extracted from inline style on per-frame eyebrow. */
-  font-size: var(--text-micro);
-  letter-spacing: 0.18em;
-  color: var(--text-tertiary);
-}
-.services-pin-title {
-  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-  margin-bottom: 1.25rem;
-  max-width: var(--maxw-heading-section);
-}
-.services-pin-desc {
-  font-size: var(--text-body);
-  line-height: 1.55;
-  color: var(--text-secondary);
-  max-width: var(--maxw-body);
-  margin-bottom: 2rem;
-}
-.services-pin-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-}
-@media (prefers-reduced-motion: reduce) {
-  .services-pin-frame {
-    position: relative;
-    min-height: auto;
-    padding-block: 4rem;
-  }
-}
-
-/* ===================================================================
-   Phase 16 B — Hero AutomationOrbit (Palette D geometry).
-   SVG-only. Outer + inner dashed orbit ellipses, 4 cardinal nodes,
-   COSMO anchor at center (static). Spinner group rotates 90s linear
-   infinite; labels counter-rotate so text stays upright. Pure GPU
-   transforms. < 768px hidden. Reduced-motion = static.
-   ------------------------------------------------------------------- */
-.automation-orbit {
-  position: relative;
-  width: 100%;
-  max-width: 32rem;
-  aspect-ratio: 4 / 3;
-  margin: 0 auto;
-}
-@media (max-width: 767px) {
-  .automation-orbit { display: none; }
-}
-.automation-orbit-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-  overflow: visible;
-}
-/* Phase 19 nuke-lag — orbit rotation REMOVED. Owner: "tooooo much lag."
-   The 90s linear rotation (and its counter-rotation for labels) ran
-   continuously even off-screen, paying compositor cost on every device.
-   Keeping the orbit as a static brand mark. */
-.orbit-spinner,
-.orbit-label {
-  animation: none;
-}
-
-/* ===================================================================
-   Phase 14 — Hero AutomationFlow (right-column 2×2 grid).
-   Sequential node fade-in (0/100/200/300ms), flowing dashed paths,
-   periodic node pulse (5s cycle, staggered). All CSS, no JS.
-   ------------------------------------------------------------------- */
-.automation-flow {
-  position: relative;
-  width: 100%;
-  max-width: 26rem;
-  margin: 0 auto;
-  padding: 0.5rem;
-  aspect-ratio: 1 / 1;
-}
-@media (max-width: 767px) {
-  .automation-flow { display: none; }
-}
-.automation-flow-paths {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-.flow-path {
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 1.25;
-  stroke-dasharray: 4 4;
-  opacity: 0;
-  animation: flow-path-fade 0.5s 0.6s cubic-bezier(0.33, 1, 0.68, 1) forwards,
-             flow-dash 1.6s linear 1.1s infinite;
-  vector-effect: non-scaling-stroke;
-}
-.flow-path-2 { animation-delay: 0.7s, 1.2s; }
-.flow-path-3 { animation-delay: 0.8s, 1.3s; }
-@keyframes flow-path-fade {
-  to { opacity: 0.55; }
-}
-@keyframes flow-dash {
-  from { stroke-dashoffset: 0; }
-  to   { stroke-dashoffset: -16; }
-}
-.automation-flow-grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 1.25rem;
-  width: 100%;
-  height: 100%;
-}
-.automation-flow-node {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 0.25rem;
-  padding: 1rem 1.1rem;
-  border-radius: 12px;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-subtle);
-  color: var(--accent);
-  opacity: 0;
-  transform: translateY(8px);
-  animation: flow-node-in 0.5s cubic-bezier(0.33, 1, 0.68, 1) forwards;
-  animation-delay: var(--node-delay, 0ms);
-  transition: transform 200ms ease-out, border-color 200ms ease-out, box-shadow 200ms ease-out;
-}
-.automation-flow-node:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent);
-  box-shadow: 0 6px 18px -10px var(--accent-glow);
-}
-.automation-flow-node-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  margin-bottom: 0.25rem;
-}
-.automation-flow-node-label {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 0.95rem;
-  color: var(--text-primary);
-  line-height: 1.15;
-}
-.automation-flow-node-sub {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-}
-.automation-flow-node::after {
-  /* Subtle pulse ring — staggered 5s cycle so the four nodes don't pulse
-     in unison. Pure CSS; no continuous main-thread cost. */
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 12px;
-  border: 1px solid var(--accent);
-  opacity: 0;
-  pointer-events: none;
-  animation: flow-node-pulse 5s ease-in-out infinite;
-  animation-delay: calc(1.5s + var(--node-delay, 0ms));
-}
-@keyframes flow-node-in {
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes flow-node-pulse {
-  0%, 80%, 100% { opacity: 0; transform: scale(1); }
-  10% { opacity: 0.45; transform: scale(1); }
-  40% { opacity: 0; transform: scale(1.04); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .automation-flow-node {
-    opacity: 1 !important;
-    transform: none !important;
-    animation: none !important;
-  }
-  .automation-flow-node::after { animation: none !important; opacity: 0 !important; }
-  .flow-path { opacity: 0.55 !important; animation: none !important; }
-}
-
-/* ===================================================================
-   Phase 13 — hero trust signals (operator-accountability ribbon).
-   Static markup; staggered CSS fade-in after hero word-reveal lands.
-   Zero GSAP, zero JS. Fixed delays small enough not to defer LCP.
-   ------------------------------------------------------------------- */
-/* Phase 13 trust signals → Phase 17b Pillar 4 P0.4. Bullet circles
-   replaced by inline middot separators (.dot-sep). The amber bullets
-   read visually as plus-sign / bullet-alternative noise; middots are
-   the standard quieter rhythm. */
-.hero-trust-strip {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.25rem;
-  margin-top: 2.75rem;
-}
-.hero-trust-signal {
-  display: inline-block;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: var(--text-micro);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-  opacity: 0;
-  transform: translateY(8px);
-  animation: dpl-hero-trust-in 0.55s cubic-bezier(0.33, 1, 0.68, 1) forwards;
-}
-.hero-trust-strip > .hero-trust-signal:nth-of-type(1) { animation-delay: 0.95s; }
-.hero-trust-strip > .hero-trust-signal:nth-of-type(2) { animation-delay: 1.05s; }
-.hero-trust-strip > .hero-trust-signal:nth-of-type(3) { animation-delay: 1.15s; }
-.hero-trust-strip > .dot-sep {
-  display: inline-block;
-  color: var(--text-muted);
-  margin-inline: 0.5em;
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: var(--text-micro);
-  opacity: 0.6;
-}
-@keyframes dpl-hero-trust-in {
-  to { opacity: 1; transform: translateY(0); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-trust-signal {
-    opacity: 1 !important;
-    transform: none !important;
-    animation: none !important;
-  }
-}
-
-/* ===================================================================
-   Phase 12 — CSS reveals (Class C migration from GSAP).
-   IntersectionObserver in ScrollMotion.tsx adds .is-revealed when
-   elements enter viewport; CSS animation runs once per element.
-   power2.out approximated by cubic-bezier(0.33, 1, 0.68, 1).
-   ------------------------------------------------------------------- */
-/* No global opacity:0 here — that hides elements from LCP measurement
-   until animation completes. ScrollMotion.tsx applies inline
-   opacity:0 only to off-screen targets (preserving above-fold LCP). */
-
-[data-pillar-card].is-revealed {
-  animation: dpl-reveal-y-40 0.7s cubic-bezier(0.33, 1, 0.68, 1) forwards;
-}
-[data-case-strip] > a.is-revealed {
-  animation: dpl-reveal-x-40 0.7s cubic-bezier(0.33, 1, 0.68, 1) forwards;
-}
-[data-reveal].is-revealed {
-  animation: dpl-reveal-y-30 0.7s cubic-bezier(0.33, 1, 0.68, 1) forwards;
-}
-[data-stagger-item].is-revealed,
-[data-service-item].is-revealed {
-  animation: dpl-reveal-y-24 0.6s cubic-bezier(0.33, 1, 0.68, 1) forwards;
-}
-[data-work-card].is-revealed {
-  animation: dpl-reveal-y-36 0.7s cubic-bezier(0.33, 1, 0.68, 1) forwards;
-}
-[data-testimonial-card].is-revealed {
-  animation: dpl-reveal-y-30 0.7s cubic-bezier(0.33, 1, 0.68, 1) forwards;
-}
-.pull-quote-text.is-revealed {
-  animation: dpl-reveal-scale 0.8s cubic-bezier(0.33, 1, 0.68, 1) forwards;
-}
-
-@keyframes dpl-reveal-y-40 {
-  from { transform: translate3d(0, 40px, 0); opacity: 0; }
-  to   { transform: translate3d(0, 0, 0); opacity: 1; }
-}
-@keyframes dpl-reveal-y-36 {
-  from { transform: translate3d(0, 36px, 0); opacity: 0; }
-  to   { transform: translate3d(0, 0, 0); opacity: 1; }
-}
-@keyframes dpl-reveal-y-30 {
-  from { transform: translate3d(0, 30px, 0); opacity: 0; }
-  to   { transform: translate3d(0, 0, 0); opacity: 1; }
-}
-@keyframes dpl-reveal-y-24 {
-  from { transform: translate3d(0, 24px, 0); opacity: 0; }
-  to   { transform: translate3d(0, 0, 0); opacity: 1; }
-}
-@keyframes dpl-reveal-x-40 {
-  from { transform: translate3d(40px, 0, 0); opacity: 0; }
-  to   { transform: translate3d(0, 0, 0); opacity: 1; }
-}
-@keyframes dpl-reveal-scale {
-  from { transform: scale(0.98); opacity: 0; }
-  to   { transform: scale(1); opacity: 1; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  [data-pillar-card],
-  [data-case-strip] > a,
-  [data-reveal],
-  [data-stagger-item],
-  [data-service-item],
-  [data-work-card],
-  [data-testimonial-card],
-  .pull-quote-text {
-    opacity: 1 !important;
-    transform: none !important;
-    animation: none !important;
-  }
-}
-
-/* ===================================================================
-   Phase 12 — Intro Loader (CSS-only, no React).
-   Sessions where html[data-i-seen="1"] is set by inline pre-paint script
-   skip the loader entirely. Otherwise: 0-700ms wordmark fade-in + line
-   fill, 700-1100ms slide-up exit, 1100ms+ display:none via animation.
-   prefers-reduced-motion = skip entirely.
-   ------------------------------------------------------------------- */
-.dpl-intro-loader {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: #000000;
-  pointer-events: none;
-  /* Smoothed: 1100ms → 1800ms total; gentler ease-out curve (no aggressive
-     0.05/0.0 control-points that produced visible jitter at the 64%→100%
-     compression point); single transform-only exit (opacity-only, no
-     translateY) avoids compositor repaint thrash on slower devices. */
-  animation: dpl-intro-stage 1800ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  will-change: opacity;
-}
-html[data-i-seen="1"] .dpl-intro-loader { display: none; }
-@media (prefers-reduced-motion: reduce) {
-  .dpl-intro-loader { display: none !important; }
-}
-.dpl-intro-mascot {
-  width: 96px;
-  height: 96px;
-  opacity: 0;
-  transform: scale(0.94);
-  /* 700ms → 900ms; coordinated scale + opacity, single ease curve. */
-  animation: dpl-intro-fade-in 900ms cubic-bezier(0.33, 1, 0.68, 1) forwards;
-  will-change: transform, opacity;
-}
-.dpl-intro-line {
-  display: block;
-  margin-top: 1.25rem;
-  width: 0;
-  height: 1px;
-  background: #FF8800;
-  opacity: 0.6;
-  animation: dpl-intro-line-fill 900ms 200ms cubic-bezier(0.33, 1, 0.68, 1) forwards;
-  will-change: width;
-}
-@keyframes dpl-intro-fade-in {
-  to { opacity: 1; transform: scale(1); }
-}
-@keyframes dpl-intro-line-fill { to { width: 160px; } }
-@keyframes dpl-intro-stage {
-  /* Mascot in (0–900ms) → hold (900–1400ms) → fade-out only (1400–1800ms,
-     no translateY). Hold phase gives the eye a beat; fade-only exit is
-     a pure compositor opacity tween, GPU-cheap, no jitter. */
-  0%   { opacity: 1; }
-  78%  { opacity: 1; }
-  100% { opacity: 0; visibility: hidden; }
-}
-
-/* ============================================
-   Phase 20 Loop A Sub-phase B — CosmoMark (oscilloscope-wave concept 2)
-   Concept-2 lock: Cosmo chat surface uses inline SVG oscilloscope-wave
-   instead of Dp-logo1.png. Brand mark (Dp-logo1.png) preserved for
-   nav/footer/conversion/schema; Cosmo gets its own visual identity.
-
-   .cosmo-mark              base SVG container
-   .cosmo-mark-idle         gentle ambient amber pulse (opacity 1↔0.78, 5s)
-   .cosmo-mark-active       brighter wave + amber drop-shadow halo
-   .cosmo-mark-speaking     echo wave fades in + primary wave pulse
-
-   All animations are opacity + filter only — no transform, no layout
-   triggers. K11 budget unchanged. prefers-reduced-motion disables
-   ambient pulse; static wave is preserved for clarity.
-   ============================================ */
-/* Phase 20.1.2 CosmoMark v2 — superseded the v1 sine wave with a
-   faceted diamond/octahedron mark matching Hero3DStage v3 crystal. */
-.cosmo-mark { display: block; will-change: opacity, filter; }
-.cosmo-mark-halo { transform-origin: 50% 50%; transform-box: fill-box; }
-.cosmo-mark-core { transform-origin: 50% 50%; transform-box: fill-box; }
-.cosmo-mark-apex { transform-origin: 50% 50%; transform-box: fill-box; }
-
-@keyframes cosmo-mark-idle-pulse {
-  0%, 100% { opacity: 0.55; }
-  50%      { opacity: 1.0; }
-}
-@keyframes cosmo-mark-idle-apex {
-  0%, 100% { opacity: 0.6; }
-  50%      { opacity: 1.0; }
-}
-.cosmo-mark-idle .cosmo-mark-halo {
-  animation: cosmo-mark-idle-pulse 4s ease-in-out infinite;
-}
-.cosmo-mark-idle .cosmo-mark-apex {
-  animation: cosmo-mark-idle-apex 2s ease-in-out infinite;
-}
-
-.cosmo-mark-active .cosmo-mark-halo {
-  opacity: 1;
-}
-.cosmo-mark-active .cosmo-mark-core {
-  filter: drop-shadow(0 0 6px rgba(255, 168, 51, 0.65));
-}
-
-@keyframes cosmo-mark-speaking-pulse {
-  0%, 100% { transform: scale(1.00); }
-  50%      { transform: scale(1.06); }
-}
-.cosmo-mark-speaking .cosmo-mark-core {
-  animation: cosmo-mark-speaking-pulse 0.9s cubic-bezier(0.65, 0.05, 0, 1) infinite;
-  filter: drop-shadow(0 0 8px rgba(255, 168, 51, 0.85));
-}
-.cosmo-mark-speaking .cosmo-mark-halo {
-  opacity: 1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .cosmo-mark-idle .cosmo-mark-halo,
-  .cosmo-mark-idle .cosmo-mark-apex,
-  .cosmo-mark-speaking .cosmo-mark-core { animation: none; }
-}
-
-/* ============================================
-   Phase 20 audit L5 — Skip-to-content link (a11y)
-   Visually hidden until focused, then visible at top-left.
-   Anchors to <main id="main"> in marketing layout.
-   ============================================ */
-.skip-to-content {
-  position: fixed;
-  top: -48px;
-  left: 8px;
-  z-index: 1000;
-  padding: 10px 16px;
-  background: var(--accent-primary);
-  color: var(--cta-text-on-amber);
-  font: 600 14px/1 var(--font-geist-sans), system-ui, sans-serif;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: top 180ms ease-out;
-}
-.skip-to-content:focus,
-.skip-to-content:focus-visible {
-  top: 8px;
-  outline: 2px solid var(--text-primary);
-  outline-offset: 2px;
-}
-
-/* ============================================
-   Phase 20 audit M2 + H7 — DesignOnlyBanner
-   Honest disclosure surface for placeholder metrics / case studies /
-   testimonials. Renders inline at the top of a page section so the
-   reader sees it before any unverified claim.
-   ============================================ */
-.design-only-banner {
-  display: flex;
-  align-items: baseline;
-  gap: 0.65rem;
-  padding: 0.65rem 1rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid var(--border-default);
-  border-left: 2px solid var(--accent-primary);
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
-  font-size: var(--fs-sm);
-  line-height: var(--lh-snug);
-  border-radius: 2px;
-}
-.design-only-tag {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: var(--ls-mono-wide);
-  text-transform: uppercase;
-  color: var(--accent-bright);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.design-only-text {
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
-}
-
-/* ============================================
-   Phase 20.1.2 — Hero side telemetry strips + scroll indicator
-   Hubtown-cinematic side labels + bottom scroll cue.
-   Desktop only (≥1024px); hidden on mobile per skill rule.
-   ============================================ */
-.hero-side-panel {
-  position: absolute;
-  top: 50%;
-  z-index: 5;
-  pointer-events: none;
-  transform: translateY(-50%);
-}
-.hero-side-panel--left { left: clamp(0.75rem, 2vw, 1.75rem); }
-.hero-side-panel--right { right: clamp(0.75rem, 2vw, 1.75rem); }
-@media (max-width: 1023px) {
-  .hero-side-panel { display: none; }
-}
-.hero-side-strip {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.85rem;
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  color: var(--text-muted);
-}
-.hero-side-strip-tag {
-  color: var(--accent-bright);
-  letter-spacing: 0.28em;
-}
-.hero-side-strip-meta {
-  color: var(--text-tertiary);
-}
-.hero-side-strip-rule {
-  display: inline-block;
-  width: 1px;
-  height: 28px;
-  background: var(--border-default);
-}
-
-.hero-scroll-indicator {
-  position: absolute;
-  bottom: clamp(1rem, 3vh, 2rem);
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  z-index: 5;
-  pointer-events: none;
-}
-@media (max-width: 1023px) {
-  .hero-scroll-indicator { bottom: clamp(0.75rem, 2vh, 1.25rem); }
-}
-.hero-scroll-tag {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.30em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-.hero-scroll-bar {
-  position: relative;
-  width: 1px;
-  height: 56px;
-  background: var(--border-default);
+  padding-block: clamp(7rem, 14vw, 12rem) var(--section-y);
   overflow: hidden;
 }
-.hero-scroll-bar-dot {
-  position: absolute;
-  top: 0;
-  left: -2px;
-  width: 5px;
-  height: 8px;
-  background: var(--accent-bright);
-  box-shadow: 0 0 12px rgba(255, 168, 51, 0.55);
-  animation: hero-scroll-dot 2.4s cubic-bezier(0.65, 0.05, 0, 1) infinite;
-}
-@keyframes hero-scroll-dot {
-  0%   { transform: translateY(-12px); opacity: 0; }
-  18%  { opacity: 1; }
-  82%  { opacity: 1; }
-  100% { transform: translateY(60px); opacity: 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-scroll-bar-dot { animation: none; top: 24px; }
-}
 
-/* ============================================
-   Phase 20.1.3 — Hero left section nav (Hubtown-clone)
-   Stacked service-pillar labels with active-state dot indicator.
-   Desktop only.
-   ============================================ */
-.hero-section-nav {
+.hero-bg {
   position: absolute;
-  top: 50%;
-  left: clamp(1.25rem, 2.2vw, 2rem);
-  z-index: 5;
-  transform: translateY(-50%);
+  inset: 0;
   pointer-events: none;
-  max-width: 6.5rem;
-}
-@media (max-width: 1023px) {
-  .hero-section-nav { display: none; }
-}
-.hero-section-nav ol {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-.hero-section-nav-item {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.20em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-  transition: color 200ms var(--ease-brand);
-}
-.hero-section-nav-item.is-active {
-  color: var(--text-primary);
-}
-.hero-section-nav-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background: transparent;
-  border: 1px solid var(--border-default);
-  border-radius: 1px;
-  flex-shrink: 0;
-  transition: background 200ms var(--ease-brand), border-color 200ms var(--ease-brand);
-}
-.hero-section-nav-item.is-active .hero-section-nav-dot {
-  background: var(--accent-bright);
-  border-color: var(--accent-bright);
-  box-shadow: 0 0 8px rgba(255, 168, 51, 0.55);
+  z-index: 0;
+  background:
+    radial-gradient(60% 40% at 50% 0%, rgba(255, 136, 0, 0.08), transparent 70%),
+    radial-gradient(40% 30% at 100% 100%, rgba(255, 136, 0, 0.04), transparent 70%);
 }
 
-/* ============================================
-   Phase 20.1.4 — ManifestoSection
-   Narrative depth between hero and services. Editorial breath, big
-   declarative type, single-beat statements. Cubic-bezier brand ease
-   on stagger reveal (handled by SectionFlow).
-   ============================================ */
-.manifesto-section {
-  position: relative;
-  padding-block: clamp(7rem, 16vh, 14rem);
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   background:
-    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(31, 22, 18, 0.45) 0%, transparent 70%);
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.015) 0 1px, transparent 1px 96px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.015) 0 1px, transparent 1px 96px);
+  mask-image: radial-gradient(60% 60% at 50% 40%, #000 30%, transparent 80%);
 }
-.manifesto-eyebrow {
-  font-size: 11px;
-  letter-spacing: 0.30em;
-  color: var(--text-tertiary);
-  margin-bottom: clamp(2rem, 4vh, 3.5rem);
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--maxw-display);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
 }
-.manifesto-stack {
+
+@media (min-width: 768px) {
+  .hero-inner {
+    padding-inline: var(--space-10);
+  }
+}
+
+.hero-meta {
   display: flex;
-  flex-direction: column;
-  gap: clamp(4.5rem, 10vh, 8rem);
+  align-items: center;
+  gap: var(--space-3);
+  margin-block-end: var(--space-8);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
 }
-.manifesto-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 5rem);
+
+.hero-meta__sep {
+  width: 4px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+.hero-title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--text-display-lg);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  color: var(--color-text-primary);
+  max-width: 28ch;
+  text-wrap: balance;
+}
+
+.hero-title__amber {
+  color: var(--color-accent);
+}
+
+.hero-sub {
+  margin-block-start: var(--space-8);
+  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  max-width: 38rem;
+  text-wrap: pretty;
+}
+
+.hero-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-block-start: var(--space-10);
   align-items: center;
 }
-.manifesto-row--reverse {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+
+.hero-microcopy {
+  margin-block-start: var(--space-6);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
 }
-.manifesto-row--reverse .manifesto-statement { order: 2; }
-.manifesto-row--reverse .manifesto-vignette-wrap { order: 1; }
-@media (max-width: 900px) {
-  .manifesto-row,
-  .manifesto-row--reverse {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+
+/* ============================================================
+   Pillar card grid
+   ============================================================ */
+
+.pillar-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--color-line-faint);
+  border: 1px solid var(--color-line-faint);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .pillar-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  .manifesto-row--reverse .manifesto-statement { order: 1; }
-  .manifesto-row--reverse .manifesto-vignette-wrap { order: 2; }
 }
-.manifesto-vignette-wrap {
-  width: 100%;
-  max-width: 460px;
-  aspect-ratio: 16 / 10;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 6px;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(31, 22, 18, 0.55) 0%, rgba(10, 9, 8, 0.85) 80%);
-  padding: clamp(0.85rem, 1.5vw, 1.25rem);
+
+@media (min-width: 1024px) {
+  .pillar-grid--three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pillar-card {
+  background: var(--color-canvas);
+  padding: var(--space-8) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition: background var(--motion-base) var(--ease-out);
+}
+
+.pillar-card:hover {
+  background: var(--color-canvas-raised);
+}
+
+.pillar-card__index {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.pillar-card__title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--text-2xl);
+  letter-spacing: -0.025em;
+  color: var(--color-text-primary);
+}
+
+.pillar-card__desc {
+  color: var(--color-text-secondary);
+  font-size: var(--text-md);
+  line-height: 1.55;
+}
+
+.pillar-card__link {
+  margin-block-start: auto;
+  padding-block-start: var(--space-4);
+}
+
+/* ============================================================
+   Math comparison — the $400K vs $30K anchor
+   ============================================================ */
+
+.math-row {
+  display: grid;
+  gap: var(--space-6);
+  align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .math-row {
+    grid-template-columns: 1fr auto 1fr;
+    gap: var(--space-10);
+  }
+}
+
+.math-tile {
+  padding: var(--space-8);
+  border: 1px solid var(--color-line-faint);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  background: var(--color-canvas-raised);
+}
+
+.math-tile--accent {
+  border-color: var(--color-line-accent);
+  background: var(--color-accent-faint);
+}
+
+.math-tile__label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.math-tile__amount {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum";
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--color-text-primary);
+  line-height: 1;
+}
+
+.math-tile--accent .math-tile__amount {
+  color: var(--color-accent);
+}
+
+.math-tile__detail {
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+.math-arrow {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  font-family: var(--font-mono);
+  color: var(--color-text-tertiary);
+  font-size: var(--text-2xl);
 }
-.manifesto-vignette-wrap::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background:
-    linear-gradient(180deg, rgba(255, 168, 51, 0.04) 0%, transparent 35%),
-    linear-gradient(0deg, rgba(44, 95, 90, 0.05) 0%, transparent 30%);
-  pointer-events: none;
+
+@media (max-width: 767.98px) {
+  .math-arrow {
+    transform: rotate(90deg);
+  }
 }
-.manifesto-vignette {
-  width: 100%;
-  height: 100%;
-  display: block;
+
+/* ============================================================
+   Process steps
+   ============================================================ */
+
+.process-list {
+  display: grid;
+  gap: 1px;
+  background: var(--color-line-faint);
+  border-block: 1px solid var(--color-line-faint);
 }
-.manifesto-statement {
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
-  font-size: clamp(1.85rem, 3.6vw, 3.25rem);
+
+@media (min-width: 768px) {
+  .process-list--three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.process-step {
+  background: var(--color-canvas);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.process-step__num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.process-step__title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--text-xl);
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+}
+
+.process-step__desc {
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+.process-step__price {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  font-feature-settings: "tnum";
+}
+
+/* ============================================================
+   Stack badges
+   ============================================================ */
+
+.stack-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.stack-badge {
+  padding: 0.5rem 0.875rem;
+  border: 1px solid var(--color-line-soft);
+  border-radius: var(--radius-md);
+  background: var(--color-canvas-raised);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  letter-spacing: -0.005em;
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+
+.dpl-footer {
+  border-block-start: 1px solid var(--color-line-faint);
+  background: var(--color-canvas);
+  padding-block: var(--space-16) var(--space-10);
+  margin-block-start: var(--section-y);
+}
+
+.dpl-footer__grid {
+  display: grid;
+  gap: var(--space-12);
+}
+
+@media (min-width: 768px) {
+  .dpl-footer__grid {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}
+
+.dpl-footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.dpl-footer__heading {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-block-end: var(--space-2);
+}
+
+.dpl-footer__link {
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  transition: color var(--motion-fast) var(--ease-out);
+}
+
+.dpl-footer__link:hover {
+  color: var(--color-text-primary);
+}
+
+.dpl-footer__bottom {
+  margin-block-start: var(--space-12);
+  padding-block-start: var(--space-6);
+  border-block-start: 1px solid var(--color-line-faint);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.dpl-footer__copy {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
+
+/* ============================================================
+   Nav
+   ============================================================ */
+
+.dpl-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(10, 10, 10, 0.72);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-block-end: 1px solid var(--color-line-faint);
+}
+
+.dpl-nav__inner {
+  max-width: var(--maxw-display);
+  margin-inline: auto;
+  padding: var(--space-3) var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .dpl-nav__inner {
+    padding-inline: var(--space-10);
+  }
+}
+
+.dpl-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
   font-weight: 500;
-  line-height: 1.06;
-  letter-spacing: -0.035em;
-  color: var(--text-primary);
-  text-wrap: balance;
-  max-width: 18ch;
-}
-.manifesto-amber {
-  color: var(--accent-bright);
-  font-style: italic;
-  font-family: 'InstrumentSerifLocal', Georgia, serif;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-}
-.manifesto-tag {
-  font-size: 11px;
-  letter-spacing: 0.32em;
-  color: var(--text-muted);
-  margin-top: clamp(3rem, 6vh, 5rem);
-}
-@media (max-width: 768px) {
-  .manifesto-statement { font-size: clamp(1.75rem, 7vw, 2.5rem); }
 }
 
-/* Phase 20.1.5 — cookie consent compact entry */
-@keyframes dpl-consent-in {
-  0%   { opacity: 0; transform: translateY(12px); }
-  100% { opacity: 1; transform: translateY(0); }
+.dpl-nav__menu {
+  display: none;
+  align-items: center;
+  gap: var(--space-6);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
 }
 
-/* Phase 20.1.7 — Hero3DStage SVG fallback. Sits behind content as
-   ambient atmosphere; never as a foreground subject competing with
-   headline + subhead. On mobile we further dim and slide it right so
-   the reading column has no orange diamond bleed-through. */
-.hero-3d-fallback {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.45;
-  mix-blend-mode: screen;
-}
-@media (max-width: 1023px) {
-  .hero-3d-fallback {
-    opacity: 0.32;
-    transform: translate(15%, 6%) scale(0.85);
-    transform-origin: 50% 50%;
+@media (min-width: 1024px) {
+  .dpl-nav__menu {
+    display: inline-flex;
   }
 }
-.hero-3d-canvas {
-  position: relative;
-  z-index: 1;
-}
-/* Phase 20.1.7 — left-column fade. The 3D mark sits in the right
-   half of the canvas; this gradient pushes a soft black wash over
-   the left ~38% so the headline column reads with no orange bleed
-   from the mark glow + hex floor. */
-.hero-3d-stage::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background: linear-gradient(90deg,
-    rgba(10, 9, 8, 0.78) 0%,
-    rgba(10, 9, 8, 0.55) 28%,
-    rgba(10, 9, 8, 0.0) 52%);
-}
-@media (max-width: 1023px) {
-  .hero-3d-stage::after {
-    background: linear-gradient(180deg,
-      rgba(10, 9, 8, 0.0) 0%,
-      rgba(10, 9, 8, 0.55) 35%,
-      rgba(10, 9, 8, 0.85) 65%);
-  }
-}
-/* Phase 20.1.7 — class-based fallback toggle. Init code adds
-   `is-canvas-active` to the container once the WebGL scene starts
-   rendering; until then the SVG silhouette is what users see. This
-   is more robust than a media query (Playwright headless reports
-   prefers-reduced-motion: reduce, which would otherwise hide both
-   layers). */
-.hero-3d-stage.is-canvas-active .hero-3d-fallback {
-  opacity: 0;
-  transition: opacity 600ms cubic-bezier(0.65, 0.05, 0, 1);
+
+.dpl-nav__link {
+  transition: color var(--motion-fast) var(--ease-out);
 }
 
-/* ============================================
-   Phase 20.1.4 — body atmosphere with scroll-progress shift
-   --scroll-progress is set 0..1 by SectionFlow; we use it to subtly
-   shift atmospheric hue as user scrolls so the page reads as one
-   continuous cinematic surface, not a stack of slabs.
-   ============================================ */
-:root { --scroll-progress: 0; }
+.dpl-nav__link:hover {
+  color: var(--color-text-primary);
+}
+
+.dpl-nav__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* ============================================================
+   Cookie consent + Cosmo FAB stays from prior CSS — minimal overrides
+   ============================================================ */
+
+.cosmo-fab {
+  position: fixed;
+  right: clamp(1rem, 3vw, 1.5rem);
+  bottom: clamp(1rem, 3vw, 1.5rem);
+  z-index: 60;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-canvas-elevated);
+  border: 1px solid var(--color-line-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(255, 136, 0, 0.15), 0 12px 32px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: transform var(--motion-fast) var(--ease-out);
+}
+
+.cosmo-fab:hover {
+  transform: scale(1.05);
+}
+
+.cosmo-fab:active {
+  transform: scale(0.96);
+}
+
+.cosmo-fab-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--color-accent);
+}

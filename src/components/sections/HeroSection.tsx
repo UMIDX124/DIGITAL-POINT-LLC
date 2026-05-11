@@ -1,44 +1,42 @@
-import { HeroHeadline } from '@/components/hero/HeroHeadline';
-import { HeroCTA } from '@/components/hero/HeroCTA';
-import Hero3DStage from '@/components/hero/Hero3DStage';
-import HeroScrollEnhance from '@/components/hero/HeroScrollEnhance';
-import { HeroSidePanels } from '@/components/hero/HeroSidePanels';
-import { copy } from '@/lib/copy';
-
-/* Phase 20.1.6 hero — single focal point composition. The Hero3DStage
-   is the right-side focal element; copy column lives on the left.
-   AutomationOrbit (the COSMO node graph) was removed: visual review
-   showed it competed with the 3D mark for attention, breaking the
-   "one focal point per scroll" Hubtown discipline. Hero3DStage
-   remains the cinematic surface; HeroSidePanels render the section
-   nav and telemetry rails. */
+import Link from 'next/link';
 
 export function HeroSection() {
   return (
-    <section
-      id="hero"
-      className="hero hero-section relative w-full overflow-hidden"
-    >
-      <Hero3DStage />
-      <HeroSidePanels />
-      <HeroScrollEnhance />
-      <div className="hero-grid relative mx-auto w-full max-w-[90rem] z-10">
-        <div className="hero-content">
-          <p className="hero-eyebrow font-mono uppercase mb-8">
-            {copy.hero.eyebrow}
-          </p>
-
-          <HeroHeadline />
-
-          <p className="hero-sub font-body mb-10">
-            {copy.hero.subhead}
-          </p>
-
-          <HeroCTA />
+    <section className="hero" id="hero">
+      <div className="hero-bg" aria-hidden="true" />
+      <div className="hero-inner">
+        <div className="hero-meta">
+          <span>DPL · 2017</span>
+          <span className="hero-meta__sep" aria-hidden="true" />
+          <span>Production AI agent operations</span>
         </div>
 
-        <div className="hero-stage-spacer" aria-hidden="true" />
+        <h1 className="hero-title text-balance">
+          Hire the <span className="hero-title__amber">AI</span>.<br />
+          Skip the headcount.
+        </h1>
+
+        <p className="hero-sub text-pretty">
+          Production AI agents we deploy and operate for you.
+          Operator-backed. No license to manage.
+          $2,500/month replaces $400K of in-house ops.
+        </p>
+
+        <div className="hero-cta-row">
+          <Link href="/audit" className="btn btn-primary">
+            Book a free audit
+          </Link>
+          <Link href="/recovery" className="btn btn-ghost">
+            Or fix a broken agent
+          </Link>
+        </div>
+
+        <p className="hero-microcopy">
+          Free audit · Written plan in 5 days · Co-founder reviews your setup
+        </p>
       </div>
     </section>
   );
 }
+
+export default HeroSection;

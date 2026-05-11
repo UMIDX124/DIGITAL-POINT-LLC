@@ -1,49 +1,33 @@
 import Link from 'next/link';
-import { copy } from '@/lib/copy';
 
-/**
- * Phase 4f → 17b 2A-REFIX final CTA. Originally a "dramatic purple-glow
- * moment" with radial-gradient pseudo-element behind the headline. Phase
- * 16 migrated palette but kept the gradient — production verification
- * surfaced amber bleed at section bottom inconsistent with Bloomberg
- * Operator zero-gradient canon. 2A-REFIX drops the gradient + section
- * overflow-hidden + raises line-height to clear italic descenders.
- */
 export function CTASection() {
-  const { eyebrow, headline, body, ctaPrimary, ctaSecondary } = copy.finalCta;
-
   return (
-    <section id="cta" className="cta-section-root relative section-deferred section-defer-paint">
-      <div className="container-narrow text-center relative">
-        <p className="cta-section-eyebrow font-mono uppercase mb-6" data-reveal>
-          {eyebrow}
-        </p>
-        <h2 className="cta-section-headline font-italic-display mx-auto" data-reveal>
-          {headline}
-        </h2>
-        <p className="cta-section-body mt-8 font-body mx-auto" data-reveal>
-          {body}
-        </p>
-
-        {/* Phase 17b 3-restructured D2 → Pillar 4 P1.3. Micro-copy now
-            renders ABOVE the dual-CTA buttons as an eyebrow-style
-            supporting line. Anchors the centered stack: micro-copy →
-            buttons reads as a single visual cluster instead of three
-            disconnected centered elements. */}
-        <p className="cta-section-microcopy mt-12 font-mono uppercase">
-          Free · Written plan in 5 days · Co-founder reviews your setup
-        </p>
-
-        <div className="mt-5 flex flex-col sm:flex-row gap-3 justify-center items-center">
-          <Link href={ctaPrimary.href} className="cta-primary" data-cta-primary>
-            {ctaPrimary.label}
-            <span aria-hidden="true">→</span>
-          </Link>
-          <Link href={ctaSecondary.href} className="cta-ghost">
-            {ctaSecondary.label}
-          </Link>
+    <section className="section section-divider">
+      <div className="container-wide">
+        <div className="section-header section-header--center">
+          <p className="eyebrow eyebrow--accent">Let&apos;s map the work</p>
+          <h2 className="section-title text-balance">
+            Where could AI be running your repeatable work?
+          </h2>
+          <p className="section-desc text-pretty">
+            45 minutes with a co-founder. Free. Written plan within 5 business days.
+            What AI can run, what automation can stitch, where operators stay.
+          </p>
+          <div className="hero-cta-row" style={{ marginBlockStart: '0', justifyContent: 'center' }}>
+            <Link href="/audit" className="btn btn-primary">
+              Book a free audit
+            </Link>
+            <Link href="/recovery" className="btn btn-ghost">
+              Recover a broken agent
+            </Link>
+          </div>
+          <p className="hero-microcopy">
+            Free · 30 min · No sales pitch · Co-founder reviews your setup
+          </p>
         </div>
       </div>
     </section>
   );
 }
+
+export default CTASection;

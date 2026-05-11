@@ -1,65 +1,56 @@
-'use client';
-
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
-import { copy } from '@/lib/copy';
+
+const pillars = [
+  {
+    index: '01',
+    title: 'AI Agents',
+    desc: 'Custom-trained agents that run repeatable knowledge work — CRM updates, lead routing, qualification, follow-up cadences.',
+    href: '/agents',
+  },
+  {
+    index: '02',
+    title: 'Workflow Automation',
+    desc: 'Replace manual handoffs across your stack. n8n + custom TypeScript + Postgres for production, not a Zapier shop.',
+    href: '/automation',
+  },
+  {
+    index: '03',
+    title: 'Remote Operators',
+    desc: 'Trained humans audit the edges where automation breaks. Not generic VAs — operators with workflow context.',
+    href: '/operators',
+  },
+];
 
 export function PillarsSection() {
-  const { eyebrow, headline, body, cards } = copy.pillars;
-
   return (
-    <section
-      id="pillars"
-      className="relative section-padding"
-      style={{ background: 'var(--bg-canvas)', borderBottom: '1px solid #27272A' }}
-    >
+    <section className="section section-divider" id="services">
       <div className="container-wide">
-        <header className="max-w-3xl mb-16">
-          <p className="eyebrow mb-5">{eyebrow}</p>
-          <h2 className="font-display text-[36px] md:text-[52px] leading-[1.05] tracking-tight text-[color:var(--ivory)]">
-            {headline}
+        <div className="section-header">
+          <p className="eyebrow">Build · Three pillars</p>
+          <h2 className="section-title text-balance">
+            Or ship new agents from scratch.
           </h2>
-          <p className="mt-6 text-[16px] md:text-[17px] leading-[1.6] text-[color:var(--ivory-dim)] max-w-2xl">
-            {body}
+          <p className="section-desc text-pretty">
+            We deploy production AI agents and operate them for you. Three layers,
+            same retainer, no platform license to manage.
           </p>
-        </header>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5" data-pillars>
-          {cards.map((card) => (
-            <Link
-              key={card.id}
-              href={card.href}
-              className="group relative flex flex-col card-flat p-8 min-h-[340px] focus-ring"
-              data-pillar-card
-            >
-              <p className="eyebrow mb-6">{card.eyebrow}</p>
-
-              <h3 className="font-display text-[26px] md:text-[30px] leading-[1.1] tracking-tight text-[color:var(--ivory)]">
-                {card.title}
-              </h3>
-
-              <p className="mt-4 text-[14.5px] leading-[1.55] text-[color:var(--ivory-dim)]">
-                {card.body}
-              </p>
-
-              <ul className="mt-auto pt-8 divide-hairline">
-                {card.stats.map((stat) => (
-                  <li
-                    key={stat}
-                    className="py-2.5 font-mono text-[12px] text-[color:var(--muted)] tracking-wide"
-                  >
-                    {stat}
-                  </li>
-                ))}
-              </ul>
-
-              <span className="absolute top-8 right-8 text-[color:var(--muted)] group-hover:text-[color:var(--accent)] transition-colors">
-                <ArrowUpRight className="w-5 h-5" />
-              </span>
-            </Link>
+        <div className="pillar-grid pillar-grid--three" style={{ marginBlockStart: '3rem' }}>
+          {pillars.map((p) => (
+            <article key={p.index} className="pillar-card">
+              <span className="pillar-card__index">{p.index} · {p.title}</span>
+              <h3 className="pillar-card__title">{p.title}</h3>
+              <p className="pillar-card__desc">{p.desc}</p>
+              <div className="pillar-card__link">
+                <Link href={p.href} className="btn-link">Read the pillar</Link>
+              </div>
+            </article>
           ))}
         </div>
       </div>
     </section>
   );
 }
+
+export default PillarsSection;

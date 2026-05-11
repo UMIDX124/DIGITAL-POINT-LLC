@@ -1,6 +1,5 @@
 import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';
-import { StickyCTABar } from '@/components/ui-dp/StickyCTABar';
 import ChatWidget from '@/components/chat/ChatWidget';
 
 export default function MarketingLayout({
@@ -13,7 +12,6 @@ export default function MarketingLayout({
       <Navigation />
       <main id="main" className="flex-1">{children}</main>
       <Footer />
-      <StickyCTABar />
       <ChatWidget />
     </div>
   );

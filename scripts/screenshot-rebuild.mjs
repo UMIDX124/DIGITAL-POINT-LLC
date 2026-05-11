@@ -1,0 +1,18 @@
+import { chromium } from 'playwright';
+const url = 'http://localhost:3103/';
+const b = await chromium.launch();
+const ctx1 = await b.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 });
+const p1 = await ctx1.newPage();
+await p1.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
+await p1.waitForTimeout(2500);
+await p1.screenshot({ path: '/tmp/rebuild-home-mobile.png', fullPage: true });
+console.log('mobile done');
+await ctx1.close();
+const ctx2 = await b.newContext({ viewport: { width: 1440, height: 900 } });
+const p2 = await ctx2.newPage();
+await p2.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
+await p2.waitForTimeout(2500);
+await p2.screenshot({ path: '/tmp/rebuild-home-desktop.png', fullPage: false });
+await p2.screenshot({ path: '/tmp/rebuild-home-desktop-full.png', fullPage: true });
+console.log('desktop done');
+await b.close();

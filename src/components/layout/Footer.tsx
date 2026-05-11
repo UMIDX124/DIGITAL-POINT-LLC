@@ -1,146 +1,96 @@
-import { Linkedin } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
-import CookiePrefsLink from '@/components/compliance/CookiePrefsLink';
+import Image from 'next/image';
 
-const footerLinks = {
-  services: [
-    { name: 'Remote Workforce', href: '/remote-workforce' },
-    { name: 'Automation', href: '/automation' },
-    { name: 'Performance Marketing', href: '/performance-marketing' },
-  ],
-  company: [
-    { name: 'About', href: '/about' },
-    { name: 'Results', href: '/results' },
-    { name: 'Case Studies', href: '/case-studies' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'FAQ', href: '/faq' },
-    /* Phase 17b 3-reversal E1 — Contact link replaced by "How we work"
-       anchored to the footer's #contact-philosophy block (no `/contact`
-       page, no email, Cosmo + audit form are the official routes). */
-    { name: 'How we work', href: '/#contact-philosophy' },
-  ],
-};
+const cols = [
+  {
+    heading: 'Services',
+    links: [
+      { label: 'AI Agents', href: '/agents' },
+      { label: 'Workflow Automation', href: '/automation' },
+      { label: 'Remote Operators', href: '/operators' },
+      { label: 'Recovery', href: '/recovery' },
+    ],
+  },
+  {
+    heading: 'Engagement',
+    links: [
+      { label: 'Pricing', href: '/pricing' },
+      { label: 'Process', href: '/process' },
+      { label: 'Stack', href: '/stack' },
+      { label: 'Book audit', href: '/audit' },
+    ],
+  },
+  {
+    heading: 'Company',
+    links: [
+      { label: 'About', href: '/about' },
+      { label: 'Case studies', href: '/case-studies' },
+      { label: 'Blog', href: '/blog' },
+      { label: 'Contact', href: '/contact' },
+    ],
+  },
+];
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="footer-root relative mt-auto">
+    <footer className="dpl-footer" role="contentinfo">
       <div className="container-wide">
-        <div className="py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-3 mb-6">
+        <div className="dpl-footer__grid">
+          <div className="dpl-footer__col">
+            <Link href="/" className="dpl-nav__brand" style={{ marginBlockEnd: '1rem' }}>
               <Image
                 src="/Dp-logo1.png"
-                alt="Digital Point"
-                width={160}
-                height={160}
-                className="footer-logo-img"
+                alt=""
+                width={28}
+                height={28}
+                style={{ borderRadius: 6 }}
               />
-              <div className="flex flex-col leading-none">
-                <span className="font-display text-xl text-[color:var(--ivory)]">Digital Point LLC</span>
-                <span className="text-[color:var(--muted)] text-[10px] tracking-[0.2em] uppercase mt-1.5">Est. 2017</span>
-              </div>
+              <span>Digital Point</span>
             </Link>
-            <p className="text-[color:var(--ivory-dim)] text-sm leading-relaxed max-w-xs">
-              AI + operator infrastructure for companies that want to scale without scaling team. AI agents lead, automation handles the repeat, operators back the loop.
+            <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--text-sm)', maxWidth: '28rem', lineHeight: 1.6 }}>
+              Production AI agent operations. We deploy and run agent stacks for B2B
+              SaaS, e-commerce ops, and professional services teams. Operator-backed.
+              No license to manage.
+            </p>
+            <p
+              className="font-mono"
+              style={{
+                marginBlockStart: '1rem',
+                color: 'var(--color-text-muted)',
+                fontSize: '0.6875rem',
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+              }}
+            >
+              DPL · 2017 → NOW · Wilmington, DE · United States
             </p>
           </div>
 
-          <div>
-            <h3 className="eyebrow mb-5">Practices</h3>
-            <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-[color:var(--ivory-dim)] hover:text-[color:var(--accent)] text-sm transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
+          {cols.map((c) => (
+            <div key={c.heading} className="dpl-footer__col">
+              <span className="dpl-footer__heading">{c.heading}</span>
+              {c.links.map((l) => (
+                <Link key={l.href} href={l.href} className="dpl-footer__link">
+                  {l.label}
+                </Link>
               ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="eyebrow mb-5">Company</h3>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-[color:var(--ivory-dim)] hover:text-[color:var(--accent)] text-sm transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="eyebrow mb-5">Connect</h3>
-            {/* Phase 17b 3-reversal E1 — generic email surface removed.
-                Per Phase 12 contact strategy: pure-AI route (Cosmo) + audit
-                form, no `hello@` queue. Verbatim brand copy block below. */}
-            <div id="contact-philosophy" className="footer-philosophy space-y-4">
-              <p className="footer-philosophy-heading text-sm font-medium">
-                Why we don&apos;t list a generic support inbox.
-              </p>
-              <p className="footer-philosophy-body text-sm">
-                Most agencies hide behind a{' '}
-                <code className="footer-philosophy-code">hello@</code>{' '}
-                queue where your message lines up with everyone else&apos;s. We don&apos;t run that way.
-              </p>
-              <p className="footer-philosophy-body text-sm">
-                When you reach out through Cosmo or our audit form, your inquiry routes to the operator best matched to your stage, not a ticket pool. We answer from our personal accounts because we own what we ship.
-              </p>
-              <p className="footer-philosophy-body text-sm">
-                If you&apos;d rather talk to a human first, tell Cosmo. We&apos;ll route the conversation to the right operator within one business day.
-              </p>
-              <p className="footer-location text-[color:var(--muted)] text-sm">
-                Lahore, PK · UTC+5
-              </p>
-              <a
-                href="https://linkedin.com/company/digitalpointllc"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-link flex items-center gap-3 text-[color:var(--ivory-dim)] hover:text-[color:var(--accent)] text-sm transition-colors"
-              >
-                <Linkedin className="w-4 h-4" />
-                LinkedIn
-              </a>
-              <Link
-                href="/free-growth-audit"
-                className="footer-cta-amber inline-block mt-2 px-4 py-2 text-[13px] font-medium text-[#0A0A0B] rounded-md"
-              >
-                Talk to a co-founder
-              </Link>
             </div>
-          </div>
+          ))}
         </div>
 
-        {/* Phase 18 V8 — compliance trust strip removed per Phase 3 spec.
-            Footer terminus is now copyright row + legal links + LinkedIn,
-            nothing else. The compliance assertions had K5 substantiation
-            gap (SOC 2 was halted, GDPR + 5-day plan lacked the audit
-            documentation infrastructure to back the claims publicly). */}
-
-        <div className="footer-bottom-bar py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[color:var(--muted)] text-xs">
-            &copy; {currentYear} Digital Point LLC. All rights reserved.
-          </p>
-          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-6 gap-y-2">
-            <Link href="/privacy-policy" className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors">Privacy</Link>
-            <Link href="/terms-of-service" className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors">Terms</Link>
-            {/* Phase 17b 3-restructured A3 — Cookies link reopens the
-                consent preference banner via a tiny client wrapper. */}
-            <CookiePrefsLink
-              href="/cookies"
-              className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors"
-            >
-              Cookies
-            </CookiePrefsLink>
-            <Link href="/#contact-philosophy" className="text-[color:var(--muted)] text-xs hover:text-[color:var(--ivory-dim)] transition-colors">How we work</Link>
+        <div className="dpl-footer__bottom">
+          <span className="dpl-footer__copy">
+            © {new Date().getFullYear()} Digital Point LLC. All rights reserved.
+          </span>
+          <div style={{ display: 'flex', gap: '1.5rem' }}>
+            <Link href="/privacy-policy" className="dpl-footer__link">Privacy</Link>
+            <Link href="/terms-of-service" className="dpl-footer__link">Terms</Link>
+            <Link href="/cookies" className="dpl-footer__link">Cookies</Link>
           </div>
         </div>
       </div>
     </footer>
   );
 }
+
+export default Footer;

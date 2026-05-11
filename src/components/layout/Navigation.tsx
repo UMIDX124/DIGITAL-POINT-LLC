@@ -1,161 +1,51 @@
-'use client';
-
-import { useState, useEffect, useCallback, memo } from 'react';
-import { Menu, X } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
-const navigation = [
-  { name: 'Workforce', href: '/remote-workforce' },
-  { name: 'Automation', href: '/automation' },
-  { name: 'Marketing', href: '/performance-marketing' },
-  { name: 'Case Studies', href: '/case-studies' },
-  { name: 'Results', href: '/results' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'About', href: '/about' },
+const navLinks = [
+  { label: 'Recovery', href: '/recovery' },
+  { label: 'Agents', href: '/agents' },
+  { label: 'Automation', href: '/automation' },
+  { label: 'Operators', href: '/operators' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Stack', href: '/stack' },
 ];
 
-const NavLink = memo(function NavLink({ item, active }: { item: { name: string; href: string }; active: boolean }) {
-  return (
-    <Link
-      href={item.href}
-      className={cn(
-        'px-3 py-2 text-[13px] font-medium transition-colors duration-200 whitespace-nowrap',
-        active ? 'text-[color:var(--accent)]' : 'text-[color:var(--ivory-dim)] hover:text-[color:var(--ivory)]'
-      )}
-    >
-      {item.name}
-    </Link>
-  );
-});
-
 export function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
-
-  useEffect(() => {
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 20);
-          ticking = false;
-        });
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: close mobile menu when navigation changes
-  useEffect(() => { setIsOpen(false); }, [pathname]);
-
-  const isActive = useCallback((href: string) => {
-    if (href === '/') return pathname === '/';
-    return pathname.startsWith(href);
-  }, [pathname]);
-
-  const toggleMenu = useCallback(() => setIsOpen(prev => !prev), []);
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-[100]">
-      <div
-        className={cn(
-          'relative w-full transition-colors duration-300',
-          scrolled ? 'backdrop-blur-md' : ''
-        )}
-        style={{
-          background: scrolled ? 'rgba(10, 10, 11, 0.85)' : 'rgba(10, 10, 11, 0.55)',
-          borderBottom: `1px solid ${scrolled ? 'var(--border-default)' : 'transparent'}`,
-        }}
-      >
-        <nav className="relative container-wide">
-          <div className="flex items-center justify-between gap-6 h-20">
-            <Link href="/" className="flex items-center gap-3 shrink-0 group nav-logo-wrap">
-              {/* Phase 18.6 P3 REVERTED P6 — back to original 60px logo
-                  + "Digital Point" wordmark per repo-owner clarification:
-                  P3 enlargement was misunderstanding of the loading-
-                  intro request (handled separately in app/layout.tsx). */}
-              <Image
-                src="/Dp-logo1.png"
-                alt="Digital Point"
-                width={128}
-                height={128}
-                priority
-                style={{ width: '60px', height: 'auto' }}
-                className="nav-logo transition-opacity duration-200 group-hover:opacity-90"
-              />
-              <span className="hidden sm:block font-display text-[19px] tracking-tight text-[color:var(--ivory)] leading-none">
-                Digital Point
-              </span>
+    <header className="dpl-nav" role="banner">
+      <nav className="dpl-nav__inner" aria-label="Primary">
+        <Link href="/" className="dpl-nav__brand">
+          <Image
+            src="/Dp-logo1.png"
+            alt=""
+            width={28}
+            height={28}
+            priority
+            style={{ borderRadius: 6 }}
+          />
+          <span>Digital Point</span>
+        </Link>
+
+        <div className="dpl-nav__menu">
+          {navLinks.map((l) => (
+            <Link key={l.href} href={l.href} className="dpl-nav__link">
+              {l.label}
             </Link>
-
-            <div className="hidden lg:flex items-center gap-1 flex-1 justify-center">
-              {navigation.map((item) => (
-                <NavLink key={item.name} item={item} active={isActive(item.href)} />
-              ))}
-            </div>
-
-            <div className="hidden lg:block">
-              <Link
-                href="/free-growth-audit"
-                className="px-4 py-2 text-[13px] font-medium text-[#0A0A0B] rounded-md whitespace-nowrap inline-block transition-colors duration-150 hover:opacity-90"
-                style={{ background: 'var(--accent-bright)' }}
-              >
-                Book a free audit
-              </Link>
-            </div>
-
-            <button
-              className="lg:hidden min-w-[44px] min-h-[44px] p-2.5 rounded-md text-[color:var(--ivory-dim)] hover:text-[color:var(--ivory)] transition-colors flex items-center justify-center border-hairline"
-              onClick={toggleMenu}
-              aria-label="Toggle menu"
-              aria-expanded={isOpen}
-              aria-controls="mobile-menu"
-            >
-              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
-        </nav>
-      </div>
-
-      {isOpen && (
-        <div
-          id="mobile-menu"
-          className="lg:hidden absolute top-full left-4 right-4 mt-2 rounded-lg overflow-hidden animate-fade-in"
-          style={{ background: '#141416', border: '1px solid #27272A' }}
-        >
-          <div className="p-3 flex flex-col">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={cn(
-                  'px-4 py-3 min-h-[44px] text-sm font-medium transition-colors',
-                  isActive(item.href)
-                    ? 'text-[color:var(--accent)]'
-                    : 'text-[color:var(--ivory-dim)] hover:text-[color:var(--ivory)]'
-                )}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <div className="mt-2 pt-3 border-t" style={{ borderColor: 'var(--border-default)' }}>
-              <Link
-                href="/free-growth-audit"
-                className="block w-full py-3 rounded-md text-sm font-medium text-[#0A0A0B] text-center"
-                style={{ background: 'var(--accent-bright)' }}
-              >
-                Book a free audit
-              </Link>
-            </div>
-          </div>
+          ))}
         </div>
-      )}
+
+        <div className="dpl-nav__cta">
+          <Link
+            href="/audit"
+            className="btn btn-primary"
+            style={{ height: '2.25rem', paddingInline: '0.875rem' }}
+          >
+            Book audit
+          </Link>
+        </div>
+      </nav>
     </header>
   );
 }
+
+export default Navigation;

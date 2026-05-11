@@ -1,26 +1,6 @@
-/**
- * Phase 3a: framer-motion compatibility shim.
- *
- * Legacy sub-page components (PerformanceMarketingPage, RemoteWorkforcePage,
- * SystemsReportingPage, AboutPage, ContactPage, ResultsPage, CaseStudiesPage,
- * and a handful of UI bits) still carry `import { motion, AnimatePresence,
- * useInView } from 'framer-motion'` patterns. Those pages are scheduled for
- * full rewrites in Phase 3b. Until the rewrite, this shim lets us remove the
- * framer-motion package (~40 KB gzipped) without breaking compilation.
- *
- * Behavior: `motion.X` renders as a plain `<X>`; `AnimatePresence` just
- * renders children; `useInView` always reports true. Framer animation props
- * (initial, animate, exit, transition, whileHover, whileInView, variants,
- * layout, layoutId, etc.) are stripped silently — the legacy motion effects
- * disappear on those sub-pages. Reveal animations on them go away until
- * Phase 3b replaces them with proper server-component + GSAP reveals.
- */
+import { createElement, Fragment, type ReactNode } from 'react';
 
-import * as React from 'react';
-
-type AnyProps = Record<string, any>;
-
-const FRAMER_PROPS = new Set([
+const motionKeys = new Set([
   'initial',
   'animate',
   'exit',
@@ -29,105 +9,42 @@ const FRAMER_PROPS = new Set([
   'whileHover',
   'whileTap',
   'whileInView',
-  'whileFocus',
-  'whileDrag',
   'viewport',
   'layout',
   'layoutId',
-  'layoutDependency',
-  'layoutScroll',
-  'layoutRoot',
   'drag',
   'dragConstraints',
   'dragElastic',
-  'dragMomentum',
-  'dragTransition',
-  'dragListener',
-  'dragControls',
-  'custom',
-  'onAnimationStart',
-  'onAnimationComplete',
-  'onUpdate',
-  'onDrag',
-  'onDragStart',
-  'onDragEnd',
-  'onDirectionLock',
-  'onHoverStart',
-  'onHoverEnd',
-  'onViewportEnter',
-  'onViewportLeave',
-  'onTap',
-  'onTapStart',
-  'onTapCancel',
 ]);
 
-function stripFramerProps(props: AnyProps): AnyProps {
-  const out: AnyProps = {};
-  for (const k in props) {
-    if (!FRAMER_PROPS.has(k)) out[k] = props[k];
+function stripMotionProps(props: Record<string, unknown>) {
+  const out: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(props)) {
+    if (!motionKeys.has(k)) out[k] = v;
   }
   return out;
 }
 
-/**
- * `motion` — proxy that returns a React component for any tag access.
- * Usage: `<motion.div initial={{opacity:0}}>` renders as `<div>`.
- */
-export const motion: any = new Proxy(
-  {},
-  {
-    get(_target, tag: string) {
-      const Component = React.forwardRef<unknown, AnyProps>(function MotionTag(props, ref) {
-        const clean = stripFramerProps(props);
-        return React.createElement(tag as any, { ...clean, ref }, props.children);
-      });
-      Component.displayName = `motion.${tag}`;
-      return Component;
-    },
-  },
-);
+function makeMotionTag(tag: string) {
+  return function MotionTag(props: Record<string, unknown>) {
+    return createElement(tag, stripMotionProps(props));
+  };
+}
 
-/**
- * `AnimatePresence` — passthrough wrapper. Exit animations are dropped.
- * Accepts any extra Framer props (`mode`, `initial`, `onExitComplete`, etc.)
- * and ignores them so legacy code compiles without change.
- */
+export const motion = new Proxy({} as Record<string, ReturnType<typeof makeMotionTag>>, {
+  get(_target, prop: string) {
+    return makeMotionTag(prop);
+  },
+});
+
 export function AnimatePresence({
   children,
 }: {
-  children?: React.ReactNode;
-  mode?: 'sync' | 'wait' | 'popLayout' | string;
+  children?: ReactNode;
+  mode?: string;
   initial?: boolean;
-  onExitComplete?: () => void;
-  propagate?: boolean;
-  custom?: unknown;
 }) {
-  return React.createElement(React.Fragment, null, children);
+  return createElement(Fragment, null, children);
 }
 
-/**
- * `useInView` — returns `true` always so `isInView ? … : …` ternaries render
- * the revealed state without any scroll-based gating. Sub-pages that relied on
- * this for fade-in lose the staggered effect; still-legible content.
- * Accepts any ref + options signature for API compatibility.
- */
-export function useInView(
-  _ref?: React.RefObject<unknown> | React.MutableRefObject<unknown>,
-  _options?: {
-    once?: boolean;
-    margin?: string;
-    amount?: number | 'some' | 'all';
-    root?: React.RefObject<Element>;
-    initial?: boolean;
-  },
-): boolean {
-  return true;
-}
-
-/** Misc no-op exports that show up occasionally in legacy code. */
-export const useMotionValue = (initial: number) => ({
-  get: () => initial,
-  set: () => {},
-  on: () => () => {},
-});
-export const useTransform = <T,>(_a: unknown, _b: unknown, _c: unknown): T => undefined as unknown as T;
+export default motion;

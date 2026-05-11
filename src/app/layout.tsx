@@ -5,8 +5,6 @@ import { GeistMono } from "geist/font/mono";
 import Script from "next/script";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-import { GrainOverlay } from "@/components/background/GrainOverlay";
-import { CursorBloom } from "@/components/background/CursorBloom";
 import { VisibilityPause } from "@/components/motion/VisibilityPause";
 import { BotIdClient } from "botid/client";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -256,8 +254,6 @@ export default function RootLayout({
           />
           <span className="dpl-intro-line" />
         </div>
-        <GrainOverlay />
-        <CursorBloom />
         <VisibilityPause />
         <BotIdClient
           protect={[

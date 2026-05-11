@@ -30,6 +30,41 @@ export function CaseStudiesPage() {
 
       <section className="section section-divider">
         <div className="container-wide">
+          <aside
+            role="note"
+            aria-label="Case study disclosure"
+            style={{
+              marginBlockEnd: '2rem',
+              padding: '1.25rem 1.5rem',
+              border: '1px solid var(--color-line-faint)',
+              borderInlineStartWidth: '3px',
+              borderInlineStartColor: 'var(--color-accent)',
+              borderRadius: 'var(--radius-md)',
+              background: 'var(--color-canvas)',
+            }}
+          >
+            <p
+              className="font-mono"
+              style={{
+                fontSize: '0.6875rem',
+                letterSpacing: '0.16em',
+                textTransform: 'uppercase',
+                color: 'var(--color-accent)',
+              }}
+            >
+              Disclosure
+            </p>
+            <p
+              style={{
+                marginBlockStart: '0.5rem',
+                color: 'var(--color-text-secondary)',
+                fontSize: 'var(--text-sm)',
+                lineHeight: 1.6,
+              }}
+            >
+              Composite case studies. Metrics drawn from real DPL engagements. Client names withheld under NDA. Named-client references available on request after a discovery call.
+            </p>
+          </aside>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             {caseStudies.map((study, i) => (
               <article

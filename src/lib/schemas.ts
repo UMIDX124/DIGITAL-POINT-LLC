@@ -57,6 +57,13 @@ export const SupportTicketSchema = z.object({
 });
 export type SupportTicketInput = z.infer<typeof SupportTicketSchema>;
 
+export const NewsletterSchema = z.object({
+  email: emailSchema,
+  name: z.string().trim().max(200).optional(),
+  source: optionalShortString,
+});
+export type NewsletterInput = z.infer<typeof NewsletterSchema>;
+
 export const AuditSubmissionSchema = z.object({
   name: nameSchema,
   email: emailSchema,

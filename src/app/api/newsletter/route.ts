@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { sendEmail, escapeHtml } from '@/lib/email';
 import { db } from '@/lib/db';
+import { NewsletterSchema } from '@/lib/schemas';
 
 // In-memory rate limiter
 const rateLimiter = new Map<string, { count: number; reset: number }>();
@@ -27,12 +28,15 @@ export async function POST(req: Request) {
       }
     }
 
-    const { email } = await req.json();
-
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return NextResponse.json({ error: 'Valid email required' }, { status: 400 });
+    const body = await req.json();
+    const parsed = NewsletterSchema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: 'Invalid input', issues: parsed.error.flatten() },
+        { status: 400 }
+      );
     }
-
+    const { email } = parsed.data;
     const safeEmail = escapeHtml(email);
 
     // Store subscriber using shared db instance

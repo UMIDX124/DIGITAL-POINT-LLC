@@ -48,6 +48,15 @@ export const ChatRequestSchema = z.object({
 });
 export type ChatRequest = z.infer<typeof ChatRequestSchema>;
 
+export const SupportTicketSchema = z.object({
+  name: nameSchema,
+  email: emailSchema,
+  subject: z.string().trim().min(1).max(200),
+  message: messageSchema,
+  priority: z.enum(['normal', 'high']).default('normal'),
+});
+export type SupportTicketInput = z.infer<typeof SupportTicketSchema>;
+
 export const AuditSubmissionSchema = z.object({
   name: nameSchema,
   email: emailSchema,

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { sendEmail, escapeHtml } from '@/lib/email';
+import { SupportTicketSchema } from '@/lib/schemas';
 
 // ─── Rate Limiting ───────────────────────────────────────────────────────────
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -57,32 +58,18 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-
-    // Validate required fields
-    if (!body.name || !body.email || !body.subject || !body.message) {
+    const parsed = SupportTicketSchema.safeParse(body);
+    if (!parsed.success) {
       return NextResponse.json(
-        { success: false, message: 'Missing required fields' },
+        { error: 'Invalid input', issues: parsed.error.flatten() },
         { status: 400 }
       );
     }
-
-    // Validate email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(body.email)) {
-      return NextResponse.json(
-        { success: false, message: 'Invalid email address' },
-        { status: 400 }
-      );
-    }
-
-    // Validate priority
-    const priority = body.priority === 'high' ? 'high' : 'normal';
-
-    // Sanitize inputs
-    const name = sanitize(body.name) || '';
-    const email = sanitize(body.email) || '';
-    const subject = sanitize(body.subject) || '';
-    const message = sanitize(body.message) || '';
+    const { priority } = parsed.data;
+    const name = sanitize(parsed.data.name) || '';
+    const email = sanitize(parsed.data.email) || '';
+    const subject = sanitize(parsed.data.subject) || '';
+    const message = sanitize(parsed.data.message) || '';
 
     // Try to save to database (may fail on serverless with SQLite)
     let ticketId = 'no-db';

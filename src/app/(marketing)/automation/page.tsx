@@ -1,297 +1,100 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import { copy } from '@/lib/copy';
-import { RelatedLinks } from '@/components/sections/RelatedLinks';
-import { ServiceSchema } from '@/components/seo/ServiceSchema';
 
 export const metadata: Metadata = {
-  title: 'Automation: AI workflows that run the boring parts',
+  title: 'Workflow Automation',
   description:
-    'Lead capture, document parsing, follow-up, reporting, portfolio monitoring. Operator-built AI workflows, operated as a service.',
+    'Workflow automation that replaces manual handoffs across your stack. n8n + custom TypeScript + Postgres for production-grade pipelines. Lead-to-CRM in under 60 seconds, document parsing, vendor invoice extraction, commission reconciliation.',
   alternates: { canonical: 'https://www.digitalpointllc.com/automation' },
-  openGraph: {
-    title: 'Automation',
-    description:
-      'Operator-built AI workflows for lead capture, document parsing, follow-up, reporting, and portfolio monitoring. Operated as a service.',
-    url: 'https://www.digitalpointllc.com/automation',
-    type: 'website',
-    images: [
-      { url: '/og-image.png', width: 1200, height: 630, alt: 'Digital Point Automation. AI workflows operated as a managed service.' },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Automation',
-    description: 'AI workflows that run the boring parts. Operated as a service.',
-    images: ['/og-image.png'],
-  },
 };
 
-export default function AutomationPage() {
-  const { hero, whatWeAutomate, howBuilt, whatYouSee, pricing } = copy.automation;
+const useCases = [
+  {
+    title: 'Lead-to-CRM pipeline',
+    desc: 'Every inbound from every source captured, enriched, deduplicated, scored, routed in under 60 seconds. No more "did we follow up on that one?"',
+  },
+  {
+    title: 'Vendor invoice extraction',
+    desc: 'PDF / scan in, structured records out. Edge cases route to operator review before write-back to accounting.',
+  },
+  {
+    title: 'Commission reconciliation',
+    desc: 'For brokerages and agencies with payout rules. Match CRM deals to commission tables, flag exceptions, queue payouts.',
+  },
+  {
+    title: 'Daily-standup replacement',
+    desc: 'Threshold monitoring across the portfolio. Anomalies surface, narrative reports auto-generated, you read the digest.',
+  },
+  {
+    title: 'Document QA loop',
+    desc: 'Generated copy or contract drafts flow through a structured review pipeline. Operator approves before send.',
+  },
+  {
+    title: 'Cross-tool sync',
+    desc: 'Bi-directional sync between CRM, helpdesk, billing, marketing tools. With reconciliation logic, not just webhooks.',
+  },
+];
 
+export default function AutomationPage() {
   return (
     <>
-      <ServiceSchema
-        name="AI Agents"
-        description="Autonomous AI agents that replace repeatable headcount: customer support triage, email drafting, lead qualification, ops escalation routing. Operated as a managed service by Digital Point."
-        url="https://www.digitalpointllc.com/automation#ai-agents"
-        serviceTypes={[
-          'AI Agents',
-          'Customer Support Automation',
-          'Email Triage Automation',
-          'Lead Qualification AI',
-          'Ops Escalation Routing',
-        ]}
-      />
-      <ServiceSchema
-        name="Workflow Automation"
-        description="Operator-built AI workflows that run lead capture, document parsing, follow-up, reporting, and portfolio monitoring. Operated as a managed service, not sold as software."
-        url="https://www.digitalpointllc.com/automation"
-        serviceTypes={[
-          'Workflow Automation',
-          'Lead Capture Automation',
-          'Document Parsing',
-          'Follow-up Automation',
-          'Portfolio Monitoring',
-          'Reporting Automation',
-        ]}
-      />
-      {/* Hero */}
-      <section
-        className="relative w-full overflow-hidden"
-        style={{ background: 'var(--bg-canvas)', paddingTop: '7rem', paddingBottom: '5rem', borderBottom: '1px solid #27272A' }}
-      >
-        <div className="container-wide">
-          <div className="max-w-4xl">
-            <p className="eyebrow mb-5">{hero.eyebrow}</p>
-            <h1 className="font-display text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px] leading-[0.98] tracking-tight text-[color:var(--ivory)]">
-              {hero.headline}
-            </h1>
-            <p className="mt-8 max-w-2xl text-[17px] md:text-[18px] leading-[1.55] text-[color:var(--ivory-dim)]">
-              {hero.body}
-            </p>
-            <div className="mt-10">
-              <Link
-                href={hero.ctaPrimary.href}
-                className="inline-flex items-center gap-2 px-6 py-3.5 text-[14px] font-medium rounded-md text-[#0A0A0B] focus-ring"
-                style={{ background: 'var(--accent-bright)' }}
-              >
-                {hero.ctaPrimary.label}
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+      <section className="hero">
+        <div className="hero-bg" aria-hidden="true" />
+        <div className="hero-inner">
+          <div className="hero-meta">
+            <span>Pillar 02 · Workflow Automation</span>
+          </div>
+
+          <h1 className="hero-title text-balance">
+            Replace manual handoffs <span className="hero-title__amber">across</span> your stack.
+          </h1>
+
+          <p className="hero-sub text-pretty">
+            n8n + custom TypeScript + Postgres for production pipelines. Not a Zapier
+            shop. Not a Make rebadger. Real orchestration with observability, retries,
+            and operator audit on every exception.
+          </p>
+
+          <div className="hero-cta-row">
+            <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
+            <Link href="/stack" className="btn btn-ghost">See the stack</Link>
           </div>
         </div>
       </section>
 
-      {/* What we automate */}
-      <section className="relative section-padding" style={{ background: 'var(--bg-canvas)', borderBottom: '1px solid #27272A' }}>
+      <section className="section section-divider">
         <div className="container-wide">
-          <header className="max-w-3xl mb-14">
-            <p className="eyebrow mb-5">{whatWeAutomate.eyebrow}</p>
-            <h2 className="font-display text-[36px] md:text-[52px] leading-[1.05] tracking-tight text-[color:var(--ivory)]">
-              {whatWeAutomate.headline}
+          <div className="section-header">
+            <p className="eyebrow">Workflows we deploy</p>
+            <h2 className="section-title text-balance">
+              The handoff problems we&apos;ve solved twice or more.
             </h2>
-          </header>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {whatWeAutomate.cards.map((card) => (
-              <div key={card.title} className="card-flat p-7 flex flex-col">
-                <h3 className="font-display text-[22px] leading-tight text-[color:var(--ivory)]">
-                  {card.title}
-                </h3>
-                <p className="mt-3 text-[14.5px] leading-[1.6] text-[color:var(--ivory-dim)]">
-                  {card.body}
-                </p>
-                <p className="mt-auto pt-6 font-mono text-[12px] text-[color:var(--accent)] tracking-wide">
-                  {card.stat}
-                </p>
-              </div>
+          <div className="pillar-grid pillar-grid--three" style={{ marginBlockStart: '3rem' }}>
+            {useCases.map((u) => (
+              <article key={u.title} className="pillar-card">
+                <span className="pillar-card__index">Pipeline</span>
+                <h3 className="pillar-card__title">{u.title}</h3>
+                <p className="pillar-card__desc">{u.desc}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How it's built */}
-      <section className="relative section-padding" style={{ background: 'var(--bg-canvas)', borderBottom: '1px solid #27272A' }}>
+      <section className="section section-divider">
         <div className="container-wide">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-5">
-              <p className="eyebrow mb-5">{howBuilt.eyebrow}</p>
-              <h2 className="font-display text-[32px] md:text-[44px] leading-[1.1] tracking-tight text-[color:var(--ivory)]">
-                {howBuilt.headline}
-              </h2>
-            </div>
-            <div className="lg:col-span-7">
-              <p className="text-[16px] leading-[1.65] text-[color:var(--ivory-dim)]">
-                {howBuilt.body}
-              </p>
-              <ul className="mt-8 grid grid-cols-2 gap-4 font-mono text-[12px] text-[color:var(--muted)]">
-                {[
-                  'n8n · orchestration',
-                  'Groq · inference',
-                  'TypeScript · custom services',
-                  'Postgres · state',
-                  'Observability · always-on',
-                  'On-call operators',
-                ].map((s) => (
-                  <li key={s} className="py-3 px-4 border-hairline rounded-md">{s}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What you see */}
-      <section className="relative section-padding" style={{ background: 'var(--bg-canvas)', borderBottom: '1px solid #27272A' }}>
-        <div className="container-wide">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-5">
-              <p className="eyebrow mb-5">{whatYouSee.eyebrow}</p>
-              <h2 className="font-display text-[32px] md:text-[44px] leading-[1.1] tracking-tight text-[color:var(--ivory)]">
-                {whatYouSee.headline}
-              </h2>
-              <p className="mt-6 text-[15.5px] leading-[1.65] text-[color:var(--ivory-dim)]">
-                {whatYouSee.body}
-              </p>
-            </div>
-            <div className="lg:col-span-7">
-              {/* Read-only dashboard mock — flat, mono numbers, no fake glass */}
-              <div className="card-flat p-6 md:p-8" style={{ background: '#141416' }}>
-                <div className="flex items-center justify-between mb-6 pb-4" style={{ borderBottom: '1px solid #27272A' }}>
-                  <span className="eyebrow">Portfolio · last 24h</span>
-                  <span className="font-mono text-[11px] text-[color:var(--muted)]">auto-refresh 60s</span>
-                </div>
-
-                <div className="grid grid-cols-3 gap-4 mb-6">
-                  {[
-                    { label: 'Workflows run', value: '1,284' },
-                    { label: 'Success rate', value: '99.2%' },
-                    { label: 'Avg latency', value: '1.8s' },
-                  ].map((kpi) => (
-                    <div key={kpi.label}>
-                      <div className="font-mono text-[22px] md:text-[28px] text-[color:var(--ivory)] tabular-nums">
-                        {kpi.value}
-                      </div>
-                      <div className="text-[11px] text-[color:var(--muted)] mt-1 tracking-wide">
-                        {kpi.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="divide-hairline" style={{ borderTop: '1px solid #27272A' }}>
-                  {[
-                    { name: 'Lead intake · Meta', runs: 412, status: 'OK' },
-                    { name: 'Lead intake · Google', runs: 198, status: 'OK' },
-                    { name: 'Doc parsing · contracts', runs: 47, status: 'OK' },
-                    { name: 'Follow-up · day-3 retarget', runs: 321, status: 'OK' },
-                    { name: 'Reporting rollup · weekly', runs: 1, status: 'OK' },
-                  ].map((row) => (
-                    <div key={row.name} className="flex items-center justify-between py-3">
-                      <span className="text-[14px] text-[color:var(--ivory-dim)]">{row.name}</span>
-                      <span className="font-mono text-[12px] text-[color:var(--muted)]">
-                        {row.runs} runs · <span className="text-[color:var(--accent)]">{row.status}</span>
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                <p className="mt-6 text-[11px] text-[color:var(--muted)] tracking-wide">Representative data</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Related context */}
-      <RelatedLinks
-        eyebrow="WHERE THIS FITS"
-        headline="The workflows live inside a wider operating loop."
-        links={[
-          {
-            href: '/remote-workforce',
-            label: 'Operators',
-            body: 'Trained humans audit the exception cases AI cannot resolve. The reason this is a service, not a tool.',
-          },
-          {
-            href: '/systems-reporting',
-            label: 'Systems & Reporting',
-            body: 'The reporting layer that makes every workflow output legible without chasing a dashboard.',
-          },
-          {
-            href: '/case-studies',
-            label: 'Case studies',
-            body: 'What 14,400 operator-hours replaced and +89% qualified pipeline look like in production.',
-          },
-          {
-            href: '/faq',
-            label: 'FAQ',
-            body: 'How agents handle exceptions, integrate with your CRM, and what happens to the stack if the engagement ends.',
-          },
-        ]}
-      />
-
-      {/* Pricing */}
-      <section className="relative section-padding" style={{ background: 'var(--bg-canvas)', borderBottom: '1px solid #27272A' }}>
-        <div className="container-wide">
-          <header className="max-w-3xl mb-14">
-            <p className="eyebrow mb-5">{pricing.eyebrow}</p>
-            <h2 className="font-display text-[36px] md:text-[52px] leading-[1.05] tracking-tight text-[color:var(--ivory)]">
-              {pricing.headline}
+          <div className="section-header section-header--center">
+            <p className="eyebrow eyebrow--accent">Map your workflow</p>
+            <h2 className="section-title text-balance">
+              45-minute audit. Written plan in 5 days. Free.
             </h2>
-          </header>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {pricing.tiers.map((tier) => {
-              const featured = 'featured' in tier && tier.featured;
-              return (
-                <div
-                  key={tier.name}
-                  className="card-flat p-8 flex flex-col"
-                  style={featured ? { borderColor: 'var(--accent)' } : undefined}
-                >
-                  <p className="eyebrow mb-5">{tier.name}</p>
-                  <div className="font-display text-[36px] text-[color:var(--ivory)] leading-none">
-                    {tier.price}
-                  </div>
-                  <p className="mt-5 text-[14.5px] leading-[1.55] text-[color:var(--ivory-dim)]">
-                    {tier.body}
-                  </p>
-                  <Link
-                    href={tier.href}
-                    className="mt-auto pt-8 inline-flex items-center gap-2 text-[13px] font-medium text-[color:var(--accent)] focus-ring"
-                  >
-                    {tier.cta}
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              );
-            })}
+            <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
+              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
+              <Link href="/pricing" className="btn btn-ghost">See pricing</Link>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="relative section-padding" style={{ background: 'var(--bg-canvas)' }}>
-        <div className="container-narrow text-center">
-          <h2 className="font-display text-[36px] md:text-[48px] leading-[1.1] tracking-tight text-[color:var(--ivory)]">
-            Start with one workflow.
-          </h2>
-          <p className="mt-5 text-[color:var(--ivory-dim)] max-w-xl mx-auto">
-            Pilot fee buys you a scoped build + 30 days of operation. You own the output.
-          </p>
-          <Link
-            href="/free-growth-audit"
-            className="mt-8 inline-flex items-center gap-2 px-6 py-3.5 text-[14px] font-medium rounded-md text-[#0A0A0B]"
-            style={{ background: 'var(--accent-bright)' }}
-          >
-            Book a free audit
-            <ArrowRight className="w-4 h-4" />
-          </Link>
         </div>
       </section>
     </>

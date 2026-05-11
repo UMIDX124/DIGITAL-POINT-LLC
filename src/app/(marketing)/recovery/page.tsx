@@ -1,0 +1,265 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'AI Agent Recovery',
+  description:
+    'Your AI agent is broken. We fix it. Diagnose in 2 weeks ($5,000), fix in 4 ($10,000), operate from there ($2,500 / month). The only systematic recovery service for production AI agents.',
+  alternates: { canonical: 'https://www.digitalpointllc.com/recovery' },
+  openGraph: {
+    title: 'AI Agent Recovery — Digital Point',
+    description:
+      'Diagnose in 2 weeks, fix in 4, operate from there. The only systematic recovery service for production AI agents.',
+    url: 'https://www.digitalpointllc.com/recovery',
+    type: 'website',
+  },
+};
+
+const criteria = [
+  'Observability — what is the agent actually doing right now',
+  'Retry logic — failure modes, backoff, dead-letter handling',
+  'Drift detection — is the model output still in spec',
+  'Prompt injection resistance — input sanitization, output guarding',
+  'Cost variance — token spend per task, runaway loop detection',
+  'Escalation paths — what happens when the agent gets it wrong',
+  'Data security — who sees what, encryption posture, access scopes',
+  'State management — what does the agent remember between runs',
+  'Tooling integration — webhook health, downstream API stability',
+  'Operator handoff — can a human take over mid-task',
+];
+
+const symptoms = [
+  {
+    title: 'Drifting outputs',
+    desc: 'The agent worked fine at launch. Two months later, the responses feel slightly off and nobody knows why.',
+  },
+  {
+    title: 'Silent retries',
+    desc: 'Workflows complete, but a quiet 12% of them are running twice and inflating cost without visibility.',
+  },
+  {
+    title: 'Hallucinated tool calls',
+    desc: 'The agent invokes APIs that don\'t exist, returns plausible-looking failures, and nobody catches it for a week.',
+  },
+  {
+    title: 'Prompt-injection vulnerabilities',
+    desc: 'A user pasted a malicious string and got the agent to leak data it shouldn\'t have. Now the team is panicking.',
+  },
+  {
+    title: 'No observability',
+    desc: 'The agent shipped on a Lindy / Relevance / Zapier deployment with zero visibility into the decision graph.',
+  },
+  {
+    title: 'Cost explosion',
+    desc: 'The token bill jumped 4x last month and nobody can explain which workflow is responsible.',
+  },
+];
+
+export default function RecoveryPage() {
+  return (
+    <>
+      <section className="hero" id="hero">
+        <div className="hero-bg" aria-hidden="true" />
+        <div className="hero-inner">
+          <div className="hero-meta">
+            <span className="dot-amber" aria-hidden="true" />
+            <span>Recovery service · 2-week diagnosis</span>
+          </div>
+
+          <h1 className="hero-title text-balance">
+            Your <span className="hero-title__amber">AI agent</span> is broken.<br />
+            We fix it.
+          </h1>
+
+          <p className="hero-sub text-pretty">
+            Your in-house agents are drifting, hallucinating, or silently failing in
+            production. We diagnose in 2 weeks. Fix in 4. Operate from there. The only
+            systematic recovery service for production AI agents.
+          </p>
+
+          <div className="hero-cta-row">
+            <Link href="/audit" className="btn btn-primary">
+              Book a recovery audit
+            </Link>
+            <Link href="#what-we-find" className="btn btn-ghost">
+              See the diagnostic checklist
+            </Link>
+          </div>
+
+          <p className="hero-microcopy">
+            Fixed-fee · $5,000 diagnosis · $10,000 fix · $2,500/mo operation
+          </p>
+        </div>
+      </section>
+
+      <section className="section section-divider" id="symptoms">
+        <div className="container-wide">
+          <div className="section-header">
+            <p className="eyebrow">Recognize any of these?</p>
+            <h2 className="section-title text-balance">
+              The 2024 build wave shipped a lot of agents. By 2026, many of them have stopped working right.
+            </h2>
+            <p className="section-desc text-pretty">
+              No agency markets recovery systematically. Platforms can&apos;t — they sell
+              tools. Big consultancies sell &quot;build new.&quot; We&apos;re the operator team
+              that diagnoses what broke and ships the fix.
+            </p>
+          </div>
+
+          <div className="pillar-grid pillar-grid--three" style={{ marginBlockStart: '3rem' }}>
+            {symptoms.map((s) => (
+              <article key={s.title} className="pillar-card">
+                <span className="pillar-card__index">Symptom</span>
+                <h3 className="pillar-card__title">{s.title}</h3>
+                <p className="pillar-card__desc">{s.desc}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-divider" id="what-we-find">
+        <div className="container-wide">
+          <div className="section-header">
+            <p className="eyebrow eyebrow--accent">Diagnosis · 2 weeks · $5,000</p>
+            <h2 className="section-title text-balance">
+              We audit your agent stack against 30 production criteria.
+            </h2>
+            <p className="section-desc text-pretty">
+              No vague &quot;health check.&quot; A written report your CTO can hand to legal.
+              Sample of what we check below.
+            </p>
+          </div>
+
+          <ol
+            style={{
+              marginBlockStart: '3rem',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(20rem, 1fr))',
+              gap: '1px',
+              background: 'var(--color-line-faint)',
+              border: '1px solid var(--color-line-faint)',
+              borderRadius: 'var(--radius-lg)',
+              overflow: 'hidden',
+              listStyle: 'none',
+              padding: 0,
+            }}
+          >
+            {criteria.map((c, i) => (
+              <li
+                key={c}
+                style={{
+                  background: 'var(--color-canvas)',
+                  padding: '1.5rem',
+                  display: 'flex',
+                  gap: '0.875rem',
+                  alignItems: 'flex-start',
+                }}
+              >
+                <span
+                  className="font-mono"
+                  style={{
+                    color: 'var(--color-accent)',
+                    fontSize: '0.75rem',
+                    letterSpacing: '0.12em',
+                    minWidth: '2rem',
+                  }}
+                >
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span
+                  style={{
+                    color: 'var(--color-text-secondary)',
+                    fontSize: 'var(--text-sm)',
+                    lineHeight: 1.55,
+                  }}
+                >
+                  {c}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="section section-divider" id="fix">
+        <div className="container-wide">
+          <div className="section-header">
+            <p className="eyebrow eyebrow--accent">Fix · 4 weeks · $10,000</p>
+            <h2 className="section-title text-balance">
+              We ship the patch and walk your team through every change before handover.
+            </h2>
+            <p className="section-desc text-pretty">
+              Production fixes with proper observability, retries, rollback paths, and
+              runbooks. You own the code. Your team can run it from there, or you can
+              hand operation to us.
+            </p>
+          </div>
+
+          <div className="pillar-grid pillar-grid--three" style={{ marginBlockStart: '3rem' }}>
+            <article className="pillar-card">
+              <span className="pillar-card__index">Week 1</span>
+              <h3 className="pillar-card__title">Stabilize</h3>
+              <p className="pillar-card__desc">
+                Stop the bleeding. Wire observability if missing. Add cost guardrails,
+                rate limits, kill-switches.
+              </p>
+            </article>
+            <article className="pillar-card">
+              <span className="pillar-card__index">Weeks 2–3</span>
+              <h3 className="pillar-card__title">Ship the patch</h3>
+              <p className="pillar-card__desc">
+                Rewrite the failure paths. Replace brittle prompts. Add retries with
+                exponential backoff. Document every change.
+              </p>
+            </article>
+            <article className="pillar-card">
+              <span className="pillar-card__index">Week 4</span>
+              <h3 className="pillar-card__title">Handover</h3>
+              <p className="pillar-card__desc">
+                Live walkthrough with your team. Runbooks delivered. You decide whether
+                to operate it yourself or hand it to us on retainer.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-divider" id="operate">
+        <div className="container-wide">
+          <div className="section-header">
+            <p className="eyebrow eyebrow--accent">Operate · $2,500 / month</p>
+            <h2 className="section-title text-balance">
+              We run it from there. You watch us work in Slack.
+            </h2>
+            <p className="section-desc text-pretty">
+              Every DPL retainer ships a Slack Connect channel where every agent
+              decision is posted in real time, with PII redaction. Operator interventions,
+              retry attempts, cost-per-task, failure modes — all visible. Platforms hide
+              what their agents do. We show everything.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-divider">
+        <div className="container-wide">
+          <div className="section-header section-header--center">
+            <p className="eyebrow eyebrow--accent">Book the recovery audit</p>
+            <h2 className="section-title text-balance">
+              Tell us what broke. We&apos;ll start the diagnosis.
+            </h2>
+            <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
+              <Link href="/audit" className="btn btn-primary">
+                Book a recovery audit
+              </Link>
+              <Link href="/process" className="btn btn-ghost">
+                How an engagement runs
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

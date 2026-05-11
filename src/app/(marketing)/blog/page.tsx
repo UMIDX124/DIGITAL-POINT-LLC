@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     description: 'Field notes from running AI in production: agent stacks, automation engineering, operator workflows. What works, what breaks, and what we ship next.',
   },
   alternates: { canonical: 'https://www.digitalpointllc.com/blog' },
+  robots: { index: false, follow: true, googleBot: { index: false, follow: true } },
 };
 
 export default function Blog() {

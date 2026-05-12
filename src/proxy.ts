@@ -15,7 +15,7 @@ function buildCsp(nonce: string): string {
     "default-src 'self'",
     `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${BOTID_INLINE_HASH} https:`,
     "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data: blob: https://picsum.photos https://*.vercel-scripts.com",
+    "img-src 'self' data: blob: https://*.vercel-scripts.com",
     "font-src 'self' data:",
     "connect-src 'self' https://*.vercel-insights.com https://*.vercel-scripts.com https://vitals.vercel-insights.com",
     "frame-ancestors 'none'",
@@ -41,7 +41,6 @@ export default function proxy(request: NextRequest) {
   response.headers.set('X-Frame-Options', 'DENY');
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  response.headers.set('X-XSS-Protection', '1; mode=block');
   response.headers.set('Content-Security-Policy', csp);
 
   if (!hasIntroCookie) {

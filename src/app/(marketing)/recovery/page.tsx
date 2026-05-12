@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
+import { ServiceSchema } from '@/components/seo/ServiceSchema';
 
 export const metadata: Metadata = {
   title: 'AI Agent Recovery',
@@ -70,6 +71,18 @@ export default function RecoveryPage() {
         items={[
         { name: 'Home', item: 'https://www.digitalpointllc.com' },
         { name: 'Recovery', item: 'https://www.digitalpointllc.com/recovery' },
+        ]}
+      />
+      <ServiceSchema
+        name="AI Agent Recovery"
+        description="Production audit, fix, and operation for broken AI agent stacks. Fixed-fee: $5,000 diagnosis over 2 weeks, $10,000 fix over 4 weeks, $2,500 per month to operate."
+        url="https://www.digitalpointllc.com/recovery"
+        serviceTypes={[
+        'AI Agent Audit',
+        'Production Recovery',
+        'Observability Implementation',
+        'Cost Variance Diagnosis',
+        'Operator Handoff',
         ]}
       />
       <section className="hero" id="hero">

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
+import { ServiceSchema } from '@/components/seo/ServiceSchema';
 
 export const metadata: Metadata = {
   title: 'Pricing',
@@ -82,6 +83,18 @@ export default function PricingPage() {
         items={[
         { name: 'Home', item: 'https://www.digitalpointllc.com' },
         { name: 'Pricing', item: 'https://www.digitalpointllc.com/pricing' },
+        ]}
+      />
+      <ServiceSchema
+        name="DPL Pricing — Audit, Pilot, Retainer"
+        description="Published-price managed service: free audit, $2,500 fixed pilot for 30 days, $2,500 per month retainer. Recovery ladder: $5,000 diagnosis, $10,000 fix, $2,500/mo operate."
+        url="https://www.digitalpointllc.com/pricing"
+        serviceTypes={[
+        'Free Audit',
+        'Pilot Engagement',
+        'Monthly Retainer',
+        'Recovery Diagnosis',
+        'Recovery Fix',
         ]}
       />
       <section className="hero">

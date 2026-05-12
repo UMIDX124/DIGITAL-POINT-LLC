@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
+import { ServiceSchema } from '@/components/seo/ServiceSchema';
 
 export const metadata: Metadata = {
   title: 'Workflow Automation',
@@ -43,6 +44,18 @@ export default function AutomationPage() {
         items={[
         { name: 'Home', item: 'https://www.digitalpointllc.com' },
         { name: 'Workflow Automation', item: 'https://www.digitalpointllc.com/automation' },
+        ]}
+      />
+      <ServiceSchema
+        name="Workflow Automation"
+        description="Wire tools, data, and humans together so handoffs happen without manual work. Cross-stack automation that survives audits, retries, and rollbacks."
+        url="https://www.digitalpointllc.com/automation"
+        serviceTypes={[
+        'CRM Integration',
+        'Data Pipelines',
+        'Ticket Routing',
+        'Cross-tool Sync',
+        'Workflow Operations',
         ]}
       />
       <section className="hero">

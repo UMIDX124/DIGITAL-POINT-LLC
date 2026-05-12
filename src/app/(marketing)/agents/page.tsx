@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 import { HeroAtmosphere } from '@/components/brand/HeroAtmosphere';
 import { StackGrid } from '@/components/brand/StackGrid';
+import { ServiceSchema } from '@/components/seo/ServiceSchema';
 
 export const metadata: Metadata = {
   title: 'AI Agents',
@@ -45,6 +46,18 @@ export default function AgentsPage() {
         items={[
         { name: 'Home', item: 'https://www.digitalpointllc.com' },
         { name: 'AI Agents', item: 'https://www.digitalpointllc.com/agents' },
+        ]}
+      />
+      <ServiceSchema
+        name="AI Agents"
+        description="Custom-trained AI agents deployed on n8n + Groq + custom TypeScript. We operate them continuously while human operators audit the edges where automation breaks."
+        url="https://www.digitalpointllc.com/agents"
+        serviceTypes={[
+        'Lead Qualification',
+        'CRM Enrichment',
+        'Document Parsing',
+        'Customer Support Triage',
+        'Sales Follow-up Automation',
         ]}
       />
       <section className="hero">

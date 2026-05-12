@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
+import { ServiceSchema } from '@/components/seo/ServiceSchema';
 
 export const metadata: Metadata = {
   title: 'Remote Operators',
@@ -35,6 +36,18 @@ export default function OperatorsPage() {
         items={[
         { name: 'Home', item: 'https://www.digitalpointllc.com' },
         { name: 'Remote Operators', item: 'https://www.digitalpointllc.com/operators' },
+        ]}
+      />
+      <ServiceSchema
+        name="Remote Operators"
+        description="Vetted human operators layered over the AI for cases automation cannot handle. Not generic VAs. Trained on your workflows, on call for exceptions, audit every edge."
+        url="https://www.digitalpointllc.com/operators"
+        serviceTypes={[
+        'Operations Coverage',
+        'Exception Handling',
+        'Quality Audit',
+        'Workflow Operations',
+        'Managed Service',
         ]}
       />
       <section className="hero">

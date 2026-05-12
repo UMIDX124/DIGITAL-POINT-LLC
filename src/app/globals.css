@@ -618,6 +618,10 @@ html[data-i-seen="1"] .dpl-intro-loader {
     radial-gradient(40% 30% at 100% 100%, rgba(255, 136, 0, 0.04), transparent 70%);
 }
 
+.hero.section-dark {
+  background-color: var(--color-canvas-dark);
+}
+
 .hero-bg {
   display: none;
 }

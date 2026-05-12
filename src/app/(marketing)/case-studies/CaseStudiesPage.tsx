@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { caseStudies } from '@/lib/case-studies';
+import { HeroAtmosphere } from '@/components/brand/HeroAtmosphere';
 
 export function CaseStudiesPage() {
   return (
     <>
-      <section className="hero">
-        <div className="hero-bg" aria-hidden="true" />
+      <section className="hero section-dark">
+        <HeroAtmosphere variant="subtle-dark" />
         <div className="hero-inner">
           <div className="hero-meta">
             <span>Case studies · Composites · Real engagements</span>
@@ -49,7 +50,7 @@ export function CaseStudiesPage() {
                 fontSize: '0.6875rem',
                 letterSpacing: '0.16em',
                 textTransform: 'uppercase',
-                color: 'var(--color-accent)',
+                color: 'var(--color-accent-text)',
               }}
             >
               Disclosure
@@ -93,7 +94,7 @@ export function CaseStudiesPage() {
                         fontSize: '0.6875rem',
                         letterSpacing: '0.16em',
                         textTransform: 'uppercase',
-                        color: 'var(--color-accent)',
+                        color: 'var(--color-accent-text)',
                       }}
                     >
                       {String(i + 1).padStart(2, '0')} · {study.industry}
@@ -115,7 +116,7 @@ export function CaseStudiesPage() {
                       style={{
                         fontSize: 'clamp(2rem, 4vw, 3rem)',
                         fontWeight: 600,
-                        color: 'var(--color-accent)',
+                        color: 'var(--color-accent-text)',
                         lineHeight: 1,
                       }}
                     >
@@ -215,7 +216,7 @@ export function CaseStudiesPage() {
                         style={{
                           fontSize: 'var(--text-md)',
                           fontWeight: 600,
-                          color: 'var(--color-accent)',
+                          color: 'var(--color-accent-text)',
                           letterSpacing: '-0.01em',
                         }}
                       >

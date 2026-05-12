@@ -113,7 +113,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${GeistSans.variable} ${GeistMono.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
       suppressHydrationWarning
       data-i-seen={introSeen}
     >
@@ -214,10 +214,7 @@ export default async function RootLayout({
         <meta name="theme-color" content="#000000" />
         <meta name="msapplication-TileColor" content="#000000" />
       </head>
-      <body
-        className="font-sans antialiased"
-        style={{ color: "#F5F5F7" }}
-      >
+      <body className="font-sans antialiased">
         {/* Phase 20 audit L5. Skip-to-content link for keyboard users.
             Visually hidden until focused, then anchors to <main id="main">
             in (marketing)/layout.tsx. */}

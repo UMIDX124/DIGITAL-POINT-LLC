@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
+import { FlowDiagram } from '@/components/brand/FlowDiagram';
 
 export const metadata: Metadata = {
   title: 'Process',
@@ -83,6 +84,18 @@ export default function ProcessPage() {
             <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
             <Link href="/pricing" className="btn btn-ghost">See pricing</Link>
           </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container-wide">
+          <FlowDiagram
+            steps={[
+              { label: 'Audit', sublabel: 'free · 5-day plan', status: 'active' },
+              { label: 'Pilot', sublabel: '30 days · $2,500', status: 'pending' },
+              { label: 'Retainer', sublabel: '$2,500 / month', status: 'pending' },
+            ]}
+          />
         </div>
       </section>
 

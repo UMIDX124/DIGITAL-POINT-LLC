@@ -15,7 +15,7 @@
  * are wrapped in <AnalyticsGate> which reads the same flag client-side
  * and only mounts when accepted.
  *
- * Bloomberg Operator palette compliance:
+ * Palette tokens used:
  *   bg #0A0A0A   border var(--border-default)   amber accept CTA
  *   ring-stroke  ghost necessary-only           text tokens
  */

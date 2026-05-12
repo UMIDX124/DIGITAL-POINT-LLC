@@ -15,17 +15,17 @@ type Founder = {
 const founders: Founder[] = [
   {
     name: 'M. Faizan Rafiq',
-    role: 'Co-Founder · Paid media + account restructure',
+    role: 'Co-founder · Paid media + account restructure',
     initials: 'MF',
     photo: '/team/faizan-square-512.jpg',
-    bio: 'Built the operations side of Digital Point. Eight-plus years running paid acquisition, attribution, and lead pipelines for growth-stage companies. Shipped the first agent stack out of necessity after watching too many ops hires churn through the same playbook.',
+    bio: 'Faizan rebuilds account structure end-to-end when he sees broad-targeting waste past $50K/month spend. The pattern repeats across e-commerce DTC accounts. Most of his audits surface 20-35% budget leakage in the first hour.',
     href: 'https://linkedin.com/in/faizanrafiq',
   },
   {
     name: 'Anwaar Tayyab',
-    role: 'Co-Founder · Attribution + data integration',
+    role: 'Co-founder · Attribution + data integration',
     initials: 'AT',
-    bio: 'Built the analytics and reporting infrastructure side. Turns messy data into clear weekly narratives. Treats every broken funnel like a puzzle. Writes the production runbooks every DPL agent ships with.',
+    bio: "Anwaar runs attribution rebuilds for B2B SaaS accounts where pipeline data lives in 5+ tools without integration. The signal his work is landing: a CMO can defend the marketing budget to the board 90 days in, without engineering's help.",
     href: 'https://linkedin.com/in/anwaartayyab',
   },
 ];

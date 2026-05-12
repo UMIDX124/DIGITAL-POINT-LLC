@@ -18,7 +18,7 @@ const VARIANT_SRC: Record<Variant, string> = {
 
 export function Logomark({
   size = 28,
-  variant = 'dark',
+  variant = 'light',
   className,
   ariaHidden = true,
   ariaLabel,

@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { PersonSchema } from '@/components/seo/PersonSchema';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
+import { InitialsAvatar } from '@/components/brand/InitialsAvatar';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -16,17 +18,27 @@ export const metadata: Metadata = {
   },
 };
 
-const founders = [
+type Founder = {
+  name: string;
+  role: string;
+  initials: string;
+  photo?: string;
+  bio: string;
+  href: string;
+};
+
+const founders: Founder[] = [
   {
     name: 'M. Faizan Rafiq',
-    role: 'Co-Founder',
+    role: 'Co-Founder · Paid media + account restructure',
     initials: 'MF',
+    photo: '/team/faizan-square-512.jpg',
     bio: 'Built the operations side of Digital Point. Eight-plus years running paid acquisition, attribution, and lead pipelines for growth-stage companies. Shipped the first agent stack out of necessity after watching too many ops hires churn through the same playbook.',
     href: 'https://linkedin.com/in/faizanrafiq',
   },
   {
     name: 'Anwaar Tayyab',
-    role: 'Co-Founder',
+    role: 'Co-Founder · Attribution + data integration',
     initials: 'AT',
     bio: 'Built the analytics and reporting infrastructure side. Turns messy data into clear weekly narratives. Treats every broken funnel like a puzzle. Writes the production runbooks every DPL agent ships with.',
     href: 'https://linkedin.com/in/anwaartayyab',
@@ -110,27 +122,28 @@ export default function AboutPage() {
           </div>
 
           <div className="pillar-grid" style={{ marginBlockStart: '3rem' }}>
-            {founders.map((f) => (
+            {founders.map((f, i) => (
               <article key={f.name} className="pillar-card" style={{ gap: '1.25rem' }}>
-                <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                  <div
-                    style={{
-                      width: 56,
-                      height: 56,
-                      borderRadius: 12,
-                      background: 'var(--color-canvas-bright)',
-                      border: '1px solid var(--color-line-soft)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'var(--color-accent)',
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: 'var(--text-md)',
-                      letterSpacing: '0.06em',
-                    }}
-                  >
-                    {f.initials}
-                  </div>
+                <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'center' }}>
+                  {f.photo ? (
+                    <Image
+                      src={f.photo}
+                      alt={`${f.name}, ${f.role}`}
+                      width={96}
+                      height={96}
+                      priority={i === 0}
+                      style={{
+                        width: 96,
+                        height: 96,
+                        borderRadius: '50%',
+                        border: '2px solid var(--color-accent)',
+                        objectFit: 'cover',
+                        flexShrink: 0,
+                      }}
+                    />
+                  ) : (
+                    <InitialsAvatar initials={f.initials} size={96} ariaLabel={f.name} />
+                  )}
                   <div>
                     <h3
                       className="font-display"

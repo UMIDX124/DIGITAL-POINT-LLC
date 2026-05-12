@@ -14,7 +14,7 @@
   --accent-primary: #ff8800;
   --text-primary: #0a0a0a;
   --text-secondary: #44444a;
-  --text-muted: #6b6b73;
+  --text-muted: #6e6e76;
   --text-tertiary: #6b6b73;
   --color-text-muted-legacy: #8d8d96;
   --maxw-heading-display: 88rem;
@@ -36,12 +36,15 @@
   --color-accent: #ff8800;
   --color-accent-soft: #c26800;
   --color-accent-faint: rgba(255, 136, 0, 0.12);
+  /* --color-accent-text: darker amber for small body text on light canvas.
+     #ff8800 hits only 2.3:1 contrast on #fafafa; #a85800 hits ~5.5:1 (AA pass). */
+  --color-accent-text: #a85800;
 
   /* Text — dark on light canvas, WCAG AA on #FAFAFA */
   --color-text-primary: #0a0a0a;
   --color-text-secondary: #44444a;
   --color-text-tertiary: #6b6b73;
-  --color-text-muted: #8d8d96;
+  --color-text-muted: #6e6e76; /* darkened from #8d8d96 to hit AA (>= 4.5:1) on light canvas */
 
   /* Lines + borders */
   --color-line-faint: rgba(10, 10, 10, 0.06);
@@ -227,7 +230,7 @@ select {
 }
 
 .eyebrow--accent {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .text-balance {
@@ -410,7 +413,7 @@ select {
 }
 
 .btn-link:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .btn-link::after {
@@ -487,7 +490,7 @@ select {
 .tag-mono--accent {
   border-color: var(--color-line-accent);
   background: var(--color-accent-faint);
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 /* ============================================================
@@ -863,7 +866,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   font-size: 0.75rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .process-step__title {
@@ -883,7 +886,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
 .process-step__price {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   font-feature-settings: "tnum";
 }
 
@@ -984,7 +987,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(10, 10, 10, 0.72);
+  background: rgba(250, 250, 250, 0.78);
   backdrop-filter: saturate(180%) blur(14px);
   -webkit-backdrop-filter: saturate(180%) blur(14px);
   border-block-end: 1px solid var(--color-line-faint);

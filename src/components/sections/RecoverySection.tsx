@@ -30,7 +30,7 @@ export function RecoverySection() {
               drift detection, prompt-injection resistance, cost variance, escalation
               paths.
             </p>
-            <p className="font-mono" style={{ color: 'var(--color-accent)', fontSize: 'var(--text-sm)' }}>
+            <p className="font-mono" style={{ color: 'var(--color-accent-text)', fontSize: 'var(--text-sm)' }}>
               $5,000 · 2 weeks
             </p>
             <div className="pillar-card__link">
@@ -45,7 +45,7 @@ export function RecoverySection() {
               Production fixes with proper observability, retries, and rollback. We ship
               the new runbooks and walk your team through every change before handover.
             </p>
-            <p className="font-mono" style={{ color: 'var(--color-accent)', fontSize: 'var(--text-sm)' }}>
+            <p className="font-mono" style={{ color: 'var(--color-accent-text)', fontSize: 'var(--text-sm)' }}>
               $10,000 · 4 weeks
             </p>
             <div className="pillar-card__link">
@@ -60,7 +60,7 @@ export function RecoverySection() {
               Standard DPL retainer takes over. Real-time Slack channel with every agent
               decision logged. You watch us work for you.
             </p>
-            <p className="font-mono" style={{ color: 'var(--color-accent)', fontSize: 'var(--text-sm)' }}>
+            <p className="font-mono" style={{ color: 'var(--color-accent-text)', fontSize: 'var(--text-sm)' }}>
               $2,500 / month
             </p>
             <div className="pillar-card__link">

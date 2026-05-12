@@ -13,6 +13,7 @@ import {
   Section, Container, FadeUp, GlassCard, SignalPoint
 } from '@/components/ui-dp/AnimatedElements';
 import { trackFormStart, trackFormSubmit, trackFormSuccess, trackFormError, trackEvent } from '@/lib/analytics';
+import { FlowDiagram } from '@/components/brand/FlowDiagram';
 
 const challenges = [
   { id: 'inconsistent-leads', label: 'Inconsistent leads', icon: TrendingUp, description: 'Lead flow is unpredictable month to month' },
@@ -178,6 +179,27 @@ export function AuditPage() {
       {/* Form Section */}
       <Section className="pt-0 pb-20">
         <Container>
+          <div style={{ marginBlockEnd: '2.5rem' }}>
+            <FlowDiagram
+              steps={[
+                {
+                  label: 'Bottleneck',
+                  sublabel: "what's broken",
+                  status: step > 1 ? 'done' : 'active',
+                },
+                {
+                  label: 'Stack',
+                  sublabel: 'what you run',
+                  status: step > 2 ? 'done' : step === 2 ? 'active' : 'pending',
+                },
+                {
+                  label: 'Contact',
+                  sublabel: 'how we reply',
+                  status: step > 3 ? 'done' : step === 3 ? 'active' : 'pending',
+                },
+              ]}
+            />
+          </div>
           <div className="grid lg:grid-cols-5 gap-8">
             {/* Form */}
             <FadeUp className="lg:col-span-3">
@@ -251,7 +273,7 @@ export function AuditPage() {
                               <challenge.icon className="w-5 h-5 text-[color:var(--accent-primary)]" />
                             </div>
                             <div>
-                              <div className="text-white font-medium text-sm">{challenge.label}</div>
+                              <div className="text-[color:var(--color-text-primary)] font-medium text-sm">{challenge.label}</div>
                               <div className="text-[color:var(--text-muted)] text-xs mt-0.5">{challenge.description}</div>
                             </div>
                             <ArrowRight className="w-4 h-4 text-[color:var(--accent-primary)] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -292,7 +314,7 @@ export function AuditPage() {
                                 : '1px solid rgba(255, 168, 51, 0.1)',
                             }}
                           >
-                            <div className="text-white font-medium text-sm group-hover:text-[color:var(--accent-bright)] transition-colors">
+                            <div className="text-[color:var(--color-text-primary)] font-medium text-sm group-hover:text-[color:var(--accent-bright)] transition-colors">
                               {range.label}
                             </div>
                           </button>

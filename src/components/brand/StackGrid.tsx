@@ -53,7 +53,7 @@ export function StackGrid({ items, context = 'light', className }: Props) {
                 fontSize: '0.6875rem',
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
-                color: accent ? 'var(--color-accent)' : roleColor,
+                color: accent ? (context === 'dark' ? 'var(--color-accent)' : 'var(--color-accent-text)') : roleColor,
               }}
             >
               {item.icon && (

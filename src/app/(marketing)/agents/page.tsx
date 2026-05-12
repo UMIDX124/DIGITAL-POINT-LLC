@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
+import { HeroAtmosphere } from '@/components/brand/HeroAtmosphere';
+import { StackGrid } from '@/components/brand/StackGrid';
 
 export const metadata: Metadata = {
   title: 'AI Agents',
@@ -46,7 +48,7 @@ export default function AgentsPage() {
         ]}
       />
       <section className="hero">
-        <div className="hero-bg" aria-hidden="true" />
+        <HeroAtmosphere variant="pillar" />
         <div className="hero-inner">
           <div className="hero-meta">
             <span>Pillar 01 · AI Agents</span>
@@ -94,6 +96,31 @@ export default function AgentsPage() {
                 <p className="pillar-card__desc">{u.desc}</p>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-divider">
+        <div className="container-wide">
+          <div className="section-header">
+            <p className="eyebrow">The stack · self-hosted where it matters</p>
+            <h2 className="section-title text-balance">
+              Production-grade, not a chatbot template.
+            </h2>
+            <p className="section-desc text-pretty">
+              Four primitives layered behind every agent we ship. Custom TypeScript
+              services own the edges where vendor SDKs break.
+            </p>
+          </div>
+          <div style={{ marginBlockStart: '3rem' }}>
+            <StackGrid
+              items={[
+                { label: 'n8n', role: 'orchestration' },
+                { label: 'Groq', role: 'inference' },
+                { label: 'Postgres', role: 'state' },
+                { label: 'TypeScript', role: 'custom services', accent: true },
+              ]}
+            />
           </div>
         </div>
       </section>

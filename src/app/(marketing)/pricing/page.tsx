@@ -138,7 +138,7 @@ export default function PricingPage() {
                   style={{
                     fontSize: 'clamp(2rem, 4vw, 3rem)',
                     fontWeight: 600,
-                    color: t.name === 'Pilot' ? 'var(--color-accent)' : 'var(--color-text-primary)',
+                    color: t.name === 'Pilot' ? 'var(--color-accent-text)' : 'var(--color-text-primary)',
                     lineHeight: 1,
                     letterSpacing: '-0.025em',
                   }}
@@ -220,7 +220,7 @@ export default function PricingPage() {
                   style={{
                     fontSize: 'clamp(2rem, 4vw, 3rem)',
                     fontWeight: 600,
-                    color: 'var(--color-accent)',
+                    color: 'var(--color-accent-text)',
                     lineHeight: 1,
                   }}
                 >

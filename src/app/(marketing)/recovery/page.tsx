@@ -186,7 +186,7 @@ export default function RecoveryPage() {
                 <span
                   className="font-mono"
                   style={{
-                    color: 'var(--color-accent)',
+                    color: 'var(--color-accent-text)',
                     fontSize: '0.75rem',
                     letterSpacing: '0.12em',
                     minWidth: '2rem',

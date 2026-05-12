@@ -46,7 +46,7 @@ export function FlowDiagram({ steps, context = 'light', className }: Props) {
           status === 'done'
             ? '#0a0a0a'
             : status === 'active'
-            ? 'var(--color-accent)'
+            ? (context === 'dark' ? 'var(--color-accent)' : 'var(--color-text-primary)')
             : context === 'dark'
             ? 'var(--color-text-dark-secondary)'
             : 'var(--color-text-secondary)';

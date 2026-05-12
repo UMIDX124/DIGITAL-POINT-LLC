@@ -37,23 +37,6 @@ const nextConfig: NextConfig = {
           { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
           // Cross-origin process isolation.
           { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
-          // CSP allowing Vercel Analytics + inline LD-JSON without
-          // breaking Three.js dynamic imports.
-          {
-            key: 'Content-Security-Policy',
-            value: [
-              "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.vercel-scripts.com https://*.vercel.live https://va.vercel-scripts.com",
-              "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data: blob: https://picsum.photos https://*.vercel-scripts.com",
-              "font-src 'self' data:",
-              "connect-src 'self' https://*.vercel-insights.com https://*.vercel-scripts.com https://vitals.vercel-insights.com",
-              "frame-ancestors 'none'",
-              "base-uri 'self'",
-              "form-action 'self'",
-              "upgrade-insecure-requests",
-            ].join('; '),
-          },
         ],
       },
     ];

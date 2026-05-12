@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
@@ -100,21 +101,27 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const hdrs = await headers();
+  const nonce = hdrs.get("x-nonce") ?? undefined;
+  const introSeen = hdrs.get("x-intro-seen") === "1" ? "1" : undefined;
+
   return (
     <html
       lang="en"
       className={`dark ${GeistSans.variable} ${GeistMono.variable}`}
       suppressHydrationWarning
+      data-i-seen={introSeen}
     >
       <head>
         {/* Organization Schema */}
         <script
           type="application/ld+json"
+          nonce={nonce}
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -155,6 +162,7 @@ export default function RootLayout({
         {/* Professional Service Schema */}
         <script
           type="application/ld+json"
+          nonce={nonce}
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -180,6 +188,7 @@ export default function RootLayout({
         {/* WebSite Schema */}
         <script
           type="application/ld+json"
+          nonce={nonce}
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -193,6 +202,7 @@ export default function RootLayout({
         {/* BreadcrumbList Schema */}
         <script
           type="application/ld+json"
+          nonce={nonce}
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -218,16 +228,9 @@ export default function RootLayout({
             uses fallback until ready (Pillar 3R iter 2 CLS fix). Net: drop
             ~20KB of eager font fetch, paint stays stable. */}
 
-        {/* Phase 12. CSS-only intro loader sessionStorage gate. Inline
-            script runs synchronously before paint to mark <html> if the
-            intro has been shown this session. CSS in globals.css uses the
-            attribute selector to skip the @keyframes when present. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "try{if(sessionStorage.getItem('dpl_i')==='1')document.documentElement.dataset.iSeen='1';else sessionStorage.setItem('dpl_i','1')}catch(e){}",
-          }}
-        />
+        {/* Intro loader gate. Cookie 'dpl_i' set in src/proxy.ts on first visit;
+            data-i-seen on <html> tells globals.css to skip the @keyframes on
+            return visits. Pure server-side, no inline JS, CSP-clean. */}
 
         <meta name="theme-color" content="#000000" />
         <meta name="msapplication-TileColor" content="#000000" />

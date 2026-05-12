@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { AuditPage } from '@/components/sections/AuditPage';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Book a Free Audit',
@@ -31,5 +32,15 @@ export const metadata: Metadata = {
 };
 
 export default function AuditRoute() {
-  return <AuditPage />;
+  return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', item: 'https://www.digitalpointllc.com' },
+          { name: 'Audit', item: 'https://www.digitalpointllc.com/audit' },
+        ]}
+      />
+      <AuditPage />
+    </>
+  );
 }

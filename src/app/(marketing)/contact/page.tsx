@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -44,6 +45,12 @@ const channels = [
 export default function ContactPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Contact', item: 'https://www.digitalpointllc.com/contact' },
+        ]}
+      />
       <section className="hero">
         <div className="hero-bg" aria-hidden="true" />
         <div className="hero-inner">

@@ -199,27 +199,6 @@ export default async function RootLayout({
           }}
         />
 
-        {/* BreadcrumbList Schema */}
-        <script
-          type="application/ld+json"
-          nonce={nonce}
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.digitalpointllc.com" },
-                { "@type": "ListItem", position: 2, name: "Recovery", item: "https://www.digitalpointllc.com/recovery" },
-                { "@type": "ListItem", position: 3, name: "Agents", item: "https://www.digitalpointllc.com/agents" },
-                { "@type": "ListItem", position: 4, name: "Automation", item: "https://www.digitalpointllc.com/automation" },
-                { "@type": "ListItem", position: 5, name: "Operators", item: "https://www.digitalpointllc.com/operators" },
-                { "@type": "ListItem", position: 6, name: "Pricing", item: "https://www.digitalpointllc.com/pricing" },
-                { "@type": "ListItem", position: 7, name: "Audit", item: "https://www.digitalpointllc.com/audit" },
-              ],
-            }),
-          }}
-        />
-
         {/* Phase 18.6 P7 perf-pass. Instrument Serif preload tags removed.
             Browser console warning on production: "preloaded but not used
             within a few seconds from window load event". The preload was

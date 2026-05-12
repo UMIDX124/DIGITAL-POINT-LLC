@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 const sections = [
   {
@@ -39,6 +40,12 @@ export default function CookiesPage() {
 
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Cookies', item: 'https://www.digitalpointllc.com/cookies' },
+        ]}
+      />
       <section className="hero">
         <div className="hero-bg" aria-hidden="true" />
         <div className="hero-inner">

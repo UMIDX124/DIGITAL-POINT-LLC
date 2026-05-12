@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ArticleSchema, FAQSchema } from '@/components/seo/FAQSchema';
 import { GoogleAdsROASBenchmarks } from './GoogleAdsROASBenchmarks';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Google Ads ROAS Benchmarks by Industry: Search, Display, YouTube & PMax',
@@ -23,6 +24,13 @@ const faqs = [
 export default function GoogleAdsROASBenchmarksPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Research', item: 'https://www.digitalpointllc.com/research' },
+        { name: 'Google Ads ROAS Benchmarks', item: 'https://www.digitalpointllc.com/research/google-ads-roas-benchmarks' },
+        ]}
+      />
       <ArticleSchema
         title="Google Ads ROAS Benchmarks by Industry"
         description="Google Ads ROAS benchmarks across Search, Display, YouTube, and Performance Max campaigns."

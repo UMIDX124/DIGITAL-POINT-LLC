@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { ToolSchema } from '@/components/seo/FAQSchema';
 import { FAQSchema } from '@/components/seo/FAQSchema';
 import { DashboardCostCalculator } from './DashboardCostCalculator';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Marketing Dashboard Cost Calculator: Estimate Build vs Buy Costs',
@@ -24,6 +25,13 @@ const faqs = [
 export default function DashboardCostCalculatorPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Tools', item: 'https://www.digitalpointllc.com/tools' },
+        { name: 'Dashboard Cost Calculator', item: 'https://www.digitalpointllc.com/tools/dashboard-cost-calculator' },
+        ]}
+      />
       <ToolSchema
         name="Marketing Dashboard Cost Calculator"
         description="Free calculator to estimate the cost of building or buying a marketing dashboard solution."

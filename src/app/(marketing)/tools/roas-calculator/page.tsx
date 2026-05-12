@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { ToolSchema } from '@/components/seo/FAQSchema';
 import { FAQSchema } from '@/components/seo/FAQSchema';
 import { ROASCalculator } from './ROASCalculator';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Free ROAS Calculator: Calculate Return on Ad Spend',
@@ -24,6 +25,13 @@ const faqs = [
 export default function ROASCalculatorPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Tools', item: 'https://www.digitalpointllc.com/tools' },
+        { name: 'ROAS Calculator', item: 'https://www.digitalpointllc.com/tools/roas-calculator' },
+        ]}
+      />
       <ToolSchema
         name="ROAS Calculator"
         description="Free calculator to determine your Return on Ad Spend (ROAS) across advertising channels."

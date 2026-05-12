@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ArticleSchema, FAQSchema } from '@/components/seo/FAQSchema';
 import { AverageCACByIndustry } from './AverageCACByIndustry';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Average Customer Acquisition Cost (CAC) by Industry: 2026 Benchmarks',
@@ -24,6 +25,13 @@ const faqs = [
 export default function AverageCACByIndustryPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Research', item: 'https://www.digitalpointllc.com/research' },
+        { name: 'Average CAC by Industry', item: 'https://www.digitalpointllc.com/research/average-cac-by-industry' },
+        ]}
+      />
       <ArticleSchema
         title="Average Customer Acquisition Cost by Industry"
         description="CAC benchmarks across 18 industries with breakdowns by company size, channel, and business model."

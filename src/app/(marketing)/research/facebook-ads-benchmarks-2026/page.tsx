@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ArticleSchema, FAQSchema } from '@/components/seo/FAQSchema';
 import { FacebookAdsBenchmarks } from './FacebookAdsBenchmarks';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Facebook Ads Benchmarks 2026: CPC, CPM, CTR & ROAS by Industry',
@@ -24,6 +25,13 @@ const faqs = [
 export default function FacebookAdsBenchmarksPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Research', item: 'https://www.digitalpointllc.com/research' },
+        { name: 'Facebook Ads Benchmarks 2026', item: 'https://www.digitalpointllc.com/research/facebook-ads-benchmarks-2026' },
+        ]}
+      />
       <ArticleSchema
         title="Facebook Ads Benchmarks 2026"
         description="Updated Facebook Ads benchmarks for 2026: average CPC, CPM, CTR, and ROAS across 12 industries."

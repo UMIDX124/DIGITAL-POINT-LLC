@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { ToolSchema } from '@/components/seo/FAQSchema';
 import { FAQSchema } from '@/components/seo/FAQSchema';
 import { AttributionVisualizer } from './AttributionVisualizer';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Marketing Attribution Model Visualizer: Compare Models Side by Side',
@@ -24,6 +25,13 @@ const faqs = [
 export default function AttributionVisualizerPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Tools', item: 'https://www.digitalpointllc.com/tools' },
+        { name: 'Attribution Model Visualizer', item: 'https://www.digitalpointllc.com/tools/attribution-model-visualizer' },
+        ]}
+      />
       <ToolSchema
         name="Marketing Attribution Model Visualizer"
         description="Free tool to visualize and compare how different attribution models distribute conversion credit across marketing touchpoints."

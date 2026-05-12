@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { DiagnosticTool } from '@/components/diagnostic/DiagnosticTool';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Agent Production-Readiness Diagnostic',
@@ -19,6 +20,12 @@ export const metadata: Metadata = {
 export default function DiagnosticPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Diagnostic', item: 'https://www.digitalpointllc.com/diagnostic' },
+        ]}
+      />
       <section className="hero">
         <div className="hero-bg" aria-hidden="true" />
         <div className="hero-inner">

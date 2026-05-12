@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'AI Agents',
@@ -38,6 +39,12 @@ const useCases = [
 export default function AgentsPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'AI Agents', item: 'https://www.digitalpointllc.com/agents' },
+        ]}
+      />
       <section className="hero">
         <div className="hero-bg" aria-hidden="true" />
         <div className="hero-inner">

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ArticleSchema, FAQSchema } from '@/components/seo/FAQSchema';
 import { MarketingAttributionStatistics } from './MarketingAttributionStatistics';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Marketing Attribution Statistics 2026: Models, Accuracy & Privacy Impact',
@@ -23,6 +24,13 @@ const faqs = [
 export default function MarketingAttributionStatisticsPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Research', item: 'https://www.digitalpointllc.com/research' },
+        { name: 'Marketing Attribution Statistics', item: 'https://www.digitalpointllc.com/research/marketing-attribution-statistics' },
+        ]}
+      />
       <ArticleSchema
         title="Marketing Attribution Statistics 2026"
         description="Marketing attribution statistics: model adoption rates, tracking accuracy, and privacy impact data."

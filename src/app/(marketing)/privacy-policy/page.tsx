@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
@@ -97,6 +98,12 @@ const sections = [
 export default function PrivacyPolicyPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Privacy', item: 'https://www.digitalpointllc.com/privacy-policy' },
+        ]}
+      />
       <section className="hero">
         <div className="hero-bg" aria-hidden="true" />
         <div className="hero-inner">

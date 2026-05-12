@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PersonSchema } from '@/components/seo/PersonSchema';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -54,6 +55,12 @@ const values = [
 export default function AboutPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'About', item: 'https://www.digitalpointllc.com/about' },
+        ]}
+      />
       <PersonSchema
         name="M. Faizan Rafiq"
         jobTitle="Co-Founder"

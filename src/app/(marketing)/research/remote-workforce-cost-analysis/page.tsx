@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ArticleSchema, FAQSchema } from '@/components/seo/FAQSchema';
 import { RemoteWorkforceCostAnalysis } from './RemoteWorkforceCostAnalysis';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Remote Workforce Cost Analysis: US In-House vs Remote Teams (2026)',
@@ -24,6 +25,13 @@ const faqs = [
 export default function RemoteWorkforceCostAnalysisPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Research', item: 'https://www.digitalpointllc.com/research' },
+        { name: 'Remote Workforce Cost Analysis', item: 'https://www.digitalpointllc.com/research/remote-workforce-cost-analysis' },
+        ]}
+      />
       <ArticleSchema
         title="Remote Workforce Cost Analysis"
         description="Comprehensive cost comparison of US in-house teams vs managed remote teams across marketing, engineering, and operations roles."

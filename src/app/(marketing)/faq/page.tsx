@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { FAQSchema } from '@/components/seo/FAQSchema';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'FAQ',
@@ -55,6 +56,12 @@ const faqs = [
 export default function FAQPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'FAQ', item: 'https://www.digitalpointllc.com/faq' },
+        ]}
+      />
       <FAQSchema faqs={faqs.map((f) => ({ question: f.q, answer: f.a }))} />
 
       <section className="hero">

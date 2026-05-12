@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ToolSchema, FAQSchema } from '@/components/seo/FAQSchema';
 import { AdSpendCalculator } from './AdSpendCalculator';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Ad Spend Profit Calculator: Model Your Advertising ROI',
@@ -18,6 +19,13 @@ const faqs = [
 export default function Page() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Tools', item: 'https://www.digitalpointllc.com/tools' },
+        { name: 'Ad Spend Profit Calculator', item: 'https://www.digitalpointllc.com/tools/ad-spend-profit-calculator' },
+        ]}
+      />
       <ToolSchema name="Ad Spend Profit Calculator" description="Model advertising profitability at different spend levels." url="https://www.digitalpointllc.com/tools/ad-spend-profit-calculator" />
       <FAQSchema faqs={faqs} />
       <AdSpendCalculator faqs={faqs} />

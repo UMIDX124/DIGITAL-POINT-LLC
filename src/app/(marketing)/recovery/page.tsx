@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'AI Agent Recovery',
@@ -65,6 +66,12 @@ const symptoms = [
 export default function RecoveryPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Recovery', item: 'https://www.digitalpointllc.com/recovery' },
+        ]}
+      />
       <section className="hero" id="hero">
         <div className="hero-bg" aria-hidden="true" />
         <div className="hero-inner">

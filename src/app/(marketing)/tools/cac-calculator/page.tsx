@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ToolSchema, FAQSchema } from '@/components/seo/FAQSchema';
 import { CACCalculator } from './CACCalculator';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Free CAC Calculator: Customer Acquisition Cost',
@@ -18,6 +19,13 @@ const faqs = [
 export default function CACCalculatorPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Tools', item: 'https://www.digitalpointllc.com/tools' },
+        { name: 'CAC Calculator', item: 'https://www.digitalpointllc.com/tools/cac-calculator' },
+        ]}
+      />
       <ToolSchema name="CAC Calculator" description="Calculate Customer Acquisition Cost across channels." url="https://www.digitalpointllc.com/tools/cac-calculator" />
       <FAQSchema faqs={faqs} />
       <CACCalculator faqs={faqs} />

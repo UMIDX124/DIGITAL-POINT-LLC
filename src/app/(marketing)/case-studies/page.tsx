@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { CaseStudiesPage } from './CaseStudiesPage';
 import { DesignOnlyBanner } from '@/components/integrity/DesignOnlyBanner';
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
   title: 'Case Studies',
@@ -24,6 +25,12 @@ export const metadata: Metadata = {
 export default function CaseStudies() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Case Studies', item: 'https://www.digitalpointllc.com/case-studies' },
+        ]}
+      />
       <div className="container-wide" style={{ paddingTop: 'var(--section-sm)' }}>
         <DesignOnlyBanner note="Case-study outcomes are anonymized composites pending fresh client signoff. Numbers reflect representative engagement shape, not a specific named client until cleared." />
       </div>

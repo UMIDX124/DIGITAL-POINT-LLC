@@ -773,9 +773,16 @@ html[data-i-seen="1"] .dpl-intro-loader {
 
 @media (min-width: 768px) {
   .math-row {
-    grid-template-columns: 1fr auto 1fr;
-    gap: var(--space-10);
+    grid-template-columns: 1fr 1.4fr 1fr;
+    gap: var(--space-8);
+    align-items: center;
   }
+}
+
+.math-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .math-tile {

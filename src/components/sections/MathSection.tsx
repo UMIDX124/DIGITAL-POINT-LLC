@@ -1,4 +1,5 @@
 import { CountUp } from '@/components/motion/CountUp';
+import { DataBar } from '@/components/brand/DataBar';
 
 export function MathSection() {
   return (
@@ -28,7 +29,15 @@ export function MathSection() {
             </p>
           </article>
 
-          <span className="math-arrow" aria-hidden="true">→</span>
+          <div className="math-bar" aria-hidden="true">
+            <DataBar
+              values={[
+                { label: 'In-house ops · annual', amount: 400000, accent: false },
+                { label: 'DPL retainer · annual', amount: 30000, accent: true },
+              ]}
+              format="usd"
+            />
+          </div>
 
           <article className="math-tile math-tile--accent">
             <span className="math-tile__label">DPL retainer · annual</span>

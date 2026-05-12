@@ -282,6 +282,42 @@ select {
   border-block-start: 1px solid var(--color-line-faint);
 }
 
+/* Dark accent section — opt-in inversion of the light canvas. Used on
+   case-studies hero, certain CTA bands, recovery hero per Part 2.
+   Wrap with: <section className="section section-dark">. */
+.section-dark {
+  background-color: var(--color-canvas-dark);
+  color: var(--color-text-dark-primary);
+}
+.section-dark h1, .section-dark h2, .section-dark h3,
+.section-dark .section-title, .section-dark .hero-title {
+  color: var(--color-text-dark-primary);
+}
+.section-dark .section-desc, .section-dark .hero-sub, .section-dark p {
+  color: var(--color-text-dark-secondary);
+}
+.section-dark .eyebrow, .section-dark .hero-microcopy {
+  color: var(--color-text-dark-muted);
+}
+.section-dark a, .section-dark .link {
+  color: var(--color-accent);
+}
+.section-dark .card,
+.section-dark .math-tile,
+.section-dark .pillar-card {
+  background-color: var(--color-canvas-dark-raised);
+  border: 1px solid var(--color-line-dark-faint);
+  color: var(--color-text-dark-primary);
+}
+.section-dark .card:hover,
+.section-dark .pillar-card:hover {
+  border-color: var(--color-line-dark-soft);
+}
+.section-dark .btn-ghost {
+  color: var(--color-text-dark-primary);
+  border-color: var(--color-line-dark-bright);
+}
+
 /* Section header */
 .section-header {
   max-width: 56rem;

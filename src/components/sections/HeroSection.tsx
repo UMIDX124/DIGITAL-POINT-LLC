@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import { HeroAtmosphere } from '@/components/brand/HeroAtmosphere';
 
 export function HeroSection() {
   return (
     <section className="hero" id="hero">
-      <div className="hero-bg" aria-hidden="true" />
+      <HeroAtmosphere variant="home" />
       <div className="hero-inner">
         <div className="hero-meta">
           <span>DPL · 2017</span>

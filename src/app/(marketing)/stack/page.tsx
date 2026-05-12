@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
+import { StackGrid } from '@/components/brand/StackGrid';
 
 export const metadata: Metadata = {
   title: 'Stack',
@@ -84,6 +85,31 @@ export default function StackPage() {
           <div className="hero-cta-row">
             <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
             <Link href="/recovery" className="btn btn-ghost">Recovery service</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container-wide">
+          <div className="section-header">
+            <p className="eyebrow">Eight primitives</p>
+            <h2 className="section-title text-balance">
+              The shape of the stack at a glance.
+            </h2>
+          </div>
+          <div style={{ marginBlockStart: '3rem' }}>
+            <StackGrid
+              items={[
+                { label: 'n8n', role: 'orchestration' },
+                { label: 'Groq', role: 'inference' },
+                { label: 'Postgres', role: 'agent state' },
+                { label: 'TypeScript', role: 'custom services', accent: true },
+                { label: 'Upstash', role: 'rate limit + cache' },
+                { label: 'Vercel', role: 'edge + functions' },
+                { label: 'BotID', role: 'bot defense' },
+                { label: 'Resend', role: 'transactional email' },
+              ]}
+            />
           </div>
         </div>
       </section>

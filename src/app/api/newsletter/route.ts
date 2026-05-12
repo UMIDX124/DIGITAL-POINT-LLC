@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { checkBotId } from 'botid/server';
 import { sendEmail, escapeHtml } from '@/lib/email';
 import { db } from '@/lib/db';
 import { NewsletterSchema } from '@/lib/schemas';
@@ -6,6 +7,11 @@ import { newsletterLimiter, getClientIp } from '@/lib/ratelimit';
 
 export async function POST(req: Request) {
   try {
+    const verification = await checkBotId();
+    if (verification.isBot && !verification.isVerifiedBot) {
+      return NextResponse.json({ error: 'Request blocked.' }, { status: 403 });
+    }
+
     const ip = getClientIp(req.headers);
     const { success: rlOk } = await newsletterLimiter.limit(ip);
     if (!rlOk) {

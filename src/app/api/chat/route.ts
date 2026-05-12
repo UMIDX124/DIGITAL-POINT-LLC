@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { checkBotId } from 'botid/server';
 import { COSMO_SYSTEM_PROMPT as SYSTEM_PROMPT } from '@/lib/cosmo-system-prompt';
 import { ChatRequestSchema } from '@/lib/schemas';
 import { chatLimiter, getClientIp } from '@/lib/ratelimit';
@@ -16,6 +17,11 @@ export async function POST(req: NextRequest) {
   console.log(`[chat] req hasKey=${hasKey} keyLen=${keyLen}`);
 
   try {
+    const verification = await checkBotId();
+    if (verification.isBot && !verification.isVerifiedBot) {
+      return NextResponse.json({ error: 'Request blocked.' }, { status: 403 });
+    }
+
     const ip = getClientIp(req.headers);
     const { success } = await chatLimiter.limit(ip);
     if (!success) {

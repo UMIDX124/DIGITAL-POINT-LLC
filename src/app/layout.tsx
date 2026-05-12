@@ -254,6 +254,10 @@ export default function RootLayout({
           protect={[
             { path: '/api/audit', method: 'POST' },
             { path: '/api/founder', method: 'POST' },
+            { path: '/api/leads', method: 'POST' },
+            { path: '/api/chat', method: 'POST' },
+            { path: '/api/ticket', method: 'POST' },
+            { path: '/api/newsletter', method: 'POST' },
           ]}
         />
         {children}

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { checkBotId } from 'botid/server';
 import { db } from '@/lib/db';
 import { sendEmail, escapeHtml } from '@/lib/email';
 import { SupportTicketSchema } from '@/lib/schemas';
@@ -18,6 +19,14 @@ function sanitize(input: string | undefined | null): string | null {
 // ─── POST Handler ────────────────────────────────────────────────────────────
 export async function POST(request: NextRequest) {
   try {
+    const verification = await checkBotId();
+    if (verification.isBot && !verification.isVerifiedBot) {
+      return NextResponse.json(
+        { success: false, message: 'Request blocked.' },
+        { status: 403 }
+      );
+    }
+
     const ip = getClientIp(request.headers);
     const { success } = await ticketLimiter.limit(ip);
     if (!success) {

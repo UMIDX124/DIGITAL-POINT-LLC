@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { checkBotId } from 'botid/server';
 import { db } from '@/lib/db';
 import { sendEmail, escapeHtml } from '@/lib/email';
 import { computeLeadQualityScore } from '@/lib/lead-scoring';
@@ -6,6 +7,11 @@ import { LeadSubmissionSchema } from '@/lib/schemas';
 
 export async function POST(request: NextRequest) {
   try {
+    const verification = await checkBotId();
+    if (verification.isBot && !verification.isVerifiedBot) {
+      return NextResponse.json({ error: 'Request blocked.' }, { status: 403 });
+    }
+
     const body = await request.json();
     const parsed = LeadSubmissionSchema.safeParse(body);
     if (!parsed.success) {

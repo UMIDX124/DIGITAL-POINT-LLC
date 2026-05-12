@@ -521,7 +521,7 @@ select {
   align-items: center;
   justify-content: center;
   gap: var(--space-4);
-  background: var(--color-canvas);
+  background: var(--color-canvas-dark);
   z-index: 100;
   animation: dpl-intro-out 0.8s var(--ease-out) 0.7s forwards;
 }

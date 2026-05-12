@@ -86,9 +86,9 @@ export default function CookieConsent() {
       <div className="px-3 py-2.5 flex items-center gap-2.5">
         <p
           className="text-[11.5px] leading-snug flex-1 min-w-0"
-          style={{ color: 'var(--text-secondary)' }}
+          style={{ color: 'var(--color-text-dark-secondary)' }}
         >
-          <span style={{ color: 'var(--text-primary)' }}>
+          <span style={{ color: 'var(--color-text-dark-primary)' }}>
             Minimal analytics. No trackers.
           </span>
           {' '}
@@ -96,7 +96,7 @@ export default function CookieConsent() {
             href="/cookies"
             className="whitespace-nowrap"
             style={{
-              color: 'var(--color-text-primary)',
+              color: 'var(--color-text-dark-primary)',
               textDecoration: 'underline',
               textDecorationColor: 'var(--color-accent)',
               textDecorationThickness: '1px',
@@ -113,8 +113,8 @@ export default function CookieConsent() {
             className="px-2 py-1 rounded text-[11px] font-medium transition-colors whitespace-nowrap"
             style={{
               background: 'transparent',
-              border: '1px solid var(--ring-stroke)',
-              color: 'var(--text-secondary)',
+              border: '1px solid var(--color-line-dark-bright)',
+              color: 'var(--color-text-dark-primary)',
             }}
             aria-label="Necessary cookies only"
           >

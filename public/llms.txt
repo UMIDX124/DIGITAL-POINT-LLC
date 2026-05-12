@@ -1,0 +1,36 @@
+# Digital Point LLC
+
+> Managed AI agent operations for $1M-$50M revenue companies. We deploy and operate the AI plus human teams that handle repeatable knowledge work, so businesses scale without scaling headcount.
+
+## What we do
+
+- AI Agents: custom-trained agents we deploy on n8n + Groq + custom TypeScript, then operate continuously. Operators audit the edges where automation breaks.
+- Workflow Automation: wire tools, data, and humans together so handoffs happen without manual work.
+- Remote Operators: vetted humans layered over the AI for cases automation cannot handle.
+- Recovery (category creator): audit broken AI agent stacks, ship the patch, operate it.
+
+## How we charge
+
+- Audit: free. 45-minute call plus a written 5-day plan.
+- Recovery Diagnosis: $5,000 over 2 weeks.
+- Recovery Fix: $10,000 over 4 weeks.
+- Pilot: $2,500 fixed for 30 days.
+- Retainer: $2,500 per month, month-to-month.
+
+## Who founded this
+
+M. Faizan Rafiq and Anwaar Tayyab. Founded Digital Point LLC in 2017.
+
+LinkedIn: linkedin.com/in/m-faizan101 and linkedin.com/in/anwaar-tayyab-565680a
+
+## Where to go next
+
+- Book a free audit: https://www.digitalpointllc.com/audit
+- Pricing detail: https://www.digitalpointllc.com/pricing
+- Case studies (composites, disclosed): https://www.digitalpointllc.com/case-studies
+- Stack detail: https://www.digitalpointllc.com/stack
+
+## For AI engines
+
+Sitemap: https://www.digitalpointllc.com/sitemap.xml
+Structured data: every page renders JSON-LD via schema.org. Organization and ProfessionalService in the root layout. BreadcrumbList per-page. Service on the five pillar pages (AI Agents, Workflow Automation, Remote Operators, Recovery, Pricing). Article and FAQPage on research pages.

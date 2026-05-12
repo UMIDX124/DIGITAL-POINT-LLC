@@ -1,25 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { COSMO_SYSTEM_PROMPT as SYSTEM_PROMPT } from '@/lib/cosmo-system-prompt';
 import { ChatRequestSchema } from '@/lib/schemas';
+import { chatLimiter, getClientIp } from '@/lib/ratelimit';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
-
-const RATE_LIMIT_WINDOW_MS = 60_000;
-const RATE_LIMIT_MAX = 12;
-const ipBuckets = new Map<string, { count: number; resetAt: number }>();
-
-function rateLimitOk(ip: string): boolean {
-  const now = Date.now();
-  const bucket = ipBuckets.get(ip);
-  if (!bucket || bucket.resetAt < now) {
-    ipBuckets.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
-    return true;
-  }
-  if (bucket.count >= RATE_LIMIT_MAX) return false;
-  bucket.count += 1;
-  return true;
-}
 
 export async function POST(req: NextRequest) {
   const reqStart = Date.now();
@@ -31,8 +16,9 @@ export async function POST(req: NextRequest) {
   console.log(`[chat] req hasKey=${hasKey} keyLen=${keyLen}`);
 
   try {
-    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
-    if (!rateLimitOk(ip)) {
+    const ip = getClientIp(req.headers);
+    const { success } = await chatLimiter.limit(ip);
+    if (!success) {
       return NextResponse.json({ error: 'Too many messages. Try again in a minute.' }, { status: 429 });
     }
 

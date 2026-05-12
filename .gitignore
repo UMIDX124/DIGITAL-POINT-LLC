@@ -65,3 +65,4 @@ public/*.bak-*
 skills-lock.json
 .claude/skills/
 .lighthouseci
+.env*.local

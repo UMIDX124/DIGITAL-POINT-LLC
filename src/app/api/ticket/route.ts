@@ -2,35 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { sendEmail, escapeHtml } from '@/lib/email';
 import { SupportTicketSchema } from '@/lib/schemas';
+import { ticketLimiter, getClientIp } from '@/lib/ratelimit';
 
-// ─── Rate Limiting ───────────────────────────────────────────────────────────
-const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-const RATE_LIMIT = 5;
-const RATE_WINDOW = 60 * 60 * 1000; // 1 hour
-let cleanupCounter = 0;
-
-function checkRateLimit(ip: string): boolean {
-  const now = Date.now();
-
-  if (++cleanupCounter % 100 === 0) {
-    for (const [key, val] of rateLimitMap) {
-      if (now > val.resetTime) rateLimitMap.delete(key);
-    }
-  }
-
-  const record = rateLimitMap.get(ip);
-
-  if (!record || now > record.resetTime) {
-    rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_WINDOW });
-    return true;
-  }
-
-  if (record.count >= RATE_LIMIT) return false;
-  record.count++;
-  return true;
-}
-
-// ─── Sanitize ────────────────────────────────────────────────────────────────
 function sanitize(input: string | undefined | null): string | null {
   if (!input) return null;
   return input
@@ -45,12 +18,9 @@ function sanitize(input: string | undefined | null): string | null {
 // ─── POST Handler ────────────────────────────────────────────────────────────
 export async function POST(request: NextRequest) {
   try {
-    const ip =
-      request.headers.get('x-forwarded-for') ||
-      request.headers.get('x-real-ip') ||
-      'unknown';
-
-    if (!checkRateLimit(ip)) {
+    const ip = getClientIp(request.headers);
+    const { success } = await ticketLimiter.limit(ip);
+    if (!success) {
       return NextResponse.json(
         { success: false, message: 'Too many requests. Please try again later.' },
         { status: 429 }

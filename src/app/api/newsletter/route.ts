@@ -2,30 +2,14 @@ import { NextResponse } from 'next/server';
 import { sendEmail, escapeHtml } from '@/lib/email';
 import { db } from '@/lib/db';
 import { NewsletterSchema } from '@/lib/schemas';
-
-// In-memory rate limiter
-const rateLimiter = new Map<string, { count: number; reset: number }>();
+import { newsletterLimiter, getClientIp } from '@/lib/ratelimit';
 
 export async function POST(req: Request) {
   try {
-    // Rate limit: 3 per hour per IP
-    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
-    const now = Date.now();
-    const limit = rateLimiter.get(ip);
-    if (limit && now < limit.reset) {
-      if (limit.count >= 3) {
-        return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
-      }
-      limit.count++;
-    } else {
-      rateLimiter.set(ip, { count: 1, reset: now + 3600000 });
-    }
-
-    // Cleanup expired rate limit entries
-    if (rateLimiter.size > 100) {
-      for (const [key, val] of rateLimiter) {
-        if (now > val.reset) rateLimiter.delete(key);
-      }
+    const ip = getClientIp(req.headers);
+    const { success: rlOk } = await newsletterLimiter.limit(ip);
+    if (!rlOk) {
+      return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
     }
 
     const body = await req.json();

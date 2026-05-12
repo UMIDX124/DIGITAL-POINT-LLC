@@ -10,7 +10,7 @@ interface InContentCTAProps {
 
 const variants: Record<string, { hook: string; heading: string }> = {
   attribution: {
-    heading: 'Not sure which channels actually drive revenue?',
+    heading: 'Not sure which channels drive revenue?',
     hook: 'Our free audit shows you exactly where to look.',
   },
   paidAds: {
@@ -18,7 +18,7 @@ const variants: Record<string, { hook: string; heading: string }> = {
     hook: "We'll show you where the waste is. Free.",
   },
   default: {
-    heading: 'Want a team that actually moves the needle?',
+    heading: 'Want a team that moves the needle?',
     hook: 'See what a real growth audit looks like.',
   },
 };

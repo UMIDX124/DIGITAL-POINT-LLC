@@ -32,7 +32,7 @@ export function ResultsPage() {
           </div>
 
           <h1 className="hero-title text-balance">
-            What our <span className="hero-title__amber">agents</span> actually do.
+            What our <span className="hero-title__amber">agents</span> ship.
           </h1>
 
           <p className="hero-sub text-pretty">

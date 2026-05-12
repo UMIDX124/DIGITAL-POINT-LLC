@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
+import { FlowDiagram } from '@/components/brand/FlowDiagram';
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -68,6 +69,24 @@ export default function ContactPage() {
             the audit form or Cosmo. Inquiry routes to the operator best matched to
             your stage.
           </p>
+        </div>
+      </section>
+
+      <section className="section section-divider">
+        <div className="container-wide">
+          <div className="section-header section-header--center" style={{ marginBlockEnd: '3rem' }}>
+            <p className="eyebrow">What happens after you submit</p>
+            <h2 className="section-title text-balance">
+              Three steps. One business day.
+            </h2>
+          </div>
+          <FlowDiagram
+            steps={[
+              { label: 'Submit', sublabel: 'form or Cosmo chat', status: 'done' },
+              { label: 'Co-founder reads', sublabel: 'no shared inbox', status: 'active' },
+              { label: 'Reply', sublabel: 'within 1 business day', status: 'pending' },
+            ]}
+          />
         </div>
       </section>
 

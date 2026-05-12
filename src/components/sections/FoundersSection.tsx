@@ -19,14 +19,14 @@ const founders: Founder[] = [
     initials: 'MF',
     photo: '/team/faizan-square-512.jpg',
     bio: 'Faizan rebuilds account structure end-to-end when he sees broad-targeting waste past $50K/month spend. The pattern repeats across e-commerce DTC accounts. Most of his audits surface 20-35% budget leakage in the first hour.',
-    href: 'https://linkedin.com/in/faizanrafiq',
+    href: 'https://www.linkedin.com/in/m-faizan101',
   },
   {
     name: 'Anwaar Tayyab',
     role: 'Co-founder · Attribution + data integration',
     initials: 'AT',
     bio: "Anwaar runs attribution rebuilds for B2B SaaS accounts where pipeline data lives in 5+ tools without integration. The signal his work is landing: a CMO can defend the marketing budget to the board 90 days in, without engineering's help.",
-    href: 'https://linkedin.com/in/anwaartayyab',
+    href: 'https://www.linkedin.com/in/anwaar-tayyab-565680a',
   },
 ];
 

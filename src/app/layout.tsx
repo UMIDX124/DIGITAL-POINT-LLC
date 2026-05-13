@@ -222,7 +222,7 @@ export default async function RootLayout({
             effect. Color retained inline so unstyled fallback is readable. */}
         <div className="dpl-intro-loader" aria-hidden="true">
           <span className="dpl-intro-mascot">
-            <Logomark size={200} variant="dark" priority />
+            <Logomark size={640} variant="dark" priority />
           </span>
           <span className="dpl-intro-line" />
         </div>

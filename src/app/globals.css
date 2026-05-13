@@ -521,26 +521,28 @@ select {
   position: fixed;
   inset: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-6);
+  gap: var(--space-8);
   background: var(--color-canvas-dark);
   z-index: 100;
-  animation: dpl-intro-out 0.8s var(--ease-out) 1.4s forwards;
+  animation: dpl-intro-out 1s var(--ease-out) 2.6s forwards;
 }
 
 .dpl-intro-mascot {
   opacity: 0;
-  animation: dpl-intro-mark-in 0.4s var(--ease-out) 0.1s forwards;
+  animation: dpl-intro-mark-in 0.7s var(--ease-out) 0.15s forwards;
 }
 
 .dpl-intro-line {
   display: block;
-  width: 2px;
-  height: 1.25rem;
+  width: 200px;
+  height: 2px;
   background: var(--color-accent);
   opacity: 0;
-  animation: dpl-intro-line-in 0.5s var(--ease-out) 0.2s forwards;
+  transform-origin: left center;
+  animation: dpl-intro-line-in 0.9s var(--ease-out) 0.4s forwards;
 }
 
 @keyframes dpl-intro-mark-in {

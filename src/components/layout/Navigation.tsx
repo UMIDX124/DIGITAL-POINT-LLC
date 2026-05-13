@@ -15,7 +15,7 @@ export function Navigation() {
     <header className="dpl-nav" role="banner">
       <nav className="dpl-nav__inner" aria-label="Primary">
         <Link href="/" className="dpl-nav__brand" aria-label="Digital Point home">
-          <Logomark size={200} priority />
+          <Logomark size={140} priority />
         </Link>
 
         <div className="dpl-nav__menu">

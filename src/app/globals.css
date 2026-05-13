@@ -526,34 +526,38 @@ select {
   justify-content: center;
   gap: var(--space-8);
   background: var(--color-canvas-dark);
+  background-image:
+    radial-gradient(60% 60% at 50% 45%, rgba(255, 136, 0, 0.10), transparent 75%);
   z-index: 100;
-  animation: dpl-intro-out 1s var(--ease-out) 2.6s forwards;
+  animation: dpl-intro-out 0.7s cubic-bezier(0.65, 0, 0.35, 1) 2.4s forwards;
 }
 
 .dpl-intro-mascot {
   opacity: 0;
-  animation: dpl-intro-mark-in 0.7s var(--ease-out) 0.15s forwards;
+  transform: translateY(14px);
+  animation: dpl-intro-mark-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
 }
 
 .dpl-intro-line {
   display: block;
-  width: 200px;
+  width: 280px;
   height: 2px;
   background: var(--color-accent);
-  opacity: 0;
+  transform: scaleX(0);
   transform-origin: left center;
-  animation: dpl-intro-line-in 0.9s var(--ease-out) 0.4s forwards;
+  animation: dpl-intro-line-draw 0.95s cubic-bezier(0.65, 0, 0.35, 1) 0.85s forwards;
 }
 
 @keyframes dpl-intro-mark-in {
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes dpl-intro-line-in {
+@keyframes dpl-intro-line-draw {
   to {
-    opacity: 1;
+    transform: scaleX(1);
   }
 }
 
@@ -562,6 +566,15 @@ select {
     opacity: 0;
     pointer-events: none;
     visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dpl-intro-loader,
+  .dpl-intro-mascot,
+  .dpl-intro-line {
+    animation-duration: 0.01ms;
+    animation-delay: 0ms;
   }
 }
 

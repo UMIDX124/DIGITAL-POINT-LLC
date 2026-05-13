@@ -21,7 +21,7 @@ export function MathSection() {
           <article className="math-tile">
             <span className="math-tile__label">In-house ops team · annual</span>
             <span className="math-tile__amount">
-              <CountUp to={400000} prefix="$" />
+              <CountUp to={400000} prefix="$" index={0} />
             </span>
             <p className="math-tile__detail">
               Ops Manager, Reporting Analyst, Lead Coordinator, QA Reviewer.
@@ -42,7 +42,7 @@ export function MathSection() {
           <article className="math-tile math-tile--accent">
             <span className="math-tile__label">DPL retainer · annual</span>
             <span className="math-tile__amount">
-              <CountUp to={30000} prefix="$" />
+              <CountUp to={30000} prefix="$" index={1} />
             </span>
             <p className="math-tile__detail">
               $2,500/month. AI agents do the work, operators audit, co-founders sign

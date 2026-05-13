@@ -28,13 +28,24 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ### Commit 1. Replace animejs in CountUp with rAF tween, uninstall animejs
 
-- Status: PLANNED
-- SHA:
-- Files changed:
+- Status: DONE
+- SHA: 7e90a7f569323024c8b165fc7f4d0305872cf7f2
+- Files changed: src/components/motion/CountUp.tsx, src/components/sections/MathSection.tsx, package.json, pnpm-lock.yaml
 - Gate output (last 10 lines of `pnpm build`):
-- Verification (`grep -r "animejs" src/` must return zero):
-- Bundle delta (First Load JS for `/pricing` before/after):
-- Blockers:
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Verification (`grep -r "animejs" src/` must return zero): zero matches (exit 1)
+- Bundle delta: Next 16 Turbopack production build does not print per-route First Load JS in the build table, so the `/pricing` before/after column the prompt expected is not available. Measured instead via `.next/static` total size: **1336 KB → 1308 KB = 28 KB drop**. The animejs chunk (`.next/static/chunks/13r54dzal5el_.js`, 28,885 bytes uncompressed) is gone post-build; grep for `outQuart|animejs` against `.next/static` returns zero matches. Drop is larger than the audit's ~14-15 KB estimate because that was a gzipped guess; the raw chunk was 28 KB.
+- Blockers: none
 
 ### Commit 2. Intro loader logo sizing + session-only gate
 

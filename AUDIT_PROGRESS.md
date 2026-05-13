@@ -17,7 +17,14 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ---
 
-## Batch A — CRITICAL (commits 1-4)
+## Batch A — CRITICAL (commits 0-4)
+
+### Commit 0. Audit enforcement scaffolding committed
+
+- Status: DONE
+- SHA: 3b7e15fe4375cd0dafe71c1915436263e6cf9c39
+- Files changed: .husky/pre-commit, .husky/pre-push, AUDIT_PROGRESS.md, scripts/audit-screenshots.mjs, .gitignore, package.json, pnpm-lock.yaml
+- Gate output: pre-commit hook ran tsc --noEmit (0 errors) + pnpm lint (0 warnings), commit accepted
 
 ### Commit 1. Replace animejs in CountUp with rAF tween, uninstall animejs
 

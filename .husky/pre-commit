@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+# Fast pre-commit gate: type-check + lint.
+# Build runs in pre-push so commits stay snappy.
+# Added 2026-05-14 as audit-fix enforcement scaffolding.
+# DPL CLAUDE.md forbids --no-verify. If this fails, fix and re-commit.
+
+set -e
+
+echo "→ tsc --noEmit"
+pnpm exec tsc --noEmit
+
+echo "→ lint"
+pnpm lint
+
+echo "✓ pre-commit passed"

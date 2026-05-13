@@ -69,3 +69,6 @@ skills-lock.json
 
 .logo-backup-*/
 docs/audit-2026-05-12/
+
+# Audit screenshots (heavy, transient; AUDIT_PROGRESS.md tracks paths)
+docs/screenshots/

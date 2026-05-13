@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+# Pre-push gate: full build. Runs once per push, not per commit.
+# Catches build failures before code leaves the local machine.
+# Added 2026-05-14 as audit-fix enforcement scaffolding.
+
+set -e
+
+echo "→ pnpm build (this is the slow gate, ~45s)"
+pnpm build
+
+echo "✓ pre-push passed"

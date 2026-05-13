@@ -523,10 +523,10 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-4);
+  gap: var(--space-6);
   background: var(--color-canvas-dark);
   z-index: 100;
-  animation: dpl-intro-out 0.8s var(--ease-out) 0.7s forwards;
+  animation: dpl-intro-out 0.8s var(--ease-out) 1.4s forwards;
 }
 
 .dpl-intro-mascot {

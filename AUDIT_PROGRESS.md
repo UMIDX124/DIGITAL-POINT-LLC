@@ -373,4 +373,14 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ## Lessons / follow-ups
 
-(Terminal Claude appends here: anything that came up mid-run, deferred items, unexpected findings.)
+- **Undefined CSS variables in BlogPage + AuditPage (real bug, separate scope).** Both files reference `var(--accent-bright)`, `var(--accent-primary)` (one fixed in Commit 5), `var(--text-primary)`, `var(--text-muted)` from an older naming convention. None of these are declared in the `@theme inline` block in `src/app/globals.css` (which uses the `--color-*` namespace). The pages still render because `var()` falls back to browser defaults (transparent for color, inherited for text), but it's a real bug masking specific style intent. Full migration to `--color-*` is its own commit. Fix after Batch C.
+- **Vercel auto-deploy from GitHub push not wired.** All recent deployments came from CLI `vercel` runs, not from git pushes (most recent auto/CLI deploy was 1-3 days old at Batch B push time). Generated Batch B preview manually via `vercel` (non-prod). If desired, wire Vercel's git integration so future pushes get automatic preview URLs.
+- **Vercel build script uses `bun .next/standalone/server.js`** (see `package.json` "start" script). Bun is not installed in the dev environment. Sitemap verification in Commit 9 used `pnpm dev` instead of `pnpm start`. If `pnpm start` is needed locally, either install bun or change `start` to `next start`.
+- **`pnpm exec tsc --noEmit` produces no progress output** on this codebase. Worth knowing: silence = success here, not a hung process.
+- **Pre-push build gate is ~50s.** Acceptable but slow enough that batched pushes are preferable to single-commit pushes.
+
+### Deferred runtime tests / out-of-scope follow-ups
+
+- **Commit 11 timeout simulation**: did not exercise the 504 + `code: 'groq_timeout'` path live. Requires either a working GROQ_API_KEY plus simulated network delay (not local) or a temp-edit-and-revert cycle.
+- **Per-guide dynamic OG images**: deferred to Commit 13 (Batch C) per the prompt.
+- **Categories that have no indexable posts** still emit a CollectionPage schema (Commit 7) with empty `hasPart`. Currently 6 of 9 categories have zero indexable posts. Consider gating the schema emit on `posts.length > 0` for cleaner JSON-LD validation.

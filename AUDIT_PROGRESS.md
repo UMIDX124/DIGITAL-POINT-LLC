@@ -1113,6 +1113,14 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: `pnpm exec tsc --noEmit` 0 errors. `pnpm lint` 0 warnings. `pnpm build` succeeded.
 - Blockers: none.
 
+### Commit P1. Mark fabricated panel data as [design only]
+
+- Status: DONE
+- Files changed (4): `src/components/sections/HeroSection.tsx`, `src/components/marketing/ActivityTicker.tsx`, `src/app/(marketing)/agents/page.tsx`, `src/app/globals.css` (new `.dpl-panel__designmark` + `.dpl-ticker__designmark` rules, ticker flex retrofit).
+- Each panel root now carries `data-design-only="true"`. Each panel renders a hairline-topped mono footer: `[design only] data sample · real feed wires up post-pilot`. The activity ticker has a static left label `[design only] sample feed` outside the scrolling viewport (flex container, mono 10px tracking-0.06em).
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):

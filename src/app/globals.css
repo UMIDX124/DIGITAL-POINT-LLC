@@ -1038,12 +1038,41 @@ html[data-i-seen="1"] .dpl-intro-loader {
   color: var(--color-text-secondary);
 }
 
+.dpl-panel__designmark {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  text-align: right;
+  border-block-start: 1px solid var(--color-hairline);
+  padding-block-start: 0.75rem;
+  margin-block-start: 0.75rem;
+}
+
+.dpl-ticker__designmark {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding-inline: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  border-inline-end: 1px solid var(--color-hairline);
+  white-space: nowrap;
+}
+
 /* ============================================================
    Activity ticker (V4). Horizontal scroll of operator events.
    ============================================================ */
 
 .dpl-ticker {
   position: relative;
+  display: flex;
+  align-items: stretch;
   border-block-start: 1px solid var(--color-hairline);
   border-block-end: 1px solid var(--color-hairline);
   background: var(--color-canvas);
@@ -1051,6 +1080,8 @@ html[data-i-seen="1"] .dpl-intro-loader {
 }
 
 .dpl-ticker__viewport {
+  flex: 1;
+  min-width: 0;
   position: relative;
   overflow: hidden;
   padding-block: 0.875rem;

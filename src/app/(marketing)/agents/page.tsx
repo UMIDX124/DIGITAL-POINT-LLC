@@ -93,7 +93,7 @@ export default function AgentsPage() {
             </div>
 
             <aside className="hero-grid__panels" aria-label="Agent fleet snapshot">
-              <div className="dpl-panel">
+              <div className="dpl-panel" data-design-only="true">
                 <header className="dpl-panel__head">
                   <span className="dpl-panel__pulse" aria-hidden="true" />
                   <span>Agent fleet snapshot</span>
@@ -120,6 +120,7 @@ export default function AgentsPage() {
                     <dd className="dpl-panel__row--accent" data-design-only="true">2 open</dd>
                   </div>
                 </dl>
+                <span className="dpl-panel__designmark">[design only] data sample · real feed wires up post-pilot</span>
               </div>
             </aside>
           </div>

@@ -41,7 +41,8 @@ export function ActivityTicker() {
   );
 
   return (
-    <section className="dpl-ticker" aria-label="Recent operator activity">
+    <section className="dpl-ticker" aria-label="Recent operator activity" data-design-only="true">
+      <span className="dpl-ticker__designmark">[design only] sample feed</span>
       <div className="dpl-ticker__viewport">
         <div className={`dpl-ticker__rail ${paused ? 'is-paused' : ''}`}>
           {list('a')}

@@ -62,7 +62,7 @@ export function HeroSection() {
 
           <aside className="hero-grid__panels" aria-label="Operator status">
             {/* Operator Status panel */}
-            <div className="dpl-panel">
+            <div className="dpl-panel" data-design-only="true">
               <header className="dpl-panel__head">
                 <span className="dpl-panel__pulse" aria-hidden="true" />
                 <span>Operator status</span>
@@ -85,10 +85,11 @@ export function HeroSection() {
                   <dd data-design-only="true">100%</dd>
                 </div>
               </dl>
+              <span className="dpl-panel__designmark">[design only] data sample · real feed wires up post-pilot</span>
             </div>
 
             {/* Recent activity */}
-            <div className="dpl-panel">
+            <div className="dpl-panel" data-design-only="true">
               <header className="dpl-panel__head">
                 <span>Recent operator activity</span>
               </header>
@@ -103,10 +104,11 @@ export function HeroSection() {
                   </li>
                 ))}
               </ul>
+              <span className="dpl-panel__designmark">[design only] data sample · real feed wires up post-pilot</span>
             </div>
 
             {/* Allocation snapshot */}
-            <div className="dpl-panel">
+            <div className="dpl-panel" data-design-only="true">
               <header className="dpl-panel__head">
                 <span>Allocation snapshot</span>
               </header>
@@ -128,6 +130,7 @@ export function HeroSection() {
                   <dd className="dpl-panel__row--accent" data-design-only="true">2 open</dd>
                 </div>
               </dl>
+              <span className="dpl-panel__designmark">[design only] data sample · real feed wires up post-pilot</span>
             </div>
           </aside>
         </div>

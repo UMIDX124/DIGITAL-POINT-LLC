@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { MiniConsolePreview } from '@/components/brand/MiniConsolePreview';
 
 const operatorActivity = [
   { time: '14:32', label: 'Operator handoff', detail: 'Faizan resolved a lead-routing edge case for Operations Ridge.' },
@@ -132,6 +133,8 @@ export function HeroSection() {
               </dl>
               <span className="dpl-panel__designmark">[design only] data sample · real feed wires up post-pilot</span>
             </div>
+
+            <MiniConsolePreview />
           </aside>
         </div>
       </div>

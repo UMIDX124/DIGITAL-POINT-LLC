@@ -1156,6 +1156,14 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit P6. Hero column height balance via mini console preview
+
+- Status: DONE
+- Files changed (3): `src/components/brand/MiniConsolePreview.tsx` (new), `src/components/sections/HeroSection.tsx` (mount), `src/app/globals.css` (new `.dpl-mini-console*` rules).
+- Added a 4-line static mono log block below the 3 right-column panels: amber tag, mono timestamp, body. Fixed content (audit / ops / recovery / system). Container is hairline-bordered, padded, with a small `[design only] static preview` mono footer. No fabricated metric — pattern preview only. Right column now reaches close to the left column's display + footnotes + CTAs height.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):

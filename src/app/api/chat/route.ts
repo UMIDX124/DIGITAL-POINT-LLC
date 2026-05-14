@@ -1,17 +1,40 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { checkBotId } from 'botid/server';
-import { COSMO_SYSTEM_PROMPT as SYSTEM_PROMPT } from '@/lib/cosmo-system-prompt';
+import { streamText, convertToModelMessages, type UIMessage } from 'ai';
+import { createGroq } from '@ai-sdk/groq';
+import { buildCosmoSystemPrompt } from '@/lib/cosmo-system-prompt';
 import { ChatRequestSchema } from '@/lib/schemas';
 import { chatLimiter, getClientIp } from '@/lib/ratelimit';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
+export const maxDuration = 30;
+
+type LegacyMessage = {
+  id?: string;
+  role: 'user' | 'assistant' | 'system';
+  content: string;
+};
+type PartsMessage = {
+  id?: string;
+  role: 'user' | 'assistant' | 'system';
+  parts: Array<{ type: 'text'; text: string }>;
+};
+type InputMessage = LegacyMessage | PartsMessage;
+
+function toUIMessage(m: InputMessage, idx: number): UIMessage {
+  const id = m.id ?? `m-${idx}`;
+  if ('parts' in m) {
+    return { id, role: m.role, parts: m.parts } as UIMessage;
+  }
+  return {
+    id,
+    role: m.role,
+    parts: [{ type: 'text', text: m.content }],
+  } as UIMessage;
+}
 
 export async function POST(req: NextRequest) {
-  const reqStart = Date.now();
-  // Phase 7. Diagnostic instrumentation (visible in Vercel runtime logs).
-  // Helps diagnose env propagation issues quickly: hasKey + length is
-  // enough to confirm the runtime sees the key without leaking it.
   const hasKey = !!process.env.GROQ_API_KEY;
   const keyLen = process.env.GROQ_API_KEY?.length ?? 0;
   console.log(`[chat] req hasKey=${hasKey} keyLen=${keyLen}`);
@@ -25,7 +48,10 @@ export async function POST(req: NextRequest) {
     const ip = getClientIp(req.headers);
     const { success } = await chatLimiter.limit(ip);
     if (!success) {
-      return NextResponse.json({ error: 'Too many messages. Try again in a minute.' }, { status: 429 });
+      return NextResponse.json(
+        { error: 'Too many messages. Try again in a minute.' },
+        { status: 429 },
+      );
     }
 
     const body = await req.json();
@@ -33,79 +59,42 @@ export async function POST(req: NextRequest) {
     if (!parsed.success) {
       return NextResponse.json(
         { error: 'Invalid input', issues: parsed.error.flatten() },
-        { status: 400 }
+        { status: 400 },
       );
     }
-    const sanitized = parsed.data.messages.slice(-12);
 
     const apiKey = process.env.GROQ_API_KEY;
     if (!apiKey) {
       console.error('[chat] GROQ_API_KEY not configured');
       return NextResponse.json(
-        { error: 'AI service not configured. Try again in a minute. Admin is fixing this now.' },
+        { error: 'AI service not configured. Try again in a minute.' },
         { status: 503 },
       );
     }
 
-    const model = process.env.GROQ_MODEL || 'llama-3.3-70b-versatile';
+    const { messages: input, currentPath } = parsed.data;
+    const uiMessages: UIMessage[] = input
+      .slice(-12)
+      .map((m, i) => toUIMessage(m as InputMessage, i));
 
-    // Phase 8. Single retry on 502/503/504 (transient Groq edge errors).
-    // Most live failures are momentary; one immediate retry usually wins.
-    const callGroq = async () =>
-      fetch('https://api.groq.com/openai/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model,
-          messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...sanitized],
-          max_tokens: 350,
-          temperature: 0.6,
-          top_p: 0.9,
-        }),
-        signal: AbortSignal.timeout(25_000),
-      });
+    const modelMessages = await convertToModelMessages(uiMessages);
 
-    let groqRes = await callGroq();
-    if ([502, 503, 504].includes(groqRes.status)) {
-      console.warn(`[chat] groq ${groqRes.status}: retrying once`);
-      groqRes = await callGroq();
-    }
+    const groq = createGroq({ apiKey });
+    const modelId = process.env.GROQ_MODEL || 'llama-3.3-70b-versatile';
 
-    if (!groqRes.ok) {
-      const errText = await groqRes.text().catch(() => '');
-      console.error(`[chat] groq ${groqRes.status} body=${errText.slice(0, 300)}`);
+    const result = streamText({
+      model: groq(modelId),
+      system: buildCosmoSystemPrompt({
+        currentPath,
+        onCallOperator: 'Faizan',
+      }),
+      messages: modelMessages,
+      temperature: 0,
+      seed: 0,
+      abortSignal: AbortSignal.timeout(25_000),
+    });
 
-      // Map Groq errors to user-facing messages.
-      if (groqRes.status === 401 || groqRes.status === 403) {
-        return NextResponse.json(
-          { error: 'AI service authentication failed. Admin has been notified.' },
-          { status: 503 },
-        );
-      }
-      if (groqRes.status === 429) {
-        return NextResponse.json(
-          { error: 'AI service is busy. Try again in a few seconds.' },
-          { status: 429 },
-        );
-      }
-      return NextResponse.json(
-        { error: 'AI service temporarily unavailable. Please try again.' },
-        { status: 502 },
-      );
-    }
-
-    const data = await groqRes.json();
-    const reply = data?.choices?.[0]?.message?.content?.trim() ?? '';
-    if (!reply) {
-      console.error('[chat] empty reply from groq');
-      return NextResponse.json({ error: 'Got an empty reply. Try rephrasing the question.' }, { status: 502 });
-    }
-
-    console.log(`[chat] success duration=${Date.now() - reqStart}ms replyLen=${reply.length}`);
-    return NextResponse.json({ reply });
+    return result.toUIMessageStreamResponse();
   } catch (e: unknown) {
     const err = e as { name?: string; message?: string };
     console.error(`[chat] exception name=${err?.name} msg=${err?.message ?? String(e)}`);

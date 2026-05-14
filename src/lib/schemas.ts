@@ -35,16 +35,40 @@ export const FounderSubmissionSchema = z.object({
 });
 export type FounderSubmission = z.infer<typeof FounderSubmissionSchema>;
 
+/**
+ * Chat request schema accepts two payload shapes:
+ *
+ * 1. Legacy `{ messages: [{ role, content }] }` — the pre-X3 client used
+ *    plain role/content tuples. Kept so existing callers keep working.
+ * 2. AI SDK v6 UIMessage `{ id?, role, parts: [{ type: 'text', text }] }`
+ *    — what useChat in X5 sends. The route normalizes to ModelMessages
+ *    via convertToModelMessages at handle time, so the schema only needs
+ *    to accept a permissive shape.
+ *
+ * `currentPath` lets the system prompt tailor itself to the page where
+ * the panel was opened.
+ */
+const ChatPart = z.object({
+  type: z.literal('text'),
+  text: z.string().trim().min(1).max(4000),
+});
+
+const ChatMessageInput = z.union([
+  z.object({
+    id: z.string().max(120).optional(),
+    role: z.enum(['user', 'assistant', 'system']),
+    content: z.string().trim().min(1).max(4000),
+  }),
+  z.object({
+    id: z.string().max(120).optional(),
+    role: z.enum(['user', 'assistant', 'system']),
+    parts: z.array(ChatPart).min(1).max(20),
+  }),
+]);
+
 export const ChatRequestSchema = z.object({
-  messages: z
-    .array(
-      z.object({
-        role: z.enum(['user', 'assistant']),
-        content: z.string().trim().min(1).max(2000),
-      })
-    )
-    .min(1)
-    .max(50),
+  messages: z.array(ChatMessageInput).min(1).max(50),
+  currentPath: z.string().trim().max(200).optional(),
 });
 export type ChatRequest = z.infer<typeof ChatRequestSchema>;
 

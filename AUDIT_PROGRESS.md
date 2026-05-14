@@ -1301,6 +1301,16 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit X3. Switch /api/chat to streaming via Vercel AI SDK on Groq
+
+- Status: DONE
+- Files changed (2): `src/app/api/chat/route.ts`, `src/lib/schemas.ts`.
+- Rewrote `/api/chat` to stream tokens through `streamText` + `result.toUIMessageStreamResponse()`. BotID verification, Upstash `chatLimiter` (10 req / 1 min), and the 25s `AbortSignal.timeout` ceiling are preserved exactly as in the prior fetch-based handler. Groq provider wired via `createGroq({ apiKey })`; model defaults to `llama-3.3-70b-versatile` with `temperature: 0, seed: 0` for deterministic output per CLAUDE.md stack.
+- Added `maxDuration = 30` so Fluid Compute lets the stream run past the default function ceiling without truncating mid-token.
+- Widened `ChatRequestSchema`: accepts both the legacy `{ role, content }` shape and the AI SDK v6 `{ role, parts: [{ type: 'text', text }] }` UIMessage shape via a discriminated union. The route normalizes via a `toUIMessage` adapter, then `await convertToModelMessages(...)` (v6 returns a Promise) before handing to `streamText`. Added `currentPath` field so the system prompt sees the page where the panel was opened.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):
 - `git config --get remote.origin.url` (must equal `git@github.com:UMIDX124/DIGITAL-POINT-LLC.git`):
 - `cat .vercel/project.json | grep projectName` (must equal `digitalpointllc-1`):

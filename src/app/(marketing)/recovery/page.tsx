@@ -222,6 +222,22 @@ export default function RecoveryPage() {
               </li>
             ))}
           </ol>
+
+          <p
+            className="font-mono"
+            style={{
+              marginBlockStart: '2rem',
+              fontSize: '11px',
+              letterSpacing: 'var(--tracking-mono-label)',
+              textTransform: 'uppercase',
+              color: 'var(--color-text-tertiary)',
+              borderBlockStart: '1px solid var(--color-hairline)',
+              paddingBlockStart: '1rem',
+              textAlign: 'center',
+            }}
+          >
+            {criteria.length} of 30 sample · full checklist delivered with the audit report
+          </p>
         </div>
       </section>
 

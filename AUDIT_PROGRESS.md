@@ -1229,6 +1229,14 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit P13. Recovery 30-criteria honesty fix
+
+- Status: DONE
+- Files changed (1): `src/app/(marketing)/recovery/page.tsx`.
+- Kept the "30 production criteria" headline. Added a hairline-topped mono caps footer below the visible criteria grid: `{n} of 30 sample · full checklist delivered with the audit report`. Sample count reads from the `criteria` array length at render so the message stays correct if the list changes. The existing "See the diagnostic checklist" CTA remains in the upstream hero CTA row.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):

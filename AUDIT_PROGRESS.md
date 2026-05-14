@@ -999,6 +999,31 @@ If any field is empty or says "n/a" without explicit justification, the commit i
   ```
 - Blockers: none.
 
+### Commit V10. Console-style footer
+
+- Status: DONE
+- SHA: 20ccf886d80ac933ce6cdc806afecd61a45d901f
+- Files changed (3): `src/components/layout/Footer.tsx` (full rewrite), `src/components/layout/FooterExportedTime.tsx` (new client component), `src/app/globals.css` (replace `.dpl-footer__grid/col/heading/link/bottom/copy` rules with `.dpl-footer--console*` block).
+- New footer aesthetic: dark canvas (`--color-ink`) inversion. Console head with pulsing amber dot (`.dpl-footer__pulse`) + label `Operator console · tail -f /var/log/dpl.log` in Geist Mono uppercase. Below: 5 mono log rows, columnar grid (`time | body | level`). Time column `[14:32:08]` in muted grey; body `[tag]` in amber + plain text in off-white; level (`OK` / `INFO` / `ROTATION`) right-aligned in muted grey.
+- Log lines (`data-design-only="true"`): audit no. 0184 delivered, lead-routing edge case resolved, recovery ticket DPL-RC-039 closed, Postgres backfill 2.1M rows, operator handoff Anwaar → Faizan.
+- Site nav row beneath log: 10 link slashes (`/agents`, `/automation`, `/operators`, `/recovery`, `/pricing`, `/stack`, `/audit`, `/about`, `/blog`, `/contact`) in mono.
+- Bottom bar: 3-column flex — `DPL · Wilmington DE · 2017 → present`, `Document version 2026.05 · Exported {FooterExportedTime}` (live UTC `YYYY.MM.DD HH:MM UTC`, 30s interval, honors prefers-reduced-motion), copyright + Privacy / Terms / Cookies links.
+- `FooterExportedTime` client component: `useEffect` with `setInterval(30_000)`, early-returns if `(prefers-reduced-motion: reduce)` matches. `suppressHydrationWarning` on the span.
+- Verification: focused screenshot at `docs/screenshots/commit-32-focus/footer.png` confirms console head, pulse, 5 log rows, nav, bottom bar render as spec'd (1440 viewport). Pulsing dot, amber `[tag]` markers, dim grey levels all present.
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+
 ---
 
 ## Final verification

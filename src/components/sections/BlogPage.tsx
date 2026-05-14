@@ -162,7 +162,7 @@ export function BlogPage() {
                 <span
                   className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-xl transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98]"
                   style={{
-                    background: 'linear-gradient(135deg, var(--color-accent-soft) 0%, var(--color-accent-soft) 100%)',
+                    background: 'var(--color-accent)',
                     boxShadow: '0 4px 16px rgba(255, 136, 0, 0.3)',
                   }}
                 >

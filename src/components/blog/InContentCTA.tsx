@@ -43,7 +43,7 @@ export function InContentCTA({ category }: InContentCTAProps) {
       className="my-10 rounded-xl py-6 px-6 md:px-8"
       style={{
         background: 'linear-gradient(135deg, rgba(255, 136, 0,0.08) 0%, rgba(255, 136, 0,0.04) 100%)',
-        borderLeft: '3px solid var(--color-accent-soft)',
+        borderLeft: '3px solid var(--color-accent)',
       }}
     >
       <p className="text-white font-display font-semibold text-lg leading-snug mb-1">
@@ -56,7 +56,7 @@ export function InContentCTA({ category }: InContentCTAProps) {
         href="/audit"
         className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white rounded-lg transition-transform hover:scale-[1.02] active:scale-[0.98]"
         style={{
-          background: 'var(--color-accent-soft)',
+          background: 'var(--color-accent)',
           boxShadow: '0 4px 16px rgba(255, 136, 0, 0.3)',
         }}
       >

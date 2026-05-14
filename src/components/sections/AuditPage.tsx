@@ -202,7 +202,7 @@ export function AuditPage() {
                     <div className="h-1 bg-[var(--color-canvas-dark-elevated)] rounded-full overflow-hidden">
                       <motion.div
                         className="h-full rounded-full"
-                        style={{ background: 'linear-gradient(90deg, var(--color-accent-soft), var(--color-accent), var(--color-accent))' }}
+                        style={{ background: 'var(--color-accent)' }}
                         initial={{ width: 0 }}
                         animate={{ width: `${progressPercent}%` }}
                         transition={{ duration: 0.4, ease: 'easeOut' }}

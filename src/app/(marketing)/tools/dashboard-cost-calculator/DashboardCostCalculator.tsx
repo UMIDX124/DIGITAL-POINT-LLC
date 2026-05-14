@@ -113,7 +113,7 @@ export function DashboardCostCalculator({ faqs }: Props) {
                       onClick={() => toggleSource(source)}
                       className="px-3 py-2 rounded-xl text-sm transition-all"
                       style={{
-                        background: selectedSources.includes(source) ? 'var(--color-accent-soft)' : 'rgba(13, 8, 21, 0.6)',
+                        background: selectedSources.includes(source) ? 'var(--color-accent)' : 'rgba(13, 8, 21, 0.6)',
                         border: `1px solid ${selectedSources.includes(source) ? 'rgba(255, 136, 0,0.6)' : 'rgba(255, 136, 0,0.2)'}`,
                         color: selectedSources.includes(source) ? 'white' : 'var(--text-primary)',
                       }}
@@ -147,7 +147,7 @@ export function DashboardCostCalculator({ faqs }: Props) {
                         onClick={() => setComplexity(c)}
                         className="flex-1 px-3 py-2.5 rounded-xl text-sm capitalize transition-all"
                         style={{
-                          background: complexity === c ? 'var(--color-accent-soft)' : 'rgba(13, 8, 21, 0.6)',
+                          background: complexity === c ? 'var(--color-accent)' : 'rgba(13, 8, 21, 0.6)',
                           border: `1px solid ${complexity === c ? 'rgba(255, 136, 0,0.6)' : 'rgba(255, 136, 0,0.2)'}`,
                           color: complexity === c ? 'white' : 'var(--text-primary)',
                         }}
@@ -176,7 +176,7 @@ export function DashboardCostCalculator({ faqs }: Props) {
                     }}
                   >
                     <div className="flex items-center gap-2 mb-1">
-                      <div className={`w-4 h-4 rounded border ${item.value ? 'bg-[var(--color-accent-soft)] border-[var(--color-accent-soft)]' : 'border-[#8E8E96]'} flex items-center justify-center`}>
+                      <div className={`w-4 h-4 rounded border ${item.value ? 'bg-[var(--color-accent)] border-[var(--color-accent)]' : 'border-[#8E8E96]'} flex items-center justify-center`}>
                         {item.value && <CheckCircle className="w-3 h-3 text-white" />}
                       </div>
                       <span className="text-white text-sm font-medium">{item.label}</span>
@@ -252,7 +252,7 @@ export function DashboardCostCalculator({ faqs }: Props) {
                     className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
                     style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}
                   />
-                  <button onClick={handleEmailCapture} className="px-4 py-2.5 rounded-xl text-white text-sm font-medium" style={{ background: 'var(--color-accent-soft)' }}>
+                  <button onClick={handleEmailCapture} className="px-4 py-2.5 rounded-xl text-white text-sm font-medium" style={{ background: 'var(--color-accent)' }}>
                     Send
                   </button>
                 </div>

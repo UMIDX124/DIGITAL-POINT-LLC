@@ -16,7 +16,7 @@ export function LeadMagnetBanner() {
         <div
           className="w-12 h-12 rounded-xl flex items-center justify-center"
           style={{
-            background: 'var(--color-accent-soft)',
+            background: 'var(--color-accent)',
             boxShadow: '0 4px 24px rgba(255, 136, 0, 0.4)',
           }}
         >
@@ -37,7 +37,7 @@ export function LeadMagnetBanner() {
           href="/audit"
           className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-xl transition-transform hover:scale-[1.02] active:scale-[0.98]"
           style={{
-            background: 'var(--color-accent-soft)',
+            background: 'var(--color-accent)',
             boxShadow: '0 4px 16px rgba(255, 136, 0, 0.3)',
           }}
         >

@@ -173,7 +173,7 @@ export function ROASCalculator({ faqs }: Props) {
                     <button
                       onClick={handleEmailCapture}
                       className="px-3 py-2 rounded-lg text-white text-xs font-medium"
-                      style={{ background: 'var(--color-accent-soft)' }}
+                      style={{ background: 'var(--color-accent)' }}
                     >
                       Save
                     </button>

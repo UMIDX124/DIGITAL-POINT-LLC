@@ -9,7 +9,8 @@
 @theme inline {
   /* Legacy aliases — surviving page-level components (AuditPage form)
      pull these CSS variables. Map them onto the canonical new tokens
-     so the form renders cleanly without a full rewrite. */
+     so the form renders cleanly without a full rewrite.
+     Scheduled for removal after Batch V. */
   --accent-bright: #ff8800;
   --accent-primary: #ff8800;
   --text-primary: #0a0a0a;
@@ -19,44 +20,68 @@
   --color-text-muted-legacy: #8d8d96;
   --maxw-heading-display: 88rem;
   --maxw-heading-section: 56rem;
-  --bg-canvas: #FAFAFA;
+  --bg-canvas: #FAFAF7;
   --bg-elevated: #F2F2F2;
-  --border-subtle: rgba(10, 10, 10, 0.06);
+  --border-subtle: rgba(10, 10, 11, 0.08);
   --border-bright: rgba(255, 136, 0, 0.30);
   --section-top: clamp(7rem, 14vw, 12rem);
   --section-sm: clamp(3rem, 6vw, 5rem);
 
-  /* Canvas — light default (γ direction) */
-  --color-canvas: #FAFAFA;
+  /* Canvas — operator-brief warm off-white (V1 2026-05-14) */
+  --color-canvas: #FAFAF7;
   --color-canvas-raised: #FFFFFF;
   --color-canvas-elevated: #F2F2F2;
   --color-canvas-bright: #EBEBEB;
 
-  /* Accent — amber, single accent across the system */
-  --color-accent: #ff8800;
-  --color-accent-soft: #c26800;
+  /* Ink (V1) */
+  --color-ink: #0A0A0B;
+  --color-ink-soft: #1A1A1F;
+
+  /* Accent — single amber per project lock.
+     V1 (2026-05-14): --color-accent-soft was #c26800 opaque; redefined as 8%
+     rgba tint for operator-brief soft fills. Pre-V1 consumers that used
+     accent-soft as a solid button bg have been migrated to --color-accent. */
+  --color-accent: #FF8800;
+  --color-accent-soft: rgba(255, 136, 0, 0.08);
   --color-accent-faint: rgba(255, 136, 0, 0.12);
   /* --color-accent-text: darker amber for small body text on light canvas.
-     #ff8800 hits only 2.3:1 contrast on #fafafa; #a85800 hits ~5.5:1 (AA pass). */
-  --color-accent-text: #a85800;
+     #ff8800 hits only 2.3:1 contrast; #a85800 hits ~5.5:1 (AA pass). */
+  --color-accent-text: #A85800;
 
-  /* Text — dark on light canvas, WCAG AA on #FAFAFA */
-  --color-text-primary: #0a0a0a;
-  --color-text-secondary: #44444a;
-  --color-text-tertiary: #6b6b73;
-  --color-text-muted: #6e6e76; /* darkened from #8d8d96 to hit AA (>= 4.5:1) on light canvas */
+  /* Text — dark on light canvas, WCAG AA on #FAFAF7 */
+  --color-text-primary: #0A0A0B;
+  --color-text-secondary: #52525B;
+  --color-text-tertiary: #8A8A93;
+  --color-text-quaternary: #B8B8BD;
+  --color-text-muted: #6e6e76; /* legacy alias, darkened from #8d8d96 to hit AA */
 
-  /* Lines + borders */
-  --color-line-faint: rgba(10, 10, 10, 0.06);
-  --color-line-soft: rgba(10, 10, 10, 0.10);
-  --color-line-bright: rgba(10, 10, 10, 0.18);
+  /* Hairline rules (V1) — replace --color-line-* family going forward */
+  --color-hairline: rgba(10, 10, 11, 0.08);
+  --color-hairline-strong: rgba(10, 10, 11, 0.18);
+  --color-hairline-faint: rgba(10, 10, 11, 0.04);
+
+  /* Legacy lines + borders (pre-V1) — kept for existing consumers */
+  --color-line-faint: rgba(10, 10, 11, 0.08);
+  --color-line-soft: rgba(10, 10, 11, 0.10);
+  --color-line-bright: rgba(10, 10, 11, 0.18);
   --color-line-accent: rgba(255, 136, 0, 0.30);
 
-  /* Dark canvas — accent tier for select sections (case studies, certain CTA bands) */
-  --color-canvas-dark: #0a0a0a;
+  /* Dark canvas — accent tier for inverted sections (V5 positioning, V10 footer) */
+  --color-canvas-dark: #0A0A0B;
   --color-canvas-dark-raised: #111111;
   --color-canvas-dark-elevated: #161616;
   --color-canvas-dark-bright: #1d1d1d;
+
+  /* Text on dark (V1 operator-brief naming) */
+  --color-text-on-dark: #FAFAF7;
+  --color-text-on-dark-secondary: rgba(250, 250, 247, 0.72);
+  --color-text-on-dark-tertiary: rgba(250, 250, 247, 0.5);
+
+  /* Hairlines on dark (V1) */
+  --color-hairline-on-dark: rgba(250, 250, 247, 0.10);
+  --color-hairline-on-dark-strong: rgba(250, 250, 247, 0.22);
+
+  /* Legacy text-on-dark (pre-V1) — kept for existing consumers */
   --color-text-dark-primary: #f5f5f7;
   --color-text-dark-secondary: #a1a1aa;
   --color-text-dark-tertiary: #969aa3;

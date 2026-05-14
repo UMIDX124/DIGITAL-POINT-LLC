@@ -47,7 +47,7 @@ export function HeroSection() {
             </div>
 
             <p className="hero-sub text-pretty">
-              Forty-five minute audit with a co-founder. Free. Written deployment plan within five business days. No agency retainer attached.
+              Forty-five minute audit with a <mark className="dpl-mark">co-founder</mark>. Free. Written deployment plan within five business days. No agency retainer attached.
             </p>
 
             <div className="hero-cta-row">

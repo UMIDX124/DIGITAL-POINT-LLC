@@ -102,7 +102,7 @@ export default function RecoveryPage() {
           </h1>
 
           <p className="hero-sub text-pretty">
-            The only systematic recovery service for production AI agents.
+            <mark className="dpl-mark">The only systematic recovery service for production AI agents.</mark>{' '}
             Diagnose in 2 weeks. Fix in 4. Operate from there.
           </p>
 

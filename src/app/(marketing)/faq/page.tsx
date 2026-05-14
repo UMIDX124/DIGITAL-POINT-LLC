@@ -64,78 +64,43 @@ export default function FAQPage() {
       />
       <FAQSchema faqs={faqs.map((f) => ({ question: f.q, answer: f.a }))} />
 
-      <section className="hero">
-        <div className="hero-bg" aria-hidden="true" />
+      <section className="hero hero--pillar-brief" id="hero">
+        <div className="dpl-section__rail" aria-hidden="true">
+          <span className="dpl-section__rail-label">Section 08 · FAQ</span>
+        </div>
+        <div className="dpl-section__page" aria-hidden="true">p.08 / p.09</div>
         <div className="hero-inner">
-          <div className="hero-meta">
-            <span>FAQ · Plain answers · No fluff</span>
-          </div>
+          <p className="hero-eyebrow">
+            <span className="hero-eyebrow__rule" aria-hidden="true" />
+            FAQ · Plain answers · No fluff
+          </p>
 
-          <h1 className="hero-title text-balance">
+          <h1 className="hero-title hero-title--ob">
             <span className="hero-title__amber">Ten</span> questions we get most often.
           </h1>
 
           <p className="hero-sub text-pretty">
-            If your question is not here, run the audit. A co-founder answers it
-            inside the 45-minute call. Free.
+            If your question is not here, run the audit. <mark className="dpl-mark">A co-founder answers it inside the 45-minute call.</mark> Free.
           </p>
 
           <div className="hero-cta-row">
-            <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
+            <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
           </div>
         </div>
       </section>
 
-      <section className="section section-divider">
-        <div className="container-wide">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '60rem' }}>
+      <section className="dpl-section">
+        <div className="dpl-section__inner">
+          <div className="dpl-faq">
             {faqs.map((f, i) => (
-              <details
-                key={f.q}
-                style={{
-                  border: '1px solid var(--color-line-faint)',
-                  borderRadius: 'var(--radius-lg)',
-                  background: 'var(--color-canvas-raised)',
-                  padding: '0',
-                  overflow: 'hidden',
-                }}
-              >
-                <summary
-                  style={{
-                    cursor: 'pointer',
-                    padding: '1.25rem 1.5rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '1rem',
-                    listStyle: 'none',
-                    fontWeight: 500,
-                    color: 'var(--color-text-primary)',
-                    fontSize: 'var(--text-md)',
-                  }}
-                >
-                  <span
-                    className="font-mono"
-                    style={{
-                      color: 'var(--color-accent)',
-                      fontSize: 'var(--text-xs)',
-                      letterSpacing: '0.16em',
-                      minWidth: '2.5rem',
-                    }}
-                  >
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span style={{ flex: 1 }}>{f.q}</span>
-                  <span style={{ color: 'var(--color-text-tertiary)' }}>+</span>
+              <details key={f.q} className="dpl-faq__item">
+                <summary className="dpl-faq__summary">
+                  <span className="dpl-faq__num">Q. {String(i + 1).padStart(2, '0')}</span>
+                  <span className="dpl-faq__q">{f.q}</span>
+                  <span className="dpl-faq__toggle" aria-hidden="true" />
                 </summary>
-                <div
-                  style={{
-                    padding: '0 1.5rem 1.5rem 5rem',
-                    color: 'var(--color-text-secondary)',
-                    fontSize: 'var(--text-md)',
-                    lineHeight: 1.65,
-                  }}
-                >
-                  {f.a}
+                <div className="dpl-faq__a">
+                  <p>{f.a}</p>
                 </div>
               </details>
             ))}
@@ -143,16 +108,17 @@ export default function FAQPage() {
         </div>
       </section>
 
-      <section className="section section-divider">
-        <div className="container-wide">
-          <div className="section-header section-header--center">
-            <p className="eyebrow eyebrow--accent">Different question</p>
-            <h2 className="section-title text-balance">
-              Ask a co-founder in the audit. 45 minutes. Free.
-            </h2>
-            <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
-              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
-            </div>
+      <section className="dpl-section">
+        <div className="dpl-section__inner" style={{ textAlign: 'center' }}>
+          <p className="dpl-eyebrow" style={{ justifyContent: 'center' }}>
+            <span className="dpl-eyebrow__rule" aria-hidden="true" />
+            Different question
+          </p>
+          <h2 className="hero-title hero-title--ob" style={{ fontSize: 'clamp(36px, 5vw, 56px)' }}>
+            Ask a co-founder in the audit. 45 minutes. Free.
+          </h2>
+          <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: '2rem' }}>
+            <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
           </div>
         </div>
       </section>

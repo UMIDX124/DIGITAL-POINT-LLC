@@ -114,7 +114,7 @@ export default function PricingPage() {
           </h1>
 
           <p className="hero-sub text-pretty">
-            We charge less because the AI runs it, operators audit, co-founders sign off.
+            <mark className="dpl-mark">We charge less because the AI runs it</mark>, operators audit, co-founders sign off.
             No 6-person account team you&apos;re funding.
           </p>
 

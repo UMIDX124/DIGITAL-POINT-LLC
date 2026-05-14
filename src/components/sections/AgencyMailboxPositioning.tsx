@@ -14,7 +14,7 @@ export function AgencyMailboxPositioning() {
           Not the agency mailbox<span className="dpl-positioning__title-accent">.</span>
         </h2>
         <p className="dpl-positioning__body">
-          Most agencies route you to info@ and a support queue. We don&apos;t. Every audit reply, every Slack ping, every recovery diagnosis comes from Faizan or Anwaar personally. Within hours, not days. Both reachable, both replying.
+          Most agencies route you to info@ and a support queue. We don&apos;t. <mark className="dpl-mark">Every audit reply</mark>, every Slack ping, every recovery diagnosis comes from Faizan or Anwaar personally. Within hours, not days. Both reachable, both replying.
         </p>
 
         <div className="dpl-positioning__signature">

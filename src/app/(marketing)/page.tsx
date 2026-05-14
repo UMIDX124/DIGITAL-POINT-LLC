@@ -9,6 +9,7 @@ import { MathSection } from '@/components/sections/MathSection';
 import { FoundersSection } from '@/components/sections/FoundersSection';
 import { ProcessSection } from '@/components/sections/ProcessSection';
 import { StackSection } from '@/components/sections/StackSection';
+import { IntegrationsBar } from '@/components/sections/IntegrationsBar';
 import { CTASection } from '@/components/sections/CTASection';
 
 export default function HomePage() {
@@ -25,6 +26,7 @@ export default function HomePage() {
       <FoundersSection variant="compact" />
       <ProcessSection />
       <StackSection />
+      <IntegrationsBar />
       <CTASection />
     </>
   );

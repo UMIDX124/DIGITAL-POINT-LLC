@@ -2637,3 +2637,207 @@ html[data-i-seen="1"] .dpl-intro-loader {
   text-transform: uppercase;
   color: var(--color-text-tertiary);
 }
+
+/* ============================================================
+   V12. Inline highlight + integrations bar + FAQ polish.
+   ============================================================ */
+
+.dpl-mark {
+  background: var(--color-accent-soft);
+  color: var(--color-ink);
+  padding-inline: 0.25em;
+  padding-block: 0.05em;
+  border-radius: 1px;
+}
+
+.dpl-section--dark .dpl-mark {
+  background: rgba(255, 136, 0, 0.16);
+  color: var(--color-text-on-dark);
+}
+
+/* Integrations bar */
+.dpl-integrations {
+  position: relative;
+  padding-block: clamp(4rem, 7vw, 6rem);
+  background: var(--color-canvas);
+  border-block-start: 1px solid var(--color-hairline);
+  border-block-end: 1px solid var(--color-hairline);
+}
+
+.dpl-integrations__inner {
+  max-width: var(--maxw-display);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .dpl-integrations__inner {
+    padding-inline: var(--space-10);
+  }
+}
+
+.dpl-integrations__heading {
+  font-family: var(--font-sans);
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 500;
+  color: var(--color-ink);
+  margin-block: 0.75rem 2rem;
+  max-width: 36rem;
+  letter-spacing: -0.01em;
+}
+
+.dpl-integrations__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--color-hairline);
+  border: 1px solid var(--color-hairline);
+}
+
+@media (min-width: 640px) {
+  .dpl-integrations__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dpl-integrations__grid {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+
+.dpl-integrations__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.25rem;
+  padding: 1rem 1.125rem;
+  background: var(--color-canvas);
+  font-family: var(--font-mono);
+  min-height: 4.5rem;
+}
+
+.dpl-integrations__name {
+  font-size: 13px;
+  color: var(--color-ink);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.dpl-integrations__role {
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.dpl-integrations__caption {
+  margin-block-start: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+/* FAQ accordion polish */
+.dpl-faq {
+  display: flex;
+  flex-direction: column;
+  border-block-start: 1px solid var(--color-hairline-strong);
+  border-block-end: 1px solid var(--color-hairline-strong);
+  max-width: 60rem;
+}
+
+.dpl-faq__item {
+  border-block-end: 1px solid var(--color-hairline);
+}
+
+.dpl-faq__item:last-child {
+  border-block-end: none;
+}
+
+.dpl-faq__summary {
+  cursor: pointer;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 4rem 1fr 2rem;
+  gap: 1rem;
+  align-items: baseline;
+  padding-block: 1.5rem;
+  padding-inline: 0.25rem;
+}
+
+.dpl-faq__summary::-webkit-details-marker {
+  display: none;
+}
+
+.dpl-faq__num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.dpl-faq__q {
+  font-family: var(--font-sans);
+  font-size: clamp(15px, 1.5vw, 18px);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--color-ink);
+  letter-spacing: -0.005em;
+}
+
+.dpl-faq__toggle {
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  justify-self: end;
+  align-self: center;
+}
+
+.dpl-faq__toggle::before,
+.dpl-faq__toggle::after {
+  content: '';
+  position: absolute;
+  inset: 50% 0 auto 0;
+  height: 1px;
+  background: var(--color-accent);
+  transition: transform var(--motion-fast) var(--ease-out);
+  transform-origin: center;
+}
+
+.dpl-faq__toggle::after {
+  transform: rotate(90deg);
+}
+
+.dpl-faq__item[open] .dpl-faq__toggle::after {
+  transform: rotate(0deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dpl-faq__toggle::before,
+  .dpl-faq__toggle::after {
+    transition: none;
+  }
+}
+
+.dpl-faq__a {
+  display: grid;
+  grid-template-columns: 4rem 1fr 2rem;
+  gap: 1rem;
+  padding-block-end: 1.5rem;
+  padding-inline: 0.25rem;
+}
+
+.dpl-faq__a > p {
+  grid-column: 2;
+  max-width: 45rem;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}

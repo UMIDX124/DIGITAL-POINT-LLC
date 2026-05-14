@@ -129,6 +129,11 @@
   --tracking-mono-label: 0.08em;
   --tracking-mono-eyebrow: 0.12em;
 
+  /* Section padding (locked 8-multiple, Batch Y P11) */
+  --space-section-sm: 96px;
+  --space-section-md: 128px;
+  --space-section-lg: 160px;
+
   /* Spacing scale (4px units) */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -305,13 +310,13 @@ select {
 }
 
 .section {
-  padding-block: var(--section-y);
+  padding-block: var(--space-section-md);
   background: var(--color-canvas);
   position: relative;
 }
 
 .section-sm {
-  padding-block: var(--section-y-sm);
+  padding-block: var(--space-section-sm);
   background: var(--color-canvas);
   position: relative;
 }
@@ -1223,7 +1228,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
 
 .dpl-section {
   position: relative;
-  padding-block: clamp(5rem, 9vw, 8rem);
+  padding-block: var(--space-section-md);
   background: var(--color-canvas);
 }
 
@@ -1394,7 +1399,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
    ============================================================ */
 
 .dpl-section--quote {
-  padding-block: clamp(6rem, 11vw, 10rem) clamp(4.5rem, 8vw, 7.5rem);
+  padding-block: var(--space-section-lg) var(--space-section-md);
   border-block-end: 1px solid var(--color-hairline);
 }
 
@@ -1506,6 +1511,10 @@ html[data-i-seen="1"] .dpl-intro-loader {
 }
 
 /* Positioning section (V5) */
+.dpl-section--positioning {
+  padding-block: var(--space-section-lg);
+}
+
 .dpl-positioning__title {
   font-size: var(--font-size-h2-display);
   line-height: 0.98;

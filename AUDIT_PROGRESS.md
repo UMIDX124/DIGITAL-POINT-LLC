@@ -1205,6 +1205,20 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit P11. Normalize section vertical padding to 8-multiple grid
+
+- Status: DONE
+- Files changed (1): `src/app/globals.css` (new tokens + section padding retrofits).
+- Added `--space-section-sm: 96px`, `--space-section-md: 128px`, `--space-section-lg: 160px` to `@theme inline`.
+- Retrofitted base section rules:
+  - `.section` → `var(--space-section-md)` (128px), was `var(--section-y)` (80-144px)
+  - `.section-sm` → `var(--space-section-sm)` (96px), was `var(--section-y-sm)` (48-80px)
+  - `.dpl-section` → `var(--space-section-md)` (128px), was `clamp(5rem, 9vw, 8rem)` (80-128px)
+  - `.dpl-section--quote` → `var(--space-section-lg) var(--space-section-md)` (160px top, 128px bottom) for the signature founder quote moment
+  - New `.dpl-section--positioning` rule → `var(--space-section-lg)` (160px) for the "Not the agency mailbox" weight-bearing section
+- Quality gates: tsc 0 errors, lint 0 warnings, `pnpm build` succeeded.
+- Blockers: none.
+
 
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):

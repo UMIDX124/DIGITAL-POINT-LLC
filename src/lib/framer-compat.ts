@@ -31,9 +31,19 @@ function makeMotionTag(tag: string) {
   };
 }
 
+// Cache per tag so motion.div returns the same component reference on every
+// access. Without this, React sees a new element.type each render and unmounts
+// the subtree, killing input focus inside <motion.div> children.
+const tagCache = new Map<string, ReturnType<typeof makeMotionTag>>();
+
 export const motion = new Proxy({} as Record<string, ReturnType<typeof makeMotionTag>>, {
   get(_target, prop: string) {
-    return makeMotionTag(prop);
+    let cached = tagCache.get(prop);
+    if (!cached) {
+      cached = makeMotionTag(prop);
+      tagCache.set(prop, cached);
+    }
+    return cached;
   },
 });
 

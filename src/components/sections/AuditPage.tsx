@@ -126,7 +126,7 @@ export function AuditPage() {
     <>
       {/* Hero */}
       <section className="relative min-h-[30vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0B] via-[#141416] to-[#141416]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-canvas-dark)] via-[var(--color-canvas-dark-elevated)] to-[var(--color-canvas-dark-elevated)]" />
 
         <Container className="relative z-10 pt-32 pb-4">
           <FadeUp>
@@ -134,7 +134,7 @@ export function AuditPage() {
               style={{
                 background: 'rgba(255, 136, 0, 0.15)',
                 border: '1px solid rgba(255, 168, 51, 0.2)',
-                color: '#FF8800',
+                color: 'var(--color-accent)',
               }}
             >
               <SignalPoint size="sm" />
@@ -199,10 +199,10 @@ export function AuditPage() {
                         </button>
                       )}
                     </div>
-                    <div className="h-1 bg-[#141416] rounded-full overflow-hidden">
+                    <div className="h-1 bg-[var(--color-canvas-dark-elevated)] rounded-full overflow-hidden">
                       <motion.div
                         className="h-full rounded-full"
-                        style={{ background: 'linear-gradient(90deg, #C26800, #FF8800, #FF8800)' }}
+                        style={{ background: 'linear-gradient(90deg, var(--color-accent-soft), var(--color-accent), var(--color-accent))' }}
                         initial={{ width: 0 }}
                         animate={{ width: `${progressPercent}%` }}
                         transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -340,7 +340,7 @@ export function AuditPage() {
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             placeholder="Your name"
-                            className="bg-[#141416]/50 border-[#3A2D14] focus:border-[color:var(--accent-primary)] text-white"
+                            className="bg-[var(--color-canvas-dark-elevated)]/50 border-[var(--color-line-dark-soft)] focus:border-[color:var(--color-accent)] text-white"
                           />
                           {errors.name && (
                             <p className="text-red-400 text-xs mt-1">{errors.name}</p>
@@ -357,7 +357,7 @@ export function AuditPage() {
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             placeholder="you@company.com"
-                            className="bg-[#141416]/50 border-[#3A2D14] focus:border-[color:var(--accent-primary)] text-white"
+                            className="bg-[var(--color-canvas-dark-elevated)]/50 border-[var(--color-line-dark-soft)] focus:border-[color:var(--color-accent)] text-white"
                           />
                           {errors.email && (
                             <p className="text-red-400 text-xs mt-1">{errors.email}</p>
@@ -373,7 +373,7 @@ export function AuditPage() {
                             value={formData.company}
                             onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                             placeholder="Company name (optional)"
-                            className="bg-[#141416]/50 border-[#3A2D14] focus:border-[color:var(--accent-primary)] text-white"
+                            className="bg-[var(--color-canvas-dark-elevated)]/50 border-[var(--color-line-dark-soft)] focus:border-[color:var(--color-accent)] text-white"
                           />
                         </div>
 
@@ -382,7 +382,7 @@ export function AuditPage() {
                           disabled={isSubmitting}
                           className="w-full py-6 text-lg font-semibold group"
                           style={{
-                            background: 'linear-gradient(135deg, #C26800 0%, #C26800 50%, #FF8800 100%)',
+                            background: 'linear-gradient(135deg, var(--color-accent-soft) 0%, var(--color-accent-soft) 50%, var(--color-accent) 100%)',
                           }}
                         >
                           {isSubmitting ? (

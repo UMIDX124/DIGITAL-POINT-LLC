@@ -61,13 +61,6 @@ const articles = [
   },
 ];
 
-const categoryColors: Record<string, string> = {
-  'Performance Marketing': '#FF8800',
-  'Remote Workforce': '#FF8800',
-  'Systems & Reporting': '#FF8800',
-  'AI & Automation': '#FFA833',
-};
-
 /** Memoized blog card to prevent re-renders in list */
 const BlogCard = memo(function BlogCard({ article }: { article: typeof articles[number] }) {
   return (
@@ -77,9 +70,9 @@ const BlogCard = memo(function BlogCard({ article }: { article: typeof articles[
         <span
           className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium"
           style={{
-            background: `${categoryColors[article.category] || '#FF8800'}15`,
-            border: `1px solid ${categoryColors[article.category] || '#FF8800'}30`,
-            color: categoryColors[article.category] || '#FF8800',
+            background: 'var(--color-accent-faint)',
+            border: '1px solid var(--color-line-accent)',
+            color: 'var(--color-accent)',
           }}
         >
           <Tag className="w-3 h-3" />
@@ -169,7 +162,7 @@ export function BlogPage() {
                 <span
                   className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-xl transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98]"
                   style={{
-                    background: 'linear-gradient(135deg, #C26800 0%, #C26800 100%)',
+                    background: 'linear-gradient(135deg, var(--color-accent-soft) 0%, var(--color-accent-soft) 100%)',
                     boxShadow: '0 4px 16px rgba(255, 136, 0, 0.3)',
                   }}
                 >

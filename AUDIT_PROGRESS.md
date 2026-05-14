@@ -458,6 +458,39 @@ If any field is empty or says "n/a" without explicit justification, the commit i
   ```
 - Blockers: none.
 
+### Commit H2. Audit form light variant styling
+
+- Status: DONE
+- SHA: 9cb6742230b585996e980e914825e3660590072b
+- Files changed: src/components/sections/AuditPage.tsx
+- Scope: Step 3 only. Step 3 form sat on a light GlassCard (`.surface` → `var(--color-canvas-raised)` = #FFFFFF) but used dark-canvas styling for inputs (`bg-[var(--color-canvas-dark-elevated)]/50 border-[var(--color-line-dark-soft)] text-white`), producing a disabled / placeholder-only appearance. Labels were `text-white` (invisible on white). Heading and helper paragraph were also `text-white` / `var(--text-primary)` (latter is undefined — falls back to inherited). Submit button used a 3-stop linear gradient that violates project CLAUDE.md "No gradients across multiple color stops".
+- Changes:
+  - Step 3 h2 + helper paragraph: inline `color: '#0A0A0B'` / `color: '#52525B'`
+  - Labels: inline `color: '#0A0A0B'`
+  - Inputs: `bg-white` + `placeholder:text-[#8A8A93]`, inline `borderColor: 'rgba(10, 10, 11, 0.18)'` + `color: '#0A0A0B'`, focus border kept on `var(--color-accent)`
+  - Required-asterisk + error text: inline `color: '#dc2626'` (red-600 equivalent)
+  - Submit button: flat `var(--color-accent)` background, white text, no gradient
+- Note on inline values: prompt instructed using inline temp rgba/hex for tokens not yet present (`--color-hairline-strong`, `--color-ink`, `--color-text-tertiary`). V1 will land the proper token names; swap inline → var(...) refs then.
+- Steps 1/2/4 still have text-white headings + var(--text-primary) bodies on the same light card. Out of scope for H2; the visible breakage was the form fields. Sweep cleanup happens in H3.
+- Screenshots (saved to gitignored docs/screenshots/commit-19/, verified via `ls`):
+  - audit-1440.png + audit-step3-1440.png (Step 3 reached via Playwright click-through, full-page)
+  - audit-768.png + audit-step3-768.png
+  - audit-360.png + audit-step3-360.png
+- Visual confirmation (1440 step3): heading visible in dark ink, body text in secondary grey, 3 input fields white-bg with hairline border (not greyed-out), `Get Free Audit` button flat amber.
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+
 ---
 
 ## Final verification

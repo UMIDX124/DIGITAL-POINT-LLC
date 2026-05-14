@@ -788,6 +788,38 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Blockers: none.
 - Note: prompt instructed "Update `<html>` / `<body>` background in layout.tsx to use var(--color-canvas)". Already wired — globals.css lines 175/183/189 set `background-color: var(--color-canvas)` on `html` / `body` / `:where(html, body)` already. The `#FAFAFA → #FAFAF7` token value change flows through automatically.
 
+### Commit V2. Document-header bar + nav polish
+
+- Status: DONE
+- SHA: 6008d1df69d940e243a6d77822fe002fae2138f2
+- Files changed (6): `src/components/layout/DocumentHeader.tsx` (new server component), `src/components/layout/DocumentHeaderLiveTime.tsx` (new client, useEffect+setInterval), `src/components/layout/DocumentHeaderPrintedOn.tsx` (new client), `src/components/layout/Navigation.tsx` (refactor), `src/app/(marketing)/layout.tsx` (mount DocumentHeader above Navigation), `src/app/globals.css` (new `.dpl-docheader*` rules + `.dpl-nav__brand-mark/word` + `.dpl-nav__cta-btn` + hover-amber on `.dpl-nav__link`).
+- DocumentHeader: mono caps strip, `var(--color-hairline)` bottom border, py-3.5. Left row: `DPL · OPERATOR BRIEF | VERSION 2026.05 | <live time>`. Right: `PRINTED ON YYYY.MM.DD`. Live time format `UPDATED LIVE · FAIZAN ON-CALL · WILMINGTON HH:MM` (UTC). Both refresh components honor `prefers-reduced-motion: reduce` by skipping the setInterval. `suppressHydrationWarning` on the dynamic span to avoid SSR/CSR clock skew warnings.
+- Nav polish:
+  - Brand: 28x28 ink-bg plate (`var(--color-ink)` bg, `var(--color-canvas)` DP text, mono caps, 2px corners) + "digital point" mono lowercase wordmark — replaces the lockup Logomark.
+  - Links: text-only (no chips/boxes), hover color shifted from `--color-text-primary` to `var(--color-accent)`.
+  - CTA: new `.dpl-nav__cta-btn` class — ink bg, canvas text, ink-soft hover, 14.5px sans, 2px corners. Replaces the amber `btn-primary` for the nav CTA only (other CTAs across the site keep `btn-primary`).
+  - Sticky position + backdrop-blur preserved. Background tint updated from `rgba(250, 250, 250, 0.78)` → `rgba(250, 250, 247, 0.82)` to match warmer V1 canvas.
+  - Hairline border swapped from `--color-line-faint` (legacy) → `--color-hairline` (V1).
+- Verification (Playwright headless, deviceScaleFactor: 2, dev server):
+  - docHeader text contents: `DPL · OPERATOR BRIEFVERSION 2026.05UPDATED LIVE · FAIZAN ON-CALL · WILMINGTON 16:51PRINTED ON 2026.05.14`
+  - nav brand plate text: `DP`
+  - nav brand wordmark: `digital point`
+  - nav CTA: text `Book audit`, bg `rgb(10, 10, 11)` (= `#0A0A0B` ink), color `rgb(250, 250, 247)` (= `#FAFAF7` canvas)
+  - Focused screenshot at `docs/screenshots/commit-25-focus/top.png` — clean operator-brief strip + nav layout. Full-page screenshots at `docs/screenshots/commit-25/home-{360,768,1440}.png` confirm responsive behavior (mono strip wraps at 360, links collapse below 1024 per existing media query).
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+
 ---
 
 ## Final verification

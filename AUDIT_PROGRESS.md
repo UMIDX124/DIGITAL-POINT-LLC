@@ -946,7 +946,7 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 ### Commit V7. Founder pull-quote section (revived 2026-05-14)
 
 - Status: DONE
-- SHA: pending (commit landed after V12 push, revives the originally SKIPPED V7 slot per Umer-approved quote 2026-05-14).
+- SHA: a184046 (revives the originally SKIPPED V7 slot per Umer-approved quote 2026-05-14; landed after V12 push).
 - Files changed (3): new `src/components/sections/FounderQuote.tsx`, `src/app/globals.css` (`.dpl-section--quote` + `.dpl-quote__*` rules), `src/app/(marketing)/page.tsx` (mount between MathSection and FoundersSection).
 - Quote (locked verbatim, Umer-approved 2026-05-14, ships as final — no `[design only]` marker per `feedback_umer_decisions_final.md`): "A four-person ops team costs four hundred thousand a year. We replace three of those four with agents. The fourth is a real human who watches the agents. That's the whole pitch."
 - Attribution: M. Faizan Rafiq · Co-founder · paid media + account restructure · Audit no. 047 · Delivered 2026.05.12 · Wilmington, DE · `FR` mono ink-square avatar.

@@ -85,6 +85,13 @@ export function Logomark({
   // on retina; CSS clamps the rendered width back to the intended display size.
   const RETINA = 2;
 
+  // Optical baseline shim. The wordmark image has descenders ("g", "p")
+  // which push its bbox below the visual baseline, so center-aligning the
+  // square mark to the bbox center makes the mark sit ~6-8% too high.
+  // Nudge the mark down by ~6% of its size to land on the wordmark's
+  // x-height midline.
+  const markOpticalShift = Math.round(effectiveMarkSize * 0.06);
+
   return (
     <span
       className={className}
@@ -105,7 +112,13 @@ export function Logomark({
         alt=""
         aria-hidden
         priority={priority}
-        style={{ display: 'block', flexShrink: 0, width: `${effectiveMarkSize}px`, height: 'auto' }}
+        style={{
+          display: 'block',
+          flexShrink: 0,
+          width: `${effectiveMarkSize}px`,
+          height: 'auto',
+          transform: `translateY(${markOpticalShift}px)`,
+        }}
       />
       <Image
         src={SRC.text[variant]}

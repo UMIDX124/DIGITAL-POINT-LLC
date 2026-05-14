@@ -18,9 +18,9 @@ export function Navigation() {
           <Logomark
             mode="lockup"
             variant="light"
-            markSize={26}
-            textSize={92}
-            gap={10}
+            markSize={32}
+            textSize={112}
+            gap={14}
             className="dpl-logo-nav"
             priority
             ariaHidden

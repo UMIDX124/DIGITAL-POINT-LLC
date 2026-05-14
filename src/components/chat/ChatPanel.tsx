@@ -116,7 +116,7 @@ export default function ChatPanel({ open, onClose }: Props) {
 
   return (
     <div
-      className="chat-panel-shell fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] h-[520px] max-h-[calc(100vh-8rem)] flex flex-col rounded-2xl shadow-2xl chat-panel chat-panel-enter"
+      className="chat-panel-shell fixed bottom-24 right-6 z-50 w-[min(380px,calc(100vw-3rem))] h-[520px] max-h-[calc(100vh-8rem)] flex flex-col rounded-2xl shadow-2xl chat-panel chat-panel-enter"
       role="dialog"
       aria-label="DPL AI chat"
     >

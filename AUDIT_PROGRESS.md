@@ -916,6 +916,14 @@ If any field is empty or says "n/a" without explicit justification, the commit i
   ```
 - Blockers: none.
 
+### Commit V7. Founder pull-quote section
+
+- Status: SKIPPED — awaiting real founder quote.
+- Reason: V7 spec requires a real quote from Faizan or Anwaar (with audit number, date, location attribution). Real-data rule applies: testimonials and quotes need source. Per user direction 2026-05-14, skipping V7 for this run. Will add as a separate commit when a real quote is received from a delivered audit.
+- Files changed: none.
+- Mock-up reference for future implementation: section frame `Section 05 · Signed`, blockquote at clamp(32px, 4.8vw, 64px) with opening + closing quote marks in amber, 48×48 initials avatar (FR or AT mono), name + role + meta line `AUDIT NO. xxx · DELIVERED YYYY.MM.DD · WILMINGTON, DE`.
+- Blockers: real founder quote pending. Logged as follow-up.
+
 ---
 
 ## Final verification

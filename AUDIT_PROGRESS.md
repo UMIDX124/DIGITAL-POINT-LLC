@@ -632,6 +632,37 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Blockers: none.
 - Follow-up: 2 posts have categories not in categoryMeta ("ROAS Optimization", "Remote Operators"). They render as part of other categories (default "Growth Systems" fallback) or get silently dropped. Either rename their frontmatter categories or add them to categoryMeta. Not in H6 scope.
 
+### Commit H7. Fix logo blur via high-res Next/Image size hints
+
+- Status: DONE
+- SHA: b0932ce7722e7c9772de6450389ad66c573a540e
+- Files changed: src/app/layout.tsx, src/app/(conversion)/layout.tsx, src/components/layout/Navigation.tsx, src/components/layout/Footer.tsx
+- Root cause: Logomark default `size=120` baked `width={120}` into `<Image>`. Next/Image only generated/served the small variant at that hint, then CSS upscaled to `clamp(220px, 28vw, 560px)` on the intro loader — up to 4.6x upscale on retina = visible blur. Reported on production after pushing batch H.
+- Fix: pass `size=` prop equal to 2x the CSS display width at each mount point:
+  - `src/app/layout.tsx:231` intro loader: `size={1120}` (2x of 560px max)
+  - `src/components/layout/Navigation.tsx:18` nav: `size={280}` (2x of 140px)
+  - `src/components/layout/Footer.tsx:41` footer: `size={320}` (2x of 160px)
+  - `src/app/(conversion)/layout.tsx:25` conversion: `size={56}` (2x of 28px)
+- Verification (Playwright headless with `deviceScaleFactor: 2`, dev server on http://localhost:3000):
+  - Intro loader: Next/Image now requests `_next/image?url=...Dp-logo1-dark.png&w=3840&q=75`, naturalWidth 980, computedWidth 403.188px → 2.43x effective retina resolution (crisp).
+  - Nav: requests `w=640`, naturalWidth 320, displayed 140px → 2.29x.
+  - Footer: requests `w=640`, naturalWidth 320, displayed 160px → 2.00x (exactly retina-sharp).
+  - Conversion: requests `w=128`, naturalWidth 64, displayed 28px → 2.29x.
+  - All four mounts > 2x effective resolution on retina — Lighthouse "Properly size images" passes.
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+
 ---
 
 ## Final verification

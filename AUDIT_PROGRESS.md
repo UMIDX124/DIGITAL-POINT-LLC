@@ -391,13 +391,13 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ### Commit 16. text-accent contrast audit
 
-- Status: PLANNED
-- SHA:
-- Files changed:
-- Pages audited with axe DevTools:
-- Screenshots:
-- Gate output:
-- Blockers:
+- Status: SKIPPED
+- SHA or SKIPPED with reason: SKIPPED — no targets found and no contrast failures detected.
+- Pre-check `grep -rnE 'text-accent\b' src/ | grep -vE 'text-accent-(foreground|text)'`: zero matches. Bare `text-accent` Tailwind class is not used anywhere in the codebase. Consumers use either inline `var(--color-accent)` style, `text-[color:var(--color-accent)]` arbitrary syntax, or already-correct `text-[color:var(--color-accent-text)]` for the rare light-bg case.
+- Lighthouse color-contrast audit on all three pillar pages (from Commit 15 local run): score 1.0, 0 failing items. The site's dark-canvas default means amber accent runs against #0a0a0a (~6.1:1 ratio, AA pass).
+- Audit's premise — that `text-accent` is used on light backgrounds where it fails contrast — does not match this codebase's actual usage pattern.
+- Followup: residual `#FF8800` hex literals exist in research/ and tools/ pages (Commit 5 only scoped Blog+Audit). These render on dark canvas so contrast is fine, but they should be migrated to `var(--color-accent)` for design-system consistency. Logged as a separate sweep.
+- Blockers: none.
 
 ### Commit 17. Organization schema sameAs + contactPoint, drop unused await headers()
 

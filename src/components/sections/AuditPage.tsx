@@ -312,10 +312,10 @@ export function AuditPage() {
                       exit={{ opacity: 0, x: -20 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <h2 className="font-display text-xl font-bold text-white mb-2" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
+                      <h2 className="font-display text-xl font-bold mb-2" style={{ maxWidth: 'var(--maxw-heading-section)', color: '#0A0A0B' }}>
                         Where should we send your audit?
                       </h2>
-                      <p className="text-[color:var(--text-primary)] text-sm mb-6">
+                      <p className="text-sm mb-6" style={{ color: '#52525B' }}>
                         A co-founder reviews your setup.
                       </p>
 
@@ -332,24 +332,25 @@ export function AuditPage() {
                           />
                         </div>
                         <div>
-                          <Label htmlFor="name" className="text-white mb-2 block">
-                            Name <span className="text-red-400">*</span>
+                          <Label htmlFor="name" className="mb-2 block" style={{ color: '#0A0A0B' }}>
+                            Name <span style={{ color: '#dc2626' }}>*</span>
                           </Label>
                           <Input
                             id="name"
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             placeholder="Your name"
-                            className="bg-[var(--color-canvas-dark-elevated)]/50 border-[var(--color-line-dark-soft)] focus:border-[color:var(--color-accent)] text-white"
+                            className="bg-white focus:border-[color:var(--color-accent)] placeholder:text-[#8A8A93]"
+                            style={{ borderColor: 'rgba(10, 10, 11, 0.18)', color: '#0A0A0B' }}
                           />
                           {errors.name && (
-                            <p className="text-red-400 text-xs mt-1">{errors.name}</p>
+                            <p className="text-xs mt-1" style={{ color: '#dc2626' }}>{errors.name}</p>
                           )}
                         </div>
 
                         <div>
-                          <Label htmlFor="email" className="text-white mb-2 block">
-                            Email <span className="text-red-400">*</span>
+                          <Label htmlFor="email" className="mb-2 block" style={{ color: '#0A0A0B' }}>
+                            Email <span style={{ color: '#dc2626' }}>*</span>
                           </Label>
                           <Input
                             id="email"
@@ -357,15 +358,16 @@ export function AuditPage() {
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             placeholder="you@company.com"
-                            className="bg-[var(--color-canvas-dark-elevated)]/50 border-[var(--color-line-dark-soft)] focus:border-[color:var(--color-accent)] text-white"
+                            className="bg-white focus:border-[color:var(--color-accent)] placeholder:text-[#8A8A93]"
+                            style={{ borderColor: 'rgba(10, 10, 11, 0.18)', color: '#0A0A0B' }}
                           />
                           {errors.email && (
-                            <p className="text-red-400 text-xs mt-1">{errors.email}</p>
+                            <p className="text-xs mt-1" style={{ color: '#dc2626' }}>{errors.email}</p>
                           )}
                         </div>
 
                         <div>
-                          <Label htmlFor="company" className="text-white mb-2 block">
+                          <Label htmlFor="company" className="mb-2 block" style={{ color: '#0A0A0B' }}>
                             Company
                           </Label>
                           <Input
@@ -373,17 +375,16 @@ export function AuditPage() {
                             value={formData.company}
                             onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                             placeholder="Company name (optional)"
-                            className="bg-[var(--color-canvas-dark-elevated)]/50 border-[var(--color-line-dark-soft)] focus:border-[color:var(--color-accent)] text-white"
+                            className="bg-white focus:border-[color:var(--color-accent)] placeholder:text-[#8A8A93]"
+                            style={{ borderColor: 'rgba(10, 10, 11, 0.18)', color: '#0A0A0B' }}
                           />
                         </div>
 
                         <Button
                           type="submit"
                           disabled={isSubmitting}
-                          className="w-full py-6 text-lg font-semibold group"
-                          style={{
-                            background: 'linear-gradient(135deg, var(--color-accent-soft) 0%, var(--color-accent-soft) 50%, var(--color-accent) 100%)',
-                          }}
+                          className="w-full py-6 text-lg font-semibold group transition-colors"
+                          style={{ background: 'var(--color-accent)', color: '#FFFFFF' }}
                         >
                           {isSubmitting ? (
                             <>

@@ -1346,6 +1346,16 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: production `ChatHandoff` table needs a Vercel-side `prisma migrate deploy` or `prisma db push` on first deploy to materialize the table. Route already swallows the DB error and proceeds with email-only handoff, so partial failure is graceful.
 
+### Commit X7. Add HandoffButton with email capture wired to chat-handoff route
+
+- Status: DONE
+- Files changed (3): `src/components/chat/HandoffButton.tsx` (new), `src/components/chat/ChatPanel.tsx` (wired), `src/app/globals.css` (`.cosmo-handoff*` rules).
+- `HandoffButton` is a two-state inline component: collapsed amber-outline button that reads "Hand off to Faizan", and expanded form with email (required), name (optional), submit + cancel, plus an inline error row. Submits to `/api/chat-handoff` with `email, name, currentPath, messages.slice(-50)`. On 200 it calls `onSuccess()` and collapses; on failure it surfaces the server's `message` text.
+- ChatPanel wiring: HandoffButton mounts above the input. `onSuccess` appends a system message ("Transcript sent. Faizan will reply within 6 hours.") via the AI SDK `setMessages` API and flips a local `handoffSent` flag that disables the input + send button and hides the handoff trigger so a single transcript can be sent per session. Clearing the conversation resets the flag.
+- Styling matches the operator-brief shell: hairline-bordered form, mono caps labels, ink primary button with amber hover. Mobile (<=480px) inherits the panel's edge-to-edge layout via the existing `.cosmo-panel` rule.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):
 - `git config --get remote.origin.url` (must equal `git@github.com:UMIDX124/DIGITAL-POINT-LLC.git`):
 - `cat .vercel/project.json | grep projectName` (must equal `digitalpointllc-1`):

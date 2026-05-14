@@ -3475,6 +3475,112 @@ html[data-i-seen="1"] .dpl-intro-loader {
   background: currentColor;
 }
 
+.cosmo-panel__handoff {
+  padding: 0 0 0.5rem 0;
+}
+
+.cosmo-handoff__trigger {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--tracking-mono-body);
+  text-transform: uppercase;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+  border: 1px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-accent);
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.cosmo-handoff__trigger:hover,
+.cosmo-handoff__trigger:focus-visible {
+  background: var(--color-accent);
+  color: var(--color-canvas);
+  outline: none;
+}
+
+.cosmo-handoff__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--color-hairline-strong);
+  background: var(--color-canvas);
+}
+
+.cosmo-handoff__label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: var(--tracking-mono-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.cosmo-handoff__input {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  padding: 0.55rem 0.65rem;
+  background: var(--color-canvas);
+  border: 1px solid var(--color-hairline-strong);
+  color: var(--color-ink);
+  outline: none;
+  transition: border-color 120ms ease;
+}
+
+.cosmo-handoff__input:focus {
+  border-color: var(--color-accent);
+}
+
+.cosmo-handoff__error {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: var(--tracking-mono-body);
+  text-transform: uppercase;
+  color: #b91c1c;
+}
+
+.cosmo-handoff__row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cosmo-handoff__send,
+.cosmo-handoff__cancel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--tracking-mono-body);
+  text-transform: uppercase;
+  padding: 0.5rem 0.85rem;
+  cursor: pointer;
+  border: 1px solid var(--color-hairline-strong);
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+
+.cosmo-handoff__send {
+  background: var(--color-ink);
+  color: var(--color-canvas);
+  border-color: var(--color-ink);
+}
+
+.cosmo-handoff__send:hover:not(:disabled) {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.cosmo-handoff__send:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.cosmo-handoff__cancel:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
 @media (max-width: 480px) {
   .cosmo-panel {
     inset-block-end: 5.5rem;

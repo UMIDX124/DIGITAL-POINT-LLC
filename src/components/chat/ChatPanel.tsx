@@ -9,6 +9,7 @@ import { DefaultChatTransport, type UIMessage } from 'ai';
 import { OperatorStatus } from './OperatorStatus';
 import { MessageBubble } from './MessageBubble';
 import { SuggestedFollowups } from './SuggestedFollowups';
+import { HandoffButton, type HandoffMessage } from './HandoffButton';
 import { parseFollowups } from '@/lib/cosmo-system-prompt';
 
 type Props = {
@@ -101,6 +102,7 @@ export default function ChatPanel({ open, onClose }: Props) {
   });
 
   const isStreaming = status === 'submitted' || status === 'streaming';
+  const [handoffSent, setHandoffSent] = useState(false);
 
   // Inject the page-aware greeting once if the session is empty. The
   // hydrated flag flips inside the effect so the greeting writes exactly
@@ -170,6 +172,7 @@ export default function ChatPanel({ open, onClose }: Props) {
   const clearConversation = useCallback(() => {
     setMessages([]);
     setHydrated(false);
+    setHandoffSent(false);
     if (typeof window !== 'undefined') {
       try {
         window.localStorage.removeItem(STORAGE_KEY);
@@ -281,14 +284,42 @@ export default function ChatPanel({ open, onClose }: Props) {
       ) : null}
 
       <footer className="cosmo-panel__foot">
+        {!handoffSent ? (
+          <div className="cosmo-panel__handoff">
+            <HandoffButton
+              operator={ON_CALL_OPERATOR}
+              currentPath={pathname}
+              messages={displayMessages.map<HandoffMessage>((m) => ({
+                role: m.role as 'user' | 'assistant' | 'system',
+                content: readMessageText(m),
+              }))}
+              onSuccess={() => {
+                setHandoffSent(true);
+                setMessages([
+                  ...messages,
+                  {
+                    id: `system-${Date.now()}`,
+                    role: 'system',
+                    parts: [
+                      {
+                        type: 'text',
+                        text: `Transcript sent. ${ON_CALL_OPERATOR} will reply within 6 hours.`,
+                      },
+                    ],
+                  } as UIMessage,
+                ]);
+              }}
+            />
+          </div>
+        ) : null}
         <div className="cosmo-panel__input-row">
           <input
             ref={inputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKey}
-            placeholder="Ask anything about DPL"
-            disabled={isStreaming}
+            placeholder={handoffSent ? 'Transcript sent.' : 'Ask anything about DPL'}
+            disabled={isStreaming || handoffSent}
             className="cosmo-panel__input"
             maxLength={2000}
             aria-label="Message Cosmo"
@@ -307,7 +338,7 @@ export default function ChatPanel({ open, onClose }: Props) {
             <button
               type="button"
               onClick={() => submit()}
-              disabled={!input.trim()}
+              disabled={!input.trim() || handoffSent}
               aria-label="Send message"
               className="cosmo-panel__send"
             >

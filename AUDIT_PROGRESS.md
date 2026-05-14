@@ -1277,6 +1277,18 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ### Final post-batch verification
 
+---
+
+## Batch X — Cosmo chatbot upgrade (9 commits)
+
+### Commit X1. Install AI SDK + react-markdown
+
+- Status: DONE
+- Files changed (2): `package.json`, `pnpm-lock.yaml`.
+- Added dependencies: `ai@6.0.182`, `@ai-sdk/groq@3.0.39`, `@ai-sdk/react@3.0.184`, `react-markdown@10.1.0`. Vercel AI SDK v6 is the current major; ships `streamText` + `toUIMessageStreamResponse` (Functions-friendly Web Stream) and `convertToModelMessages` for translating client `UIMessage[]` → provider `ModelMessage[]`. `@ai-sdk/react` ships the `useChat` hook used in X5. `react-markdown` renders assistant responses with safe HTML escaping by default (markdown-only, no rawHtml plugin).
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):
 - `git config --get remote.origin.url` (must equal `git@github.com:UMIDX124/DIGITAL-POINT-LLC.git`):
 - `cat .vercel/project.json | grep projectName` (must equal `digitalpointllc-1`):

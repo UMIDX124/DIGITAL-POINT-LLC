@@ -12,7 +12,7 @@ Digital Point LLC is a managed-service company. We deploy and operate AI agents 
 
 ## Who buys from us (the tier reality)
 
-- Companies with $1M to $50M annual revenue. 5 to 50 employees.
+- Companies with $500K to $10M annual revenue. 5 to 25 employees. Stretch up to $15M for founders who came in via warm referral.
 - Decision-maker is the founder, CEO, or COO. Not a procurement department.
 - Typical deal size: **$10K to $30K** total spend in year one.
 - Pricing ladder is published: free audit, $5K recovery diagnosis, $10K recovery fix, $2,500 pilot, $2,500/month retainer.

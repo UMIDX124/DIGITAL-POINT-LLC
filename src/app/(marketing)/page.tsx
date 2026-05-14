@@ -23,8 +23,8 @@ export default function HomePage() {
       <RecoverySection />
       <PillarsSection />
       <HomeSystemFlow />
-      <MathSection />
       <FounderQuote />
+      <MathSection />
       <FoundersSection variant="compact" />
       <ProcessSection />
       <StackSection />

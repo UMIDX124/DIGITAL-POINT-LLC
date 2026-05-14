@@ -38,7 +38,11 @@ export function FoundersSection({ variant = 'compact' }: Props) {
   const isFull = variant === 'full';
 
   return (
-    <section className="section section-divider">
+    <section className="section section-divider dpl-section">
+      <div className="dpl-section__rail" aria-hidden="true">
+        <span className="dpl-section__rail-label">Section 08 · Founders</span>
+      </div>
+      <div className="dpl-section__page" aria-hidden="true">p.08 / p.09</div>
       <div className="container-wide">
         <div className="section-header">
           <p className="eyebrow eyebrow--accent">{isFull ? 'Co-founders' : 'Operators'}</p>

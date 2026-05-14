@@ -3,7 +3,11 @@ import { DataBar } from '@/components/brand/DataBar';
 
 export function MathSection() {
   return (
-    <section className="section section-divider">
+    <section className="section section-divider dpl-section">
+      <div className="dpl-section__rail" aria-hidden="true">
+        <span className="dpl-section__rail-label">Section 07 · The math</span>
+      </div>
+      <div className="dpl-section__page" aria-hidden="true">p.07 / p.09</div>
       <div className="container-wide">
         <div className="section-header">
           <p className="eyebrow">The math</p>

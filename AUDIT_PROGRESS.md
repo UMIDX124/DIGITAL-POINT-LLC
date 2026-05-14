@@ -1254,6 +1254,16 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit P16. Normalize section page indicators site-wide
+
+- Status: DONE
+- Files changed (4): `src/components/sections/MathSection.tsx`, `src/components/sections/FoundersSection.tsx`, `src/components/sections/StackSection.tsx`, `src/app/(marketing)/page.tsx`.
+- Wired the three remaining homepage anchors that were missing `dpl-section__rail` + `dpl-section__page`: `MathSection` → `Section 07 · The math` / `p.07 / p.09`, `FoundersSection` → `Section 08 · Founders` / `p.08 / p.09`, `StackSection` → `Section 09 · The stack` / `p.09 / p.09`. Each picks up `.dpl-section` alongside its existing `.section section-divider` class so the rail's absolute positioning anchors correctly.
+- Final homepage indicator map: hero (no rail — its own meta strip serves as orientation) → Section 02 case → 03 difference → 04 pillars → 05 system flow → 06 signed → 07 math → 08 founders → 09 stack. Bands without narrative anchor weight (ActivityTicker, RecoverySection teaser, ProcessSection, IntegrationsBar, CTASection) stay unlabeled.
+- Reordered `src/app/(marketing)/page.tsx` so `FounderQuote` (Section 06) renders before `MathSection` (Section 07), matching the locked sequence in `dpl-batch-yz-polish-typography.md` P16 spec. Reading flow: System flow shows how we deliver → Signed quote previews the why → Math drills the cost numbers → Founders shows who ships it.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):

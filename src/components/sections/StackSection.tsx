@@ -11,7 +11,11 @@ const stack = [
 
 export function StackSection() {
   return (
-    <section className="section section-divider" id="stack">
+    <section className="section section-divider dpl-section" id="stack">
+      <div className="dpl-section__rail" aria-hidden="true">
+        <span className="dpl-section__rail-label">Section 09 · The stack</span>
+      </div>
+      <div className="dpl-section__page" aria-hidden="true">p.09 / p.09</div>
       <div className="container-wide">
         <div className="section-header">
           <p className="eyebrow">The production stack</p>

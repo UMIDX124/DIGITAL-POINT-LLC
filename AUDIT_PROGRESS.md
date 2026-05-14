@@ -77,13 +77,30 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ### Commit 3. Homepage metadata, canonical, OG
 
-- Status: PLANNED
-- SHA:
-- Files changed:
+- Status: DONE (scope reduced)
+- SHA: ba65fcb57654c21909a7701a1135c8049ef491a2
+- Files changed: 44 files (layout.tsx + sitemap.ts + robots.ts + 30 page.tsx files in (marketing)/(conversion) + 5 SEO components + newsletter email template). `git diff --name-only HEAD~1` summary: all metadata-bearing files in src/ where canonical URLs lived.
 - Gate output:
-- Metadata source (where the title/description came from):
-- Canonical domain confirmed:
-- Blockers:
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Metadata source: meta description rewritten using project hero copy ("Hire the AI. Skip the headcount.") + $1M-$50M mid-market positioning from project CLAUDE.md. Title kept as-is (already locked at "Digital Point. Hire the AI. Skip the headcount.").
+- Description chosen (C1, 151 chars): "AI agents and trained operators run your ops and reporting work. Same output as a 4-person internal team, one retainer. Built for $1M-$50M companies."
+- Candidates considered (logged for swap):
+  - C1 (151): "AI agents and trained operators run your ops and reporting work. Same output as a 4-person internal team, one retainer. Built for $1M-$50M companies."
+  - C2 (149): "Production AI agents and trained operators run repeatable ops work, replacing 4-person teams. For $1M-$50M companies that need output without hiring."
+  - C3 (143): "We deploy AI agents and trained operators to run your ops work. Same output as a 4-person internal team for $30K a year. For $1M-$50M companies."
+- Canonical domain confirmed: apex `https://digitalpointllc.com` (no www, no trailing slash). Migrated from `https://www.digitalpointllc.com` across all 44 files. Vercel handles www→apex redirect at DNS layer.
+- Scope note: audit finding "no homepage metadata" was a false positive — `src/app/(marketing)/page.tsx` inherits complete metadata from `src/app/layout.tsx` (title.default, description, openGraph, twitter, robots, alternates.canonical). No page.tsx override added. Commit scope reduced to: tighten description for SERP fit + make canonical consistent at apex form.
+- Blockers: none. Follow-up: any new `*.tsx` file that hardcodes a canonical must use apex form. Consider extracting `SITE_URL` constant in Batch B if more pages are added.
 
 ### Commit 4. Remove dead analytics stub
 

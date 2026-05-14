@@ -1270,6 +1270,134 @@ html[data-i-seen="1"] .dpl-intro-loader {
 }
 
 /* ============================================================
+   Section variants (V5+). Dark canvas inversion.
+   ============================================================ */
+
+.dpl-section--dark {
+  background: var(--color-canvas-dark);
+  color: var(--color-text-on-dark);
+  padding-block: clamp(5.5rem, 10vw, 8.75rem);
+}
+
+.dpl-section__rail-label--dark {
+  color: var(--color-text-on-dark-tertiary);
+}
+
+.dpl-section__page--dark {
+  color: var(--color-text-on-dark-tertiary);
+}
+
+.dpl-eyebrow--ondark {
+  color: var(--color-accent);
+}
+
+/* Positioning section (V5) */
+.dpl-positioning__title {
+  font-size: clamp(40px, 7vw, 96px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+  color: var(--color-text-on-dark);
+  max-width: 860px;
+  margin: 0 0 2rem;
+}
+
+.dpl-positioning__title-accent {
+  color: var(--color-accent);
+}
+
+.dpl-positioning__body {
+  font-size: clamp(17px, 1.4vw, 19px);
+  line-height: 1.55;
+  color: var(--color-text-on-dark-secondary);
+  max-width: 62ch;
+  margin: 0 0 3.5rem;
+}
+
+.dpl-positioning__signature {
+  padding-block-start: 1.5rem;
+  border-block-start: 1px solid var(--color-hairline-on-dark-strong);
+  max-width: 56ch;
+}
+
+.dpl-positioning__signature-name {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--color-text-on-dark);
+  margin: 0 0 0.25rem;
+}
+
+.dpl-positioning__signature-role {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--color-text-on-dark-secondary);
+  margin: 0 0 0.5rem;
+}
+
+.dpl-positioning__signature-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--color-text-on-dark-tertiary);
+  font-style: italic;
+  margin: 0;
+}
+
+.dpl-positioning__stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin: 4rem 0 0;
+  border-block-start: 1px solid var(--color-hairline-on-dark);
+}
+
+@media (min-width: 768px) {
+  .dpl-positioning__stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dpl-positioning__stat {
+  padding-block: 1.5rem;
+  border-block-end: 1px solid var(--color-hairline-on-dark);
+  border-inline-end: none;
+}
+
+@media (min-width: 768px) {
+  .dpl-positioning__stat {
+    padding-inline: 1.75rem;
+    border-block-end: none;
+    border-inline-end: 1px solid var(--color-hairline-on-dark);
+  }
+  .dpl-positioning__stat:first-child {
+    padding-inline-start: 0;
+  }
+  .dpl-positioning__stat:last-child {
+    border-inline-end: none;
+    padding-inline-end: 0;
+  }
+}
+
+.dpl-positioning__stat dt {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-on-dark-tertiary);
+  margin: 0 0 0.625rem;
+}
+
+.dpl-positioning__stat dd {
+  font-family: var(--font-mono);
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-text-on-dark);
+  margin: 0;
+}
+
+/* ============================================================
    Pillar card grid
    ============================================================ */
 

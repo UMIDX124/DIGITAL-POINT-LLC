@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 import { FlowDiagram } from '@/components/brand/FlowDiagram';
+import { AgencyMailboxPositioning } from '@/components/sections/AgencyMailboxPositioning';
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -71,6 +72,8 @@ export default function ContactPage() {
           </p>
         </div>
       </section>
+
+      <AgencyMailboxPositioning />
 
       <section className="section section-divider">
         <div className="container-wide">

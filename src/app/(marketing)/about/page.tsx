@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { PersonSchema } from '@/components/seo/PersonSchema';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 import { FoundersSection } from '@/components/sections/FoundersSection';
+import { AgencyMailboxPositioning } from '@/components/sections/AgencyMailboxPositioning';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -85,6 +86,8 @@ export default function AboutPage() {
       </section>
 
       <FoundersSection variant="full" />
+
+      <AgencyMailboxPositioning />
 
       <section className="section section-divider">
         <div className="container-wide">

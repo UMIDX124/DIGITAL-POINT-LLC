@@ -1,6 +1,7 @@
 import { HeroSection } from '@/components/sections/HeroSection';
 import { ActivityTicker } from '@/components/marketing/ActivityTicker';
 import { HomeEvidence } from '@/components/sections/HomeEvidence';
+import { AgencyMailboxPositioning } from '@/components/sections/AgencyMailboxPositioning';
 import { RecoverySection } from '@/components/sections/RecoverySection';
 import { PillarsSection } from '@/components/sections/PillarsSection';
 import { MathSection } from '@/components/sections/MathSection';
@@ -15,6 +16,7 @@ export default function HomePage() {
       <HeroSection />
       <ActivityTicker />
       <HomeEvidence />
+      <AgencyMailboxPositioning />
       <RecoverySection />
       <PillarsSection />
       <MathSection />

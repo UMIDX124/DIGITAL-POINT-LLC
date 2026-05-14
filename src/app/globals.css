@@ -1398,6 +1398,137 @@ html[data-i-seen="1"] .dpl-intro-loader {
 }
 
 /* ============================================================
+   Pillars (V6). Unified bordered grid, no per-card borders.
+   ============================================================ */
+
+.dpl-section--pillars {
+  background: var(--color-canvas);
+}
+
+.dpl-pillars__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-block-end: 2.75rem;
+}
+
+.dpl-pillars__title {
+  font-size: clamp(28px, 3.6vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin: 0;
+  max-width: 22ch;
+}
+
+.dpl-pillars__index {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-quaternary);
+  margin: 0 0 0.4rem;
+  align-self: flex-end;
+}
+
+.dpl-pillars__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--color-hairline-strong);
+}
+
+@media (min-width: 768px) {
+  .dpl-pillars__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.dpl-pillar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.875rem 1.75rem 1.5rem;
+  background: var(--color-canvas);
+  color: inherit;
+  text-decoration: none;
+  border-block-end: 1px solid var(--color-hairline-strong);
+  transition: background var(--motion-fast) var(--ease-out);
+}
+
+.dpl-pillar:last-child {
+  border-block-end: none;
+}
+
+@media (min-width: 768px) {
+  .dpl-pillar {
+    border-block-end: none;
+    border-inline-end: 1px solid var(--color-hairline-strong);
+  }
+  .dpl-pillar:last-child {
+    border-inline-end: none;
+  }
+}
+
+.dpl-pillar::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-accent);
+  opacity: 0;
+  transition: opacity var(--motion-fast) var(--ease-out);
+}
+
+.dpl-pillar:hover {
+  background: var(--color-hairline-faint);
+}
+
+.dpl-pillar:hover::before {
+  opacity: 1;
+}
+
+.dpl-pillar__num {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-block-end: 1.5rem;
+}
+
+.dpl-pillar__title {
+  font-size: 1.5rem;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin: 0 0 0.75rem;
+}
+
+.dpl-pillar__desc {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  margin: 0 0 1.75rem;
+  flex: 1;
+}
+
+.dpl-pillar__receipts {
+  padding-block-start: 0.875rem;
+  border-block-start: 1px solid var(--color-hairline);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--color-text-tertiary);
+  margin: 0;
+}
+
+/* ============================================================
    Pillar card grid
    ============================================================ */
 

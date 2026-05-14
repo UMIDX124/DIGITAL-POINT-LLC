@@ -2,50 +2,55 @@ import Link from 'next/link';
 
 const pillars = [
   {
-    index: '01',
-    title: 'AI Agents',
-    desc: 'Custom-trained agents that run repeatable knowledge work. CRM updates, lead routing, qualification, follow-up cadences.',
+    num: '01 · Agents',
+    title: 'Production AI agents',
+    desc: 'Custom-trained agents that run repeatable knowledge work. CRM updates, lead routing, qualification, follow-up cadences. Operator-audited edges.',
+    receipts: '~Replaces $200K of headcount',
     href: '/agents',
   },
   {
-    index: '02',
-    title: 'Workflow Automation',
-    desc: 'Replace manual handoffs across your stack. n8n + custom TypeScript + Postgres for production, not a Zapier shop.',
+    num: '02 · Automation',
+    title: 'Workflow handoffs',
+    desc: 'Replace manual handoffs across your stack. n8n + custom TypeScript + Postgres for production pipelines. Not a Zapier shop, not a Make rebadger.',
+    receipts: '~60s lead-to-CRM end-to-end',
     href: '/automation',
   },
   {
-    index: '03',
-    title: 'Remote Operators',
-    desc: 'Trained humans audit the edges where automation breaks. Not generic VAs. operators with workflow context.',
+    num: '03 · Operators',
+    title: 'Remote operators',
+    desc: 'Vetted humans audit the edges where automation breaks. Live in your Slack on day one. Not generic VAs, not offshore data-entry farms.',
+    receipts: '~<6h escalation response',
     href: '/operators',
   },
 ];
 
 export function PillarsSection() {
   return (
-    <section className="section section-divider" id="services">
-      <div className="container-wide">
-        <div className="section-header">
-          <p className="eyebrow">Build · Three pillars</p>
-          <h2 className="section-title text-balance">
-            Or ship new agents from scratch.
-          </h2>
-          <p className="section-desc text-pretty">
-            We deploy production AI agents and operate them for you. Three layers,
-            same retainer, no platform license to manage.
-          </p>
-        </div>
+    <section className="dpl-section dpl-section--pillars" id="services">
+      <div className="dpl-section__rail" aria-hidden="true">
+        <span className="dpl-section__rail-label">Section 04 · Pillars</span>
+      </div>
+      <div className="dpl-section__page" aria-hidden="true">p.04 / p.09</div>
+      <div className="dpl-section__inner">
+        <header className="dpl-pillars__head">
+          <div>
+            <p className="dpl-eyebrow">
+              <span className="dpl-eyebrow__rule" aria-hidden="true" />
+              Four pillars
+            </p>
+            <h2 className="dpl-pillars__title">What we ship, what we run, what we fix.</h2>
+          </div>
+          <p className="dpl-pillars__index" aria-hidden="true">P.04 · Pillars 01 — 04</p>
+        </header>
 
-        <div className="pillar-grid pillar-grid--three" style={{ marginBlockStart: '3rem' }}>
+        <div className="dpl-pillars__grid">
           {pillars.map((p) => (
-            <article key={p.index} className="pillar-card">
-              <span className="pillar-card__index">{p.index} · {p.title}</span>
-              <h3 className="pillar-card__title">{p.title}</h3>
-              <p className="pillar-card__desc">{p.desc}</p>
-              <div className="pillar-card__link">
-                <Link href={p.href} className="btn-link">Read the pillar</Link>
-              </div>
-            </article>
+            <Link key={p.num} href={p.href} className="dpl-pillar">
+              <span className="dpl-pillar__num">{p.num}</span>
+              <h3 className="dpl-pillar__title">{p.title}</h3>
+              <p className="dpl-pillar__desc">{p.desc}</p>
+              <p className="dpl-pillar__receipts" data-design-only="true">{p.receipts}</p>
+            </Link>
           ))}
         </div>
       </div>

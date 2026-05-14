@@ -1289,6 +1289,18 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit X2. Rewrite Cosmo system prompt with DPL knowledge + handoff triggers
+
+- Status: DONE
+- Files changed (1): `src/lib/cosmo-system-prompt.ts`.
+- Replaced the static `COSMO_SYSTEM_PROMPT` string with a `buildCosmoSystemPrompt({ currentPath, onCallOperator })` factory and bumped the version constant to `v6-2026-05-15`. Page context and on-call operator name interpolate into the prompt at request time so each chat session gets a system message tailored to the caller's pathname.
+- Added structured-output instructions: every reply ends with a `[FOLLOWUPS]["q1","q2","q3"]` JSON line. Companion `parseFollowups(content)` helper strips that line off the streamed text and returns up to 3 strings for the suggestion-chip UI in X5.
+- Tightened voice rules: full inventory of CLAUDE.md anti-patterns (em-dashes, three-item lists, binary contrasts, business jargon, -ly adverbs, Wh-starters, passive voice) now lives in the prompt so the model produces copy that survives stop-slop linting.
+- DPL facts updated to live state: 4 pillars (AI Agents, Workflow Automation, Remote Operators, Recovery), $500K-$10M ARR target with $15M warm-referral stretch, published pricing ladder, founder roles.
+- Backwards-compat: legacy `COSMO_SYSTEM_PROMPT` export now resolves to `buildCosmoSystemPrompt({})` so the existing `/api/chat` route imports keep compiling until X3 swaps them over.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):
 - `git config --get remote.origin.url` (must equal `git@github.com:UMIDX124/DIGITAL-POINT-LLC.git`):
 - `cat .vercel/project.json | grep projectName` (must equal `digitalpointllc-1`):

@@ -890,6 +890,32 @@ If any field is empty or says "n/a" without explicit justification, the commit i
   ```
 - Blockers: none.
 
+### Commit V5. Not the agency mailbox positioning section
+
+- Status: DONE
+- SHA: 8dadecbe38ed5d1c190f6db10c940ed92ea60149
+- Files changed (5): new `src/components/sections/AgencyMailboxPositioning.tsx`, `src/app/globals.css` (new `.dpl-section--dark`, `.dpl-eyebrow--ondark`, `.dpl-positioning*` rules), `src/app/(marketing)/page.tsx`, `src/app/(marketing)/about/page.tsx`, `src/app/(marketing)/contact/page.tsx`.
+- Layout: dark canvas (`var(--color-canvas-dark)`), `var(--color-text-on-dark)` text, padding-block clamp(5.5rem, 10vw, 8.75rem). Eyebrow "— The difference" in amber. H2 "Not the agency mailbox." at clamp(40px, 7vw, 96px) / weight 600 / line-height 0.98 / letter-spacing -0.04em, max-width 860px, period wrapped in `<span>` for amber color. Body locked verbatim from `feedback_dpl_email_personal_routing.md`. Signature block with hairline-top: "— Faizan Rafiq & Anwaar Tayyab" / role line / italic "Signed 2026.05.14, Wilmington DE." Stats row 3-column (1-col mobile), hairline-divided: `2 of 2` (Founders replying) / `4–6h` (Median first reply) / `0` (Support tiers between you and a co-founder).
+- Section frame: `Section 03 · The difference` vertical rail label (desktop only) + `p.03 / p.09` page indicator. Both styled with `--color-text-on-dark-tertiary`.
+- Mount points: 3 insertions of the same component.
+  - Home: between `<HomeEvidence>` and `<RecoverySection>`.
+  - About: after `<FoundersSection variant="full" />`.
+  - Contact: after the existing hero section.
+- Verification: screenshots at `docs/screenshots/commit-28/{home,about,contact}-{360,768,1440}.png`. About at 1440 confirms the dark band with massive "Not the agency mailbox." headline (amber period), signature block, and `2 of 2 | 4-6h | 0` stats row rendering correctly inside the existing about-page flow.
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+
 ---
 
 ## Final verification

@@ -18,7 +18,7 @@ export function AgencyMailboxPositioning() {
         </p>
 
         <div className="dpl-positioning__signature">
-          <p className="dpl-positioning__signature-name">— Faizan Rafiq &amp; Anwaar Tayyab</p>
+          <p className="dpl-positioning__signature-name">Faizan Rafiq &amp; Anwaar Tayyab</p>
           <p className="dpl-positioning__signature-role">Co-founders. Both on every audit. Both online during business hours, both reachable after.</p>
           <p className="dpl-positioning__signature-meta">Signed 2026.05.14, Wilmington DE.</p>
         </div>

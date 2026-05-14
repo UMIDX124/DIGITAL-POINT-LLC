@@ -14,7 +14,7 @@ export function HomeSystemFlow() {
               <span className="dpl-eyebrow__rule" aria-hidden="true" />
               System flow
             </p>
-            <h2 className="dpl-flow__title">A production stack, not a chatbot demo.</h2>
+            <h2 className="dpl-flow__title">A production stack with self-hosted handoffs.</h2>
             <p className="dpl-flow__body">
               Every inbound signal moves through orchestration, a Groq-hosted agent, and an operator who audits the edge cases the model gets wrong. State writes to Postgres. CRM, Slack, and email pick up downstream.
             </p>

@@ -8,7 +8,7 @@ export function FounderQuote() {
       <div className="dpl-section__inner">
         <p className="dpl-eyebrow">
           <span className="dpl-eyebrow__rule" aria-hidden="true" />
-          Signed — Faizan
+          Signed · Faizan
         </p>
         <blockquote className="dpl-quote__body">
           <span className="dpl-quote__mark" aria-hidden="true">&ldquo;</span>

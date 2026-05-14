@@ -86,7 +86,7 @@ export default function PricingPage() {
         ]}
       />
       <ServiceSchema
-        name="DPL Pricing — Audit, Pilot, Retainer"
+        name="DPL Pricing · Audit, Pilot, Retainer"
         description="Published-price managed service: free audit, $2,500 fixed pilot for 30 days, $2,500 per month retainer. Recovery ladder: $5,000 diagnosis, $10,000 fix, $2,500/mo operate."
         url="https://digitalpointllc.com/pricing"
         serviceTypes={[

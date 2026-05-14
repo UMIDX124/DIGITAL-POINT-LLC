@@ -38,9 +38,9 @@ export function PillarsSection() {
               <span className="dpl-eyebrow__rule" aria-hidden="true" />
               Four pillars
             </p>
-            <h2 className="dpl-pillars__title">What we ship, what we run, what we fix.</h2>
+            <h2 className="dpl-pillars__title">Three services we ship. One recovery practice.</h2>
           </div>
-          <p className="dpl-pillars__index" aria-hidden="true">P.04 · Pillars 01 — 04</p>
+          <p className="dpl-pillars__index" aria-hidden="true">P.04 · Pillars 01 to 04</p>
         </header>
 
         <div className="dpl-pillars__grid">

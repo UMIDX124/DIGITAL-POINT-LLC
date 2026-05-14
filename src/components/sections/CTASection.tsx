@@ -7,11 +7,11 @@ export function CTASection() {
         <div className="section-header section-header--center">
           <p className="eyebrow eyebrow--accent">Let&apos;s map the work</p>
           <h2 className="section-title text-balance">
-            Where could AI be running your repeatable work?
+            Audit your repeatable work in 45 minutes.
           </h2>
           <p className="section-desc text-pretty">
             45 minutes with a co-founder. Free. Written plan within 5 business days.
-            What AI can run, what automation can stitch, where operators stay.
+            We come back with which workflows fit agents and which still need operators.
           </p>
           <div className="hero-cta-row" style={{ marginBlockStart: '0', justifyContent: 'center' }}>
             <Link href="/audit" className="btn btn-primary">
@@ -22,7 +22,7 @@ export function CTASection() {
             </Link>
           </div>
           <p className="hero-microcopy">
-            Free · 30 min · No sales pitch · Co-founder reviews your setup
+            Free · 45 min · No sales pitch · Co-founder reviews your setup
           </p>
         </div>
       </div>

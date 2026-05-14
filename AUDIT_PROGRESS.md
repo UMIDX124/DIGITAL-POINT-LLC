@@ -233,12 +233,31 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ### Commit 9. Sitemap lastModified from MDX frontmatter
 
-- Status: PLANNED
-- SHA:
-- Files changed:
-- Verification (`curl localhost:3000/sitemap.xml | grep lastmod | head -20`):
+- Status: DONE
+- SHA: 2ff3beeda9bc3074976773911bf75b0106e7dab0
+- Files changed: src/app/sitemap.ts
+- Verification (`curl http://localhost:3000/sitemap.xml | grep -oE "<lastmod>[^<]+</lastmod>" | sort -u`):
+  ```
+  <lastmod>2026-03-15T00:00:00.000Z</lastmod>
+  <lastmod>2026-03-18T00:00:00.000Z</lastmod>
+  <lastmod>2026-03-20T00:00:00.000Z</lastmod>
+  <lastmod>2026-03-22T00:00:00.000Z</lastmod>
+  <lastmod>2026-05-12T00:00:00.000Z</lastmod>
+  <lastmod>2026-05-14T00:00:00.000Z</lastmod>
+  ```
+  Six unique values — dates vary by post/guide instead of all being a single build-time date. STATIC_LAST_MOD (2026-05-14) covers routes without content frontmatter.
 - Gate output:
-- Blockers:
+  ```
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Note on prompt deviation: prompt asked for `pnpm build && pnpm start`. Project's `start` script uses `bun .next/standalone/server.js` and bun isn't installed locally. Verified via `pnpm dev` instead. Sitemap rendering logic is identical in dev and prod.
+- Blockers: none.
 
 ### Commit 10. Fix ChatPanel mobile width overflow
 

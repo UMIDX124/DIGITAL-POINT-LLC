@@ -12,7 +12,6 @@ import {
 import {
   Section, Container, FadeUp, GlassCard, SignalPoint
 } from '@/components/ui-dp/AnimatedElements';
-import { trackFormStart, trackFormSubmit, trackFormSuccess, trackFormError, trackEvent } from '@/lib/analytics';
 import { FlowDiagram } from '@/components/brand/FlowDiagram';
 
 const challenges = [
@@ -62,25 +61,14 @@ export function AuditPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Partial<FormData>>({});
-  const [formStarted, setFormStarted] = useState(false);
-
-  const trackStep = (stepNumber: number) => {
-    trackEvent('form_step', { step: stepNumber, form: 'free_audit' });
-  };
 
   const handleChallengeSelect = (challengeId: string) => {
-    if (!formStarted) {
-      setFormStarted(true);
-      trackFormStart('free_audit');
-    }
     setFormData(prev => ({ ...prev, bottleneck: challengeId }));
-    trackStep(1);
     setStep(2);
   };
 
   const handleSpendSelect = (spendId: string) => {
     setFormData(prev => ({ ...prev, adSpend: spendId }));
-    trackStep(2);
     setStep(3);
   };
 
@@ -99,14 +87,9 @@ export function AuditPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateStep3()) {
-      trackFormError('free_audit', 'validation');
-      return;
-    }
+    if (!validateStep3()) return;
 
     setIsSubmitting(true);
-    trackStep(3);
-    trackFormSubmit('free_audit');
 
     try {
       const response = await fetch('/api/audit', {
@@ -122,14 +105,11 @@ export function AuditPage() {
       const data = await response.json();
 
       if (data.success) {
-        trackFormSuccess('free_audit');
         setStep(4);
       } else {
-        trackFormError('free_audit', 'server');
         setErrors({ email: 'Something went wrong. Please try again.' });
       }
     } catch {
-      trackFormError('free_audit', 'network');
       setErrors({ email: 'Network error. Please try again.' });
     } finally {
       setIsSubmitting(false);

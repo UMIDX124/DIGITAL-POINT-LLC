@@ -1,5 +1,7 @@
 'use client';
 
+// GTM/GA4 wiring intentionally deferred. Add when paid acquisition starts.
+
 /**
  * Phase 17b 3-restructured A3. analytics consent gate.
  *

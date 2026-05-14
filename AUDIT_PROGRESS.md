@@ -331,12 +331,26 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ### Commit 13. Dynamic OG images per blog + guide route
 
-- Status: PLANNED
-- SHA:
-- Files changed:
-- Sample OG image rendered (paste 200 status from `/blog/<slug>/opengraph-image`):
+- Status: DONE
+- SHA: 1f0adf8a0e6f681b8863f3072be89d5ec4595798
+- Files changed: src/app/(marketing)/blog/[slug]/opengraph-image.tsx (new), src/app/(marketing)/guides/[slug]/opengraph-image.tsx (new), src/app/(marketing)/guides/[slug]/page.tsx (removed static images override)
+- Sample OG image responses:
+  - `GET /blog/ai-agent-pricing-2026/opengraph-image-yqks0s?5482c5e88e422c61` → HTTP 200, image/png, 40253 bytes, file detected as `PNG image data, 1200 x 630, 8-bit/color RGBA, non-interlaced`
+  - `GET /guides/marketing-attribution-complete-guide/opengraph-image-1kutxw?6525996473fb6945` → HTTP 200, image/png, 48186 bytes, same PNG header
+  - Rendered HTML on `/guides/marketing-attribution-complete-guide` now serves `<meta property="og:image" content=".../opengraph-image-1kutxw?...">` (auto-filled by Next from the file convention).
+- Route convention: Next 16 appends a stable content hash to the file-based OG route — `/opengraph-image-<hash>`. The plain `/opengraph-image` URL is not served; metadata system handles the rewrite into og:image meta tags transparently.
+- Issue caught during verification: Satori (next/og renderer) requires `<div>` with more than one child to declare `display: flex|contents|none`. Initial guide OG had `Guide{readTime ? ` · ${readTime}` : ''}` which Satori counted as 2 children of the `<div>`. Fixed by concatenating to a single string variable before render.
 - Gate output:
-- Blockers:
+  ```
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none. Followup: JSON-LD `image` in commit 6's BlogPosting schema still points to static /og-image.png because the per-guide dynamic OG URL hash isn't easily resolvable at runtime. Low priority — primary social previews use og:image meta tags which now auto-resolve to the dynamic OG.
 
 ### Commit 14. CountUp stagger verification (likely no-op if commit 1 covered)
 

@@ -363,7 +363,7 @@ select {
 
 /* Section header */
 .section-header {
-  max-width: 56rem;
+  max-width: 64rem;
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
@@ -397,7 +397,7 @@ select {
   font-size: var(--text-md);
   line-height: 1.55;
   color: var(--color-text-secondary);
-  max-width: 40rem;
+  max-width: 52rem;
 }
 
 /* ============================================================
@@ -1310,7 +1310,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
 
 @media (min-width: 1024px) {
   .dpl-evidence__grid {
-    grid-template-columns: 1fr 1.4fr;
+    grid-template-columns: minmax(360px, 1fr) minmax(0, 1.4fr);
     gap: 4rem;
   }
 }
@@ -1322,14 +1322,14 @@ html[data-i-seen="1"] .dpl-intro-loader {
   font-weight: 600;
   color: var(--color-ink);
   margin: 0 0 1.25rem;
-  max-width: 22ch;
+  max-width: 28ch;
 }
 
 .dpl-evidence__body {
   font-size: clamp(16px, 1.2vw, 17.5px);
   line-height: 1.55;
   color: var(--color-text-secondary);
-  max-width: 36ch;
+  max-width: 44ch;
   margin: 0 0 2rem;
 }
 
@@ -1351,7 +1351,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   flex-direction: column;
   gap: 0.1em;
   font-family: var(--font-mono);
-  font-size: clamp(64px, 12vw, 180px);
+  font-size: clamp(56px, 9vw, 120px);
   font-weight: 500;
   line-height: 0.94;
   letter-spacing: -0.04em;
@@ -1410,7 +1410,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   line-height: 1.08;
   letter-spacing: -0.025em;
   color: var(--color-ink);
-  max-width: 1080px;
+  max-width: 1240px;
   margin: 0;
 }
 
@@ -1521,7 +1521,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   letter-spacing: -0.04em;
   font-weight: 600;
   color: var(--color-text-on-dark);
-  max-width: 860px;
+  max-width: 1080px;
   margin: 0 0 2rem;
 }
 
@@ -1533,7 +1533,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   font-size: clamp(17px, 1.4vw, 19px);
   line-height: 1.55;
   color: var(--color-text-on-dark-secondary);
-  max-width: 62ch;
+  max-width: 72ch;
   margin: 0 0 3.5rem;
 }
 
@@ -1644,7 +1644,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   font-weight: 600;
   color: var(--color-ink);
   margin: 0;
-  max-width: 22ch;
+  max-width: 28ch;
 }
 
 .dpl-pillars__index {
@@ -1776,7 +1776,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   font-weight: 600;
   color: var(--color-ink);
   margin: 0 0 1.25rem;
-  max-width: 22ch;
+  max-width: 28ch;
 }
 
 .dpl-flow__body {
@@ -1784,7 +1784,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   line-height: 1.55;
   color: var(--color-text-secondary);
   margin: 0 0 1.25rem;
-  max-width: 38ch;
+  max-width: 48ch;
 }
 
 .dpl-flow__caption {
@@ -1795,7 +1795,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   letter-spacing: 0.04em;
   color: var(--color-text-tertiary);
   margin: 0;
-  max-width: 42ch;
+  max-width: 56ch;
 }
 
 .dpl-flow__diagram {
@@ -1839,7 +1839,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   font-weight: 600;
   color: var(--color-ink);
   margin: 0 0 1.25rem;
-  max-width: 18ch;
+  max-width: 24ch;
 }
 
 .dpl-rationale__note {
@@ -1847,7 +1847,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   line-height: 1.55;
   color: var(--color-text-secondary);
   margin: 0;
-  max-width: 32ch;
+  max-width: 42ch;
 }
 
 .dpl-rationale__list {
@@ -1907,7 +1907,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   line-height: 1.6;
   color: var(--color-text-secondary);
   margin: 0;
-  max-width: 60ch;
+  max-width: 72ch;
 }
 
 .dpl-architecture__title {
@@ -1917,7 +1917,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   font-weight: 600;
   color: var(--color-ink);
   margin: 0 0 1rem;
-  max-width: 22ch;
+  max-width: 28ch;
 }
 
 .dpl-architecture__body {
@@ -1925,7 +1925,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   line-height: 1.55;
   color: var(--color-text-secondary);
   margin: 0 0 2.5rem;
-  max-width: 60ch;
+  max-width: 72ch;
 }
 
 .dpl-architecture__diagram {
@@ -2920,7 +2920,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   font-weight: 500;
   color: var(--color-ink);
   margin-block: 0.75rem 2rem;
-  max-width: 36rem;
+  max-width: 48rem;
   letter-spacing: -0.01em;
 }
 
@@ -2985,7 +2985,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   flex-direction: column;
   border-block-start: 1px solid var(--color-hairline-strong);
   border-block-end: 1px solid var(--color-hairline-strong);
-  max-width: 60rem;
+  max-width: 72rem;
 }
 
 .dpl-faq__item {
@@ -3074,7 +3074,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
 
 .dpl-faq__a > p {
   grid-column: 2;
-  max-width: 45rem;
+  max-width: 54rem;
   font-size: 15px;
   line-height: 1.6;
   color: var(--color-text-secondary);

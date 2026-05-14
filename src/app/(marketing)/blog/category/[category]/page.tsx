@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${categoryName} Articles`,
     description: meta.description,
-    alternates: { canonical: `https://www.digitalpointllc.com/blog/category/${slug}` },
+    alternates: { canonical: `https://digitalpointllc.com/blog/category/${slug}` },
     robots: hasIndexable
       ? { index: true, follow: true, googleBot: { index: true, follow: true } }
       : { index: false, follow: true, googleBot: { index: false, follow: true } },

@@ -54,15 +54,15 @@ export function ArticleSchema({
       : {
           '@type': 'Organization',
           name: 'Digital Point LLC',
-          url: 'https://www.digitalpointllc.com',
+          url: 'https://digitalpointllc.com',
         },
     publisher: {
       '@type': 'Organization',
       name: 'Digital Point LLC',
-      url: 'https://www.digitalpointllc.com',
+      url: 'https://digitalpointllc.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.digitalpointllc.com/Dp-logo1.png',
+        url: 'https://digitalpointllc.com/Dp-logo1.png',
       },
     },
     mainEntityOfPage: {

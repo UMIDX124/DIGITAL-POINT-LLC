@@ -3,7 +3,7 @@ import { getAllPosts, categoryMeta } from '@/lib/blog';
 import { comparisons } from '@/lib/comparisons';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.digitalpointllc.com';
+  const baseUrl = 'https://digitalpointllc.com';
 
   // Homepage
   const homepage: MetadataRoute.Sitemap = [

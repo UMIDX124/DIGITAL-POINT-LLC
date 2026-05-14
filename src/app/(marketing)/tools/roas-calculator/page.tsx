@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Free ROAS Calculator: Calculate Return on Ad Spend',
   description: 'Calculate your ROAS (Return on Ad Spend) instantly. Compare platform-reported vs. blended ROAS and find your true advertising ROI.',
   keywords: ['roas calculator', 'return on ad spend', 'advertising roi', 'roas formula', 'ad spend calculator'],
-  alternates: { canonical: 'https://www.digitalpointllc.com/tools/roas-calculator' },
+  alternates: { canonical: 'https://digitalpointllc.com/tools/roas-calculator' },
   openGraph: {
     title: 'Free ROAS Calculator',
     description: 'Calculate your true Return on Ad Spend. Compare platform-reported vs. blended ROAS.',
@@ -27,15 +27,15 @@ export default function ROASCalculatorPage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://www.digitalpointllc.com' },
-        { name: 'Tools', item: 'https://www.digitalpointllc.com/tools' },
-        { name: 'ROAS Calculator', item: 'https://www.digitalpointllc.com/tools/roas-calculator' },
+        { name: 'Home', item: 'https://digitalpointllc.com' },
+        { name: 'Tools', item: 'https://digitalpointllc.com/tools' },
+        { name: 'ROAS Calculator', item: 'https://digitalpointllc.com/tools/roas-calculator' },
         ]}
       />
       <ToolSchema
         name="ROAS Calculator"
         description="Free calculator to determine your Return on Ad Spend (ROAS) across advertising channels."
-        url="https://www.digitalpointllc.com/tools/roas-calculator"
+        url="https://digitalpointllc.com/tools/roas-calculator"
       />
       <FAQSchema faqs={faqs} />
       <ROASCalculator faqs={faqs} />

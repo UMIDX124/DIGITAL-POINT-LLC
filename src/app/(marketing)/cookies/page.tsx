@@ -26,7 +26,7 @@ const sections = [
   {
     title: 'How to reset',
     body: [
-      'Use the button below to re-open the banner. Or clear the dpl_cookie_consent value in your browser\'s localStorage for www.digitalpointllc.com.',
+      'Use the button below to re-open the banner. Or clear the dpl_cookie_consent value in your browser\'s localStorage for digitalpointllc.com.',
     ],
   },
 ];
@@ -42,8 +42,8 @@ export default function CookiesPage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://www.digitalpointllc.com' },
-        { name: 'Cookies', item: 'https://www.digitalpointllc.com/cookies' },
+        { name: 'Home', item: 'https://digitalpointllc.com' },
+        { name: 'Cookies', item: 'https://digitalpointllc.com/cookies' },
         ]}
       />
       <section className="hero">

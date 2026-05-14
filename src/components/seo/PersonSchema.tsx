@@ -28,7 +28,7 @@ export function PersonSchema({
   description,
   sameAs,
   worksFor = 'Digital Point LLC',
-  worksForUrl = 'https://www.digitalpointllc.com',
+  worksForUrl = 'https://digitalpointllc.com',
 }: PersonSchemaProps) {
   const json = {
     '@context': 'https://schema.org',

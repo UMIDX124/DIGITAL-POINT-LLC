@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Remote Workforce Cost Analysis: US In-House vs Remote Teams (2026)',
   description: 'Comprehensive cost comparison of US in-house teams vs managed remote teams across marketing, engineering, and operations roles. Salary, overhead, and total cost data.',
   keywords: ['remote workforce cost analysis', 'remote team cost comparison', 'outsourcing cost savings', 'remote marketing team cost', 'offshore team costs', 'managed remote team pricing'],
-  alternates: { canonical: 'https://www.digitalpointllc.com/research/remote-workforce-cost-analysis' },
+  alternates: { canonical: 'https://digitalpointllc.com/research/remote-workforce-cost-analysis' },
   openGraph: {
     title: 'Remote Workforce Cost Analysis: US vs Remote Teams',
     description: 'Cost comparison of US in-house vs managed remote teams across 8 role categories.',
@@ -27,9 +27,9 @@ export default function RemoteWorkforceCostAnalysisPage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://www.digitalpointllc.com' },
-        { name: 'Research', item: 'https://www.digitalpointllc.com/research' },
-        { name: 'Remote Workforce Cost Analysis', item: 'https://www.digitalpointllc.com/research/remote-workforce-cost-analysis' },
+        { name: 'Home', item: 'https://digitalpointllc.com' },
+        { name: 'Research', item: 'https://digitalpointllc.com/research' },
+        { name: 'Remote Workforce Cost Analysis', item: 'https://digitalpointllc.com/research/remote-workforce-cost-analysis' },
         ]}
       />
       <ArticleSchema
@@ -37,7 +37,7 @@ export default function RemoteWorkforceCostAnalysisPage() {
         description="Comprehensive cost comparison of US in-house teams vs managed remote teams across marketing, engineering, and operations roles."
         datePublished="2026-02-15"
         dateModified="2026-03-18"
-        url="https://www.digitalpointllc.com/research/remote-workforce-cost-analysis"
+        url="https://digitalpointllc.com/research/remote-workforce-cost-analysis"
       />
       <FAQSchema faqs={faqs} />
       <RemoteWorkforceCostAnalysis faqs={faqs} />

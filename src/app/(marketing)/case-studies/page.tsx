@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'Case Studies',
     description:
       'Real results from real clients. See how AI agents + automation + operator backstop replaced ops headcount and ran the workflows unattended.',
-    url: 'https://www.digitalpointllc.com/case-studies',
+    url: 'https://digitalpointllc.com/case-studies',
     type: 'website',
   },
   twitter: {
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: 'Case Studies',
     description: 'Real results from real clients. See how AI agents + automation + operator backstop replaced ops headcount and ran the workflows unattended.',
   },
-  alternates: { canonical: 'https://www.digitalpointllc.com/case-studies' },
+  alternates: { canonical: 'https://digitalpointllc.com/case-studies' },
 };
 
 export default function CaseStudies() {
@@ -27,8 +27,8 @@ export default function CaseStudies() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://www.digitalpointllc.com' },
-        { name: 'Case Studies', item: 'https://www.digitalpointllc.com/case-studies' },
+        { name: 'Home', item: 'https://digitalpointllc.com' },
+        { name: 'Case Studies', item: 'https://digitalpointllc.com/case-studies' },
         ]}
       />
       <div className="container-wide" style={{ paddingTop: 'var(--section-sm)' }}>

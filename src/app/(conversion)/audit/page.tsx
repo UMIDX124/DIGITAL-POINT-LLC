@@ -10,10 +10,10 @@ export const metadata: Metadata = {
     title: 'Book a Free Audit',
     description:
       '45 minutes with a co-founder. Written deployment plan within 5 business days. Free.',
-    url: 'https://www.digitalpointllc.com/audit',
+    url: 'https://digitalpointllc.com/audit',
     images: [
       {
-        url: 'https://www.digitalpointllc.com/og-image.png',
+        url: 'https://digitalpointllc.com/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Digital Point. Book a free audit.',
@@ -24,10 +24,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Book a Free Audit',
     description: 'Deployment-ready AI + automation plan in 5 days. No retainer attached.',
-    images: ['https://www.digitalpointllc.com/og-image.png'],
+    images: ['https://digitalpointllc.com/og-image.png'],
   },
   alternates: {
-    canonical: 'https://www.digitalpointllc.com/audit',
+    canonical: 'https://digitalpointllc.com/audit',
   },
 };
 
@@ -36,8 +36,8 @@ export default function AuditRoute() {
     <>
       <BreadcrumbSchema
         items={[
-          { name: 'Home', item: 'https://www.digitalpointllc.com' },
-          { name: 'Audit', item: 'https://www.digitalpointllc.com/audit' },
+          { name: 'Home', item: 'https://digitalpointllc.com' },
+          { name: 'Audit', item: 'https://digitalpointllc.com/audit' },
         ]}
       />
       <AuditPage />

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Average Customer Acquisition Cost (CAC) by Industry: 2026 Benchmarks',
   description: 'CAC benchmarks across 18 industries with breakdowns by company size, channel, and business model. Updated for 2026 with B2B and B2C comparisons.',
   keywords: ['average cac by industry', 'customer acquisition cost benchmarks', 'cac benchmarks 2026', 'b2b cac', 'b2c cac', 'cost per acquisition by industry'],
-  alternates: { canonical: 'https://www.digitalpointllc.com/research/average-cac-by-industry' },
+  alternates: { canonical: 'https://digitalpointllc.com/research/average-cac-by-industry' },
   openGraph: {
     title: 'Average CAC by Industry: 2026 Benchmarks',
     description: 'Customer acquisition cost benchmarks across 18 industries. B2B vs B2C breakdowns and channel-level data.',
@@ -27,9 +27,9 @@ export default function AverageCACByIndustryPage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://www.digitalpointllc.com' },
-        { name: 'Research', item: 'https://www.digitalpointllc.com/research' },
-        { name: 'Average CAC by Industry', item: 'https://www.digitalpointllc.com/research/average-cac-by-industry' },
+        { name: 'Home', item: 'https://digitalpointllc.com' },
+        { name: 'Research', item: 'https://digitalpointllc.com/research' },
+        { name: 'Average CAC by Industry', item: 'https://digitalpointllc.com/research/average-cac-by-industry' },
         ]}
       />
       <ArticleSchema
@@ -37,7 +37,7 @@ export default function AverageCACByIndustryPage() {
         description="CAC benchmarks across 18 industries with breakdowns by company size, channel, and business model."
         datePublished="2026-01-20"
         dateModified="2026-03-15"
-        url="https://www.digitalpointllc.com/research/average-cac-by-industry"
+        url="https://digitalpointllc.com/research/average-cac-by-industry"
       />
       <FAQSchema faqs={faqs} />
       <AverageCACByIndustry faqs={faqs} />

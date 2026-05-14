@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'FAQ',
   description:
     'Common questions about Digital Point. What we do, how recovery works, what production AI agent operations means, pricing, the tech stack, and operator coverage.',
-  alternates: { canonical: 'https://www.digitalpointllc.com/faq' },
+  alternates: { canonical: 'https://digitalpointllc.com/faq' },
 };
 
 const faqs = [
@@ -58,8 +58,8 @@ export default function FAQPage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://www.digitalpointllc.com' },
-        { name: 'FAQ', item: 'https://www.digitalpointllc.com/faq' },
+        { name: 'Home', item: 'https://digitalpointllc.com' },
+        { name: 'FAQ', item: 'https://digitalpointllc.com/faq' },
         ]}
       />
       <FAQSchema faqs={faqs.map((f) => ({ question: f.q, answer: f.a }))} />

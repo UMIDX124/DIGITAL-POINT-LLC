@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Remote Operators',
   description:
     'Trained operators audit the edges where automation breaks. Not generic VAs. Not offshore data-entry teams. Production-grade humans with workflow context, on call when the agent can\'t resolve an exception.',
-  alternates: { canonical: 'https://www.digitalpointllc.com/operators' },
+  alternates: { canonical: 'https://digitalpointllc.com/operators' },
 };
 
 const what = [
@@ -34,14 +34,14 @@ export default function OperatorsPage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://www.digitalpointllc.com' },
-        { name: 'Remote Operators', item: 'https://www.digitalpointllc.com/operators' },
+        { name: 'Home', item: 'https://digitalpointllc.com' },
+        { name: 'Remote Operators', item: 'https://digitalpointllc.com/operators' },
         ]}
       />
       <ServiceSchema
         name="Remote Operators"
         description="Vetted human operators layered over the AI for cases automation cannot handle. Not generic VAs. Trained on your workflows, on call for exceptions, audit every edge."
-        url="https://www.digitalpointllc.com/operators"
+        url="https://digitalpointllc.com/operators"
         serviceTypes={[
         'Operations Coverage',
         'Exception Handling',

@@ -5,8 +5,8 @@ import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 export const metadata: Metadata = {
   title: 'Terms of Service',
   description:
-    'Terms covering use of www.digitalpointllc.com, the audit form, the diagnostic tool, the Cosmo chat surface, and any engagement Digital Point LLC enters with you.',
-  alternates: { canonical: 'https://www.digitalpointllc.com/terms-of-service' },
+    'Terms covering use of digitalpointllc.com, the audit form, the diagnostic tool, the Cosmo chat surface, and any engagement Digital Point LLC enters with you.',
+  alternates: { canonical: 'https://digitalpointllc.com/terms-of-service' },
 };
 
 const lastUpdated = 'May 12, 2026';
@@ -15,7 +15,7 @@ const sections = [
   {
     title: '1. Acceptance',
     body: [
-      'Using www.digitalpointllc.com or submitting any form on the site constitutes acceptance of these terms. If you do not agree, do not use the service. These terms govern the marketing site and the pre-engagement surfaces only. Active engagements are covered by a separate Master Services Agreement (MSA) signed at pilot or retainer stage.',
+      'Using digitalpointllc.com or submitting any form on the site constitutes acceptance of these terms. If you do not agree, do not use the service. These terms govern the marketing site and the pre-engagement surfaces only. Active engagements are covered by a separate Master Services Agreement (MSA) signed at pilot or retainer stage.',
     ],
   },
   {
@@ -77,8 +77,8 @@ export default function TermsOfServicePage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://www.digitalpointllc.com' },
-        { name: 'Terms', item: 'https://www.digitalpointllc.com/terms-of-service' },
+        { name: 'Home', item: 'https://digitalpointllc.com' },
+        { name: 'Terms', item: 'https://digitalpointllc.com/terms-of-service' },
         ]}
       />
       <section className="hero">

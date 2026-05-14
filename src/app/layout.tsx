@@ -20,13 +20,13 @@ import AnalyticsGate from "@/components/compliance/AnalyticsGate";
  */
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.digitalpointllc.com"),
+  metadataBase: new URL("https://digitalpointllc.com"),
   title: {
     default: "Digital Point. Hire the AI. Skip the headcount.",
     template: "%s | Digital Point LLC",
   },
   description:
-    "Digital Point operates the AI agent and automation stack that runs your CRM, ops, reporting, and growth workflows, so you scale without scaling headcount.",
+    "AI agents and trained operators run your ops and reporting work. Same output as a 4-person internal team, one retainer. Built for $1M-$50M companies.",
   keywords: [
     "AI agents",
     "AI automation agency",
@@ -60,8 +60,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Digital Point. Hire the AI. Skip the headcount.",
     description:
-      "Digital Point operates the AI agent and automation stack that runs your CRM, ops, reporting, and growth workflows, so you scale without scaling headcount.",
-    url: "https://www.digitalpointllc.com",
+      "AI agents and trained operators run your ops and reporting work. Same output as a 4-person internal team, one retainer. Built for $1M-$50M companies.",
+    url: "https://digitalpointllc.com",
     siteName: "Digital Point LLC",
     type: "website",
     locale: "en_US",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Digital Point. Hire the AI. Skip the headcount.",
     description:
-      "Digital Point operates the AI agent and automation stack that runs your CRM, ops, reporting, and growth workflows, so you scale without scaling headcount.",
+      "AI agents and trained operators run your ops and reporting work. Same output as a 4-person internal team, one retainer. Built for $1M-$50M companies.",
     images: ["/og-image.png"],
     creator: "@digitalpointllc",
   },
@@ -97,7 +97,7 @@ export const metadata: Metadata = {
     google: process.env.GOOGLE_SITE_VERIFICATION,
   } : undefined,
   alternates: {
-    canonical: "https://www.digitalpointllc.com",
+    canonical: "https://digitalpointllc.com",
   },
 };
 
@@ -127,10 +127,10 @@ export default async function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Digital Point LLC",
-              url: "https://www.digitalpointllc.com",
-              logo: "https://www.digitalpointllc.com/Dp-logo1.png",
+              url: "https://digitalpointllc.com",
+              logo: "https://digitalpointllc.com/Dp-logo1.png",
               description:
-                "Digital Point operates the AI agent and automation stack that runs your CRM, ops, reporting, and growth workflows, so you scale without scaling headcount.",
+                "AI agents and trained operators run your ops and reporting work. Same output as a 4-person internal team, one retainer. Built for $1M-$50M companies.",
               sameAs: [
                 "https://www.linkedin.com/company/digitalpointllc",
               ],
@@ -143,7 +143,7 @@ export default async function RootLayout({
                 contactType: "customer service",
                 description:
                   "Reach us through Cosmo (on-site chat) or the free growth audit form. Direct operator routing, no shared inbox.",
-                url: "https://www.digitalpointllc.com/#contact-philosophy",
+                url: "https://digitalpointllc.com/#contact-philosophy",
               },
               address: {
                 "@type": "PostalAddress",
@@ -170,7 +170,7 @@ export default async function RootLayout({
               name: "Digital Point LLC",
               description:
                 "AI agent and automation infrastructure that runs operational workflows (CRM, ops, reporting, growth) so you scale without scaling team.",
-              url: "https://www.digitalpointllc.com",
+              url: "https://digitalpointllc.com",
               serviceType: [
                 "AI Agent Deployment",
                 "Workflow Automation",
@@ -194,7 +194,7 @@ export default async function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "Digital Point LLC",
-              url: "https://www.digitalpointllc.com",
+              url: "https://digitalpointllc.com",
             }),
           }}
         />

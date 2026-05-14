@@ -39,8 +39,8 @@ export function ServiceSchema({
     provider: {
       '@type': 'Organization',
       name: 'Digital Point LLC',
-      url: 'https://www.digitalpointllc.com',
-      logo: 'https://www.digitalpointllc.com/Dp-logo1.png',
+      url: 'https://digitalpointllc.com',
+      logo: 'https://digitalpointllc.com/Dp-logo1.png',
     },
     areaServed: { '@type': 'Place', name: areaServed },
     ...(serviceTypes && serviceTypes.length > 0

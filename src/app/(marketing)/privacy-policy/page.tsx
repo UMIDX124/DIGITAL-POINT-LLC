@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
     'How Digital Point LLC collects, processes, and protects personal information across the marketing site, the audit form, the diagnostic tool, and the Cosmo chat surface.',
-  alternates: { canonical: 'https://www.digitalpointllc.com/privacy-policy' },
+  alternates: { canonical: 'https://digitalpointllc.com/privacy-policy' },
 };
 
 const lastUpdated = 'May 12, 2026';
@@ -16,7 +16,7 @@ const sections = [
     id: 'who-we-are',
     title: '1. Who we are',
     body: [
-      'Digital Point LLC is a US-LLC registered in Wilmington, Delaware. We operate production AI agent stacks for B2B SaaS, e-commerce, and professional-services clients. This policy covers personal information we collect through www.digitalpointllc.com, the audit form, the diagnostic tool, and the Cosmo on-site chat.',
+      'Digital Point LLC is a US-LLC registered in Wilmington, Delaware. We operate production AI agent stacks for B2B SaaS, e-commerce, and professional-services clients. This policy covers personal information we collect through digitalpointllc.com, the audit form, the diagnostic tool, and the Cosmo on-site chat.',
       'Contact for privacy questions: reach a co-founder via the audit form at /audit. We do not operate a generic support inbox.',
     ],
   },
@@ -100,8 +100,8 @@ export default function PrivacyPolicyPage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://www.digitalpointllc.com' },
-        { name: 'Privacy', item: 'https://www.digitalpointllc.com/privacy-policy' },
+        { name: 'Home', item: 'https://digitalpointllc.com' },
+        { name: 'Privacy', item: 'https://digitalpointllc.com/privacy-policy' },
         ]}
       />
       <section className="hero">
@@ -118,7 +118,7 @@ export default function PrivacyPolicyPage() {
 
           <p className="hero-sub text-pretty">
             Digital Point LLC operates AI agent infrastructure on behalf of B2B clients.
-            This page explains what data we process on www.digitalpointllc.com and on
+            This page explains what data we process on digitalpointllc.com and on
             the engagements that follow. Written plain, no dark patterns.
           </p>
         </div>

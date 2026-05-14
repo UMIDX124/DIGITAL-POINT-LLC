@@ -562,6 +562,42 @@ If any field is empty or says "n/a" without explicit justification, the commit i
   ```
 - Blockers: none.
 
+### Commit H5. Email routing scaffolding + template palette align
+
+- Status: DONE
+- SHA: d1672a362fcac97bb5a14c1f72e024a8e7761b18
+- Files changed: .gitignore, .env.example (new), src/lib/email.ts, src/app/api/audit/route.ts, src/app/api/leads/route.ts, src/app/api/founder/route.ts, src/app/api/ticket/route.ts, src/app/api/newsletter/route.ts
+- Env var scaffolding:
+  - `.gitignore` adds `!.env.example` exception so the template can ship
+  - `.env.example` (new) — placeholder values for FOUNDER_EMAIL_FAIZAN / FOUNDER_EMAIL_ANWAAR plus SMTP / database / Groq / Upstash scaffolding. Real personal emails come in next prompt; user populates via Vercel env vars
+- `src/lib/email.ts`:
+  - Add `FOUNDER_EMAILS: string[]` export — reads two env vars, falls back to `info@digitalpointllc.com` if unset (build/runtime never breaks), dedupes if both fall back
+  - Change `SendEmailParams.to` from `string` to `string | string[]`; sendEmail joins arrays with `, ` for Nodemailer
+- API route swaps (grep before commit: `info@digitalpointllc.com` / `admin@digitalpointllc.com` matches in `src/app/api/` → 0 after):
+  - audit/route.ts:85 `to: 'info@…'` → `to: FOUNDER_EMAILS`
+  - leads/route.ts:52 `to: 'admin@…'` → `to: FOUNDER_EMAILS`
+  - founder/route.ts:68 `to: 'ADMIN@…'` → `to: FOUNDER_EMAILS`
+  - ticket/route.ts:71-78 — dropped the high/normal priority routing branch (both branches went to founder mailboxes anyway); collapsed to single FOUNDER_EMAILS recipient + kept priority label/color metadata on the email body. `priorityColor` now a flat `#FF8800` (was a redundant ternary that returned the same value in both branches anyway).
+  - newsletter/route.ts:89 `to: 'info@…'` → `to: FOUNDER_EMAILS`
+- Email template palette align (`grep -rn "F5F1E8\|D6D0C2" src/app/api/` → 0 after):
+  - `#F5F1E8` → `#F5F5F7` (locked project text-on-dark color)
+  - `#D6D0C2` → `#969aa3` (locked project secondary)
+  - `#FF8800` (accent) and `#0A0A0B` (canvas-dark) kept as-is — email clients do not resolve CSS variables
+- Smoke test (dev server): `curl -X POST http://localhost:3000/api/audit -d '{name…}'` → `{"success":true,"message":"Audit request received successfully"}`. Email send is best-effort and fails silently if SMTP unset, so this verifies routing wiring not deliverability.
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: real personal emails for `FOUNDER_EMAIL_FAIZAN` and `FOUNDER_EMAIL_ANWAAR` env vars pending from user (next prompt). Until set in Vercel, both fall back to `info@digitalpointllc.com` and dedupe to single recipient.
+
 ---
 
 ## Final verification

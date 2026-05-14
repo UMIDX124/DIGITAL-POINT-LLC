@@ -38,7 +38,7 @@ function KeyTakeaway({ text }: { text: string }) {
     <div
       className="my-8 rounded-xl p-5"
       style={{
-        borderLeft: '3px solid #FF8800',
+        borderLeft: '3px solid var(--color-accent)',
         background: 'linear-gradient(135deg, rgba(255, 168, 51, 0.08), rgba(255, 136, 0, 0.03))',
       }}
     >
@@ -62,9 +62,9 @@ function RelatedLinks({ links }: { links: Guide['relatedLinks'] }) {
     blog: 'Guide',
   };
   const typeColors: Record<string, string> = {
-    tool: '#FFA833',
-    research: '#FF8800',
-    blog: '#FF8800',
+    tool: 'var(--color-accent)',
+    research: 'var(--color-accent)',
+    blog: 'var(--color-accent)',
   };
 
   return (

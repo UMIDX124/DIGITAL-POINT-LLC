@@ -16,7 +16,7 @@ export function LeadMagnetBanner() {
         <div
           className="w-12 h-12 rounded-xl flex items-center justify-center"
           style={{
-            background: 'linear-gradient(135deg, #C26800 0%, #C26800 100%)',
+            background: 'var(--color-accent-soft)',
             boxShadow: '0 4px 24px rgba(255, 136, 0, 0.4)',
           }}
         >
@@ -37,7 +37,7 @@ export function LeadMagnetBanner() {
           href="/audit"
           className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-xl transition-transform hover:scale-[1.02] active:scale-[0.98]"
           style={{
-            background: 'linear-gradient(135deg, #C26800 0%, #C26800 100%)',
+            background: 'var(--color-accent-soft)',
             boxShadow: '0 4px 16px rgba(255, 136, 0, 0.3)',
           }}
         >
@@ -48,7 +48,7 @@ export function LeadMagnetBanner() {
           href="/results"
           className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
           style={{
-            color: '#FF8800',
+            color: 'var(--color-accent)',
             border: '1px solid rgba(255, 168, 51, 0.3)',
             background: 'rgba(255, 136, 0, 0.08)',
           }}

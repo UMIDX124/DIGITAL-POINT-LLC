@@ -27,7 +27,7 @@ export function CACCalculator({ faqs }: Props) {
   const paybackMonths = cac > 0 && customerLtv > 0 ? (cac / (customerLtv / 12)) : 0;
 
   const ratioRating = ltvCacRatio >= 5 ? 'Excellent' : ltvCacRatio >= 3 ? 'Healthy' : ltvCacRatio >= 1 ? 'Needs Work' : ltvCacRatio > 0 ? 'Danger' : '';
-  const ratioColor = ltvCacRatio >= 5 ? '#FFA833' : ltvCacRatio >= 3 ? '#FF8800' : ltvCacRatio >= 1 ? '#FFA833' : '#FF8800';
+  const ratioColor = ltvCacRatio >= 5 ? 'var(--color-accent)' : ltvCacRatio >= 3 ? 'var(--color-accent)' : ltvCacRatio >= 1 ? 'var(--color-accent)' : 'var(--color-accent)';
 
   const handleShare = () => {
     const url = `${window.location.origin}/tools/cac-calculator?ms=${marketingSpend}&ss=${salesSpend}&nc=${newCustomers}&ltv=${ltv}`;
@@ -66,7 +66,7 @@ export function CACCalculator({ faqs }: Props) {
                     <div className="relative">
                       <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[color:var(--text-muted)]" />
                       <input type="number" value={marketingSpend} onChange={(e) => setMarketingSpend(e.target.value)} placeholder="25,000"
-                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
                         style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }} />
                     </div>
                   </div>
@@ -75,7 +75,7 @@ export function CACCalculator({ faqs }: Props) {
                     <div className="relative">
                       <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[color:var(--text-muted)]" />
                       <input type="number" value={salesSpend} onChange={(e) => setSalesSpend(e.target.value)} placeholder="10,000"
-                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
                         style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }} />
                     </div>
                   </div>
@@ -84,7 +84,7 @@ export function CACCalculator({ faqs }: Props) {
                     <div className="relative">
                       <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[color:var(--text-muted)]" />
                       <input type="number" value={newCustomers} onChange={(e) => setNewCustomers(e.target.value)} placeholder="50"
-                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
                         style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }} />
                     </div>
                   </div>
@@ -93,7 +93,7 @@ export function CACCalculator({ faqs }: Props) {
                     <div className="relative">
                       <TrendingUp className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[color:var(--text-muted)]" />
                       <input type="number" value={ltv} onChange={(e) => setLtv(e.target.value)} placeholder="2,000"
-                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
                         style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }} />
                     </div>
                   </div>

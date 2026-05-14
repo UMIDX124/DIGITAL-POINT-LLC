@@ -34,10 +34,10 @@ const campaignTypeBenchmarks = [
 ];
 
 const keyStats = [
-  { value: '4.2x', label: 'Avg Search ROAS', color: '#FFA833' },
-  { value: '3.1x', label: 'Avg PMax ROAS', color: '#FF8800' },
-  { value: '5.6x', label: 'Avg Shopping ROAS', color: '#FFA833' },
-  { value: '$62M', label: 'Ad Spend Analyzed', color: '#FF8800' },
+  { value: '4.2x', label: 'Avg Search ROAS', color: 'var(--color-accent)' },
+  { value: '3.1x', label: 'Avg PMax ROAS', color: 'var(--color-accent)' },
+  { value: '5.6x', label: 'Avg Shopping ROAS', color: 'var(--color-accent)' },
+  { value: '$62M', label: 'Ad Spend Analyzed', color: 'var(--color-accent)' },
 ];
 
 const glassStyle = {

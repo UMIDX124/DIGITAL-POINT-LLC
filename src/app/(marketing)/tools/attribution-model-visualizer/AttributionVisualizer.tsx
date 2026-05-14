@@ -154,7 +154,7 @@ export function AttributionVisualizer({ faqs }: Props) {
                 <div className="space-y-3 mb-4">
                   {touchpoints.map((tp, i) => (
                     <div key={i} className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white" style={{ background: 'linear-gradient(135deg, #C26800, #C26800)' }}>
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white" style={{ background: 'var(--color-accent-soft)' }}>
                         {i + 1}
                       </div>
                       <div className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm" style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}>
@@ -173,10 +173,10 @@ export function AttributionVisualizer({ faqs }: Props) {
                     onChange={(e) => setNewTouchpoint(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleAddTouchpoint()}
                     placeholder="Add touchpoint (e.g., YouTube Ad)"
-                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
                     style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}
                   />
-                  <button onClick={handleAddTouchpoint} className="px-4 py-2.5 rounded-xl text-white text-sm font-medium" style={{ background: 'linear-gradient(135deg, #C26800, #C26800)' }}>
+                  <button onClick={handleAddTouchpoint} className="px-4 py-2.5 rounded-xl text-white text-sm font-medium" style={{ background: 'var(--color-accent-soft)' }}>
                     Add
                   </button>
                 </div>
@@ -189,7 +189,7 @@ export function AttributionVisualizer({ faqs }: Props) {
                   type="number"
                   value={conversionValue}
                   onChange={(e) => setConversionValue(e.target.value)}
-                  className="w-full max-w-xs px-4 py-2.5 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                  className="w-full max-w-xs px-4 py-2.5 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
                   style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}
                 />
               </div>
@@ -204,7 +204,7 @@ export function AttributionVisualizer({ faqs }: Props) {
                       onClick={() => setSelectedModel(m)}
                       className="px-4 py-2 rounded-xl text-sm font-medium transition-all"
                       style={{
-                        background: selectedModel === m ? 'linear-gradient(135deg, #C26800, #C26800)' : 'rgba(13, 8, 21, 0.6)',
+                        background: selectedModel === m ? 'var(--color-accent-soft)' : 'rgba(13, 8, 21, 0.6)',
                         border: `1px solid ${selectedModel === m ? 'rgba(255, 136, 0,0.6)' : 'rgba(255, 136, 0,0.2)'}`,
                         color: selectedModel === m ? 'white' : 'var(--text-primary)',
                       }}
@@ -233,7 +233,7 @@ export function AttributionVisualizer({ faqs }: Props) {
                             className="h-full rounded-lg transition-all duration-500 flex items-center px-3"
                             style={{
                               width: `${Math.max(credit, 2)}%`,
-                              background: `linear-gradient(135deg, #C26800 ${100 - credit}%, #FF8800 100%)`,
+                              background: `linear-gradient(135deg, var(--color-accent-soft) %, var(--color-accent) 100%)`,
                             }}
                           >
                             {credit >= 10 && <span className="text-xs text-white font-medium">{credit.toFixed(1)}%</span>}
@@ -307,10 +307,10 @@ export function AttributionVisualizer({ faqs }: Props) {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"
-                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                    className="flex-1 px-4 py-2.5 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
                     style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}
                   />
-                  <button onClick={handleEmailCapture} className="px-4 py-2.5 rounded-xl text-white text-sm font-medium" style={{ background: 'linear-gradient(135deg, #C26800, #C26800)' }}>
+                  <button onClick={handleEmailCapture} className="px-4 py-2.5 rounded-xl text-white text-sm font-medium" style={{ background: 'var(--color-accent-soft)' }}>
                     Send
                   </button>
                 </div>

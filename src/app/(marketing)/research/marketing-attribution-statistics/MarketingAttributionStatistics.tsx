@@ -41,10 +41,10 @@ const trackingAccuracy = [
 ];
 
 const keyStats = [
-  { value: '61%', label: 'Trackable Conversions', color: '#FF8800' },
-  { value: '41%', label: 'Still Use Last-Click', color: '#FFA833' },
-  { value: '52%', label: 'Hybrid Model Adoption', color: '#FFA833' },
-  { value: '20-40%', label: 'Platform Over-Reporting', color: '#FF8800' },
+  { value: '61%', label: 'Trackable Conversions', color: 'var(--color-accent)' },
+  { value: '41%', label: 'Still Use Last-Click', color: 'var(--color-accent)' },
+  { value: '52%', label: 'Hybrid Model Adoption', color: 'var(--color-accent)' },
+  { value: '20-40%', label: 'Platform Over-Reporting', color: 'var(--color-accent)' },
 ];
 
 const glassStyle = {
@@ -113,7 +113,7 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
                       <tr key={row.model} className={i < modelAdoption.length - 1 ? 'border-b border-[rgba(255, 136, 0,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.model}</td>
                         <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.adoption}</td>
-                        <td className="py-3 px-4 text-right" style={{ color: row.trend.startsWith('+') ? '#FFA833' : '#FF8800' }}>
+                        <td className="py-3 px-4 text-right" style={{ color: row.trend.startsWith('+') ? 'var(--color-accent)' : 'var(--color-accent)' }}>
                           {row.trend}
                         </td>
                         <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.accuracy}</td>
@@ -147,7 +147,7 @@ export function MarketingAttributionStatistics({ faqs }: Props) {
                     {privacyImpact.map((row, i) => (
                       <tr key={row.change} className={i < privacyImpact.length - 1 ? 'border-b border-[rgba(255, 136, 0,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.change}</td>
-                        <td className="py-3 px-4 text-right font-semibold" style={{ color: '#FF8800' }}>{row.stat}</td>
+                        <td className="py-3 px-4 text-right font-semibold" style={{ color: 'var(--color-accent)' }}>{row.stat}</td>
                         <td className="py-3 px-4 text-[color:var(--text-primary)] text-xs">{row.impact}</td>
                       </tr>
                     ))}

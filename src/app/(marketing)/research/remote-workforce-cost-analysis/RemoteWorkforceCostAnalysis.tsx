@@ -52,10 +52,10 @@ const qualityMetrics = [
 ];
 
 const keyStats = [
-  { value: '59%', label: 'Avg Cost Savings', color: '#FFA833' },
-  { value: '$768K', label: 'Savings (10-person)', color: '#FF8800' },
-  { value: '4.3/5', label: 'Client Satisfaction', color: '#FFA833' },
-  { value: '91%', label: 'On-Time Delivery', color: '#FF8800' },
+  { value: '59%', label: 'Avg Cost Savings', color: 'var(--color-accent)' },
+  { value: '$768K', label: 'Savings (10-person)', color: 'var(--color-accent)' },
+  { value: '4.3/5', label: 'Client Satisfaction', color: 'var(--color-accent)' },
+  { value: '91%', label: 'On-Time Delivery', color: 'var(--color-accent)' },
 ];
 
 const glassStyle = {

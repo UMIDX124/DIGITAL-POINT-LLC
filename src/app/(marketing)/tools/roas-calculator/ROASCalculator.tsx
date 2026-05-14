@@ -29,7 +29,7 @@ export function ROASCalculator({ faqs }: Props) {
   const breakEvenSpend = rev - cost > 0 ? rev - cost : 0;
 
   const roasRating = roas >= 5 ? 'Excellent' : roas >= 3 ? 'Good' : roas >= 2 ? 'Average' : roas > 0 ? 'Below Average' : '';
-  const roasColor = roas >= 5 ? '#FFA833' : roas >= 3 ? '#FF8800' : roas >= 2 ? '#FFA833' : '#FF8800';
+  const roasColor = roas >= 5 ? 'var(--color-accent)' : roas >= 3 ? 'var(--color-accent)' : roas >= 2 ? 'var(--color-accent)' : 'var(--color-accent)';
 
   const handleShare = () => {
     const url = `${window.location.origin}/tools/roas-calculator?spend=${spend}&revenue=${rev}&cogs=${cost}`;
@@ -92,7 +92,7 @@ export function ROASCalculator({ faqs }: Props) {
                         value={adSpend}
                         onChange={(e) => setAdSpend(e.target.value)}
                         placeholder="10,000"
-                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
                         style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}
                       />
                     </div>
@@ -107,7 +107,7 @@ export function ROASCalculator({ faqs }: Props) {
                         value={revenue}
                         onChange={(e) => setRevenue(e.target.value)}
                         placeholder="40,000"
-                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
                         style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}
                       />
                     </div>
@@ -122,7 +122,7 @@ export function ROASCalculator({ faqs }: Props) {
                         value={cogs}
                         onChange={(e) => setCogs(e.target.value)}
                         placeholder="15,000"
-                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+                        className="w-full pl-9 pr-4 py-3 rounded-xl text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
                         style={{ background: 'rgba(13, 8, 21, 0.6)', border: '1px solid rgba(255, 136, 0, 0.2)' }}
                       />
                     </div>
@@ -173,7 +173,7 @@ export function ROASCalculator({ faqs }: Props) {
                     <button
                       onClick={handleEmailCapture}
                       className="px-3 py-2 rounded-lg text-white text-xs font-medium"
-                      style={{ background: 'linear-gradient(135deg, #C26800 0%, #C26800 100%)' }}
+                      style={{ background: 'var(--color-accent-soft)' }}
                     >
                       Save
                     </button>

@@ -30,9 +30,7 @@ export default function Error({
         <button
           onClick={reset}
           className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white transition-all hover:scale-105 cursor-pointer"
-          style={{
-            background: 'linear-gradient(135deg, #C26800 0%, #FF8800 50%, #FFA833 100%)',
-          }}
+          style={{ background: 'var(--color-accent)' }}
         >
           Try Again
         </button>

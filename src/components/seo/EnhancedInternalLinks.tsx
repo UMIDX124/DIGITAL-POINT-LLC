@@ -94,7 +94,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
                   >
                     <span
                       className="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                      style={{ background: '#FF8800' }}
+                      style={{ background: 'var(--color-accent)' }}
                     />
                     <span className="text-sm leading-snug group-hover:underline">
                       {post.title}
@@ -121,7 +121,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
                   >
                     <span
                       className="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                      style={{ background: '#FFA833' }}
+                      style={{ background: 'var(--color-accent)' }}
                     />
                     <span className="text-sm leading-snug">
                       <span className="group-hover:underline">{tool.title}</span>
@@ -151,7 +151,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
                   >
                     <span
                       className="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                      style={{ background: '#FF8800' }}
+                      style={{ background: 'var(--color-accent)' }}
                     />
                     <span className="text-sm leading-snug">
                       <span className="group-hover:underline">{item.title}</span>
@@ -181,7 +181,7 @@ export function EnhancedInternalLinks({ currentPath, category }: EnhancedInterna
                   >
                     <span
                       className="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                      style={{ background: '#FF8800' }}
+                      style={{ background: 'var(--color-accent)' }}
                     />
                     <span className="text-sm leading-snug group-hover:underline">
                       {item.title}

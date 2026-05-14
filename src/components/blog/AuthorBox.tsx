@@ -51,7 +51,7 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
  <div
  className="shrink-0 w-16 h-16 rounded-full flex items-center justify-center font-display text-xl font-bold text-white"
  style={{
- background: 'linear-gradient(135deg, #C26800 0%, #FF8800 100%)',
+ background: 'var(--color-accent)',
  }}
  aria-hidden="true"
  >
@@ -76,7 +76,7 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
  style={{
  background: 'rgba(255, 168, 51, 0.1)',
  border: '1px solid rgba(255, 168, 51, 0.2)',
- color: '#FF8800',
+ color: 'var(--color-accent)',
  }}
  >
  {tag}

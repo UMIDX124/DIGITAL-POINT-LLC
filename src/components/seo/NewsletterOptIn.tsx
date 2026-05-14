@@ -78,7 +78,7 @@ export function NewsletterOptIn({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@company.com"
-          className="flex-1 px-3 py-2 rounded-lg text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[#FF8800]/50"
+          className="flex-1 px-3 py-2 rounded-lg text-white text-sm placeholder:text-[color:var(--text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
           style={{
             background: 'rgba(13, 8, 21, 0.6)',
             border: '1px solid rgba(255, 136, 0, 0.2)',
@@ -90,7 +90,7 @@ export function NewsletterOptIn({
           aria-label={status === 'submitting' ? 'Submitting' : 'Subscribe to newsletter'}
           className="px-4 py-2 rounded-lg text-white text-sm font-medium transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 shrink-0"
           style={{
-            background: 'linear-gradient(135deg, #C26800 0%, #C26800 100%)',
+            background: 'var(--color-accent-soft)',
           }}
         >
           {status === 'submitting' ? '...' : <ArrowRight className="w-4 h-4" aria-hidden="true" />}

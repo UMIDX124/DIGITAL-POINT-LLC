@@ -32,10 +32,10 @@ const yearOverYear = [
 ];
 
 const keyStats = [
-  { value: '$1.72', label: 'Avg CPC', color: '#FF8800' },
-  { value: '$12.47', label: 'Avg CPM', color: '#FF8800' },
-  { value: '1.49%', label: 'Avg CTR', color: '#FFA833' },
-  { value: '2.87x', label: 'Avg ROAS', color: '#FF8800' },
+  { value: '$1.72', label: 'Avg CPC', color: 'var(--color-accent)' },
+  { value: '$12.47', label: 'Avg CPM', color: 'var(--color-accent)' },
+  { value: '1.49%', label: 'Avg CTR', color: 'var(--color-accent)' },
+  { value: '2.87x', label: 'Avg ROAS', color: 'var(--color-accent)' },
 ];
 
 const glassStyle = {
@@ -143,7 +143,7 @@ export function FacebookAdsBenchmarks({ faqs }: Props) {
                         <td className="py-3 px-4 text-right text-[color:var(--text-muted)]">{row.value2024}</td>
                         <td className="py-3 px-4 text-right text-[color:var(--text-muted)]">{row.value2025}</td>
                         <td className="py-3 px-4 text-right text-white font-medium">{row.value2026}</td>
-                        <td className="py-3 px-4 text-right" style={{ color: row.change.startsWith('+') ? '#FF8800' : '#FFA833' }}>
+                        <td className="py-3 px-4 text-right" style={{ color: row.change.startsWith('+') ? 'var(--color-accent)' : 'var(--color-accent)' }}>
                           {row.change}
                         </td>
                       </tr>

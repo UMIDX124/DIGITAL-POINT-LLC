@@ -9,28 +9,28 @@ const serviceLinks = [
     title: 'Performance Marketing',
     description: 'Paid ads, ROAS optimization, and attribution tracking.',
     icon: BarChart3,
-    color: '#FF8800',
+    color: 'var(--color-accent)',
   },
   {
     slug: 'remote-workforce',
     title: 'Remote Workforce',
     description: 'Dedicated remote teams that integrate with yours.',
     icon: Users,
-    color: '#FF8800',
+    color: 'var(--color-accent)',
   },
   {
     slug: 'systems-reporting',
     title: 'Systems & Reporting',
     description: 'Dashboards, data infrastructure, and RevOps.',
     icon: Settings,
-    color: '#FF8800',
+    color: 'var(--color-accent)',
   },
   {
     slug: 'free-growth-audit',
     title: 'Free Growth Audit',
     description: 'Find what\'s broken in your marketing stack.',
     icon: FileText,
-    color: '#FFA833',
+    color: 'var(--color-accent)',
   },
 ];
 

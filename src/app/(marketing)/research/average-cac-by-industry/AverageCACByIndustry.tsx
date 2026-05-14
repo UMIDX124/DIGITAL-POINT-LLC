@@ -44,10 +44,10 @@ const channelCAC = [
 ];
 
 const keyStats = [
-  { value: '$198', label: 'Avg B2C CAC', color: '#FFA833' },
-  { value: '$702', label: 'Avg B2B CAC', color: '#FF8800' },
-  { value: '14%', label: 'YoY CAC Increase', color: '#FF8800' },
-  { value: '1:3.8', label: 'Avg LTV:CAC', color: '#FFA833' },
+  { value: '$198', label: 'Avg B2C CAC', color: 'var(--color-accent)' },
+  { value: '$702', label: 'Avg B2B CAC', color: 'var(--color-accent)' },
+  { value: '14%', label: 'YoY CAC Increase', color: 'var(--color-accent)' },
+  { value: '1:3.8', label: 'Avg LTV:CAC', color: 'var(--color-accent)' },
 ];
 
 const glassStyle = {
@@ -152,7 +152,7 @@ export function AverageCACByIndustry({ faqs }: Props) {
                       <tr key={row.channel} className={i < channelCAC.length - 1 ? 'border-b border-[rgba(255, 136, 0,0.08)]' : ''}>
                         <td className="py-3 px-4 text-white font-medium">{row.channel}</td>
                         <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.avgCac}</td>
-                        <td className="py-3 px-4 text-right" style={{ color: row.trend.startsWith('-') ? '#FFA833' : '#FF8800' }}>
+                        <td className="py-3 px-4 text-right" style={{ color: row.trend.startsWith('-') ? 'var(--color-accent)' : 'var(--color-accent)' }}>
                           {row.trend}
                         </td>
                         <td className="py-3 px-4 text-right text-[color:var(--text-primary)]">{row.quality}</td>

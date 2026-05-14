@@ -16,7 +16,7 @@ export function InitialsAvatar({
   const letters = initials.trim().slice(0, 2).toUpperCase() || '·';
   const bg = context === 'dark' ? '#161616' : '#F2F2F2';
   const text = context === 'dark' ? '#F5F5F7' : '#0A0A0A';
-  const ring = '#FF8800';
+  const ring = 'var(--color-accent)';
   const half = size / 2;
   const fontPx = Math.round(size * 0.36);
 

@@ -1180,6 +1180,22 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit P9. Lock 3-tier H2 type scale and retrofit
+
+- Status: DONE
+- Files changed (3): `src/app/globals.css` (new H2 tokens + class modifiers + retrofits), `src/components/sections/MathSection.tsx` (apply `section-title--minor`).
+- Added `--font-size-h2-display: clamp(48px, 6.5vw, 88px)`, `--font-size-h2-section: clamp(32px, 4.4vw, 56px)`, `--font-size-h2-minor: clamp(24px, 3.2vw, 40px)` to `@theme inline`.
+- `.section-title` now resolves to `var(--font-size-h2-section)`. Added `.section-title--display` and `.section-title--minor` modifier classes for the display + minor tiers.
+- Retrofitted per-section title rules:
+  - `.dpl-positioning__title` (Not the agency mailbox) → `--font-size-h2-display`
+  - `.dpl-pillars__title` (What we ship...) → `--font-size-h2-section`
+  - `.dpl-flow__title` (A production stack...) → `--font-size-h2-section`
+  - `.dpl-evidence__title` (One number that closes most audits) → `--font-size-h2-minor`
+  - `MathSection` h2 (math anchor) → `section-title--minor`
+- All other `<h2 className="section-title">` calls (Pillars, Founders, Recovery, Stack, CTA, agent/automation/operators/recovery page h2s) now flow through the section tier automatically.
+- Quality gates: tsc 0 errors, lint 0 warnings, `pnpm build` succeeded.
+- Blockers: none.
+
 
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):

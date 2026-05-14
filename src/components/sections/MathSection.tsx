@@ -7,7 +7,7 @@ export function MathSection() {
       <div className="container-wide">
         <div className="section-header">
           <p className="eyebrow">The math</p>
-          <h2 className="section-title text-balance">
+          <h2 className="section-title section-title--minor text-balance">
             $400K of in-house ops, replaced for $30K a year.
           </h2>
           <p className="section-desc text-pretty">

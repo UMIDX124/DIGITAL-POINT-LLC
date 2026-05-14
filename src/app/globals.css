@@ -119,6 +119,11 @@
   --text-display-lg: clamp(3rem, 8vw, 7rem);
   --text-eyebrow: 0.75rem;
 
+  /* H2 type scale (locked 3-tier, Batch Y P9) */
+  --font-size-h2-display: clamp(48px, 6.5vw, 88px);
+  --font-size-h2-section: clamp(32px, 4.4vw, 56px);
+  --font-size-h2-minor: clamp(24px, 3.2vw, 40px);
+
   /* Spacing scale (4px units) */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -365,8 +370,17 @@ select {
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.05;
-  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-size: var(--font-size-h2-section);
   color: var(--color-text-primary);
+}
+
+.section-title--display {
+  font-size: var(--font-size-h2-display);
+  letter-spacing: -0.035em;
+}
+
+.section-title--minor {
+  font-size: var(--font-size-h2-minor);
 }
 
 .section-desc {
@@ -1292,7 +1306,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
 }
 
 .dpl-evidence__title {
-  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-size: var(--font-size-h2-minor);
   line-height: 1.05;
   letter-spacing: -0.025em;
   font-weight: 600;
@@ -1488,7 +1502,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
 
 /* Positioning section (V5) */
 .dpl-positioning__title {
-  font-size: clamp(40px, 7vw, 96px);
+  font-size: var(--font-size-h2-display);
   line-height: 0.98;
   letter-spacing: -0.04em;
   font-weight: 600;
@@ -1610,7 +1624,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
 }
 
 .dpl-pillars__title {
-  font-size: clamp(28px, 3.6vw, 48px);
+  font-size: var(--font-size-h2-section);
   line-height: 1.05;
   letter-spacing: -0.025em;
   font-weight: 600;
@@ -1742,7 +1756,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
 }
 
 .dpl-flow__title {
-  font-size: clamp(28px, 3.6vw, 48px);
+  font-size: var(--font-size-h2-section);
   line-height: 1.05;
   letter-spacing: -0.025em;
   font-weight: 600;

@@ -820,6 +820,40 @@ If any field is empty or says "n/a" without explicit justification, the commit i
   ```
 - Blockers: none.
 
+### Commit V3. Homepage hero retrofit — footnoted display + meta strip + multi-panel right
+
+- Status: DONE
+- SHA: 4383df32cd76ecf00105b48c44f14f5c0b83429c
+- Files changed (2): `src/components/sections/HeroSection.tsx` (full rewrite), `src/app/globals.css` (new `.hero--operator-brief` block + `.dpl-btn--ink/ghost` + `.dpl-panel*` rules).
+- Hero structure:
+  - Meta strip (5 columns mono caps, hairline-bottom): FOUNDED 2017 · BASE Wilmington, DE · CROSS-STATE 15+ · ARR FOCUS $500K-$10M · TICKET $10K-$30K. All real, no design-only markers (operational history calibrated 2026-05-14).
+  - 2-column grid below (1.45fr / 1fr at ≥1024px, single column otherwise).
+  - Left column: eyebrow "— Our entire pitch in 6 words" with 24px amber rule prefix; display H1 `Hire the AI.[01]` / `Skip the headcount.[02]` at clamp(56px, 10vw, 144px) / weight 600 / line-height 0.94 / letter-spacing -0.045em, AI wrapped in amber span, footnote sups in mono 0.28em; footnotes block (hairline-top, 2-col on ≥640px) with 01 + 02 content; sub-body paragraph; CTA row with ink + ghost buttons.
+  - Right column (`<aside>`): three stacked `.dpl-panel` cards with hairline-strong border and mono font. Operator Status with live pulse + 4 rows. Recent Activity feed with 4 timestamped events (TIME · LABEL · detail). Allocation Snapshot with 4 rows, "Capacity for new pilots" in amber.
+- Real-data discipline:
+  - Meta strip values: all real operational claims per session decision 2026-05-14 + operational-history memory.
+  - Panel values: all marked `data-design-only="true"` until the real operator activity feed wires. Footnote 02's "6 active retainers" portion also marked.
+- Buttons (new `.dpl-btn` system, separate from legacy `.btn`):
+  - `.dpl-btn--ink`: var(--color-ink) bg, var(--color-canvas) text, var(--color-ink-soft) hover, 2px corners, 14.5px sans.
+  - `.dpl-btn--ghost`: transparent bg, ink text, hairline-strong border, ink border on hover.
+- Pulse animation honors `prefers-reduced-motion: reduce` via @media block.
+- Verification (Playwright headless):
+  - hero probe at 1440: classList has `hero--operator-brief`, meta text contains all 5 columns, title contains `Hire the AI.01Skip the headcount.02`, 3 panels mounted, eyebrow text "Our entire pitch in 6 words"
+  - focused screenshots in `docs/screenshots/commit-26-focus/{hero-360,hero-768,hero-1440}.png` — desktop renders the 2-column layout with operator panels alongside the display; mobile stacks vertically with panels below text.
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+
 ---
 
 ## Final verification

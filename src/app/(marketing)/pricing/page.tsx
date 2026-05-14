@@ -97,27 +97,59 @@ export default function PricingPage() {
         'Recovery Fix',
         ]}
       />
-      <section className="hero">
-        <div className="hero-bg" aria-hidden="true" />
+      <section className="hero hero--pillar-brief" id="hero">
+        <div className="dpl-section__rail" aria-hidden="true">
+          <span className="dpl-section__rail-label">Section 07 · Pricing</span>
+        </div>
+        <div className="dpl-section__page" aria-hidden="true">p.07 / p.09</div>
         <div className="hero-inner">
-          <div className="hero-meta">
-            <span>Pricing · Transparent · USD</span>
-          </div>
+          <p className="hero-eyebrow">
+            <span className="hero-eyebrow__rule" aria-hidden="true" />
+            Pricing · Transparent · USD
+          </p>
 
-          <h1 className="hero-title text-balance">
+          <h1 className="hero-title hero-title--ob">
             No agency in our market <span className="hero-title__amber">publishes</span> pricing.<br />
             We do.
           </h1>
 
           <p className="hero-sub text-pretty">
-            Audit free. Pilot $2,500 fixed for 30 days. Retainer $2,500 per month. We
-            charge less because the AI runs it, operators audit, co-founders sign off.
+            We charge less because the AI runs it, operators audit, co-founders sign off.
             No 6-person account team you&apos;re funding.
           </p>
 
+          <table className="dpl-pillar-tiers" aria-label="Pricing tiers">
+            <tbody>
+              <tr className="dpl-pillar-tiers__row">
+                <th scope="row">AUDIT</th>
+                <td className="dpl-pillar-tiers__price">FREE</td>
+                <td>45 min · co-founder review · 5-day plan</td>
+                <td>
+                  <Link href="#audit-tier" className="dpl-pillar-tiers__link">Details</Link>
+                </td>
+              </tr>
+              <tr className="dpl-pillar-tiers__row dpl-pillar-tiers__row--accent">
+                <th scope="row">PILOT</th>
+                <td className="dpl-pillar-tiers__price">$2,500</td>
+                <td>Fixed · 30 days · one workflow</td>
+                <td>
+                  <Link href="#pilot-tier" className="dpl-pillar-tiers__link">Details</Link>
+                </td>
+              </tr>
+              <tr className="dpl-pillar-tiers__row">
+                <th scope="row">RETAINER</th>
+                <td className="dpl-pillar-tiers__price">$2,500 / mo</td>
+                <td>Cancel any month · no annual lock-in</td>
+                <td>
+                  <Link href="#retainer-tier" className="dpl-pillar-tiers__link">Details</Link>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
           <div className="hero-cta-row">
-            <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
-            <Link href="#recovery-pricing" className="btn btn-ghost">Recovery pricing</Link>
+            <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
+            <Link href="#recovery-pricing" className="dpl-btn dpl-btn--ghost">Recovery pricing</Link>
           </div>
         </div>
       </section>
@@ -131,7 +163,7 @@ export default function PricingPage() {
 
           <div className="pillar-grid pillar-grid--three" style={{ marginBlockStart: '3rem' }}>
             {tiers.map((t) => (
-              <article key={t.name} className={`pillar-card ${t.name === 'Pilot' ? '' : ''}`}>
+              <article key={t.name} id={`${t.name.toLowerCase()}-tier`} className="pillar-card">
                 <span className="pillar-card__index">{t.name}</span>
                 <h3
                   className="font-mono"

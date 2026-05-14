@@ -85,37 +85,53 @@ export default function RecoveryPage() {
         'Operator Handoff',
         ]}
       />
-      <section className="hero" id="hero">
-        <div className="hero-bg" aria-hidden="true" />
+      <section className="hero hero--pillar-brief" id="hero">
+        <div className="dpl-section__rail" aria-hidden="true">
+          <span className="dpl-section__rail-label">Section 04 · Recovery</span>
+        </div>
+        <div className="dpl-section__page" aria-hidden="true">p.04 / p.09</div>
         <div className="hero-inner">
-          <div className="hero-meta">
-            <span className="dot-amber" aria-hidden="true" />
-            <span>Recovery service · 2-week diagnosis</span>
-          </div>
+          <p className="hero-eyebrow">
+            <span className="hero-eyebrow__rule" aria-hidden="true" />
+            Recovery service · 2-week diagnosis
+          </p>
 
-          <h1 className="hero-title text-balance">
+          <h1 className="hero-title hero-title--ob">
             Your <span className="hero-title__amber">AI agent</span> is broken.<br />
             We fix it.
           </h1>
 
           <p className="hero-sub text-pretty">
-            Your in-house agents are drifting, hallucinating, or silently failing in
-            production. We diagnose in 2 weeks. Fix in 4. Operate from there. The only
-            systematic recovery service for production AI agents.
+            The only systematic recovery service for production AI agents.
+            Diagnose in 2 weeks. Fix in 4. Operate from there.
           </p>
 
+          <ol className="dpl-pillar-timeline" aria-label="Recovery phases">
+            <li className="dpl-pillar-timeline__step dpl-pillar-timeline__step--active">
+              <span className="dpl-pillar-timeline__num">PHASE 01</span>
+              <span className="dpl-pillar-timeline__label">DIAGNOSE</span>
+              <span className="dpl-pillar-timeline__meta">2 weeks · $5,000</span>
+            </li>
+            <li className="dpl-pillar-timeline__step">
+              <span className="dpl-pillar-timeline__num">PHASE 02</span>
+              <span className="dpl-pillar-timeline__label">FIX</span>
+              <span className="dpl-pillar-timeline__meta">4 weeks · $10,000</span>
+            </li>
+            <li className="dpl-pillar-timeline__step">
+              <span className="dpl-pillar-timeline__num">PHASE 03</span>
+              <span className="dpl-pillar-timeline__label">OPERATE</span>
+              <span className="dpl-pillar-timeline__meta">$2,500 / month · ongoing</span>
+            </li>
+          </ol>
+
           <div className="hero-cta-row">
-            <Link href="/audit" className="btn btn-primary">
+            <Link href="/audit" className="dpl-btn dpl-btn--ink">
               Book a recovery audit
             </Link>
-            <Link href="#what-we-find" className="btn btn-ghost">
+            <Link href="#what-we-find" className="dpl-btn dpl-btn--ghost">
               See the diagnostic checklist
             </Link>
           </div>
-
-          <p className="hero-microcopy">
-            Fixed-fee · $5,000 diagnosis · $10,000 fix · $2,500/mo operation
-          </p>
         </div>
       </section>
 

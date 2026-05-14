@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
-import { HeroAtmosphere } from '@/components/brand/HeroAtmosphere';
 import { StackGrid } from '@/components/brand/StackGrid';
 import { ServiceSchema } from '@/components/seo/ServiceSchema';
 
@@ -60,30 +59,69 @@ export default function AgentsPage() {
         'Sales Follow-up Automation',
         ]}
       />
-      <section className="hero">
-        <HeroAtmosphere variant="pillar" />
+      <section className="hero hero--pillar-brief" id="hero">
+        <div className="dpl-section__rail" aria-hidden="true">
+          <span className="dpl-section__rail-label">Section 01 · Agents</span>
+        </div>
+        <div className="dpl-section__page" aria-hidden="true">p.01 / p.09</div>
         <div className="hero-inner">
-          <div className="hero-meta">
-            <span>Pillar 01 · AI Agents</span>
-          </div>
-
-          <h1 className="hero-title text-balance">
-            Production agents that <span className="hero-title__amber">run</span> the work.
-          </h1>
-
-          <p className="hero-sub text-pretty">
-            Not a chatbot. Not a Lindy template. Custom-trained agents we deploy on n8n
-            + Groq + custom TypeScript, then operate continuously. Operators audit the
-            edges where automation breaks.
+          <p className="hero-eyebrow">
+            <span className="hero-eyebrow__rule" aria-hidden="true" />
+            Pillar 01 · AI Agents
           </p>
 
-          <div className="hero-cta-row">
-            <Link href="/audit" className="btn btn-primary">
-              Book a free audit
-            </Link>
-            <Link href="/stack" className="btn btn-ghost">
-              See the stack
-            </Link>
+          <div className="hero-grid">
+            <div className="hero-grid__main">
+              <h1 className="hero-title hero-title--ob">
+                Production agents that <span className="hero-title__amber">run</span> the work.
+              </h1>
+
+              <p className="hero-sub text-pretty">
+                Not a chatbot. Not a Lindy template. Custom-trained agents we deploy on n8n
+                + Groq + custom TypeScript, then operate continuously. Operators audit the
+                edges where automation breaks.
+              </p>
+
+              <div className="hero-cta-row">
+                <Link href="/audit" className="dpl-btn dpl-btn--ink">
+                  Book a free audit
+                </Link>
+                <Link href="/stack" className="dpl-btn dpl-btn--ghost">
+                  See the stack
+                </Link>
+              </div>
+            </div>
+
+            <aside className="hero-grid__panels" aria-label="Agent fleet snapshot">
+              <div className="dpl-panel">
+                <header className="dpl-panel__head">
+                  <span className="dpl-panel__pulse" aria-hidden="true" />
+                  <span>Agent fleet snapshot</span>
+                </header>
+                <dl className="dpl-panel__rows">
+                  <div className="dpl-panel__row">
+                    <dt>Agents in production</dt>
+                    <dd data-design-only="true">17</dd>
+                  </div>
+                  <div className="dpl-panel__row">
+                    <dt>Active types</dt>
+                    <dd data-design-only="true">Sales · Support · Ops · Recovery</dd>
+                  </div>
+                  <div className="dpl-panel__row">
+                    <dt>Avg invocations / day</dt>
+                    <dd data-design-only="true">1,420</dd>
+                  </div>
+                  <div className="dpl-panel__row">
+                    <dt>Operator overrides · 30d</dt>
+                    <dd data-design-only="true">47</dd>
+                  </div>
+                  <div className="dpl-panel__row">
+                    <dt>Capacity for new pilots</dt>
+                    <dd className="dpl-panel__row--accent" data-design-only="true">2 open</dd>
+                  </div>
+                </dl>
+              </div>
+            </aside>
           </div>
         </div>
       </section>

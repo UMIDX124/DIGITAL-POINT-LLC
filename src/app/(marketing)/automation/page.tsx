@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 import { ServiceSchema } from '@/components/seo/ServiceSchema';
+import { SystemFlowSchematic } from '@/components/visuals/SystemFlowSchematic';
 
 export const metadata: Metadata = {
   title: 'Workflow Automation',
@@ -58,26 +59,41 @@ export default function AutomationPage() {
         'Workflow Operations',
         ]}
       />
-      <section className="hero">
-        <div className="hero-bg" aria-hidden="true" />
+      <section className="hero hero--pillar-brief" id="hero">
+        <div className="dpl-section__rail" aria-hidden="true">
+          <span className="dpl-section__rail-label">Section 02 · Automation</span>
+        </div>
+        <div className="dpl-section__page" aria-hidden="true">p.02 / p.09</div>
         <div className="hero-inner">
-          <div className="hero-meta">
-            <span>Pillar 02 · Workflow Automation</span>
-          </div>
-
-          <h1 className="hero-title text-balance">
-            Replace manual handoffs <span className="hero-title__amber">across</span> your stack.
-          </h1>
-
-          <p className="hero-sub text-pretty">
-            n8n + custom TypeScript + Postgres for production pipelines. Not a Zapier
-            shop. Not a Make rebadger. Real orchestration with observability, retries,
-            and operator audit on every exception.
+          <p className="hero-eyebrow">
+            <span className="hero-eyebrow__rule" aria-hidden="true" />
+            Pillar 02 · Workflow Automation
           </p>
 
-          <div className="hero-cta-row">
-            <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
-            <Link href="/stack" className="btn btn-ghost">See the stack</Link>
+          <div className="hero-grid">
+            <div className="hero-grid__main">
+              <h1 className="hero-title hero-title--ob">
+                Replace manual handoffs <span className="hero-title__amber">across</span> your stack.
+              </h1>
+
+              <p className="hero-sub text-pretty">
+                n8n + custom TypeScript + Postgres for production pipelines. Not a Zapier
+                shop. Not a Make rebadger. Real orchestration with observability, retries,
+                and operator audit on every exception.
+              </p>
+
+              <div className="hero-cta-row">
+                <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
+                <Link href="/stack" className="dpl-btn dpl-btn--ghost">See the stack</Link>
+              </div>
+            </div>
+
+            <aside className="hero-grid__panels" aria-label="Pipeline schematic">
+              <div className="hero-grid__diagram">
+                <SystemFlowSchematic compact />
+                <p className="hero-grid__diagram-caption">FIG. SYS · Pipeline overview</p>
+              </div>
+            </aside>
           </div>
         </div>
       </section>

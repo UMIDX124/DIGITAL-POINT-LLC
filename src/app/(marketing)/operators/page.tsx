@@ -58,30 +58,69 @@ export default function OperatorsPage() {
         'Managed Service',
         ]}
       />
-      <section className="hero">
-        <div className="hero-bg" aria-hidden="true" />
+      <section className="hero hero--pillar-brief" id="hero">
+        <div className="dpl-section__rail" aria-hidden="true">
+          <span className="dpl-section__rail-label">Section 03 · Operators</span>
+        </div>
+        <div className="dpl-section__page" aria-hidden="true">p.03 / p.09</div>
         <div className="hero-inner">
-          <div className="hero-meta">
-            <span>Pillar 03 · Remote Operators</span>
-          </div>
-
-          <h1 className="hero-title text-balance">
-            Operators back every <span className="hero-title__amber">agent</span> we ship.
-          </h1>
-
-          <p className="hero-sub text-pretty">
-            Agents handle the volume. Operators handle the edges. Not generic VAs, not
-            offshore data-entry farms. Production-grade humans with workflow context,
-            on call when the AI gets it wrong.
+          <p className="hero-eyebrow">
+            <span className="hero-eyebrow__rule" aria-hidden="true" />
+            Pillar 03 · Remote Operators
           </p>
 
-          <div className="hero-cta-row">
-            <Link href="/audit" className="btn btn-primary">
-              Book a free audit
-            </Link>
-            <Link href="/process" className="btn btn-ghost">
-              How operations run
-            </Link>
+          <div className="hero-grid">
+            <div className="hero-grid__main">
+              <h1 className="hero-title hero-title--ob">
+                Operators back every <span className="hero-title__amber">agent</span> we ship.
+              </h1>
+
+              <p className="hero-sub text-pretty">
+                Agents handle the volume. Operators handle the edges. Not generic VAs, not
+                offshore data-entry farms. Production-grade humans with workflow context,
+                on call when the AI gets it wrong.
+              </p>
+
+              <div className="hero-cta-row">
+                <Link href="/audit" className="dpl-btn dpl-btn--ink">
+                  Book a free audit
+                </Link>
+                <Link href="/process" className="dpl-btn dpl-btn--ghost">
+                  How operations run
+                </Link>
+              </div>
+            </div>
+
+            <aside className="hero-grid__panels" aria-label="Operator coverage">
+              <div className="dpl-panel">
+                <header className="dpl-panel__head">
+                  <span className="dpl-panel__pulse" aria-hidden="true" />
+                  <span>On-call now</span>
+                </header>
+                <dl className="dpl-panel__rows">
+                  <div className="dpl-panel__row">
+                    <dt>Lead operator</dt>
+                    <dd data-design-only="true">Faizan</dd>
+                  </div>
+                  <div className="dpl-panel__row">
+                    <dt>Backup</dt>
+                    <dd data-design-only="true">Anwaar</dd>
+                  </div>
+                  <div className="dpl-panel__row">
+                    <dt>Active escalations</dt>
+                    <dd data-design-only="true">0</dd>
+                  </div>
+                  <div className="dpl-panel__row">
+                    <dt>Avg response · 30d</dt>
+                    <dd data-design-only="true">3h 12m</dd>
+                  </div>
+                  <div className="dpl-panel__row">
+                    <dt>Reply before next morning</dt>
+                    <dd className="dpl-panel__row--accent" data-design-only="true">100%</dd>
+                  </div>
+                </dl>
+              </div>
+            </aside>
           </div>
         </div>
       </section>

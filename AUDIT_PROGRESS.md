@@ -1172,6 +1172,14 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit P8. Footer brand line responsive wrap
+
+- Status: DONE
+- Files changed (1): `src/app/globals.css` (`.dpl-footer__bar` retrofit).
+- Switched from `grid-template-columns: 1fr 1fr 1fr` at >=1024px to a `flex-wrap` row layout that allows the three children (brand, doc-version, copy + legal links) to wrap onto two rows when the viewport is narrower than ~1440px. At >=1440px the three cells revert to even 1fr columns (`flex: 1 1 0`) with left / center / right alignment so the full text `DPL · WILMINGTON DE · 2017 → PRESENT` shows in the brand slot without truncation. Below 1024px, the bar is a vertical stack as before.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):

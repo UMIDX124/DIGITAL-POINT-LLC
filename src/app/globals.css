@@ -2273,8 +2273,8 @@ html[data-i-seen="1"] .dpl-intro-loader {
 }
 
 .dpl-footer__bar {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
   padding-block-start: 1rem;
   border-block-start: 1px solid var(--color-hairline-on-dark);
@@ -2285,8 +2285,35 @@ html[data-i-seen="1"] .dpl-intro-loader {
 
 @media (min-width: 1024px) {
   .dpl-footer__bar {
-    grid-template-columns: 1fr 1fr 1fr;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
+    column-gap: 1.5rem;
+    row-gap: 0.5rem;
+  }
+
+  .dpl-footer__bar .dpl-footer__brand,
+  .dpl-footer__bar .dpl-footer__doc,
+  .dpl-footer__bar .dpl-footer__copy {
+    flex: 1 1 auto;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 1440px) {
+  .dpl-footer__bar .dpl-footer__brand {
+    flex: 1 1 0;
+    text-align: left;
+  }
+
+  .dpl-footer__bar .dpl-footer__doc {
+    flex: 1 1 0;
+    text-align: center;
+  }
+
+  .dpl-footer__bar .dpl-footer__copy {
+    flex: 1 1 0;
+    text-align: right;
   }
 }
 

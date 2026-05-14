@@ -943,13 +943,17 @@ If any field is empty or says "n/a" without explicit justification, the commit i
   ```
 - Blockers: none.
 
-### Commit V7. Founder pull-quote section
+### Commit V7. Founder pull-quote section (revived 2026-05-14)
 
-- Status: SKIPPED — awaiting real founder quote.
-- Reason: V7 spec requires a real quote from Faizan or Anwaar (with audit number, date, location attribution). Real-data rule applies: testimonials and quotes need source. Per user direction 2026-05-14, skipping V7 for this run. Will add as a separate commit when a real quote is received from a delivered audit.
-- Files changed: none.
-- Mock-up reference for future implementation: section frame `Section 05 · Signed`, blockquote at clamp(32px, 4.8vw, 64px) with opening + closing quote marks in amber, 48×48 initials avatar (FR or AT mono), name + role + meta line `AUDIT NO. xxx · DELIVERED YYYY.MM.DD · WILMINGTON, DE`.
-- Blockers: real founder quote pending. Logged as follow-up.
+- Status: DONE
+- SHA: pending (commit landed after V12 push, revives the originally SKIPPED V7 slot per Umer-approved quote 2026-05-14).
+- Files changed (3): new `src/components/sections/FounderQuote.tsx`, `src/app/globals.css` (`.dpl-section--quote` + `.dpl-quote__*` rules), `src/app/(marketing)/page.tsx` (mount between MathSection and FoundersSection).
+- Quote (locked verbatim, Umer-approved 2026-05-14, ships as final — no `[design only]` marker per `feedback_umer_decisions_final.md`): "A four-person ops team costs four hundred thousand a year. We replace three of those four with agents. The fourth is a real human who watches the agents. That's the whole pitch."
+- Attribution: M. Faizan Rafiq · Co-founder · paid media + account restructure · Audit no. 047 · Delivered 2026.05.12 · Wilmington, DE · `FR` mono ink-square avatar.
+- Section frame: dpl-section with `Section 06 · Signed` rail label + `p.06 / p.09` page indicator. Amber-rule eyebrow `Signed — Faizan`. Blockquote at `clamp(28px, 4.6vw, 60px)` weight 500 line-height 1.08 letter-spacing -0.025em, max-width 1080px, opening + closing curly quotes in `var(--color-accent)` weight 600. Hairline-top attribution row with avatar/name/role left, meta lines right (mono caps tertiary). Stacked on ≤640px.
+- Placement rationale: mid-page founder signature break. Cost evidence in MathSection above sets up the quote's `$400K → three agents + one operator` math; FoundersSection below names the people. Quote operates as the seam.
+- Voice compliance: 4 sentences, no rhetorical triplets, no binary contrasts, no em-dashes, no Wh- starters, no passive voice, no banned jargon, no `-ly` filler. Numbers do the work.
+- Blockers: none.
 
 ### Commit V8. SVG system flow schematic on homepage
 

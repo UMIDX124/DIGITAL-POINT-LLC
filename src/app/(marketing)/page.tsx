@@ -6,6 +6,7 @@ import { RecoverySection } from '@/components/sections/RecoverySection';
 import { PillarsSection } from '@/components/sections/PillarsSection';
 import { HomeSystemFlow } from '@/components/sections/HomeSystemFlow';
 import { MathSection } from '@/components/sections/MathSection';
+import { FounderQuote } from '@/components/sections/FounderQuote';
 import { FoundersSection } from '@/components/sections/FoundersSection';
 import { ProcessSection } from '@/components/sections/ProcessSection';
 import { StackSection } from '@/components/sections/StackSection';
@@ -23,6 +24,7 @@ export default function HomePage() {
       <PillarsSection />
       <HomeSystemFlow />
       <MathSection />
+      <FounderQuote />
       <FoundersSection variant="compact" />
       <ProcessSection />
       <StackSection />

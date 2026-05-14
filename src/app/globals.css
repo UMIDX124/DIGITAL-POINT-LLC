@@ -1270,6 +1270,100 @@ html[data-i-seen="1"] .dpl-intro-loader {
 }
 
 /* ============================================================
+   Founder pull-quote (Section 06). V7 — signed Faizan.
+   ============================================================ */
+
+.dpl-section--quote {
+  padding-block: clamp(6rem, 11vw, 10rem) clamp(4.5rem, 8vw, 7.5rem);
+  border-block-end: 1px solid var(--color-hairline);
+}
+
+.dpl-quote__body {
+  font-family: var(--font-sans);
+  font-size: clamp(28px, 4.6vw, 60px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--color-ink);
+  max-width: 1080px;
+  margin: 0;
+}
+
+.dpl-quote__mark {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.dpl-quote__attribution {
+  margin-block-start: 3.5rem;
+  padding-block-start: 1.75rem;
+  border-block-start: 1px solid var(--color-hairline);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.dpl-quote__who {
+  display: flex;
+  align-items: center;
+  gap: 1.125rem;
+}
+
+.dpl-quote__avatar {
+  width: 48px;
+  height: 48px;
+  background: var(--color-ink);
+  color: var(--color-canvas);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.dpl-quote__name {
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+}
+
+.dpl-quote__role {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--color-text-tertiary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-block-start: 0.25rem;
+}
+
+.dpl-quote__meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+@media (max-width: 640px) {
+  .dpl-quote__attribution {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .dpl-quote__meta {
+    text-align: left;
+  }
+}
+
+/* ============================================================
    Section variants (V5+). Dark canvas inversion.
    ============================================================ */
 

@@ -401,13 +401,30 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ### Commit 17. Organization schema sameAs + contactPoint, drop unused await headers()
 
-- Status: PLANNED
-- SHA:
-- Files changed:
-- sameAs URLs added (must be real, user-confirmed):
-- CSP nonce trace result (consumers found yes/no):
+- Status: DONE (scope adjusted)
+- SHA: c06284bd797752508409f57c553fa4d3a0b17859
+- Files changed: src/app/layout.tsx
+- sameAs URLs added: none. Project CLAUDE.md confirms only LinkedIn presence; pre-existing `sameAs: ["https://www.linkedin.com/company/digitalpointllc"]` left as-is. Did not invent X/Twitter, GitHub-org, Crunchbase per prompt's stop condition.
+- contactPoint additions: `areaServed: "Worldwide"`, `availableLanguage: ["en"]`. Existing fields (`@type: ContactPoint`, `contactType: customer service`, `description`, `url: digitalpointllc.com/#contact-philosophy`) preserved. The deep-anchor URL is intentional per the existing layout.tsx comment (Phase 17b 3-reversal E1: no shared inbox, route to Cosmo + audit form).
+- CSP nonce trace (`grep -rn "nonce" src/app/ src/components/ src/lib/`):
+  - 5 consumers found:
+    1. `src/app/layout.tsx:124` — Organization JSON-LD nonce
+    2. `src/app/layout.tsx:165` — Professional Service JSON-LD nonce
+    3. `src/app/layout.tsx:191` — WebSite JSON-LD nonce
+    4. `src/app/(marketing)/blog/category/[category]/page.tsx:84` — CollectionPage JSON-LD nonce (Commit 7)
+    5. `src/app/(marketing)/guides/[slug]/page.tsx:84` — BlogPosting JSON-LD nonce (Commit 6)
+  - Nonce IS consumed → cannot remove `await headers()`. Added a comment block above the headers() call documenting the dependency. Route stays dynamic. The audit's "restore static prerender" was based on incomplete consumer info (Commits 6 + 7 added two more consumers after the audit was written).
 - Gate output:
-- Blockers:
+  ```
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
 
 ---
 

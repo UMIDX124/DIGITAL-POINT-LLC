@@ -165,13 +165,26 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ### Commit 6. Per-guide metadata + Article schema
 
-- Status: PLANNED
-- SHA:
-- Files changed:
-- MDX frontmatter fields confirmed:
-- Author resolution (Umer is kept out of public marketing per CLAUDE.md, default to Faizan or Anwaar):
+- Status: DONE
+- SHA: 48b79200736ef6371d53ac9d9a04ba34208a6240
+- Files changed: src/app/(marketing)/guides/[slug]/page.tsx
+- MDX frontmatter fields confirmed: N/A. Guides are TypeScript objects in `src/lib/guides.ts`, not MDX. Guide interface fields used: `slug`, `title`, `description`, `datePublished`, `dateModified`. No `author`, no per-guide image, no `og` field in the data model.
+- Author resolution: per project CLAUDE.md, Umer is kept out of public marketing. Public co-founders (Faizan, Anwaar) handle paid media + attribution but did not author the technical guides themselves. Defaulted to Organization-level author (`@type: Organization`, name: "Digital Point LLC") for both metadata.openGraph.authors and JSON-LD BlogPosting.author. Cleanest fit for evergreen content with no per-piece attribution.
+- Schema added (BlogPosting): headline, description, datePublished, dateModified, author (Organization), publisher (Organization with logo ImageObject), image (global /og-image.png), mainEntityOfPage (canonical url).
+- Metadata expansion: openGraph (siteName, locale, type=article, publishedTime, modifiedTime, authors, 1200x630 image), Twitter (summary_large_image), robots (index, follow).
 - Gate output:
-- Blockers:
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none. Per-guide OG image (dynamic) deferred to commit 13 (Batch C).
 
 ### Commit 7. Category hub metadata + CollectionPage schema
 

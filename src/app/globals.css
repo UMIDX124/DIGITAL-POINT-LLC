@@ -751,7 +751,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
    ============================================================ */
 
 .hero--operator-brief {
-  padding-block: clamp(4rem, 8vw, 7rem) var(--section-y);
+  padding-block: clamp(4rem, 8vw, 7rem) clamp(2.5rem, 4vw, 3rem);
   background-color: var(--color-canvas);
   background-image: none;
 }

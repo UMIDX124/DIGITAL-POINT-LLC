@@ -1164,6 +1164,14 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit P7. Tighten hero-to-ticker section spacing
+
+- Status: DONE
+- Files changed (1): `src/app/globals.css` (`.hero--operator-brief` block).
+- Replaced the bottom padding token `var(--section-y)` (80-144px) with a tighter `clamp(2.5rem, 4vw, 3rem)` (40-48px). The activity ticker sits directly below with its existing hairline border-start. Vertical gap between hero CTAs and the ticker is now compact rather than orphaned.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):

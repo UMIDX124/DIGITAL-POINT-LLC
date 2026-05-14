@@ -1,71 +1,60 @@
 'use client';
 
-/**
- * Phase 17b 3-restructured A3. GDPR cookie consent banner.
- *
- * Native HTML/CSS modal pattern (no third-party SaaS dependency). Two
- * actions: "Accept all" → enables analytics; "Necessary only" → suppresses
- * analytics. localStorage flag `dpl_cookie_consent` ∈ {accepted, necessary, null}.
- *
- * Banner appears on first visit (flag === null), suppressed thereafter.
- * Footer Cookies link can re-open via global event 'dpl:open-cookie-prefs'
- * dispatched on document. listener resets flag and re-shows banner.
- *
- * Conditional analytics mount: <Analytics> + <SpeedInsights> in layout.tsx
- * are wrapped in <AnalyticsGate> which reads the same flag client-side
- * and only mounts when accepted.
- *
- * Palette tokens used:
- *   bg #0A0A0A   border var(--border-default)   amber accept CTA
- *   ring-stroke  ghost necessary-only           text tokens
- */
-
-import { useSyncExternalStore, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const STORAGE_KEY = 'dpl_cookie_consent';
 type Consent = 'accepted' | 'necessary' | null;
 
 export function getConsent(): Consent {
   if (typeof window === 'undefined') return null;
-  const v = window.localStorage.getItem(STORAGE_KEY);
-  if (v === 'accepted' || v === 'necessary') return v;
+  try {
+    const v = window.localStorage.getItem(STORAGE_KEY);
+    if (v === 'accepted' || v === 'necessary') return v;
+  } catch {
+    // localStorage can throw in private-browsing or quota cases. Fall through.
+  }
   return null;
 }
 
-function subscribeConsent(callback: () => void) {
-  const onOpenPrefs = () => {
-    window.localStorage.removeItem(STORAGE_KEY);
-    callback();
-  };
-  document.addEventListener('dpl:consent-changed', callback);
-  document.addEventListener('dpl:open-cookie-prefs', onOpenPrefs);
-  return () => {
-    document.removeEventListener('dpl:consent-changed', callback);
-    document.removeEventListener('dpl:open-cookie-prefs', onOpenPrefs);
-  };
-}
-
-const getVisibleSnapshot = () => getConsent() === null;
-const getVisibleServerSnapshot = () => false;
-
 export default function CookieConsent() {
-  const visible = useSyncExternalStore(subscribeConsent, getVisibleSnapshot, getVisibleServerSnapshot);
-  // Phase 20.1.5. delayed first-paint so the banner never appears in the
-  // hero above-fold shot. Mounts at 1800ms post-load. Also collapses to a
-  // compact bottom-left pill at all viewports so it never overlaps the
-  // centered content / CTAs.
-  const [mounted, setMounted] = useState(false);
+  const [consent, setConsent] = useState<Consent>(null);
+  const [hydrated, setHydrated] = useState(false);
+
   useEffect(() => {
-    const t = window.setTimeout(() => setMounted(true), 1800);
-    return () => window.clearTimeout(t);
+    const read = () => setConsent(getConsent());
+    read();
+    const reveal = window.setTimeout(() => setHydrated(true), 1800);
+
+    const onConsentChanged = () => read();
+    const onOpenPrefs = () => {
+      try {
+        window.localStorage.removeItem(STORAGE_KEY);
+      } catch {
+        // ignore
+      }
+      setConsent(null);
+    };
+    document.addEventListener('dpl:consent-changed', onConsentChanged);
+    document.addEventListener('dpl:open-cookie-prefs', onOpenPrefs);
+
+    return () => {
+      window.clearTimeout(reveal);
+      document.removeEventListener('dpl:consent-changed', onConsentChanged);
+      document.removeEventListener('dpl:open-cookie-prefs', onOpenPrefs);
+    };
   }, []);
 
   const set = (v: Exclude<Consent, null>) => {
-    window.localStorage.setItem(STORAGE_KEY, v);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, v);
+    } catch {
+      // ignore
+    }
+    setConsent(v);
     document.dispatchEvent(new CustomEvent('dpl:consent-changed', { detail: v }));
   };
 
-  if (!visible || !mounted) return null;
+  if (!hydrated || consent !== null) return null;
 
   return (
     <div

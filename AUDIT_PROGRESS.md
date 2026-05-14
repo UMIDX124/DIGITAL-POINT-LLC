@@ -1138,6 +1138,16 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit P4. Cookie consent persistence fix
+
+- Status: DONE
+- Files changed (1): `src/components/compliance/CookieConsent.tsx`.
+- Replaced the `useSyncExternalStore`-based pattern with a straightforward `useState` + `useEffect` flow. On mount, read `dpl_cookie_consent` from localStorage and seed component state. Subscribe to `dpl:consent-changed` and `dpl:open-cookie-prefs` events to update state. Wrap all `localStorage.getItem/setItem/removeItem` in try/catch so private-browsing or quota errors fall through cleanly.
+- Render guard becomes `if (!hydrated || consent !== null) return null` — the banner only renders when the component has fully hydrated AND no prior consent value is stored. Once Accept or Necessary is clicked, `setConsent(v)` flips the local state, the banner unmounts immediately, and the localStorage write persists across visits.
+- `getConsent` export signature preserved so `AnalyticsGate` keeps working without changes.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):

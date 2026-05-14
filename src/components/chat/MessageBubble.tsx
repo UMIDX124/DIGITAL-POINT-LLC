@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 export type ChatRole = 'user' | 'assistant' | 'system';
@@ -11,7 +12,13 @@ type Props = {
   index?: number;
 };
 
+const LONG_CONTENT_THRESHOLD = 4000;
+
 export function MessageBubble({ role, content, timestamp, index }: Props) {
+  const [expanded, setExpanded] = useState(false);
+  const isLong = content.length > LONG_CONTENT_THRESHOLD;
+  const displayContent =
+    isLong && !expanded ? `${content.slice(0, LONG_CONTENT_THRESHOLD)}…` : content;
   if (role === 'system') {
     return (
       <div className="cosmo-msg cosmo-msg--system" role="status">
@@ -59,8 +66,17 @@ export function MessageBubble({ role, content, timestamp, index }: Props) {
             ),
           }}
         >
-          {content}
+          {displayContent}
         </ReactMarkdown>
+        {isLong ? (
+          <button
+            type="button"
+            onClick={() => setExpanded((v) => !v)}
+            className="cosmo-msg__readmore"
+          >
+            {expanded ? 'Show less' : 'Read more'}
+          </button>
+        ) : null}
       </div>
     </article>
   );

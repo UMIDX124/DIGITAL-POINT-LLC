@@ -1370,6 +1370,19 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit X9. Polish chat — keyboard shortcuts, error states, motion, mobile
+
+- Status: DONE
+- Files changed (3): `src/components/chat/ChatPanel.tsx`, `src/components/chat/MessageBubble.tsx`, `src/app/globals.css`.
+- Error mapping: `mapError(error.message)` translates the AI SDK error payload to specific user-facing copy (timeout, 429 rate limit, 503 not-configured, 403 blocked, generic) and always ends with "Hand off to Faizan?" so the user has a recovery path.
+- Long-message expander: `MessageBubble` now truncates assistant content over 4000 chars with a `Read more` / `Show less` button. Defensive control for runaway model output even though the system prompt caps response length.
+- Accessibility: message list region marked `aria-live="polite"` with `aria-busy={isStreaming}` so screen readers announce streamed updates without re-reading the whole transcript. Stop button + clear button labelled. Panel dialog already had `aria-label`.
+- Motion: prefers-reduced-motion guards on the panel slide-in (X5), pulse dot (X4), and typing dots (X5) are all in place. Verified no new animations land without a guard.
+- Mobile: panel becomes edge-to-edge with 1rem gutters at viewports under 480px (X5); quick-action chips wrap; handoff form rows inherit the panel width.
+- `pnpm build` passed end-to-end (Turbopack production build).
+- Quality gates: tsc 0 errors, lint 0 warnings, `pnpm build` succeeded.
+- Blockers: none.
+
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):
 - `git config --get remote.origin.url` (must equal `git@github.com:UMIDX124/DIGITAL-POINT-LLC.git`):
 - `cat .vercel/project.json | grep projectName` (must equal `digitalpointllc-1`):

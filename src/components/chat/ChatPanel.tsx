@@ -77,6 +77,23 @@ function readMessageText(m: UIMessage): string {
     .join('');
 }
 
+function mapError(msg: string | undefined): string {
+  const text = (msg ?? '').toLowerCase();
+  if (text.includes('timed out') || text.includes('timeout')) {
+    return 'Cosmo took too long to respond.';
+  }
+  if (text.includes('too many') || text.includes('429')) {
+    return 'Too many messages in a short window. Try again in a minute.';
+  }
+  if (text.includes('not configured') || text.includes('503')) {
+    return 'Cosmo is offline.';
+  }
+  if (text.includes('blocked') || text.includes('403')) {
+    return 'Request blocked.';
+  }
+  return 'Something broke.';
+}
+
 function loadSession(): UIMessage[] | null {
   if (typeof window === 'undefined') return null;
   try {
@@ -277,7 +294,12 @@ export default function ChatPanel({ open, onClose }: Props) {
 
       <OperatorStatus operator={ON_CALL_OPERATOR} />
 
-      <div ref={listRef} className="cosmo-panel__body">
+      <div
+        ref={listRef}
+        className="cosmo-panel__body"
+        aria-live="polite"
+        aria-busy={isStreaming}
+      >
         {displayMessages.map((m) => {
           const text = readMessageText(m);
           return (
@@ -304,7 +326,7 @@ export default function ChatPanel({ open, onClose }: Props) {
 
         {error ? (
           <div className="cosmo-panel__error" role="alert">
-            Something broke. Try again, or hand off to {ON_CALL_OPERATOR}.
+            {mapError(error.message)} Hand off to {ON_CALL_OPERATOR}?
           </div>
         ) : null}
       </div>

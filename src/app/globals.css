@@ -3218,6 +3218,24 @@ html[data-i-seen="1"] .dpl-intro-loader {
   background: var(--color-surface-soft, rgba(10, 10, 11, 0.05));
 }
 
+.cosmo-msg__readmore {
+  display: inline-block;
+  margin-block-start: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: var(--tracking-mono-body);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.cosmo-msg__readmore:hover {
+  text-decoration: underline;
+}
+
 .cosmo-msg--system {
   padding: 0.625rem 1rem 0.625rem 1.25rem;
   font-family: var(--font-mono);

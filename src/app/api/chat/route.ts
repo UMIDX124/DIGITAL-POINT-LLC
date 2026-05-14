@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
           temperature: 0.6,
           top_p: 0.9,
         }),
-        signal: AbortSignal.timeout(20_000),
+        signal: AbortSignal.timeout(25_000),
       });
 
     let groqRes = await callGroq();
@@ -110,7 +110,10 @@ export async function POST(req: NextRequest) {
     const err = e as { name?: string; message?: string };
     console.error(`[chat] exception name=${err?.name} msg=${err?.message ?? String(e)}`);
     if (err?.name === 'TimeoutError' || err?.name === 'AbortError') {
-      return NextResponse.json({ error: 'AI request timed out. Try a shorter message.' }, { status: 504 });
+      return NextResponse.json(
+        { error: 'AI request timed out. Try a shorter message.', code: 'groq_timeout' },
+        { status: 504 },
+      );
     }
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

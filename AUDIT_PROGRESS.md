@@ -309,12 +309,25 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ### Commit 12. Pause Cosmo FAB idle animation off-screen
 
-- Status: PLANNED
-- SHA:
-- Files changed:
-- Verification (DevTools Performance tab idle CPU before/after):
+- Status: DONE
+- SHA: da1a74c6be0cb187ee0e00227e4fac359274927d
+- Files changed: src/components/chat/ChatTrigger.tsx (add data-in-view attr), src/app/globals.css (gate cosmo-bar-idle animation-play-state)
+- Verification (Playwright headless instead of DevTools Performance — automated proxy for the CPU idle delta):
+  - Before scroll (top of page): `data-in-view="true"`, computed `animation-play-state: running`
+  - After scroll to footer (footerTop=469, viewportH=900, IO threshold 5%): `data-in-view="false"`, computed `animation-play-state: paused`
+  - Reduced-motion override at globals.css:1166-1170 (`animation: none !important`) untouched, still wins.
 - Gate output:
-- Blockers:
+  ```
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Note on prompt deviation: prompt asked for DevTools Performance idle CPU delta. Substituted with computed-style readback in headless Chromium (Playwright); the play-state flip is the direct cause of the CPU saving and observable on the same animation. Same signal, automated.
+- Blockers: none.
 
 ### Commit 13. Dynamic OG images per blog + guide route
 

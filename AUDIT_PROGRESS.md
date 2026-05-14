@@ -285,12 +285,23 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ### Commit 11. 25s abort ceiling on Groq fetch in chat route
 
-- Status: PLANNED
-- SHA:
-- Files changed:
-- Manual test output (normal request 200, simulated timeout 504):
+- Status: DONE
+- SHA: 61969cfddececfe7ec31f1d3be81bdcc026ffb7f
+- Files changed: src/app/api/chat/route.ts
+- Pre-existing state: route already used `AbortSignal.timeout(20_000)` + single retry on 502/503/504 + 504 NextResponse on TimeoutError/AbortError. The audit's "no abort ceiling" finding was partially out of date — the ceiling existed, just at 20s.
+- Change scope: bump constant to 25_000 to match audit target, and add `code: 'groq_timeout'` to the 504 response body (additive, does not break the existing `data?.error`-string consumer in `src/components/chat/ChatPanel.tsx:90`).
+- Manual test note: skipped runtime simulation of the 504 path. Forcing a real timeout requires either a working GROQ_API_KEY plus a way to simulate network delay (not available locally) or temporarily dropping the timeout to ~50ms and reverting before commit. The change is a constant bump + additive field, covered by tsc + lint + build. The AbortSignal.timeout / 504 path itself was already in production. The retry semantics were not changed.
 - Gate output:
-- Blockers:
+  ```
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
 
 ---
 

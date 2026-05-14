@@ -14,29 +14,19 @@ export const metadata: Metadata = {
 const useCases = [
   {
     title: 'Lead-to-CRM pipeline',
-    desc: 'Every inbound from every source captured, enriched, deduplicated, scored, routed in under 60 seconds. No more "did we follow up on that one?"',
+    desc: 'Every inbound from every source captured, enriched, deduplicated, scored, routed in under 60 seconds. No more "did we follow up on that one?" Parallel workers across HubSpot, Stripe, Slack, email, and form submissions land in a single Postgres state table before any rep sees them.',
   },
   {
     title: 'Vendor invoice extraction',
-    desc: 'PDF / scan in, structured records out. Edge cases route to operator review before write-back to accounting.',
-  },
-  {
-    title: 'Commission reconciliation',
-    desc: 'For brokerages and agencies with payout rules. Match CRM deals to commission tables, flag exceptions, queue payouts.',
-  },
-  {
-    title: 'Daily-standup replacement',
-    desc: 'Threshold monitoring across the portfolio. Anomalies surface, narrative reports auto-generated, you read the digest.',
-  },
-  {
-    title: 'Document QA loop',
-    desc: 'Generated copy or contract drafts flow through a structured review pipeline. Operator approves before send.',
+    desc: 'PDF / scan in, structured records out. Edge cases route to operator review before write-back to accounting. Audit trail preserved per invoice so finance can reconcile against the original document.',
   },
   {
     title: 'Cross-tool sync',
-    desc: 'Bi-directional sync between CRM, helpdesk, billing, marketing tools. With reconciliation logic, not just webhooks.',
+    desc: 'Bi-directional sync between CRM, helpdesk, billing, marketing tools. Reconciliation logic, not just webhooks. Conflicts surface to operator review before the system writes back.',
   },
 ];
+
+const alsoAutomate = 'Commission reconciliation · daily-standup replacement · document QA review loops.';
 
 export default function AutomationPage() {
   return (
@@ -116,6 +106,21 @@ export default function AutomationPage() {
               </article>
             ))}
           </div>
+
+          <p
+            className="font-mono"
+            style={{
+              marginBlockStart: '2.5rem',
+              fontSize: '12px',
+              letterSpacing: 'var(--tracking-mono-label)',
+              textTransform: 'uppercase',
+              color: 'var(--color-text-tertiary)',
+              borderBlockStart: '1px solid var(--color-hairline)',
+              paddingBlockStart: '1rem',
+            }}
+          >
+            Also automate · {alsoAutomate}
+          </p>
         </div>
       </section>
 

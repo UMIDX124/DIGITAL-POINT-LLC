@@ -1219,6 +1219,16 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings, `pnpm build` succeeded.
 - Blockers: none.
 
+### Commit P12. Drop 6-card grids to 3-card (agents, automation)
+
+- Status: DONE
+- Files changed (2): `src/app/(marketing)/agents/page.tsx`, `src/app/(marketing)/automation/page.tsx`.
+- /agents "Use cases that ship" grid trimmed from 6 cards to 3 (Lead routing + qualification, CRM enrichment, Customer support triage). Bodies expanded with outcome detail. Dropped cards (Sales follow-up cadence, Document parsing, Portfolio monitoring) move below the grid as a comma-separated "Also ship · ..." mono caps line with hairline border-start.
+- /automation "Workflows we deploy" grid trimmed from 6 to 3 (Lead-to-CRM pipeline, Vendor invoice extraction, Cross-tool sync). Bodies expanded similarly. Dropped pipelines (Commission reconciliation, Daily-standup replacement, Document QA loop) move to a comma-separated "Also automate · ..." line.
+- Locked rule going forward: max 3 cards per row; no 6-card grids site-wide.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):

@@ -14,29 +14,19 @@ export const metadata: Metadata = {
 const useCases = [
   {
     title: 'Lead routing + qualification',
-    desc: 'Every inbound lead enriched, scored, and routed to the right operator or sales rep in under 60 seconds. Tunable thresholds per channel.',
-  },
-  {
-    title: 'Sales follow-up cadence',
-    desc: 'Adaptive follow-up sequences that respond to prospect signal. Opened, replied, ghosted, asked a hard question. No template trees.',
+    desc: 'Every inbound lead enriched, scored, and routed to the right operator or sales rep in under 60 seconds. Tunable thresholds per channel. Average response time drops from hours to minutes, with operator override on high-value leads before they hit a rep.',
   },
   {
     title: 'CRM enrichment',
-    desc: 'Auto-fill missing fields, deduplicate records, normalize firmographics. Runs continuously, not as a one-time scrub.',
-  },
-  {
-    title: 'Document parsing + extraction',
-    desc: 'Invoice, contract, statement parsing into structured records. Edge cases route to operator audit before write-back.',
-  },
-  {
-    title: 'Portfolio monitoring',
-    desc: 'Daily-standup replacement for 20+ account watch. Agents monitor thresholds, detect anomalies, write weekly narrative reports.',
+    desc: 'Auto-fill missing fields, deduplicate records, normalize firmographics. Runs continuously, not as a one-time scrub. Operator audits the edge cases the agent flags as low-confidence before writing back.',
   },
   {
     title: 'Customer support triage',
-    desc: 'First-pass classification, response drafting, escalation routing. Operator approves outbound when stakes are high.',
+    desc: 'First-pass classification, response drafting, escalation routing. Operator approves outbound when stakes are high. Typical mix is 60-70% auto-resolved, 20-30% operator-edited, the rest hand-routed.',
   },
 ];
+
+const alsoShip = 'Sales follow-up cadences · document parsing and extraction · portfolio monitoring and weekly narrative reports.';
 
 export default function AgentsPage() {
   return (
@@ -149,6 +139,21 @@ export default function AgentsPage() {
               </article>
             ))}
           </div>
+
+          <p
+            className="font-mono"
+            style={{
+              marginBlockStart: '2.5rem',
+              fontSize: '12px',
+              letterSpacing: 'var(--tracking-mono-label)',
+              textTransform: 'uppercase',
+              color: 'var(--color-text-tertiary)',
+              borderBlockStart: '1px solid var(--color-hairline)',
+              paddingBlockStart: '1rem',
+            }}
+          >
+            Also ship · {alsoShip}
+          </p>
         </div>
       </section>
 

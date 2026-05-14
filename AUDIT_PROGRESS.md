@@ -663,6 +663,30 @@ If any field is empty or says "n/a" without explicit justification, the commit i
   ```
 - Blockers: none.
 
+## Tier calibration commit (T0)
+
+### Commit T0. CLAUDE.md ARR target calibration
+
+- Status: DONE
+- SHA: d59001cb7b9a6124670aaf0d9a61ccefe2d01843
+- Files changed: CLAUDE.md (single line, "Who buys from us" section)
+- Change: `$1M to $50M annual revenue. 5 to 50 employees.` → `$500K to $10M annual revenue. 5 to 25 employees. Stretch up to $15M for founders who came in via warm referral.`
+- Reason: $30M+ companies have internal IT and procurement layers and will not buy from a 2-person agency. Realistic AI buyer for DPL is founder-led $500K-$10M ARR SMB with no procurement layer. Stretch ceiling at $15M reserved for warm-referral entry.
+- Coupled with the new `feedback_dpl_operational_history_framing.md` memory (rules for using 15+ US states / 8-year cross-state operating history as honest trust signal without misrepresenting AI-service-specific reach).
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+
 ---
 
 ## Final verification

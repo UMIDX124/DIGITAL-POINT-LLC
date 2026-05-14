@@ -428,6 +428,38 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ---
 
+## Batch H — HOTFIX (commits H1-H6)
+
+### Commit H1. Fix audit form Step 3 input focus loss
+
+- Status: DONE
+- SHA: ee13648092577492472b9bf21ce958c9bde4cf64
+- Files changed: src/lib/framer-compat.ts
+- Root cause: motion proxy in `src/lib/framer-compat.ts` called `makeMotionTag(prop)` on every `motion.div` access, returning a fresh function reference each time. React compares `element.type` by reference; new ref per render = new component type = unmount+remount of the entire `<motion.div>` subtree on every parent re-render. Step 3's parent (`AuditPage`) re-renders on every keystroke (setFormData), so each keystroke destroyed and recreated the input → focus died with the old DOM node.
+- Fix: cache results of `makeMotionTag` in a `Map<string, Component>` keyed by tag name. Same `motion.div` reference returned across all renders.
+- Note on prompt deviation: prompt offered Path A (extract Step 3 to memoized child) and Path B (UTM in useEffect). Neither addresses the actual root cause — `React.memo` cannot skip a re-render when `formData` props change every keystroke, and UTM hydration is unrelated since those values are never rendered to DOM. The shim fix is minimal, root-cause correct, and also benefits the one other consumer (`src/components/seo/GrowthAuditCTA.tsx`).
+- Verification (Playwright headless, dev server on http://localhost:3000):
+  - Navigated through Step 1 (clicked "Inconsistent leads") → Step 2 (clicked "Under $10k/mo") → Step 3
+  - Typed `UmerFarooq` into #name → final value `UmerFarooq`, document.activeElement.id === "name"
+  - Typed `umer@digitalpointllc.com` into #email → final value matches, activeElement === "email"
+  - Typed `Digital Point LLC` into #company → final value matches, activeElement === "company"
+  - Console errors: one pre-existing JSON-LD nonce hydration mismatch (server renders nonce="..." from headers(), client hydrates with nonce=""). Unrelated to focus and pre-dates this commit. Logged for separate triage.
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+
+---
+
 ## Final verification
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):

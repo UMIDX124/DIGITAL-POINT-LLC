@@ -974,6 +974,31 @@ If any field is empty or says "n/a" without explicit justification, the commit i
   ```
 - Blockers: none.
 
+### Commit V9. Stack page essay rewrite with FIG labels
+
+- Status: DONE
+- SHA: 5fa689fde84a9dae2c725334033f12575ff618cd
+- Files changed (2): `src/app/(marketing)/stack/page.tsx` (rewrite), `src/app/globals.css` (new `.dpl-section--stack`, `.dpl-section--architecture`, `.dpl-rationale__*`, `.dpl-architecture__*` rules).
+- Removed: the 6-category `layers` map and per-item card grid. Removed `StackGrid` import + the icon row section.
+- New "Stack rationale" section frame: `Section 06 · Stack` vertical rail label + `p.06 / p.09` page indicator. 2-column grid (1fr/2fr at ≥1024px). Left column: amber-rule eyebrow "— Stack rationale", h2 "Why this stack, not the obvious one." (clamp 28-48px), note "Open-source where the cost curve flattens. Custom code where the edges break. Self-hosted where data sovereignty matters." Right column: 4 hairline-divided rationale items. Each item layout: 80px `FIG.NN` mono amber column + content column with h3 (the "pick" headline plus a mono category tag in a bordered chip — `n8n, not Zapier` / Orchestration etc.) + body paragraph.
+- Locked copy verbatim from prompt for all 4 FIG items (n8n vs Zapier, Groq vs OpenAI, Postgres vs vector-db hype, Self-hosted vs platform-locked).
+- Architecture sub-section below: amber-rule eyebrow "— Architecture", h2 "The flow, end to end.", body paragraph, then the `SystemFlowSchematic` (default 720×380) in a hairline-strong bordered card with 2rem padding. Uses the same SVG component as V8.
+- Hero retained but CTA buttons migrated from `btn-primary` / `btn-ghost` → `dpl-btn--ink` / `dpl-btn--ghost` to match V3/V8 buttons.
+- Verification: full-page screenshots at `docs/screenshots/commit-31/stack-{360,768,1440}.png`. 1440 confirms hero → rationale grid with 4 FIG items → architecture diagram → bottom CTA flows in order.
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+
 ---
 
 ## Final verification

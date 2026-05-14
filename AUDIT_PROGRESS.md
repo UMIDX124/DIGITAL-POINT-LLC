@@ -534,6 +534,34 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Follow-up: AttributionVisualizer dynamic progress-bar gradient still uses multi-stop linear-gradient (now token-based: `var(--color-accent-soft) ${100 - credit}%, var(--color-accent) 100%`). Refactor to a flat inner div with `width: ${credit}%` and `background: var(--color-accent)` would eliminate the gradient. Out of H3 scope.
 - Follow-up: legacy alias block in globals.css (lines 9-19, 22-27) carries 389 consumer references. Full migration to `--color-*` tokens is V-batch scope per V1's "DO NOT delete legacy tokens" rule.
 
+### Commit H4. Operators page — add 2 roles to fill grid
+
+- Status: DONE
+- SHA: f2c72e9c6abecf5a18a0d50adab07e9726871b17
+- Files changed: src/app/(marketing)/operators/page.tsx
+- Existing state: `what` array had 4 role entries rendered into `.pillar-grid--three`. Slots 5 + 6 of the second row sat empty, producing visible asymmetry at desktop and tablet.
+- Added 2 cards with locked copy verbatim from prompt:
+  - **QA review pass** — "Operator manually verifies high-stakes agent output before it ships. Catches the 1-in-50 hallucinations that drift through automated checks."
+  - **Edge-case codification** — "When operators handle a one-off exception, they write the rule that absorbs it next time. Your agent gets smarter from human edge work."
+- Card format follows existing convention (`ROLE` eyebrow → headline → description body).
+- Screenshots in `docs/screenshots/commit-22/`:
+  - operators-1440.png — verified 2×3 grid (rows: Exception audit / Live observability / Weekly narrative reports; Custom escalation paths / QA review pass / Edge-case codification)
+  - operators-768.png — 2-col stack
+  - operators-360.png — 1-col stack
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+
 ---
 
 ## Final verification

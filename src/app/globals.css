@@ -2277,37 +2277,14 @@ html[data-i-seen="1"] .dpl-intro-loader {
 .dpl-nav__brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.625rem;
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
   color: var(--color-ink);
-  font-weight: 500;
-}
-
-.dpl-nav__brand-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  background: var(--color-ink);
-  color: var(--color-canvas);
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  border-radius: 2px;
   flex-shrink: 0;
 }
 
-.dpl-nav__brand-word {
-  font-family: var(--font-mono);
-  font-size: 12.5px;
-  letter-spacing: 0.08em;
-  text-transform: lowercase;
-  color: var(--color-ink);
+.dpl-logo-nav {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .dpl-nav__menu {

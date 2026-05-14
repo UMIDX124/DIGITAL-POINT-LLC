@@ -1098,7 +1098,22 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ---
 
-## Final verification
+## Batch Y+Z — Site polish + typography discipline
+
+### Commit P0. Wire real Logomark into nav (CRITICAL FIX)
+
+- Status: DONE
+- Files changed (2): `src/components/layout/Navigation.tsx`, `src/app/globals.css`.
+- Replaced CSS-generated `<span className="dpl-nav__brand-mark">DP</span>` + `<span className="dpl-nav__brand-word">digital point</span>` text placeholder with the real `<Logomark mode="lockup" variant="light" markSize={26} textSize={92} gap={10} className="dpl-logo-nav" priority ariaHidden />` call. Nav now renders the user's actual two-color DP mark + bold "digital point" wordmark with amber dot on i.
+- Removed the obsolete `.dpl-nav__brand-mark` (28×28 ink square text rendering) and `.dpl-nav__brand-word` (mono lowercase) CSS rules from `globals.css`. Replaced with a minimal `.dpl-logo-nav { display: inline-flex; align-items: center; flex-shrink: 0; }` since the Logomark already controls its own dimensions inline.
+- Audit grep for other surfaces:
+  - `grep -rn "content: 'DP'\|content: \"DP\"" src/` → 0 matches.
+  - `grep -rn ">DP<" src/` → 1 match (the nav itself, now removed).
+  - `grep -rn "Logomark" src/` → confirms intro loader (`src/app/layout.tsx:231`), conversion layout (`src/app/(conversion)/layout.tsx:25`), and brand component already wired correctly. Footer brand line is intentional text-only (`DPL · Wilmington DE · 2017 → present`).
+- Quality gates: `pnpm exec tsc --noEmit` 0 errors. `pnpm lint` 0 warnings. `pnpm build` succeeded.
+- Blockers: none.
+
+
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):
 - `git config --get remote.origin.url` (must equal `git@github.com:UMIDX124/DIGITAL-POINT-LLC.git`):

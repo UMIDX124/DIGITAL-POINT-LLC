@@ -727,6 +727,47 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ---
 
+## Batch V — VISUAL UPGRADE / OPERATOR BRIEF (V1-V12)
+
+### Commit V1. Operator-brief token palette in @theme
+
+- Status: DONE
+- SHA: b84bd2a4e5bee23fab9128ad7292e56cbe83b177
+- Files changed (10): src/app/globals.css, src/app/(marketing)/tools/{attribution-model-visualizer,dashboard-cost-calculator,roas-calculator}/*.tsx, src/components/blog/{InContentCTA,LeadMagnetBanner}.tsx, src/components/sections/{AuditPage,BlogPage}.tsx, src/components/seo/{GrowthAuditCTA,NewsletterOptIn}.tsx
+- @theme augmentation in globals.css:
+  - Canvas: `--color-canvas: #FAFAFA` → `#FAFAF7` (operator-brief warm off-white, applied via existing `html/body { background: var(--color-canvas) }` so no layout.tsx change needed)
+  - New tokens: `--color-ink: #0A0A0B`, `--color-ink-soft: #1A1A1F`, `--color-text-quaternary: #B8B8BD`, `--color-text-tertiary: #6b6b73 → #8A8A93`, `--color-text-secondary: #44444a → #52525B`
+  - New hairline family: `--color-hairline (rgba 0.08)`, `--color-hairline-strong (rgba 0.18)`, `--color-hairline-faint (rgba 0.04)`. Legacy `--color-line-faint/soft/bright/accent` kept as aliases scheduled for removal after Batch V.
+  - On-dark new tokens: `--color-text-on-dark`, `--color-text-on-dark-secondary`, `--color-text-on-dark-tertiary`, `--color-hairline-on-dark`, `--color-hairline-on-dark-strong`. Legacy `--color-text-dark-*` and `--color-line-dark-*` kept.
+  - Accent: `--color-accent-soft` semantic shifted from `#c26800` (opaque darker amber) to `rgba(255, 136, 0, 0.08)` (8% tint for operator-brief soft fills). `--color-accent-text` value normalized to `#A85800` (case only, same).
+- Consumer migration: 21 pre-V1 `--color-accent-soft` usages migrated. The previous semantic was "darker opaque amber button bg" — V1 redefinition would have rendered every one of those buttons as a near-transparent 8% tint. Per project single-amber-lock `--color-accent (#FF8800)` is the correct token. Migrated:
+  - All `style={{ background: 'var(--color-accent-soft)' }}` (button bgs, indicators) → `var(--color-accent)`
+  - All `border` / Tailwind `bg-[var(--color-accent-soft)]` arbitrary classes → `var(--color-accent)`
+  - All `borderLeft: '3px solid var(--color-accent-soft)'` → `var(--color-accent)`
+  - Same-stop gradients `linear-gradient(135deg, var(--color-accent-soft) 0%, var(--color-accent-soft) 100%)` → flat `var(--color-accent)`
+  - AuditPage progress-bar gradient `linear-gradient(90deg, var(--color-accent-soft), var(--color-accent), var(--color-accent))` → flat `var(--color-accent)` (progress already communicated by `width: ${progressPercent}%` motion.div)
+- Bug 2 (AttributionVisualizer dynamic progress gradient) RESOLVED here, ahead of V11. Discovered during the V1 migration that the H3 sed had silently corrupted the gradient: perl interpreted `${100 - credit}` as variable interpolation and stripped it, leaving `linear-gradient(135deg, var(--color-accent-soft) %, var(--color-accent) 100%)` — invalid CSS that browsers were ignoring. Replaced with flat `var(--color-accent)` since the `width: ${Math.max(credit, 2)}%` on the inner div is already the progress affordance. The follow-up to "refactor to inner-div + width" is now moot (done implicitly).
+- Verification:
+  - `grep -rn "var(--color-accent-soft)" src/ | grep -v globals.css` → 0 matches.
+  - `pnpm exec tsc --noEmit` → 0 errors. `pnpm lint` → 0 warnings. `pnpm build` → success.
+  - Screenshots in `docs/screenshots/commit-24/`: home (3 viewports), attribution-visualizer (3), audit (3). Visual confirmation: warmer #FAFAF7 canvas, AttributionVisualizer progress bars now solid amber (no broken gradient), audit form progress bar solid amber, no transparent buttons.
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+- Note: prompt instructed "Update `<html>` / `<body>` background in layout.tsx to use var(--color-canvas)". Already wired — globals.css lines 175/183/189 set `background-color: var(--color-canvas)` on `html` / `body` / `:where(html, body)` already. The `#FAFAFA → #FAFAF7` token value change flows through automatically.
+
+---
+
 ## Final verification
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):

@@ -13,10 +13,14 @@ export function DocumentHeaderPrintedOn() {
   const [label, setLabel] = useState(() => format(new Date()));
 
   useEffect(() => {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) return;
-    const id = setInterval(() => setLabel(format(new Date())), 60 * 60_000);
-    return () => clearInterval(id);
+    const refresh = () => setLabel(format(new Date()));
+    refresh();
+    const id = setInterval(refresh, 60 * 60_000);
+    window.addEventListener('focus', refresh);
+    return () => {
+      clearInterval(id);
+      window.removeEventListener('focus', refresh);
+    };
   }, []);
 
   return <span suppressHydrationWarning>{label}</span>;

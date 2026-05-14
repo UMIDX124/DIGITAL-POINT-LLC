@@ -1129,6 +1129,15 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit P3. Fix doc header — remove UPDATED LIVE, refresh PRINTED ON on focus
+
+- Status: DONE
+- Files changed (2): `src/components/layout/DocumentHeaderLiveTime.tsx`, `src/components/layout/DocumentHeaderPrintedOn.tsx`.
+- Dropped `UPDATED LIVE · ` prefix from the LiveTime label; doc header left rail now reads `DPL · OPERATOR BRIEF | VERSION 2026.05 | FAIZAN ON-CALL · WILMINGTON HH:MM`. Three signals instead of four.
+- PrintedOn was already a client component using `new Date()`. Added a mount-time refresh + window focus listener so the date updates when the user returns to the tab after midnight UTC. Still falls back to a 1-hour interval.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):

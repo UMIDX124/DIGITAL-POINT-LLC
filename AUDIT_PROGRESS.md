@@ -854,6 +854,42 @@ If any field is empty or says "n/a" without explicit justification, the commit i
   ```
 - Blockers: none.
 
+### Commit V4. Activity ticker + massive evidence number section
+
+- Status: DONE
+- SHA: 24145d36d675276743aa17f01a8c4f755e28c099
+- Files changed (4): `src/components/marketing/ActivityTicker.tsx` (new client), `src/components/sections/HomeEvidence.tsx` (new server), `src/app/globals.css` (new `.dpl-ticker*`, `.dpl-section*`, `.dpl-eyebrow*`, `.dpl-evidence*` rules), `src/app/(marketing)/page.tsx` (mount both after HeroSection).
+- ActivityTicker:
+  - 8 timestamped operator events doubled in the rail for seamless loop
+  - `@keyframes dpl-ticker-scroll` translates `0 → -50%` over 60s linear infinite
+  - `mask-image: linear-gradient(...)` on the viewport fades both edges
+  - Hover pauses the rail (`.is-paused` class + CSS `:hover` rule)
+  - `prefers-reduced-motion: reduce` honored via `useSyncExternalStore` subscription to `matchMedia` (chose this over `useEffect + setState` to satisfy the project's `react-hooks/set-state-in-effect` lint rule that fired on first attempt)
+  - All 8 events carry `data-design-only="true"` until the real activity feed wires
+- HomeEvidence:
+  - 2-column grid (1fr at base, 1fr/1.4fr at ≥1024px)
+  - Left: amber rule + "The case" eyebrow, "One number that closes most audits." h2 (clamp 2rem-3.25rem, weight 600, line-height 1.05, letter-spacing -0.025em), body paragraph, hairline-top source line "Source · 6 active retainers · Trailing 12m average · 2026.05.14" marked design-only.
+  - Right: mono `$400K → $30K` at clamp(80px, 16vw, 240px) / weight 500 / line-height 0.94 / letter-spacing -0.04em. Arrow rendered in `var(--color-accent)`. Caption below in mono caps small text.
+- New section frame primitives (reusable for V5-V12):
+  - `.dpl-section` wrapper with section padding + canvas bg
+  - `.dpl-section__rail` for vertical-rl margin label (desktop only)
+  - `.dpl-section__page` for top-right page indicator
+  - `.dpl-eyebrow` + `.dpl-eyebrow__rule` for amber-rule-prefixed eyebrows
+- Verification: full-page screenshots at `docs/screenshots/commit-27/home-{360,768,1440}.png`. 1440 confirms ticker row between hero panels and evidence section, evidence shows massive `$400K → $30K` with amber arrow right-aligned.
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+
 ---
 
 ## Final verification

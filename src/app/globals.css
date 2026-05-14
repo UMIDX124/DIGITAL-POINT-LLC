@@ -3255,3 +3255,231 @@ html[data-i-seen="1"] .dpl-intro-loader {
   color: var(--color-accent);
   outline: none;
 }
+
+.cosmo-panel {
+  position: fixed;
+  inset-block-end: 6rem;
+  inset-inline-end: 1.5rem;
+  width: min(420px, calc(100vw - 2rem));
+  max-block-size: min(640px, calc(100vh - 8rem));
+  display: flex;
+  flex-direction: column;
+  background: var(--color-canvas);
+  border: 1px solid var(--color-hairline-strong);
+  box-shadow: 0 24px 64px -16px rgba(10, 10, 11, 0.18);
+  z-index: 50;
+  animation: cosmo-panel-in 220ms ease-out;
+}
+
+@keyframes cosmo-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cosmo-panel {
+    animation: none;
+  }
+}
+
+.cosmo-panel__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border-block-end: 1px solid var(--color-hairline);
+}
+
+.cosmo-panel__title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.cosmo-panel__title-line {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: var(--tracking-mono-label);
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.cosmo-panel__title-sub {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: var(--tracking-mono-body);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.cosmo-panel__head-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cosmo-panel__clear,
+.cosmo-panel__close {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--color-text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: var(--tracking-mono-body);
+  text-transform: uppercase;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+
+.cosmo-panel__clear:hover,
+.cosmo-panel__close:hover {
+  color: var(--color-accent);
+}
+
+.cosmo-panel__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cosmo-panel__body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+.cosmo-panel__typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.875rem 1rem;
+  border-block-end: 1px solid var(--color-hairline);
+}
+
+.cosmo-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  animation: cosmo-typing 1.4s ease-in-out infinite;
+}
+
+.cosmo-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.cosmo-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes cosmo-typing {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cosmo-dot {
+    animation: none;
+    opacity: 0.7;
+  }
+}
+
+.cosmo-panel__error {
+  padding: 0.75rem 1rem;
+  border-block-start: 1px solid var(--color-hairline);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--tracking-mono-body);
+  text-transform: uppercase;
+  color: #b91c1c;
+}
+
+.cosmo-panel__foot {
+  border-block-start: 1px solid var(--color-hairline);
+  padding: 0.625rem 0.75rem;
+  background: var(--color-canvas);
+}
+
+.cosmo-panel__input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cosmo-panel__input {
+  flex: 1 1 auto;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 0.6rem 0.75rem;
+  background: var(--color-canvas);
+  border: 1px solid var(--color-hairline-strong);
+  color: var(--color-ink);
+  outline: none;
+  transition: border-color 120ms ease;
+}
+
+.cosmo-panel__input:focus {
+  border-color: var(--color-accent);
+}
+
+.cosmo-panel__input:disabled {
+  opacity: 0.6;
+}
+
+.cosmo-panel__send {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-ink);
+  color: var(--color-canvas);
+  border: 1px solid var(--color-ink);
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.cosmo-panel__send:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.cosmo-panel__send:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+}
+
+.cosmo-panel__send[data-state='stop'] {
+  background: var(--color-canvas);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.cosmo-panel__send-stop {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: currentColor;
+}
+
+@media (max-width: 480px) {
+  .cosmo-panel {
+    inset-block-end: 5.5rem;
+    inset-inline-end: 1rem;
+    inset-inline-start: 1rem;
+    width: auto;
+  }
+}

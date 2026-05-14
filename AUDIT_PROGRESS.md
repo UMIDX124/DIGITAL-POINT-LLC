@@ -1322,6 +1322,19 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit X5. Rebuild ChatPanel with streaming, memory, operator-brief UI
+
+- Status: DONE
+- Files changed (2): `src/components/chat/ChatPanel.tsx` (full rewrite), `src/app/globals.css` (`.cosmo-panel*` shell rules).
+- Replaced the Phase-17b skeleton-bubble panel with an operator-brief shell. Uses `useChat` from `@ai-sdk/react` with a `DefaultChatTransport` that posts to `/api/chat` and injects `currentPath` from `usePathname()`. Streaming status, error state, regenerate, and stop are wired through the hook. Greeting text comes from a page-aware `greetingFor(pathname)` function so opening on /pricing / /recovery / /audit each gets context-tailored copy; default homepage greeting frames Cosmo as a trained agent with handoff option.
+- Session persistence: `localStorage['cosmo-session-v1'] = { ts, messages }` with a 24h TTL. Loads on first mount, saves on every message change, clears on private-browsing exception, manual "Clear" link in the panel head wipes both state and storage.
+- `[FOLLOWUPS]` parsing happens client-side via `parseFollowups(text)` against the last assistant message; the marker line is stripped before render, and the chips appear below the message list when 1-3 suggestions are present and the stream is idle.
+- Keyboard: Enter / Cmd+Enter submits, Escape closes. Input is disabled during in-flight streams and the send button morphs into a stop button bound to `stop()`.
+- Mobile (<=480px): panel becomes edge-to-edge with 1rem gutters. Reduced-motion guard disables the panel slide-in and the typing dot animation.
+- `pnpm build` passed end-to-end (Turbopack production build) after the rewrite. Pre-existing FAB / cosmo-mark trigger continues to mount the panel; ChatWidget wiring untouched.
+- Quality gates: tsc 0 errors, lint 0 warnings, `pnpm build` succeeded.
+- Blockers: none.
+
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):
 - `git config --get remote.origin.url` (must equal `git@github.com:UMIDX124/DIGITAL-POINT-LLC.git`):
 - `cat .vercel/project.json | grep projectName` (must equal `digitalpointllc-1`):

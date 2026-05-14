@@ -1,59 +1,146 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { X, Send } from 'lucide-react';
+import { useChat } from '@ai-sdk/react';
+import { DefaultChatTransport, type UIMessage } from 'ai';
 
-type Message = { role: 'user' | 'assistant'; content: string };
+import { OperatorStatus } from './OperatorStatus';
+import { MessageBubble } from './MessageBubble';
+import { SuggestedFollowups } from './SuggestedFollowups';
+import { parseFollowups } from '@/lib/cosmo-system-prompt';
 
 type Props = {
   open: boolean;
   onClose: () => void;
 };
 
-const GREETING: Message = {
-  role: 'assistant',
-  content: "Hey, I'm Cosmo. What can I help with?",
+type StoredSession = {
+  ts: number;
+  messages: UIMessage[];
 };
 
-// Phase 17b 3-restructured G4. quick-reply pills shown alongside the
-// initial greeting until the user sends their first message.
-const QUICK_REPLIES: readonly string[] = [
-  'What do you do?',
-  'How does pricing work?',
-  'Book an audit',
-] as const;
+const STORAGE_KEY = 'cosmo-session-v1';
+const MAX_AGE_MS = 24 * 60 * 60 * 1000;
+const ON_CALL_OPERATOR = 'Faizan';
+
+function greetingFor(path: string): string {
+  if (path.startsWith('/pricing')) {
+    return 'Questions about pricing? Or ready to book an audit? Faizan can pick up from here anytime.';
+  }
+  if (path.startsWith('/recovery')) {
+    return "AI agent broken? Tell me what's drifting and I can scope the recovery. Or hand off to Faizan to start a real diagnosis.";
+  }
+  if (path.startsWith('/audit')) {
+    return "Mid-form? I can clarify anything before you submit. Or hand off and Faizan will follow up on whatever you've drafted.";
+  }
+  return "Hi. I'm Cosmo, a trained agent for DPL. Ask about agents, automation, pricing, or recovery. Or hand off to Faizan for a founder-direct reply.";
+}
+
+function readMessageText(m: UIMessage): string {
+  if (!m.parts) return '';
+  return m.parts
+    .map((p) => (p.type === 'text' ? p.text : ''))
+    .filter(Boolean)
+    .join('');
+}
+
+function loadSession(): UIMessage[] | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as StoredSession;
+    if (!parsed?.ts || Date.now() - parsed.ts > MAX_AGE_MS) {
+      window.localStorage.removeItem(STORAGE_KEY);
+      return null;
+    }
+    return parsed.messages ?? null;
+  } catch {
+    return null;
+  }
+}
+
+function saveSession(messages: UIMessage[]) {
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ ts: Date.now(), messages }),
+    );
+  } catch {
+    // ignore (quota / private browsing)
+  }
+}
 
 export default function ChatPanel({ open, onClose }: Props) {
-  const [messages, setMessages] = useState<Message[]>([GREETING]);
-  const [input, setInput] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  // Phase 17b 3-restructured G3. skeleton mount state. Shown for ≥300ms
-  // when panel opens before the actual greeting + quick-reply pills surface.
-  const [showSkeleton, setShowSkeleton] = useState(false);
+  const pathname = usePathname() ?? '/';
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
+  const [input, setInput] = useState('');
+  const [hydrated, setHydrated] = useState(false);
 
+  const initialMessages = useMemo<UIMessage[]>(() => {
+    if (typeof window === 'undefined') return [];
+    return loadSession() ?? [];
+  }, []);
+
+  const transport = useMemo(
+    () =>
+      new DefaultChatTransport({
+        api: '/api/chat',
+        body: { currentPath: pathname },
+      }),
+    [pathname],
+  );
+
+  const { messages, sendMessage, status, error, setMessages, stop } = useChat({
+    transport,
+    messages: initialMessages,
+  });
+
+  const isStreaming = status === 'submitted' || status === 'streaming';
+
+  // Inject the page-aware greeting once if the session is empty. The
+  // hydrated flag flips inside the effect so the greeting writes exactly
+  // once per panel-open per pathname. set-state-in-effect is intentional
+  // here (open-side-effect-driven hydration), not derived state.
   useEffect(() => {
     if (!open) return;
-    // 350ms skeleton flash, then auto-focus the input. This is a
-    // panel-open side-effect-driven animation, not derived state, so the
-    // initial setShowSkeleton(true) is intentional rather than a
-    // cascading-render anti-pattern.
+    if (hydrated) return;
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setShowSkeleton(true);
-    const t1 = setTimeout(() => setShowSkeleton(false), 350);
-    const t2 = setTimeout(() => inputRef.current?.focus(), 450);
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-    };
-  }, [open]);
+    setHydrated(true);
+    if (messages.length === 0) {
+      setMessages([
+        {
+          id: 'greet',
+          role: 'assistant',
+          parts: [{ type: 'text', text: greetingFor(pathname) }],
+        } as UIMessage,
+      ]);
+    }
+  }, [open, hydrated, messages.length, pathname, setMessages]);
 
+  // Persist messages on change.
+  useEffect(() => {
+    if (!hydrated) return;
+    saveSession(messages);
+  }, [messages, hydrated]);
+
+  // Scroll to bottom on new content.
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: 'smooth' });
-  }, [messages, loading]);
+  }, [messages, isStreaming]);
 
+  // Focus input on open.
+  useEffect(() => {
+    if (!open) return;
+    const t = setTimeout(() => inputRef.current?.focus(), 200);
+    return () => clearTimeout(t);
+  }, [open]);
+
+  // Escape closes panel.
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -63,166 +150,172 @@ export default function ChatPanel({ open, onClose }: Props) {
     return () => window.removeEventListener('keydown', onKey);
   }, [open, onClose]);
 
-  const send = async (overrideText?: string) => {
-    const text = (overrideText ?? input).trim();
-    if (!text || loading) return;
-
-    setError(null);
-    const newMessages: Message[] = [...messages, { role: 'user', content: text }];
-    setMessages(newMessages);
-    setInput('');
-    setLoading(true);
-
-    try {
-      const payload = newMessages
-        .filter((m) => m !== GREETING)
-        .map(({ role, content }) => ({ role, content }));
-
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: payload }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data?.error || 'Something went wrong. Try again.');
-        setLoading(false);
-        return;
-      }
-
-      setMessages([...newMessages, { role: 'assistant', content: data.reply }]);
-    } catch (e) {
-      console.error('Chat send error:', e);
-      setError('Network error. Check your connection.');
-    } finally {
-      setLoading(false);
-    }
-  };
+  const submit = useCallback(
+    (overrideText?: string) => {
+      const text = (overrideText ?? input).trim();
+      if (!text || isStreaming) return;
+      sendMessage({ text });
+      setInput('');
+    },
+    [input, isStreaming, sendMessage],
+  );
 
   const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if ((e.key === 'Enter' && (e.metaKey || e.ctrlKey)) || (e.key === 'Enter' && !e.shiftKey)) {
       e.preventDefault();
-      send();
+      submit();
     }
   };
+
+  const clearConversation = useCallback(() => {
+    setMessages([]);
+    setHydrated(false);
+    if (typeof window !== 'undefined') {
+      try {
+        window.localStorage.removeItem(STORAGE_KEY);
+      } catch {
+        // ignore
+      }
+    }
+  }, [setMessages]);
+
+  // Parse [FOLLOWUPS] off the last assistant message.
+  const { displayMessages, followups } = useMemo(() => {
+    if (messages.length === 0) return { displayMessages: [], followups: [] as string[] };
+    const lastIdx = messages.length - 1;
+    const last = messages[lastIdx];
+    if (last.role !== 'assistant') {
+      return { displayMessages: messages, followups: [] };
+    }
+    const raw = readMessageText(last);
+    const { cleanContent, followups } = parseFollowups(raw);
+    const cleaned: UIMessage = {
+      ...last,
+      parts: [{ type: 'text', text: cleanContent }],
+    } as UIMessage;
+    return {
+      displayMessages: [...messages.slice(0, lastIdx), cleaned],
+      followups,
+    };
+  }, [messages]);
 
   if (!open) return null;
 
-  // Phase 17b 3-restructured G4. quick-reply pills shown until the user
-  // has sent any message (i.e. messages array still equals the GREETING).
-  const showQuickReplies = !showSkeleton && messages.length === 1 && messages[0] === GREETING && !loading;
+  const assistantIndexByMessageId = new Map<string, number>();
+  let assistantCounter = 0;
+  for (const m of displayMessages) {
+    if (m.role === 'assistant') {
+      assistantCounter += 1;
+      assistantIndexByMessageId.set(m.id, assistantCounter);
+    }
+  }
 
   return (
     <div
-      className="chat-panel-shell fixed bottom-24 right-6 z-50 w-[min(380px,calc(100vw-3rem))] h-[520px] max-h-[calc(100vh-8rem)] flex flex-col rounded-2xl shadow-2xl chat-panel chat-panel-enter"
+      className="cosmo-panel"
       role="dialog"
-      aria-label="DPL AI chat"
+      aria-label="Cosmo chat — DPL trained agent"
     >
-      <div className="chat-panel-header flex items-center justify-between px-5 py-4">
-        <div>
-          <div className="chat-panel-title text-sm font-medium">
-            DPL AI Agent
-          </div>
-          <div className="chat-panel-subtitle text-xs mt-0.5">
-            DPL AI Agent · Cosmo
-          </div>
+      <header className="cosmo-panel__head">
+        <div className="cosmo-panel__title">
+          <span className="cosmo-panel__title-line">DPL · Cosmo</span>
+          <span className="cosmo-panel__title-sub">Trained AI agent · Live on this site</span>
         </div>
-        <button
-          onClick={onClose}
-          aria-label="Close chat"
-          className="chat-panel-close p-1 transition-colors"
-        >
-          <X size={18} />
-        </button>
-      </div>
-
-      <div ref={listRef} className="flex-1 overflow-y-auto px-5 py-4 space-y-3">
-        {/* Phase 17b 3-restructured G3. skeleton state shown for ~350ms
-            while panel slides in. Three pulsing placeholder bubbles in
-            bot-bubble style. Suppressed once skeleton timer expires. */}
-        {showSkeleton && (
-          <div className="space-y-3" aria-hidden="true">
-            {[0, 1, 2].map((i) => (
-              <div key={i} className="flex justify-start">
-                <div
-                  className="chat-skeleton-bubble px-4 py-2.5 rounded-2xl chat-skeleton-pulse"
-                  data-w={i + 1}
-                />
-              </div>
-            ))}
-          </div>
-        )}
-        {!showSkeleton && messages.map((m, i) => (
-          <div
-            key={i}
-            data-chat-message
-            data-role={m.role}
-            className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
+        <div className="cosmo-panel__head-actions">
+          {messages.length > 0 ? (
+            <button
+              type="button"
+              onClick={clearConversation}
+              className="cosmo-panel__clear"
+            >
+              Clear
+            </button>
+          ) : null}
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close chat"
+            className="cosmo-panel__close"
           >
-            <div className="chat-bubble max-w-[85%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed">
-              {m.content}
-            </div>
+            <X size={16} />
+          </button>
+        </div>
+      </header>
+
+      <OperatorStatus operator={ON_CALL_OPERATOR} />
+
+      <div ref={listRef} className="cosmo-panel__body">
+        {displayMessages.map((m) => {
+          const text = readMessageText(m);
+          return (
+            <MessageBubble
+              key={m.id}
+              role={m.role as 'user' | 'assistant' | 'system'}
+              content={text}
+              index={
+                m.role === 'assistant' ? assistantIndexByMessageId.get(m.id) : undefined
+              }
+            />
+          );
+        })}
+
+        {isStreaming &&
+        displayMessages.length > 0 &&
+        displayMessages[displayMessages.length - 1].role === 'user' ? (
+          <div className="cosmo-panel__typing" aria-label="Cosmo is replying">
+            <span className="cosmo-dot" />
+            <span className="cosmo-dot" />
+            <span className="cosmo-dot" />
           </div>
-        ))}
-        {/* Phase 17b 3-restructured G4. quick-reply pills below greeting. */}
-        {showQuickReplies && (
-          <div className="flex flex-wrap gap-2 pt-1">
-            {QUICK_REPLIES.map((q) => (
-              <button
-                key={q}
-                type="button"
-                onClick={() => send(q)}
-                className="chat-quick-reply px-3 py-1.5 text-xs rounded-full transition-colors"
-              >
-                {q}
-              </button>
-            ))}
+        ) : null}
+
+        {error ? (
+          <div className="cosmo-panel__error" role="alert">
+            Something broke. Try again, or hand off to {ON_CALL_OPERATOR}.
           </div>
-        )}
-        {loading && (
-          <div className="flex justify-start">
-            <div className="chat-loading-bubble px-4 py-2.5 rounded-2xl">
-              <span className="inline-flex gap-1">
-                <span className="h-1.5 w-1.5 rounded-full chat-dot" />
-                <span className="h-1.5 w-1.5 rounded-full chat-dot" />
-                <span className="h-1.5 w-1.5 rounded-full chat-dot" />
-              </span>
-            </div>
-          </div>
-        )}
-        {error && (
-          <div className="chat-error text-xs px-2">
-            {error}
-          </div>
-        )}
+        ) : null}
       </div>
 
-      <div className="chat-input-bar p-3">
-        <div className="flex gap-2">
+      {followups.length > 0 && !isStreaming ? (
+        <SuggestedFollowups suggestions={followups} onPick={submit} />
+      ) : null}
+
+      <footer className="cosmo-panel__foot">
+        <div className="cosmo-panel__input-row">
           <input
             ref={inputRef}
-            data-chat-input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKey}
-            placeholder="Ask anything about DPL..."
-            disabled={loading}
-            className="chat-input flex-1 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none disabled:opacity-50"
-            maxLength={500}
+            placeholder="Ask anything about DPL"
+            disabled={isStreaming}
+            className="cosmo-panel__input"
+            maxLength={2000}
+            aria-label="Message Cosmo"
           />
-          <button
-            data-chat-send
-            onClick={() => send()}
-            disabled={!input.trim() || loading}
-            aria-label="Send message"
-            className="chat-send-btn h-11 w-11 rounded-xl flex items-center justify-center transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-          >
-            <Send size={16} />
-          </button>
+          {isStreaming ? (
+            <button
+              type="button"
+              onClick={() => stop()}
+              aria-label="Stop response"
+              className="cosmo-panel__send"
+              data-state="stop"
+            >
+              <span className="cosmo-panel__send-stop" aria-hidden="true" />
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => submit()}
+              disabled={!input.trim()}
+              aria-label="Send message"
+              className="cosmo-panel__send"
+            >
+              <Send size={14} />
+            </button>
+          )}
         </div>
-      </div>
+      </footer>
     </div>
   );
 }

@@ -21,12 +21,12 @@ const SRC = {
   text: { light: '/dp-text-dark.png', dark: '/dp-text-light.png' },
 };
 
-const MARK_W = 1024;
-const MARK_H = 1024;
-const TEXT_LIGHT_W = 2000;
-const TEXT_LIGHT_H = 600;
-const TEXT_DARK_W = 1250;
-const TEXT_DARK_H = 375;
+const MARK_W = 2000;
+const MARK_H = 2000;
+const TEXT_LIGHT_W = 1250;
+const TEXT_LIGHT_H = 375;
+const TEXT_DARK_W = 2000;
+const TEXT_DARK_H = 600;
 
 export function Logomark({
   mode = 'lockup',

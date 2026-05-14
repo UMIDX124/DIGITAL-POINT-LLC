@@ -1,57 +1,39 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
-import { StackGrid } from '@/components/brand/StackGrid';
+import { SystemFlowSchematic } from '@/components/visuals/SystemFlowSchematic';
 
 export const metadata: Metadata = {
   title: 'Stack',
   description:
-    'The production stack DPL deploys on: n8n (self-hosted), Groq for inference, Anthropic Claude as planner, Postgres for state, TypeScript for custom services, Vercel for surfaces, Slack Connect for client observability. Not a Zapier shop.',
+    'The production stack DPL deploys on: n8n (self-hosted), Groq for inference, Postgres for state, TypeScript for custom services, Vercel for surfaces, Slack Connect for client observability. Open source where the cost curve flattens. Self-hosted where it counts.',
   alternates: { canonical: 'https://digitalpointllc.com/stack' },
 };
 
-const layers = [
+const rationale = [
   {
+    fig: 'FIG. 01',
+    pick: 'n8n, not Zapier',
     category: 'Orchestration',
-    items: [
-      { label: 'n8n', detail: 'Self-hosted on a dedicated VM. Visual workflow builder with full data sovereignty. Default for agencies in 2026 per the buyer\'s guides. And because the cost curve stays flat as volume scales.' },
-    ],
+    body: 'Zapier-per-task pricing inverts past $400/mo. n8n on a dedicated VM stays flat as volume scales. Visual workflow builder so your team can audit the logic. Full data sovereignty.',
   },
   {
-    category: 'Inference + planning',
-    items: [
-      { label: 'Groq', detail: 'Llama-3 family for high-throughput inference where latency matters. Sub-second response times on production workloads.' },
-      { label: 'Anthropic Claude', detail: 'Planner + reviewer where reasoning depth matters. Tool use, structured output, longer contexts.' },
-    ],
+    fig: 'FIG. 02',
+    pick: 'Groq, not OpenAI',
+    category: 'Inference',
+    body: 'OpenAI is the default. Groq’s hosted Llama-3 hits sub-second response times on production workloads where users wait. We reserve Anthropic for reasoning depth, Groq for everything else.',
   },
   {
-    category: 'State + persistence',
-    items: [
-      { label: 'PostgreSQL', detail: 'Single source of truth for agent state, audit logs, and retry queues. Hosted on Neon (Vercel Marketplace) or self-managed depending on data residency requirements.' },
-      { label: 'Upstash Redis', detail: 'Rate limiting, ephemeral state, cache layer.' },
-    ],
+    fig: 'FIG. 03',
+    pick: 'Postgres, not vector-db hype',
+    category: 'State',
+    body: 'Agent state, audit logs, retry queues. One Postgres on Neon for everything we control. Vector store added only when retrieval cost crosses the per-call SQL break-even.',
   },
   {
-    category: 'Custom services',
-    items: [
-      { label: 'TypeScript', detail: 'Custom services where n8n is not enough. Strict mode, Zod validation at boundaries, Prisma for database access.' },
-      { label: 'Vercel Functions', detail: 'Hosted endpoints, cron triggers, queue consumers. Fluid Compute for warm starts.' },
-    ],
-  },
-  {
-    category: 'Surfaces + observability',
-    items: [
-      { label: 'Next.js + React', detail: 'Marketing surface, client dashboard, operator console. Server Components by default.' },
-      { label: 'Slack Connect', detail: 'Client-facing live decision feed. Every agent decision, retry, exception, and operator intervention posted in real time.' },
-      { label: 'Vercel Speed Insights + Analytics', detail: 'CWV monitoring on every surface we ship.' },
-    ],
-  },
-  {
-    category: 'Defense + integrity',
-    items: [
-      { label: 'BotID', detail: 'Bot detection on API endpoints. Form submissions, recovery audits, founder routes.' },
-      { label: 'Resend + Nodemailer', detail: 'Transactional email with SMTP fallback for outbound that must not miss.' },
-    ],
+    fig: 'FIG. 04',
+    pick: 'Self-hosted, not platform-locked',
+    category: 'Ownership',
+    body: 'If we vanish, your stack still runs. Every workflow exports. Every agent prompt lives in your repo. The retainer is operations, not lock-in.',
   },
 ];
 
@@ -83,85 +65,60 @@ export default function StackPage() {
           </p>
 
           <div className="hero-cta-row">
-            <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
-            <Link href="/recovery" className="btn btn-ghost">Recovery service</Link>
+            <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
+            <Link href="/recovery" className="dpl-btn dpl-btn--ghost">Recovery service</Link>
           </div>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container-wide">
-          <div className="section-header">
-            <p className="eyebrow">Eight primitives</p>
-            <h2 className="section-title text-balance">
-              The shape of the stack at a glance.
-            </h2>
-          </div>
-          <div style={{ marginBlockStart: '3rem' }}>
-            <StackGrid
-              items={[
-                { label: 'n8n', role: 'orchestration' },
-                { label: 'Groq', role: 'inference' },
-                { label: 'Postgres', role: 'agent state' },
-                { label: 'TypeScript', role: 'custom services', accent: true },
-                { label: 'Upstash', role: 'rate limit + cache' },
-                { label: 'Vercel', role: 'edge + functions' },
-                { label: 'BotID', role: 'bot defense' },
-                { label: 'Resend', role: 'transactional email' },
-              ]}
-            />
-          </div>
+      <section className="dpl-section dpl-section--stack">
+        <div className="dpl-section__rail" aria-hidden="true">
+          <span className="dpl-section__rail-label">Section 06 · Stack</span>
         </div>
-      </section>
-
-      {layers.map((layer) => (
-        <section key={layer.category} className="section section-divider">
-          <div className="container-wide">
-            <div className="section-header">
-              <p className="eyebrow eyebrow--accent">{layer.category}</p>
+        <div className="dpl-section__page" aria-hidden="true">p.06 / p.09</div>
+        <div className="dpl-section__inner">
+          <div className="dpl-rationale__grid">
+            <div className="dpl-rationale__head">
+              <p className="dpl-eyebrow">
+                <span className="dpl-eyebrow__rule" aria-hidden="true" />
+                Stack rationale
+              </p>
+              <h2 className="dpl-rationale__title">Why this stack, not the obvious one.</h2>
+              <p className="dpl-rationale__note">Open-source where the cost curve flattens. Custom code where the edges break. Self-hosted where data sovereignty matters.</p>
             </div>
-
-            <div style={{ marginBlockStart: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              {layer.items.map((item) => (
-                <article
-                  key={item.label}
-                  style={{
-                    padding: 'var(--space-6)',
-                    background: 'var(--color-canvas-raised)',
-                    border: '1px solid var(--color-line-faint)',
-                    borderRadius: 'var(--radius-lg)',
-                    display: 'grid',
-                    gridTemplateColumns: 'minmax(8rem, 12rem) 1fr',
-                    gap: '1.5rem',
-                    alignItems: 'baseline',
-                  }}
-                >
-                  <h3
-                    className="font-mono"
-                    style={{
-                      fontSize: 'var(--text-lg)',
-                      color: 'var(--color-text-primary)',
-                      letterSpacing: '0.02em',
-                      fontWeight: 500,
-                    }}
-                  >
-                    {item.label}
-                  </h3>
-                  <p
-                    style={{
-                      color: 'var(--color-text-secondary)',
-                      fontSize: 'var(--text-md)',
-                      lineHeight: 1.6,
-                    }}
-                  >
-                    {item.detail}
-                  </p>
+            <div className="dpl-rationale__list">
+              {rationale.map((r) => (
+                <article key={r.fig} className="dpl-rationale__item">
+                  <span className="dpl-rationale__fig">{r.fig}</span>
+                  <div className="dpl-rationale__body">
+                    <h3 className="dpl-rationale__heading">
+                      {r.pick}
+                      <span className="dpl-rationale__pick">{r.category}</span>
+                    </h3>
+                    <p className="dpl-rationale__copy">{r.body}</p>
+                  </div>
                 </article>
               ))}
             </div>
           </div>
-        </section>
-      ))}
+        </div>
+      </section>
+
+      <section className="dpl-section dpl-section--architecture">
+        <div className="dpl-section__inner">
+          <p className="dpl-eyebrow">
+            <span className="dpl-eyebrow__rule" aria-hidden="true" />
+            Architecture
+          </p>
+          <h2 className="dpl-architecture__title">The flow, end to end.</h2>
+          <p className="dpl-architecture__body">
+            Inbound signal hits orchestration. The agent decides. The operator audits the edges. Postgres records every state change. Downstream systems read from one source of truth.
+          </p>
+          <div className="dpl-architecture__diagram">
+            <SystemFlowSchematic />
+          </div>
+        </div>
+      </section>
 
       <section className="section section-divider">
         <div className="container-wide">
@@ -171,7 +128,7 @@ export default function StackPage() {
               Free audit. We&apos;ll map your stack against ours.
             </h2>
             <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
-              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
+              <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
             </div>
           </div>
         </div>

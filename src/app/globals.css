@@ -1588,6 +1588,136 @@ html[data-i-seen="1"] .dpl-intro-loader {
 }
 
 /* ============================================================
+   Stack page rationale (V9). Essay format with FIG labels.
+   ============================================================ */
+
+.dpl-section--stack,
+.dpl-section--architecture {
+  background: var(--color-canvas);
+}
+
+.dpl-rationale__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .dpl-rationale__grid {
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+  }
+}
+
+.dpl-rationale__title {
+  font-size: clamp(28px, 3.6vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin: 0 0 1.25rem;
+  max-width: 18ch;
+}
+
+.dpl-rationale__note {
+  font-size: clamp(15px, 1.1vw, 16.5px);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: 32ch;
+}
+
+.dpl-rationale__list {
+  display: flex;
+  flex-direction: column;
+  border-block-start: 1px solid var(--color-hairline-strong);
+}
+
+.dpl-rationale__item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  padding-block: 1.75rem;
+  border-block-end: 1px solid var(--color-hairline-strong);
+}
+
+@media (min-width: 640px) {
+  .dpl-rationale__item {
+    grid-template-columns: 80px 1fr;
+    gap: 2rem;
+  }
+}
+
+.dpl-rationale__fig {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.dpl-rationale__heading {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  font-size: clamp(20px, 2.2vw, 26px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin: 0 0 0.75rem;
+}
+
+.dpl-rationale__pick {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--color-hairline-strong);
+}
+
+.dpl-rationale__copy {
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: 60ch;
+}
+
+.dpl-architecture__title {
+  font-size: clamp(28px, 3.6vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin: 0 0 1rem;
+  max-width: 22ch;
+}
+
+.dpl-architecture__body {
+  font-size: clamp(16px, 1.2vw, 17.5px);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  margin: 0 0 2.5rem;
+  max-width: 60ch;
+}
+
+.dpl-architecture__diagram {
+  border: 1px solid var(--color-hairline-strong);
+  padding: 2rem;
+  background: var(--color-canvas);
+}
+
+.dpl-architecture__diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ============================================================
    Pillar card grid
    ============================================================ */
 

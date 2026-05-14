@@ -88,7 +88,10 @@ export function FoundersSection({ variant = 'compact' }: Props) {
                   </p>
                 </div>
               </div>
-              <p className="pillar-card__desc">{f.bio}</p>
+              <p className="pillar-card__desc" data-design-only="true">{f.bio}</p>
+              <p className="pillar-card__designmark">
+                [design only] · pattern from advisory work, specific case studies to publish post-signoff
+              </p>
               <div className="pillar-card__link">
                 <a href={f.href} target="_blank" rel="noopener noreferrer" className="btn-link">
                   LinkedIn

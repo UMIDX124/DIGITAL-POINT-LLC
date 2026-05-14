@@ -1121,6 +1121,14 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit P2. Mark founder bio metric claims as [design only]
+
+- Status: DONE
+- Files changed (2): `src/components/sections/FoundersSection.tsx`, `src/app/globals.css` (new `.pillar-card__designmark` rule).
+- Bio paragraphs for Faizan (`20-35% budget leakage in the first hour`) and Anwaar (`CMO can defend the marketing budget to the board 90 days in`) carry `data-design-only="true"`. A hairline-topped mono caps footer below each bio: `[design only] · pattern from advisory work, specific case studies to publish post-signoff`. Umer-approved phrasing stays in copy.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):

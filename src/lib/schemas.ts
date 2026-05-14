@@ -72,6 +72,23 @@ export const ChatRequestSchema = z.object({
 });
 export type ChatRequest = z.infer<typeof ChatRequestSchema>;
 
+export const ChatHandoffSchema = z.object({
+  email: emailSchema,
+  name: z.string().trim().max(120).optional(),
+  currentPath: z.string().trim().max(200).optional(),
+  messages: z
+    .array(
+      z.object({
+        role: z.enum(['user', 'assistant', 'system']),
+        content: z.string().trim().min(1).max(4000),
+        timestamp: z.string().trim().max(40).optional(),
+      }),
+    )
+    .min(1)
+    .max(50),
+});
+export type ChatHandoffInput = z.infer<typeof ChatHandoffSchema>;
+
 export const SupportTicketSchema = z.object({
   name: nameSchema,
   email: emailSchema,

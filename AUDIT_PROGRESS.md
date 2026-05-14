@@ -1335,6 +1335,17 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings, `pnpm build` succeeded.
 - Blockers: none.
 
+### Commit X6. Add chat-handoff route routing transcript to founder emails
+
+- Status: DONE
+- Files changed (4): `src/app/api/chat-handoff/route.ts` (new), `src/lib/schemas.ts` (new `ChatHandoffSchema`), `prisma/schema.prisma` (new `ChatHandoff` model + indexes), and the generated Prisma client refresh.
+- New POST endpoint mirrors the rest of the API surface: BotID via `checkBotId()`, Upstash `chatLimiter` slidingWindow(10, '1 m') keyed on client IP, Zod validation through `ChatHandoffSchema` (email required, optional name, optional currentPath, 1-50 transcript messages with role + content + optional timestamp).
+- Persists the transcript to `ChatHandoff` (cuid, email, name?, currentPath?, transcript JSON, ip, createdAt) and continues even if the DB insert fails so the email still reaches the founders.
+- Email body is the dark operator-brief style used elsewhere on transactional mail (`#0A0A0B` canvas, `#F5F5F7` text, amber rule + role labels). `User:` rows attribute to the submitted email/name; `Cosmo:` rows attribute to the agent; `System:` reserved for future system messages. Routes to `FOUNDER_EMAILS` (both personal addresses) with `replyTo` set to the user's email so a single reply hits them. Returns `{ success, handoffId }` on success, falls back to a 502 with a "could not deliver" message on send failure.
+- Prisma migration: schema updated and `pnpm exec prisma generate` ran clean against Prisma 6.19.3. Production DB push deferred until the next deploy-time migration run (DATABASE_URL state is environment-controlled, not committed). Local schema + generated client are in sync.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: production `ChatHandoff` table needs a Vercel-side `prisma migrate deploy` or `prisma db push` on first deploy to materialize the table. Route already swallows the DB error and proceeds with email-only handoff, so partial failure is graceful.
+
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):
 - `git config --get remote.origin.url` (must equal `git@github.com:UMIDX124/DIGITAL-POINT-LLC.git`):
 - `cat .vercel/project.json | grep projectName` (must equal `digitalpointllc-1`):

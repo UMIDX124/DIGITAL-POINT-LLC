@@ -101,3 +101,16 @@ model ChatLead {
   @@index([status])
   @@index([createdAt])
 }
+
+model ChatHandoff {
+  id          String   @id @default(cuid())
+  email       String
+  name        String?
+  currentPath String?
+  transcript  String
+  ip          String?
+  createdAt   DateTime @default(now())
+
+  @@index([email])
+  @@index([createdAt])
+}

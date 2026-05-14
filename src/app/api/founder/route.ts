@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { checkBotId } from 'botid/server';
 import { db } from '@/lib/db';
-import { sendEmail, escapeHtml } from '@/lib/email';
+import { sendEmail, escapeHtml, FOUNDER_EMAILS } from '@/lib/email';
 import { FounderSubmissionSchema } from '@/lib/schemas';
 import { founderLimiter, getClientIp } from '@/lib/ratelimit';
 
@@ -65,22 +65,22 @@ export async function POST(request: NextRequest) {
 
     try {
       await sendEmail({
-        to: 'ADMIN@DIGITALPOINTLLC.COM',
+        to: FOUNDER_EMAILS,
         subject: `Founder Contact: ${escapeHtml(name)}`,
         replyTo: email,
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0B; color: #F5F1E8; padding: 32px; border-radius: 12px;">
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0B; color: #F5F5F7; padding: 32px; border-radius: 12px;">
             <h2 style="color: #FF8800; margin-top: 0;">New Founder Contact</h2>
             <table style="width: 100%; border-collapse: collapse;">
-              <tr><td style="padding: 8px 0; color: #D6D0C2;">Name</td><td style="padding: 8px 0; color: #F5F1E8;">${escapeHtml(name)}</td></tr>
-              <tr><td style="padding: 8px 0; color: #D6D0C2;">Email</td><td style="padding: 8px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #FF8800;">${escapeHtml(email)}</a></td></tr>
+              <tr><td style="padding: 8px 0; color: #969aa3;">Name</td><td style="padding: 8px 0; color: #F5F5F7;">${escapeHtml(name)}</td></tr>
+              <tr><td style="padding: 8px 0; color: #969aa3;">Email</td><td style="padding: 8px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #FF8800;">${escapeHtml(email)}</a></td></tr>
             </table>
             <div style="margin-top: 16px; padding: 16px; background: rgba(20,20,22,0.8); border-radius: 8px; border: 1px solid rgba(255, 136, 0,0.2);">
-              <p style="color: #D6D0C2; font-size: 12px; margin-top: 0;">Message</p>
-              <p style="color: #F5F1E8; margin-bottom: 0; white-space: pre-wrap;">${escapeHtml(message)}</p>
+              <p style="color: #969aa3; font-size: 12px; margin-top: 0;">Message</p>
+              <p style="color: #F5F5F7; margin-bottom: 0; white-space: pre-wrap;">${escapeHtml(message)}</p>
             </div>
             <hr style="border: none; border-top: 1px solid rgba(255, 136, 0,0.3); margin: 16px 0;" />
-            <p style="color: #D6D0C2; font-size: 12px; margin-bottom: 0;">Submission ID: ${submissionId}</p>
+            <p style="color: #969aa3; font-size: 12px; margin-bottom: 0;">Submission ID: ${submissionId}</p>
           </div>
         `,
       });

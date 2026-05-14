@@ -20,18 +20,27 @@ export function escapeHtml(str: string): string {
 }
 
 interface SendEmailParams {
-  to: string;
+  to: string | string[];
   subject: string;
   html: string;
   replyTo?: string;
 }
 
+// Founder routing — every form submission CCs both founders' personal
+// addresses, never a shared inbox. Falls back to info@ if either env var
+// is unset so builds don't break; dedupes if both fall back.
+export const FOUNDER_EMAILS: string[] = [
+  process.env.FOUNDER_EMAIL_FAIZAN || 'info@digitalpointllc.com',
+  process.env.FOUNDER_EMAIL_ANWAAR || 'info@digitalpointllc.com',
+].filter((v, i, arr) => arr.indexOf(v) === i);
+
 export async function sendEmail({ to, subject, html, replyTo }: SendEmailParams): Promise<{ success: boolean; error?: string }> {
+  const toField = Array.isArray(to) ? to.join(', ') : to;
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
       await transporter.sendMail({
         from: process.env.SMTP_FROM || process.env.SMTP_USER,
-        to,
+        to: toField,
         subject,
         html,
         replyTo,

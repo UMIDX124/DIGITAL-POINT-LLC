@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { checkBotId } from 'botid/server';
-import { sendEmail, escapeHtml } from '@/lib/email';
+import { sendEmail, escapeHtml, FOUNDER_EMAILS } from '@/lib/email';
 import { db } from '@/lib/db';
 import { NewsletterSchema } from '@/lib/schemas';
 import { newsletterLimiter, getClientIp } from '@/lib/ratelimit';
@@ -56,13 +56,13 @@ export async function POST(req: Request) {
           </div>
           <div style="background: rgba(255, 136, 0, 0.1); border: 1px solid rgba(255, 168, 51, 0.2); border-radius: 8px; padding: 24px; margin-bottom: 24px;">
             <p style="margin: 0 0 12px; font-size: 15px; color: #e0d6eb;">Hey there 👋</p>
-            <p style="margin: 0 0 12px; font-size: 14px; color: #D6D0C2; line-height: 1.6;">
+            <p style="margin: 0 0 12px; font-size: 14px; color: #969aa3; line-height: 1.6;">
               Thanks for subscribing! You'll receive frameworks, benchmarks, and case studies that help performance marketers scale profitably.
             </p>
-            <p style="margin: 0; font-size: 14px; color: #D6D0C2; line-height: 1.6;">
+            <p style="margin: 0; font-size: 14px; color: #969aa3; line-height: 1.6;">
               Here's what to expect:
             </p>
-            <ul style="color: #D6D0C2; font-size: 14px; line-height: 1.8; padding-left: 20px;">
+            <ul style="color: #969aa3; font-size: 14px; line-height: 1.8; padding-left: 20px;">
               <li>ROAS optimization strategies</li>
               <li>CAC benchmarks by industry</li>
               <li>Attribution & analytics insights</li>
@@ -86,7 +86,7 @@ export async function POST(req: Request) {
     // Send admin notification
     try {
       await sendEmail({
-        to: 'info@digitalpointllc.com',
+        to: FOUNDER_EMAILS,
         subject: `New Newsletter Subscriber: ${email}`,
         replyTo: email,
         html: `

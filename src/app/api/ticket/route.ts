@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { checkBotId } from 'botid/server';
 import { db } from '@/lib/db';
-import { sendEmail, escapeHtml } from '@/lib/email';
+import { sendEmail, escapeHtml, FOUNDER_EMAILS } from '@/lib/email';
 import { SupportTicketSchema } from '@/lib/schemas';
 import { ticketLimiter, getClientIp } from '@/lib/ratelimit';
 
@@ -68,22 +68,16 @@ export async function POST(request: NextRequest) {
       // Database unavailable (e.g. sQLite on serverless). Continue with email
     }
 
-    // Route email based on priority (best-effort)
-    const recipientEmail =
-      priority === 'high'
-        ? 'ADMIN@DIGITALPOINTLLC.COM'
-        : 'info@digitalpointllc.com';
-
     const priorityLabel = priority === 'high' ? 'HIGH PRIORITY' : 'Normal';
-    const priorityColor = priority === 'high' ? '#FF8800' : '#FF8800';
+    const priorityColor = '#FF8800';
 
     try {
       await sendEmail({
-        to: recipientEmail,
+        to: FOUNDER_EMAILS,
         subject: `[${priorityLabel}] Support Ticket: ${escapeHtml(subject)}`,
         replyTo: email,
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0B; color: #F5F1E8; padding: 32px; border-radius: 12px;">
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0A0A0B; color: #F5F5F7; padding: 32px; border-radius: 12px;">
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px;">
               <h2 style="color: #FF8800; margin: 0;">Support Ticket</h2>
               <span style="background: ${priorityColor}22; color: ${priorityColor}; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-left: 8px;">
@@ -93,26 +87,26 @@ export async function POST(request: NextRequest) {
 
             <table style="width: 100%; border-collapse: collapse;">
               <tr>
-                <td style="padding: 10px 0; color: #D6D0C2; font-size: 13px; vertical-align: top; width: 100px;">From</td>
-                <td style="padding: 10px 0; color: #F5F1E8; font-size: 14px;">${escapeHtml(name)}</td>
+                <td style="padding: 10px 0; color: #969aa3; font-size: 13px; vertical-align: top; width: 100px;">From</td>
+                <td style="padding: 10px 0; color: #F5F5F7; font-size: 14px;">${escapeHtml(name)}</td>
               </tr>
               <tr>
-                <td style="padding: 10px 0; color: #D6D0C2; font-size: 13px; vertical-align: top;">Email</td>
+                <td style="padding: 10px 0; color: #969aa3; font-size: 13px; vertical-align: top;">Email</td>
                 <td style="padding: 10px 0;">
                   <a href="mailto:${escapeHtml(email)}" style="color: #FF8800; text-decoration: none;">${escapeHtml(email)}</a>
                 </td>
               </tr>
               <tr>
-                <td style="padding: 10px 0; color: #D6D0C2; font-size: 13px; vertical-align: top;">Subject</td>
-                <td style="padding: 10px 0; color: #F5F1E8; font-size: 14px;">${escapeHtml(subject)}</td>
+                <td style="padding: 10px 0; color: #969aa3; font-size: 13px; vertical-align: top;">Subject</td>
+                <td style="padding: 10px 0; color: #F5F5F7; font-size: 14px;">${escapeHtml(subject)}</td>
               </tr>
             </table>
 
             <hr style="border: none; border-top: 1px solid rgba(255, 136, 0,0.3); margin: 16px 0;" />
 
             <div style="background: rgba(20,20,22, 0.6); padding: 16px; border-radius: 8px; border: 1px solid rgba(255, 136, 0,0.15);">
-              <p style="color: #D6D0C2; font-size: 12px; margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.5px;">Message</p>
-              <p style="color: #F5F1E8; font-size: 14px; line-height: 1.6; margin: 0; white-space: pre-wrap;">${escapeHtml(message)}</p>
+              <p style="color: #969aa3; font-size: 12px; margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.5px;">Message</p>
+              <p style="color: #F5F5F7; font-size: 14px; line-height: 1.6; margin: 0; white-space: pre-wrap;">${escapeHtml(message)}</p>
             </div>
 
             <hr style="border: none; border-top: 1px solid rgba(255, 136, 0,0.3); margin: 16px 0;" />

@@ -2,12 +2,14 @@ import Image from 'next/image';
 import { InitialsAvatar } from '@/components/brand/InitialsAvatar';
 
 type Variant = 'compact' | 'full';
+type AvatarTreatment = 'circle-amber-legacy' | 'square-hairline';
 
 type Founder = {
   name: string;
   role: string;
   initials: string;
   photo?: string;
+  treatment: AvatarTreatment;
   bio: string;
   href: string;
 };
@@ -17,7 +19,11 @@ const founders: Founder[] = [
     name: 'M. Faizan Rafiq',
     role: 'Co-founder · Paid media + account restructure',
     initials: 'MF',
+    // Faizan avatar: pending new pro shot 2026-05-15+ per feedback_dpl_founder_photos.md.
+    // Keep the current circle + amber-ring treatment until the new shot lands; converts to
+    // square-hairline alongside Anwaar in the follow-up commit.
     photo: '/team/faizan-square-512.jpg',
+    treatment: 'circle-amber-legacy',
     bio: 'Faizan rebuilds account structure end-to-end when he sees broad-targeting waste past $50K/month spend. The pattern repeats across e-commerce DTC accounts. Most of his audits surface 20-35% budget leakage in the first hour.',
     href: 'https://www.linkedin.com/in/m-faizan101',
   },
@@ -25,10 +31,31 @@ const founders: Founder[] = [
     name: 'Anwaar Tayyab',
     role: 'Co-founder · Attribution + data integration',
     initials: 'AT',
+    photo: '/dp-founder-anwaar.jpg',
+    treatment: 'square-hairline',
     bio: "Anwaar runs attribution rebuilds for B2B SaaS accounts where pipeline data lives in 5+ tools without integration. The signal his work is landing: a CMO can defend the marketing budget to the board 90 days in, without engineering's help.",
     href: 'https://www.linkedin.com/in/anwaar-tayyab-565680a',
   },
 ];
+
+const avatarStyles: Record<AvatarTreatment, React.CSSProperties> = {
+  'circle-amber-legacy': {
+    width: 96,
+    height: 96,
+    borderRadius: '50%',
+    border: '2px solid var(--color-accent)',
+    objectFit: 'cover',
+    flexShrink: 0,
+  },
+  'square-hairline': {
+    width: 96,
+    height: 96,
+    borderRadius: 0,
+    border: '1px solid var(--color-hairline-strong, rgba(10,10,11,0.18))',
+    objectFit: 'cover',
+    flexShrink: 0,
+  },
+};
 
 type Props = {
   variant?: Variant;
@@ -61,18 +88,11 @@ export function FoundersSection({ variant = 'compact' }: Props) {
                   <Image
                     src={f.photo}
                     alt={`${f.name}, ${f.role}`}
-                    width={96}
-                    height={96}
+                    width={192}
+                    height={192}
                     sizes="96px"
                     priority={isFull && i === 0}
-                    style={{
-                      width: 96,
-                      height: 96,
-                      borderRadius: '50%',
-                      border: '2px solid var(--color-accent)',
-                      objectFit: 'cover',
-                      flexShrink: 0,
-                    }}
+                    style={avatarStyles[f.treatment]}
                   />
                 ) : (
                   <InitialsAvatar initials={f.initials} size={96} ariaLabel={f.name} />

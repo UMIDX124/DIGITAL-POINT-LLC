@@ -156,7 +156,12 @@ export default async function RootLayout({
               foundingDate: "2017",
               founder: [
                 { "@type": "Person", name: "M. Faizan Rafiq", jobTitle: "Co-Founder" },
-                { "@type": "Person", name: "Anwaar Tayyab", jobTitle: "Co-Founder" },
+                {
+                  "@type": "Person",
+                  name: "Anwaar Tayyab",
+                  jobTitle: "Co-Founder",
+                  image: "https://digitalpointllc.com/dp-founder-anwaar.jpg",
+                },
                 { "@type": "Person", name: "Umer Farooq", jobTitle: "Operator" },
               ],
             }),

@@ -14,6 +14,8 @@ type PersonSchemaProps = {
   url?: string;
   /** 1-2 sentence professional bio */
   description?: string;
+  /** Absolute URL to a professional headshot */
+  image?: string;
   /** Optional same-as URLs (LinkedIn, X, etc.) */
   sameAs?: string[];
   /** Worker for: defaults to Digital Point LLC */
@@ -26,6 +28,7 @@ export function PersonSchema({
   jobTitle,
   url,
   description,
+  image,
   sameAs,
   worksFor = 'Digital Point LLC',
   worksForUrl = 'https://digitalpointllc.com',
@@ -37,6 +40,7 @@ export function PersonSchema({
     jobTitle,
     ...(url ? { url } : {}),
     ...(description ? { description } : {}),
+    ...(image ? { image } : {}),
     ...(sameAs && sameAs.length > 0 ? { sameAs } : {}),
     worksFor: {
       '@type': 'Organization',

@@ -1264,7 +1264,18 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit P17. Integrate Anwaar photo, defer Faizan
 
+- Status: DONE
+- Files changed (4): `src/components/sections/FoundersSection.tsx`, `src/components/seo/PersonSchema.tsx`, `src/app/(marketing)/about/page.tsx`, `src/app/layout.tsx`.
+- Wired `public/dp-founder-anwaar.jpg` (1086×1448, 130 KB) into the founders section via Next/Image with `width={192} height={192} sizes="96px"` (retina-doubled source for the 96px display).
+- Added `AvatarTreatment` type + `avatarStyles` lookup. Anwaar gets `square-hairline` — `borderRadius: 0`, `border: 1px solid var(--color-hairline-strong)`, no glow. Faizan keeps `circle-amber-legacy` — circle + 2px amber ring — with an inline comment marking the avatar as pending the new pro shot (per `feedback_dpl_founder_photos.md`). Both treatments converge to `square-hairline` in the follow-up commit when Umer delivers Faizan's new portrait.
+- `FounderQuote` `FR` initials avatar untouched in this commit per resume prompt instruction ("DO NOT change FR initials there unless Umer's new photo arrives mid-run") — converts to portrait alongside Faizan's main avatar in the next commit.
+- Extended `PersonSchema` with an optional `image` prop and forwarded `https://digitalpointllc.com/dp-founder-anwaar.jpg` from the about-page Anwaar entry. Root-layout Organization founder Person entry for Anwaar also gets the absolute image URL so the Knowledge Graph signal points at the real headshot.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
+### Final post-batch verification
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):
 - `git config --get remote.origin.url` (must equal `git@github.com:UMIDX124/DIGITAL-POINT-LLC.git`):

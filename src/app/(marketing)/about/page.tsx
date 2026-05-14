@@ -56,6 +56,7 @@ export default function AboutPage() {
         name="Anwaar Tayyab"
         jobTitle="Co-Founder"
         url="https://digitalpointllc.com/about"
+        image="https://digitalpointllc.com/dp-founder-anwaar.jpg"
         description="Co-founded Digital Point LLC in 2017. Operates the analytics, attribution, and reporting infrastructure side of the firm."
       />
 

@@ -62,6 +62,7 @@ export default function ChatTrigger({ onClick, panelOpen }: Props) {
        breathe animations from globals.css unaltered. */
     <div
       className="fixed bottom-6 right-6 z-50"
+      data-in-view={!footerVisible ? 'true' : 'false'}
       style={{
         transform: footerVisible ? 'translateY(120%)' : 'translateY(0)',
         opacity: footerVisible ? 0 : 1,

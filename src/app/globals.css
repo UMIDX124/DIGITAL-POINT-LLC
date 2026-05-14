@@ -1136,6 +1136,11 @@ html[data-i-seen="1"] .dpl-intro-loader {
 .cosmo-mark-idle .cosmo-bar {
   animation: cosmo-bar-idle 4s ease-in-out infinite;
   animation-delay: calc(var(--bar-i, 0) * 120ms);
+  animation-play-state: paused;
+}
+
+[data-in-view="true"] .cosmo-mark-idle .cosmo-bar {
+  animation-play-state: running;
 }
 
 .cosmo-mark-active .cosmo-bar {

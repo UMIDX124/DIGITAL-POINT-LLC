@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { Logomark } from '@/components/brand/Logomark';
 
 const navLinks = [
   { label: 'Recovery', href: '/recovery' },
@@ -15,7 +14,8 @@ export function Navigation() {
     <header className="dpl-nav" role="banner">
       <nav className="dpl-nav__inner" aria-label="Primary">
         <Link href="/" className="dpl-nav__brand" aria-label="Digital Point home">
-          <Logomark mode="lockup" variant="light" priority markSize={32} textSize={92} gap={10} className="dpl-logo-nav" />
+          <span className="dpl-nav__brand-mark" aria-hidden="true">DP</span>
+          <span className="dpl-nav__brand-word">digital point</span>
         </Link>
 
         <div className="dpl-nav__menu">
@@ -27,11 +27,7 @@ export function Navigation() {
         </div>
 
         <div className="dpl-nav__cta">
-          <Link
-            href="/audit"
-            className="btn btn-primary"
-            style={{ minHeight: '2.75rem', paddingInline: '1rem' }}
-          >
+          <Link href="/audit" className="dpl-nav__cta-btn">
             Book audit
           </Link>
         </div>

@@ -1148,6 +1148,14 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit P5. $400K → $30K same-viewport layout
+
+- Status: DONE
+- Files changed (1): `src/app/globals.css` (retrofit of `.dpl-evidence__number` + `.dpl-evidence__arrow`).
+- Removed `flex-wrap: wrap` and dropped clamp from `clamp(80px, 16vw, 240px)` to `clamp(64px, 12vw, 180px)` so the full `$400K → $30K` reads as one line at desktop. Default state is stacked column for mobile with the arrow rotated 90deg (vertical), then a `min-width: 768px` query switches to row layout, `flex-wrap: nowrap`, `white-space: nowrap`, and resets the arrow rotation. At 1440px the entire comparison fits inside the right column without flowing to a second line.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):

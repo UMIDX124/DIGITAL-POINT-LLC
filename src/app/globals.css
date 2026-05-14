@@ -1272,18 +1272,36 @@ html[data-i-seen="1"] .dpl-intro-loader {
   display: flex;
   align-items: baseline;
   justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 0.5em;
+  flex-direction: column;
+  gap: 0.1em;
   font-family: var(--font-mono);
-  font-size: clamp(80px, 16vw, 240px);
+  font-size: clamp(64px, 12vw, 180px);
   font-weight: 500;
   line-height: 0.94;
   letter-spacing: -0.04em;
   color: var(--color-ink);
 }
 
+@media (min-width: 768px) {
+  .dpl-evidence__number {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0.35em;
+    white-space: nowrap;
+  }
+}
+
 .dpl-evidence__arrow {
   color: var(--color-accent);
+  transform: rotate(90deg);
+  display: inline-block;
+  line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .dpl-evidence__arrow {
+    transform: none;
+  }
 }
 
 .dpl-evidence__after {

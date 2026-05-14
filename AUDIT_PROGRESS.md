@@ -701,6 +701,28 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Blockers: none.
 - Deviation from prompt: prompt's spec called `size={1120}` on intro, `size={280}` on nav, `size={320}` on footer. Those values combined with the default 0.4/0.32 mark/text multipliers produced lockup widths that overflowed every wrapper (e.g., size=1120 → mark 448 + text 358 + gap 16 = 822px in a 220-560px wrapper). Switched to per-mount `markSize/textSize/gap` overrides per Step 4's "scale down at mount point" fallback. Also added 2× retina hint inside Logomark.tsx itself (Step 4 didn't specify but it was needed to recover H7's retina sharpness on the new mark/text children).
 
+### Commit H9. Swap Logomark variant SRC mapping
+
+- Status: DONE
+- SHA: cb0f79960c3dd7d06a3f1ec7f68128207642d488
+- Files changed: src/components/brand/Logomark.tsx (1 file, 2 lines)
+- Root cause: H8 sips commands wrote `FINAL LOGO DPL WHITE.png` → `dp-mark-light.png` and `FINAL LOGO DPL BLACK.png` → `dp-mark-dark.png`. The naming was inverted — `variant="light"` means "for use on LIGHT backgrounds, so the asset should have a DARK fill," not the other way around. Intro loader rendered dark mark on dark canvas (invisible); nav rendered light mark on light canvas (invisible). H8 preview only looked OK because of stale browser cache of the deleted `Dp-logo1.png`.
+- Fix: swap the SRC URL pairs in `Logomark.tsx` const block — variant `light` now points to `dp-mark-dark.png` (dark-fill asset for light canvases), variant `dark` points to `dp-mark-light.png` (white-fill asset for dark canvases). File names on disk unchanged.
+- Verification deferred to V3 hero retrofit screenshot harness — intro loader should be light-on-dark, nav and footer dark-on-light.
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+
 ## Tier calibration commit (T0)
 
 ### Commit T0. CLAUDE.md ARR target calibration

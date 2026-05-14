@@ -1051,6 +1051,47 @@ If any field is empty or says "n/a" without explicit justification, the commit i
   ```
 - Blockers: none. Bug 2 (AttributionVisualizer multi-stop gradient flagged for V11 folding) was already closed in V1 — no follow-up needed here.
 
+### Commit V12. Inline highlights + integrations bar + FAQ polish
+
+- Status: DONE
+- SHA: 21ff14bfb48076e6ca240125d6ad3771c9f631ef
+- Files changed (8): `src/app/globals.css` (new V12 block), `src/components/sections/HeroSection.tsx`, `src/components/sections/AgencyMailboxPositioning.tsx`, `src/components/sections/IntegrationsBar.tsx` (new), `src/app/(marketing)/page.tsx` (mount), `src/app/(marketing)/recovery/page.tsx`, `src/app/(marketing)/pricing/page.tsx`, `src/app/(marketing)/faq/page.tsx` (rewrite).
+- **A. Inline `<mark>` highlights** with new `.dpl-mark` class (background `var(--color-accent-soft)`, color `var(--color-ink)`, padding `0.05em 0.25em`, 1px radius). Dark-canvas variant (`.dpl-section--dark .dpl-mark`) uses `rgba(255,136,0,0.16)` over off-white text. Applied at 5 site-wide spots (less is more):
+  - Home hero sub: `<mark>co-founder</mark>` in "Forty-five minute audit with a co-founder."
+  - AgencyMailboxPositioning body (dark canvas): `<mark>Every audit reply</mark>`.
+  - Recovery hero body: `<mark>The only systematic recovery service for production AI agents.</mark>`
+  - Pricing hero body: `<mark>We charge less because the AI runs it</mark>`.
+  - FAQ hero body: `<mark>A co-founder answers it inside the 45-minute call.</mark>`
+- **B. IntegrationsBar** (`.dpl-integrations`) mounted on homepage between `<StackSection />` and `<CTASection />`. Section frame: amber eyebrow `— STACK INTEGRATIONS`, headline "We deploy on a self-hosted backbone. We integrate with the tools you already pay for.", 14-tool grid (responsive: 2 cols mobile → 3 cols ≥640px → 7 cols ≥1024px) with hairline dividers between cells. Each cell: bold mono name + uppercase mono role tag. Tools: n8n / Groq / Claude / Postgres·Neon / Upstash Redis / Vercel / Slack / Resend / HubSpot / Salesforce / Notion / Stripe / Linear / Zapier. Footer caption (mono uppercase): "Self-hosted where it matters. Cloud where it doesn't."
+- **C. FAQ accordion polish**. Rewrote `/faq` page:
+  - Hero retrofitted to `hero--pillar-brief` (Section 08 rail + p.08 / p.09 indicator, amber eyebrow "— FAQ · Plain answers · No fluff", `hero-title--ob` with amber "Ten", `dpl-btn--ink` CTA).
+  - Accordion uses native `<details>/<summary>` with new `.dpl-faq__item / __summary / __num / __q / __toggle / __a` rules. Layout grid: 4rem num column + 1fr question + 2rem toggle column.
+  - Numbered questions in mono amber `Q. 01`, `Q. 02`, etc. Question heading in Geist Sans (not mono), weight 500, clamp 15–18px.
+  - Hairline dividers between Qs (1px `--color-hairline`), strong border top/bottom on outer container.
+  - Toggle: two 1px amber pseudo-elements (`::before` horizontal, `::after` vertical) forming `+` when closed. On `[open]` the vertical rotates to 0deg, leaving a single `−` line. Transition rotates with motion-fast easing. Honors `prefers-reduced-motion: reduce` (no transition).
+  - Answer text: secondary color, line-height 1.6, max-width 45rem, indented to align with question column.
+  - Bottom CTA section preserved (different question / book audit), restyled with `dpl-section` + `dpl-eyebrow` + `dpl-btn--ink`.
+- Verification: focused screenshots at `docs/screenshots/commit-34-focus/`:
+  - `home-hero.png` confirms `co-founder` highlight rendered with soft amber bg in the sub-body.
+  - `home-integrations.png` (captured via `elementHandle.screenshot()`) confirms STACK INTEGRATIONS eyebrow, 14-cell grid in 7×2 layout, hairline dividers, role tags, footer caption.
+  - `home-full.png` confirms full homepage flow including integrations bar between math/founders/process/stack and CTA.
+  - `faq-hero.png` confirms pillar-brief hero with amber Ten + mark highlight on the 45-minute-call phrase.
+  - `faq-accordion-open.png` confirms Q.01/Q.02 open showing `−` toggle + answer text, Q.03-Q.10 closed showing `+` toggle, mono amber Q.NN numbers, Geist Sans questions, hairline dividers.
+  - `recovery-hero.png` + `pricing-hero.png` confirm marks render on those pages.
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+
 ---
 
 ## Final verification

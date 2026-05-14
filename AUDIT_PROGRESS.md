@@ -663,6 +663,44 @@ If any field is empty or says "n/a" without explicit justification, the commit i
   ```
 - Blockers: none.
 
+### Commit H8. Logo asset refactor — split mark / text architecture
+
+- Status: DONE
+- SHA: 64e160ddc90ffcee302665c11b604aaff1b10c54
+- Files changed (15): added 4 new PNGs (dp-mark-light.png 1024×1024, dp-mark-dark.png 1024×1024, dp-text-light.png 2000×600, dp-text-dark.png 1250×375), deleted 2 old PNGs (Dp-logo1.png and Dp-logo1-dark.png at 1960×560), Logomark.tsx rewritten with mode prop, 4 mount points retuned, 4 schema.org logo URLs migrated, 1 brand-assets script entry removed.
+- Asset prep: `sips -Z 1024` on the 2000×2000 source mark files (downscaled from 701 KB to ~270 KB), `cp` on the text files (already correctly sized).
+- Logomark API: new `mode: 'lockup' | 'mark' | 'text'` prop (default `lockup` for backward compatibility). Lockup composes mark + text via inline-flex span. Standalone `mark` and `text` modes available for tight or wordmark-only UIs. New `markSize`, `textSize`, `gap` props for explicit lockup tuning.
+- Retina decoupling: lockup branch passes `width = effectiveSize × 2` and `height = renderedHeight × 2` to `<Image>` so Next/Image picks an oversized srcset variant, then inline `style={{ width: '${effectiveSize}px', height: 'auto' }}` clamps the rendered width. Without this the children render at 1× (under-retina) because the lockup wrapper's CSS width doesn't reach the inner img elements.
+- Mount-point tuning (locked CSS widths in globals.css 585-588 not modified per prompt):
+  - Intro loader (`.dpl-intro-mascot-mark`, dark canvas): `markSize=44, textSize=152, gap=14` → 210px content fits within the 220px floor of `clamp(220px, 28vw, 560px)`. Variant dark.
+  - Nav (`.dpl-logo-nav`, light canvas pre-V1): `markSize=32, textSize=92, gap=10` → 134px content in 140px wrap. Variant light, priority.
+  - Footer (`.dpl-logo-footer`, light canvas pre-V10): `markSize=36, textSize=104, gap=12` → 152px content in 160px wrap. Variant light.
+  - Conversion (`.dpl-logo-conversion`): switched to `mode="mark"` at 28px — lockup is too cramped at this size. Variant light.
+- Verification (Playwright headless, deviceScaleFactor: 2):
+  - Nav: srcset hint `w=128` (mark) / `w=384` (text) → naturalWidth 64 / 192 → CSS 32 / 92 → **2.00× / 2.09× retina**
+  - Footer: `w=256` / `w=640` → 128 / 320 → 36 / 104 → **3.56× / 3.08× retina**
+  - Intro: `w=256` / `w=640` → 128 / 320 → 44 / 152 → **2.91× / 2.11× retina**
+  - Conversion (mark-only): `w=128` → 64 → 28 → **2.29× retina**
+  - All four mounts exceed the 2.00× retina threshold. Lockup visuals balanced — mark and text render at equal height per the 3.33:1 text aspect ratio.
+- Schema.org Organization logo URLs (4 files) migrated `/Dp-logo1.png` → `/dp-mark-light.png`: `src/app/layout.tsx:133`, `src/app/(marketing)/guides/[slug]/page.tsx:73`, `src/components/seo/ServiceSchema.tsx:43`, `src/components/seo/FAQSchema.tsx:65`. `dp-mark-light.png` is square 1024×1024 — better fit for Knowledge Graph panels than the wide 1960×560 lockup.
+- `scripts/generate-brand-assets.mjs`: removed the `public/Dp-logo1.png` target row (it would have re-created an unrelated 256×256 file under the deleted name). Other icon targets unchanged.
+- Old files deleted: `public/Dp-logo1.png` + `public/Dp-logo1-dark.png` — verified no remaining references in src/ or scripts/ (one historical code comment in ChatTrigger.tsx left as-is).
+- Screenshots in `docs/screenshots/commit-23/` (3 viewports) and `docs/screenshots/commit-23-focus/` (4 focused: intro, nav, footer, conversion). Visual balance confirmed.
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+- Deviation from prompt: prompt's spec called `size={1120}` on intro, `size={280}` on nav, `size={320}` on footer. Those values combined with the default 0.4/0.32 mark/text multipliers produced lockup widths that overflowed every wrapper (e.g., size=1120 → mark 448 + text 358 + gap 16 = 822px in a 220-560px wrapper). Switched to per-mount `markSize/textSize/gap` overrides per Step 4's "scale down at mount point" fallback. Also added 2× retina hint inside Logomark.tsx itself (Step 4 didn't specify but it was needed to recover H7's retina sharpness on the new mark/text children).
+
 ## Tier calibration commit (T0)
 
 ### Commit T0. CLAUDE.md ARR target calibration

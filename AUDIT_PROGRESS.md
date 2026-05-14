@@ -916,6 +916,33 @@ If any field is empty or says "n/a" without explicit justification, the commit i
   ```
 - Blockers: none.
 
+### Commit V6. Pillar cards retrofit
+
+- Status: DONE
+- SHA: 625c129e08636012576c8fccc38918a6c32ddc4f
+- Files changed (2): `src/components/sections/PillarsSection.tsx` (rewrite — was 3 glass cards with btn-link footers, now operator-brief grid), `src/app/globals.css` (new `.dpl-section--pillars`, `.dpl-pillars__*`, `.dpl-pillar*` rules).
+- Layout: dpl-section frame with `Section 04 · Pillars` vertical rail label + `p.04 / p.09` top-right page indicator. Header row: amber-rule eyebrow "— Four pillars" + h2 "What we ship, what we run, what we fix." left, `P.04 · Pillars 01 — 04` mono index right-aligned at end of head. Below: unified bordered grid (single 1px hairline-strong outer border, internal dividers only). 3-column at ≥768px, 1-column mobile.
+- Per-card structure: `<a>` wrapper to pillar destination, amber mono num (`01 · Agents`), h3 title, body, hairline-top mono receipts footer with tilde prefix (e.g., `~Replaces $200K of headcount`). Hover state fills card bg with `var(--color-hairline-faint)` and slides in a 2px amber left rule via `::before` (opacity 0 → 1).
+- Locked copy per spec, verbatim:
+  - 01 · Agents — Production AI agents — "Custom-trained agents that run repeatable knowledge work. CRM updates, lead routing, qualification, follow-up cadences. Operator-audited edges." — receipts `~Replaces $200K of headcount`
+  - 02 · Automation — Workflow handoffs — "Replace manual handoffs across your stack. n8n + custom TypeScript + Postgres for production pipelines. Not a Zapier shop, not a Make rebadger." — receipts `~60s lead-to-CRM end-to-end`
+  - 03 · Operators — Remote operators — "Vetted humans audit the edges where automation breaks. Live in your Slack on day one. Not generic VAs, not offshore data-entry farms." — receipts `~<6h escalation response`
+- All receipts values carry `data-design-only="true"` until real ops metrics replace them.
+- Verification: focused screenshot at `docs/screenshots/commit-29-focus/pillars.png` confirms unified bordered grid, amber nums, hairline receipts footers, vertical rail + page indicator. Full home screenshots at `docs/screenshots/commit-29/home-{360,768,1440}.png`.
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+
 ### Commit V7. Founder pull-quote section
 
 - Status: SKIPPED — awaiting real founder quote.

@@ -17,8 +17,8 @@ type Props = {
 };
 
 const SRC = {
-  mark: { light: '/dp-mark-light.png', dark: '/dp-mark-dark.png' },
-  text: { light: '/dp-text-light.png', dark: '/dp-text-dark.png' },
+  mark: { light: '/dp-mark-dark.png', dark: '/dp-mark-light.png' },
+  text: { light: '/dp-text-dark.png', dark: '/dp-text-light.png' },
 };
 
 const MARK_W = 1024;

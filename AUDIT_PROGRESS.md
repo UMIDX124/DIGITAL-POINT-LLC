@@ -49,16 +49,31 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ### Commit 2. Intro loader logo sizing + session-only gate
 
-- Status: PLANNED
-- SHA:
-- Files changed:
+- Status: DONE
+- SHA: 3194396090d6ed4d73ba2c5afbe8a295773ace50
+- Files changed: src/app/(conversion)/layout.tsx, src/app/globals.css, src/app/layout.tsx, src/components/brand/Logomark.tsx, src/components/layout/Footer.tsx, src/components/layout/Navigation.tsx
 - Gate output:
-- Screenshots (must exist):
-  - docs/screenshots/commit-02/home-360.png
-  - docs/screenshots/commit-02/home-768.png
-  - docs/screenshots/commit-02/home-1440.png
-- Cookie verification (incognito first visit shows, reload suppresses, new incognito tab shows):
-- Blockers:
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Screenshots (verified via `ls -la docs/screenshots/commit-02/`):
+  - docs/screenshots/commit-02/home-360.png (694779 bytes)
+  - docs/screenshots/commit-02/home-768.png (708924 bytes)
+  - docs/screenshots/commit-02/home-1440.png (842413 bytes)
+- Cookie verification (curl-driven, simulates the manual incognito flow):
+  - First visit (no jar): response header `set-cookie: dpl_i=1; Path=/; HttpOnly; SameSite=lax` (no Max-Age / no Expires → session-only per RFC 6265). HTML has no `data-i-seen` attribute. Intro loader renders.
+  - Return visit (with jar): no `Set-Cookie` repeat in response. HTML has `data-i-seen="1"` on `<html>`. CSS rule at `globals.css:581` (`html[data-i-seen="1"] .dpl-intro-loader { display: none }`) hides loader.
+  - New browser session (jar discarded): equivalent to first visit, loader fires again.
+- Note: audit prescription said "convert cookie to session-only," but cookie was already session-only. Actual bug was missing wiring from `x-intro-seen` request header (set by `src/proxy.ts:35`) to the `<html>` `data-i-seen` attribute. Now wired in `src/app/layout.tsx`.
+- Blockers: none
 
 ### Commit 3. Homepage metadata, canonical, OG
 

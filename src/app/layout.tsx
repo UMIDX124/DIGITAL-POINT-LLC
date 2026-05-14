@@ -106,6 +106,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // CSP nonce read forces dynamic render. Required for inline script/style nonce attribution
+  // (5 consumers: 3 JSON-LD blocks in this file + BlogPosting + CollectionPage schemas).
   const hdrs = await headers();
   const nonce = hdrs.get("x-nonce") ?? undefined;
   const introSeen = hdrs.get("x-intro-seen") === "1";
@@ -144,6 +146,8 @@ export default async function RootLayout({
                 description:
                   "Reach us through Cosmo (on-site chat) or the free growth audit form. Direct operator routing, no shared inbox.",
                 url: "https://digitalpointllc.com/#contact-philosophy",
+                areaServed: "Worldwide",
+                availableLanguage: ["en"],
               },
               address: {
                 "@type": "PostalAddress",

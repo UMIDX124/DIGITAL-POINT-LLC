@@ -208,13 +208,28 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ### Commit 8. Convert cookies page to RSC
 
-- Status: PLANNED
-- SHA:
-- Files changed:
+- Status: DONE
+- SHA: fda2f9a6259b838e6ce94a9f2fb27b8ac1e7aff1
+- Files changed: src/app/(marketing)/cookies/page.tsx, src/app/(marketing)/cookies/ReopenCookieBannerButton.tsx (new)
 - Gate output:
-- Screenshot:
+  ```
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Render verification (curl http://localhost:3000/cookies | grep ...):
+  - "Re-open cookie preferences" present in initial HTML: count 1
+  - "No third-party cookies" body text present: count 1
+  - "dpl:open-cookie-prefs" string not in initial HTML: count 0 (expected — event lives in client JS only)
+- Screenshots:
+  - docs/screenshots/commit-08/cookies-360.png
+  - docs/screenshots/commit-08/cookies-768.png
   - docs/screenshots/commit-08/cookies-1440.png
-- Blockers:
+- Blockers: none. Out of scope: page has no `export const metadata` — separate finding, did not add here since the prompt scope was strictly the RSC conversion.
 
 ### Commit 9. Sitemap lastModified from MDX frontmatter
 

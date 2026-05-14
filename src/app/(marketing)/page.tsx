@@ -1,4 +1,6 @@
 import { HeroSection } from '@/components/sections/HeroSection';
+import { ActivityTicker } from '@/components/marketing/ActivityTicker';
+import { HomeEvidence } from '@/components/sections/HomeEvidence';
 import { RecoverySection } from '@/components/sections/RecoverySection';
 import { PillarsSection } from '@/components/sections/PillarsSection';
 import { MathSection } from '@/components/sections/MathSection';
@@ -11,6 +13,8 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <ActivityTicker />
+      <HomeEvidence />
       <RecoverySection />
       <PillarsSection />
       <MathSection />

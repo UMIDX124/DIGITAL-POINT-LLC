@@ -64,26 +64,30 @@ export default async function CategoryPage({ params }: PageProps) {
   const url = `https://digitalpointllc.com/blog/category/${slug}`;
   const nonce = (await headers()).get('x-nonce') ?? undefined;
 
-  const collectionPage = {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: `${categoryName} articles`,
-    description: meta.description,
-    url,
-    hasPart: posts.map((p) => ({
-      '@type': 'BlogPosting',
-      headline: p.title,
-      url: `https://digitalpointllc.com/blog/${p.slug}`,
-    })),
-  };
+  const collectionPage = posts.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: `${categoryName} articles`,
+        description: meta.description,
+        url,
+        hasPart: posts.map((p) => ({
+          '@type': 'BlogPosting',
+          headline: p.title,
+          url: `https://digitalpointllc.com/blog/${p.slug}`,
+        })),
+      }
+    : null;
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        nonce={nonce}
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionPage) }}
-      />
+      {collectionPage && (
+        <script
+          type="application/ld+json"
+          nonce={nonce}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionPage) }}
+        />
+      )}
       <BlogCategoryContent categoryName={categoryName} meta={meta} posts={posts} />
     </>
   );

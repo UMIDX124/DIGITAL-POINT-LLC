@@ -491,6 +491,49 @@ If any field is empty or says "n/a" without explicit justification, the commit i
   ```
 - Blockers: none.
 
+### Commit H3. Cleanup undefined CSS vars + hardcoded hex sweep
+
+- Status: DONE (scope adjusted — undef-vars premise was stale)
+- SHA: b4ceb682519697a2534169c2da70711d7f73c2bf
+- Files changed (22): src/app/error.tsx + 11 research/tools page components + 9 blog/seo/brand components + 1 blog page.
+- Scope deviation: the H3 prompt's premise was that `--accent-bright`, `--accent-primary`, `--text-primary`, `--text-muted` are undefined CSS vars in `globals.css`. They are actually DEFINED at lines 13-17 of `globals.css` `@theme inline` block as legacy aliases. Audit ledger entry from Commit 5 noted them as undefined; sometime after Batch B these legacy aliases were added explicitly as a stop-gap. Pages render correctly with these aliases. Grep additionally surfaces `--text-secondary`, `--text-tertiary`, `--bg-canvas`, `--bg-elevated`, `--border-subtle`, `--border-bright`, `--section-top`, `--section-sm`, `--maxw-heading-display`, `--maxw-heading-section` — all also defined legacy aliases. 389 consumer references; full migration is V-batch scope per V1's "DO NOT delete legacy tokens" rule.
+- Real H3 work performed: hardcoded brand hex sweep + multi-stop gradient collapse.
+  - `#FF8800` (string literal `'#FF8800'`) → `var(--color-accent)`
+  - `#FFA833` → `var(--color-accent)` (per single-amber lock, both bright variants collapse to one)
+  - `#C26800` → `var(--color-accent-soft)` (exact match)
+  - Tailwind arbitrary `[#FF8800]/50` → `[var(--color-accent)]/50`
+  - SVG attrs `stroke="#FF8800"` / `fill="#FF8800"` / `stopColor="#FF8800"` → `var(--color-accent)`
+  - Inline string styles like `'3px solid #FF8800'` → `'3px solid var(--color-accent)'`
+  - Same-color gradients `linear-gradient(135deg, #C26800, #C26800)` (start = end) → flat `var(--color-accent-soft)`
+  - Multi-stop accent gradient in `src/app/error.tsx:34` (C26800 → FF8800 → FFA833) → flat `var(--color-accent)`
+  - Multi-stop gradient in AuthorBox (C26800 → FF8800) → flat `var(--color-accent)`
+  - Dynamic gradient in AttributionVisualizer (progress-fill `${100 - credit}%`) → tokenized but kept gradient (semantic progress visualization — collapsing would lose the bar fill). Still a multi-stop violation; logged as follow-up.
+- Intentional NOT-swapped hex (24 remaining occurrences):
+  - **OG image renderers** (4 occurrences in blog + guides opengraph-image.tsx): Satori (next/og) does not resolve CSS variables. Keeping hex prevents broken PNGs.
+  - **API email HTML templates** (15 occurrences across audit/leads/founder/ticket/newsletter routes): email clients do not support CSS variables. Hex required.
+  - **lib/blog.ts categoryMeta colors** (8 occurrences): consumed via hex-alpha concat (`${meta.color}15` and `${meta.color}30`) in `BlogCategoryContent.tsx:54`. var() refs would break the concat. Reverted from initial sweep after audit.
+- Recovered from initial sweep error: my first sweep accidentally tokenized OG images, blog category meta, and `ticket/route.ts:78` `priorityColor` constant. All three would break their consumers (Satori, hex-alpha concat, email HTML). Reverted explicitly before commit.
+- Verification:
+  - `grep -rn "#FF8800\|#FFA833\|#C26800" src/ | grep -v globals.css | wc -l` → 24 (all in OG / email / categoryMeta — verified individually)
+  - `pnpm exec tsc --noEmit` → 0 errors
+  - `pnpm lint` → 0 warnings
+  - Screenshots: `/audit`, `/blog`, `/research`, `/tools` at 360/768/1440 in `docs/screenshots/commit-20/` (12 files). Tool deep-links `/tools/roas-calculator`, `/tools/attribution-model-visualizer` in `docs/screenshots/commit-21/` (6 files). Visual check: amber accents intact, progress bar gradient in AttributionVisualizer renders correctly, selected amber state in tool widgets renders correctly.
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+- Follow-up: AttributionVisualizer dynamic progress-bar gradient still uses multi-stop linear-gradient (now token-based: `var(--color-accent-soft) ${100 - credit}%, var(--color-accent) 100%`). Refactor to a flat inner div with `width: ${credit}%` and `background: var(--color-accent)` would eliminate the gradient. Out of H3 scope.
+- Follow-up: legacy alias block in globals.css (lines 9-19, 22-27) carries 389 consumer references. Full migration to `--color-*` tokens is V-batch scope per V1's "DO NOT delete legacy tokens" rule.
+
 ---
 
 ## Final verification

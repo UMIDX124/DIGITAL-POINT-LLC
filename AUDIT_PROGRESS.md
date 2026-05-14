@@ -130,15 +130,38 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ### Commit 5. Replace hardcoded hex with tokens in BlogPage + AuditPage
 
-- Status: PLANNED
-- SHA:
-- Files changed:
-- Token map used (must match actual `globals.css` `@theme` block):
+- Status: DONE
+- SHA: 2b3041af3b783e8094e71dc33954c26fac23755d
+- Files changed: src/components/sections/BlogPage.tsx, src/components/sections/AuditPage.tsx
+- Token map used (verified against `src/app/globals.css` `@theme inline` block):
+  - `#FF8800` → `var(--color-accent)` (exact, defined L36)
+  - `#FFA833` → `var(--color-accent)` (no token match; per brand lock "only one amber", collapsed AI & Automation category into shared accent; categoryColors map removed)
+  - `#C26800` → `var(--color-accent-soft)` (exact, L37)
+  - `#0A0A0B` → `var(--color-canvas-dark)` (target is `#0a0a0a`, drift 1 byte B-channel, imperceptible, L56)
+  - `#141416` → `var(--color-canvas-dark-elevated)` (target is `#161616`, drift 2 hex per channel, imperceptible, L58)
+  - `#3A2D14` → `var(--color-line-dark-soft)` (rgba white 10%, L65; loses amber-tint but aligns with brand lock that amber is for accent not borders)
+  - Also fixed `var(--accent-primary)` → `var(--color-accent)` on 3 input focus-border declarations in AuditPage.
 - Gate output:
-- Screenshots:
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Screenshots (6 files, 3 viewports x 2 pages):
+  - docs/screenshots/commit-05/blog-360.png
+  - docs/screenshots/commit-05/blog-768.png
   - docs/screenshots/commit-05/blog-1440.png
+  - docs/screenshots/commit-05/audit-360.png
+  - docs/screenshots/commit-05/audit-768.png
   - docs/screenshots/commit-05/audit-1440.png
-- Blockers:
+- Blockers: none.
+- Out-of-scope follow-up logged for Batch C or later: BlogPage and AuditPage reference undefined CSS variables (`--accent-bright`, `--accent-primary`, `--text-primary`, `--text-muted`) and Tailwind classes against undefined surfaces (`bg-surface-glass`, `text-text-secondary`). These were not in the audit's hex-replacement scope. The pages still render because the undefined values fall back to browser defaults (transparent for color, often inherited). Full migration to `--color-*` namespace is a separate cleanup.
 
 ### Commit 6. Per-guide metadata + Article schema
 

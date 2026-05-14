@@ -1237,6 +1237,15 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit P14. Differentiate /automation hero SVG
+
+- Status: DONE
+- Files changed (2): `src/components/visuals/PipelineDiagramSchematic.tsx` (new), `src/app/(marketing)/automation/page.tsx` (import + mount swap).
+- New `PipelineDiagramSchematic` renders a different visual moment from the homepage `SystemFlowSchematic`: five inbound sources (HubSpot, Stripe, Slack, Email, Form) fan into parallel n8n workers, land in Postgres state, then fan back out to four destinations (CRM write, Slack notify, Email ack, Warehouse). An operator queue branches off the state with the amber highlight. Same operator-brief style: hairline borders, mono labels, accent on the operator path, FIG. PIPE label.
+- /automation hero swaps the homepage diagram out for the new one. Homepage retains `SystemFlowSchematic` unchanged so the two pillar surfaces no longer share the same picture.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):

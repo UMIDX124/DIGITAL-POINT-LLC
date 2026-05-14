@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 import { ServiceSchema } from '@/components/seo/ServiceSchema';
-import { SystemFlowSchematic } from '@/components/visuals/SystemFlowSchematic';
+import { PipelineDiagramSchematic } from '@/components/visuals/PipelineDiagramSchematic';
 
 export const metadata: Metadata = {
   title: 'Workflow Automation',
@@ -80,7 +80,7 @@ export default function AutomationPage() {
 
             <aside className="hero-grid__panels" aria-label="Pipeline schematic">
               <div className="hero-grid__diagram">
-                <SystemFlowSchematic compact />
+                <PipelineDiagramSchematic compact />
                 <p className="hero-grid__diagram-caption">FIG. SYS · Pipeline overview</p>
               </div>
             </aside>

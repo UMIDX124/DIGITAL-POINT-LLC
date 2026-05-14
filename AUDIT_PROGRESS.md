@@ -354,10 +354,14 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ### Commit 14. CountUp stagger verification (likely no-op if commit 1 covered)
 
-- Status: PLANNED
-- SHA or SKIPPED with reason:
-- Verification (two CountUp instances on /pricing start 80ms apart):
-- Blockers:
+- Status: SKIPPED
+- SHA or SKIPPED with reason: SKIPPED — covered by Commit 1. No code change needed.
+- Verification: `grep -B 1 -A 3 "index=" src/components/sections/MathSection.tsx` returns:
+  - `<CountUp to={400000} prefix="$" index={0} />`
+  - `<CountUp to={30000} prefix="$" index={1} />`
+  These are the only two CountUp instances in the codebase (per `grep -rn "<CountUp" src/components/`). Both pass `index`. CountUp.tsx (rewritten in Commit 1) delays tween start by `index * 80` ms, producing the 80ms stagger between the two values on the home page MathSection.
+- Note: the prompt mentioned /pricing instances, but CountUp is only used on the home page MathSection in this codebase. /pricing has no CountUp. Stagger requirement satisfied where it applies.
+- Blockers: none.
 
 ### Commit 15. Lighthouse CI assertions for INP, CLS, LCP, perf score
 

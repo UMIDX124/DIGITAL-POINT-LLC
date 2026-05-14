@@ -1024,6 +1024,33 @@ If any field is empty or says "n/a" without explicit justification, the commit i
   ```
 - Blockers: none.
 
+### Commit V11. Per-page hero variations on pillar pages
+
+- Status: DONE
+- SHA: 7e01f3b071a4be3fbd95b5d3ebf1c16a1fb47496
+- Files changed (6): `src/app/(marketing)/recovery/page.tsx`, `src/app/(marketing)/pricing/page.tsx`, `src/app/(marketing)/agents/page.tsx`, `src/app/(marketing)/automation/page.tsx`, `src/app/(marketing)/operators/page.tsx`, `src/app/globals.css`.
+- New CSS block (`/* V11. Per-page pillar hero variations */`, end of globals.css): `.hero--pillar-brief` (flat canvas + tighter padding than `.hero--operator-brief`), `.dpl-pillar-timeline` (3-step bordered grid with `.dpl-pillar-timeline__step--active` swapping to ink bg + amber label), `.dpl-pillar-tiers` (3-row pricing table with `.dpl-pillar-tiers__row--accent` for amber PILOT), `.hero-grid__diagram` (bordered wrapper + caption rule).
+- Recovery (`/recovery`): timeline strip below sub-body. PHASE 01 DIAGNOSE active (ink + amber label). PHASE 02 FIX. PHASE 03 OPERATE. Hero meta replaced by amber eyebrow rule "— Recovery service · 2-week diagnosis". Section 04 rail + p.04 / p.09 page indicator. Hero microcopy line removed (subsumed into timeline).
+- Pricing (`/pricing`): 3-row tier table directly under hero sub (AUDIT FREE / PILOT $2,500 / RETAINER $2,500 mo) with right-side DETAILS links anchoring to `#audit-tier`, `#pilot-tier`, `#retainer-tier` (added matching `id` to existing tier `<article>`s). PILOT row uses `.dpl-pillar-tiers__row--accent` (amber price). Section 07 rail + p.07 / p.09.
+- Agents (`/agents`): hero-grid split. Left: amber eyebrow "— Pillar 01 · AI Agents" + h1 "Production agents that run the work." + sub + ink/ghost CTAs. Right: single `dpl-panel` "AGENT FLEET SNAPSHOT" with rows (17 agents in production / Sales · Support · Ops · Recovery / 1,420 invocations / 47 overrides / 2 open in accent). Section 01 rail + p.01. Removed `HeroAtmosphere` import (radial pillar bg is gone with `.hero--pillar-brief`).
+- Automation (`/automation`): hero-grid split. Left: amber eyebrow "— Pillar 02 · Workflow Automation" + h1 + sub + CTAs. Right: `.hero-grid__diagram` wrapper containing `<SystemFlowSchematic compact />` (400×320 SVG: INBOUND → N8N WORKFLOW → GROQ AGENT → OPERATOR AUDIT → POSTGRES bus) + hairline-divided "FIG. SYS · Pipeline overview" caption. Section 02 rail + p.02.
+- Operators (`/operators`): hero-grid split. Left: amber eyebrow "— Pillar 03 · Remote Operators" + h1 + sub + ink/ghost CTAs. Right: `dpl-panel` "ON-CALL NOW" with rows (Lead operator Faizan / Backup Anwaar / 0 active escalations / 3h 12m avg response / 100% reply before next morning in accent). Section 03 rail + p.03.
+- All `data-design-only="true"` markers retained on placeholder values per real-data discipline.
+- Verification: focused 1440 hero screenshots at `docs/screenshots/commit-33-focus/{recovery,pricing,agents,automation,operators}-hero.png` (intro loader bypassed via `dpl_i=1` cookie pre-seed). Full-page screenshots at `docs/screenshots/commit-33/{recovery,pricing,agents,automation,operators}-{360,768,1440}.png`. All 5 hero variations render the spec'd layout. Recovery timeline shows ink-active phase 01 with amber label; pricing PILOT row shows amber price; agents/operators panels show pulsing amber dot + mono table; automation diagram renders the compact SystemFlowSchematic.
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none. Bug 2 (AttributionVisualizer multi-stop gradient flagged for V11 folding) was already closed in V1 — no follow-up needed here.
+
 ---
 
 ## Final verification

@@ -41,7 +41,7 @@ export function Logomark({
       role={ariaLabel ? 'img' : undefined}
       className={className}
       priority={priority}
-      style={{ display: 'block', flexShrink: 0, width: size, height: 'auto' }}
+      style={{ display: 'block', flexShrink: 0, height: 'auto' }}
     />
   );
 }

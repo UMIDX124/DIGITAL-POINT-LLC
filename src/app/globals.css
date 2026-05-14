@@ -582,6 +582,11 @@ html[data-i-seen="1"] .dpl-intro-loader {
   display: none;
 }
 
+.dpl-intro-mascot-mark { width: clamp(220px, 28vw, 560px); height: auto; }
+.dpl-logo-footer { width: 160px; height: auto; }
+.dpl-logo-nav { width: 140px; height: auto; }
+.dpl-logo-conversion { width: 28px; height: auto; }
+
 /* ============================================================
    Reveal-on-scroll primitives (CSS-only)
    ============================================================ */

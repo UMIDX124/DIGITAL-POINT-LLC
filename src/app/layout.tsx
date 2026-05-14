@@ -108,12 +108,14 @@ export default async function RootLayout({
 }>) {
   const hdrs = await headers();
   const nonce = hdrs.get("x-nonce") ?? undefined;
+  const introSeen = hdrs.get("x-intro-seen") === "1";
 
   return (
     <html
       lang="en"
       className={`${GeistSans.variable} ${GeistMono.variable}`}
       suppressHydrationWarning
+      {...(introSeen ? { "data-i-seen": "1" } : {})}
     >
       <head>
         {/* Organization Schema */}
@@ -222,7 +224,7 @@ export default async function RootLayout({
             effect. Color retained inline so unstyled fallback is readable. */}
         <div className="dpl-intro-loader" aria-hidden="true">
           <span className="dpl-intro-mascot">
-            <Logomark size={640} variant="dark" priority />
+            <Logomark variant="dark" priority className="dpl-intro-mascot-mark" />
           </span>
           <span className="dpl-intro-line" />
         </div>

@@ -28,11 +28,9 @@ function buildCsp(nonce: string): string {
 export default function proxy(request: NextRequest) {
   const nonce = btoa(crypto.randomUUID()).replace(/=+$/, '');
   const csp = buildCsp(nonce);
-  const hasIntroCookie = request.cookies.get('dpl_i')?.value === '1';
 
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('x-nonce', nonce);
-  if (hasIntroCookie) requestHeaders.set('x-intro-seen', '1');
 
   const response = NextResponse.next({
     request: { headers: requestHeaders },
@@ -42,14 +40,6 @@ export default function proxy(request: NextRequest) {
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
   response.headers.set('Content-Security-Policy', csp);
-
-  if (!hasIntroCookie) {
-    response.cookies.set('dpl_i', '1', {
-      httpOnly: true,
-      sameSite: 'lax',
-      path: '/',
-    });
-  }
 
   return response;
 }

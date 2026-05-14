@@ -110,14 +110,12 @@ export default async function RootLayout({
   // (5 consumers: 3 JSON-LD blocks in this file + BlogPosting + CollectionPage schemas).
   const hdrs = await headers();
   const nonce = hdrs.get("x-nonce") ?? undefined;
-  const introSeen = hdrs.get("x-intro-seen") === "1";
 
   return (
     <html
       lang="en"
       className={`${GeistSans.variable} ${GeistMono.variable}`}
       suppressHydrationWarning
-      {...(introSeen ? { "data-i-seen": "1" } : {})}
     >
       <head>
         {/* Organization Schema */}
@@ -216,9 +214,9 @@ export default async function RootLayout({
             uses fallback until ready (Pillar 3R iter 2 CLS fix). Net: drop
             ~20KB of eager font fetch, paint stays stable. */}
 
-        {/* Intro loader gate. Cookie 'dpl_i' set in src/proxy.ts on first visit;
-            data-i-seen on <html> tells globals.css to skip the @keyframes on
-            return visits. Pure server-side, no inline JS, CSP-clean. */}
+        {/* Intro loader runs on every hard page load. Pure CSS, no JS, CSP-clean.
+            Client navigations within Next.js do not retrigger because the
+            loader markup mounts once at the root. Reduced-motion hides it. */}
 
         <meta name="theme-color" content="#000000" />
         <meta name="msapplication-TileColor" content="#000000" />
@@ -232,10 +230,17 @@ export default async function RootLayout({
             body's globals.css background (subtle radial atmosphere) takes
             effect. Color retained inline so unstyled fallback is readable. */}
         <div className="dpl-intro-loader" aria-hidden="true">
+          <span className="dpl-intro-meta dpl-intro-meta--top">
+            DPL · Operator Brief · v2026.05
+          </span>
           <span className="dpl-intro-mascot">
             <Logomark mode="lockup" variant="dark" priority markSize={44} textSize={152} gap={14} className="dpl-intro-mascot-mark" />
           </span>
           <span className="dpl-intro-line" />
+          <span className="dpl-intro-meta dpl-intro-meta--bottom">
+            <span className="dpl-intro-meta__text">Booting trained agent stack</span>
+            <span className="dpl-intro-meta__caret" aria-hidden="true" />
+          </span>
         </div>
         <VisibilityPause />
         <BotIdClient

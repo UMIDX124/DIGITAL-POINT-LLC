@@ -569,19 +569,69 @@ select {
 .dpl-intro-loader {
   position: fixed;
   inset: 0;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
   align-items: center;
-  justify-content: center;
-  gap: var(--space-8);
+  justify-items: center;
+  row-gap: var(--space-8);
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
   background: var(--color-canvas-dark);
   background-image:
-    radial-gradient(60% 60% at 50% 45%, rgba(255, 136, 0, 0.10), transparent 75%);
+    radial-gradient(70% 60% at 50% 45%, rgba(255, 136, 0, 0.12), transparent 75%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 3px,
+      rgba(255, 136, 0, 0.025) 3px,
+      rgba(255, 136, 0, 0.025) 4px
+    );
   z-index: 100;
-  animation: dpl-intro-out 0.7s cubic-bezier(0.65, 0, 0.35, 1) 2.4s forwards;
+  animation: dpl-intro-out 0.6s cubic-bezier(0.65, 0, 0.35, 1) 2.6s forwards;
+}
+
+.dpl-intro-meta {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245, 245, 247, 0.5);
+  opacity: 0;
+  animation: dpl-intro-meta-in 0.6s ease-out 0.05s forwards;
+}
+
+.dpl-intro-meta--top {
+  align-self: start;
+  border: 1px solid rgba(245, 245, 247, 0.18);
+  padding: 0.45rem 0.85rem;
+}
+
+.dpl-intro-meta--bottom {
+  align-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: rgba(245, 245, 247, 0.72);
+  animation-delay: 1.35s;
+}
+
+.dpl-intro-meta__text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.dpl-intro-meta__caret {
+  display: inline-block;
+  width: 0.5em;
+  height: 1.1em;
+  background: var(--color-accent);
+  transform: translateY(0.15em);
+  animation: dpl-intro-caret 0.85s steps(2, end) 1.4s infinite;
 }
 
 .dpl-intro-mascot {
+  align-self: end;
   opacity: 0;
   transform: translateY(14px);
   animation: dpl-intro-mark-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
@@ -589,12 +639,20 @@ select {
 
 .dpl-intro-line {
   display: block;
-  width: 280px;
-  height: 2px;
+  width: clamp(220px, 36vw, 420px);
+  height: 1px;
   background: var(--color-accent);
+  align-self: start;
   transform: scaleX(0);
   transform-origin: left center;
-  animation: dpl-intro-line-draw 0.95s cubic-bezier(0.65, 0, 0.35, 1) 0.85s forwards;
+  animation: dpl-intro-line-draw 1.05s cubic-bezier(0.65, 0, 0.35, 1) 0.85s forwards;
+  box-shadow: 0 0 12px rgba(255, 136, 0, 0.35);
+}
+
+@keyframes dpl-intro-meta-in {
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes dpl-intro-mark-in {
@@ -610,6 +668,17 @@ select {
   }
 }
 
+@keyframes dpl-intro-caret {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes dpl-intro-out {
   to {
     opacity: 0;
@@ -621,14 +690,13 @@ select {
 @media (prefers-reduced-motion: reduce) {
   .dpl-intro-loader,
   .dpl-intro-mascot,
-  .dpl-intro-line {
+  .dpl-intro-line,
+  .dpl-intro-meta,
+  .dpl-intro-meta__caret {
     animation-duration: 0.01ms;
     animation-delay: 0ms;
+    animation-iteration-count: 1;
   }
-}
-
-html[data-i-seen="1"] .dpl-intro-loader {
-  display: none;
 }
 
 .dpl-intro-mascot-mark { width: clamp(220px, 28vw, 560px); height: auto; }
@@ -2517,25 +2585,67 @@ html[data-i-seen="1"] .dpl-intro-loader {
   right: clamp(1rem, 3vw, 1.5rem);
   bottom: clamp(1rem, 3vw, 1.5rem);
   z-index: 60;
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-canvas-elevated);
-  border: 1px solid var(--color-line-accent);
+  background: var(--color-canvas);
+  border: 1px solid var(--color-hairline-strong);
   border-radius: 50%;
-  box-shadow: 0 0 0 1px rgba(255, 136, 0, 0.15), 0 12px 32px rgba(0, 0, 0, 0.5);
+  box-shadow:
+    0 0 0 4px rgba(255, 136, 0, 0.06),
+    0 18px 40px -12px rgba(10, 10, 11, 0.22);
   cursor: pointer;
-  transition: transform var(--motion-fast) var(--ease-out);
+  transition:
+    transform var(--motion-fast) var(--ease-out),
+    border-color var(--motion-fast) var(--ease-out),
+    box-shadow var(--motion-fast) var(--ease-out);
+}
+
+.cosmo-fab::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 136, 0, 0.18);
+  opacity: 0;
+  transform: scale(0.85);
+  animation: cosmo-fab-halo 3.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  pointer-events: none;
 }
 
 .cosmo-fab:hover {
-  transform: scale(1.05);
+  transform: scale(1.06);
+  border-color: var(--color-accent);
+  box-shadow:
+    0 0 0 4px rgba(255, 136, 0, 0.12),
+    0 22px 48px -12px rgba(10, 10, 11, 0.32);
 }
 
 .cosmo-fab:active {
   transform: scale(0.96);
+}
+
+@keyframes cosmo-fab-halo {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  20% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cosmo-fab::before {
+    animation: none;
+    opacity: 0;
+  }
 }
 
 .cosmo-fab-inner {
@@ -2547,54 +2657,120 @@ html[data-i-seen="1"] .dpl-intro-loader {
   color: var(--color-accent);
 }
 
-/* Cosmo wave mark — three states. Bars driven by --bar-i index. */
+/* Cosmo sonar mark — operator-brief signature. Sweep arc rotates,
+   inner rings expand outward in a sonar pulse, core dot breathes.
+   State changes speed; geometry stays constant. */
 .cosmo-mark {
   display: block;
 }
 
-.cosmo-mark .cosmo-bar {
+.cosmo-mark__sweep,
+.cosmo-mark__ring,
+.cosmo-mark__core {
   transform-origin: center;
   transform-box: fill-box;
 }
 
-.cosmo-mark-idle .cosmo-bar {
-  animation: cosmo-bar-idle 4s ease-in-out infinite;
-  animation-delay: calc(var(--bar-i, 0) * 120ms);
+.cosmo-mark__sweep {
+  animation: cosmo-sweep 5.5s linear infinite;
   animation-play-state: paused;
 }
 
-[data-in-view="true"] .cosmo-mark-idle .cosmo-bar {
+[data-in-view='true'] .cosmo-mark__sweep,
+.cosmo-mark--active .cosmo-mark__sweep,
+.cosmo-mark--speaking .cosmo-mark__sweep {
   animation-play-state: running;
 }
 
-.cosmo-mark-active .cosmo-bar {
-  animation: cosmo-bar-active 1.2s ease-in-out infinite;
-  animation-delay: calc(var(--bar-i, 0) * 60ms);
+.cosmo-mark--active .cosmo-mark__sweep {
+  animation-duration: 3s;
 }
 
-.cosmo-mark-speaking .cosmo-bar {
-  animation: cosmo-bar-speaking 600ms ease-in-out infinite;
-  animation-delay: calc(var(--bar-i, 0) * 60ms);
+.cosmo-mark--speaking .cosmo-mark__sweep {
+  animation-duration: 1.6s;
 }
 
-@keyframes cosmo-bar-idle {
-  0%, 100% { opacity: 0.85; transform: scaleY(1); }
-  50% { opacity: 1; transform: scaleY(1.05); }
+.cosmo-mark__ring {
+  opacity: 0;
+  transform: scale(0.55);
+  animation: cosmo-sonar 3.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  animation-play-state: paused;
 }
 
-@keyframes cosmo-bar-active {
-  0%, 100% { transform: scaleY(0.85); }
-  50% { transform: scaleY(1.15); }
+.cosmo-mark__ring--2 {
+  animation-delay: 1.4s;
 }
 
-@keyframes cosmo-bar-speaking {
-  0%, 100% { transform: scaleY(0.4); }
-  50% { transform: scaleY(1.4); }
+[data-in-view='true'] .cosmo-mark__ring,
+.cosmo-mark--active .cosmo-mark__ring,
+.cosmo-mark--speaking .cosmo-mark__ring {
+  animation-play-state: running;
+}
+
+.cosmo-mark--active .cosmo-mark__ring {
+  animation-duration: 2.2s;
+}
+
+.cosmo-mark--speaking .cosmo-mark__ring {
+  animation-duration: 1.2s;
+}
+
+.cosmo-mark__core {
+  animation: cosmo-core 2.2s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+[data-in-view='true'] .cosmo-mark__core,
+.cosmo-mark--active .cosmo-mark__core,
+.cosmo-mark--speaking .cosmo-mark__core {
+  animation-play-state: running;
+}
+
+.cosmo-mark--speaking .cosmo-mark__core {
+  animation-duration: 0.9s;
+}
+
+@keyframes cosmo-sweep {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cosmo-sonar {
+  0% {
+    opacity: 0;
+    transform: scale(0.45);
+  }
+  25% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes cosmo-core {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cosmo-mark .cosmo-bar {
+  .cosmo-mark__sweep,
+  .cosmo-mark__ring,
+  .cosmo-mark__core {
     animation: none !important;
+  }
+  .cosmo-mark__ring {
+    opacity: 0.4;
+    transform: scale(1);
   }
 }
 
@@ -3372,43 +3548,80 @@ html[data-i-seen="1"] .dpl-intro-loader {
   overflow-y: auto;
 }
 
-.cosmo-panel__typing {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  padding: 0.875rem 1rem;
-  border-block-end: 1px solid var(--color-hairline);
+.cosmo-msg--typing .cosmo-msg__label {
+  margin-block-end: 0.65rem;
 }
 
-.cosmo-dot {
-  width: 5px;
-  height: 5px;
-  background: var(--color-accent);
-  border-radius: 50%;
-  animation: cosmo-typing 1.4s ease-in-out infinite;
+.cosmo-typing__state {
+  position: relative;
+  padding-inline-start: 0.15em;
 }
 
-.cosmo-dot:nth-child(2) {
-  animation-delay: 0.15s;
-}
-.cosmo-dot:nth-child(3) {
-  animation-delay: 0.3s;
+.cosmo-typing__state::after {
+  content: '';
+  display: inline-block;
+  width: 0.4em;
+  height: 0.85em;
+  background: currentColor;
+  margin-inline-start: 0.25em;
+  transform: translateY(0.1em);
+  animation: cosmo-caret 0.85s steps(2, end) infinite;
 }
 
-@keyframes cosmo-typing {
+@keyframes cosmo-caret {
   0%,
-  100% {
-    opacity: 0.3;
-  }
   50% {
     opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.cosmo-typing__scan {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background: var(--color-hairline);
+  overflow: hidden;
+}
+
+.cosmo-typing__line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-accent) 30%,
+    var(--color-accent) 70%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: cosmo-scan 1.6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes cosmo-scan {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(250%);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cosmo-dot {
+  .cosmo-typing__line,
+  .cosmo-typing__state::after {
     animation: none;
-    opacity: 0.7;
+  }
+  .cosmo-typing__line {
+    transform: translateX(0);
+    width: 100%;
+    opacity: 0.4;
   }
 }
 

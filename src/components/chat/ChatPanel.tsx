@@ -317,11 +317,16 @@ export default function ChatPanel({ open, onClose }: Props) {
         {isStreaming &&
         displayMessages.length > 0 &&
         displayMessages[displayMessages.length - 1].role === 'user' ? (
-          <div className="cosmo-panel__typing" aria-label="Cosmo is replying">
-            <span className="cosmo-dot" />
-            <span className="cosmo-dot" />
-            <span className="cosmo-dot" />
-          </div>
+          <article className="cosmo-msg cosmo-msg--typing" aria-label="Cosmo is replying">
+            <header className="cosmo-msg__label" data-role="assistant">
+              <span>
+                Q. <span className="cosmo-typing__state">Analyzing</span>
+              </span>
+            </header>
+            <div className="cosmo-typing__scan" aria-hidden="true">
+              <span className="cosmo-typing__line" />
+            </div>
+          </article>
         ) : null}
 
         {error ? (

@@ -365,12 +365,29 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ### Commit 15. Lighthouse CI assertions for INP, CLS, LCP, perf score
 
-- Status: PLANNED
-- SHA:
-- Files changed (lighthouserc.json + GitHub Actions workflow):
-- LHCI local run output (`pnpm dlx @lhci/cli autorun` against 3 pillar pages):
+- Status: DONE
+- SHA: f3dc7b63182fd90df1953c203add236c6c907434
+- Files changed: lighthouserc.json (new), .github/workflows/lighthouse.yml (new)
+- LHCI local run output (3 URLs × 3 runs, median report fetched and parsed):
+  - `/` → perf 1.0, LCP 418ms, CLS 0, TBT 0ms
+  - `/pricing` → perf 1.0, LCP 428ms, CLS 0, TBT 0ms
+  - `/recovery` → perf 1.0, LCP 426ms, CLS 0, TBT 0ms
+  - All four assertions pass with significant headroom (perf ≥ 0.9, LCP ≤ 2500, CLS ≤ 0.1, TBT ≤ 200)
+- INP swap: prompt asked for `interaction-to-next-paint`, but lab Lighthouse cannot measure INP — it's a passive observer that only records during real user interactions, returns 0/undefined in headless CLI runs. First LHCI run failed with `auditRan` warnings on INP for all three URLs. Swapped to `total-blocking-time`, the lab-measurable proxy. INP itself should be tracked via Vercel Speed Insights / CrUX field data.
+- Workflow: `.github/workflows/lighthouse.yml` runs on PR or push to `main` / `rebuild/from-scratch`. Uses pnpm/action-setup@v4, node 24, `pnpm dlx @lhci/cli autorun`. 20-minute timeout.
+- startServerCommand: `pnpm build:standalone && pnpm start:standalone` (plain node) instead of `pnpm start` which uses bun (not installed in CI runners).
+- Reports uploaded to LHCI temporary public storage; URLs in commit message.
 - Gate output:
-- Blockers:
+  ```
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
 
 ### Commit 16. text-accent contrast audit
 

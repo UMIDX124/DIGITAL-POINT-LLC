@@ -27,6 +27,14 @@ const what = [
     title: 'Custom escalation paths',
     desc: 'You define what reaches a human. Cost thresholds, sensitivity tags, confidence scores, sentiment triggers. Tunable per workflow.',
   },
+  {
+    title: 'QA review pass',
+    desc: 'Operator manually verifies high-stakes agent output before it ships. Catches the 1-in-50 hallucinations that drift through automated checks.',
+  },
+  {
+    title: 'Edge-case codification',
+    desc: 'When operators handle a one-off exception, they write the rule that absorbs it next time. Your agent gets smarter from human edge work.',
+  },
 ];
 
 export default function OperatorsPage() {

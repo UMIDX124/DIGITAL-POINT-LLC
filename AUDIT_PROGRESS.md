@@ -951,6 +951,29 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Mock-up reference for future implementation: section frame `Section 05 · Signed`, blockquote at clamp(32px, 4.8vw, 64px) with opening + closing quote marks in amber, 48×48 initials avatar (FR or AT mono), name + role + meta line `AUDIT NO. xxx · DELIVERED YYYY.MM.DD · WILMINGTON, DE`.
 - Blockers: real founder quote pending. Logged as follow-up.
 
+### Commit V8. SVG system flow schematic on homepage
+
+- Status: DONE
+- SHA: 67d4ded52b0785b0c1c25c2e6109a9ade514e092
+- Files changed (4): new `src/components/visuals/SystemFlowSchematic.tsx`, new `src/components/sections/HomeSystemFlow.tsx`, `src/app/globals.css` (`.dpl-flow__*` rules), `src/app/(marketing)/page.tsx` (mount between PillarsSection and MathSection).
+- SVG: code-generated, no external image, no client JS, no animation. Box-and-arrow flow: Inbound (lead · form · signal) → N8N WORKFLOW (orchestrate) → GROQ AGENT (decide) → OPERATOR AUDIT (amber-tinted fill with `var(--color-accent-soft)` bg + `var(--color-accent)` stroke, the only human-owned step) → POSTGRES → CRM / SLACK / EMAIL bus. Marker `<marker id="dpl-flow-arrow">` for amber arrowheads on every line. `FIG. SYS · DPL PRODUCTION FLOW` caption bottom-left. `compact` prop supported for tight mounts; default 720×380 with detailed labels.
+- Section frame: dpl-section with `Section 05 · System flow` rail label + `p.05 / p.09` page indicator. Two-column grid (1fr / 1.4fr at ≥1024px). Left: amber-rule eyebrow "System flow", h2 "A production stack, not a chatbot demo.", body, hairline-top mono caption "Operator-audited edges are the only step a human owns. The rest is automated." Right: diagram in a hairline-strong bordered card.
+- Accessibility: SVG carries `role="img"` + descriptive `aria-label` reading the full flow narrative. All node text rendered as `<text>` so screen readers pick up the labels.
+- Verification: focused screenshot at `docs/screenshots/commit-30-focus/flow.png` confirms the full diagram renders with amber arrows, amber operator-audit tint, and labels resolved correctly. Tokens flow through SVG attributes (stopColor / fill / stroke all accept var()).
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+
 ---
 
 ## Final verification

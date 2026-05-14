@@ -598,6 +598,40 @@ If any field is empty or says "n/a" without explicit justification, the commit i
   ```
 - Blockers: real personal emails for `FOUNDER_EMAIL_FAIZAN` and `FOUNDER_EMAIL_ANWAAR` env vars pending from user (next prompt). Until set in Vercel, both fall back to `info@digitalpointllc.com` and dedupe to single recipient.
 
+### Commit H6. Gate empty-category CollectionPage schema
+
+- Status: DONE
+- SHA: e03ace9571426122b19dbce40e205b60b0d42a8f
+- Files changed: src/app/(marketing)/blog/category/[category]/page.tsx
+- Change: `collectionPage` constant now null when `posts.length === 0`. JSX guards schema `<script>` emit on `collectionPage` truthiness.
+- Note on prompt premise: prompt + earlier ledger follow-up entry described "6 of 9 categories have zero indexable posts emitting empty-hasPart schemas." Verified against current data — the schema does NOT filter `posts` by `indexable` (it uses `getAllPosts().filter(category === X)`), and every defined categoryMeta category has ≥4 posts in `src/content/blog/`:
+  - Paid Ads Benchmarks: 30 posts
+  - Marketing Attribution: 21
+  - CAC ROAS Optimization: 17
+  - Growth Systems: 13
+  - Marketing Analytics: 11
+  - Remote Workforce: 10
+  - Workflow Automation: 5
+  - Pricing Transparency: 5
+  - AI Agents: 4
+  - (plus 2 unmatched-category posts: "ROAS Optimization" and "Remote Operators" — these silently fall through to no category page since they're not in categoryMeta)
+- So the defensive gate is currently never triggered. Acts as protection for future category additions before their content arrives. Did not also gate on `hasIndexable` (which WOULD trigger for noindex categories) since prompt instruction was specifically `posts.length > 0`.
+- Verification (`curl http://localhost:3000/blog/category/ai-agents | grep -c "CollectionPage"`): 1 match (schema renders for populated categories — gate doesn't break the path). Non-existent category slugs 404 correctly.
+- Gate output (last 10 lines of `pnpm build`):
+  ```
+  ├ ƒ /tools/cac-calculator
+  ├ ƒ /tools/dashboard-cost-calculator
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
+- Follow-up: 2 posts have categories not in categoryMeta ("ROAS Optimization", "Remote Operators"). They render as part of other categories (default "Growth Systems" fallback) or get silently dropped. Either rename their frontmatter categories or add them to categoryMeta. Not in H6 scope.
+
 ---
 
 ## Final verification

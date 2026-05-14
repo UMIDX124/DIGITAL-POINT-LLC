@@ -188,12 +188,23 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ### Commit 7. Category hub metadata + CollectionPage schema
 
-- Status: PLANNED
-- SHA:
-- Files changed:
-- Category source (where the list of categories lives):
+- Status: DONE
+- SHA: 4dd13a892468ab40d005c89c6608e5c139252bcd
+- Files changed: src/app/(marketing)/blog/category/[category]/page.tsx
+- Category source: `src/lib/blog.ts` `categoryMeta` (9 categories: AI Agents, Workflow Automation, Pricing Transparency, Marketing Attribution, Paid Ads Benchmarks, CAC ROAS Optimization, Marketing Analytics, Remote Workforce, Growth Systems). Each entry has `color`, `slug`, `description`.
+- Schema added (CollectionPage): name, description, url, hasPart (array of BlogPosting refs for every post in the category).
+- Metadata expansion: title pattern "$Category articles | DPL Blog", Twitter summary_large_image, OG (siteName/url/type=website/locale/image). Preserved existing noindex-when-no-indexable-posts logic.
 - Gate output:
-- Blockers:
+  ```
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Blockers: none.
 
 ### Commit 8. Convert cookies page to RSC
 

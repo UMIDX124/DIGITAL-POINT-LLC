@@ -62,7 +62,7 @@ export function ArticleSchema({
       url: 'https://digitalpointllc.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://digitalpointllc.com/Dp-logo1.png',
+        url: 'https://digitalpointllc.com/dp-mark-light.png',
       },
     },
     mainEntityOfPage: {

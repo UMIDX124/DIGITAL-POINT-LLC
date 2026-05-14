@@ -38,7 +38,7 @@ export function Footer() {
         <div className="dpl-footer__grid">
           <div className="dpl-footer__col">
             <Link href="/" className="dpl-nav__brand" style={{ marginBlockEnd: '1rem' }}>
-              <Logomark className="dpl-logo-footer" size={320} />
+              <Logomark mode="lockup" variant="light" markSize={36} textSize={104} gap={12} className="dpl-logo-footer" />
             </Link>
             <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--text-sm)', maxWidth: '28rem', lineHeight: 1.6 }}>
               Production AI agent operations. We deploy and run agent stacks for B2B

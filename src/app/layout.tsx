@@ -130,7 +130,7 @@ export default async function RootLayout({
               "@type": "Organization",
               name: "Digital Point LLC",
               url: "https://digitalpointllc.com",
-              logo: "https://digitalpointllc.com/Dp-logo1.png",
+              logo: "https://digitalpointllc.com/dp-mark-light.png",
               description:
                 "AI agents and trained operators run your ops and reporting work. Same output as a 4-person internal team, one retainer. Built for $1M-$50M companies.",
               sameAs: [
@@ -228,7 +228,7 @@ export default async function RootLayout({
             effect. Color retained inline so unstyled fallback is readable. */}
         <div className="dpl-intro-loader" aria-hidden="true">
           <span className="dpl-intro-mascot">
-            <Logomark variant="dark" priority size={1120} className="dpl-intro-mascot-mark" />
+            <Logomark mode="lockup" variant="dark" priority markSize={44} textSize={152} gap={14} className="dpl-intro-mascot-mark" />
           </span>
           <span className="dpl-intro-line" />
         </div>

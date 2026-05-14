@@ -40,7 +40,7 @@ export function ServiceSchema({
       '@type': 'Organization',
       name: 'Digital Point LLC',
       url: 'https://digitalpointllc.com',
-      logo: 'https://digitalpointllc.com/Dp-logo1.png',
+      logo: 'https://digitalpointllc.com/dp-mark-light.png',
     },
     areaServed: { '@type': 'Place', name: areaServed },
     ...(serviceTypes && serviceTypes.length > 0

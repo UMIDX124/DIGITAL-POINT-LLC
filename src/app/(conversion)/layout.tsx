@@ -22,7 +22,7 @@ export default function ConversionLayout({
         }}
       >
         <Link href="/" className="dpl-nav__brand" aria-label="Digital Point home">
-          <Logomark className="dpl-logo-conversion" size={56} />
+          <Logomark mode="mark" variant="light" size={56} className="dpl-logo-conversion" />
           <span>Digital Point</span>
         </Link>
 

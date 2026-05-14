@@ -46,7 +46,6 @@ async function writePng(svg, outPath, { compressionLevel = 9, palette = true } =
 }
 
 const targets = [
-  { path: 'public/Dp-logo1.png', size: 256, rounded: 32 },
   { path: 'public/icon-192.png', size: 192, rounded: 24 },
   { path: 'public/icon-512.png', size: 512, rounded: 64 },
   { path: 'public/apple-touch-icon.png', size: 180, rounded: 22 },

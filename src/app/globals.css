@@ -1529,6 +1529,65 @@ html[data-i-seen="1"] .dpl-intro-loader {
 }
 
 /* ============================================================
+   System flow (V8). Code-generated SVG, no animation by default.
+   ============================================================ */
+
+.dpl-flow__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .dpl-flow__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: 4rem;
+  }
+}
+
+.dpl-flow__title {
+  font-size: clamp(28px, 3.6vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin: 0 0 1.25rem;
+  max-width: 22ch;
+}
+
+.dpl-flow__body {
+  font-size: clamp(16px, 1.2vw, 17.5px);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  margin: 0 0 1.25rem;
+  max-width: 38ch;
+}
+
+.dpl-flow__caption {
+  padding-block-start: 1rem;
+  border-block-start: 1px solid var(--color-hairline);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--color-text-tertiary);
+  margin: 0;
+  max-width: 42ch;
+}
+
+.dpl-flow__diagram {
+  border: 1px solid var(--color-hairline-strong);
+  padding: 1.5rem;
+  background: var(--color-canvas);
+}
+
+.dpl-flow__diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ============================================================
    Pillar card grid
    ============================================================ */
 

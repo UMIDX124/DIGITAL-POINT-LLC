@@ -4,6 +4,7 @@ import { HomeEvidence } from '@/components/sections/HomeEvidence';
 import { AgencyMailboxPositioning } from '@/components/sections/AgencyMailboxPositioning';
 import { RecoverySection } from '@/components/sections/RecoverySection';
 import { PillarsSection } from '@/components/sections/PillarsSection';
+import { HomeSystemFlow } from '@/components/sections/HomeSystemFlow';
 import { MathSection } from '@/components/sections/MathSection';
 import { FoundersSection } from '@/components/sections/FoundersSection';
 import { ProcessSection } from '@/components/sections/ProcessSection';
@@ -19,6 +20,7 @@ export default function HomePage() {
       <AgencyMailboxPositioning />
       <RecoverySection />
       <PillarsSection />
+      <HomeSystemFlow />
       <MathSection />
       <FoundersSection variant="compact" />
       <ProcessSection />

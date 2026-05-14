@@ -1311,6 +1311,17 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit X4. Add OperatorStatus, MessageBubble, SuggestedFollowups chat components
+
+- Status: DONE
+- Files changed (4): `src/components/chat/OperatorStatus.tsx` (new), `src/components/chat/MessageBubble.tsx` (new), `src/components/chat/SuggestedFollowups.tsx` (new), `src/app/globals.css` (Cosmo chat block appended).
+- `OperatorStatus`: client component, mono caps header with amber pulse dot + live HH:MM clock that refreshes every 30s. Marked `data-design-only` per project rule until a real ops-calendar feed exists.
+- `MessageBubble`: renders user / assistant / system messages with mono caps labels (assistant labels amber-tinted with `Q. 01` numbering). Uses `react-markdown` with an explicit `allowedElements` allowlist (p, strong, em, a, ul/ol/li, code/pre, blockquote, br) for defense-in-depth on rendered content; external links open with `noopener noreferrer`.
+- `SuggestedFollowups`: hairline-bordered mono caps chips that slice to max 3 suggestions and call back via `onPick(text)` when clicked. Renders nothing when suggestions array is empty.
+- Added a new `globals.css` block (`.cosmo-operator-status`, `.cosmo-msg`, `.cosmo-followups`) styled as operator-brief surfaces. No rounded corners, single amber accent for assistant labels and the pulse dot. Reduced-motion guard disables the pulse animation. Followup chip hover state flips border + text to amber.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):
 - `git config --get remote.origin.url` (must equal `git@github.com:UMIDX124/DIGITAL-POINT-LLC.git`):
 - `cat .vercel/project.json | grep projectName` (must equal `digitalpointllc-1`):

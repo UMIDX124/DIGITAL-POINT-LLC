@@ -93,7 +93,7 @@ export default function RecoveryPage() {
         <div className="hero-inner">
           <p className="hero-eyebrow">
             <span className="hero-eyebrow__rule" aria-hidden="true" />
-            Recovery service · 2-week diagnosis
+            Pillar 04 · Recovery · 2-week diagnosis
           </p>
 
           <h1 className="hero-title hero-title--ob">

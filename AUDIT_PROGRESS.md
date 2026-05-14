@@ -1246,6 +1246,14 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit P15. Unify pillar numbering convention
+
+- Status: DONE
+- Files changed (1): `src/app/(marketing)/recovery/page.tsx`.
+- /agents already used `Pillar 01 · AI Agents`, /automation `Pillar 02 · Workflow Automation`, /operators `Pillar 03 · Remote Operators` — the prompt's claim that /agents used `PILLAR #1` was outdated. Only /recovery still framed itself as `Recovery service · 2-week diagnosis`; updated to `Pillar 04 · Recovery · 2-week diagnosis` so Recovery sits in the pillar sequence per CLAUDE.md ("category creator but lives as the 4th pillar"). Format locked: zero-padded numerals, no hash.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):

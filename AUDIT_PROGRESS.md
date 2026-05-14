@@ -1196,6 +1196,15 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings, `pnpm build` succeeded.
 - Blockers: none.
 
+### Commit P10. Normalize footnote superscript size + mono tracking 3-tier
+
+- Status: DONE
+- Files changed (1): `src/app/globals.css` (token additions + retrofit of eyebrow classes + hero superscript clamp).
+- Part A. Hero footnote superscripts (`.hero-title__fn`) reduced from `font-size: 0.28em` to `0.18em`. At a 144px hero display, sup markers go from ~40px down to ~26px — properly subordinate, still legible. Other props unchanged (mono, accent color, weight 500, vertical-align super).
+- Part B. Added `--tracking-mono-body: 0.04em`, `--tracking-mono-label: 0.08em`, `--tracking-mono-eyebrow: 0.12em` to `@theme inline`. Retrofitted the four eyebrow / section-rail classes (`.eyebrow`, `.hero-eyebrow`, `.dpl-eyebrow`, `.dpl-section__rail-label`) to use `var(--tracking-mono-eyebrow)`. Other letter-spacing values across the stylesheet stay as inline `em` values for now — locked tokens are available for further normalization in subsequent commits.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 
 
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):

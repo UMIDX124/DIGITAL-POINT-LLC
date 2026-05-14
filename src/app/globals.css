@@ -124,6 +124,11 @@
   --font-size-h2-section: clamp(32px, 4.4vw, 56px);
   --font-size-h2-minor: clamp(24px, 3.2vw, 40px);
 
+  /* Mono tracking (locked 3-tier, Batch Y P10) */
+  --tracking-mono-body: 0.04em;
+  --tracking-mono-label: 0.08em;
+  --tracking-mono-eyebrow: 0.12em;
+
   /* Spacing scale (4px units) */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -254,7 +259,7 @@ select {
 .eyebrow {
   font-family: var(--font-mono);
   font-size: var(--text-eyebrow);
-  letter-spacing: 0.16em;
+  letter-spacing: var(--tracking-mono-eyebrow);
   text-transform: uppercase;
   color: var(--color-text-tertiary);
 }
@@ -806,7 +811,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   gap: 0.75rem;
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.14em;
+  letter-spacing: var(--tracking-mono-eyebrow);
   text-transform: uppercase;
   color: var(--color-accent);
   margin-block-end: 1.5rem;
@@ -836,7 +841,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   display: inline-block;
   margin-inline-start: 0.05em;
   font-family: var(--font-mono);
-  font-size: 0.28em;
+  font-size: 0.18em;
   font-weight: 500;
   color: var(--color-accent);
   vertical-align: super;
@@ -1255,7 +1260,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   transform: rotate(180deg);
   font-family: var(--font-mono);
   font-size: 10.5px;
-  letter-spacing: 0.16em;
+  letter-spacing: var(--tracking-mono-eyebrow);
   text-transform: uppercase;
   color: var(--color-text-quaternary);
 }
@@ -1277,7 +1282,7 @@ html[data-i-seen="1"] .dpl-intro-loader {
   gap: 0.75rem;
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.14em;
+  letter-spacing: var(--tracking-mono-eyebrow);
   text-transform: uppercase;
   color: var(--color-accent);
   margin-block-end: 1.25rem;

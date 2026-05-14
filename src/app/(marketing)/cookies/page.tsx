@@ -1,7 +1,6 @@
-'use client';
-
 import Link from 'next/link';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
+import { ReopenCookieBannerButton } from './ReopenCookieBannerButton';
 
 const sections = [
   {
@@ -32,12 +31,6 @@ const sections = [
 ];
 
 export default function CookiesPage() {
-  const reopenBanner = () => {
-    if (typeof window !== 'undefined') {
-      document.dispatchEvent(new CustomEvent('dpl:open-cookie-prefs'));
-    }
-  };
-
   return (
     <>
       <BreadcrumbSchema
@@ -65,9 +58,7 @@ export default function CookiesPage() {
           </p>
 
           <div className="hero-cta-row">
-            <button type="button" className="btn btn-primary" onClick={reopenBanner}>
-              Re-open cookie preferences
-            </button>
+            <ReopenCookieBannerButton />
           </div>
         </div>
       </section>

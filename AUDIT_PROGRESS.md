@@ -261,14 +261,27 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 
 ### Commit 10. Fix ChatPanel mobile width overflow
 
-- Status: PLANNED
-- SHA:
-- Files changed:
-- Screenshots at 320 and 360:
-  - docs/screenshots/commit-10/chat-320.png
-  - docs/screenshots/commit-10/chat-360.png
+- Status: DONE
+- SHA: 679a6d7d5d04ce0152dc5bc9b041672abf313d92
+- Files changed: src/components/chat/ChatPanel.tsx (one-line className swap)
+- Screenshots at 320 and 360 (with cookie + storage pre-set to bypass intro loader + cookie banner overlays):
+  - docs/screenshots/commit-10/chat-320.png (712132 bytes)
+  - docs/screenshots/commit-10/chat-360.png (707807 bytes)
+- Overflow check via Playwright `documentElement.scrollWidth === clientWidth`:
+  - 320 viewport: scrollWidth=320, clientWidth=320, hasOverflow=false, panelOpen=true
+  - 360 viewport: scrollWidth=360, clientWidth=360, hasOverflow=false, panelOpen=true
 - Gate output:
-- Blockers:
+  ```
+  └ ƒ /tools/roas-calculator
+
+
+  ƒ Proxy (Middleware)
+
+  ○  (Static)   prerendered as static content
+  ƒ  (Dynamic)  server-rendered on demand
+  ```
+- Selector note: prompt suggested `[data-cosmo-fab]` but the actual attribute is `[data-chat-trigger]` on `src/components/chat/ChatTrigger.tsx:76`.
+- Blockers: none.
 
 ### Commit 11. 25s abort ceiling on Groq fetch in chat route
 

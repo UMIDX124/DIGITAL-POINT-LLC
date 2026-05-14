@@ -39,6 +39,36 @@ function greetingFor(path: string): string {
   return "Hi. I'm Cosmo, a trained agent for DPL. Ask about agents, automation, pricing, or recovery. Or hand off to Faizan for a founder-direct reply.";
 }
 
+type QuickAction = { label: string; text: string };
+
+function quickActionsFor(path: string): QuickAction[] {
+  if (path.startsWith('/pricing')) {
+    return [
+      { label: 'Walk pricing', text: 'Walk me through pricing.' },
+      { label: 'Book audit', text: "I'd like to book an audit." },
+      { label: 'Recovery', text: 'My AI agent is broken. Can you help?' },
+    ];
+  }
+  if (path.startsWith('/recovery')) {
+    return [
+      { label: 'Scope recovery', text: 'My AI agent is broken. Can you help?' },
+      { label: 'See pricing', text: 'Walk me through pricing.' },
+      { label: 'Book audit', text: "I'd like to book an audit." },
+    ];
+  }
+  if (path.startsWith('/audit')) {
+    return [
+      { label: 'What to send', text: 'What should I include in the audit form?' },
+      { label: 'See pricing', text: 'Walk me through pricing.' },
+    ];
+  }
+  return [
+    { label: 'Book audit', text: "I'd like to book an audit." },
+    { label: 'See pricing', text: 'Walk me through pricing.' },
+    { label: 'Recovery', text: 'My AI agent is broken. Can you help?' },
+  ];
+}
+
 function readMessageText(m: UIMessage): string {
   if (!m.parts) return '';
   return m.parts
@@ -284,6 +314,21 @@ export default function ChatPanel({ open, onClose }: Props) {
       ) : null}
 
       <footer className="cosmo-panel__foot">
+        {!handoffSent && messages.length <= 1 ? (
+          <div className="cosmo-panel__quick">
+            {quickActionsFor(pathname).map((qa) => (
+              <button
+                key={qa.label}
+                type="button"
+                onClick={() => submit(qa.text)}
+                disabled={isStreaming}
+                className="cosmo-panel__quick-chip"
+              >
+                {qa.label}
+              </button>
+            ))}
+          </div>
+        ) : null}
         {!handoffSent ? (
           <div className="cosmo-panel__handoff">
             <HandoffButton

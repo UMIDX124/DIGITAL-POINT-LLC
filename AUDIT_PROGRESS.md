@@ -1356,6 +1356,20 @@ If any field is empty or says "n/a" without explicit justification, the commit i
 - Quality gates: tsc 0 errors, lint 0 warnings.
 - Blockers: none.
 
+### Commit X8. Page-aware greetings + quick-action wiring
+
+- Status: DONE
+- Files changed (2): `src/components/chat/ChatPanel.tsx` (quick-actions row + per-route action lists), `src/app/globals.css` (`.cosmo-panel__quick*` rules).
+- Page-aware greetings were already in place from X5 via `greetingFor(pathname)`. X8 adds the matching `quickActionsFor(pathname)` table — hand-tuned 2-3 chips per surface:
+  - `/pricing` → Walk pricing / Book audit / Recovery
+  - `/recovery` → Scope recovery / See pricing / Book audit
+  - `/audit` → What to send / See pricing
+  - default → Book audit / See pricing / Recovery
+- Chips render only when the conversation is in its initial state (`messages.length <= 1`) and the handoff has not been sent. Clicking submits the pre-canned text as if the user typed it, then the chips collapse once Cosmo's reply arrives.
+- Styling: hairline-bordered mono caps chips that match the followup-chip pattern from X4 but live above the handoff button + input.
+- Quality gates: tsc 0 errors, lint 0 warnings.
+- Blockers: none.
+
 - `git log --oneline rebuild/from-scratch ^main | wc -l` (must equal commits actually shipped):
 - `git config --get remote.origin.url` (must equal `git@github.com:UMIDX124/DIGITAL-POINT-LLC.git`):
 - `cat .vercel/project.json | grep projectName` (must equal `digitalpointllc-1`):

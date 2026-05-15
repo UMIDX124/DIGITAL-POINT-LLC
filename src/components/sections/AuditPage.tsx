@@ -124,6 +124,43 @@ export function AuditPage() {
 
   return (
     <>
+      {/*
+        F·01 fallback. The interactive wizard above is the primary path,
+        but it depends on hydration. A no-JS visitor (slow network, CSP
+        block, ad-blocker breaking the bundle) needs a working submit
+        path too. This <noscript> block ships a fully server-rendered
+        form that posts directly to /api/audit. The honeypot input
+        matches the wizard's. The CSS class .audit-fallback shows it
+        only when JS is disabled; the wizard never renders for those
+        users so the surfaces do not collide.
+      */}
+      <noscript>
+        <section className="audit-fallback">
+          <div className="audit-fallback__inner">
+            <h2 className="audit-fallback__h2">Submit your audit request</h2>
+            <p className="audit-fallback__lead">
+              JavaScript looks turned off. The full wizard needs it. Use this
+              shorter form and a co-founder will reply inside 24 to 48 hours.
+            </p>
+            <form action="/api/audit" method="POST" className="audit-fallback__form">
+              <div style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+                <label htmlFor="audit-fallback-website">Website (leave blank)</label>
+                <input id="audit-fallback-website" type="text" name="website" tabIndex={-1} autoComplete="off" />
+              </div>
+              <label htmlFor="audit-fallback-name">Name <span aria-hidden="true">*</span></label>
+              <input id="audit-fallback-name" type="text" name="name" required autoComplete="name" />
+              <label htmlFor="audit-fallback-email">Work email <span aria-hidden="true">*</span></label>
+              <input id="audit-fallback-email" type="email" name="email" required autoComplete="email" />
+              <label htmlFor="audit-fallback-company">Company</label>
+              <input id="audit-fallback-company" type="text" name="company" autoComplete="organization" />
+              <label htmlFor="audit-fallback-bottleneck">Tell us where you&rsquo;re stuck <span aria-hidden="true">*</span></label>
+              <textarea id="audit-fallback-bottleneck" name="bottleneck" rows={4} required />
+              <button type="submit">Submit audit request</button>
+            </form>
+          </div>
+        </section>
+      </noscript>
+
       {/* Hero */}
       <section className="relative min-h-[30vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-canvas-dark)] via-[var(--color-canvas-dark-elevated)] to-[var(--color-canvas-dark-elevated)]" />
@@ -393,7 +430,7 @@ export function AuditPage() {
                             </>
                           ) : (
                             <>
-                              Get Free Audit
+                              Submit audit request
                               <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                             </>
                           )}
@@ -487,7 +524,7 @@ export function AuditPage() {
                   onClick={() => window.dispatchEvent(new Event('cosmo:open'))}
                   className="flex items-center gap-2 text-[color:var(--accent-primary)] hover:text-[color:var(--accent-bright)] transition-colors text-sm"
                 >
-                  Talk to Cosmo &rarr;
+                  Or chat with us first &rarr;
                 </button>
               </GlassCard>
             </FadeUp>

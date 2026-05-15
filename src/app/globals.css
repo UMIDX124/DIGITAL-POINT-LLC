@@ -2858,6 +2858,72 @@ select {
   .dpl-nav__cta-btn--ghost { display: none; }
 }
 
+/* F·01 noscript fallback form on /audit. Hidden whenever JS hydrates
+   (the wizard takes over). Always present in server-rendered HTML for
+   crawler discovery and no-JS submission. */
+.audit-fallback {
+  background: var(--color-canvas);
+  padding: 3rem 1.5rem;
+  border-block-end: 1px solid var(--color-hairline);
+}
+.audit-fallback__inner {
+  max-width: 32rem;
+  margin-inline: auto;
+}
+.audit-fallback__h2 {
+  font-family: var(--font-sans);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  margin-block-end: 0.5rem;
+}
+.audit-fallback__lead {
+  font-size: 14.5px;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+  margin-block-end: 1.5rem;
+}
+.audit-fallback__form {
+  display: grid;
+  gap: 0.65rem;
+}
+.audit-fallback__form label {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-block-start: 0.5rem;
+}
+.audit-fallback__form input,
+.audit-fallback__form textarea {
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--color-hairline-strong);
+  border-radius: 2px;
+  background: var(--color-canvas-raised);
+  color: var(--color-text-primary);
+}
+.audit-fallback__form input:focus,
+.audit-fallback__form textarea:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-color: var(--color-accent);
+}
+.audit-fallback__form button {
+  margin-block-start: 1rem;
+  background: var(--color-ink);
+  color: var(--color-canvas);
+  border: 0;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  font-weight: 500;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.audit-fallback__form button:hover { background: var(--color-ink-soft); }
+
 /* ============================================================
    F·12 Pricing band — sits immediately under the hero so buyers
    see prices without scrolling 9 sections into the page. Uses

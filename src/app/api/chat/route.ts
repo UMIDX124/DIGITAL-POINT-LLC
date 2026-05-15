@@ -35,10 +35,6 @@ function toUIMessage(m: InputMessage, idx: number): UIMessage {
 }
 
 export async function POST(req: NextRequest) {
-  const hasKey = !!process.env.GROQ_API_KEY;
-  const keyLen = process.env.GROQ_API_KEY?.length ?? 0;
-  console.log(`[chat] req hasKey=${hasKey} keyLen=${keyLen}`);
-
   try {
     const verification = await checkBotId();
     if (verification.isBot && !verification.isVerifiedBot) {
@@ -73,6 +69,18 @@ export async function POST(req: NextRequest) {
     }
 
     const { messages: input, currentPath } = parsed.data;
+
+    // Allowlist currentPath against real routes — prevents prompt-injection
+    // via a crafted path string flowing into the system prompt.
+    const ALLOWED_PATHS = new Set([
+      '/', '/about', '/agents', '/audit', '/automation', '/blog',
+      '/case-studies', '/contact', '/cookies', '/diagnostic', '/faq',
+      '/guides', '/operators', '/pricing', '/privacy-policy', '/process',
+      '/recovery', '/research', '/results', '/stack', '/terms-of-service',
+      '/tools',
+    ]);
+    const safePath = currentPath && ALLOWED_PATHS.has(currentPath) ? currentPath : '/';
+
     const uiMessages: UIMessage[] = input
       .slice(-12)
       .map((m, i) => toUIMessage(m as InputMessage, i));
@@ -85,7 +93,7 @@ export async function POST(req: NextRequest) {
     const result = streamText({
       model: groq(modelId),
       system: buildCosmoSystemPrompt({
-        currentPath,
+        currentPath: safePath,
         onCallOperator: 'Faizan',
       }),
       messages: modelMessages,

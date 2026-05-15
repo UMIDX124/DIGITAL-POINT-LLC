@@ -1,9 +1,12 @@
 import { z } from 'zod';
 
+// Blocks CRLF + NUL so user input can never split an SMTP/HTTP header.
+const NO_CTRL = /^[^\r\n\x00]*$/;
+
 export const emailSchema = z.string().trim().max(254).email();
-export const nameSchema = z.string().trim().min(1).max(120);
+export const nameSchema = z.string().trim().min(1).max(120).regex(NO_CTRL, 'Invalid characters');
 export const messageSchema = z.string().trim().min(1).max(5000);
-export const optionalShortString = z.string().trim().max(500).optional();
+export const optionalShortString = z.string().trim().max(500).regex(NO_CTRL, 'Invalid characters').optional();
 
 export const utmFields = z
   .object({

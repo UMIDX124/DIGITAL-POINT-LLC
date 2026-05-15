@@ -566,184 +566,6 @@ select {
   top: var(--space-4);
 }
 
-/* ============================================================
-   Intro loader (root layout brand mark) — minimal, brief
-   ============================================================ */
-
-/* ============================================================
-   Operator console boot splash. Light canvas (#FAFAF7), mono
-   typography, staggered boot lines. Personal touch: last three
-   lines name Faizan and Anwaar as on-call operators so the
-   "human watches the agents" promise lands at first paint.
-   Auto-dismisses at ~3.4s. CSS-only stagger. Reduced-motion
-   block at the bottom hides the splash entirely for AT users
-   so they go straight to content.
-   ============================================================ */
-
-.dpl-intro-loader {
-  position: fixed;
-  inset: 0;
-  display: grid;
-  grid-template-rows: auto auto 1fr auto;
-  row-gap: clamp(1.25rem, 2.5vw, 2rem);
-  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.75rem, 6vw, 5rem);
-  background: var(--color-canvas);
-  z-index: 100;
-  animation: dpl-intro-out 0.55s cubic-bezier(0.65, 0, 0.35, 1) 3.4s forwards;
-}
-
-.dpl-intro-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-text-tertiary);
-  border-block-end: 1px solid var(--color-hairline);
-  padding-block-end: 0.85rem;
-  opacity: 0;
-  animation: dpl-intro-fade-in 0.5s ease-out 0.05s forwards;
-}
-
-.dpl-intro-head__cell {
-  white-space: nowrap;
-}
-
-.dpl-intro-head__cell--right {
-  color: var(--color-accent-text);
-}
-
-.dpl-intro-line {
-  display: block;
-  width: 100%;
-  height: 1px;
-  background: var(--color-accent);
-  transform: scaleX(0);
-  transform-origin: left center;
-  animation: dpl-intro-line-draw 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.2s forwards;
-}
-
-.dpl-intro-boot {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  align-self: center;
-  justify-self: center;
-  width: min(100%, 640px);
-  display: grid;
-  row-gap: 0.55rem;
-  font-family: var(--font-mono);
-  font-size: clamp(13px, 1.25vw, 15px);
-  line-height: 1.4;
-}
-
-.dpl-intro-boot__row {
-  display: grid;
-  grid-template-columns: 96px 1fr auto;
-  column-gap: clamp(0.75rem, 2vw, 1.5rem);
-  align-items: baseline;
-  opacity: 0;
-  transform: translateY(6px);
-  animation: dpl-intro-boot-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.dpl-intro-boot__ts {
-  color: var(--color-text-tertiary);
-  font-variant-numeric: tabular-nums;
-}
-
-.dpl-intro-boot__label {
-  color: var(--color-text-primary);
-}
-
-.dpl-intro-boot__status {
-  color: var(--color-success);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 500;
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-.dpl-intro-boot__status--accent {
-  color: var(--color-accent-text);
-  text-transform: none;
-  letter-spacing: 0.04em;
-  font-weight: 500;
-}
-
-.dpl-intro-boot__status--ready {
-  color: var(--color-accent);
-  font-size: 1.3em;
-  line-height: 1;
-  font-weight: 600;
-  animation: dpl-intro-ready-pulse 0.8s ease-in-out 1.66s 2;
-}
-
-.dpl-intro-mark {
-  align-self: end;
-  justify-self: center;
-  opacity: 0;
-  transform: translateY(8px);
-  animation: dpl-intro-mark-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 1.95s forwards;
-  padding-block-start: clamp(1.25rem, 3vw, 2rem);
-  border-block-start: 1px solid var(--color-hairline);
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-@keyframes dpl-intro-fade-in {
-  to { opacity: 1; }
-}
-
-@keyframes dpl-intro-line-draw {
-  to { transform: scaleX(1); }
-}
-
-@keyframes dpl-intro-boot-in {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes dpl-intro-mark-in {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes dpl-intro-ready-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.35; }
-}
-
-@keyframes dpl-intro-out {
-  to {
-    opacity: 0;
-    pointer-events: none;
-    visibility: hidden;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dpl-intro-loader,
-  .dpl-intro-head,
-  .dpl-intro-line,
-  .dpl-intro-boot__row,
-  .dpl-intro-mark,
-  .dpl-intro-boot__status--ready {
-    animation-duration: 0.01ms;
-    animation-delay: 0ms;
-    animation-iteration-count: 1;
-  }
-}
-
-.dpl-intro-mark-lockup { display: block; }
 .dpl-logo-footer { width: 160px; height: auto; }
 .dpl-logo-nav { width: 140px; height: auto; }
 .dpl-logo-conversion { width: 28px; height: auto; }
@@ -773,10 +595,6 @@ select {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-
-  .dpl-intro-loader {
-    display: none !important;
   }
 
   [data-reveal] {
@@ -1829,6 +1647,15 @@ select {
   font-size: 15px;
   font-weight: 500;
   letter-spacing: -0.02em;
+}
+
+.dpl-quote__avatar--photo {
+  object-fit: cover;
+  object-position: center 18%;
+  background: transparent;
+  border: 1px solid var(--color-hairline-strong, rgba(10, 10, 11, 0.18));
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .dpl-quote__name {

@@ -1,5 +1,6 @@
 import type { NextConfig } from 'next';
 import { withBotId } from 'botid/next/config';
+import { withSentryConfig } from '@sentry/nextjs';
 import withBundleAnalyzer from '@next/bundle-analyzer';
 
 // F·15. Gate the analyzer on the ANALYZE env var so dev builds stay fast.
@@ -13,6 +14,7 @@ const bundleAnalyzer = withBundleAnalyzer({ enabled: process.env.ANALYZE === '1'
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   output: 'standalone',
+  poweredByHeader: false,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production'
       ? { exclude: ['error', 'warn'] }
@@ -65,4 +67,18 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default bundleAnalyzer(withBotId(nextConfig));
+// Sentry build-time wiring. Source maps upload + tunnel route only kick
+// in when SENTRY_AUTH_TOKEN / SENTRY_ORG / SENTRY_PROJECT envs are set;
+// safe to keep wrapped even with no Sentry account yet.
+const withSentry = (cfg: NextConfig) =>
+  withSentryConfig(cfg, {
+    org: process.env.SENTRY_ORG,
+    project: process.env.SENTRY_PROJECT,
+    authToken: process.env.SENTRY_AUTH_TOKEN,
+    silent: !process.env.CI,
+    widenClientFileUpload: true,
+    tunnelRoute: '/monitoring',
+    disableLogger: true,
+  });
+
+export default withSentry(bundleAnalyzer(withBotId(nextConfig)));

@@ -41,10 +41,18 @@ export const newsletterLimiter = new Ratelimit({
   prefix: 'newsletter',
 });
 
+export const leadsLimiter = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(10, '1 h'),
+  analytics: true,
+  prefix: 'leads',
+});
+
 export function getClientIp(headers: Headers): string {
-  return (
+  const trusted =
+    headers.get('x-vercel-forwarded-for')?.split(',')[0]?.trim() ||
     headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-    headers.get('x-real-ip') ||
-    'unknown'
-  );
+    headers.get('x-real-ip')?.trim();
+  if (trusted) return trusted;
+  return `anon-${crypto.randomUUID()}`;
 }

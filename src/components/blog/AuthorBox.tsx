@@ -1,10 +1,12 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface AuthorInfo {
  name: string;
  initials: string;
+ photo?: string;
  title: string;
  bio: string;
  expertise: string[];
@@ -14,6 +16,7 @@ const authors: Record<string, AuthorInfo> = {
  'M. Faizan Rafiq': {
  name: 'M. Faizan Rafiq',
  initials: 'MF',
+ photo: '/dp-founder-faizan.jpg',
  title: 'Co-Founder',
  bio: 'Faizan has spent 8+ years in the trenches of paid acquisition, scaling brands from five-figure to seven-figure monthly ad budgets. When he\'s not optimizing ad campaigns or arguing about attribution windows, he\'s probably testing yet another landing page variation "to see." His team has learned that "quick experiment" means at least three hours of A/B testing.',
  expertise: ['Performance Marketing', 'Growth Strategy', 'Paid Acquisition'],
@@ -21,6 +24,7 @@ const authors: Record<string, AuthorInfo> = {
  'Anwaar Tayyab': {
  name: 'Anwaar Tayyab',
  initials: 'AT',
+ photo: '/dp-founder-anwaar.jpg',
  title: 'Co-Founder',
  bio: 'Anwaar is the person who will rebuild your entire reporting dashboard because one metric was slightly misleading. He turns messy ad spend data into clear, honest insights that growth teams use. Outside of data work, he\'s an avid problem-solver who treats every broken funnel like a puzzle that offends him.',
  expertise: ['Marketing Analytics', 'Attribution', 'Revenue Operations'],
@@ -48,6 +52,21 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
  >
  <div className="flex flex-col sm:flex-row gap-5 items-start">
  {/* Author avatar */}
+ {author.photo ? (
+ <Image
+ src={author.photo}
+ alt={author.name}
+ width={192}
+ height={192}
+ sizes="64px"
+ className="shrink-0 w-16 h-16 rounded-full"
+ style={{
+ border: '2px solid var(--color-accent)',
+ objectFit: 'cover',
+ objectPosition: author.name.startsWith('Anwaar') ? 'center 22%' : 'center 18%',
+ }}
+ />
+ ) : (
  <div
  className="shrink-0 w-16 h-16 rounded-full flex items-center justify-center font-display text-xl font-bold text-white"
  style={{
@@ -57,6 +76,7 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
  >
  {author.initials}
  </div>
+ )}
 
  {/* Author info */}
  <div className="flex-1 min-w-0">

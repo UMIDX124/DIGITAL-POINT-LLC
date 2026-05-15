@@ -31,12 +31,12 @@ export function HeroSection() {
           <div className="hero-grid__main">
             <p className="hero-eyebrow">
               <span className="hero-eyebrow__rule" aria-hidden="true" />
-              In-house ops costs $400K a year. We run it for $30K.
+              Operations · AI agents · Founder-led
             </p>
 
             <h1 className="hero-title hero-title--ob">
-              Hire the <span className="hero-title__amber">AI</span>.<br />
-              Skip the headcount.
+              Run a four-person ops team for{' '}
+              <span className="hero-title__amber">$30K</span> a year.
             </h1>
 
             <p className="hero-source" aria-label="Math source">

@@ -1,5 +1,14 @@
 import type { NextConfig } from 'next';
 import { withBotId } from 'botid/next/config';
+import withBundleAnalyzer from '@next/bundle-analyzer';
+
+// F·15. Gate the analyzer on the ANALYZE env var so dev builds stay fast.
+// Usage: `ANALYZE=1 pnpm build` opens the chunk graph in a browser tab.
+// Surfaces vendor chunks ripe for lazy-loading (three.js, gsap, lenis,
+// framer-motion). The 15-async-chunk profile that the audit captured is
+// the starting point; iterate the dynamic() imports until top three
+// chunks fit under a single combined 200 KB budget.
+const bundleAnalyzer = withBundleAnalyzer({ enabled: process.env.ANALYZE === '1' });
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -56,4 +65,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withBotId(nextConfig);
+export default bundleAnalyzer(withBotId(nextConfig));

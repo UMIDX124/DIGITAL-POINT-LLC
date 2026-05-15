@@ -16,17 +16,22 @@ type Props = {
   priority?: boolean;
 };
 
+// F·03 fix. webp variants re-encoded from the source PNGs at the
+// actual displayed sizes (mark 256px wide, wordmark 600px wide).
+// Drops ~1.8 MB of head-blocking bytes to ~50 KB combined. The old
+// PNG paths remain on disk for any external link that already points
+// at them, but every in-product reference now uses webp.
 const SRC = {
-  mark: { light: '/dp-mark-dark.png', dark: '/dp-mark-light.png' },
-  text: { light: '/dp-text-dark.png', dark: '/dp-text-light.png' },
+  mark: { light: '/dp-mark-dark.webp', dark: '/dp-mark-light.webp' },
+  text: { light: '/dp-text-dark.webp', dark: '/dp-text-light.webp' },
 };
 
-const MARK_W = 2000;
-const MARK_H = 2000;
-const TEXT_LIGHT_W = 1250;
-const TEXT_LIGHT_H = 375;
-const TEXT_DARK_W = 2000;
-const TEXT_DARK_H = 600;
+const MARK_W = 256;
+const MARK_H = 256;
+const TEXT_LIGHT_W = 600;
+const TEXT_LIGHT_H = 180;
+const TEXT_DARK_W = 600;
+const TEXT_DARK_H = 180;
 
 export function Logomark({
   mode = 'lockup',

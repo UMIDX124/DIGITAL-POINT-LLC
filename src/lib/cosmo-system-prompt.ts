@@ -101,25 +101,56 @@ export const COSMO_SYSTEM_PROMPT = buildCosmoSystemPrompt({});
 export const FOLLOWUPS_MARKER = '[FOLLOWUPS]';
 
 /**
+ * Scrubber for any bracket-uppercase scaffolding tokens the model may emit
+ * (e.g. [FOLLOWUPS], [HANDOFF], [ACTION], etc.). Two passes:
+ *   1) Strip everything from the FIRST scaffolding marker forward.
+ *   2) Then strip any orphan marker substrings that may have slipped in.
+ * This is the final defense before user-visible render. Even if
+ * parseFollowups below fails to parse a malformed JSON suffix, this
+ * scrubber guarantees no [TOKEN] literal lands in the DOM.
+ */
+const SCAFFOLD_TOKEN_RE = /\[(?:FOLLOWUPS|HANDOFF|ACTION|TOOL|SYSTEM|END|STOP)\][\s\S]*$/;
+const ORPHAN_TOKEN_RE = /\[(?:FOLLOWUPS|HANDOFF|ACTION|TOOL|SYSTEM|END|STOP)\]/g;
+
+export function scrubScaffolding(content: string): string {
+  return content.replace(SCAFFOLD_TOKEN_RE, '').replace(ORPHAN_TOKEN_RE, '').trimEnd();
+}
+
+/**
  * Parse [FOLLOWUPS][...] off the end of an assistant message. Returns
  * { cleanContent, followups } — followups is [] if the marker is missing
- * or malformed.
+ * or malformed. F·37 fix: cleanContent now ALWAYS runs through
+ * scrubScaffolding so a malformed marker can never leak into the chat
+ * bubble. Previously, a JSON.parse failure left the marker in the visible
+ * body if the model emitted it twice or if streaming chunks split it in
+ * a way that confused lastIndexOf.
  */
 export function parseFollowups(content: string): {
   cleanContent: string;
   followups: string[];
 } {
   const idx = content.lastIndexOf(FOLLOWUPS_MARKER);
-  if (idx === -1) return { cleanContent: content, followups: [] };
+  if (idx === -1) return { cleanContent: scrubScaffolding(content), followups: [] };
   const before = content.slice(0, idx).trimEnd();
   const after = content.slice(idx + FOLLOWUPS_MARKER.length).trim();
+  // Try strict JSON parse first.
   try {
     const parsed = JSON.parse(after);
     if (Array.isArray(parsed) && parsed.every((v) => typeof v === 'string')) {
-      return { cleanContent: before, followups: parsed.slice(0, 3) };
+      return { cleanContent: scrubScaffolding(before), followups: parsed.slice(0, 3) };
     }
   } catch {
-    // fall through
+    // fall through to permissive parse below
   }
-  return { cleanContent: before, followups: [] };
+  // Permissive recovery: extract any quoted strings from the malformed
+  // suffix. The model sometimes emits `[FOLLOWUPS]Hand off to Faizan",
+  // "Tell me more first", "Show pricing"]` (missing the leading `["`),
+  // which JSON.parse rejects but is salvageable via regex.
+  const quoted = Array.from(after.matchAll(/"([^"\\]*(?:\\.[^"\\]*)*)"/g)).map(
+    (m) => m[1],
+  );
+  if (quoted.length > 0) {
+    return { cleanContent: scrubScaffolding(before), followups: quoted.slice(0, 3) };
+  }
+  return { cleanContent: scrubScaffolding(before), followups: [] };
 }

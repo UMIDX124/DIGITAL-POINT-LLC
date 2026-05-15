@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.digitalpointllc.com"),
   title: {
     default: "Digital Point. Hire the AI. Skip the headcount.",
-    template: "%s | Digital Point LLC",
+    template: "%s · Digital Point LLC",
   },
   description:
     "AI agents and trained operators run your ops and reporting work. Same output as a 4-person internal team, one retainer. Built for $1M-$50M companies.",

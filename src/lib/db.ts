@@ -1,11 +1,11 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+ 
 let _db: any = null;
 
 async function getDb() {
   if (_db) return _db;
   try {
     const { PrismaClient } = await import('@prisma/client');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     
     const globalForPrisma = globalThis as unknown as { prisma: any };
     _db = globalForPrisma.prisma ?? new PrismaClient({
       log: process.env.NODE_ENV === 'development' ? ['query'] : [],
@@ -21,7 +21,7 @@ async function getDb() {
 }
 
 // Returns null if the DB is unavailable. Underlying errors are logged.
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+ 
 export async function withDb<T>(fn: (prisma: any) => Promise<T>): Promise<T | null> {
   const client = await getDb();
   if (!client) return null;
@@ -35,18 +35,18 @@ export async function withDb<T>(fn: (prisma: any) => Promise<T>): Promise<T | nu
 
 // Lazy proxy for legacy call sites. Throws on init failure so the route
 // can choose to 500. Query errors are logged before re-throw.
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+ 
 export const db = new Proxy({} as any, {
   get(_target, prop) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     
     return new Proxy({} as any, {
       get(_modelTarget, method) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+         
         return async (...args: any[]) => {
           const client = await getDb();
           if (!client) throw new Error('Database unavailable');
           try {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+             
             return await (client as any)[prop][method](...args);
           } catch (e) {
             console.error(`[db] ${String(prop)}.${String(method)} failed`, e);

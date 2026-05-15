@@ -114,3 +114,12 @@ model ChatHandoff {
   @@index([email])
   @@index([createdAt])
 }
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  source    String?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}

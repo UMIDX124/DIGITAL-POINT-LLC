@@ -29,18 +29,18 @@ export async function POST(req: Request) {
     const { email } = parsed.data;
     const safeEmail = escapeHtml(email);
 
-    // Store subscriber using shared db instance
+    // Store subscriber via Prisma upsert (parameterized, idempotent).
     let dbSuccess = false;
     try {
-      await db.$executeRawUnsafe(
-        `INSERT INTO NewsletterSubscriber (id, email, createdAt) VALUES (?, ?, ?) ON CONFLICT(email) DO NOTHING`,
-        crypto.randomUUID(),
-        email.toLowerCase(),
-        new Date().toISOString()
-      );
+      await db.newsletterSubscriber.upsert({
+        where: { email: email.toLowerCase() },
+        create: { email: email.toLowerCase(), source: parsed.data.source ?? null },
+        update: {},
+      });
       dbSuccess = true;
     } catch {
-      // DB might not have the table yet - continue with email notification
+      // Table may not yet exist if migrations haven't run — keep going so
+      // the founder notification still lands.
     }
 
     // Send welcome email to the subscriber

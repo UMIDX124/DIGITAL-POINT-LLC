@@ -38,6 +38,20 @@ const nextConfig: NextConfig = {
           { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
         ],
       },
+      // F·04. Public cache for marketing routes. The root layout's
+      // `await headers()` (CSP nonce) forces dynamic render, so the
+      // origin response can't be statically cached, but the Vercel
+      // edge can hold the rendered HTML for 5 min and serve stale
+      // for 24h while revalidating. API routes excluded.
+      {
+        source: '/((?!api/|_next/|favicon).*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, s-maxage=300, stale-while-revalidate=86400',
+          },
+        ],
+      },
     ];
   },
 };

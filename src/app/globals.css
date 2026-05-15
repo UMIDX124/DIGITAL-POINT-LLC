@@ -1297,6 +1297,101 @@ select {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  animation: dpl-console-row-in 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.dpl-mini-console__row[data-index='0'] {
+  animation-delay: 0ms;
+}
+.dpl-mini-console__row[data-index='1'] {
+  animation-delay: 35ms;
+}
+.dpl-mini-console__row[data-index='2'] {
+  animation-delay: 70ms;
+}
+.dpl-mini-console__row[data-index='3'] {
+  animation-delay: 105ms;
+}
+
+@keyframes dpl-console-row-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dpl-mini-console__row {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   Section progress indicator. Floats top-right after the nav,
+   updates as the user scrolls past each labeled section.
+   Hidden under 1024px (rail labels themselves hidden there).
+   ============================================================ */
+
+.dpl-progress {
+  position: fixed;
+  top: 5.25rem;
+  right: 1.5rem;
+  z-index: 30;
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  background: color-mix(in srgb, var(--color-canvas) 85%, transparent);
+  border: 1px solid var(--color-hairline);
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+  animation: dpl-progress-in 280ms ease-out both;
+}
+
+@media (min-width: 1024px) {
+  .dpl-progress {
+    display: flex;
+  }
+}
+
+.dpl-progress__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  line-height: 1;
+}
+
+.dpl-progress__page {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  line-height: 1;
+}
+
+@keyframes dpl-progress-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dpl-progress {
+    animation: none;
+  }
 }
 
 .dpl-mini-console__time {

@@ -2181,13 +2181,16 @@ select {
 
 .dpl-flow__diagram {
   border: 1px solid var(--color-hairline-strong);
-  padding: 1.5rem;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
   background: var(--color-canvas);
+  display: flex;
+  justify-content: center;
 }
 
 .dpl-flow__diagram svg {
   display: block;
   width: 100%;
+  max-width: 540px;
   height: auto;
 }
 
@@ -2309,15 +2312,20 @@ select {
   max-width: 72ch;
 }
 
+/* same width cap applied to the architecture diagram on /stack so both
+   schematics read at a consistent visual weight across pages */
 .dpl-architecture__diagram {
   border: 1px solid var(--color-hairline-strong);
-  padding: 2rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
   background: var(--color-canvas);
+  display: flex;
+  justify-content: center;
 }
 
 .dpl-architecture__diagram svg {
   display: block;
   width: 100%;
+  max-width: 620px;
   height: auto;
 }
 

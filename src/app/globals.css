@@ -1012,6 +1012,37 @@ select {
   font-weight: 600;
 }
 
+/* Hero math source line. Replaces inline footnote chain after F·05/F·06 fix.
+   Sits between H1 and sub, cites the $400K math next to its first appearance
+   in the eyebrow. */
+.hero-source {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  margin-block-start: 1.5rem;
+  padding-block-start: 1.1rem;
+  border-block-start: 1px solid var(--color-hairline);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  max-width: 62ch;
+}
+
+.hero-source__label {
+  font-weight: 600;
+  color: var(--color-accent-text);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 10.5px;
+}
+
+.hero-source__dot {
+  color: var(--color-text-tertiary);
+  font-weight: 700;
+}
+
 .hero--operator-brief .hero-sub {
   margin-block-start: 2.25rem;
   font-size: clamp(16px, 1.4vw, 18px);

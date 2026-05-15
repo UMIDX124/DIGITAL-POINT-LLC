@@ -38,24 +38,19 @@ export function HeroSection() {
           <div className="hero-grid__main">
             <p className="hero-eyebrow">
               <span className="hero-eyebrow__rule" aria-hidden="true" />
-              Our entire pitch in 6 words
+              In-house ops costs $400K a year. We run it for $30K.
             </p>
 
             <h1 className="hero-title hero-title--ob">
-              Hire the <span className="hero-title__amber">AI</span>.<sup className="hero-title__fn">01</sup><br />
-              Skip the headcount.<sup className="hero-title__fn">02</sup>
+              Hire the <span className="hero-title__amber">AI</span>.<br />
+              Skip the headcount.
             </h1>
 
-            <div className="hero-footnotes">
-              <p>
-                <span className="hero-footnotes__num">01</span>
-                Production agents we deploy on n8n + Groq + Postgres. Operator-backed. Not a chatbot template.
-              </p>
-              <p>
-                <span className="hero-footnotes__num">02</span>
-                $2,500/month replaces $400K/yr of in-house ops, average across <span data-design-only="true">6 active retainers</span>.
-              </p>
-            </div>
+            <p className="hero-source" aria-label="Math source">
+              <span className="hero-source__label">Math anchor</span>
+              <span className="hero-source__dot" aria-hidden="true">·</span>
+              Loaded cost of a four-person ops team. Sources: BLS 2025, Glassdoor, Levels.fyi. Production agents run on n8n, Groq, Postgres, operator-backed.
+            </p>
 
             <p className="hero-sub text-pretty">
               Forty-five minute audit with a <mark className="dpl-mark">co-founder</mark>. Free. Written deployment plan within five business days. No agency retainer attached.
@@ -66,7 +61,7 @@ export function HeroSection() {
                 Book a free audit
               </Link>
               <Link href="/recovery" className="dpl-btn dpl-btn--ghost">
-                Or fix a broken agent
+                Recover a broken agent
               </Link>
             </div>
           </div>

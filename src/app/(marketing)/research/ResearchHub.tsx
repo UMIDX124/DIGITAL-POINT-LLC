@@ -65,8 +65,8 @@ export function ResearchHub() {
           </p>
 
           <div className="hero-cta-row">
-            <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
-            <Link href="#reports" className="btn btn-ghost">See the reports</Link>
+            <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
+            <Link href="#reports" className="dpl-btn dpl-btn--ghost">See the reports</Link>
           </div>
         </div>
       </section>
@@ -104,7 +104,7 @@ export function ResearchHub() {
               Free audit. We&rsquo;ll benchmark your metrics against the reports.
             </h2>
             <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
-              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
+              <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
             </div>
           </div>
         </div>

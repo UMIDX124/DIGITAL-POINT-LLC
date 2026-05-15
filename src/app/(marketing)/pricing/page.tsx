@@ -218,7 +218,7 @@ export default function PricingPage() {
                 <div className="pillar-card__link">
                   <Link
                     href={t.cta.href}
-                    className={t.cta.primary ? 'btn btn-primary' : 'btn btn-ghost'}
+                    className={t.cta.primary ? 'dpl-btn dpl-btn--ink' : 'dpl-btn dpl-btn--ghost'}
                     style={{ width: '100%' }}
                   >
                     {t.cta.label}
@@ -286,7 +286,7 @@ export default function PricingPage() {
               a new workflow, we quote it before we touch a keyboard.
             </p>
             <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: '1rem' }}>
-              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
+              <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
             </div>
           </div>
         </div>

@@ -45,10 +45,10 @@ export default function DiagnosticPage() {
           </p>
 
           <div className="hero-cta-row">
-            <Link href="#diagnostic" className="btn btn-primary">
+            <Link href="#diagnostic" className="dpl-btn dpl-btn--ink">
               Start the diagnostic
             </Link>
-            <Link href="/recovery" className="btn btn-ghost">
+            <Link href="/recovery" className="dpl-btn dpl-btn--ghost">
               Recovery service
             </Link>
           </div>
@@ -72,8 +72,8 @@ export default function DiagnosticPage() {
               security, and 23 more. Written report, 1-hour walkthrough call. $5,000.
             </p>
             <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
-              <Link href="/recovery" className="btn btn-primary">Start a recovery diagnosis</Link>
-              <Link href="/audit" className="btn btn-ghost">Book a free audit</Link>
+              <Link href="/recovery" className="dpl-btn dpl-btn--ink">Start a recovery diagnosis</Link>
+              <Link href="/audit" className="dpl-btn dpl-btn--ghost">Book a free audit</Link>
             </div>
           </div>
         </div>

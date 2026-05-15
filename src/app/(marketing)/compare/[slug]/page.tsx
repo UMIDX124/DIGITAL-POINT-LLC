@@ -54,8 +54,8 @@ export default async function ComparisonPage({ params }: PageProps) {
           <p className="hero-sub text-pretty">{comparison.intro}</p>
 
           <div className="hero-cta-row">
-            <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
-            <Link href="#table" className="btn btn-ghost">See the comparison</Link>
+            <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
+            <Link href="#table" className="dpl-btn dpl-btn--ghost">See the comparison</Link>
           </div>
         </div>
       </section>
@@ -214,8 +214,8 @@ export default async function ComparisonPage({ params }: PageProps) {
               Free 45-minute audit. Co-founder reviews your setup.
             </h2>
             <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
-              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
-              <Link href="/recovery" className="btn btn-ghost">Recovery service</Link>
+              <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
+              <Link href="/recovery" className="dpl-btn dpl-btn--ghost">Recovery service</Link>
             </div>
           </div>
         </div>

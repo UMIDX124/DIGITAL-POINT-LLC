@@ -204,8 +204,8 @@ export default function PrivacyPolicyPage() {
             <p className="eyebrow eyebrow--accent">Questions about this policy</p>
             <h2 className="section-title text-balance">Reach a co-founder directly.</h2>
             <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
-              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
-              <Link href="/cookies" className="btn btn-ghost">Cookie settings</Link>
+              <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
+              <Link href="/cookies" className="dpl-btn dpl-btn--ghost">Cookie settings</Link>
             </div>
           </div>
         </div>

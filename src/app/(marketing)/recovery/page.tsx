@@ -309,10 +309,10 @@ export default function RecoveryPage() {
               Tell us what broke. We&rsquo;ll start the diagnosis.
             </h2>
             <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
-              <Link href="/audit" className="btn btn-primary">
+              <Link href="/audit" className="dpl-btn dpl-btn--ink">
                 Book a recovery audit
               </Link>
-              <Link href="/process" className="btn btn-ghost">
+              <Link href="/process" className="dpl-btn dpl-btn--ghost">
                 How an engagement runs
               </Link>
             </div>

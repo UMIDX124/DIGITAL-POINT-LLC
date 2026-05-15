@@ -259,12 +259,12 @@ export function DiagnosticTool() {
             className="hero-cta-row"
             style={{ marginBlockStart: '3rem', justifyContent: 'flex-start' }}
           >
-            <Link href="/recovery" className="btn btn-primary">
+            <Link href="/recovery" className="dpl-btn dpl-btn--ink">
               Start a recovery diagnosis
             </Link>
             <button
               type="button"
-              className="btn btn-ghost"
+              className="dpl-btn dpl-btn--ghost"
               onClick={() => {
                 setAnswers({});
                 setSubmitted(false);
@@ -440,7 +440,7 @@ export function DiagnosticTool() {
         >
           <button
             type="submit"
-            className="btn btn-primary"
+            className="dpl-btn dpl-btn--ink"
             disabled={answered === 0}
             style={{
               opacity: answered === 0 ? 0.5 : 1,

@@ -154,8 +154,8 @@ export default function OperatorsPage() {
               Free 45-minute audit. Written deployment plan within 5 days.
             </h2>
             <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
-              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
-              <Link href="/recovery" className="btn btn-ghost">Recover a broken agent</Link>
+              <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
+              <Link href="/recovery" className="dpl-btn dpl-btn--ghost">Recover a broken agent</Link>
             </div>
           </div>
         </div>

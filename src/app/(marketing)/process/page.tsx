@@ -81,8 +81,8 @@ export default function ProcessPage() {
           </p>
 
           <div className="hero-cta-row">
-            <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
-            <Link href="/pricing" className="btn btn-ghost">See pricing</Link>
+            <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
+            <Link href="/pricing" className="dpl-btn dpl-btn--ghost">See pricing</Link>
           </div>
         </div>
       </section>
@@ -154,7 +154,7 @@ export default function ProcessPage() {
               Start with the audit. The rest follows or it doesn&rsquo;t.
             </h2>
             <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
-              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
+              <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
             </div>
           </div>
         </div>

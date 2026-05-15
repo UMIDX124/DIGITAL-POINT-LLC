@@ -141,8 +141,8 @@ export default function TermsOfServicePage() {
             <p className="eyebrow eyebrow--accent">Ready to engage</p>
             <h2 className="section-title text-balance">Free audit. Written plan in 5 days.</h2>
             <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
-              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
-              <Link href="/privacy-policy" className="btn btn-ghost">Privacy policy</Link>
+              <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
+              <Link href="/privacy-policy" className="dpl-btn dpl-btn--ghost">Privacy policy</Link>
             </div>
           </div>
         </div>

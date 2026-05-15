@@ -14,10 +14,10 @@ export function CTASection() {
             We come back with which workflows fit agents and which still need operators.
           </p>
           <div className="hero-cta-row" style={{ marginBlockStart: '0', justifyContent: 'center' }}>
-            <Link href="/audit" className="btn btn-primary">
+            <Link href="/audit" className="dpl-btn dpl-btn--ink">
               Book a free audit
             </Link>
-            <Link href="/recovery" className="btn btn-ghost">
+            <Link href="/recovery" className="dpl-btn dpl-btn--ghost">
               Recover a broken agent
             </Link>
           </div>

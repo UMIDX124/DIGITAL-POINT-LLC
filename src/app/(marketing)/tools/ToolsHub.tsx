@@ -55,10 +55,10 @@ export function ToolsHub() {
           </p>
 
           <div className="hero-cta-row">
-            <Link href="/audit" className="btn btn-primary">
+            <Link href="/audit" className="dpl-btn dpl-btn--ink">
               Book a free audit
             </Link>
-            <Link href="#tools" className="btn btn-ghost">
+            <Link href="#tools" className="dpl-btn dpl-btn--ghost">
               See the tools
             </Link>
           </div>
@@ -95,8 +95,8 @@ export function ToolsHub() {
               Free 45-minute audit. Custom dashboards and attribution systems.
             </h2>
             <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
-              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
-              <Link href="/stack" className="btn btn-ghost">See the stack</Link>
+              <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
+              <Link href="/stack" className="dpl-btn dpl-btn--ghost">See the stack</Link>
             </div>
           </div>
         </div>

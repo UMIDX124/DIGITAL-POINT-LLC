@@ -103,8 +103,8 @@ export default function CookiesPage() {
             <p className="eyebrow eyebrow--accent">More detail</p>
             <h2 className="section-title text-balance">See the full privacy policy.</h2>
             <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
-              <Link href="/privacy-policy" className="btn btn-primary">Privacy policy</Link>
-              <Link href="/terms-of-service" className="btn btn-ghost">Terms of service</Link>
+              <Link href="/privacy-policy" className="dpl-btn dpl-btn--ink">Privacy policy</Link>
+              <Link href="/terms-of-service" className="dpl-btn dpl-btn--ghost">Terms of service</Link>
             </div>
           </div>
         </div>

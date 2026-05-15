@@ -23,8 +23,8 @@ export function GuidesHub({ guides }: { guides: Guide[] }) {
           </p>
 
           <div className="hero-cta-row">
-            <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
-            <Link href="#guides" className="btn btn-ghost">See the guides</Link>
+            <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
+            <Link href="#guides" className="dpl-btn dpl-btn--ghost">See the guides</Link>
           </div>
         </div>
       </section>
@@ -59,8 +59,8 @@ export function GuidesHub({ guides }: { guides: Guide[] }) {
               45-minute audit. Written deployment plan in 5 days. Free.
             </h2>
             <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
-              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
-              <Link href="/stack" className="btn btn-ghost">See the stack</Link>
+              <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
+              <Link href="/stack" className="dpl-btn dpl-btn--ghost">See the stack</Link>
             </div>
           </div>
         </div>

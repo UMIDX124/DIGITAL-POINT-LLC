@@ -190,8 +190,8 @@ export default function AgentsPage() {
               45-minute audit. Written deployment plan in 5 days.
             </h2>
             <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
-              <Link href="/audit" className="btn btn-primary">Book a free audit</Link>
-              <Link href="/pricing" className="btn btn-ghost">See pricing</Link>
+              <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>
+              <Link href="/pricing" className="dpl-btn dpl-btn--ghost">See pricing</Link>
             </div>
           </div>
         </div>

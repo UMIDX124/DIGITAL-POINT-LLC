@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Process',
   description:
     'How a DPL engagement runs. Free audit, $2,500 pilot, $2,500 monthly retainer. Slack Connect channel from day one. Operators audit every exception in real time.',
-  alternates: { canonical: 'https://digitalpointllc.com/process' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/process' },
 };
 
 const phases = [
@@ -60,8 +60,8 @@ export default function ProcessPage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://digitalpointllc.com' },
-        { name: 'Process', item: 'https://digitalpointllc.com/process' },
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Process', item: 'https://www.digitalpointllc.com/process' },
         ]}
       />
       <section className="hero">

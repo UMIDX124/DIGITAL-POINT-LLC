@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Stack',
   description:
     'The production stack DPL deploys on: n8n (self-hosted), Groq for inference, Postgres for state, TypeScript for custom services, Vercel for surfaces, Slack Connect for client observability. Open source where the cost curve flattens. Self-hosted where it counts.',
-  alternates: { canonical: 'https://digitalpointllc.com/stack' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/stack' },
 };
 
 const rationale = [
@@ -42,8 +42,8 @@ export default function StackPage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://digitalpointllc.com' },
-        { name: 'Stack', item: 'https://digitalpointllc.com/stack' },
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Stack', item: 'https://www.digitalpointllc.com/stack' },
         ]}
       />
       <section className="hero">

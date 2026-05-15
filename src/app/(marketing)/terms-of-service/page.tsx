@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Terms of Service',
   description:
     'Terms covering use of digitalpointllc.com, the audit form, the diagnostic tool, the Cosmo chat surface, and any engagement Digital Point LLC enters with you.',
-  alternates: { canonical: 'https://digitalpointllc.com/terms-of-service' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/terms-of-service' },
 };
 
 const lastUpdated = 'May 12, 2026';
@@ -77,8 +77,8 @@ export default function TermsOfServicePage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://digitalpointllc.com' },
-        { name: 'Terms', item: 'https://digitalpointllc.com/terms-of-service' },
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Terms', item: 'https://www.digitalpointllc.com/terms-of-service' },
         ]}
       />
       <section className="hero">

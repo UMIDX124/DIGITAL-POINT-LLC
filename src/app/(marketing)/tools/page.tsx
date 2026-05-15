@@ -5,7 +5,7 @@ import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 export const metadata: Metadata = {
   title: 'Free Marketing Tools & Calculators',
   description: 'Free ROAS calculator, CAC calculator, ad spend profit calculator, and more. Instantly analyze your marketing performance.',
-  alternates: { canonical: 'https://digitalpointllc.com/tools' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/tools' },
   openGraph: {
     title: 'Free Marketing Tools & Calculators',
     description: 'Interactive marketing calculators for ROAS, CAC, ad spend profitability, and attribution modeling.',
@@ -17,8 +17,8 @@ export default function ToolsPage() {
     <>
       <BreadcrumbSchema
         items={[
-          { name: 'Home', item: 'https://digitalpointllc.com' },
-          { name: 'Tools', item: 'https://digitalpointllc.com/tools' },
+          { name: 'Home', item: 'https://www.digitalpointllc.com' },
+          { name: 'Tools', item: 'https://www.digitalpointllc.com/tools' },
         ]}
       />
       <ToolsHub />

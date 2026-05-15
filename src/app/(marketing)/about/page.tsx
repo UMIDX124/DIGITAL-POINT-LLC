@@ -9,11 +9,11 @@ export const metadata: Metadata = {
   title: 'About',
   description:
     'Digital Point LLC operates production AI agent stacks for B2B SaaS, e-commerce ops, and professional services teams. Founded 2017. Co-founders sign off on every engagement.',
-  alternates: { canonical: 'https://digitalpointllc.com/about' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/about' },
   openGraph: {
     title: 'About Digital Point LLC',
     description: 'Production AI agent operations agency. US-LLC. Founded 2017.',
-    url: 'https://digitalpointllc.com/about',
+    url: 'https://www.digitalpointllc.com/about',
     type: 'website',
   },
 };
@@ -42,21 +42,21 @@ export default function AboutPage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://digitalpointllc.com' },
-        { name: 'About', item: 'https://digitalpointllc.com/about' },
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'About', item: 'https://www.digitalpointllc.com/about' },
         ]}
       />
       <PersonSchema
         name="M. Faizan Rafiq"
         jobTitle="Co-Founder"
-        url="https://digitalpointllc.com/about"
+        url="https://www.digitalpointllc.com/about"
         description="Co-founded Digital Point LLC in 2017. Operates the lead operations and paid acquisition side. Built the first DPL agent stack."
       />
       <PersonSchema
         name="Anwaar Tayyab"
         jobTitle="Co-Founder"
-        url="https://digitalpointllc.com/about"
-        image="https://digitalpointllc.com/dp-founder-anwaar.jpg"
+        url="https://www.digitalpointllc.com/about"
+        image="https://www.digitalpointllc.com/dp-founder-anwaar.jpg"
         description="Co-founded Digital Point LLC in 2017. Operates the analytics, attribution, and reporting infrastructure side of the firm."
       />
 

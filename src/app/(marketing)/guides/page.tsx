@@ -7,12 +7,12 @@ export const metadata: Metadata = {
   title: 'Marketing Guides & Playbooks',
   description:
     'Comprehensive marketing guides covering attribution, paid ads optimization, CAC & ROAS, analytics, remote teams, and growth systems. Actionable frameworks for growth teams.',
-  alternates: { canonical: 'https://digitalpointllc.com/guides' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/guides' },
   openGraph: {
     title: 'Marketing Guides & Playbooks',
     description:
       'In-depth guides on marketing attribution, paid ads optimization, CAC & ROAS, analytics, remote teams, and growth systems.',
-    url: 'https://digitalpointllc.com/guides',
+    url: 'https://www.digitalpointllc.com/guides',
     type: 'website',
   },
   twitter: {
@@ -28,8 +28,8 @@ export default function GuidesPage() {
     <>
       <BreadcrumbSchema
         items={[
-          { name: 'Home', item: 'https://digitalpointllc.com' },
-          { name: 'Guides', item: 'https://digitalpointllc.com/guides' },
+          { name: 'Home', item: 'https://www.digitalpointllc.com' },
+          { name: 'Guides', item: 'https://www.digitalpointllc.com/guides' },
         ]}
       />
       <GuidesHub guides={guides} />

@@ -7,12 +7,12 @@ export const metadata: Metadata = {
   title: 'Agent Production-Readiness Diagnostic',
   description:
     'Free 10-question diagnostic. Score your AI agent stack against 30 points of production criteria. Observability, retry logic, drift, cost guardrails, escalation, rollback. No email required.',
-  alternates: { canonical: 'https://digitalpointllc.com/diagnostic' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/diagnostic' },
   openGraph: {
     title: 'Is your AI agent production-ready?',
     description:
       'Free 10-question diagnostic. Score your AI agent stack against 30 points of production criteria. No email required.',
-    url: 'https://digitalpointllc.com/diagnostic',
+    url: 'https://www.digitalpointllc.com/diagnostic',
     type: 'website',
   },
 };
@@ -22,8 +22,8 @@ export default function DiagnosticPage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://digitalpointllc.com' },
-        { name: 'Diagnostic', item: 'https://digitalpointllc.com/diagnostic' },
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Diagnostic', item: 'https://www.digitalpointllc.com/diagnostic' },
         ]}
       />
       <section className="hero">

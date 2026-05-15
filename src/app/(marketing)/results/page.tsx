@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'Results & Case Studies',
     description:
       'Real problems. Real fixes. Measurable outcomes across AI agent deployments, automation engineering, and operator-backed workflows.',
-    url: 'https://digitalpointllc.com/results',
+    url: 'https://www.digitalpointllc.com/results',
     type: 'website',
   },
   twitter: {
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     description: 'Real problems. Real fixes. Measurable outcomes across AI agent deployments, automation engineering, and operator-backed workflows.',
   },
   alternates: {
-    canonical: 'https://digitalpointllc.com/results',
+    canonical: 'https://www.digitalpointllc.com/results',
   },
 };
 
@@ -29,8 +29,8 @@ export default function Page() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://digitalpointllc.com' },
-        { name: 'Results', item: 'https://digitalpointllc.com/results' },
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Results', item: 'https://www.digitalpointllc.com/results' },
         ]}
       />
       <div className="container-wide" style={{ paddingTop: 'var(--section-sm)' }}>

@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const guide = getGuideBySlug(slug);
   if (!guide) return {};
 
-  const url = `https://digitalpointllc.com/guides/${slug}`;
+  const url = `https://www.digitalpointllc.com/guides/${slug}`;
 
   return {
     title: `${guide.title} | Digital Point LLC`,
@@ -49,7 +49,7 @@ export default async function GuidePage({ params }: PageProps) {
   const guide = getGuideBySlug(slug);
   if (!guide) notFound();
 
-  const url = `https://digitalpointllc.com/guides/${slug}`;
+  const url = `https://www.digitalpointllc.com/guides/${slug}`;
   const nonce = (await headers()).get('x-nonce') ?? undefined;
 
   const blogPosting = {
@@ -62,18 +62,18 @@ export default async function GuidePage({ params }: PageProps) {
     author: {
       '@type': 'Organization',
       name: 'Digital Point LLC',
-      url: 'https://digitalpointllc.com',
+      url: 'https://www.digitalpointllc.com',
     },
     publisher: {
       '@type': 'Organization',
       name: 'Digital Point LLC',
-      url: 'https://digitalpointllc.com',
+      url: 'https://www.digitalpointllc.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://digitalpointllc.com/dp-mark-light.png',
+        url: 'https://www.digitalpointllc.com/dp-mark-light.png',
       },
     },
-    image: 'https://digitalpointllc.com/og-image.png',
+    image: 'https://www.digitalpointllc.com/og-image.png',
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
   };
 

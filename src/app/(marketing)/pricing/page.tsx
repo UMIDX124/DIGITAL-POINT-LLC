@@ -7,12 +7,12 @@ export const metadata: Metadata = {
   title: 'Pricing',
   description:
     'Transparent pricing. Audit free. Pilot $2,500 fixed for 30 days. Retainer $2,500 / month. Recovery service: diagnosis $5,000 / fix $10,000. The agency market does not publish pricing. We do.',
-  alternates: { canonical: 'https://digitalpointllc.com/pricing' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/pricing' },
   openGraph: {
     title: 'Pricing',
     description:
       'Audit free. Pilot $2,500 fixed for 30 days. Retainer $2,500 / month. Recovery diagnosis $5,000. We publish what the market hides.',
-    url: 'https://digitalpointllc.com/pricing',
+    url: 'https://www.digitalpointllc.com/pricing',
     type: 'website',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Digital Point. Transparent pricing.' }],
   },
@@ -81,14 +81,14 @@ export default function PricingPage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://digitalpointllc.com' },
-        { name: 'Pricing', item: 'https://digitalpointllc.com/pricing' },
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Pricing', item: 'https://www.digitalpointllc.com/pricing' },
         ]}
       />
       <ServiceSchema
         name="DPL Pricing · Audit, Pilot, Retainer"
         description="Published-price managed service: free audit, $2,500 fixed pilot for 30 days, $2,500 per month retainer. Recovery ladder: $5,000 diagnosis, $10,000 fix, $2,500/mo operate."
-        url="https://digitalpointllc.com/pricing"
+        url="https://www.digitalpointllc.com/pricing"
         serviceTypes={[
         'Free Audit',
         'Pilot Engagement',

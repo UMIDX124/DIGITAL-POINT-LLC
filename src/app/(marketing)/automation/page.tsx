@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Workflow Automation',
   description:
     'Workflow automation that replaces manual handoffs across your stack. n8n + custom TypeScript + Postgres for production-grade pipelines. Lead-to-CRM in under 60 seconds, document parsing, vendor invoice extraction, commission reconciliation.',
-  alternates: { canonical: 'https://digitalpointllc.com/automation' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/automation' },
 };
 
 const useCases = [
@@ -33,14 +33,14 @@ export default function AutomationPage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://digitalpointllc.com' },
-        { name: 'Workflow Automation', item: 'https://digitalpointllc.com/automation' },
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Workflow Automation', item: 'https://www.digitalpointllc.com/automation' },
         ]}
       />
       <ServiceSchema
         name="Workflow Automation"
         description="Wire tools, data, and humans together so handoffs happen without manual work. Cross-stack automation that survives audits, retries, and rollbacks."
-        url="https://digitalpointllc.com/automation"
+        url="https://www.digitalpointllc.com/automation"
         serviceTypes={[
         'CRM Integration',
         'Data Pipelines',

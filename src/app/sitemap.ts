@@ -6,7 +6,7 @@ import { comparisons } from '@/lib/comparisons';
 const STATIC_LAST_MOD = new Date('2026-05-14');
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://digitalpointllc.com';
+  const baseUrl = 'https://www.digitalpointllc.com';
 
   // Homepage
   const homepage: MetadataRoute.Sitemap = [

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Blog & Resources',
     description: 'Field notes from running AI in production: agent stacks, automation engineering, operator workflows. What works, what breaks, and what we ship next.',
-    url: 'https://digitalpointllc.com/blog',
+    url: 'https://www.digitalpointllc.com/blog',
     type: 'website',
   },
   twitter: {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: 'Blog & Resources',
     description: 'Field notes from running AI in production: agent stacks, automation engineering, operator workflows. What works, what breaks, and what we ship next.',
   },
-  alternates: { canonical: 'https://digitalpointllc.com/blog' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/blog' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
 };
 
@@ -29,8 +29,8 @@ export default function Blog() {
     <>
       <BreadcrumbSchema
         items={[
-          { name: 'Home', item: 'https://digitalpointllc.com' },
-          { name: 'Blog', item: 'https://digitalpointllc.com/blog' },
+          { name: 'Home', item: 'https://www.digitalpointllc.com' },
+          { name: 'Blog', item: 'https://www.digitalpointllc.com/blog' },
         ]}
       />
       <BlogListPage posts={posts} categories={categories} categoryMeta={categoryMeta} />

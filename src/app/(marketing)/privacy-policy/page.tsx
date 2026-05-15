@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
     'How Digital Point LLC collects, processes, and protects personal information across the marketing site, the audit form, the diagnostic tool, and the Cosmo chat surface.',
-  alternates: { canonical: 'https://digitalpointllc.com/privacy-policy' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/privacy-policy' },
 };
 
 const lastUpdated = 'May 12, 2026';
@@ -100,8 +100,8 @@ export default function PrivacyPolicyPage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://digitalpointllc.com' },
-        { name: 'Privacy', item: 'https://digitalpointllc.com/privacy-policy' },
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Privacy', item: 'https://www.digitalpointllc.com/privacy-policy' },
         ]}
       />
       <section className="hero">

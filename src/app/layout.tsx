@@ -22,7 +22,7 @@ import AnalyticsGate from "@/components/compliance/AnalyticsGate";
  */
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://digitalpointllc.com"),
+  metadataBase: new URL("https://www.digitalpointllc.com"),
   title: {
     default: "Digital Point. Hire the AI. Skip the headcount.",
     template: "%s | Digital Point LLC",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     title: "Digital Point. Hire the AI. Skip the headcount.",
     description:
       "AI agents and trained operators run your ops and reporting work. Same output as a 4-person internal team, one retainer. Built for $1M-$50M companies.",
-    url: "https://digitalpointllc.com",
+    url: "https://www.digitalpointllc.com",
     siteName: "Digital Point LLC",
     type: "website",
     locale: "en_US",
@@ -99,7 +99,7 @@ export const metadata: Metadata = {
     google: process.env.GOOGLE_SITE_VERIFICATION,
   } : undefined,
   alternates: {
-    canonical: "https://digitalpointllc.com",
+    canonical: "https://www.digitalpointllc.com",
   },
 };
 
@@ -129,8 +129,8 @@ export default async function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Digital Point LLC",
-              url: "https://digitalpointllc.com",
-              logo: "https://digitalpointllc.com/dp-mark-light.png",
+              url: "https://www.digitalpointllc.com",
+              logo: "https://www.digitalpointllc.com/dp-mark-light.png",
               description:
                 "AI agents and trained operators run your ops and reporting work. Same output as a 4-person internal team, one retainer. Built for $1M-$50M companies.",
               sameAs: [
@@ -145,7 +145,7 @@ export default async function RootLayout({
                 contactType: "customer service",
                 description:
                   "Reach us through Cosmo (on-site chat) or the free growth audit form. Direct operator routing, no shared inbox.",
-                url: "https://digitalpointllc.com/#contact-philosophy",
+                url: "https://www.digitalpointllc.com/#contact-philosophy",
                 areaServed: "Worldwide",
                 availableLanguage: ["en"],
               },
@@ -160,7 +160,7 @@ export default async function RootLayout({
                   "@type": "Person",
                   name: "Anwaar Tayyab",
                   jobTitle: "Co-Founder",
-                  image: "https://digitalpointllc.com/dp-founder-anwaar.jpg",
+                  image: "https://www.digitalpointllc.com/dp-founder-anwaar.jpg",
                 },
                 { "@type": "Person", name: "Umer Farooq", jobTitle: "Operator" },
               ],
@@ -179,7 +179,7 @@ export default async function RootLayout({
               name: "Digital Point LLC",
               description:
                 "AI agent and automation infrastructure that runs operational workflows (CRM, ops, reporting, growth) so you scale without scaling team.",
-              url: "https://digitalpointllc.com",
+              url: "https://www.digitalpointllc.com",
               serviceType: [
                 "AI Agent Deployment",
                 "Workflow Automation",
@@ -203,7 +203,7 @@ export default async function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "Digital Point LLC",
-              url: "https://digitalpointllc.com",
+              url: "https://www.digitalpointllc.com",
             }),
           }}
         />

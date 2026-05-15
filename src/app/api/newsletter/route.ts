@@ -70,7 +70,7 @@ export async function POST(req: Request) {
             </ul>
           </div>
           <div style="text-align: center; margin-bottom: 24px;">
-            <a href="https://digitalpointllc.com/blog" style="display: inline-block; background: linear-gradient(135deg, #C26800, #C26800); color: white; text-decoration: none; padding: 12px 28px; border-radius: 8px; font-size: 14px; font-weight: 600;">Read Our Latest Insights</a>
+            <a href="https://www.digitalpointllc.com/blog" style="display: inline-block; background: linear-gradient(135deg, #C26800, #C26800); color: white; text-decoration: none; padding: 12px 28px; border-radius: 8px; font-size: 14px; font-weight: 600;">Read Our Latest Insights</a>
           </div>
           <div style="text-align: center; border-top: 1px solid rgba(255, 168, 51, 0.15); padding-top: 20px;">
             <p style="color: #8E8E96; font-size: 12px; margin: 0;">Digital Point LLC · Performance Marketing & Growth Systems</p>

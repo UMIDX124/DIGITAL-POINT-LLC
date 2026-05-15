@@ -7,12 +7,12 @@ export const metadata: Metadata = {
   title: 'AI Agent Recovery',
   description:
     'Your AI agent is broken. We fix it. Diagnose in 2 weeks ($5,000), fix in 4 ($10,000), operate from there ($2,500 / month). The only systematic recovery service for production AI agents.',
-  alternates: { canonical: 'https://digitalpointllc.com/recovery' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/recovery' },
   openGraph: {
     title: 'AI Agent Recovery',
     description:
       'Diagnose in 2 weeks, fix in 4, operate from there. The only systematic recovery service for production AI agents.',
-    url: 'https://digitalpointllc.com/recovery',
+    url: 'https://www.digitalpointllc.com/recovery',
     type: 'website',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Digital Point. AI Agent Recovery.' }],
   },
@@ -69,14 +69,14 @@ export default function RecoveryPage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://digitalpointllc.com' },
-        { name: 'Recovery', item: 'https://digitalpointllc.com/recovery' },
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Recovery', item: 'https://www.digitalpointllc.com/recovery' },
         ]}
       />
       <ServiceSchema
         name="AI Agent Recovery"
         description="Production audit, fix, and operation for broken AI agent stacks. Fixed-fee: $5,000 diagnosis over 2 weeks, $10,000 fix over 4 weeks, $2,500 per month to operate."
-        url="https://digitalpointllc.com/recovery"
+        url="https://www.digitalpointllc.com/recovery"
         serviceTypes={[
         'AI Agent Audit',
         'Production Recovery',

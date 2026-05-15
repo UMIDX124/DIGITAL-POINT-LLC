@@ -35,8 +35,8 @@ export default function CookiesPage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://digitalpointllc.com' },
-        { name: 'Cookies', item: 'https://digitalpointllc.com/cookies' },
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Cookies', item: 'https://www.digitalpointllc.com/cookies' },
         ]}
       />
       <section className="hero">

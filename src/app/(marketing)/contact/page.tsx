@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: 'Contact',
   description:
     'Reach a co-founder. No generic support inbox. We answer through Cosmo (on-site chat) or our audit form. Inquiries route to the operator best matched to your stage.',
-  alternates: { canonical: 'https://digitalpointllc.com/contact' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/contact' },
   openGraph: {
     title: 'Contact Digital Point LLC',
     description: 'No generic support inbox. Reach a co-founder via the audit form or Cosmo chat.',
-    url: 'https://digitalpointllc.com/contact',
+    url: 'https://www.digitalpointllc.com/contact',
     type: 'website',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Contact Digital Point LLC' }],
   },
@@ -49,8 +49,8 @@ export default function ContactPage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://digitalpointllc.com' },
-        { name: 'Contact', item: 'https://digitalpointllc.com/contact' },
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'Contact', item: 'https://www.digitalpointllc.com/contact' },
         ]}
       />
       <section className="hero">

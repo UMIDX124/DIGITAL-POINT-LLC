@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'AI Agents',
   description:
     'Production AI agents we deploy and operate for you. Custom-trained agents that run repeatable knowledge work. CRM updates, lead routing, qualification, follow-up cadences. n8n + Groq + custom TypeScript stack.',
-  alternates: { canonical: 'https://digitalpointllc.com/agents' },
+  alternates: { canonical: 'https://www.digitalpointllc.com/agents' },
 };
 
 const useCases = [
@@ -33,14 +33,14 @@ export default function AgentsPage() {
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://digitalpointllc.com' },
-        { name: 'AI Agents', item: 'https://digitalpointllc.com/agents' },
+        { name: 'Home', item: 'https://www.digitalpointllc.com' },
+        { name: 'AI Agents', item: 'https://www.digitalpointllc.com/agents' },
         ]}
       />
       <ServiceSchema
         name="AI Agents"
         description="Custom-trained AI agents deployed on n8n + Groq + custom TypeScript. We operate them continuously while human operators audit the edges where automation breaks."
-        url="https://digitalpointllc.com/agents"
+        url="https://www.digitalpointllc.com/agents"
         serviceTypes={[
         'Lead Qualification',
         'CRM Enrichment',

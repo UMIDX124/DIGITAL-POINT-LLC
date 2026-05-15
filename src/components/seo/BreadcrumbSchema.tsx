@@ -8,8 +8,8 @@
  *
  * Usage:
  *   <BreadcrumbSchema items={[
- *     { name: 'Home', item: 'https://digitalpointllc.com' },
- *     { name: 'Research', item: 'https://digitalpointllc.com/research' },
+ *     { name: 'Home', item: 'https://www.digitalpointllc.com' },
+ *     { name: 'Research', item: 'https://www.digitalpointllc.com/research' },
  *   ]} />
  */
 type BreadcrumbItem = {

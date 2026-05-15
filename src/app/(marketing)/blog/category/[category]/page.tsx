@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     (p) => p.category === categoryName && p.indexable === true
   );
 
-  const url = `https://digitalpointllc.com/blog/category/${slug}`;
+  const url = `https://www.digitalpointllc.com/blog/category/${slug}`;
   const title = `${categoryName} articles | DPL Blog`;
 
   return {
@@ -61,7 +61,7 @@ export default async function CategoryPage({ params }: PageProps) {
 
   const posts = getAllPosts().filter((p) => p.category === categoryName);
   const meta = categoryMeta[categoryName];
-  const url = `https://digitalpointllc.com/blog/category/${slug}`;
+  const url = `https://www.digitalpointllc.com/blog/category/${slug}`;
   const nonce = (await headers()).get('x-nonce') ?? undefined;
 
   const collectionPage = posts.length > 0
@@ -74,7 +74,7 @@ export default async function CategoryPage({ params }: PageProps) {
         hasPart: posts.map((p) => ({
           '@type': 'BlogPosting',
           headline: p.title,
-          url: `https://digitalpointllc.com/blog/${p.slug}`,
+          url: `https://www.digitalpointllc.com/blog/${p.slug}`,
         })),
       }
     : null;

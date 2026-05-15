@@ -31,5 +31,10 @@ jobs:
 
       - name: Run Lighthouse CI
         env:
-          DATABASE_URL: file:./dev.db
+          # Placeholder URL — schema is postgres, but Prisma `generate`
+          # only needs the env var SET, not connectable. The build step
+          # doesn't query the DB.
+          DATABASE_URL: postgresql://placeholder:placeholder@localhost:5432/placeholder
+          UPSTASH_REDIS_KV_REST_API_URL: https://placeholder.upstash.io
+          UPSTASH_REDIS_KV_REST_API_TOKEN: placeholder
         run: pnpm dlx @lhci/cli autorun

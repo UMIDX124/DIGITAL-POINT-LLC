@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, rebuild/from-scratch]
+
+jobs:
+  typecheck-lint-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # Prisma generate only reads the env var; doesn't connect.
+      DATABASE_URL: postgresql://placeholder:placeholder@localhost:5432/placeholder
+      UPSTASH_REDIS_KV_REST_API_URL: https://placeholder.upstash.io
+      UPSTASH_REDIS_KV_REST_API_TOKEN: placeholder
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec prisma generate
+      - run: pnpm exec tsc --noEmit
+      - run: pnpm lint
+      - run: pnpm build
+
+  a11y:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: typecheck-lint-build
+    env:
+      DATABASE_URL: postgresql://placeholder:placeholder@localhost:5432/placeholder
+      UPSTASH_REDIS_KV_REST_API_URL: https://placeholder.upstash.io
+      UPSTASH_REDIS_KV_REST_API_TOKEN: placeholder
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:a11y

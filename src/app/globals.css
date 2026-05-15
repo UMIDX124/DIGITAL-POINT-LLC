@@ -952,7 +952,12 @@ select {
    ============================================================ */
 
 .hero--operator-brief {
-  padding-block: clamp(4rem, 8vw, 7rem) clamp(2.5rem, 4vw, 3rem);
+  /* Option B padding pass. Top band on the home was clamping to ~112px on
+     1440px viewports — a dead horizontal strip between the nav and the
+     hero-meta strip with no content. Halved to ~56px so the hero meta
+     sits close under the nav while still breathing. Side margins
+     intact (max-w container handles the editorial whitespace). */
+  padding-block: clamp(2rem, 4vw, 3.5rem) clamp(2.5rem, 4vw, 3rem);
   background-color: var(--color-canvas);
   background-image: none;
 }

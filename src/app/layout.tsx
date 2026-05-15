@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
@@ -13,6 +12,11 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 // Phase 17b 3-restructured A3. Analytics gated on cookie consent.
 import CookieConsent from "@/components/compliance/CookieConsent";
 import AnalyticsGate from "@/components/compliance/AnalyticsGate";
+import {
+  ORG_JSONLD_STR,
+  PROFESSIONAL_SERVICE_JSONLD_STR,
+  WEBSITE_JSONLD_STR,
+} from "@/lib/jsonld";
 
 /**
  * Phase 12. Instrument Serif served via manual @font-face in globals.css
@@ -85,16 +89,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // CSP nonce read forces dynamic render. Required for inline script/style nonce attribution
-  // (5 consumers: 3 JSON-LD blocks in this file + BlogPosting + CollectionPage schemas).
-  const hdrs = await headers();
-  const nonce = hdrs.get("x-nonce") ?? undefined;
-
   return (
     <html
       lang="en"
@@ -102,92 +101,20 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Organization Schema */}
+        {/* JSON-LD schemas are loaded from a shared module so their SHA-256
+            hashes can be pinned in CSP (src/proxy.ts). No nonce needed,
+            layout stays static, edge cache works. */}
         <script
           type="application/ld+json"
-          nonce={nonce}
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Digital Point LLC",
-              url: "https://www.digitalpointllc.com",
-              logo: "https://www.digitalpointllc.com/dp-mark-light.png",
-              description:
-                "AI agents and trained operators run your ops and reporting work. Same output as a 4-person internal team, one retainer. Built for $1M-$50M companies.",
-              sameAs: [
-                "https://www.linkedin.com/company/digitalpointllc",
-              ],
-              /* Phase 17b 3-reversal E1. URL-based ContactPoint, no email.
-                 Cosmo on-site chat + audit form are the canonical routes;
-                 the deep-anchor URL points at the footer philosophy block
-                 explaining the policy. */
-              contactPoint: {
-                "@type": "ContactPoint",
-                contactType: "customer service",
-                description:
-                  "Reach us through Cosmo (on-site chat) or the free growth audit form. Direct operator routing, no shared inbox.",
-                url: "https://www.digitalpointllc.com/contact",
-                areaServed: "Worldwide",
-                availableLanguage: ["en"],
-              },
-              address: {
-                "@type": "PostalAddress",
-                addressCountry: "US",
-              },
-              foundingDate: "2017",
-              founder: [
-                { "@type": "Person", name: "M. Faizan Rafiq", jobTitle: "Co-Founder" },
-                {
-                  "@type": "Person",
-                  name: "Anwaar Tayyab",
-                  jobTitle: "Co-Founder",
-                  image: "https://www.digitalpointllc.com/dp-founder-anwaar.jpg",
-                },
-                { "@type": "Person", name: "Umer Farooq", jobTitle: "Operator" },
-              ],
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: ORG_JSONLD_STR }}
         />
-
-        {/* Professional Service Schema */}
         <script
           type="application/ld+json"
-          nonce={nonce}
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              name: "Digital Point LLC",
-              description:
-                "AI agent and automation infrastructure that runs operational workflows (CRM, ops, reporting, growth) so you scale without scaling team.",
-              url: "https://www.digitalpointllc.com",
-              serviceType: [
-                "AI Agent Deployment",
-                "Workflow Automation",
-                "Remote Operators",
-                "Performance Marketing",
-                "Reporting and Analytics",
-                "Lead Operations",
-              ],
-              areaServed: { "@type": "Place", name: "Worldwide" },
-              priceRange: "$10000-$30000",
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: PROFESSIONAL_SERVICE_JSONLD_STR }}
         />
-
-        {/* WebSite Schema */}
         <script
           type="application/ld+json"
-          nonce={nonce}
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "Digital Point LLC",
-              url: "https://www.digitalpointllc.com",
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: WEBSITE_JSONLD_STR }}
         />
 
         {/* Phase 18.6 P7 perf-pass. Instrument Serif preload tags removed.

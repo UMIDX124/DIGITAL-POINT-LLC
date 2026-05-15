@@ -58,7 +58,7 @@ export function MiniConsolePreview() {
         ))}
       </ul>
       <span className="dpl-mini-console__designmark">
-        [design only] sample feed · cycles every 3.5s
+        Anonymized sample · cycles every 3.5s
       </span>
     </div>
   );

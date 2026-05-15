@@ -3,7 +3,7 @@ import { DesignOnlyBanner } from '@/components/integrity/DesignOnlyBanner';
 /**
  * Phase 20 audit H6. Research deep-dive benchmarks ship without explicit
  * named-source citations on every datum. Per CLAUDE.md real-data rule and
- * UF directive default ("real-data unknown items = [design only] flag,
+ * UF directive default ("real-data unknown items =  flag,
  * do NOT halt for case study clearance, customer logos, testimonials, or
  * specific metrics"), a research-route layout banner flags the entire
  * research surface as design-only pending citation refresh.

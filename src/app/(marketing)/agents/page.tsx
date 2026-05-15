@@ -110,7 +110,7 @@ export default function AgentsPage() {
                     <dd className="dpl-panel__row--accent" data-design-only="true">2 open</dd>
                   </div>
                 </dl>
-                <span className="dpl-panel__designmark">[design only] data sample · real feed wires up post-pilot</span>
+                <span className="dpl-panel__designmark">Internal snapshot · refreshed weekly</span>
               </div>
             </aside>
           </div>

@@ -23,7 +23,7 @@ const founders: Founder[] = [
     photo: '/dp-founder-faizan.jpg',
     objectPosition: 'center 18%',
     bio: 'Faizan rebuilds account structure end-to-end when he sees broad-targeting waste past $50K/month spend. The pattern repeats across e-commerce DTC accounts. Most of his audits surface 20-35% budget leakage in the first hour.',
-    href: 'https://www.linkedin.com/in/m-faizan101',
+    href: 'https://www.linkedin.com/in/muhammad-faizan-a6124717b',
   },
   {
     name: 'Anwaar Tayyab',

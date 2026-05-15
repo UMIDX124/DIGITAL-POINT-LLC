@@ -2859,6 +2859,116 @@ select {
 }
 
 /* ============================================================
+   F·12 Pricing band — sits immediately under the hero so buyers
+   see prices without scrolling 9 sections into the page. Uses
+   hairline grid + the established eyebrow + tabular numerals.
+   ============================================================ */
+
+.dpl-pricing-band {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  border-block-end: 1px solid var(--color-hairline);
+}
+
+.dpl-pricing-band__inner {
+  max-width: 88rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.dpl-pricing-band__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-block-end: 1.4rem;
+}
+
+.dpl-pricing-band__rule {
+  height: 1px;
+  width: 2.2rem;
+  background: var(--color-hairline-strong);
+}
+
+.dpl-pricing-band__grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: var(--color-hairline);
+  border: 1px solid var(--color-hairline);
+}
+
+@media (min-width: 720px) {
+  .dpl-pricing-band__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.dpl-pricing-band__cell {
+  background: var(--color-canvas);
+  padding: 1.3rem 1.25rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.dpl-pricing-band__cell.is-featured {
+  background: var(--color-canvas-raised);
+  box-shadow: inset 0 0 0 1px var(--color-accent-text);
+}
+
+.dpl-pricing-band__label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.dpl-pricing-band__cell.is-featured .dpl-pricing-band__label {
+  color: var(--color-accent-text);
+}
+
+.dpl-pricing-band__price {
+  font-family: var(--font-sans);
+  font-size: clamp(1.65rem, 2.2vw, 2.1rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.dpl-pricing-band__cad {
+  font-size: 12.5px;
+  color: var(--color-text-secondary);
+  line-height: 1.45;
+  margin-block-end: 0.6rem;
+}
+
+.dpl-pricing-band__link {
+  margin-block-start: auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-block-end: 1px;
+  transition: border-color var(--motion-fast) var(--ease-out);
+}
+
+.dpl-pricing-band__link:hover {
+  border-bottom-color: var(--color-accent-text);
+}
+
+/* ============================================================
    Cookie consent + Cosmo FAB stays from prior CSS — minimal overrides
    ============================================================ */
 

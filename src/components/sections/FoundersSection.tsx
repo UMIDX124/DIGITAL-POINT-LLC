@@ -19,10 +19,10 @@ const founders: Founder[] = [
     name: 'M. Faizan Rafiq',
     role: 'Co-founder · Paid media + account restructure',
     initials: 'MF',
-    // Faizan avatar: pending new pro shot 2026-05-15+ per feedback_dpl_founder_photos.md.
-    // Keep the current circle + amber-ring treatment until the new shot lands; converts to
-    // square-hairline alongside Anwaar in the follow-up commit.
-    photo: '/team/faizan-square-512.jpg',
+    // F·09 fix. Photo now lives at the canonical /dp-founder-faizan.jpg path
+    // matching the Anwaar pattern. Old /team/faizan-square-512.jpg still
+    // resolves on disk for backwards compat.
+    photo: '/dp-founder-faizan.jpg',
     treatment: 'circle-amber-legacy',
     bio: 'Faizan rebuilds account structure end-to-end when he sees broad-targeting waste past $50K/month spend. The pattern repeats across e-commerce DTC accounts. Most of his audits surface 20-35% budget leakage in the first hour.',
     href: 'https://www.linkedin.com/in/m-faizan101',

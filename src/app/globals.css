@@ -2838,6 +2838,26 @@ select {
   color: var(--color-canvas);
 }
 
+/* F·13 ghost variant for the secondary "Talk to a co-founder" CTA. Inverts
+   the fill so it reads as a parallel choice next to the primary "Book audit"
+   without competing for hierarchy. */
+.dpl-nav__cta-btn--ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-hairline-strong);
+  margin-inline-end: 0.5rem;
+}
+
+.dpl-nav__cta-btn--ghost:hover {
+  background: var(--color-canvas-elevated);
+  color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+
+@media (max-width: 720px) {
+  .dpl-nav__cta-btn--ghost { display: none; }
+}
+
 /* ============================================================
    Cookie consent + Cosmo FAB stays from prior CSS — minimal overrides
    ============================================================ */

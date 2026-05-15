@@ -185,7 +185,7 @@ export default function AgentsPage() {
       <section className="section section-divider">
         <div className="container-wide">
           <div className="section-header section-header--center">
-            <p className="eyebrow eyebrow--accent">Let&apos;s scope your first agent</p>
+            <p className="eyebrow eyebrow--accent">Let&rsquo;s scope your first agent</p>
             <h2 className="section-title text-balance">
               45-minute audit. Written deployment plan in 5 days.
             </h2>

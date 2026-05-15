@@ -37,7 +37,7 @@ export function IntegrationsBar() {
         </ul>
 
         <p className="dpl-integrations__caption">
-          Self-hosted where it matters. Cloud where it doesn&apos;t.
+          Self-hosted where it matters. Cloud where it doesn&rsquo;t.
         </p>
       </div>
     </section>

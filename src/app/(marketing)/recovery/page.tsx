@@ -143,8 +143,8 @@ export default function RecoveryPage() {
               The 2024 build wave shipped a lot of agents. By 2026, many of them have stopped working right.
             </h2>
             <p className="section-desc text-pretty">
-              No agency markets recovery systematically. Platforms can&apos;t. They sell
-              tools. Big consultancies sell &quot;build new.&quot; We&apos;re the operator team
+              No agency markets recovery systematically. Platforms can&rsquo;t. They sell
+              tools. Big consultancies sell &quot;build new.&quot; We&rsquo;re the operator team
               that diagnoses what broke and ships the fix.
             </p>
           </div>
@@ -306,7 +306,7 @@ export default function RecoveryPage() {
           <div className="section-header section-header--center">
             <p className="eyebrow eyebrow--accent">Book the recovery audit</p>
             <h2 className="section-title text-balance">
-              Tell us what broke. We&apos;ll start the diagnosis.
+              Tell us what broke. We&rsquo;ll start the diagnosis.
             </h2>
             <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
               <Link href="/audit" className="btn btn-primary">

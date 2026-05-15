@@ -28,7 +28,7 @@ export function LeadMagnetBanner() {
         Get Your Free Growth Audit
       </h3>
       <p className="text-[color:var(--text-primary)] text-sm md:text-base mb-8 max-w-xl mx-auto leading-relaxed">
-        We&apos;ll analyze your ad accounts, attribution setup, and conversion funnels.
+        We&rsquo;ll analyze your ad accounts, attribution setup, and conversion funnels.
         Co-founder reviews your stack and writes the next steps.
       </p>
 

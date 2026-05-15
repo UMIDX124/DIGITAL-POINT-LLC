@@ -151,7 +151,7 @@ export default function ProcessPage() {
           <div className="section-header section-header--center">
             <p className="eyebrow">Ready to start</p>
             <h2 className="section-title text-balance">
-              Start with the audit. The rest follows or it doesn&apos;t.
+              Start with the audit. The rest follows or it doesn&rsquo;t.
             </h2>
             <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
               <Link href="/audit" className="btn btn-primary">Book a free audit</Link>

@@ -50,7 +50,7 @@ export function NewsletterOptIn({
         }}
       >
         <CheckCircle className="w-8 h-8 text-[color:var(--accent-primary)] mx-auto mb-2" />
-        <p className="text-white font-medium text-sm">You&apos;re in!</p>
+        <p className="text-white font-medium text-sm">You&rsquo;re in!</p>
         <p className="text-[color:var(--text-muted)] text-xs mt-1">Watch your inbox for growth insights.</p>
       </div>
     );

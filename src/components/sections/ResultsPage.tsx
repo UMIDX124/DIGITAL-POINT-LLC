@@ -88,7 +88,7 @@ export function ResultsPage() {
       <section className="section section-divider">
         <div className="container-wide">
           <div className="section-header section-header--center">
-            <p className="eyebrow eyebrow--accent">Let&apos;s start with the audit</p>
+            <p className="eyebrow eyebrow--accent">Let&rsquo;s start with the audit</p>
             <h2 className="section-title text-balance">
               Free 45 minutes. Written deployment plan in 5 days.
             </h2>

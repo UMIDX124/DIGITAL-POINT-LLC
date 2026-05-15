@@ -71,7 +71,7 @@ export default function StackPage() {
           </h1>
 
           <p className="hero-sub text-pretty">
-            Buyer&apos;s guides tell you to demand the tech stack upfront. So here it is.
+            Buyer&rsquo;s guides tell you to demand the tech stack upfront. So here it is.
             Not a Zapier shop. Not a single-platform reseller. Self-hosted orchestration
             and custom code where the edges break.
           </p>
@@ -137,7 +137,7 @@ export default function StackPage() {
           <div className="section-header section-header--center">
             <p className="eyebrow">Want it for your workflows</p>
             <h2 className="section-title text-balance">
-              Free audit. We&apos;ll map your stack against ours.
+              Free audit. We&rsquo;ll map your stack against ours.
             </h2>
             <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
               <Link href="/audit" className="dpl-btn dpl-btn--ink">Book a free audit</Link>

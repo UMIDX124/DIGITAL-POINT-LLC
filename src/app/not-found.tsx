@@ -52,7 +52,7 @@ export default function NotFound() {
             marginInline: 'auto',
           }}
         >
-          The page you were aiming for doesn&apos;t exist, was moved, or never
+          The page you were aiming for doesn&rsquo;t exist, was moved, or never
           shipped.
         </p>
 

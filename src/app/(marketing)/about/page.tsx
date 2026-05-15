@@ -111,7 +111,7 @@ export default function AboutPage() {
       <section className="section section-divider">
         <div className="container-wide">
           <div className="section-header section-header--center">
-            <p className="eyebrow eyebrow--accent">Let&apos;s talk</p>
+            <p className="eyebrow eyebrow--accent">Let&rsquo;s talk</p>
             <h2 className="section-title text-balance">
               Free 45-minute audit with a co-founder.
             </h2>

@@ -5,7 +5,7 @@ export function CTASection() {
     <section className="section section-divider">
       <div className="container-wide">
         <div className="section-header section-header--center">
-          <p className="eyebrow eyebrow--accent">Let&apos;s map the work</p>
+          <p className="eyebrow eyebrow--accent">Let&rsquo;s map the work</p>
           <h2 className="section-title text-balance">
             Audit your repeatable work in 45 minutes.
           </h2>

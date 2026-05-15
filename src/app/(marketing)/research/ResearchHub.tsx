@@ -101,7 +101,7 @@ export function ResearchHub() {
           <div className="section-header section-header--center">
             <p className="eyebrow eyebrow--accent">Put these benchmarks to work</p>
             <h2 className="section-title text-balance">
-              Free audit. We&apos;ll benchmark your metrics against the reports.
+              Free audit. We&rsquo;ll benchmark your metrics against the reports.
             </h2>
             <div className="hero-cta-row" style={{ justifyContent: 'center', marginBlockStart: 0 }}>
               <Link href="/audit" className="btn btn-primary">Book a free audit</Link>

@@ -30,7 +30,7 @@ const tiers = [
     price: 'Free',
     cadence: '45 min · 5-day plan',
     desc: 'Co-founder review of your stack, attribution, team, funnel. Deployment-ready blueprint. No retainer attached. If we can\'t help, we say so.',
-    bullets: ['Written deployment plan', 'No sales pitch', 'Co-founder reviews your setup'],
+    bullets: ['Written deployment plan', 'Co-founder reviews your stack', 'Five business days to delivery'],
     cta: { label: 'Book a free audit', href: '/audit', primary: true },
   },
   {
@@ -115,7 +115,7 @@ export default function PricingPage() {
 
           <p className="hero-sub text-pretty">
             <mark className="dpl-mark">We charge less because the AI runs it</mark>, operators audit, co-founders sign off.
-            No 6-person account team you&apos;re funding.
+            No 6-person account team you&rsquo;re funding.
           </p>
 
           <table className="dpl-pillar-tiers" aria-label="Pricing tiers">

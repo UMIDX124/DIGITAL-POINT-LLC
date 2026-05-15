@@ -259,7 +259,7 @@ export function AuditPage() {
                       transition={{ duration: 0.3 }}
                     >
                       <h2 className="font-display text-xl font-bold text-white mb-2" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
-                        Tell us where you&apos;re stuck.
+                        Tell us where you&rsquo;re stuck.
                       </h2>
                       <p className="text-[color:var(--text-primary)] text-sm mb-6">
                         Pick the one closest to your day-to-day. The audit gets shaped around it.

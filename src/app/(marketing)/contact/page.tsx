@@ -66,7 +66,7 @@ export default function ContactPage() {
 
           <p className="hero-sub text-pretty">
             No generic support inbox. Most agencies hide behind a hello@ queue where
-            your message lines up with everyone else&apos;s. Reach a co-founder through
+            your message lines up with everyone else&rsquo;s. Reach a co-founder through
             the audit form or Cosmo. Inquiry routes to the operator best matched to
             your stage.
           </p>

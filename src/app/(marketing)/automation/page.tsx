@@ -93,7 +93,7 @@ export default function AutomationPage() {
           <div className="section-header">
             <p className="eyebrow">Workflows we deploy</p>
             <h2 className="section-title text-balance">
-              The handoff problems we&apos;ve solved twice or more.
+              The handoff problems we&rsquo;ve solved twice or more.
             </h2>
           </div>
 

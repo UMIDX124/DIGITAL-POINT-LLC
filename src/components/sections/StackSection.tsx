@@ -23,7 +23,7 @@ export function StackSection() {
             n8n, Groq, Postgres, TypeScript. Self-hosted where it matters.
           </h2>
           <p className="section-desc text-pretty">
-            Buyer&apos;s guides will tell you to demand the tech stack upfront. So
+            Buyer&rsquo;s guides will tell you to demand the tech stack upfront. So
             here it is. Not a Zapier shop, not a single-platform reseller.
             Open-source where the cost curve flattens, custom code where the
             edges break.

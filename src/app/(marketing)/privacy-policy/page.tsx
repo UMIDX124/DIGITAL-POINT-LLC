@@ -113,7 +113,7 @@ export default function PrivacyPolicyPage() {
 
           <h1 className="hero-title text-balance">
             What we <span className="hero-title__amber">collect</span>.<br />
-            What we don&apos;t.
+            What we don&rsquo;t.
           </h1>
 
           <p className="hero-sub text-pretty">

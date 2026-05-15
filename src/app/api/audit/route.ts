@@ -35,9 +35,24 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const body = await request.json();
+    // F·01. Accept both application/json (wizard) and form-encoded
+    // (noscript fallback) submissions. Shapes converge on AuditSubmissionSchema.
+    const contentType = request.headers.get('content-type') ?? '';
+    const isForm = contentType.includes('application/x-www-form-urlencoded') || contentType.includes('multipart/form-data');
+    let body: Record<string, unknown>;
+    if (isForm) {
+      const formData = await request.formData();
+      body = Object.fromEntries(formData.entries());
+    } else {
+      body = await request.json();
+    }
 
     if (typeof body.website === 'string' && body.website.trim().length > 0) {
+      // Honeypot tripped. Silent-reject the bot. Form posts get 303
+      // redirected to /audit?status=ok so the browser navigates cleanly.
+      if (isForm) {
+        return NextResponse.redirect(new URL('/audit?status=ok', request.url), 303);
+      }
       return NextResponse.json({ success: true, message: 'Audit request received successfully' });
     }
 

@@ -36,7 +36,7 @@ export function CosmoMark({
       aria-label={ariaLabel || undefined}
       aria-hidden={decorative || undefined}
       className={`cosmo-mark cosmo-mark--${state} ${className}`}
-      style={{ color: 'var(--color-accent)', ...style }}
+      style={style}
     >
       {/* Static outer track (hairline) */}
       <circle

@@ -1007,12 +1007,18 @@ select {
 }
 
 .hero-title--ob {
-  font-size: clamp(56px, 10vw, 144px);
-  line-height: 0.94;
-  letter-spacing: -0.045em;
+  /* Cap the display clamp so the H1 stays inside the left column on wide
+     viewports. Previous 10vw / 144px max made "Hire the AI." spill onto
+     its own line on 1440px+ screens, pushing the CTAs below the fold.
+     7vw / 96px max keeps both lines ("Hire the AI." + "Skip the
+     headcount.") fitting their natural breaks. */
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
   font-weight: 600;
-  max-width: none;
+  max-width: 14ch;
   color: var(--color-ink);
+  text-wrap: balance;
 }
 
 .hero-title--ob .hero-title__amber {
@@ -1058,14 +1064,14 @@ select {
 
 /* Hero math source line. Replaces inline footnote chain after F·05/F·06 fix.
    Sits between H1 and sub, cites the $400K math next to its first appearance
-   in the eyebrow. */
+   in the eyebrow. Tighter vertical rhythm keeps the CTAs above the fold. */
 .hero-source {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 0.5rem 0.75rem;
-  margin-block-start: 1.5rem;
-  padding-block-start: 1.1rem;
+  gap: 0.4rem 0.7rem;
+  margin-block-start: 1.1rem;
+  padding-block-start: 0.85rem;
   border-block-start: 1px solid var(--color-hairline);
   font-family: var(--font-mono);
   font-size: 11.5px;

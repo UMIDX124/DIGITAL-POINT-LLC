@@ -2,20 +2,32 @@
 
 import { useEffect, useState } from 'react';
 
-function format(now: Date) {
+/**
+ * F·25 fix. The pre-rebrand "FAIZAN ON-CALL · WILMINGTON HH:MM" framing
+ * implied a live status that the SSR HTML could not honestly carry. SSR
+ * now ships an unambiguous "last published" stamp. Post-hydration the
+ * client switches to live Wilmington UTC time, no on-call framing.
+ */
+const PUBLISHED = 'WILMINGTON · LAST PUBLISHED 2026.05.15';
+
+function liveLabel(now: Date) {
   const hh = String(now.getUTCHours()).padStart(2, '0');
   const mm = String(now.getUTCMinutes()).padStart(2, '0');
-  return `FAIZAN ON-CALL · WILMINGTON ${hh}:${mm}`;
+  return `WILMINGTON · ${hh}:${mm} UTC`;
 }
 
 export function DocumentHeaderLiveTime() {
-  const [label, setLabel] = useState(() => format(new Date()));
+  const [label, setLabel] = useState(PUBLISHED);
 
   useEffect(() => {
+    const tick = () => setLabel(liveLabel(new Date()));
+    const immediate = setTimeout(tick, 0);
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) return;
-    const id = setInterval(() => setLabel(format(new Date())), 30_000);
-    return () => clearInterval(id);
+    const interval = reduce ? null : setInterval(tick, 30_000);
+    return () => {
+      clearTimeout(immediate);
+      if (interval) clearInterval(interval);
+    };
   }, []);
 
   return <span suppressHydrationWarning>{label}</span>;

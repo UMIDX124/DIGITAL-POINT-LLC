@@ -8,6 +8,18 @@ export const metadata: Metadata = {
   description:
     'The production stack DPL deploys on: n8n (self-hosted), Groq for inference, Postgres for state, TypeScript for custom services, Vercel for surfaces, Slack Connect for client observability. Open source where the cost curve flattens. Self-hosted where it counts.',
   alternates: { canonical: 'https://www.digitalpointllc.com/stack' },
+  openGraph: {
+    title: 'Stack · n8n, Groq, Postgres, TypeScript',
+    description:
+      'The production stack DPL deploys on. Open source where the cost curve flattens. Self-hosted where it counts.',
+    url: 'https://www.digitalpointllc.com/stack',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Stack · n8n, Groq, Postgres, TypeScript',
+    description: 'The production stack DPL deploys on. Self-hosted where it counts.',
+  },
 };
 
 const rationale = [
@@ -54,7 +66,7 @@ export default function StackPage() {
           </div>
 
           <h1 className="hero-title text-balance">
-            n8n. Groq. Postgres. <span className="hero-title__amber">TypeScript</span>.<br />
+            n8n. Groq. Postgres. <span className="hero-title__amber">TypeScript.</span><br />
             Open source where the cost curve flattens.
           </h1>
 

@@ -796,6 +796,71 @@ select {
   opacity: 0.5;
 }
 
+/* Hero metadata items get a hairline tooltip on hover — provenance copy
+   that only appears on cursor focus, never adds visual noise at rest. */
+.hero-meta__item {
+  position: relative;
+  cursor: help;
+}
+
+.hero-meta__item::after {
+  content: attr(data-tip);
+  position: absolute;
+  top: calc(100% + 0.85rem);
+  left: 0;
+  z-index: 5;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  color: var(--color-text-secondary);
+  background: var(--color-canvas);
+  border: 1px solid var(--color-hairline-strong);
+  padding: 0.55rem 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity 160ms ease-out, transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero-meta__item::before {
+  content: '';
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 1rem;
+  width: 1px;
+  height: 0.45rem;
+  background: var(--color-accent);
+  opacity: 0;
+  transition: opacity 160ms ease-out;
+}
+
+.hero-meta__item:hover::after,
+.hero-meta__item:focus-visible::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-meta__item:hover::before,
+.hero-meta__item:focus-visible::before {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .hero-meta__item::after {
+    white-space: normal;
+    max-width: 18rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-meta__item::after {
+    transition: opacity 0.01ms;
+    transform: none;
+  }
+}
+
 .hero-title {
   font-family: var(--font-sans);
   font-weight: 600;
@@ -961,6 +1026,7 @@ select {
 
 /* Operator-brief buttons */
 .dpl-btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -971,7 +1037,63 @@ select {
   font-weight: 500;
   letter-spacing: 0.01em;
   border-radius: 2px;
-  transition: background var(--motion-fast) var(--ease-out), color var(--motion-fast) var(--ease-out), border-color var(--motion-fast) var(--ease-out);
+  transition:
+    background var(--motion-fast) var(--ease-out),
+    color var(--motion-fast) var(--ease-out),
+    border-color var(--motion-fast) var(--ease-out),
+    transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Magnetic affordance: on hover, the button drifts up to 4px toward the
+   cursor along X and 3px along Y. Uses --cursor-x / --cursor-y published
+   by MouseTracker; getBoundingClientRect lookups are avoided by leveraging
+   the button's own bounding (the calc clamps the offset so the button
+   never moves more than the configured amount, regardless of cursor
+   position). Hover-only so idle frames cost nothing. */
+.dpl-btn:hover {
+  transform: translate3d(
+    clamp(-4px, calc((var(--cursor-x, 50vw) - 50vw) / 80), 4px),
+    clamp(-3px, calc((var(--cursor-y, 50vh) - 50vh) / 90), 3px),
+    0
+  );
+}
+
+/* Hairline target brackets on hover. Four pseudo-elements corner the
+   button when the cursor enters. Operator-console targeting reticle vibe. */
+.dpl-btn::before,
+.dpl-btn::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--color-accent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease-out, transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.dpl-btn::before {
+  top: -4px;
+  left: -4px;
+  border-right: none;
+  border-bottom: none;
+  transform: translate(4px, 4px);
+}
+
+.dpl-btn::after {
+  bottom: -4px;
+  right: -4px;
+  border-left: none;
+  border-top: none;
+  transform: translate(-4px, -4px);
+}
+
+.dpl-btn:hover::before,
+.dpl-btn:hover::after,
+.dpl-btn:focus-visible::before,
+.dpl-btn:focus-visible::after {
+  opacity: 1;
+  transform: translate(0, 0);
 }
 
 .dpl-btn--ink {
@@ -993,6 +1115,16 @@ select {
 
 .dpl-btn--ghost:hover {
   border-color: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dpl-btn:hover {
+    transform: none;
+  }
+  .dpl-btn::before,
+  .dpl-btn::after {
+    transition: opacity 0.01ms;
+  }
 }
 
 /* Right-side panels stack */

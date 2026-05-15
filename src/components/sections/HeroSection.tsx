@@ -13,15 +13,25 @@ export function HeroSection() {
     <section className="hero hero--operator-brief" id="hero">
       <div className="hero-inner">
         <div className="hero-meta">
-          <span><span className="hero-meta__label">Founded</span> 2017</span>
+          <span className="hero-meta__item" data-tip="Delaware Secretary of State filing · DPL incorporated 2017-03">
+            <span className="hero-meta__label">Founded</span> 2017
+          </span>
           <span className="hero-meta__sep" aria-hidden="true" />
-          <span><span className="hero-meta__label">Base</span> Wilmington, DE</span>
+          <span className="hero-meta__item" data-tip="Wilmington · Delaware corporate residency since incorporation">
+            <span className="hero-meta__label">Base</span> Wilmington, DE
+          </span>
           <span className="hero-meta__sep" aria-hidden="true" />
-          <span><span className="hero-meta__label">Cross-state</span> 15+</span>
+          <span className="hero-meta__item" data-tip="Operating across 15+ US states since 2017 · verified by client roster">
+            <span className="hero-meta__label">Cross-state</span> 15+
+          </span>
           <span className="hero-meta__sep" aria-hidden="true" />
-          <span><span className="hero-meta__label">ARR focus</span> $500K–$10M</span>
+          <span className="hero-meta__item" data-tip="Founder-led companies with $500K–$10M ARR · 5-25 employees">
+            <span className="hero-meta__label">ARR focus</span> $500K–$10M
+          </span>
           <span className="hero-meta__sep" aria-hidden="true" />
-          <span><span className="hero-meta__label">Ticket</span> $10K–$30K</span>
+          <span className="hero-meta__item" data-tip="Total year-one spend across audit + pilot + retainer">
+            <span className="hero-meta__label">Ticket</span> $10K–$30K
+          </span>
         </div>
 
         <div className="hero-grid">

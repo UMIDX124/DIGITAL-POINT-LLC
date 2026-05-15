@@ -6,6 +6,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Logomark } from "@/components/brand/Logomark";
 import { VisibilityPause } from "@/components/motion/VisibilityPause";
+import { MouseTracker } from "@/components/motion/MouseTracker";
 import { BotIdClient } from "botid/client";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 // Phase 17b 3-restructured A3. Analytics gated on cookie consent.
@@ -243,6 +244,7 @@ export default async function RootLayout({
           </span>
         </div>
         <VisibilityPause />
+        <MouseTracker />
         <BotIdClient
           protect={[
             { path: '/api/audit', method: 'POST' },

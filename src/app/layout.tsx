@@ -3,10 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-import { Logomark } from "@/components/brand/Logomark";
-import { VisibilityPause } from "@/components/motion/VisibilityPause";
-import { MouseTracker } from "@/components/motion/MouseTracker";
-import { SectionProgress } from "@/components/motion/SectionProgress";
+import { MotionRoot } from "@/components/motion/MotionRoot";
 import { BotIdClient } from "botid/client";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 // Phase 17b 3-restructured A3. Analytics gated on cookie consent.
@@ -140,68 +137,7 @@ export default function RootLayout({
         {/* Phase 18.6 P5/P6. Inline style background:#000000 REMOVED so
             body's globals.css background (subtle radial atmosphere) takes
             effect. Color retained inline so unstyled fallback is readable. */}
-        {/*
-          Operator console boot splash. Light canvas (matches the rest of
-          the site, no longer feels out-of-place). Staggers eight mono
-          boot lines, ending on faizan/anwaar handoff so the "human
-          watches the agents" promise lands at first paint. Pure CSS
-          stagger; honours prefers-reduced-motion. Auto-dismisses at ~3.4s.
-        */}
-        <div className="dpl-intro-loader" aria-hidden="true">
-          <header className="dpl-intro-head">
-            <span className="dpl-intro-head__cell">DPL · Operator Console · 2026.05</span>
-            <span className="dpl-intro-head__cell dpl-intro-head__cell--right">Wilmington · UTC</span>
-          </header>
-          <span className="dpl-intro-line" />
-          <ol className="dpl-intro-boot" role="presentation">
-            <li className="dpl-intro-boot__row" style={{ animationDelay: '0.40s' }}>
-              <span className="dpl-intro-boot__ts">[00:00.42]</span>
-              <span className="dpl-intro-boot__label">booting agent fleet</span>
-              <span className="dpl-intro-boot__status">ok</span>
-            </li>
-            <li className="dpl-intro-boot__row" style={{ animationDelay: '0.58s' }}>
-              <span className="dpl-intro-boot__ts">[00:00.71]</span>
-              <span className="dpl-intro-boot__label">postgres.warm</span>
-              <span className="dpl-intro-boot__status">ok</span>
-            </li>
-            <li className="dpl-intro-boot__row" style={{ animationDelay: '0.76s' }}>
-              <span className="dpl-intro-boot__ts">[00:01.03]</span>
-              <span className="dpl-intro-boot__label">groq.inference</span>
-              <span className="dpl-intro-boot__status">ok</span>
-            </li>
-            <li className="dpl-intro-boot__row" style={{ animationDelay: '0.94s' }}>
-              <span className="dpl-intro-boot__ts">[00:01.28]</span>
-              <span className="dpl-intro-boot__label">n8n.orchestration</span>
-              <span className="dpl-intro-boot__status">ok</span>
-            </li>
-            <li className="dpl-intro-boot__row" style={{ animationDelay: '1.12s' }}>
-              <span className="dpl-intro-boot__ts">[00:01.56]</span>
-              <span className="dpl-intro-boot__label">retainers.active</span>
-              <span className="dpl-intro-boot__status">6</span>
-            </li>
-            <li className="dpl-intro-boot__row" style={{ animationDelay: '1.30s' }}>
-              <span className="dpl-intro-boot__ts">[00:01.82]</span>
-              <span className="dpl-intro-boot__label">operator handoff</span>
-              <span className="dpl-intro-boot__status dpl-intro-boot__status--accent">faizan</span>
-            </li>
-            <li className="dpl-intro-boot__row" style={{ animationDelay: '1.48s' }}>
-              <span className="dpl-intro-boot__ts">[00:02.04]</span>
-              <span className="dpl-intro-boot__label">backup</span>
-              <span className="dpl-intro-boot__status dpl-intro-boot__status--accent">anwaar</span>
-            </li>
-            <li className="dpl-intro-boot__row" style={{ animationDelay: '1.66s' }}>
-              <span className="dpl-intro-boot__ts">[00:02.28]</span>
-              <span className="dpl-intro-boot__label">ready</span>
-              <span className="dpl-intro-boot__status dpl-intro-boot__status--ready" aria-hidden="true">▸</span>
-            </li>
-          </ol>
-          <span className="dpl-intro-mark">
-            <Logomark mode="lockup" variant="light" markSize={44} textSize={132} gap={12} className="dpl-intro-mark-lockup" />
-          </span>
-        </div>
-        <VisibilityPause />
-        <MouseTracker />
-        <SectionProgress />
+        <MotionRoot />
         <BotIdClient
           protect={[
             { path: '/api/audit', method: 'POST' },

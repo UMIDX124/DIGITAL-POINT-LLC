@@ -22,10 +22,11 @@ export function FounderQuote() {
             <Image
               src="/dp-founder-faizan.jpg"
               alt="M. Faizan Rafiq, Co-founder"
-              width={96}
-              height={96}
+              width={144}
+              height={144}
               sizes="48px"
               className="dpl-quote__avatar dpl-quote__avatar--photo"
+              style={{ objectFit: 'cover', objectPosition: 'center top' }}
             />
             <div className="dpl-quote__who-text">
               <div className="dpl-quote__name">M. Faizan Rafiq</div>

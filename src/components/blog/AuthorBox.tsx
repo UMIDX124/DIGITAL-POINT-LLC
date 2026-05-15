@@ -56,11 +56,15 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
  <Image
  src={author.photo}
  alt={author.name}
- width={128}
- height={128}
+ width={192}
+ height={192}
  sizes="64px"
- className="shrink-0 w-16 h-16 rounded-full object-cover"
- style={{ border: '2px solid var(--color-accent)' }}
+ className="shrink-0 w-16 h-16 rounded-full"
+ style={{
+ border: '2px solid var(--color-accent)',
+ objectFit: 'cover',
+ objectPosition: 'center top',
+ }}
  />
  ) : (
  <div

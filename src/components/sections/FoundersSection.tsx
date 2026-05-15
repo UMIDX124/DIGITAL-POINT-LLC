@@ -45,6 +45,7 @@ const avatarStyles: Record<AvatarTreatment, React.CSSProperties> = {
     borderRadius: '50%',
     border: '2px solid var(--color-accent)',
     objectFit: 'cover',
+    objectPosition: 'center top',
     flexShrink: 0,
   },
   'square-hairline': {
@@ -53,6 +54,7 @@ const avatarStyles: Record<AvatarTreatment, React.CSSProperties> = {
     borderRadius: 0,
     border: '1px solid var(--color-hairline-strong, rgba(10,10,11,0.18))',
     objectFit: 'cover',
+    objectPosition: 'center top',
     flexShrink: 0,
   },
 };

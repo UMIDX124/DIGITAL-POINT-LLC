@@ -6,13 +6,13 @@ const stats = [
   },
   {
     figure: '15+',
-    label: 'US states delivered',
-    detail: 'Cumulative footprint, 2017 to present.',
+    label: 'US states · contractor era 2017–2025',
+    detail: 'Local SEO + citations work, pre-rebrand. Operational history, not AI engagement count.',
   },
   {
     figure: '20',
-    label: 'Engagements closed Feb to May 2026',
-    detail: 'Active backlog tracked in internal sales record.',
+    label: 'AI engagements · Feb to May 2026',
+    detail: 'Avg $14K per engagement. 11 returning, 9 new. Tracked in internal sales record.',
   },
   {
     figure: '2 / 2',
@@ -48,7 +48,9 @@ export function OperationalHistory() {
         </dl>
 
         <p className="dpl-track-record__source">
-          Source: internal sales record, 2017 to present. Verifiable on request.
+          Sources. Delaware Secretary of State (founding date). Internal sales
+          record, segmented contractor era 2017–2025 vs AI engagements 2026 to
+          present. Co-founder signatures on file.
         </p>
       </div>
     </section>

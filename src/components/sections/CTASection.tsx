@@ -22,7 +22,7 @@ export function CTASection() {
             </Link>
           </div>
           <p className="hero-microcopy">
-            Free · 45 min · No sales pitch · Co-founder reviews your setup
+            Free · 45 min · Co-founder reviews your stack · Written plan within five days
           </p>
         </div>
       </div>

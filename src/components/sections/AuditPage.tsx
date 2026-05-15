@@ -222,10 +222,10 @@ export function AuditPage() {
                       transition={{ duration: 0.3 }}
                     >
                       <h2 className="font-display text-xl font-bold text-white mb-2" style={{ maxWidth: 'var(--maxw-heading-section)' }}>
-                        What&apos;s your biggest challenge?
+                        Tell us where you&apos;re stuck.
                       </h2>
                       <p className="text-[color:var(--text-primary)] text-sm mb-6">
-                        Pick the one that resonates most. We&apos;ll tailor your audit around it.
+                        Pick the one closest to your day-to-day. The audit gets shaped around it.
                       </p>
 
                       <div className="space-y-3">
@@ -443,7 +443,7 @@ export function AuditPage() {
             <FadeUp delay={0.2} className="lg:col-span-2 space-y-4">
               <GlassCard className="p-6">
                 <h3 className="font-display font-semibold text-white mb-4">
-                  What You&apos;ll Get
+                  Inside the deliverable
                 </h3>
                 <ul className="space-y-3">
                   {[

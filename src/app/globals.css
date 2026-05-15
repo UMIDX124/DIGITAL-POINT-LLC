@@ -48,12 +48,16 @@
      #ff8800 hits only 2.3:1 contrast; #a85800 hits ~5.5:1 (AA pass). */
   --color-accent-text: #A85800;
 
-  /* Text — dark on light canvas, WCAG AA on #FAFAF7 */
+  /* Text — dark on light canvas, WCAG AA on #FAFAF7
+     F·18 fix: --color-text-tertiary bumped from #8A8A93 (3.27:1, fails AA)
+     to #6E6E76 (4.83:1, AA pass). Old value retired for body text.
+     --color-text-quaternary retained at #B8B8BD but restricted to non-text
+     decoration (hairline accents, dividers); never used as body color. */
   --color-text-primary: #0A0A0B;
   --color-text-secondary: #52525B;
-  --color-text-tertiary: #8A8A93;
+  --color-text-tertiary: #6E6E76;
   --color-text-quaternary: #B8B8BD;
-  --color-text-muted: #6e6e76; /* legacy alias, darkened from #8d8d96 to hit AA */
+  --color-text-muted: #6e6e76; /* legacy alias */
 
   /* Hairline rules (V1) — replace --color-line-* family going forward */
   --color-hairline: rgba(10, 10, 11, 0.08);
@@ -343,7 +347,7 @@ select {
   color: var(--color-text-dark-muted);
 }
 .section-dark a, .section-dark .link {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 .section-dark .card,
 .section-dark .math-tile,
@@ -873,7 +877,7 @@ select {
 }
 
 .hero-title__amber {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .hero-sub {
@@ -951,7 +955,7 @@ select {
   font-size: 11px;
   letter-spacing: var(--tracking-mono-eyebrow);
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   margin-block-end: 1.5rem;
 }
 
@@ -972,7 +976,7 @@ select {
 }
 
 .hero-title--ob .hero-title__amber {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .hero-title__fn {
@@ -981,7 +985,7 @@ select {
   font-family: var(--font-mono);
   font-size: 0.18em;
   font-weight: 500;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   vertical-align: super;
   line-height: 1;
 }
@@ -1008,7 +1012,7 @@ select {
 .hero-footnotes__num {
   display: inline-block;
   width: 1.6rem;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   font-weight: 600;
 }
 
@@ -1240,7 +1244,7 @@ select {
 }
 
 .dpl-panel__row--accent {
-  color: var(--color-accent) !important;
+  color: var(--color-accent-text) !important;
   font-weight: 600 !important;
 }
 
@@ -1431,7 +1435,7 @@ select {
 }
 
 .dpl-mini-console__tag {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   flex-shrink: 0;
 }
 
@@ -1538,7 +1542,7 @@ select {
 }
 
 .dpl-ticker__tag {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -1615,7 +1619,7 @@ select {
   font-size: 11px;
   letter-spacing: var(--tracking-mono-eyebrow);
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   margin-block-end: 1.25rem;
 }
 
@@ -1694,7 +1698,7 @@ select {
 }
 
 .dpl-evidence__arrow {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   transform: rotate(90deg);
   display: inline-block;
   line-height: 1;
@@ -1741,7 +1745,7 @@ select {
 }
 
 .dpl-quote__mark {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   font-weight: 600;
 }
 
@@ -1833,7 +1837,7 @@ select {
 }
 
 .dpl-eyebrow--ondark {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 /* Positioning section (V5) */
@@ -1852,7 +1856,7 @@ select {
 }
 
 .dpl-positioning__title-accent {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .dpl-positioning__body {
@@ -2046,7 +2050,7 @@ select {
   font-size: 10.5px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   margin-block-end: 1.5rem;
 }
 
@@ -2202,7 +2206,7 @@ select {
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .dpl-rationale__heading {
@@ -2400,7 +2404,7 @@ select {
 }
 
 .math-tile--accent .math-tile__amount {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .math-tile__detail {
@@ -2592,7 +2596,7 @@ select {
 }
 
 .dpl-footer__log-tag {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   text-transform: lowercase;
 }
 
@@ -2623,7 +2627,7 @@ select {
 }
 
 .dpl-footer__link:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .dpl-footer__bar {
@@ -2804,7 +2808,7 @@ select {
 }
 
 .dpl-nav__link:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .dpl-nav__cta {
@@ -3217,7 +3221,7 @@ select {
 }
 
 .dpl-pillar-timeline__step--active .dpl-pillar-timeline__label {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 /* Pricing tier table */
@@ -3268,7 +3272,7 @@ select {
 }
 
 .dpl-pillar-tiers__row--accent .dpl-pillar-tiers__price {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .dpl-pillar-tiers__link {
@@ -3281,8 +3285,8 @@ select {
 }
 
 .dpl-pillar-tiers__link:hover {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
+  color: var(--color-accent-text);
+  border-color: var(--color-accent-text);
 }
 
 /* Compact panel column for agents / automation / operators heroes */
@@ -3559,7 +3563,7 @@ select {
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   font-weight: 500;
 }
 
@@ -3708,7 +3712,7 @@ select {
 }
 
 .cosmo-msg__label[data-role='assistant'] {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .cosmo-msg__time {
@@ -3735,13 +3739,13 @@ select {
 }
 
 .cosmo-msg__body a {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   text-decoration: none;
   border-block-end: 1px solid transparent;
 }
 
 .cosmo-msg__body a:hover {
-  border-block-end-color: var(--color-accent);
+  border-block-end-color: var(--color-accent-text);
 }
 
 .cosmo-msg__body ul,
@@ -3768,7 +3772,7 @@ select {
   font-size: 10.5px;
   letter-spacing: var(--tracking-mono-body);
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   background: transparent;
   border: none;
   padding: 0;
@@ -3785,7 +3789,7 @@ select {
   font-size: 11px;
   letter-spacing: var(--tracking-mono-label);
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   border-inline-start: 1px solid var(--color-accent);
   margin-inline: 0.75rem;
 }
@@ -3812,8 +3816,8 @@ select {
 
 .cosmo-followups__chip:hover,
 .cosmo-followups__chip:focus-visible {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
+  border-color: var(--color-accent-text);
+  color: var(--color-accent-text);
   outline: none;
 }
 
@@ -3901,7 +3905,7 @@ select {
 
 .cosmo-panel__clear:hover,
 .cosmo-panel__close:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 .cosmo-panel__close {
@@ -4028,7 +4032,7 @@ select {
 }
 
 .cosmo-panel__input:focus {
-  border-color: var(--color-accent);
+  border-color: var(--color-accent-text);
 }
 
 .cosmo-panel__input:disabled {
@@ -4050,7 +4054,7 @@ select {
 
 .cosmo-panel__send:hover {
   background: var(--color-accent);
-  border-color: var(--color-accent);
+  border-color: var(--color-accent-text);
 }
 
 .cosmo-panel__send:disabled {
@@ -4062,8 +4066,8 @@ select {
 
 .cosmo-panel__send[data-state='stop'] {
   background: var(--color-canvas);
-  color: var(--color-accent);
-  border-color: var(--color-accent);
+  color: var(--color-accent-text);
+  border-color: var(--color-accent-text);
 }
 
 .cosmo-panel__send-stop {
@@ -4095,8 +4099,8 @@ select {
 
 .cosmo-panel__quick-chip:hover:not(:disabled),
 .cosmo-panel__quick-chip:focus-visible {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
+  border-color: var(--color-accent-text);
+  color: var(--color-accent-text);
   outline: none;
 }
 
@@ -4118,7 +4122,7 @@ select {
   width: 100%;
   border: 1px solid var(--color-accent);
   background: transparent;
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   cursor: pointer;
   transition: background-color 120ms ease, color 120ms ease;
 }
@@ -4160,7 +4164,7 @@ select {
 }
 
 .cosmo-handoff__input:focus {
-  border-color: var(--color-accent);
+  border-color: var(--color-accent-text);
 }
 
 .cosmo-handoff__error {
@@ -4198,7 +4202,7 @@ select {
 
 .cosmo-handoff__send:hover:not(:disabled) {
   background: var(--color-accent);
-  border-color: var(--color-accent);
+  border-color: var(--color-accent-text);
 }
 
 .cosmo-handoff__send:disabled {
@@ -4207,8 +4211,8 @@ select {
 }
 
 .cosmo-handoff__cancel:hover {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
+  color: var(--color-accent-text);
+  border-color: var(--color-accent-text);
 }
 
 @media (max-width: 480px) {

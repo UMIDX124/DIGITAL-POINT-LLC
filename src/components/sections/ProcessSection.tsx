@@ -34,7 +34,7 @@ export function ProcessSection() {
           {steps.map((s) => (
             <div key={s.num} className="process-step">
               <span className="process-step__num">{s.num}</span>
-              <h3 className="process-step__title">{s.title}</h3>
+              <h4 className="process-step__title">{s.title}</h4>
               <p className="process-step__desc">{s.desc}</p>
               <p className="process-step__price">{s.price}</p>
             </div>

@@ -98,12 +98,12 @@ export function FoundersSection({ variant = 'compact' }: Props) {
                   <InitialsAvatar initials={f.initials} size={96} ariaLabel={f.name} />
                 )}
                 <div>
-                  <h3
+                  <h4
                     className="font-display"
                     style={{ fontSize: 'var(--text-xl)', color: 'var(--color-text-primary)' }}
                   >
                     {f.name}
-                  </h3>
+                  </h4>
                   <p
                     className="font-mono"
                     style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-tertiary)', letterSpacing: '0.12em' }}

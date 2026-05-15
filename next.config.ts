@@ -78,7 +78,6 @@ const withSentry = (cfg: NextConfig) =>
     silent: !process.env.CI,
     widenClientFileUpload: true,
     tunnelRoute: '/monitoring',
-    disableLogger: true,
   });
 
 export default withSentry(bundleAnalyzer(withBotId(nextConfig)));

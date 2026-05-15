@@ -127,7 +127,7 @@ export default async function RootLayout({
                 contactType: "customer service",
                 description:
                   "Reach us through Cosmo (on-site chat) or the free growth audit form. Direct operator routing, no shared inbox.",
-                url: "https://www.digitalpointllc.com/#contact-philosophy",
+                url: "https://www.digitalpointllc.com/contact",
                 areaServed: "Worldwide",
                 availableLanguage: ["en"],
               },

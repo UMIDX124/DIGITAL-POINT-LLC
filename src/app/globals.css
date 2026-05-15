@@ -1651,7 +1651,7 @@ select {
 
 .dpl-quote__avatar--photo {
   object-fit: cover;
-  object-position: center top;
+  object-position: center 18%;
   background: transparent;
   border: 1px solid var(--color-hairline-strong, rgba(10, 10, 11, 0.18));
   border-radius: 50%;

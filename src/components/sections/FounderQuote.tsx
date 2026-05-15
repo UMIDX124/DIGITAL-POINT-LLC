@@ -26,7 +26,7 @@ export function FounderQuote() {
               height={144}
               sizes="48px"
               className="dpl-quote__avatar dpl-quote__avatar--photo"
-              style={{ objectFit: 'cover', objectPosition: 'center top' }}
+              style={{ objectFit: 'cover', objectPosition: 'center 18%' }}
             />
             <div className="dpl-quote__who-text">
               <div className="dpl-quote__name">M. Faizan Rafiq</div>

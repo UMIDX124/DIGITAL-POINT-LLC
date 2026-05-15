@@ -2,14 +2,15 @@ import Image from 'next/image';
 import { InitialsAvatar } from '@/components/brand/InitialsAvatar';
 
 type Variant = 'compact' | 'full';
-type AvatarTreatment = 'circle-amber-legacy' | 'square-hairline';
 
 type Founder = {
   name: string;
   role: string;
   initials: string;
   photo?: string;
-  treatment: AvatarTreatment;
+  // Vertical crop bias per founder so the face sits centered in the
+  // circle. Lower % = face nudged up; higher % = nudged down.
+  objectPosition: string;
   bio: string;
   href: string;
 };
@@ -19,11 +20,8 @@ const founders: Founder[] = [
     name: 'M. Faizan Rafiq',
     role: 'Co-founder · Paid media + account restructure',
     initials: 'MF',
-    // F·09 fix. Photo now lives at the canonical /dp-founder-faizan.jpg path
-    // matching the Anwaar pattern. Old /team/faizan-square-512.jpg still
-    // resolves on disk for backwards compat.
     photo: '/dp-founder-faizan.jpg',
-    treatment: 'circle-amber-legacy',
+    objectPosition: 'center 18%',
     bio: 'Faizan rebuilds account structure end-to-end when he sees broad-targeting waste past $50K/month spend. The pattern repeats across e-commerce DTC accounts. Most of his audits surface 20-35% budget leakage in the first hour.',
     href: 'https://www.linkedin.com/in/m-faizan101',
   },
@@ -32,31 +30,22 @@ const founders: Founder[] = [
     role: 'Co-founder · Attribution + data integration',
     initials: 'AT',
     photo: '/dp-founder-anwaar.jpg',
-    treatment: 'square-hairline',
+    objectPosition: 'center 22%',
     bio: "Anwaar runs attribution rebuilds for B2B SaaS accounts where pipeline data lives in 5+ tools without integration. The signal his work is landing: a CMO can defend the marketing budget to the board 90 days in, without engineering's help.",
     href: 'https://www.linkedin.com/in/anwaar-tayyab-565680a',
   },
 ];
 
-const avatarStyles: Record<AvatarTreatment, React.CSSProperties> = {
-  'circle-amber-legacy': {
-    width: 96,
-    height: 96,
-    borderRadius: '50%',
-    border: '2px solid var(--color-accent)',
-    objectFit: 'cover',
-    objectPosition: 'center top',
-    flexShrink: 0,
-  },
-  'square-hairline': {
-    width: 96,
-    height: 96,
-    borderRadius: 0,
-    border: '1px solid var(--color-hairline-strong, rgba(10,10,11,0.18))',
-    objectFit: 'cover',
-    objectPosition: 'center top',
-    flexShrink: 0,
-  },
+// Unified treatment — both founders read symmetrically as round amber-bordered
+// portraits. Earlier asymmetry (circle vs hairline-square) made the lockup
+// feel off-balance.
+const avatarBaseStyle: React.CSSProperties = {
+  width: 96,
+  height: 96,
+  borderRadius: '50%',
+  border: '2px solid var(--color-accent)',
+  objectFit: 'cover',
+  flexShrink: 0,
 };
 
 type Props = {
@@ -90,11 +79,11 @@ export function FoundersSection({ variant = 'compact' }: Props) {
                   <Image
                     src={f.photo}
                     alt={`${f.name}, ${f.role}`}
-                    width={192}
-                    height={192}
+                    width={288}
+                    height={288}
                     sizes="96px"
                     priority={isFull && i === 0}
-                    style={avatarStyles[f.treatment]}
+                    style={{ ...avatarBaseStyle, objectPosition: f.objectPosition }}
                   />
                 ) : (
                   <InitialsAvatar initials={f.initials} size={96} ariaLabel={f.name} />

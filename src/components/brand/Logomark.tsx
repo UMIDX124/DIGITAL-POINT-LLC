@@ -85,12 +85,12 @@ export function Logomark({
   // on retina; CSS clamps the rendered width back to the intended display size.
   const RETINA = 2;
 
-  // Optical baseline shim. The wordmark image has descenders ("g", "p")
-  // which push its bbox below the visual baseline, so center-aligning the
-  // square mark to the bbox center makes the mark sit ~6-8% too high.
-  // Nudge the mark down by ~6% of its size to land on the wordmark's
-  // x-height midline.
-  const markOpticalShift = Math.round(effectiveMarkSize * 0.06);
+  // Optical baseline shim. The wordmark image bbox includes descenders
+  // ("g", "p"), which pull its center BELOW the visual cap-height midline.
+  // Center-aligning a square mark to the wordmark's bbox center makes the
+  // mark sit too LOW relative to the typography. Shift the mark UP by
+  // ~7% of its size to land its center on the wordmark cap-height midline.
+  const markOpticalShift = -Math.round(effectiveMarkSize * 0.07);
 
   return (
     <span

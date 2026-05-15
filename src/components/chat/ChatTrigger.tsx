@@ -92,7 +92,7 @@ export default function ChatTrigger({ onClick, panelOpen }: Props) {
       <span className="cosmo-fab-inner block h-full w-full rounded-full relative overflow-hidden flex items-center justify-center">
         <CosmoMark
           state={panelOpen ? 'active' : 'idle'}
-          size={48}
+          size={40}
           ariaLabel=""
         />
         {/* Sparkle on wave (first-visit attention cue) */}

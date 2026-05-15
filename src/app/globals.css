@@ -2879,9 +2879,10 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   color: var(--color-accent);
+  overflow: visible;
 }
 
 /* Cosmo sonar mark — operator-brief signature. Sweep arc rotates,

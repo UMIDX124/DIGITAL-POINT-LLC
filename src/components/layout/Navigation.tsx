@@ -18,7 +18,7 @@ export function Navigation() {
           <Logomark
             mode="lockup"
             variant="light"
-            markSize={32}
+            markSize={28}
             textSize={112}
             gap={14}
             className="dpl-logo-nav"

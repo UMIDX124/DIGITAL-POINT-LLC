@@ -13,6 +13,7 @@ const bundleAnalyzer = withBundleAnalyzer({ enabled: process.env.ANALYZE === '1'
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   output: 'standalone',
+  poweredByHeader: false,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production'
       ? { exclude: ['error', 'warn'] }

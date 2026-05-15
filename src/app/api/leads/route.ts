@@ -4,12 +4,19 @@ import { db } from '@/lib/db';
 import { sendEmail, escapeHtml, FOUNDER_EMAILS } from '@/lib/email';
 import { computeLeadQualityScore } from '@/lib/lead-scoring';
 import { LeadSubmissionSchema } from '@/lib/schemas';
+import { leadsLimiter, getClientIp } from '@/lib/ratelimit';
 
 export async function POST(request: NextRequest) {
   try {
     const verification = await checkBotId();
     if (verification.isBot && !verification.isVerifiedBot) {
       return NextResponse.json({ error: 'Request blocked.' }, { status: 403 });
+    }
+
+    const ip = getClientIp(request.headers);
+    const { success: rlOk } = await leadsLimiter.limit(ip);
+    if (!rlOk) {
+      return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
     }
 
     const body = await request.json();

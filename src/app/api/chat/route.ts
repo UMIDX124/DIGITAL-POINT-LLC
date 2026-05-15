@@ -35,10 +35,6 @@ function toUIMessage(m: InputMessage, idx: number): UIMessage {
 }
 
 export async function POST(req: NextRequest) {
-  const hasKey = !!process.env.GROQ_API_KEY;
-  const keyLen = process.env.GROQ_API_KEY?.length ?? 0;
-  console.log(`[chat] req hasKey=${hasKey} keyLen=${keyLen}`);
-
   try {
     const verification = await checkBotId();
     if (verification.isBot && !verification.isVerifiedBot) {

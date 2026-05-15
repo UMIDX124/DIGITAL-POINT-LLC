@@ -29,23 +29,6 @@ export const metadata: Metadata = {
   },
   description:
     "AI agents and trained operators run your ops and reporting work. Same output as a 4-person internal team, one retainer. Built for $1M-$50M companies.",
-  keywords: [
-    "AI agents",
-    "AI automation agency",
-    "AI workflow automation",
-    "agent stack deployment",
-    "CRM automation",
-    "ops automation",
-    "reporting automation",
-    "lead routing AI",
-    "sales follow-up AI",
-    "remote operators",
-    "trained operators backstop",
-    "n8n workflows",
-    "Groq llama AI",
-    "scale without headcount",
-    "AI ops infrastructure",
-  ],
   authors: [{ name: "M. Faizan Rafiq" }, { name: "Anwaar Tayyab" }],
   creator: "Digital Point LLC",
   publisher: "Digital Point LLC",
@@ -82,7 +65,6 @@ export const metadata: Metadata = {
     description:
       "AI agents and trained operators run your ops and reporting work. Same output as a 4-person internal team, one retainer. Built for $1M-$50M companies.",
     images: ["/og-image.png"],
-    creator: "@digitalpointllc",
   },
   robots: {
     index: true,
@@ -189,7 +171,7 @@ export default async function RootLayout({
                 "Lead Operations",
               ],
               areaServed: { "@type": "Place", name: "Worldwide" },
-              priceRange: "$$",
+              priceRange: "$10000-$30000",
             }),
           }}
         />

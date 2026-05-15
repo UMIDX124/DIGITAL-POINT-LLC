@@ -236,7 +236,11 @@ export default async function RootLayout({
             DPL · Operator Brief · v2026.05
           </span>
           <span className="dpl-intro-mascot">
-            <Logomark mode="lockup" variant="dark" priority markSize={44} textSize={152} gap={14} className="dpl-intro-mascot-mark" />
+            {/* F·34. Drop `priority` on the intro splash Logomark. The dark
+                logo variants are ~1MB combined; preloading them blocks LCP for
+                a splash that only shows on hard nav. Let the browser fetch
+                lazily — the intro is a CSS fade so it survives a slight delay. */}
+            <Logomark mode="lockup" variant="dark" markSize={44} textSize={152} gap={14} className="dpl-intro-mascot-mark" />
           </span>
           <span className="dpl-intro-line" />
           <span className="dpl-intro-meta dpl-intro-meta--bottom">

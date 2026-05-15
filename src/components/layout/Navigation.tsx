@@ -14,7 +14,8 @@ export function Navigation() {
   return (
     <header className="dpl-nav" role="banner">
       <nav className="dpl-nav__inner" aria-label="Primary">
-        <Link href="/" className="dpl-nav__brand" aria-label="Digital Point home">
+        <Link href="/" className="dpl-nav__brand" aria-label="Digital Point LLC, home">
+          <span className="sr-only">Digital Point LLC</span>
           <Logomark
             mode="lockup"
             variant="light"

@@ -36,6 +36,10 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     if (typeof body.website === 'string' && body.website.trim().length > 0) {
+      console.warn('[founder] honeypot tripped', {
+        ip: request.headers.get('x-vercel-forwarded-for') ?? request.headers.get('x-forwarded-for') ?? 'unknown',
+        ua: request.headers.get('user-agent') ?? 'unknown',
+      });
       return NextResponse.json({ success: true, message: 'Message received! A Co-Founder will get back to you within 24 hours.' });
     }
 

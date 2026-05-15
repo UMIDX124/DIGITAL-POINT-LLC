@@ -9,6 +9,8 @@
     "start": "NODE_ENV=production node .next/standalone/server.js 2>&1 | tee server.log",
     "start:standalone": "NODE_ENV=production PORT=3000 node .next/standalone/server.js",
     "lint": "eslint .",
+    "test:a11y": "playwright test",
+    "verify:botid": "node scripts/verify-botid-hash.mjs",
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",

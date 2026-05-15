@@ -50,6 +50,10 @@ export async function POST(request: NextRequest) {
     if (typeof body.website === 'string' && body.website.trim().length > 0) {
       // Honeypot tripped. Silent-reject the bot. Form posts get 303
       // redirected to /audit?status=ok so the browser navigates cleanly.
+      console.warn('[audit] honeypot tripped', {
+        ip: request.headers.get('x-vercel-forwarded-for') ?? request.headers.get('x-forwarded-for') ?? 'unknown',
+        ua: request.headers.get('user-agent') ?? 'unknown',
+      });
       if (isForm) {
         return NextResponse.redirect(new URL('/audit?status=ok', request.url), 303);
       }

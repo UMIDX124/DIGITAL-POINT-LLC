@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export function FounderQuote() {
   return (
     <section className="dpl-section dpl-section--quote" aria-label="Founder signature quote">
@@ -17,7 +19,14 @@ export function FounderQuote() {
         </blockquote>
         <div className="dpl-quote__attribution">
           <div className="dpl-quote__who">
-            <div className="dpl-quote__avatar" aria-hidden="true">FR</div>
+            <Image
+              src="/dp-founder-faizan.jpg"
+              alt="M. Faizan Rafiq, Co-founder"
+              width={96}
+              height={96}
+              sizes="48px"
+              className="dpl-quote__avatar dpl-quote__avatar--photo"
+            />
             <div className="dpl-quote__who-text">
               <div className="dpl-quote__name">M. Faizan Rafiq</div>
               <div className="dpl-quote__role">Co-founder · paid media + account restructure</div>

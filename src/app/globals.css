@@ -1649,6 +1649,14 @@ select {
   letter-spacing: -0.02em;
 }
 
+.dpl-quote__avatar--photo {
+  object-fit: cover;
+  background: transparent;
+  border: 1px solid var(--color-hairline-strong, rgba(10, 10, 11, 0.18));
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
 .dpl-quote__name {
   font-weight: 500;
   font-size: 15px;

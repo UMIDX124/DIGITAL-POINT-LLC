@@ -4556,3 +4556,16 @@ select {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================================
+   HERO WIDTH — reduce side gutters by ~half on desktop
+   Other sections keep their 88rem cap for editorial rhythm; hero
+   stretches wider so the headline doesn't sit in a narrow column.
+   ============================================================ */
+@media (min-width: 768px) {
+  .hero .hero-inner,
+  section.hero .hero-inner {
+    max-width: min(108rem, 94vw);
+    padding-inline: clamp(1.5rem, 3vw, 2.5rem);
+  }
+}

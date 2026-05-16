@@ -63,7 +63,7 @@ export function AuthorBox({ authorName }: { authorName?: string }) {
  style={{
  border: '2px solid var(--color-accent)',
  objectFit: 'cover',
- objectPosition: author.name.startsWith('Anwaar') ? 'center 22%' : 'center 18%',
+ objectPosition: author.name.startsWith('Anwaar') ? 'center 30%' : 'center 28%',
  }}
  />
  ) : (

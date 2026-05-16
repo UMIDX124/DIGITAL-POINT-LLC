@@ -4305,3 +4305,254 @@ select {
     width: auto;
   }
 }
+
+/* ============================================================
+   MOBILE PREMIUM PASS (added 2026-05-16)
+   Targets four issues from mobile screenshots:
+   1. hero-grid__panels overflowed horizontally on phones
+   2. .cosmo-fab covered hero CTA copy and footer log lines
+   3. .hero-meta dashes wrapped badly on narrow widths
+   4. Hero diagram on /automation rendered too small
+   Premium baseline: 44x44 min touch targets, no horizontal scroll,
+   FAB never overlaps primary CTAs.
+   ============================================================ */
+
+@media (max-width: 1023px) {
+  html, body {
+    overflow-x: hidden;
+  }
+}
+
+/* Hero side panels are desktop-only — they were spilling off-screen
+   on phones and the hero copy already carries the same trust signals. */
+@media (max-width: 1023px) {
+  .hero-grid__panels,
+  .hero--pillar-brief .hero-grid__panels {
+    display: none;
+  }
+}
+
+/* Hero meta strip — drop dashes, clean 2-column chip grid on phones. */
+@media (max-width: 640px) {
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem 0.9rem;
+    margin-block-end: var(--space-6);
+  }
+  .hero-meta__sep {
+    display: none;
+  }
+  .hero-meta__item {
+    cursor: default;
+  }
+  .hero-meta__item::after,
+  .hero-meta__item::before {
+    display: none;
+  }
+}
+
+/* Cosmo chat FAB — smaller on phones, iOS safe-area aware, halo
+   shrunk so the hit region doesn't bleed onto buttons above. */
+@media (max-width: 768px) {
+  .cosmo-fab {
+    width: 48px;
+    height: 48px;
+    right: 0.85rem;
+    bottom: calc(0.85rem + env(safe-area-inset-bottom, 0px));
+    box-shadow:
+      0 0 0 3px rgba(255, 136, 0, 0.16),
+      0 0 18px -4px rgba(255, 136, 0, 0.45),
+      0 12px 24px -10px rgba(10, 10, 11, 0.24);
+  }
+  .cosmo-fab::before {
+    inset: -6px;
+  }
+}
+
+/* Bottom padding on <main> so FAB never sits over content. */
+@media (max-width: 768px) {
+  main {
+    padding-block-end: 4rem;
+  }
+}
+
+/* Hero CTAs go full-width stacked on small phones. 44px touch target. */
+@media (max-width: 480px) {
+  .hero-cta-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+  .hero-cta-row .dpl-btn {
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+  }
+}
+
+/* Pillar-brief diagram pages: full-width diagram below headline
+   on tablet + phone so the visual gets proper weight, not squished. */
+@media (max-width: 1023px) {
+  .hero--pillar-brief .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero--pillar-brief .hero-grid__diagram {
+    padding: 0.85rem;
+    width: 100%;
+  }
+  .hero--pillar-brief .hero-grid__diagram svg,
+  .hero--pillar-brief .hero-grid__diagram img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Doc header — wraps cleanly on phones. */
+@media (max-width: 640px) {
+  .dpl-docheader__inner {
+    flex-wrap: wrap;
+    row-gap: 0.4rem;
+  }
+  .dpl-docheader__right {
+    width: 100%;
+  }
+}
+
+/* Footer console log: avoid the FAB on phones. */
+@media (max-width: 640px) {
+  .dpl-footer__log-row {
+    flex-wrap: wrap;
+    padding-inline-end: 3rem;
+  }
+}
+
+/* Founder photo: 28% vertical bias for proper breathing room
+   above the head — was clipping hair at 18%. */
+.dpl-quote__avatar--photo {
+  object-position: center 28% !important;
+}
+
+/* ============================================================
+   MOBILE TYPOGRAPHY SCALE — calmer hierarchy on phones
+   Source clamps had min values calibrated for desktop. On phones
+   they bottom out at 48px / 32px which felt heavy and ran the
+   hero H1 to 5 lines. Tighter scale below.
+   ============================================================ */
+
+@media (max-width: 640px) {
+  /* Hero H1 — Operator brief layout (homepage). */
+  .hero-title--ob {
+    font-size: clamp(34px, 9vw, 42px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    max-width: 100%;
+  }
+  /* Pillar brief layout (subpages). */
+  .hero--pillar-brief .hero-title--ob {
+    font-size: clamp(32px, 8.5vw, 40px);
+    line-height: 1.05;
+  }
+  /* Section H2s. */
+  .section-title {
+    font-size: clamp(26px, 6.5vw, 32px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+  .section-title--display {
+    font-size: clamp(28px, 7.5vw, 36px);
+    letter-spacing: -0.025em;
+  }
+  .section-title--minor {
+    font-size: clamp(22px, 5.5vw, 26px);
+  }
+  /* Hero sub copy. */
+  .hero-sub {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+  /* Math anchor source line. */
+  .hero-source {
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+  /* Section description. */
+  .section-desc {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+  /* Eyebrow tighter spacing so the rule doesn't fight the chip grid. */
+  .hero-eyebrow {
+    margin-block-end: 1rem;
+  }
+}
+
+/* On 375px iPhones, calm hierarchy further. */
+@media (max-width: 380px) {
+  .hero-title--ob {
+    font-size: 32px;
+  }
+  .section-title,
+  .section-title--display {
+    font-size: 26px;
+  }
+}
+
+/* Tighten section vertical rhythm on phones — desktop section gaps
+   are calibrated for 1440+ viewports and feel airy/empty on phones. */
+@media (max-width: 640px) {
+  .section,
+  .dpl-section {
+    padding-block: var(--space-12, 3rem);
+  }
+  .section-header {
+    margin-block-end: 1.25rem;
+  }
+}
+
+/* Container horizontal padding gets a slight bump so content doesn't
+   touch the viewport edge — premium pages always have breathing room. */
+@media (max-width: 640px) {
+  .container-wide,
+  .container-content,
+  .container-prose {
+    padding-inline: 1.125rem;
+  }
+}
+
+/* Pillar card padding tighter on phones (was 2rem 1.5rem). */
+@media (max-width: 640px) {
+  .pillar-card {
+    padding: 1.5rem 1.25rem;
+  }
+  .pillar-card__title {
+    font-size: 1.25rem;
+  }
+  .pillar-card__desc {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+}
+
+/* Pricing band on phones: stack instead of 4-col cramped grid. */
+@media (max-width: 768px) {
+  .dpl-pricing-band__grid {
+    grid-template-columns: 1fr !important;
+    gap: 0;
+  }
+  .dpl-pricing-band__cell {
+    border-block-end: 1px solid var(--color-hairline);
+    padding-block: 1rem;
+  }
+  .dpl-pricing-band__cell:last-child {
+    border-block-end: none;
+  }
+}
+
+/* FoundersSection 2-col grid → single column on phones. */
+@media (max-width: 768px) {
+  .pillar-grid--two,
+  .pillar-grid--three {
+    grid-template-columns: 1fr;
+  }
+}

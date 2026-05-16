@@ -24,7 +24,7 @@ function buildCsp(nonce: string): string {
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https://*.vercel-scripts.com",
     "font-src 'self' data:",
-    "connect-src 'self' https://*.vercel-insights.com https://*.vercel-scripts.com https://vitals.vercel-insights.com",
+    "connect-src 'self' https://*.vercel-insights.com https://*.vercel-scripts.com https://vitals.vercel-insights.com https://*.sentry.io https://*.ingest.us.sentry.io https://*.ingest.sentry.io",
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'",

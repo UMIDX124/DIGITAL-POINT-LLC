@@ -1,11 +1,40 @@
 'use client';
 
+import { useEffect } from 'react';
+
 export default function Error({
+  error,
   reset,
 }: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  // Chunk-load failures (typical pattern on fresh Vercel deploys when
+  // edge cache is cold and the origin briefly 503s a few chunks) get an
+  // automatic hard reload. By the time the page comes back, the edge
+  // has warmed and the chunks land. Logged to Sentry via the SDK on the
+  // window, so we still see the rate.
+  useEffect(() => {
+    const isChunkLoadError =
+      error?.name === 'ChunkLoadError' ||
+      /Loading chunk \d+ failed|Failed to fetch dynamically imported module|ChunkLoadError/i.test(
+        error?.message ?? '',
+      );
+    if (isChunkLoadError) {
+      // Capture explicitly so Sentry sees the recovery even though we reload.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const w = window as any;
+      if (w?.Sentry?.captureException) {
+        try {
+          w.Sentry.captureException(error, { tags: { recovery: 'chunk-reload' } });
+        } catch {
+          // Sentry failed; not blocking the reload.
+        }
+      }
+      window.location.reload();
+    }
+  }, [error]);
+
   return (
     <div
       className="min-h-screen flex items-center justify-center px-4"

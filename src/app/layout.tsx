@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
@@ -86,11 +87,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Read the per-request nonce set by proxy.ts. Required for Next.js to
+  // propagate nonces to its own inline + bundle scripts under our
+  // strict-dynamic CSP. Without this, every <script> tag ships without a
+  // nonce and the browser blocks the entire page's JS.
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
+
   return (
     <html
       lang="en"
@@ -98,19 +105,22 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* JSON-LD schemas are loaded from a shared module so their SHA-256
-            hashes can be pinned in CSP (src/proxy.ts). No nonce needed,
-            layout stays static, edge cache works. */}
+        {/* JSON-LD schemas hash-pinned in CSP. Nonce is also attached so
+            the scripts pass through whether the browser honours hashes
+            for non-executable script types or not. */}
         <script
           type="application/ld+json"
+          nonce={nonce}
           dangerouslySetInnerHTML={{ __html: ORG_JSONLD_STR }}
         />
         <script
           type="application/ld+json"
+          nonce={nonce}
           dangerouslySetInnerHTML={{ __html: PROFESSIONAL_SERVICE_JSONLD_STR }}
         />
         <script
           type="application/ld+json"
+          nonce={nonce}
           dangerouslySetInnerHTML={{ __html: WEBSITE_JSONLD_STR }}
         />
 

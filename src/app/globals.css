@@ -4323,30 +4323,52 @@ select {
   }
 }
 
-/* Hero side panels — stack below hero copy on tablet + phone with
-   proper width constraint so they read as part of the brand voice
-   instead of being hidden. Width clamped to viewport so the data
-   table can't overflow horizontally. */
+/* Hero side panels — proper responsive containment on tablet + phone.
+   The flex parents (hero-grid, hero-grid__panels) plus the
+   space-between row layout were letting long values like "Faizan"
+   push the row wider than viewport. Three rules fix it: parent
+   min-width: 0 (so it CAN shrink), child min-width: 0 (so flex
+   children CAN shrink), and overflow-wrap: anywhere on the value
+   cells (so long strings break gracefully). */
 @media (max-width: 1023px) {
+  .hero-grid {
+    min-width: 0;
+  }
   .hero-grid__panels,
   .hero--pillar-brief .hero-grid__panels {
     width: 100%;
     max-width: 100%;
+    min-width: 0;
     margin-block-start: 1.5rem;
   }
   .dpl-panel {
     width: 100%;
     max-width: 100%;
+    min-width: 0;
     box-sizing: border-box;
-    overflow-x: hidden;
-  }
-  .dpl-panel__row {
-    flex-wrap: wrap;
-    gap: 0.5rem 1rem;
   }
   .dpl-panel__rows {
     width: 100%;
-    overflow-x: hidden;
+    min-width: 0;
+  }
+  .dpl-panel__row {
+    min-width: 0;
+    flex-wrap: nowrap;
+    gap: 0.75rem;
+  }
+  .dpl-panel__row > * {
+    min-width: 0;
+  }
+  .dpl-panel__row dt {
+    flex: 0 1 auto;
+    white-space: nowrap;
+  }
+  .dpl-panel__row dd {
+    flex: 1 1 auto;
+    text-align: right;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    margin: 0;
   }
 }
 
@@ -4370,21 +4392,26 @@ select {
   }
 }
 
-/* Cosmo chat FAB — smaller on phones, iOS safe-area aware, halo
-   shrunk so the hit region doesn't bleed onto buttons above. */
+/* Cosmo chat FAB on phones — 44px WCAG min target, positioned above
+   iOS safe area, restrained halo so content underneath doesn't
+   visually compete with the button. */
 @media (max-width: 768px) {
   .cosmo-fab {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     right: 0.85rem;
     bottom: calc(0.85rem + env(safe-area-inset-bottom, 0px));
     box-shadow:
-      0 0 0 3px rgba(255, 136, 0, 0.16),
-      0 0 18px -4px rgba(255, 136, 0, 0.45),
-      0 12px 24px -10px rgba(10, 10, 11, 0.24);
+      0 0 0 2px rgba(255, 136, 0, 0.12),
+      0 6px 14px -4px rgba(10, 10, 11, 0.28);
   }
   .cosmo-fab::before {
-    inset: -6px;
+    inset: -4px;
+    opacity: 0.4;
+  }
+  .cosmo-fab-inner svg {
+    width: 22px !important;
+    height: 22px !important;
   }
 }
 
@@ -4738,5 +4765,15 @@ select {
   .dpl-intro-boot__row {
     grid-template-columns: 76px 1fr auto;
     column-gap: 0.75rem;
+  }
+}
+
+/* Hero CTAs and FAB don't fight for the same bottom-right corner on
+   phones. Push the hero CTA row up so the orange FAB doesn't land on
+   top of "Book a free audit". 5rem clears the 48px FAB + safe-area
+   padding without crowding the next section. */
+@media (max-width: 768px) {
+  .hero .hero-cta-row {
+    margin-block-end: 5rem;
   }
 }

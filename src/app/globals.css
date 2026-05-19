@@ -4488,11 +4488,13 @@ select {
 @media (max-width: 640px) {
   /* Hero H1 — Operator brief layout (homepage). */
   .hero-title--ob {
-    font-size: clamp(34px, 9vw, 42px);
-    line-height: 1.02;
+    font-size: clamp(30px, 8vw, 38px);
+    line-height: 1.04;
     letter-spacing: -0.025em;
     max-width: 100%;
+    hyphens: manual;
   }
+  .nowrap { white-space: nowrap; }
   /* Pillar brief layout (subpages). */
   .hero--pillar-brief .hero-title--ob {
     font-size: clamp(32px, 8.5vw, 40px);

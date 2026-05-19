@@ -35,7 +35,7 @@ export function HeroSection() {
             </p>
 
             <h1 className="hero-title hero-title--ob">
-              Run a four-person ops team for{' '}
+              Run a <span className="nowrap">four-person</span> ops team for{' '}
               <span className="hero-title__amber">$30K</span> a year.
             </h1>
 

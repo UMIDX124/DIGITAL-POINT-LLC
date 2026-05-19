@@ -1,12 +1,19 @@
 import type { Metadata } from 'next';
 import { HeroSection } from '@/components/sections/HeroSection';
+import { PricingBand } from '@/components/sections/PricingBand';
+import { ActivityTicker } from '@/components/marketing/ActivityTicker';
 import { HomeEvidence } from '@/components/sections/HomeEvidence';
+import { AgencyMailboxPositioning } from '@/components/sections/AgencyMailboxPositioning';
+import { OperationalHistory } from '@/components/sections/OperationalHistory';
+import { RecoverySection } from '@/components/sections/RecoverySection';
 import { PillarsSection } from '@/components/sections/PillarsSection';
 import { HomeSystemFlow } from '@/components/sections/HomeSystemFlow';
+import { MathSection } from '@/components/sections/MathSection';
+import { FounderQuote } from '@/components/sections/FounderQuote';
 import { FoundersSection } from '@/components/sections/FoundersSection';
 import { ProcessSection } from '@/components/sections/ProcessSection';
-import { RecoverySection } from '@/components/sections/RecoverySection';
-import { PricingBand } from '@/components/sections/PricingBand';
+import { StackSection } from '@/components/sections/StackSection';
+import { IntegrationsBar } from '@/components/sections/IntegrationsBar';
 import { CTASection } from '@/components/sections/CTASection';
 
 export const metadata: Metadata = {
@@ -34,10 +41,17 @@ export default function HomePage() {
     <>
       <HeroSection />
       <HomeEvidence />
+      <ActivityTicker />
+      <AgencyMailboxPositioning />
+      <OperationalHistory />
       <PillarsSection />
       <HomeSystemFlow />
-      <ProcessSection />
+      <MathSection />
+      <FounderQuote />
       <FoundersSection variant="compact" />
+      <ProcessSection />
+      <StackSection />
+      <IntegrationsBar />
       <RecoverySection />
       <PricingBand />
       <CTASection />

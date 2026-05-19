@@ -4323,12 +4323,30 @@ select {
   }
 }
 
-/* Hero side panels are desktop-only — they were spilling off-screen
-   on phones and the hero copy already carries the same trust signals. */
+/* Hero side panels — stack below hero copy on tablet + phone with
+   proper width constraint so they read as part of the brand voice
+   instead of being hidden. Width clamped to viewport so the data
+   table can't overflow horizontally. */
 @media (max-width: 1023px) {
   .hero-grid__panels,
   .hero--pillar-brief .hero-grid__panels {
-    display: none;
+    width: 100%;
+    max-width: 100%;
+    margin-block-start: 1.5rem;
+  }
+  .dpl-panel {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  .dpl-panel__row {
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+  }
+  .dpl-panel__rows {
+    width: 100%;
+    overflow-x: hidden;
   }
 }
 
@@ -4567,5 +4585,158 @@ select {
   section.hero .hero-inner {
     max-width: min(108rem, 94vw);
     padding-inline: clamp(1.5rem, 3vw, 2.5rem);
+  }
+}
+
+/* ============================================================
+   Intro loader (operator console boot splash)
+   Restored 2026-05-20. Used by src/components/brand/IntroSplash.tsx
+   which gates the markup behind sessionStorage so returning visitors
+   in the same tab skip the 3.4s tax. Reduced-motion block at end
+   hides it entirely for AT users.
+   ============================================================ */
+
+.dpl-intro-loader {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  row-gap: clamp(1.25rem, 2.5vw, 2rem);
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.75rem, 6vw, 5rem);
+  background: var(--color-canvas);
+  z-index: 100;
+  animation: dpl-intro-out 0.55s cubic-bezier(0.65, 0, 0.35, 1) 3.4s forwards;
+}
+
+.dpl-intro-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  border-block-end: 1px solid var(--color-hairline);
+  padding-block-end: 0.85rem;
+  opacity: 0;
+  animation: dpl-intro-fade-in 0.5s ease-out 0.05s forwards;
+}
+
+.dpl-intro-head__cell { white-space: nowrap; }
+.dpl-intro-head__cell--right { color: var(--color-accent-text); }
+
+.dpl-intro-line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: dpl-intro-line-draw 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.2s forwards;
+}
+
+.dpl-intro-boot {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-self: center;
+  justify-self: center;
+  width: min(100%, 640px);
+  display: grid;
+  row-gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: clamp(13px, 1.25vw, 15px);
+  line-height: 1.4;
+}
+
+.dpl-intro-boot__row {
+  display: grid;
+  grid-template-columns: 96px 1fr auto;
+  column-gap: clamp(0.75rem, 2vw, 1.5rem);
+  align-items: baseline;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: dpl-intro-boot-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.dpl-intro-boot__ts {
+  color: var(--color-text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.dpl-intro-boot__label { color: var(--color-text-primary); }
+
+.dpl-intro-boot__status {
+  color: var(--color-success);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.dpl-intro-boot__status--accent {
+  color: var(--color-accent-text);
+  text-transform: none;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+
+.dpl-intro-boot__status--ready {
+  color: var(--color-accent);
+  font-size: 1.3em;
+  line-height: 1;
+  font-weight: 600;
+  animation: dpl-intro-ready-pulse 0.8s ease-in-out 1.66s 2;
+}
+
+.dpl-intro-mark {
+  align-self: end;
+  justify-self: center;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: dpl-intro-mark-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) 1.95s forwards;
+  padding-block-start: clamp(1.25rem, 3vw, 2rem);
+  border-block-start: 1px solid var(--color-hairline);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.dpl-intro-mark-lockup { display: block; }
+
+@keyframes dpl-intro-fade-in { to { opacity: 1; } }
+@keyframes dpl-intro-line-draw { to { transform: scaleX(1); } }
+@keyframes dpl-intro-boot-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes dpl-intro-mark-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes dpl-intro-ready-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+@keyframes dpl-intro-out {
+  to {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dpl-intro-loader { display: none; }
+}
+
+/* Mobile: keep splash but tighter spacing so boot lines breathe. */
+@media (max-width: 640px) {
+  .dpl-intro-loader {
+    padding: 2rem 1.25rem;
+  }
+  .dpl-intro-boot__row {
+    grid-template-columns: 76px 1fr auto;
+    column-gap: 0.75rem;
   }
 }

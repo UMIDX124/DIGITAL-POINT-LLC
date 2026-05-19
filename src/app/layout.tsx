@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { IntroSplash } from "@/components/brand/IntroSplash";
 import { MotionRoot } from "@/components/motion/MotionRoot";
 import { BotIdClient } from "botid/client";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -144,6 +145,7 @@ export default async function RootLayout({
             Visually hidden until focused, then anchors to <main id="main">
             in (marketing)/layout.tsx. */}
         <a href="#main" className="skip-to-content">Skip to content</a>
+        <IntroSplash />
         {/* Phase 18.6 P5/P6. Inline style background:#000000 REMOVED so
             body's globals.css background (subtle radial atmosphere) takes
             effect. Color retained inline so unstyled fallback is readable. */}

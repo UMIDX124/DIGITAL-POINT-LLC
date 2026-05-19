@@ -13,7 +13,6 @@ for (const path of PAGES) {
       (v) => v.impact === 'serious' || v.impact === 'critical',
     );
     if (blocking.length) {
-      // eslint-disable-next-line no-console
       console.log('Axe blocking violations on', path, JSON.stringify(blocking, null, 2));
     }
     expect(blocking).toEqual([]);

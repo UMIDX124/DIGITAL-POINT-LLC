@@ -22,8 +22,7 @@ export default function Error({
       );
     if (isChunkLoadError) {
       // Capture explicitly so Sentry sees the recovery even though we reload.
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const w = window as any;
+      const w = window as { Sentry?: { captureException?: (err: unknown, ctx?: unknown) => void } };
       if (w?.Sentry?.captureException) {
         try {
           w.Sentry.captureException(error, { tags: { recovery: 'chunk-reload' } });

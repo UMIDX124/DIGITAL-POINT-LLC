@@ -31,10 +31,9 @@ export function OperationalHistory() {
         </p>
         <h2 className="dpl-track-record__heading">Track record on file.</h2>
         <p className="dpl-track-record__body">
-          Eight years of operations behind every reply. The contractor business that
-          ran before the rebrand still anchors how we deliver: founders sign every
-          engagement, every commitment goes into a tracked record, every state we
-          serve is on the receipts.
+          Eight years of operations behind every reply. The contractor business
+          that ran before the rebrand still anchors how we deliver. Founders sign
+          every engagement. Every commitment goes into the tracked record.
         </p>
 
         <dl className="dpl-track-record__grid" role="list">

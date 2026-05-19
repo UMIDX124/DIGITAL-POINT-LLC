@@ -7,12 +7,12 @@ export function RecoverySection() {
         <div className="section-header">
           <p className="eyebrow eyebrow--accent">Category creator · Recovery</p>
           <h2 className="section-title text-balance">
-            Your AI agent is broken. We fix it.
+            Recover the agent you already shipped.
           </h2>
           <p className="section-desc text-pretty">
-            Most teams shipped an agent in 2024 or 2025. By 2026 it has drifted, started
-            hallucinating on edge cases, or now retries silently in production. No one
-            offers systematic recovery as a service. We do.
+            Most teams shipped an agent in 2024 or 2025. By 2026 it has drifted or
+            retries on its own without flagging the failure. DPL recovers it as a
+            managed service.
           </p>
           <div className="hero-cta-row" style={{ marginBlockStart: 'var(--space-4)' }}>
             <Link href="/diagnostic" className="btn-link">
@@ -26,9 +26,7 @@ export function RecoverySection() {
             <span className="pillar-card__index">01 · Diagnosis</span>
             <h3 className="pillar-card__title">Audit your agent stack</h3>
             <p className="pillar-card__desc">
-              30-criteria audit covering observability, retry logic, failure modes,
-              drift detection, prompt-injection resistance, cost variance, escalation
-              paths.
+              30-criteria audit covering observability and retry logic.
             </p>
             <p className="font-mono" style={{ color: 'var(--color-accent-text)', fontSize: 'var(--text-sm)' }}>
               $5,000 · 2 weeks

@@ -16,7 +16,7 @@ export function HomeSystemFlow() {
             </p>
             <h2 className="dpl-flow__title">A production stack with self-hosted handoffs.</h2>
             <p className="dpl-flow__body">
-              Every inbound signal moves through orchestration, a Groq-hosted agent, and an operator who audits the edge cases the model gets wrong. State writes to Postgres. CRM, Slack, and email pick up downstream.
+              Every inbound signal moves through orchestration and a Groq-hosted agent, with an operator auditing the edge cases the model gets wrong. State writes to Postgres. The CRM and Slack pick up downstream.
             </p>
             <p className="dpl-flow__caption">Operator-audited edges are the only step a human owns. The rest is automated.</p>
           </div>

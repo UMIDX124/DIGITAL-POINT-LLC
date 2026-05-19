@@ -26,7 +26,7 @@ export function ProcessSection() {
         <div className="section-header">
           <p className="eyebrow">How an engagement runs</p>
           <h2 className="section-title text-balance">
-            Audit, pilot, retainer. In that order. No surprise scope.
+            Audit, then pilot. No surprise scope.
           </h2>
         </div>
 

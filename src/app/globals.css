@@ -4890,3 +4890,112 @@ select {
 .dpl-section--quote.dpl-section--dark .dpl-quote__avatar--photo {
   border-color: rgba(255, 255, 255, 0.16);
 }
+
+/* ============================================================
+   Mobile polish v2 — surgical micro-adjustments per user feedback
+   ============================================================ */
+
+/* [ticker] On phones the ticker designmark consumed ~280px of the
+   ~393px viewport, leaving the scrolling rail with a sliver of
+   space + a half-truncated body. Drop the designmark inline label
+   on phones so the rail gets the full strip, with tighter type so
+   one full row stays readable as it scrolls. */
+@media (max-width: 640px) {
+  .dpl-ticker {
+    padding-block: 0;
+  }
+  .dpl-ticker__designmark {
+    display: none;
+  }
+  .dpl-ticker__viewport {
+    padding-block: 0.55rem;
+  }
+  .dpl-ticker__list {
+    gap: 1.5rem;
+    padding-inline: 1rem;
+    font-size: 11px;
+  }
+  .dpl-ticker__item {
+    gap: 0.5rem;
+  }
+  .dpl-ticker__rail {
+    animation-duration: 45s;
+  }
+}
+
+/* [evidence] On phones the new $400K / $30K caption pair stacks
+   right-aligned (because parent is flex column with align-items
+   flex-end). The "Same output. Different invoice." footer caption
+   already says enough; left-align it under the stack so it doesn't
+   compete with the value-prop. */
+@media (max-width: 640px) {
+  .dpl-evidence__caption {
+    text-align: left;
+    margin-block-start: 0.75rem;
+  }
+  .dpl-evidence__right {
+    align-items: flex-start;
+  }
+  .dpl-evidence__cell {
+    align-items: flex-start;
+  }
+  .dpl-evidence__number {
+    align-items: flex-start;
+  }
+}
+
+/* [hero] Hero source line on phones — keep on one row even when the
+   chunk wraps to 2 (which is rare with the shortened P2.3 copy). */
+@media (max-width: 640px) {
+  .hero-source {
+    margin-block-start: 0.75rem;
+    margin-block-end: 1.25rem;
+  }
+}
+
+/* [section rhythm] Sections shouldn't stack with airline-magazine
+   gaps on phones. Cap top-bottom block padding at half the desktop
+   number so the scroll feels continuous instead of episodic. */
+@media (max-width: 640px) {
+  .dpl-section,
+  .section {
+    padding-block: clamp(2.5rem, 8vw, 4rem);
+  }
+  .dpl-section__inner {
+    padding-inline: clamp(1rem, 4vw, 1.5rem);
+  }
+  .dpl-section__rail {
+    display: none;
+  }
+}
+
+/* [docheader] Doc header strip on phones — shrink type, drop the
+   right-aligned print date so the strip is single line. */
+@media (max-width: 640px) {
+  .dpl-docheader {
+    padding-block: 0.5rem;
+    font-size: 9.5px;
+  }
+  .dpl-docheader__right {
+    display: none;
+  }
+  .dpl-docheader__left {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.6rem;
+    row-gap: 0.25rem;
+  }
+}
+
+/* [pillars / process / recovery cards] Card padding tighter on
+   phones so the index label and title don't dwarf the body. */
+@media (max-width: 640px) {
+  .pillar-card__index,
+  .process-step__num {
+    font-size: 10.5px;
+  }
+  .pillar-card__title,
+  .process-step__title {
+    font-size: 1.0625rem;
+  }
+}

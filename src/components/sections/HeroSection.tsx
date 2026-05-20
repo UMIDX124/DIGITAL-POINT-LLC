@@ -40,13 +40,13 @@ export function HeroSection() {
             </h1>
 
             <p className="hero-source" aria-label="Math source">
-              <span className="hero-source__label">Math anchor</span>
+              <span className="hero-source__label">Math source</span>
               <span className="hero-source__dot" aria-hidden="true">·</span>
-              Loaded cost of a four-person ops team. Sources: BLS 2025, Glassdoor, Levels.fyi. Production agents run on n8n, Groq, Postgres, operator-backed.
+              BLS 2025, Glassdoor, Levels.fyi.
             </p>
 
             <p className="hero-sub text-pretty">
-              Forty-five minute audit with a <mark className="dpl-mark">co-founder</mark>. Free. Written deployment plan within five business days. No agency retainer attached.
+              45 minutes with a <mark className="dpl-mark">co-founder</mark>. Free. Written deployment plan within five business days. No agency retainer attached.
             </p>
 
             <div className="hero-cta-row">

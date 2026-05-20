@@ -1200,8 +1200,18 @@ select {
   gap: 0.5rem;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
   animation: dpl-console-row-in 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* [P1.7] Ellipsis applies to the body cell so long lines truncate
+   cleanly on phones. Flex parent needs min-width:0 to allow shrink. */
+.dpl-mini-console__row > * {
+  min-width: 0;
+}
+.dpl-mini-console__body {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1 1 auto;
 }
 
 .dpl-mini-console__row[data-index='0'] {

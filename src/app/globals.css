@@ -4795,3 +4795,12 @@ select {
     display: none;
   }
 }
+
+/* [P1.6] Reorder pricing cards on phones so the recommended Retainer
+   tier (currently 3rd in DOM) renders second in the visual flow.
+   Cards 1=Audit, 2=Pilot, 3=Retainer(featured), 4=Recovery →
+   on mobile becomes 1=Audit, 2=Retainer, 3=Pilot, 4=Recovery. */
+@media (max-width: 640px) {
+  .dpl-pricing-band__grid > .dpl-pricing-band__cell:nth-child(2) { order: 3; }
+  .dpl-pricing-band__grid > .dpl-pricing-band__cell:nth-child(3) { order: 2; }
+}

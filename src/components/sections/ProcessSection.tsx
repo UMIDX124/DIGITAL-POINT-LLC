@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const steps = [
   {
     num: '01 · Audit',
@@ -28,6 +30,11 @@ export function ProcessSection() {
           <h2 className="section-title text-balance">
             Audit, then pilot. No surprise scope.
           </h2>
+          <p style={{ marginBlockStart: '0.75rem' }}>
+            <Link href="/audit" className="btn-link">
+              Start with the free audit →
+            </Link>
+          </p>
         </div>
 
         <div className="process-list process-list--three" style={{ marginBlockStart: '3rem' }}>

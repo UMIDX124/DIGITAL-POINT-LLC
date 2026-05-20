@@ -53,7 +53,7 @@ export function HeroSection() {
               <Link href="/audit" className="dpl-btn dpl-btn--ink">
                 Book a free audit
               </Link>
-              <Link href="/recovery" className="dpl-btn dpl-btn--ghost">
+              <Link href="/recovery" className="dpl-btn dpl-btn--ghost hero-cta-secondary">
                 Recover a broken agent
               </Link>
             </div>

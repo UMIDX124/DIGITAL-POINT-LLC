@@ -1593,6 +1593,24 @@ select {
   color: var(--color-ink);
 }
 
+/* [P2.2] Big-number stacks get their own unit caption directly below
+   so the figures read against named context on phones (where the
+   numbers stack vertically). */
+.dpl-evidence__cell {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+.dpl-evidence__unit {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  line-height: 1;
+}
+
 .dpl-evidence__caption {
   margin-block-start: 1rem;
   text-align: right;
@@ -1608,7 +1626,9 @@ select {
    ============================================================ */
 
 .dpl-section--quote {
-  padding-block: var(--space-section-lg) var(--space-section-md);
+  /* [P2.10] Bump block padding so the signed quote breathes against the
+     surrounding sections instead of butting up against the next header. */
+  padding-block: var(--space-section-xl, 8rem) var(--space-section-lg);
   border-block-end: 1px solid var(--color-hairline);
 }
 
@@ -3457,7 +3477,7 @@ select {
 
 .dpl-integrations__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 1px;
   background: var(--color-hairline);
   border: 1px solid var(--color-hairline);
@@ -3466,6 +3486,22 @@ select {
 @media (min-width: 640px) {
   .dpl-integrations__grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* [P1.9] On phones the integrations cells go single-column with
+   name + role rendered inline so the row stays readable instead of
+   the cramped 2-col mono caps wall. */
+@media (max-width: 639.98px) {
+  .dpl-integrations__item {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.6rem;
+    min-height: auto;
+    padding: 0.7rem 1rem;
+  }
+  .dpl-integrations__role {
+    font-size: 10.5px;
   }
 }
 
@@ -4515,18 +4551,20 @@ select {
     font-size: clamp(32px, 8.5vw, 40px);
     line-height: 1.05;
   }
-  /* Section H2s. */
+  /* Section H2s — tightened per P2.1 to widen the H1→H2 gap so
+     hierarchy reads on phones. H1 ≈ 34, H2-display ≈ 28, H2-section
+     ≈ 22, H2-minor ≈ 18. */
   .section-title {
-    font-size: clamp(26px, 6.5vw, 32px);
-    line-height: 1.12;
+    font-size: clamp(22px, 5.5vw, 26px);
+    line-height: 1.14;
     letter-spacing: -0.02em;
   }
   .section-title--display {
-    font-size: clamp(28px, 7.5vw, 36px);
+    font-size: clamp(26px, 6.8vw, 30px);
     letter-spacing: -0.025em;
   }
   .section-title--minor {
-    font-size: clamp(22px, 5.5vw, 26px);
+    font-size: clamp(18px, 4.6vw, 22px);
   }
   /* Hero sub copy. */
   .hero-sub {
@@ -4813,4 +4851,42 @@ select {
 @media (max-width: 640px) {
   .dpl-pricing-band__grid > .dpl-pricing-band__cell:nth-child(2) { order: 3; }
   .dpl-pricing-band__grid > .dpl-pricing-band__cell:nth-child(3) { order: 2; }
+}
+
+/* [P2.5] On phones the hero secondary CTA drops the button chrome and
+   reads as a text link so the primary "Book a free audit" stays the
+   only weight-carrying tap target. */
+@media (max-width: 640px) {
+  .hero-cta-row .hero-cta-secondary {
+    background: transparent !important;
+    border: none !important;
+    padding-inline: 0 !important;
+    color: var(--color-accent-text);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    min-height: 44px;
+    justify-content: center;
+  }
+}
+
+/* [P1.8] Quote section inversion. When `dpl-section--dark` is added
+   to the founder quote, the headline-style quote body and the
+   attribution text need to flip to on-dark color tokens. */
+.dpl-section--quote.dpl-section--dark .dpl-quote__body,
+.dpl-section--quote.dpl-section--dark .dpl-quote__mark,
+.dpl-section--quote.dpl-section--dark .dpl-quote__name {
+  color: var(--color-text-on-dark);
+}
+.dpl-section--quote.dpl-section--dark .dpl-quote__role,
+.dpl-section--quote.dpl-section--dark .dpl-quote__meta,
+.dpl-section--quote.dpl-section--dark .dpl-eyebrow {
+  color: var(--color-text-on-dark-tertiary);
+}
+.dpl-section--quote.dpl-section--dark .dpl-quote__avatar {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+}
+.dpl-section--quote.dpl-section--dark .dpl-quote__avatar--photo {
+  border-color: rgba(255, 255, 255, 0.16);
 }

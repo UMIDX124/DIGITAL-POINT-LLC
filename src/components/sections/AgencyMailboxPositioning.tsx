@@ -14,7 +14,7 @@ export function AgencyMailboxPositioning() {
           Not the agency mailbox<span className="dpl-positioning__title-accent">.</span>
         </h2>
         <p className="dpl-positioning__body">
-          Most agencies route you to info@ and a support queue. <mark className="dpl-mark">Every reply</mark> on a DPL audit lands from Faizan or Anwaar inside 6 hours. Both reachable, both replying.
+          Most agencies route you to info@ and a support queue. Every reply on a DPL audit lands from Faizan or Anwaar inside 6 hours. Both reachable, both replying.
         </p>
 
         <div className="dpl-positioning__signature">

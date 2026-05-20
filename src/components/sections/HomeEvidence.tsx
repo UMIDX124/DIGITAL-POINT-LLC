@@ -22,11 +22,17 @@ export function HomeEvidence() {
           </div>
           <div className="dpl-evidence__right">
             <div className="dpl-evidence__number" aria-label="Four hundred thousand dollars per year drops to thirty thousand dollars per year">
-              <span className="dpl-evidence__before">$400K</span>
+              <span className="dpl-evidence__cell">
+                <span className="dpl-evidence__before">$400K</span>
+                <span className="dpl-evidence__unit">In-house annual cost</span>
+              </span>
               <span className="dpl-evidence__arrow" aria-hidden="true">→</span>
-              <span className="dpl-evidence__after">$30K</span>
+              <span className="dpl-evidence__cell">
+                <span className="dpl-evidence__after">$30K</span>
+                <span className="dpl-evidence__unit">DPL retainer annual</span>
+              </span>
             </div>
-            <p className="dpl-evidence__caption">In-house ops cost → DPL retainer, annual</p>
+            <p className="dpl-evidence__caption">Same output. Different invoice.</p>
           </div>
         </div>
       </div>

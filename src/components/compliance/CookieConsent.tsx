@@ -61,7 +61,7 @@ export default function CookieConsent() {
       role="dialog"
       aria-label="Cookie preferences"
       aria-live="polite"
-      className="fixed left-4 bottom-4 z-[60] rounded-md"
+      className="fixed left-4 bottom-4 right-[5.5rem] sm:right-auto z-[60] rounded-md"
       style={{
         background: 'rgba(10, 10, 10, 0.94)',
         backdropFilter: 'blur(8px)',
@@ -99,7 +99,7 @@ export default function CookieConsent() {
           <button
             type="button"
             onClick={() => set('necessary')}
-            className="px-2 py-1 rounded text-[11px] font-medium transition-colors whitespace-nowrap"
+            className="hidden sm:inline-flex px-2 py-1 rounded text-[11px] font-medium transition-colors whitespace-nowrap"
             style={{
               background: 'transparent',
               border: '1px solid var(--color-line-dark-bright)',
@@ -112,13 +112,25 @@ export default function CookieConsent() {
           <button
             type="button"
             onClick={() => set('accepted')}
-            className="px-2.5 py-1 rounded text-[11px] font-semibold transition-opacity hover:opacity-90 whitespace-nowrap"
+            className="hidden sm:inline-flex px-2.5 py-1 rounded text-[11px] font-semibold transition-opacity hover:opacity-90 whitespace-nowrap"
             style={{
               background: 'var(--color-accent)',
               color: '#0a0a0a',
             }}
           >
             Accept
+          </button>
+          <button
+            type="button"
+            onClick={() => set('necessary')}
+            className="sm:hidden inline-flex px-2.5 py-1 rounded text-[11px] font-semibold transition-opacity hover:opacity-90 whitespace-nowrap"
+            style={{
+              background: 'var(--color-accent)',
+              color: '#0a0a0a',
+            }}
+            aria-label="Dismiss"
+          >
+            Got it
           </button>
         </div>
       </div>

@@ -4392,26 +4392,26 @@ select {
   }
 }
 
-/* Cosmo chat FAB on phones — 44px WCAG min target, positioned above
-   iOS safe area, restrained halo so content underneath doesn't
-   visually compete with the button. */
-@media (max-width: 768px) {
+/* Cosmo chat FAB on phones — 48px target, lifted above the cookie
+   banner zone, restrained halo so content underneath doesn't
+   visually compete with the button. [P1.4] */
+@media (max-width: 640px) {
   .cosmo-fab {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     right: 0.85rem;
-    bottom: calc(0.85rem + env(safe-area-inset-bottom, 0px));
+    bottom: max(80px, calc(env(safe-area-inset-bottom, 0px) + 60px));
     box-shadow:
       0 0 0 2px rgba(255, 136, 0, 0.12),
       0 6px 14px -4px rgba(10, 10, 11, 0.28);
   }
   .cosmo-fab::before {
     inset: -4px;
-    opacity: 0.4;
+    opacity: 0.3;
   }
   .cosmo-fab-inner svg {
-    width: 22px !important;
-    height: 22px !important;
+    width: 24px !important;
+    height: 24px !important;
   }
 }
 

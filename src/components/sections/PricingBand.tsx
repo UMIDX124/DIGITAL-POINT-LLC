@@ -7,21 +7,21 @@ import Link from 'next/link';
  */
 const tiers = [
   {
-    label: 'Audit',
+    label: '01 · Audit',
     price: 'Free',
     cad: '45 min · co-founder review',
     href: '/audit',
     cta: 'Book audit',
   },
   {
-    label: 'Pilot',
+    label: '02 · Pilot',
     price: '$2,500',
     cad: '30 days · one workflow · cancel any month',
     href: '/pricing',
     cta: 'Pilot terms',
   },
   {
-    label: 'Retainer',
+    label: '03 · Retainer',
     price: '$2,500',
     cad: 'Per month · cancel any month, no annual lock-in',
     href: '/pricing',
@@ -29,7 +29,7 @@ const tiers = [
     featured: true,
   },
   {
-    label: 'Recovery',
+    label: '04 · Recovery',
     price: '$5K–$10K',
     cad: 'Broken-agent diagnostic plus fix',
     href: '/recovery',

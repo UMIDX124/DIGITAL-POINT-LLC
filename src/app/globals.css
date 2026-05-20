@@ -4383,6 +4383,11 @@ select {
   .hero-meta__sep {
     display: none;
   }
+  /* [P1.1] Drop the 5th stat ("Ticket") on phones so the 2-col chip
+     grid balances 2x2 instead of orphaning a single row-3 chip. */
+  .hero-meta__item--ticket {
+    display: none;
+  }
   .hero-meta__item {
     cursor: default;
   }

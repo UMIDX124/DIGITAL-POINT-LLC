@@ -22,7 +22,7 @@ export function HeroSection() {
             <span className="hero-meta__label">ARR focus</span> $500K–$10M
           </span>
           <span className="hero-meta__sep" aria-hidden="true" />
-          <span className="hero-meta__item" data-tip="Total year-one spend across audit + pilot + retainer">
+          <span className="hero-meta__item hero-meta__item--ticket" data-tip="Total year-one spend across audit + pilot + retainer">
             <span className="hero-meta__label">Ticket</span> $10K–$30K
           </span>
         </div>

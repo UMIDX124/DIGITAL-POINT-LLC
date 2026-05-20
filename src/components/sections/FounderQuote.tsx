@@ -2,11 +2,11 @@ import Image from 'next/image';
 
 export function FounderQuote() {
   return (
-    <section className="dpl-section dpl-section--quote" aria-label="Founder signature quote">
+    <section className="dpl-section dpl-section--quote dpl-section--dark" aria-label="Founder signature quote">
       <div className="dpl-section__rail" aria-hidden="true">
-        <span className="dpl-section__rail-label">Section 06 · Signed</span>
+        <span className="dpl-section__rail-label dpl-section__rail-label--dark">Section 06 · Signed</span>
       </div>
-      <div className="dpl-section__page" aria-hidden="true">p.06 / p.09</div>
+      <div className="dpl-section__page dpl-section__page--dark" aria-hidden="true">p.06 / p.09</div>
       <div className="dpl-section__inner">
         <p className="dpl-eyebrow">
           <span className="dpl-eyebrow__rule" aria-hidden="true" />

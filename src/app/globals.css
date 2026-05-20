@@ -4784,3 +4784,14 @@ select {
     margin-block-end: 5rem;
   }
 }
+
+/* [P1.5] Drop section page indicators on phones. The chip eats ~5% of
+   the section-header width, the count (P.XX / P.09) is wrong relative
+   to the actual 13-section live count anyway, and it offers no
+   navigation. Hide below 640px; keep on tablet+ where the editorial
+   scaffolding pays its weight. */
+@media (max-width: 640px) {
+  .dpl-section__page {
+    display: none;
+  }
+}

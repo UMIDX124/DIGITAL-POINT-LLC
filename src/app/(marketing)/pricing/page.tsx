@@ -86,8 +86,8 @@ export default function PricingPage() {
         ]}
       />
       <ServiceSchema
-        name="DPL Pricing · Audit, Pilot, Retainer"
-        description="Published-price managed service: free audit, $2,500 fixed pilot for 30 days, $2,500 per month retainer. Recovery ladder: $5,000 diagnosis, $10,000 fix, $2,500/mo operate."
+        name="DPL Pricing · Audit, Pilot, Retainer, Growth"
+        description="Published-price managed service: free audit, $2,500 fixed pilot for 30 days, $2,500 per month retainer. Recovery ladder: $5,000 diagnosis, $10,000 fix, and $1,150/mo growth suite (SEO, GMB, citations, social)."
         url="https://www.digitalpointllc.com/pricing"
         serviceTypes={[
         'Free Audit',
@@ -95,6 +95,11 @@ export default function PricingPage() {
         'Monthly Retainer',
         'Recovery Diagnosis',
         'Recovery Fix',
+        'SEO Strategy & Optimization',
+        'Google My Business Management',
+        'Citation Pages Audit & Sync',
+        'Social Media Management',
+        'All-in-One Growth Package'
         ]}
       />
       <section className="hero hero--pillar-brief" id="hero">
@@ -142,6 +147,14 @@ export default function PricingPage() {
                 <td>Cancel any month · no annual lock-in</td>
                 <td>
                   <Link href="#retainer-tier" className="dpl-pillar-tiers__link">Details</Link>
+                </td>
+              </tr>
+              <tr className="dpl-pillar-tiers__row">
+                <th scope="row">Growth</th>
+                <td className="dpl-pillar-tiers__price">$1,150 / mo</td>
+                <td>Cancel any month · no annual lock-in</td>
+                <td>
+                  <Link href="#growth-suite" className="dpl-pillar-tiers__link">Details</Link>
                 </td>
               </tr>
             </tbody>
@@ -226,6 +239,195 @@ export default function PricingPage() {
                 </div>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-divider" id="growth-suite">
+        <div className="container-wide">
+          <div className="section-header">
+            <p className="eyebrow eyebrow--accent">All-in-One Package · Growth & Visibility</p>
+            <h2 className="section-title text-balance">
+              Growth & Visibility Suite
+            </h2>
+            <p className="section-desc text-pretty">
+              High-touch, expert management at a small-business rate. Modular options or the complete bundle.
+            </p>
+          </div>
+
+          <div className="pillar-grid pillar-grid--four" style={{ marginBlockStart: '3rem' }}>
+            <article className="pillar-card">
+              <span className="pillar-card__index">01 · SEO</span>
+              <h3
+                className="font-mono"
+                style={{
+                  fontSize: 'clamp(2rem, 4vw, 3rem)',
+                  fontWeight: 600,
+                  color: 'var(--color-text-primary)',
+                  lineHeight: 1,
+                }}
+              >
+                $400
+              </h3>
+              <p
+                style={{
+                  color: 'var(--color-text-tertiary)',
+                  fontSize: 'var(--text-sm)',
+                  fontFamily: 'var(--font-mono)',
+                }}
+              >
+                Per month
+              </p>
+              <p className="pillar-card__desc">
+                Custom strategy, on-page optimization, and continuous keyword tracking.
+              </p>
+            </article>
+
+            <article className="pillar-card">
+              <span className="pillar-card__index">02 · GMB</span>
+              <h3
+                className="font-mono"
+                style={{
+                  fontSize: 'clamp(2rem, 4vw, 3rem)',
+                  fontWeight: 600,
+                  color: 'var(--color-text-primary)',
+                  lineHeight: 1,
+                }}
+              >
+                $250
+              </h3>
+              <p
+                style={{
+                  color: 'var(--color-text-tertiary)',
+                  fontSize: 'var(--text-sm)',
+                  fontFamily: 'var(--font-mono)',
+                }}
+              >
+                Per month
+              </p>
+              <p className="pillar-card__desc">
+                Weekly profile updates, review management strategy, and local map ranking.
+              </p>
+            </article>
+
+            <article className="pillar-card">
+              <span className="pillar-card__index">03 · Citations</span>
+              <h3
+                className="font-mono"
+                style={{
+                  fontSize: 'clamp(2rem, 4vw, 3rem)',
+                  fontWeight: 600,
+                  color: 'var(--color-text-primary)',
+                  lineHeight: 1,
+                }}
+              >
+                $250
+              </h3>
+              <p
+                style={{
+                  color: 'var(--color-text-tertiary)',
+                  fontSize: 'var(--text-sm)',
+                  fontFamily: 'var(--font-mono)',
+                }}
+              >
+                Per month
+              </p>
+              <p className="pillar-card__desc">
+                Manual, clean submissions on top-tier business directories for consistent NAP listings.
+              </p>
+            </article>
+
+            <article className="pillar-card">
+              <span className="pillar-card__index">04 · Social</span>
+              <h3
+                className="font-mono"
+                style={{
+                  fontSize: 'clamp(2rem, 4vw, 3rem)',
+                  fontWeight: 600,
+                  color: 'var(--color-text-primary)',
+                  lineHeight: 1,
+                }}
+              >
+                $250
+              </h3>
+              <p
+                style={{
+                  color: 'var(--color-text-tertiary)',
+                  fontSize: 'var(--text-sm)',
+                  fontFamily: 'var(--font-mono)',
+                }}
+              >
+                Per month
+              </p>
+              <p className="pillar-card__desc">
+                Consistent, branded content tailored specifically to your target audience.
+              </p>
+            </article>
+          </div>
+
+          <div
+            style={{
+              marginBlockStart: '2rem',
+              padding: '2rem',
+              background: 'var(--color-canvas-raised)',
+              border: '1px solid var(--color-accent-text)',
+              borderRadius: 'var(--radius-lg)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1rem',
+              alignItems: 'center',
+              textAlign: 'center',
+            }}
+          >
+            <span
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '11px',
+                letterSpacing: '0.15em',
+                color: 'var(--color-accent-text)',
+                textTransform: 'uppercase',
+              }}
+            >
+              All-in-One Package
+            </span>
+            <h3
+              className="font-mono"
+              style={{
+                fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+                fontWeight: 700,
+                color: 'var(--color-accent-text)',
+                margin: 0,
+                lineHeight: 1,
+              }}
+            >
+              $1,150
+            </h3>
+            <p
+              style={{
+                color: 'var(--color-text-primary)',
+                fontFamily: 'var(--font-mono)',
+                fontSize: 'var(--text-sm)',
+                margin: 0,
+              }}
+            >
+              Total Monthly Investment
+            </p>
+            <p
+              style={{
+                color: 'var(--color-text-secondary)',
+                fontSize: 'var(--text-base)',
+                maxWidth: '38rem',
+                margin: 0,
+                lineHeight: 1.5,
+              }}
+            >
+              <strong>The Verdict:</strong> Best ROI. High-touch, expert management at a small-business rate. Integrates all four growth channels seamlessly under DPL operations.
+            </p>
+            <div style={{ marginBlockStart: '1rem' }}>
+              <Link href="/audit" className="dpl-btn dpl-btn--ink">
+                Secure the Growth Suite
+              </Link>
+            </div>
           </div>
         </div>
       </section>

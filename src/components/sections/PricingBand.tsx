@@ -35,6 +35,13 @@ const tiers = [
     href: '/recovery',
     cta: 'Recovery scope',
   },
+  {
+    label: '05 · Growth',
+    price: '$1,150',
+    cad: 'Per month · all-in-one suite',
+    href: '/pricing#growth-suite',
+    cta: 'Growth terms',
+  },
 ];
 
 export function PricingBand() {

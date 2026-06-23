@@ -15,6 +15,7 @@ import { ProcessSection } from '@/components/sections/ProcessSection';
 import { StackSection } from '@/components/sections/StackSection';
 import { IntegrationsBar } from '@/components/sections/IntegrationsBar';
 import { CTASection } from '@/components/sections/CTASection';
+import { GrowthPromoModal } from '@/components/marketing/GrowthPromoModal';
 
 export const metadata: Metadata = {
   title: { absolute: 'AI Agents That Run Your Ops · Digital Point LLC' },
@@ -55,6 +56,7 @@ export default function HomePage() {
       <RecoverySection />
       <PricingBand />
       <CTASection />
+      <GrowthPromoModal />
     </>
   );
 }

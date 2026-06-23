@@ -22,6 +22,13 @@ const pillars = [
     receipts: '~<6h escalation response',
     href: '/operators',
   },
+  {
+    num: '04 · Growth',
+    title: 'Growth & Visibility',
+    desc: 'Automate your technical SEO, GMB rankings, citation directory syncs, and tailored social media publishing workflows.',
+    receipts: 'All-in-One Suite · $1,150/mo',
+    href: '/pricing#growth-suite',
+  },
 ];
 
 export function PillarsSection() {
@@ -38,7 +45,7 @@ export function PillarsSection() {
               <span className="dpl-eyebrow__rule" aria-hidden="true" />
               Four pillars
             </p>
-            <h2 className="dpl-pillars__title">Three services we ship. One recovery practice.</h2>
+            <h2 className="dpl-pillars__title">Four services we ship. One recovery practice.</h2>
           </div>
           <p className="dpl-pillars__index" aria-hidden="true">P.04 · Pillars 01 to 04</p>
         </header>

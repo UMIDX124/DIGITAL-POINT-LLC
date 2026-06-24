@@ -2730,6 +2730,11 @@ select {
   color: var(--color-accent-text);
 }
 
+.dpl-nav__link--active {
+  color: var(--color-accent-text);
+  font-weight: 500;
+}
+
 .dpl-nav__cta {
   display: inline-flex;
   align-items: center;

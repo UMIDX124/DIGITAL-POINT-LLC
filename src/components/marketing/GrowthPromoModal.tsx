@@ -83,7 +83,7 @@ export function GrowthPromoModal() {
           position: relative !important;
           display: inline-block !important;
           max-width: 100% !important;
-          max-height: 80vh !important;
+          max-height: 100vh !important;
         }
 
         .dpl-promo-dialog__close-btn {
@@ -142,7 +142,7 @@ export function GrowthPromoModal() {
           className="dpl-promo-dialog__link"
         >
           <img
-            src="/digitalpiontpopup.png"
+            src="/digitalpiontpopupimage.png"
             alt="Growth & Visibility Suite: SEO, GMB, Citations, Social Media Management All-in-One Package"
             className="dpl-promo-dialog__img"
           />

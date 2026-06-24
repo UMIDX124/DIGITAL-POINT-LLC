@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Logomark } from '@/components/brand/Logomark';
 import { Menu, X } from 'lucide-react';
 
@@ -12,10 +13,19 @@ const navLinks = [
   { label: 'Automation', href: '/automation' },
   { label: 'Operators', href: '/operators' },
   { label: 'Stack', href: '/stack' },
+  { label: 'Blogs', href: '/blog' },
 ];
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (href === '/') {
+      return pathname === '/';
+    }
+    return pathname === href || pathname.startsWith(href + '/');
+  };
 
   return (
     <header className="dpl-nav" role="banner">
@@ -37,7 +47,11 @@ export function Navigation() {
         {/* Desktop Menu */}
         <div className="dpl-nav__menu">
           {navLinks.map((l) => (
-            <Link key={l.href} href={l.href} className="dpl-nav__link">
+            <Link
+              key={l.href}
+              href={l.href}
+              className={`dpl-nav__link ${isActive(l.href) ? 'dpl-nav__link--active' : ''}`}
+            >
               {l.label}
             </Link>
           ))}
@@ -73,7 +87,7 @@ export function Navigation() {
                 key={l.href}
                 href={l.href}
                 onClick={() => setIsOpen(false)}
-                className="dpl-nav__mobile-link"
+                className={`dpl-nav__mobile-link ${isActive(l.href) ? 'dpl-nav__mobile-link--active' : ''}`}
               >
                 {l.label}
               </Link>
@@ -165,6 +179,17 @@ export function Navigation() {
 
         .dpl-nav__mobile-link:hover {
           color: var(--color-accent-text) !important;
+        }
+
+        /* Active states */
+        .dpl-nav__link--active {
+          color: var(--color-accent-text) !important;
+          font-weight: 500 !important;
+        }
+
+        .dpl-nav__mobile-link--active {
+          color: var(--color-accent-text) !important;
+          font-weight: 600 !important;
         }
 
         .dpl-nav__mobile-cta-ghost {

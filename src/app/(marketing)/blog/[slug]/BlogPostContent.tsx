@@ -48,7 +48,7 @@ function CollapsibleTOC({ toc }: { toc: { id: string; text: string; level: numbe
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center justify-between w-full lg:pointer-events-none"
       >
-        <h4 className="text-white font-medium text-sm">Contents</h4>
+        <h4 className="text-black font-medium text-sm">Contents</h4>
         <ChevronDown
           className={`w-4 h-4 text-[color:var(--text-muted)] lg:hidden transition-transform duration-200 ${
             isOpen ? 'rotate-180' : ''
@@ -84,10 +84,10 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
   const [firstHalf, secondHalf] = splitHtmlAtMiddle(htmlContent);
 
   const proseClasses = `prose prose-invert max-w-none
-                  [&_h2]:font-display [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-white [&_h2]:mt-10 [&_h2]:mb-4
-                  [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-white [&_h3]:mt-8 [&_h3]:mb-3
+                  [&_h2]:font-display [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-black [&_h2]:mt-10 [&_h2]:mb-4
+                  [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-black [&_h3]:mt-8 [&_h3]:mb-3
                   [&_p]:text-[color:var(--text-primary)] [&_p]:leading-relaxed [&_p]:mb-4
-                  [&_strong]:text-white
+                  [&_strong]:text-black
                   [&_ul]:my-4 [&_li]:text-[color:var(--text-primary)] [&_li]:mb-1
                   [&_code]:text-[color:var(--accent-bright)]
                   [&_a]:text-[color:var(--accent-primary)] [&_a]:hover:text-[color:var(--accent-bright)]
@@ -136,7 +136,7 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
               )}
             </div>
 
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mt-4 max-w-4xl">
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-(--text-primary) leading-tight mt-4 max-w-4xl">
               {post.title}
             </h1>
             <p className="text-[color:var(--text-primary)] text-lg mt-4 max-w-2xl">{post.excerpt}</p>
@@ -172,11 +172,11 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
               {/* FAQ Section if present */}
               {post.faqs && post.faqs.length > 0 && (
                 <div className="mt-12 pt-8" style={{ borderTop: '1px solid rgba(255, 136, 0, 0.15)' }}>
-                  <h2 className="font-display text-2xl font-bold text-white mb-6" style={{ maxWidth: 'var(--maxw-heading-section)' }}>Frequently Asked Questions</h2>
+                  <h2 className="font-display text-2xl font-bold text-black mb-6" style={{ maxWidth: 'var(--maxw-heading-section)' }}>Frequently Asked Questions</h2>
                   <div className="space-y-4">
                     {post.faqs.map((faq, i) => (
                       <div key={i} className="rounded-xl p-5" style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}>
-                        <h3 className="text-white font-medium text-sm mb-2">{faq.question}</h3>
+                        <h3 className="text-black font-medium text-sm mb-2">{faq.question}</h3>
                         <p className="text-[color:var(--text-muted)] text-sm">{faq.answer}</p>
                       </div>
                     ))}
@@ -198,7 +198,7 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
               {/* Related posts */}
               {relatedPosts.length > 0 && (
                 <div className="mt-12">
-                  <h3 className="font-display text-lg font-semibold text-white mb-4">Related Articles</h3>
+                  <h3 className="font-display text-lg font-semibold text-black mb-4">Related Articles</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {relatedPosts.map((rp) => (
                       <Link
@@ -207,7 +207,7 @@ export function BlogPostContent({ post, toc, htmlContent, catMeta, relatedPosts 
                         className="group rounded-xl p-4 transition-all hover:scale-[1.01]"
                         style={{ background: 'rgba(13, 8, 21, 0.5)', border: '1px solid rgba(255, 136, 0, 0.15)' }}
                       >
-                        <h4 className="text-white text-sm font-medium group-hover:text-[color:var(--accent-bright)] transition-colors leading-snug">
+                        <h4 className="text-black text-sm font-medium group-hover:text-[color:var(--accent-bright)] transition-colors leading-snug">
                           {rp.title}
                         </h4>
                         <p className="text-[color:var(--text-muted)] text-xs mt-2">{rp.readTime}</p>

@@ -51,16 +51,60 @@ export function PillarsSection() {
         </header>
 
         <div className="dpl-pillars__grid">
-          {pillars.map((p) => (
-            <Link key={p.num} href={p.href} className="dpl-pillar">
-              <span className="dpl-pillar__num">{p.num}</span>
-              <h3 className="dpl-pillar__title">{p.title}</h3>
-              <p className="dpl-pillar__desc">{p.desc}</p>
-              <p className="dpl-pillar__receipts" data-design-only="true">{p.receipts}</p>
-            </Link>
-          ))}
+          {pillars.map((p) => {
+            const isFeatured = p.num.includes('04');
+            return (
+              <Link
+                key={p.num}
+                href={p.href}
+                className={`dpl-pillar${isFeatured ? ' dpl-pillar--featured' : ''}`}
+              >
+                {isFeatured && (
+                  <span className="dpl-pillar__featured-tag">Featured</span>
+                )}
+                <span className="dpl-pillar__num">{p.num}</span>
+                <h3 className="dpl-pillar__title">{p.title}</h3>
+                <p className="dpl-pillar__desc">{p.desc}</p>
+                <p className="dpl-pillar__receipts" data-design-only="true">{p.receipts}</p>
+              </Link>
+            );
+          })}
         </div>
       </div>
+
+      <style>{`
+        /* Highlight the featured Growth pillar */
+        .dpl-pillar--featured {
+          background: rgba(255, 136, 0, 0.03) !important;
+          box-shadow: inset 0 0 0 1px rgba(255, 136, 0, 0.22) !important;
+          z-index: 1 !important;
+        }
+
+        .dpl-pillar--featured::before {
+          opacity: 1 !important;
+          width: 3px !important;
+        }
+
+        .dpl-pillar--featured:hover {
+          background: rgba(255, 136, 0, 0.06) !important;
+        }
+
+        .dpl-pillar__featured-tag {
+          position: absolute !important;
+          top: 1.875rem !important;
+          right: 1.75rem !important;
+          font-family: var(--font-mono), monospace !important;
+          font-size: 9px !important;
+          font-weight: 700 !important;
+          letter-spacing: 0.08em !important;
+          text-transform: uppercase !important;
+          color: var(--color-accent-text) !important;
+          background: rgba(255, 136, 0, 0.08) !important;
+          border: 1px solid rgba(255, 136, 0, 0.18) !important;
+          padding: 0.15rem 0.4rem !important;
+          border-radius: 2px !important;
+        }
+      `}</style>
     </section>
   );
 }

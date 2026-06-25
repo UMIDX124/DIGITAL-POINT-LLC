@@ -186,7 +186,7 @@ export function AuditPage() {
           </FadeUp>
 
           <FadeUp delay={0.2}>
-            <p className="text-[color:var(--text-primary)] text-lg mt-4 max-w-2xl">
+            <p className="text-[color:var(--color-canvas-bright)] text-lg mt-4 max-w-2xl">
               Forty-five minutes. We map where AI agents could be running your repeatable work, where automation could remove handoffs, and where operators are still earning their seat. You leave with a deployment-ready blueprint, no agency retainer attached.
             </p>
           </FadeUp>

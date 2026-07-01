@@ -2,7 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { X } from 'lucide-react';
+import popupImg from '../../../public/digitalpiontpopupimage.png';
 
 export function GrowthPromoModal() {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -10,7 +12,14 @@ export function GrowthPromoModal() {
   const [isDismissed, setIsDismissed] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const mountTimer = setTimeout(() => {
+      setMounted(true);
+    }, 0);
+    return () => clearTimeout(mountTimer);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
 
     // Open the modal after a brief delay
     const timer = setTimeout(() => {
@@ -20,7 +29,7 @@ export function GrowthPromoModal() {
     }, 1200);
 
     return () => clearTimeout(timer);
-  }, [isDismissed]);
+  }, [isDismissed, mounted]);
 
   const handleClose = (e?: React.MouseEvent) => {
     if (e) {
@@ -68,10 +77,18 @@ export function GrowthPromoModal() {
           z-index: 1000 !important;
           overflow: visible !important;
           box-sizing: border-box !important;
+          display: none !important;
+          opacity: 0 !important;
+          visibility: hidden !important;
+        }
+
+        .dpl-promo-dialog[open] {
           display: flex !important;
           flex-direction: column !important;
           justify-content: center !important;
           align-items: center !important;
+          opacity: 1 !important;
+          visibility: visible !important;
         }
 
         .dpl-promo-dialog::backdrop {
@@ -141,10 +158,11 @@ export function GrowthPromoModal() {
           }}
           className="dpl-promo-dialog__link"
         >
-          <img
-            src="/digitalpiontpopupimage.png"
+          <Image
+            src={popupImg}
             alt="Growth & Visibility Suite: SEO, GMB, Citations, Social Media Management All-in-One Package"
             className="dpl-promo-dialog__img"
+            priority
           />
         </Link>
 

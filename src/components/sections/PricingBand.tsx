@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PRICING_CONFIG } from "@/lib/pricing-config";
 
 /**
  * F·12. Pricing band immediately under the hero. Buyers no longer have to
@@ -8,21 +9,21 @@ import Link from "next/link";
 const tiers = [
   {
     label: "01 · Audit",
-    price: "Free",
+    price: PRICING_CONFIG.core.audit.formatted,
     cad: "45 min · co-founder review",
     href: "/audit",
     cta: "Book audit",
   },
   {
     label: "02 · Pilot",
-    price: "$2,500",
+    price: PRICING_CONFIG.core.pilot.formatted,
     cad: "30 days · one workflow · cancel any month",
     href: "/pricing",
     cta: "Pilot terms",
   },
   {
     label: "03 · Retainer",
-    price: "$2,500",
+    price: PRICING_CONFIG.core.retainer.formatted,
     cad: "Per month · cancel any month, no annual lock-in",
     href: "/pricing",
     cta: "Retainer terms",
@@ -30,7 +31,7 @@ const tiers = [
   },
   {
     label: "04 · Recovery",
-    price: "$5K–$10K",
+    price: PRICING_CONFIG.recovery.diagnosis.formatted + "–" + PRICING_CONFIG.recovery.fix.formatted.replace("$", ""),
     cad: "Broken-agent diagnostic plus fix",
     href: "/recovery",
     cta: "Recovery scope",
@@ -38,6 +39,8 @@ const tiers = [
 ];
 
 export function PricingBand() {
+  const gPrice = PRICING_CONFIG.tier1.formatted;
+
   return (
     <section className="dpl-pricing-band" aria-label="Pricing at a glance">
       <div className="dpl-pricing-band__inner">
@@ -62,7 +65,7 @@ export function PricingBand() {
           
           <div className="dpl-pricing-band__featured-action">
             <div className="dpl-pricing-band__featured-price-box">
-              <span className="dpl-pricing-band__featured-price">$1,150</span>
+              <span className="dpl-pricing-band__featured-price">{gPrice}</span>
               <span className="dpl-pricing-band__featured-cad">/ month</span>
             </div>
             <Link href="/pricing#growth-suite" className="dpl-pricing-band__featured-link">
@@ -215,4 +218,3 @@ export function PricingBand() {
 }
 
 export default PricingBand;
-

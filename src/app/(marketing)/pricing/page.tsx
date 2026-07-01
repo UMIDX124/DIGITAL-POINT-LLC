@@ -2,16 +2,17 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema';
 import { ServiceSchema } from '@/components/seo/ServiceSchema';
+import { PRICING_CONFIG } from '@/lib/pricing-config';
 
 export const metadata: Metadata = {
   title: 'Pricing',
   description:
-    'Transparent pricing. Audit free. Pilot $2,500 fixed for 30 days. Retainer $2,500 / month. Recovery service: diagnosis $5,000 / fix $10,000. The agency market does not publish pricing. We do.',
+    'Transparent pricing. Audit free. Pilot $2,500 fixed for 30 days. Retainer $2,500 / month. Recovery service: diagnosis $5,000 / fix $10,000. Growth Suite: $1,150 / month.',
   alternates: { canonical: 'https://www.digitalpointllc.com/pricing' },
   openGraph: {
     title: 'Pricing',
     description:
-      'Audit free. Pilot $2,500 fixed for 30 days. Retainer $2,500 / month. Recovery diagnosis $5,000. We publish what the market hides.',
+      'Audit free. Pilot $2,500 fixed for 30 days. Retainer $2,500 / month. Recovery diagnosis $5,000. Growth Suite $1,150 / month.',
     url: 'https://www.digitalpointllc.com/pricing',
     type: 'website',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Digital Point. Transparent pricing.' }],
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Pricing',
-    description: 'Audit free. Pilot $2,500. Retainer $2,500/m. We publish what the market hides.',
+    description: 'Audit free. Pilot $2,500. Retainer $2,500/m. Growth Suite $1,150/m. We publish what the market hides.',
     images: ['/og-image.png'],
   },
 };
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
 const tiers = [
   {
     name: 'Audit',
-    price: 'Free',
+    price: PRICING_CONFIG.core.audit.formatted,
     cadence: '45 min · 5-day plan',
     desc: 'Co-founder review of your stack, attribution, team, funnel. Deployment-ready blueprint. No retainer attached. If we can\'t help, we say so.',
     bullets: ['Written deployment plan', 'Co-founder reviews your stack', 'Five business days to delivery'],
@@ -35,7 +36,7 @@ const tiers = [
   },
   {
     name: 'Pilot',
-    price: '$2,500',
+    price: PRICING_CONFIG.core.pilot.formatted,
     cadence: 'Fixed · 30 days · one workflow',
     desc: 'We scope, build, and operate one workflow for 30 days. You own the runbooks. Real-time Slack channel on day one. Decide whether to continue at the end.',
     bullets: [
@@ -48,7 +49,7 @@ const tiers = [
   },
   {
     name: 'Retainer',
-    price: '$2,500',
+    price: PRICING_CONFIG.core.retainer.formatted,
     cadence: 'Per month · cancel any month, no annual lock-in',
     desc: 'Ongoing operation of the workflow portfolio. Replacements, updates, monitoring, monthly written report. Replace $400K of in-house ops for $30K a year.',
     bullets: [
@@ -59,49 +60,69 @@ const tiers = [
     ],
     cta: { label: 'Talk to a co-founder', href: '/audit', primary: false },
   },
+  {
+    name: 'Growth',
+    price: PRICING_CONFIG.tier1.formatted,
+    cadence: 'Per month · cancel any month, no annual lock-in',
+    desc: 'Unify Organic SEO, local Google Map optimization, citation sync, and consistent social media post scheduling under a single co-founder managed subscription.',
+    bullets: [
+      'SEO Strategy & Technical Optimization',
+      'Google Business Profile (GMB) Management',
+      'Citation Pages Audit & Sync',
+      'Social Media Management',
+    ],
+    cta: { label: 'Secure the Growth Suite', href: '#growth-suite', primary: false },
+  },
 ];
 
 const recovery = [
   {
     name: 'Diagnosis',
-    price: '$5,000',
+    price: PRICING_CONFIG.recovery.diagnosis.formatted,
     cadence: '2 weeks',
     desc: 'Audit your existing agent stack against 30 production criteria. Written report plus 1-hour walkthrough.',
   },
   {
     name: 'Fix',
-    price: '$10,000',
+    price: PRICING_CONFIG.recovery.fix.formatted,
     cadence: '4 weeks',
     desc: 'Production patch with proper observability, retries, rollback. Runbooks delivered to your team.',
   },
 ];
 
 export default function PricingPage() {
+  const gPrice = PRICING_CONFIG.tier1.formatted;
+  const seoPrice = PRICING_CONFIG.standalone.seo.formatted;
+  const gmbPrice = PRICING_CONFIG.standalone.gmb.formatted;
+  const citationsPrice = PRICING_CONFIG.standalone.citations.formatted;
+  const socialPrice = PRICING_CONFIG.standalone.social.formatted;
+
   return (
     <>
       <BreadcrumbSchema
         items={[
-        { name: 'Home', item: 'https://www.digitalpointllc.com' },
-        { name: 'Pricing', item: 'https://www.digitalpointllc.com/pricing' },
+          { name: 'Home', item: 'https://www.digitalpointllc.com' },
+          { name: 'Pricing', item: 'https://www.digitalpointllc.com/pricing' },
         ]}
       />
       <ServiceSchema
         name="DPL Pricing · Audit, Pilot, Retainer, Growth"
-        description="Published-price managed service: free audit, $2,500 fixed pilot for 30 days, $2,500 per month retainer. Recovery ladder: $5,000 diagnosis, $10,000 fix, and $1,150/mo growth suite (SEO, GMB, citations, social)."
+        description={`Published-price managed service: free audit, $2,500 fixed pilot for 30 days, $2,500 per month retainer. Recovery ladder: $5,000 diagnosis, $10,000 fix, and ${gPrice}/mo growth suite (SEO, GMB, citations, social).`}
         url="https://www.digitalpointllc.com/pricing"
         serviceTypes={[
-        'Free Audit',
-        'Pilot Engagement',
-        'Monthly Retainer',
-        'Recovery Diagnosis',
-        'Recovery Fix',
-        'SEO Strategy & Optimization',
-        'Google My Business Management',
-        'Citation Pages Audit & Sync',
-        'Social Media Management',
-        'All-in-One Growth Package'
+          'Free Audit',
+          'Pilot Engagement',
+          'Monthly Retainer',
+          'Recovery Diagnosis',
+          'Recovery Fix',
+          'SEO Strategy & Optimization',
+          'Google My Business Management',
+          'Citation Pages Audit & Sync',
+          'Social Media Management',
+          'All-in-One Growth Package'
         ]}
       />
+      
       <section className="hero hero--pillar-brief" id="hero">
         <div className="dpl-section__rail" aria-hidden="true">
           <span className="dpl-section__rail-label">Section 07 · Pricing</span>
@@ -151,7 +172,7 @@ export default function PricingPage() {
               </tr>
               <tr className="dpl-pillar-tiers__row">
                 <th scope="row">Growth</th>
-                <td className="dpl-pillar-tiers__price">$1,150 / mo</td>
+                <td className="dpl-pillar-tiers__price">{gPrice} / mo</td>
                 <td>Cancel any month · no annual lock-in</td>
                 <td>
                   <Link href="#growth-suite" className="dpl-pillar-tiers__link">Details</Link>
@@ -171,10 +192,10 @@ export default function PricingPage() {
         <div className="container-wide">
           <div className="section-header">
             <p className="eyebrow">Build engagement</p>
-            <h2 className="section-title text-balance">Three steps, fixed pricing.</h2>
+            <h2 className="section-title text-balance">Transparent, fixed pricing.</h2>
           </div>
 
-          <div className="pillar-grid pillar-grid--three" style={{ marginBlockStart: '3rem' }}>
+          <div className="pillar-grid pillar-grid--four" style={{ marginBlockStart: '3rem' }}>
             {tiers.map((t) => (
               <article key={t.name} id={`${t.name.toLowerCase()}-tier`} className="pillar-card">
                 <span className="pillar-card__index">{t.name}</span>
@@ -267,7 +288,7 @@ export default function PricingPage() {
                   lineHeight: 1,
                 }}
               >
-                $400
+                {seoPrice}
               </h3>
               <p
                 style={{
@@ -294,7 +315,7 @@ export default function PricingPage() {
                   lineHeight: 1,
                 }}
               >
-                $250
+                {gmbPrice}
               </h3>
               <p
                 style={{
@@ -321,7 +342,7 @@ export default function PricingPage() {
                   lineHeight: 1,
                 }}
               >
-                $250
+                {citationsPrice}
               </h3>
               <p
                 style={{
@@ -348,7 +369,7 @@ export default function PricingPage() {
                   lineHeight: 1,
                 }}
               >
-                $250
+                {socialPrice}
               </h3>
               <p
                 style={{
@@ -400,7 +421,7 @@ export default function PricingPage() {
                 lineHeight: 1,
               }}
             >
-              $1,150
+              {gPrice}
             </h3>
             <p
               style={{

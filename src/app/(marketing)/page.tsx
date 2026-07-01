@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { PersonaRouter } from "@/components/sections/PersonaRouter";
 import { FeaturedGrowthSection } from "@/components/sections/FeaturedGrowthSection";
 import { PricingBand } from "@/components/sections/PricingBand";
 import { ActivityTicker } from "@/components/marketing/ActivityTicker";
@@ -42,6 +43,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <PersonaRouter />
       <FeaturedGrowthSection />
       <HomeEvidence />
       <ActivityTicker />

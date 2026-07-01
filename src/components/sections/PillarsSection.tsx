@@ -2,32 +2,32 @@ import Link from 'next/link';
 
 const pillars = [
   {
-    num: '01 · Agents',
+    num: '01 · Growth',
+    title: 'Growth & Visibility',
+    desc: 'Automate your technical SEO, GMB rankings, citation directory syncs, and tailored social media publishing workflows.',
+    receipts: 'All-in-One Suite · $1,150/mo',
+    href: '/pricing#growth-suite',
+  },
+  {
+    num: '02 · Agents',
     title: 'Production AI agents',
     desc: 'Custom-trained agents that run repeatable knowledge work. CRM updates, lead routing, qualification, follow-up cadences. Operator-audited edges.',
     receipts: '~Replaces $200K of headcount',
     href: '/agents',
   },
   {
-    num: '02 · Automation',
+    num: '03 · Automation',
     title: 'Workflow handoffs',
     desc: 'Replace manual handoffs across your stack. n8n + custom TypeScript + Postgres for production pipelines. Not a Zapier shop, not a Make rebadger.',
     receipts: '~60s lead-to-CRM end-to-end',
     href: '/automation',
   },
   {
-    num: '03 · Operators',
+    num: '04 · Operators',
     title: 'Remote operators',
     desc: 'Vetted humans audit the edges where automation breaks. Live in your Slack on day one. Not generic VAs, not offshore data-entry farms.',
     receipts: '~<6h escalation response',
     href: '/operators',
-  },
-  {
-    num: '04 · Growth',
-    title: 'Growth & Visibility',
-    desc: 'Automate your technical SEO, GMB rankings, citation directory syncs, and tailored social media publishing workflows.',
-    receipts: 'All-in-One Suite · $1,150/mo',
-    href: '/pricing#growth-suite',
   },
 ];
 
@@ -52,7 +52,7 @@ export function PillarsSection() {
 
         <div className="dpl-pillars__grid">
           {pillars.map((p) => {
-            const isFeatured = p.num.includes('04');
+            const isFeatured = p.num.includes('01');
             return (
               <Link
                 key={p.num}
